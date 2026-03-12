@@ -12,86 +12,67 @@ spiritual experience of the weekend.
 ## 2. User Roles
 
 ### **Participants**
-- Discover and register for DFL events
-- Fill in questionnaires (spiritual gifts and values)
-- Upload or create their personal “Life Tree”
-- Take private notes and "Key Takeaways" for every session
-- Create a "Summary Collage" of their insights
-- Define SMART Goals
-- View the weekend schedule and assigned rooms
-- Access materials (texts, PDFs, instructions)
-- Decide which information is shared with leaders
+- Discover and register for DFL events.
+- Fill in questionnaires (spiritual gifts and values).
+- Upload or create their personal “Life Tree”.
+- Take private notes and "Key Takeaways" for every session.
+- Create a "Summary Collage" of their insights.
+- Define SMART Goals.
+- View the weekend schedule and room assignments (as text).
+- Decide which information is shared with leaders.
+- *Note:* Participants do NOT see teaching materials/PDFs in the app (Leader-only).
 
 ### **Small Group Leaders**
-- View participants assigned to their group
-- Access participants’ shared questionnaire results and summaries
-- Add leader-only preparation notes
-- Plan 1:1 conversations and share specific results/feedback with participants
-- Manage event details (if authorized)
+- View participants assigned to their group via a simplified dropdown.
+- Access participants’ shared questionnaire results and summaries.
+- Add leader-only preparation notes.
+- Access teaching materials, PDFs, and images for preparation.
+- Plan 1:1 conversations and share specific results/feedback with participants.
 
 ### **Administrators**
-- Full event management (Create, Edit, Schedule)
-- Room and infrastructure planning
-- Manage user accounts, roles, and group assignments
-- Upload seminar materials and manage translations
+- Full event management (Create events with pre-filled standard schedule).
+- Manage user accounts, roles, and group assignments (inline dropdowns).
+- Manage leader-only materials and copy them from previous events as templates.
 
 ---
 
 ## 3. Functional Requirements
 
 ### **3.1 Event & Registration**
-- **Event Discovery:** Browse upcoming DFL events with location, date, and language.
-- **Registration:** Register/Unregister for events.
-- **Status Tracking:** See registration status (Pending/Approved) and "Registered" badges.
+- **Event Discovery:** Browse upcoming events.
+- **Registration:** Simple register/unregister.
+- **Template Logic:** New events automatically load the standard DFL schedule.
 
 ### **3.2 Module Architecture (Unified Pattern)**
-All reflection modules (Gifts, Values, Life Tree, Listening Prayer, Teachings) must support:
+All reflection modules (Gifts, Values, Life Tree, Listening Prayer) follow:
 - **Edit Mode:** For data entry.
 - **Result Mode:** For visualization.
-- **Key Takeaways:** Requirement to capture 1–3 main points per module.
-- **Sharing Controls:** Granular control over what is shared.
+- **Key Takeaways:** 1–3 main points per module (stored for Collage).
 
 ### **3.3 Participant Features**
-- **Questionnaires:** Spiritual gifts and values assessments with autosave.
-- **Life Tree:** Specialized tree builder (Roots, Branches, Labels) with "3 Red Threads".
-- **Lesson Notes:** Capture text and photos (slides/flipcharts) during teachings.
-- **Listening Prayer:** Dynamic list of impressions (own and received).
-- **Summary Collage:** Visual dashboard/collage of all "Key Takeaways" from all modules.
-- **SMART Goals:** Definition of exactly 3 goals with SMART-criteria validation.
-- **Information Controls:** Clearly mark content as Private, Shared with Leader, or Temporary Presentation.
+- **Schedule:** View timeline with session titles and room names (text field).
+- **Reflection Tools:** Gifts, Values, Life Tree, Listening Prayer, Collage, Goals.
+- **Privacy:** Personal reflection data is permanent and private unless shared.
 
 ### **3.4 Small Group Leaders**
-- **Participant Overview:** See group members and their completion status.
-- **Shared Results:** Access shared summaries of all participant modules.
-- **1:1 Conversation Results:** Document 1:1 sessions and explicitly "Share with Participant" to make feedback visible in their result screen.
-- **Leader Notes:** Private notes for preparation.
+- **Leader Materials:** Access to PDFs/Images for session preparation.
+- **Inline Grouping:** Assign participants to groups (e.g., "1", "2") via a simple dropdown in the participant list.
 
 ### **3.5 Administrators & Event Management**
-- **Event Editor:** Create events with title, description, location, and address.
-- **Infrastructure:** Define Rooms and upload Map/Building plans.
-- **Schedule Editor:** Create/Edit the weekend timeline using templates. Assign modules and rooms to sessions.
-- **User & Group Management:** Assign roles and organize small groups.
+- **Simplified Schedule:** Edit session titles, times, and rooms (text field with autocomplete).
+- **Grouping:** Create new groups via a "+" option in the participant's group dropdown.
+- **Material Templates:** Choose to copy materials from a previous event when creating a new one.
 
 ---
 
 ## 4. Non‑Functional Requirements
-- **Simplicity:** Intuitive interface (max 2-3 taps to core features).
-- **Multilingual UI:** Support for multiple languages.
-- **Privacy:** Explicit consent for sharing; "Presentation Mode" for safe viewing.
-- **Offline Support:** Full functionality for notes and questionnaires without internet.
-- **Cross‑Platform:** iOS, Android, and Web.
+- **Simplicity (KISS):** No complex room or group management screens. Inline editing where possible.
+- **Data Permanence:** Personal reflection data (Life Tree, Notes) belongs to the user and is kept permanently.
+- **Privacy:** Only explicitly shared data (e.g., Listening Prayer impressions) is distributed via the backend.
 
 ---
 
 ## 5. Out of Scope
-- Payment systems
-- Social networking/chat (except Prayer Notes)
-- Automated spiritual "scoring"
-
----
-
-## 6. Success Criteria
-- High completion rate of questionnaires and "Key Takeaways".
-- Leaders report better preparation for 1:1 sessions.
-- Efficient room and group coordination by admins.
-- Zero unauthorized data access.
+- Participant access to teaching materials.
+- Automated spiritual scoring.
+- Complex infrastructure management.

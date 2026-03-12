@@ -1,121 +1,84 @@
-# Data Model – DFL App
+# Data Model – DFL App (Simplified)
 
 ## 1. Overview
-The DFL App uses a relational data model designed for offline-first synchronization and strict privacy. All sensitive spiritual data is linked to a specific user and event.
+The DFL App uses a simplified relational data model designed for offline-first synchronization. Personal reflection data is permanent, while event-specific coordination data is transient.
 
 ---
 
 ## 2. Core Entities
 
-### 2.1 Event Management
+### 2.1 Event & Participant Management
 - **Event**
     - `id` (UUID)
     - `title` (String)
     - `description` (Text)
     - `location_name` (String)
-    - `address` (String)
     - `start_date` (DateTime)
     - `end_date` (DateTime)
-    - `map_image_url` (String, optional)
-    - `status` (Enum: DRAFT, PUBLISHED, ARCHIVED)
+    - `status` (Enum: DRAFT, PUBLISHED)
 
-- **Room**
-    - `id` (UUID)
-    - `event_id` (FK)
-    - `name` (String)
-
-- **Registration**
+- **Registration (The central link)**
     - `id` (UUID)
     - `user_id` (FK)
     - `event_id` (FK)
     - `role` (Enum: PARTICIPANT, LEADER, ADMIN)
-    - `group_id` (FK, optional)
-    - `status` (Enum: PENDING, APPROVED, REJECTED)
-
-- **Group**
-    - `id` (UUID)
-    - `event_id` (FK)
-    - `name` (String)
-    - `leader_id` (FK -> User)
+    - `group_name` (String) – *Simplified: Managed via inline dropdown (1, 2, +).*
+    - `status` (Enum: PENDING, APPROVED)
 
 ---
 
-### 2.2 Schedule & Content
+### 2.2 Schedule & Leader-Materials
 - **Session**
     - `id` (UUID)
     - `event_id` (FK)
-    - `room_id` (FK)
     - `title` (String)
     - `start_time` (DateTime)
     - `end_time` (DateTime)
+    - `room_name` (String) – *Simplified: Direct text input with autocomplete.*
     - `module_type` (Enum: TEACHING, LIFE_TREE, GIFTS, VALUES, PRAYER, COLLAGE, GOALS)
     - `is_locked` (Boolean)
 
-- **Material**
+- **Material (Leader-Only)**
     - `id` (UUID)
-    - `session_id` (FK)
+    - `event_id` (FK)
     - `title` (String)
     - `file_url` (String)
-    - `type` (Enum: PDF, IMAGE, MARKDOWN)
+    - `type` (Enum: PDF, IMAGE)
+    - *Note: Can be copied from previous events as templates.*
 
 ---
 
-### 2.3 Participant Data (Reflection Modules)
-Every module entry is linked to a `user_id` and `event_id`.
+### 2.3 Permanent Reflection Data (User-Owned)
+These entities are stored permanently for the user's personal journey.
 
-- **ModuleEntry (Base fields for all modules)**
+- **ModuleEntry (Base for all modules)**
     - `id` (UUID)
     - `user_id` (FK)
-    - `session_id` (FK)
     - `key_takeaways` (List<String>)
     - `visibility` (Enum: PRIVATE, SHARED_LEADER, PRESENTATION)
 
-- **LifeTreeData**
-    - `id` (UUID)
-    - `nodes` (JSON: Array of {id, parent_id, label, type})
-    - `red_threads` (List<String>: Max 3)
+- **LifeTreeData**, **QuestionnaireResult**, **Goal**, **CollageData**
+    - *Linked to User, stored across multiple events if necessary.*
 
-- **QuestionnaireResult (Gifts & Values)**
-    - `id` (UUID)
-    - `type` (Enum: GIFTS, VALUES)
-    - `raw_answers` (JSON)
-    - `top_results` (List<String>)
-
-- **PrayerNote**
+- **PrayerNote (Recipient-Owned)**
     - `id` (UUID)
     - `from_user_id` (FK)
     - `to_user_id` (FK)
     - `content_encrypted` (Text)
-    - `is_anonymous` (Boolean)
     - `created_at` (DateTime)
 
-- **CollageData**
-    - `id` (UUID)
-    - `elements` (JSON: List of {type, content, x, y, scale, rotation})
-    - `background_style` (String)
-
-- **Goal**
-    - `id` (UUID)
-    - `description` (String)
-    - `smart_s`, `smart_m`, `smart_a`, `smart_r`, `smart_t` (Boolean)
-
 ---
 
-### 2.4 Leader Feedback
-- **ConversationResult**
-    - `id` (UUID)
-    - `leader_id` (FK)
-    - `participant_id` (FK)
-    - `notes_private` (Text)
-    - `feedback_shared` (Text)
-    - `is_shared_with_participant` (Boolean)
+## 3. Sync & Privacy Strategy
 
----
+### 3.1 Personal Sync (Private)
+- Data like the **Life Tree**, **Private Notes**, and **Goals** are synced to the user's private cloud storage.
+- The backend serves only as a relay to ensure multi-device availability.
 
-## 3. Privacy & Sync Metadata
-Each record contains:
-- `created_at` (DateTime)
-- `updated_at` (DateTime)
-- `deleted_at` (DateTime, for soft deletes)
-- `sync_status` (Enum: SYNCED, PENDING, CONFLICT)
-- `device_id` (String)
+### 3.2 Shared Sync (Interpersonal)
+- Data explicitly marked as **Shared** (e.g., Listening Prayer impressions) is distributed by the backend to the respective Leader/Group.
+- **Prayer Notes** are moved to the recipient's partition upon sending (Sender loses access).
+
+### 3.3 Data Retention
+- **Permanent:** All reflection modules (Gifts, Values, Tree, Notes, Goals).
+- **Transient (30 days post-event):** Event registrations, group assignments, and session locks.
