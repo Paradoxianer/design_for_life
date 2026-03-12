@@ -12,143 +12,86 @@ spiritual experience of the weekend.
 ## 2. User Roles
 
 ### **Participants**
+- Discover and register for DFL events
 - Fill in questionnaires (spiritual gifts and values)
 - Upload or create their personal “Life Tree”
-- Take private notes
-- Bring all insights together (Life Tree, gifts, values, listening prayer)
-- View the weekend schedule
+- Take private notes and "Key Takeaways" for every session
+- Create a "Summary Collage" of their insights
+- Define SMART Goals
+- View the weekend schedule and assigned rooms
 - Access materials (texts, PDFs, instructions)
 - Decide which information is shared with leaders
 
 ### **Small Group Leaders**
 - View participants assigned to their group
-- Access participants’ shared questionnaire results
-- See only shared summaries of Life Tree and listening-prayer reflections  
-  (never private notes or unshared content)
+- Access participants’ shared questionnaire results and summaries
 - Add leader-only preparation notes
-- Plan 1:1 conversations
+- Plan 1:1 conversations and share specific results/feedback with participants
+- Manage event details (if authorized)
 
 ### **Administrators**
-- Manage user accounts and roles
-- Assign groups and leaders
-- Upload seminar materials
-- Manage translations and language versions
-- Configure the event schedule and announcements
+- Full event management (Create, Edit, Schedule)
+- Room and infrastructure planning
+- Manage user accounts, roles, and group assignments
+- Upload seminar materials and manage translations
 
 ---
 
 ## 3. Functional Requirements
 
-### **3.1 Participants**
-- **Questionnaires:** Fill in spiritual gifts and values assessments with autosave.
-- **Life Tree:** Upload an image (photo/drawing) or create one digitally.
-- **Notes:** Private notes visible only to the participant.
-- **Schedule:** Access the current DFL weekend timeline.
-- **Materials:** View PDFs, biblical passages, and session instructions.
-- **Information Controls:** Clearly mark which information stays private and which may be shared.
-- **Sharing Overview:** Ability to view “What my leader can see about me.”
+### **3.1 Event & Registration**
+- **Event Discovery:** Browse upcoming DFL events with location, date, and language.
+- **Registration:** Register/Unregister for events.
+- **Status Tracking:** See registration status (Pending/Approved) and "Registered" badges.
 
-### **3.2 Small Group Leaders**
-- **Participant Overview:** See all members of their group.
-- **Results View:** Access only the participant’s shared assessment summaries.
-- **Shared Life Tree:** View the participant’s shared Life Tree summary.
-- **Leader Notes:** Add personal preparation and conversation notes (leader-only).
-- **1:1 Planning:** Create and manage simple time slots for individual conversations.
+### **3.2 Module Architecture (Unified Pattern)**
+All reflection modules (Gifts, Values, Life Tree, Listening Prayer, Teachings) must support:
+- **Edit Mode:** For data entry.
+- **Result Mode:** For visualization.
+- **Key Takeaways:** Requirement to capture 1–3 main points per module.
+- **Sharing Controls:** Granular control over what is shared.
 
-### **3.3 Administrators**
-- **User Management:** Create, edit, and assign participants and leaders.
-- **Group Assignment:** Organize users into small groups.
-- **Content Management:** Upload teaching materials and instructions.
-- **Translation Settings:** Manage multilingual content.
-- **Event Settings:** Configure schedule, structure, and general settings.
+### **3.3 Participant Features**
+- **Questionnaires:** Spiritual gifts and values assessments with autosave.
+- **Life Tree:** Specialized tree builder (Roots, Branches, Labels) with "3 Red Threads".
+- **Lesson Notes:** Capture text and photos (slides/flipcharts) during teachings.
+- **Listening Prayer:** Dynamic list of impressions (own and received).
+- **Summary Collage:** Visual dashboard/collage of all "Key Takeaways" from all modules.
+- **SMART Goals:** Definition of exactly 3 goals with SMART-criteria validation.
+- **Information Controls:** Clearly mark content as Private, Shared with Leader, or Temporary Presentation.
 
----
+### **3.4 Small Group Leaders**
+- **Participant Overview:** See group members and their completion status.
+- **Shared Results:** Access shared summaries of all participant modules.
+- **1:1 Conversation Results:** Document 1:1 sessions and explicitly "Share with Participant" to make feedback visible in their result screen.
+- **Leader Notes:** Private notes for preparation.
 
-## **3.4 Extended Feature: Reference Feedback for Gift Assessment**
-Participants can invite one or more “reference persons” (friends, mentors, leaders)
-to provide external feedback on their spiritual gifts.
-
-### **Purpose**
-To create a more holistic view by combining self-reflection with external impressions.
-
-### **Requirements**
-- Invitations can be sent via link or email.
-- Reference persons do not need a full account (temporary access link).
-- They fill out a simplified gift questionnaire about the participant.
-- Responses are stored separately from the participant’s own answers.
-- Leaders can view aggregated (self + references) results.
-- Participants decide whether leaders may view the reference feedback.
-- Reference persons can never view participant data.
-
-### **Privacy**
-- Fully optional.
-- Explicit participant consent required before inviting references.
-- Reference feedback aggregated where appropriate to protect anonymity.
-
----
-
-## **3.5 Information Visibility & Sharing Controls**
-
-### **Participant Control**
-Participants must be able to decide for each item individually:
-- Life Tree (summary only)
-- Gift assessment results (summary only)
-- Values assessment (summary only)
-- Listening prayer reflections
-- Other reflections or insights
-
-Each item can be marked as:
-- **Private** (default)
-- **Shared with Group Leader**
-- **Temporary Share** (session‑based)
-
-Participants must have:
-- A clear overview: **“What the leader can see”**
-- The ability to change sharing choices at any time
-
-### **Leader Permissions**
-Leaders may:
-- View **only** content explicitly shared by participants
-- Access summaries but **not** private notes or raw data
-- Never override visibility settings
-
-Leaders may **not**:
-- Access unshared Life Tree or prayer notes
-- View participant private journaling
-- Access drafts or uncompleted questionnaires
-
-### **Temporary Sharing (“Presentation Mode”)**
-Participants may temporarily display specific content:
-
-- Via a “Share with Leader” button
-- Or via a clean “Presentation Mode” view suitable for a beamer or large screen
-- No permanent access for leaders
-- Temporary access expires automatically
+### **3.5 Administrators & Event Management**
+- **Event Editor:** Create events with title, description, location, and address.
+- **Infrastructure:** Define Rooms and upload Map/Building plans.
+- **Schedule Editor:** Create/Edit the weekend timeline using templates. Assign modules and rooms to sessions.
+- **User & Group Management:** Assign roles and organize small groups.
 
 ---
 
 ## 4. Non‑Functional Requirements
-- **Simplicity:** Intuitive interface for all user types.
-- **Multilingual UI:** All UI text and questionnaires support multiple languages.
-- **Privacy:** All personal data handled securely and with explicit consent.
-- **Offline Support:** Notes and questionnaires must work offline.
-- **Accessibility:** Clear design, proper contrast, and screen‑reader support.
-- **Cross‑Platform:** Available on iOS, Android, and optionally Web.
+- **Simplicity:** Intuitive interface (max 2-3 taps to core features).
+- **Multilingual UI:** Support for multiple languages.
+- **Privacy:** Explicit consent for sharing; "Presentation Mode" for safe viewing.
+- **Offline Support:** Full functionality for notes and questionnaires without internet.
+- **Cross‑Platform:** iOS, Android, and Web.
 
 ---
 
-## 5. Out of Scope (for now)
-- Payment or external registration systems
-- Automated spiritual assessments
-- Social networking or chat features
-- Full digital or online-only DFL experiences
-- Integrations with external platforms
+## 5. Out of Scope
+- Payment systems
+- Social networking/chat (except Prayer Notes)
+- Automated spiritual "scoring"
 
 ---
 
 ## 6. Success Criteria
-- Most participants complete their questionnaires before/during the event
-- Leaders feel better prepared for group and 1:1 sessions
-- Administrators report significantly reduced paper and coordination work
-- High user engagement with schedule, notes, and materials
-- Zero privacy-related issues or unauthorized data access
+- High completion rate of questionnaires and "Key Takeaways".
+- Leaders report better preparation for 1:1 sessions.
+- Efficient room and group coordination by admins.
+- Zero unauthorized data access.

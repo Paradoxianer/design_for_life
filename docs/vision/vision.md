@@ -20,21 +20,23 @@ To prepare well, reflect, and access everything they need in one place.
 ### Group Leaders
 To better understand their group and guide conversations with care.
 
-### Organizers
-To reduce administrative work and make the weekend run more smoothly.
+### Organizers & Admins
+To manage events, room assignments, and registration flow efficiently, reducing manual coordination effort.
 
 ## What the App Should Enable
-- Filling out questionnaires before or during the weekend
-- Storing personal notes and reflections
-- Accessing schedules, instructions, and materials
-- Helping leaders prepare for group sessions and conversations
-- Making the overall DFL experience more organized and calm
+- Discovering and registering for DFL events.
+- Filling out questionnaires before or during the weekend.
+- Storing personal notes, "Key Takeaways," and reflections.
+- Visualizing a personal "Life Tree" and a "Summary Collage."
+- Accessing schedules, room locations, and teaching materials.
+- Helping leaders prepare for group sessions and 1:1 conversations.
+- Organizing event infrastructure (rooms, schedules, groups) digitally.
 
 ## What the App Will Not Do
-- Replace the in-person experience
-- Automate spiritual guidance
-- Turn DFL into an online-only course
-- Become a social media platform
+- Replace the in-person experience.
+- Automate spiritual guidance.
+- Turn DFL into an online-only course.
+- Become a social media platform.
 
 ## The Big Picture
 We want the DFL App to help create more space—space for God to speak, space for people to reflect, and space for leaders to be fully present. The technology should fade into the background so the experience of the weekend can shine.
