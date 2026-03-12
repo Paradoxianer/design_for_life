@@ -35,9 +35,12 @@
 ## 1.7 Goals (SMART)
 - **P17:** As a participant, I want to define 3 SMART goals, so that I can take concrete steps after the weekend.
 
-## 1.8 Sharing & Privacy Controls
-- **P18:** As a participant, I want to mark each item as *private* or *shared*, so that I control what leaders can see.
-- **P19:** As a participant, I want to use a "Presentation Mode" to show my results on a screen without giving permanent access to my data.
+## 1.8 Feedback
+- **P18:** As a participant, I want to fill out a seminar feedback form at the end of the event, so that I can share my experience with the organizers.
+
+## 1.9 Sharing & Privacy Controls
+- **P19:** As a participant, I want to mark each item as *private* or *shared*, so that I control what leaders can see.
+- **P20:** As a participant, I want to use a "Presentation Mode" to show my results on a screen without giving permanent access to my data.
 
 ---
 
@@ -54,6 +57,9 @@
 - **L4:** As a leader, I want to take private notes about conversations, so that I can prepare well for 1:1 sessions.
 - **L5:** As a leader, I want to explicitly share specific feedback or goal refinements with a participant, so that they can see it in their results.
 
+## 2.4 Seminar Evaluation
+- **L6:** As a leader, I want to view participant feedback, so that I can understand their experience and improve future sessions.
+
 ---
 
 # 3. Administrator / Event Manager User Stories
@@ -69,6 +75,9 @@
 
 ## 3.3 Content & Materials
 - **A6:** As an admin, I want to upload materials (PDF, images, texts), so that all content is in one place.
+
+## 3.4 Feedback Analysis
+- **A7:** As an admin, I want to access and analyze all participant feedback, so that I can evaluate the event's quality and success.
 
 ---
 

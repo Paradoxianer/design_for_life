@@ -35,7 +35,7 @@ The DFL App uses a simplified relational data model designed for offline-first s
     - `start_time` (DateTime)
     - `end_time` (DateTime)
     - `room_name` (String) – *Simplified: Direct text input with autocomplete.*
-    - `module_type` (Enum: TEACHING, LIFE_TREE, GIFTS, VALUES, PRAYER, COLLAGE, GOALS)
+    - `module_type` (Enum: TEACHING, LIFE_TREE, GIFTS, VALUES, PRAYER, COLLAGE, GOALS, FEEDBACK)
     - `is_locked` (Boolean)
 
 - **Material (Leader-Only)**
@@ -69,6 +69,17 @@ These entities are stored permanently for the user's personal journey.
 
 ---
 
+### 2.4 Event Feedback (Shared)
+- **SeminarFeedback**
+    - `id` (UUID)
+    - `event_id` (FK)
+    - `user_id` (FK)
+    - `rating` (Integer, 1-5)
+    - `answers` (JSON: Question-Answer pairs)
+    - `comments` (Text)
+    - `created_at` (DateTime)
+    - *Visibility: All Leaders and Admins of the event.*
+
 ## 3. Sync & Privacy Strategy
 
 ### 3.1 Personal Sync (Private)
@@ -76,9 +87,9 @@ These entities are stored permanently for the user's personal journey.
 - The backend serves only as a relay to ensure multi-device availability.
 
 ### 3.2 Shared Sync (Interpersonal)
-- Data explicitly marked as **Shared** (e.g., Listening Prayer impressions) is distributed by the backend to the respective Leader/Group.
+- Data explicitly marked as **Shared** (e.g., Listening Prayer impressions, Seminar Feedback) is distributed by the backend to the respective Leader/Group.
 - **Prayer Notes** are moved to the recipient's partition upon sending (Sender loses access).
 
 ### 3.3 Data Retention
 - **Permanent:** All reflection modules (Gifts, Values, Tree, Notes, Goals).
-- **Transient (30 days post-event):** Event registrations, group assignments, and session locks.
+- **Transient (30 days post-event):** Event registrations, group assignments, session locks, and Seminar Feedback (unless archived by Admins).

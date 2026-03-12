@@ -114,6 +114,7 @@ Modules:
 3.7 Goals (SMART)  
 3.8 1:1 Conversation Results  
 3.9 Group Photo (Result-only)
+3.10 Feedback form
 
 ---------------------------------------------------------------------
 
@@ -261,6 +262,10 @@ A dynamic list of impressions.
 - Shown at end of weekend
 - Downloadable
 - No edit mode
+
+# 3.10 Feedback Form
+- asks the user to give feedback to the course with several questions
+
 
 ---------------------------------------------------------------------
 
