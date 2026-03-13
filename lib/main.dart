@@ -6,19 +6,25 @@ import 'package:path_provider/path_provider.dart';
 import 'package:go_router/go_router.dart';
 
 import 'core/theme/app_theme.dart';
-import 'features/timeline/presentation/screens/timeline_screen.dart';
+import 'features/timeline/screens/timeline_screen.dart';
+import 'features/notes/screens/notes_screen.dart';
+import 'features/notes/bloc/notes_bloc.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   
-  // Setup HydratedBloc for local persistence
   HydratedBloc.storage = await HydratedStorage.build(
     storageDirectory: kIsWeb
         ? HydratedStorage.webStorageDirectory
         : await getApplicationDocumentsDirectory(),
   );
 
-  runApp(const DflApp());
+  runApp(
+    BlocProvider(
+      create: (context) => NotesBloc(),
+      child: const DflApp(),
+    ),
+  );
 }
 
 class DflApp extends StatelessWidget {
@@ -32,6 +38,14 @@ class DflApp extends StatelessWidget {
         GoRoute(
           path: '/',
           builder: (context, state) => const TimelineScreen(),
+        ),
+        GoRoute(
+          path: '/notes/:sessionId',
+          builder: (context, state) {
+            final sessionId = state.pathParameters['sessionId']!;
+            final title = state.uri.queryParameters['title'] ?? 'Notes';
+            return NotesScreen(sessionId: sessionId, title: title);
+          },
         ),
       ],
     );
