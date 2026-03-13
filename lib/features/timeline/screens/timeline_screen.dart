@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import '../models/static_timeline_data.dart';
-import '../presentation/widgets/timeline_card.dart';
+import '../widgets/timeline_card.dart';
 
 class TimelineScreen extends StatelessWidget {
   const TimelineScreen({super.key});

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../domain/models/dfl_session.dart';
+import '../models/dfl_session.dart';
 
 class TimelineCard extends StatelessWidget {
   final DflSession session;
