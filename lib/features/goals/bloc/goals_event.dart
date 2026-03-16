@@ -1,4 +1,4 @@
-import 'package:equatable/equatable.dart';
+part of 'goals_bloc.dart';
 
 abstract class GoalsEvent extends Equatable {
   const GoalsEvent();

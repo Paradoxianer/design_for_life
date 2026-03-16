@@ -1,7 +1,9 @@
 import 'package:hydrated_bloc/hydrated_bloc.dart';
-import 'goals_event.dart';
-import 'goals_state.dart';
+import 'package:equatable/equatable.dart';
 import '../models/goal.dart';
+
+part 'goals_event.dart';
+part 'goals_state.dart';
 
 class GoalsBloc extends HydratedBloc<GoalsEvent, GoalsState> {
   GoalsBloc() : super(const GoalsState()) {

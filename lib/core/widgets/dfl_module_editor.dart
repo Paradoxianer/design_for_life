@@ -3,29 +3,38 @@ import 'key_takeaway_field.dart';
 
 abstract class DflModuleEditor extends StatelessWidget {
   final List<String> takeaways;
-  final Function(int, String) onTakeawayUpdate;
+  final Function(List<String>) onUpdate;
+  final bool isReadOnly;
+  final TextEditingController takeawayController;
 
   const DflModuleEditor({
     super.key,
     required this.takeaways,
-    required this.onTakeawayUpdate,
+    required this.onUpdate,
+    required this.takeawayController,
+    this.isReadOnly = false,
   });
-
-  Widget buildContent(BuildContext context);
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        buildContent(context),
-        const SizedBox(height: 32),
-        KeyTakeawayField(
-          takeaways: takeaways,
-          onUpdate: onTakeawayUpdate,
-          isReadOnly: false,
-        ),
-      ],
+    return SingleChildScrollView(
+      padding: const EdgeInsets.all(16),
+      child: Column(
+        children: [
+          buildContent(context),
+          const SizedBox(height: 32),
+          const Divider(),
+          const SizedBox(height: 16),
+          KeyTakeawayField(
+            controller: takeawayController,
+            takeaways: takeaways,
+            onUpdate: onUpdate,
+            isReadOnly: isReadOnly,
+          ),
+        ],
+      ),
     );
   }
+
+  Widget buildContent(BuildContext context);
 }

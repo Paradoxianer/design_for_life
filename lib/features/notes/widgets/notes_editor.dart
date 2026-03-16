@@ -2,7 +2,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:design_for_life/l10n/generated/app_localizations.dart';
 import '../../../core/widgets/dfl_module_editor.dart';
 import '../bloc/notes_bloc.dart';
 
@@ -17,7 +17,8 @@ class NotesEditor extends DflModuleEditor {
     required this.text,
     required this.imagePaths,
     required super.takeaways,
-    required super.onTakeawayUpdate,
+    required super.onUpdate,
+    required super.takeawayController,
   });
 
   @override
@@ -28,7 +29,6 @@ class NotesEditor extends DflModuleEditor {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        // Intro Text / Guidance
         Container(
           padding: const EdgeInsets.all(12),
           decoration: BoxDecoration(
@@ -49,8 +49,6 @@ class NotesEditor extends DflModuleEditor {
           ),
         ),
         const SizedBox(height: 24),
-
-        // Notes Area in a Frame
         Text(l10n.notes, style: theme.textTheme.titleMedium),
         const SizedBox(height: 8),
         Container(
@@ -77,8 +75,6 @@ class NotesEditor extends DflModuleEditor {
           ),
         ),
         const SizedBox(height: 24),
-
-        // Image Section
         Text(l10n.photosAndSlides, style: theme.textTheme.titleMedium),
         const SizedBox(height: 8),
         _ImageGrid(

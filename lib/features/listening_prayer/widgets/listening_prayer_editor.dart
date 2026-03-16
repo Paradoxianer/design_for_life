@@ -1,86 +1,111 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import '../../../core/widgets/dfl_module_editor.dart';
+import 'package:design_for_life/l10n/generated/app_localizations.dart';
 import '../../../core/widgets/key_takeaway_field.dart';
-import '../bloc/listening_prayer_bloc.dart';
-import '../bloc/listening_prayer_event.dart';
 import '../models/prayer_impression.dart';
-import 'prayer_impression_card.dart';
 
-class ListeningPrayerEditor extends DflModuleEditor {
-  final String sessionId;
-  final List<PrayerImpression> impressions;
+class ListeningPrayerEditor extends StatelessWidget {
+  final Map<String, List<PrayerImpression>> impressions;
+  final List<String> takeaways;
+  final Function(Map<String, List<PrayerImpression>>) onImpressionsUpdate;
+  final Function(List<String>) onTakeawaysUpdate;
+  final TextEditingController takeawayController;
 
   const ListeningPrayerEditor({
     super.key,
-    required this.sessionId,
     required this.impressions,
-    required super.takeaways,
-    required super.onTakeawayUpdate,
+    required this.takeaways,
+    required this.onImpressionsUpdate,
+    required this.onTakeawaysUpdate,
+    required this.takeawayController,
   });
 
   @override
-  Widget buildContent(BuildContext context) {
-    final theme = Theme.of(context);
+  Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
-
+    
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        // Guidance
-        Container(
-          padding: const EdgeInsets.all(12),
-          decoration: BoxDecoration(
-            color: theme.colorScheme.primary.withOpacity(0.05),
-            borderRadius: BorderRadius.circular(8),
-          ),
-          child: Row(
-            children: [
-              Icon(Icons.spatial_audio_off_outlined, size: 20, color: theme.colorScheme.primary),
-              const SizedBox(width: 12),
-              Expanded(
-                child: Text(
-                  l10n.listeningPrayerGuidance,
-                  style: const TextStyle(fontStyle: FontStyle.italic),
-                ),
-              ),
-            ],
-          ),
+        _buildSection(
+          context,
+          l10n.receivedImpressions,
+          impressions['received'] ?? [],
+          (val) => _updateSection('received', val),
+          l10n.impressionHint,
         ),
         const SizedBox(height: 24),
-
-        Text(l10n.ownImpressions, style: theme.textTheme.titleMedium),
-        const SizedBox(height: 12),
-
-        ...impressions.map((impression) => PrayerImpressionCard(
-              impression: impression,
-              onChanged: (val) {
-                context.read<ListeningPrayerBloc>().add(
-                      UpdateImpression(
-                        sessionId: sessionId,
-                        impressionId: impression.id,
-                        text: val,
-                      ),
-                    );
-              },
-            )),
+        _buildSection(
+          context,
+          l10n.ownImpressions,
+          impressions['own'] ?? [],
+          (val) => _updateSection('own', val),
+          l10n.impressionHint,
+        ),
+        const SizedBox(height: 32),
+        const Divider(),
+        const SizedBox(height: 16),
+        KeyTakeawayField(
+          controller: takeawayController,
+          label: l10n.threeHighlights,
+          takeaways: takeaways,
+          onUpdate: onTakeawaysUpdate,
+        ),
       ],
     );
   }
 
-  @override
-  Widget build(BuildContext context) {
+  void _updateSection(String key, List<PrayerImpression> newValues) {
+    final newImpressions = Map<String, List<PrayerImpression>>.from(impressions);
+    newImpressions[key] = newValues;
+    onImpressionsUpdate(newImpressions);
+  }
+
+  Widget _buildSection(
+    BuildContext context,
+    String title,
+    List<PrayerImpression> items,
+    Function(List<PrayerImpression>) onUpdate,
+    String hint,
+  ) {
+    final displayItems = List<PrayerImpression>.from(items);
+    if (displayItems.isEmpty || (displayItems.isNotEmpty && displayItems.last.text.isNotEmpty)) {
+      displayItems.add(PrayerImpression(id: DateTime.now().toString()));
+    }
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        buildContent(context),
-        const SizedBox(height: 32),
-        KeyTakeawayField(
-          takeaways: takeaways,
-          onUpdate: onTakeawayUpdate,
-          isReadOnly: false,
+        Text(
+          title,
+          style: Theme.of(context).textTheme.titleMedium?.copyWith(
+            fontWeight: FontWeight.bold,
+          ),
         ),
+        const SizedBox(height: 8),
+        ...displayItems.asMap().entries.map((entry) {
+          final index = entry.key;
+          final value = entry.value;
+
+          return Padding(
+            padding: const EdgeInsets.only(bottom: 8),
+            child: TextField(
+              decoration: InputDecoration(
+                hintText: hint,
+                border: const OutlineInputBorder(),
+                isDense: true,
+              ),
+              controller: TextEditingController(text: value.text)
+                ..selection = TextSelection.fromPosition(
+                  TextPosition(offset: value.text.length),
+                ),
+              onChanged: (newValue) {
+                final newList = List<PrayerImpression>.from(displayItems);
+                newList[index] = newList[index].copyWith(text: newValue);
+                onUpdate(newList.where((e) => e.text.isNotEmpty).toList());
+              },
+            ),
+          );
+        }),
       ],
     );
   }

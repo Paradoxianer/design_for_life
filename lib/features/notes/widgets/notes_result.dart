@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:design_for_life/l10n/generated/app_localizations.dart';
 import '../../../core/widgets/dfl_module_result.dart';
 
 class NotesResult extends DflModuleResult {
@@ -11,66 +12,71 @@ class NotesResult extends DflModuleResult {
     required this.text,
     required this.imagePaths,
     required super.takeaways,
-  });
+    required super.onUpdate,
+    required super.takeawayController,
+  }) : super(
+          title: 'Notes',
+          result: const SizedBox.shrink(), // Placeholder since we override build
+        );
 
   @override
-  Widget buildContent(BuildContext context) {
+  Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final l10n = AppLocalizations.of(context)!;
 
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        // Notes Summary in a Frame
-        Text('Notes Summary', style: theme.textTheme.titleMedium),
-        const SizedBox(height: 12),
-        Container(
-          width: double.infinity,
-          padding: const EdgeInsets.all(16),
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(12),
-            border: Border.all(color: Colors.grey.shade200),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black.withOpacity(0.05),
-                blurRadius: 10,
-                offset: const Offset(0, 4),
-              ),
-            ],
-          ),
-          child: Text(
-            text.isEmpty ? '...' : text,
-            style: theme.textTheme.bodyLarge,
-          ),
-        ),
-
-        if (imagePaths.isNotEmpty) ...[
-          const SizedBox(height: 24),
-          Text('Photos & Slides', style: theme.textTheme.titleMedium),
-          const SizedBox(height: 12),
-          SizedBox(
-            height: 120,
-            child: ListView.builder(
-              scrollDirection: Axis.horizontal,
-              itemCount: imagePaths.length,
-              itemBuilder: (context, index) {
-                return Padding(
-                  padding: const EdgeInsets.only(right: 12.0),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(8),
-                    child: Image.file(
-                      File(imagePaths[index]),
-                      width: 120,
-                      height: 120,
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                );
-              },
+    return SingleChildScrollView(
+      padding: const EdgeInsets.all(16),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(l10n.notes, style: theme.textTheme.titleMedium),
+          const SizedBox(height: 8),
+          Container(
+            width: double.infinity,
+            padding: const EdgeInsets.all(12),
+            decoration: BoxDecoration(
+              color: Colors.grey.shade100,
+              borderRadius: BorderRadius.circular(12),
+            ),
+            child: Text(
+              text.isEmpty ? 'No notes yet.' : text,
+              style: theme.textTheme.bodyLarge,
             ),
           ),
+          if (imagePaths.isNotEmpty) ...[
+            const SizedBox(height: 24),
+            Text(l10n.photosAndSlides, style: theme.textTheme.titleMedium),
+            const SizedBox(height: 8),
+            SizedBox(
+              height: 100,
+              child: ListView.builder(
+                scrollDirection: Axis.horizontal,
+                itemCount: imagePaths.length,
+                itemBuilder: (context, index) {
+                  return Padding(
+                    padding: const EdgeInsets.only(right: 8.0),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(8),
+                      child: Image.file(
+                        File(imagePaths[index]),
+                        width: 100,
+                        height: 100,
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                  );
+                },
+              ),
+            ),
+          ],
+          const SizedBox(height: 32),
+          const Divider(),
+          const SizedBox(height: 16),
+          // We use the super class logic for Takeaways via its build method if needed, 
+          // but here we just render the KeyTakeawayField directly to match the desired layout.
+          Builder(builder: (context) => super.build(context)),
         ],
-      ],
+      ),
     );
   }
 }

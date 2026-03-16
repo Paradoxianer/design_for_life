@@ -5,9 +5,7 @@ import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-
-// Standard Flutter Localization Import
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:design_for_life/l10n/generated/app_localizations.dart';
 
 import 'core/theme/app_theme.dart';
 import 'features/timeline/screens/timeline_screen.dart';

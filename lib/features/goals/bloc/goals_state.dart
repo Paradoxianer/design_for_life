@@ -1,5 +1,4 @@
-import 'package:equatable/equatable.dart';
-import '../models/goal.dart';
+part of 'goals_bloc.dart';
 
 class GoalsState extends Equatable {
   final Map<String, List<Goal>> goals;

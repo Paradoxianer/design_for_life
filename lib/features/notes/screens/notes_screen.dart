@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:design_for_life/l10n/generated/app_localizations.dart';
 import '../../../core/widgets/dfl_module_scaffold.dart';
 import '../bloc/notes_bloc.dart';
 import '../widgets/notes_editor.dart';
@@ -20,40 +21,69 @@ class NotesScreen extends StatefulWidget {
 }
 
 class _NotesScreenState extends State<NotesScreen> {
-  bool _isEditMode = true;
+  late TextEditingController _takeawayController;
+
+  @override
+  void initState() {
+    super.initState();
+    _takeawayController = TextEditingController();
+  }
+
+  @override
+  void dispose() {
+    _takeawayController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<NotesBloc, NotesState>(
+    return BlocConsumer<NotesBloc, NotesState>(
+      listener: (context, state) {
+        final note = state.notes[widget.sessionId];
+        if (note != null) {
+          final newContent = note.takeaways.join('\n');
+          if (_takeawayController.text != newContent) {
+            _takeawayController.text = newContent;
+          }
+        }
+      },
       builder: (context, state) {
         final note = state.notes[widget.sessionId];
         final text = note?.text ?? '';
-        final takeaways = note?.takeaways ?? const ['', '', ''];
+        final takeaways = note?.takeaways ?? const [];
         final imagePaths = note?.imagePaths ?? const [];
 
         return DflModuleScaffold(
           title: widget.title,
-          isEditMode: _isEditMode,
-          onToggleMode: () => setState(() => _isEditMode = !_isEditMode),
+          onSave: () {
+            // Manual save if needed
+          },
           editor: NotesEditor(
             sessionId: widget.sessionId,
             text: text,
             imagePaths: imagePaths,
             takeaways: takeaways,
-            onTakeawayUpdate: (index, val) {
-              context.read<NotesBloc>().add(
+            takeawayController: _takeawayController,
+            onUpdate: (newList) {
+              for (int i = 0; i < newList.length; i++) {
+                if (i < takeaways.length && newList[i] != takeaways[i]) {
+                  context.read<NotesBloc>().add(
                     UpdateTakeaway(
                       sessionId: widget.sessionId,
-                      index: index,
-                      text: val,
+                      index: i,
+                      text: newList[i],
                     ),
                   );
+                }
+              }
             },
           ),
           result: NotesResult(
             text: text,
             imagePaths: imagePaths,
             takeaways: takeaways,
+            takeawayController: _takeawayController,
+            onUpdate: (newList) {},
           ),
         );
       },

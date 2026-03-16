@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../core/widgets/dfl_module_editor.dart';
 import '../bloc/goals_bloc.dart';
-import '../bloc/goals_event.dart';
 import '../models/goal.dart';
 import 'smart_indicator.dart';
 
@@ -15,7 +14,8 @@ class GoalsEditor extends DflModuleEditor {
     required this.sessionId,
     required this.goals,
     required super.takeaways,
-    required super.onTakeawayUpdate,
+    required super.onUpdate,
+    required super.takeawayController,
   });
 
   @override
@@ -25,7 +25,6 @@ class GoalsEditor extends DflModuleEditor {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        // Guidance
         Container(
           padding: const EdgeInsets.all(12),
           decoration: BoxDecoration(
@@ -57,11 +56,6 @@ class GoalsEditor extends DflModuleEditor {
         }),
       ],
     );
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return buildContent(context);
   }
 }
 
