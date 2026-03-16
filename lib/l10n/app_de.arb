@@ -14,5 +14,21 @@
   "assignedTo": "Für:",
   "receivedImpressions": "Empfangene Eindrücke",
   "ownImpressions": "Eigene Eindrücke",
-  "threeHighlights": "3 Highlights aus dem hörenden Gebet"
+  "threeHighlights": "3 Highlights aus dem hörenden Gebet",
+  "goalsTitle": "SMART Ziele",
+  "goalsGuidance": "Definiere genau 3 Ziele für deinen Weg. Nutze den SMART-Check, um sicherzustellen, dass sie umsetzbar sind.",
+  "goalNumber": "Ziel {number}",
+  "@goalNumber": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      }
+    }
+  },
+  "goalHint": "Was möchtest du erreichen?",
+  "smartSpecific": "Spezifisch",
+  "smartMeasurable": "Messbar",
+  "smartAchievable": "Attraktiv",
+  "smartRelevant": "Relevant",
+  "smartTimeBound": "Terminiert"
 }

@@ -17,5 +17,21 @@
   "assignedTo": "For:",
   "receivedImpressions": "Received Impressions",
   "ownImpressions": "Your Impressions",
-  "threeHighlights": "3 highlights from listening prayer"
+  "threeHighlights": "3 highlights from listening prayer",
+  "goalsTitle": "SMART Goals",
+  "goalsGuidance": "Define exactly 3 goals for your journey. Use the SMART check to ensure they are actionable.",
+  "goalNumber": "Goal {number}",
+  "@goalNumber": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      }
+    }
+  },
+  "goalHint": "What do you want to achieve?",
+  "smartSpecific": "Specific",
+  "smartMeasurable": "Measurable",
+  "smartAchievable": "Achievable",
+  "smartRelevant": "Relevant",
+  "smartTimeBound": "Time-bound"
 }
