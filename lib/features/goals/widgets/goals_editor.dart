@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../../core/widgets/dfl_module_editor.dart';
 import '../bloc/goals_bloc.dart';
 import '../bloc/goals_event.dart';
@@ -22,7 +21,6 @@ class GoalsEditor extends DflModuleEditor {
   @override
   Widget buildContent(BuildContext context) {
     final theme = Theme.of(context);
-    final l10n = AppLocalizations.of(context)!;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -34,14 +32,14 @@ class GoalsEditor extends DflModuleEditor {
             color: theme.colorScheme.primary.withOpacity(0.05),
             borderRadius: BorderRadius.circular(8),
           ),
-          child: Row(
+          child: const Row(
             children: [
-              Icon(Icons.lightbulb_outline, size: 20, color: theme.colorScheme.primary),
-              const SizedBox(width: 12),
+              Icon(Icons.lightbulb_outline, size: 20, color: Colors.blue),
+              SizedBox(width: 12),
               Expanded(
                 child: Text(
-                  l10n.goalsGuidance,
-                  style: const TextStyle(fontStyle: FontStyle.italic),
+                  'Define exactly 3 goals for your journey. Use the SMART check to ensure they are actionable.',
+                  style: TextStyle(fontStyle: FontStyle.italic),
                 ),
               ),
             ],
@@ -63,7 +61,6 @@ class GoalsEditor extends DflModuleEditor {
 
   @override
   Widget build(BuildContext context) {
-    // Goals module doesn't use the standard KeyTakeawayField because the goals ARE the takeaways
     return buildContent(context);
   }
 }
@@ -82,7 +79,6 @@ class _GoalEditCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final l10n = AppLocalizations.of(context)!;
 
     return Card(
       elevation: 0,
@@ -97,14 +93,14 @@ class _GoalEditCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              l10n.goalNumber(index + 1),
+              'Goal ${index + 1}',
               style: theme.textTheme.titleSmall?.copyWith(color: theme.colorScheme.secondary),
             ),
             TextField(
               controller: TextEditingController(text: goal.text)
                 ..selection = TextSelection.fromPosition(TextPosition(offset: goal.text.length)),
-              decoration: InputDecoration(
-                hintText: l10n.goalHint,
+              decoration: const InputDecoration(
+                hintText: 'What do you want to achieve?',
                 border: InputBorder.none,
               ),
               maxLines: null,

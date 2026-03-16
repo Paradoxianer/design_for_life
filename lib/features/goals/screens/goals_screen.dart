@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../core/widgets/dfl_module_scaffold.dart';
 import '../bloc/goals_bloc.dart';
-import '../bloc/goals_event.dart';
 import '../bloc/goals_state.dart';
 import '../widgets/goals_editor.dart';
 import '../widgets/goals_result.dart';
+import '../models/goal.dart';
 
 class GoalsScreen extends StatefulWidget {
   final String sessionId;

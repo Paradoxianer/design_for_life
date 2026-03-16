@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import '../../generated/l10n/app_localizations.dart';
 
 class KeyTakeawayField extends StatelessWidget {
   final List<String> takeaways;
@@ -16,7 +16,11 @@ class KeyTakeawayField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final l10n = AppLocalizations.of(context)!;
+    final l10n = AppLocalizations.of(context);
+    
+    // Fallback Strings falls l10n (noch) null ist
+    final String titleLabel = l10n?.keyTakeaways ?? 'Key Takeaways';
+    final String hintLabel = l10n?.takeawayHint ?? 'Enter your key takeaway here...';
 
     return Container(
       padding: const EdgeInsets.all(16),
@@ -35,7 +39,7 @@ class KeyTakeawayField extends StatelessWidget {
               Icon(Icons.stars_rounded, color: theme.colorScheme.tertiary),
               const SizedBox(width: 8),
               Text(
-                l10n.keyTakeaways,
+                titleLabel,
                 style: theme.textTheme.titleMedium?.copyWith(
                   color: theme.colorScheme.secondary,
                 ),
@@ -49,7 +53,7 @@ class KeyTakeawayField extends StatelessWidget {
               padding: const EdgeInsets.only(bottom: 8.0),
               child: isReadOnly
                   ? _buildReadOnlyItem(context, text, index)
-                  : _buildEditItem(context, text, index, l10n),
+                  : _buildEditItem(context, text, index, hintLabel),
             );
           }),
         ],
@@ -68,12 +72,12 @@ class KeyTakeawayField extends StatelessWidget {
     );
   }
 
-  Widget _buildEditItem(BuildContext context, String text, int index, AppLocalizations l10n) {
+  Widget _buildEditItem(BuildContext context, String text, int index, String hint) {
     return TextField(
       controller: TextEditingController(text: text)
         ..selection = TextSelection.fromPosition(TextPosition(offset: text.length)),
       decoration: InputDecoration(
-        hintText: l10n.takeawayHint,
+        hintText: hint,
         prefixText: '${index + 1}. ',
         border: InputBorder.none,
       ),
