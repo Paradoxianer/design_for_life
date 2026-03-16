@@ -1,47 +1,133 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:image_picker/image_picker.dart';
 import '../../../core/widgets/dfl_module_editor.dart';
 import '../bloc/notes_bloc.dart';
 
 class NotesEditor extends DflModuleEditor {
   final String sessionId;
   final String text;
+  final List<String> imagePaths;
 
   const NotesEditor({
     super.key,
     required this.sessionId,
     required this.text,
+    required this.imagePaths,
     required super.takeaways,
     required super.onTakeawayUpdate,
   });
 
   @override
   Widget buildContent(BuildContext context) {
+    final theme = Theme.of(context);
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          'Your Notes',
-          style: Theme.of(context).textTheme.titleMedium,
-        ),
-        const SizedBox(height: 8),
-        TextField(
-          controller: TextEditingController(text: text)
-            ..selection = TextSelection.fromPosition(
-              TextPosition(offset: text.length),
-            ),
-          maxLines: null,
-          decoration: const InputDecoration(
-            hintText: 'Write down what stands out to you...',
-            border: InputBorder.none,
+        // Intro Text / Guidance
+        Container(
+          padding: const EdgeInsets.all(12),
+          decoration: BoxDecoration(
+            color: theme.colorScheme.primary.withOpacity(0.05),
+            borderRadius: BorderRadius.circular(8),
           ),
-          onChanged: (value) {
-            context.read<NotesBloc>().add(
-                  UpdateNoteText(sessionId: sessionId, text: value),
-                );
+          child: Row(
+            children: [
+              Icon(Icons.info_outline, size: 20, color: theme.colorScheme.primary),
+              const SizedBox(width: 12),
+              const Expanded(
+                child: Text(
+                  'Write down what stands out to you from this session.',
+                  style: TextStyle(fontStyle: FontStyle.italic),
+                ),
+              ),
+            ],
+          ),
+        ),
+        const SizedBox(height: 24),
+
+        // Notes Area in a Frame
+        Text('Notes', style: theme.textTheme.titleMedium),
+        const SizedBox(height: 8),
+        Container(
+          decoration: BoxDecoration(
+            border: Border.all(color: Colors.grey.shade300),
+            borderRadius: BorderRadius.circular(12),
+          ),
+          padding: const EdgeInsets.symmetric(horizontal: 12),
+          child: TextField(
+            controller: TextEditingController(text: text)
+              ..selection = TextSelection.fromPosition(
+                TextPosition(offset: text.length),
+              ),
+            maxLines: null,
+            decoration: const InputDecoration(
+              hintText: 'Type your thoughts here...',
+              border: InputBorder.none,
+            ),
+            onChanged: (value) {
+              context.read<NotesBloc>().add(
+                    UpdateNoteText(sessionId: sessionId, text: value),
+                  );
+            },
+          ),
+        ),
+        const SizedBox(height: 24),
+
+        // Image Section
+        Text('Photos & Slides', style: theme.textTheme.titleMedium),
+        const SizedBox(height: 8),
+        _ImageGrid(
+          imagePaths: imagePaths,
+          onAdd: () async {
+            final picker = ImagePicker();
+            final image = await picker.pickImage(source: ImageSource.camera);
+            if (image != null) {
+              // TODO: Logic for saving image path to bloc
+            }
           },
         ),
       ],
+    );
+  }
+}
+
+class _ImageGrid extends StatelessWidget {
+  final List<String> imagePaths;
+  final VoidCallback onAdd;
+
+  const _ImageGrid({required this.imagePaths, required this.onAdd});
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: 100,
+      child: ListView(
+        scrollDirection: Axis.horizontal,
+        children: [
+          ...imagePaths.map((path) => Padding(
+                padding: const EdgeInsets.only(right: 8.0),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(8),
+                  child: Image.file(File(path), width: 100, height: 100, fit: BoxFit.cover),
+                ),
+              )),
+          GestureDetector(
+            onTap: onAdd,
+            child: Container(
+              width: 100,
+              decoration: BoxDecoration(
+                color: Colors.grey.shade200,
+                borderRadius: BorderRadius.circular(8),
+                border: Border.all(color: Colors.grey.shade400, style: BorderStyle.solid),
+              ),
+              child: const Icon(Icons.add_a_photo_outlined, color: Colors.grey),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

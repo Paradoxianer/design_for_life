@@ -29,6 +29,7 @@ class _NotesScreenState extends State<NotesScreen> {
         final note = state.notes[widget.sessionId];
         final text = note?.text ?? '';
         final takeaways = note?.takeaways ?? const ['', '', ''];
+        final imagePaths = note?.imagePaths ?? const [];
 
         return DflModuleScaffold(
           title: widget.title,
@@ -37,6 +38,7 @@ class _NotesScreenState extends State<NotesScreen> {
           editor: NotesEditor(
             sessionId: widget.sessionId,
             text: text,
+            imagePaths: imagePaths,
             takeaways: takeaways,
             onTakeawayUpdate: (index, val) {
               context.read<NotesBloc>().add(
@@ -50,6 +52,7 @@ class _NotesScreenState extends State<NotesScreen> {
           ),
           result: NotesResult(
             text: text,
+            imagePaths: imagePaths,
             takeaways: takeaways,
           ),
         );

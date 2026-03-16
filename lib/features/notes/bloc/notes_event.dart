@@ -31,3 +31,23 @@ class UpdateTakeaway extends NotesEvent {
   @override
   List<Object> get props => [sessionId, index, text];
 }
+
+class AddNoteImage extends NotesEvent {
+  final String sessionId;
+  final String imagePath;
+
+  const AddNoteImage({required this.sessionId, required this.imagePath});
+
+  @override
+  List<Object> get props => [sessionId, imagePath];
+}
+
+class RemoveNoteImage extends NotesEvent {
+  final String sessionId;
+  final String imagePath;
+
+  const RemoveNoteImage({required this.sessionId, required this.imagePath});
+
+  @override
+  List<Object> get props => [sessionId, imagePath];
+}

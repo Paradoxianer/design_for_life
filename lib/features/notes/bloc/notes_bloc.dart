@@ -9,6 +9,8 @@ class NotesBloc extends HydratedBloc<NotesEvent, NotesState> {
   NotesBloc() : super(const NotesState()) {
     on<UpdateNoteText>(_onUpdateNoteText);
     on<UpdateTakeaway>(_onUpdateTakeaway);
+    on<AddNoteImage>(_onAddNoteImage);
+    on<RemoveNoteImage>(_onRemoveNoteImage);
   }
 
   void _onUpdateNoteText(UpdateNoteText event, Emitter<NotesState> emit) {
@@ -29,6 +31,26 @@ class NotesBloc extends HydratedBloc<NotesEvent, NotesState> {
     }
     
     updatedNotes[event.sessionId] = currentNote.copyWith(takeaways: updatedTakeaways);
+    emit(state.copyWith(notes: updatedNotes));
+  }
+
+  void _onAddNoteImage(AddNoteImage event, Emitter<NotesState> emit) {
+    final updatedNotes = Map<String, NoteContent>.from(state.notes);
+    final currentNote = updatedNotes[event.sessionId] ?? NoteContent(sessionId: event.sessionId);
+    
+    final updatedImages = List<String>.from(currentNote.imagePaths)..add(event.imagePath);
+    
+    updatedNotes[event.sessionId] = currentNote.copyWith(imagePaths: updatedImages);
+    emit(state.copyWith(notes: updatedNotes));
+  }
+
+  void _onRemoveNoteImage(RemoveNoteImage event, Emitter<NotesState> emit) {
+    final updatedNotes = Map<String, NoteContent>.from(state.notes);
+    final currentNote = updatedNotes[event.sessionId] ?? NoteContent(sessionId: event.sessionId);
+    
+    final updatedImages = List<String>.from(currentNote.imagePaths)..remove(event.imagePath);
+    
+    updatedNotes[event.sessionId] = currentNote.copyWith(imagePaths: updatedImages);
     emit(state.copyWith(notes: updatedNotes));
   }
 
