@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class DflModuleScaffold extends StatelessWidget {
   final String title;
@@ -20,6 +21,8 @@ class DflModuleScaffold extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+    
     return Scaffold(
       appBar: AppBar(
         title: Text(title),
@@ -30,6 +33,7 @@ class DflModuleScaffold extends StatelessWidget {
               onPressed: onShare,
             ),
           IconButton(
+            tooltip: isEditMode ? l10n.resultMode : l10n.editMode,
             icon: Icon(isEditMode ? Icons.remove_red_eye_outlined : Icons.edit_outlined),
             onPressed: onToggleMode,
           ),

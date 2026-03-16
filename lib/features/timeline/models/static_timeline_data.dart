@@ -23,6 +23,12 @@ class StaticTimelineData {
       type: SessionType.groupWork,
       moduleRoute: 'life-tree',
     ),
-    // ... rest of the sessions ...
+    DflSession(
+      id: 'session_4',
+      title: 'Hörendes Gebet',
+      description: 'Zeit der Stille und des Hörens auf Gottes Stimme.',
+      type: SessionType.prayer,
+      moduleRoute: 'listening-prayer/session_4?title=Hörendes Gebet',
+    ),
   ];
 }

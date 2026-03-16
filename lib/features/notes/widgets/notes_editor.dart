@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../../core/widgets/dfl_module_editor.dart';
 import '../bloc/notes_bloc.dart';
 
@@ -22,6 +23,7 @@ class NotesEditor extends DflModuleEditor {
   @override
   Widget buildContent(BuildContext context) {
     final theme = Theme.of(context);
+    final l10n = AppLocalizations.of(context)!;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -37,10 +39,10 @@ class NotesEditor extends DflModuleEditor {
             children: [
               Icon(Icons.info_outline, size: 20, color: theme.colorScheme.primary),
               const SizedBox(width: 12),
-              const Expanded(
+              Expanded(
                 child: Text(
-                  'Write down what stands out to you from this session.',
-                  style: TextStyle(fontStyle: FontStyle.italic),
+                  l10n.notesGuidance,
+                  style: const TextStyle(fontStyle: FontStyle.italic),
                 ),
               ),
             ],
@@ -49,7 +51,7 @@ class NotesEditor extends DflModuleEditor {
         const SizedBox(height: 24),
 
         // Notes Area in a Frame
-        Text('Notes', style: theme.textTheme.titleMedium),
+        Text(l10n.notes, style: theme.textTheme.titleMedium),
         const SizedBox(height: 8),
         Container(
           decoration: BoxDecoration(
@@ -63,8 +65,8 @@ class NotesEditor extends DflModuleEditor {
                 TextPosition(offset: text.length),
               ),
             maxLines: null,
-            decoration: const InputDecoration(
-              hintText: 'Type your thoughts here...',
+            decoration: InputDecoration(
+              hintText: l10n.notesHint,
               border: InputBorder.none,
             ),
             onChanged: (value) {
@@ -77,7 +79,7 @@ class NotesEditor extends DflModuleEditor {
         const SizedBox(height: 24),
 
         // Image Section
-        Text('Photos & Slides', style: theme.textTheme.titleMedium),
+        Text(l10n.photosAndSlides, style: theme.textTheme.titleMedium),
         const SizedBox(height: 8),
         _ImageGrid(
           imagePaths: imagePaths,

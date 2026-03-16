@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class KeyTakeawayField extends StatelessWidget {
   final List<String> takeaways;
@@ -15,6 +16,7 @@ class KeyTakeawayField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final l10n = AppLocalizations.of(context)!;
 
     return Container(
       padding: const EdgeInsets.all(16),
@@ -33,7 +35,7 @@ class KeyTakeawayField extends StatelessWidget {
               Icon(Icons.stars_rounded, color: theme.colorScheme.tertiary),
               const SizedBox(width: 8),
               Text(
-                'Key Takeaways',
+                l10n.keyTakeaways,
                 style: theme.textTheme.titleMedium?.copyWith(
                   color: theme.colorScheme.secondary,
                 ),
@@ -47,7 +49,7 @@ class KeyTakeawayField extends StatelessWidget {
               padding: const EdgeInsets.only(bottom: 8.0),
               child: isReadOnly
                   ? _buildReadOnlyItem(context, text, index)
-                  : _buildEditItem(context, text, index),
+                  : _buildEditItem(context, text, index, l10n),
             );
           }),
         ],
@@ -66,12 +68,12 @@ class KeyTakeawayField extends StatelessWidget {
     );
   }
 
-  Widget _buildEditItem(BuildContext context, String text, int index) {
+  Widget _buildEditItem(BuildContext context, String text, int index, AppLocalizations l10n) {
     return TextField(
       controller: TextEditingController(text: text)
         ..selection = TextSelection.fromPosition(TextPosition(offset: text.length)),
       decoration: InputDecoration(
-        hintText: 'Takeaway ${index + 1}...',
+        hintText: l10n.takeawayHint,
         prefixText: '${index + 1}. ',
         border: InputBorder.none,
       ),

@@ -1,0 +1,21 @@
+{
+  "appTitle": "DFL Weekend",
+  "@appTitle": {
+    "description": "The title of the application"
+  },
+  "notes": "Notes",
+  "notesGuidance": "Write down what stands out to you from this session.",
+  "photosAndSlides": "Photos & Slides",
+  "notesHint": "Type your thoughts here...",
+  "editMode": "Edit",
+  "resultMode": "Result",
+  "keyTakeaways": "Key Takeaways",
+  "takeawayHint": "Enter your key takeaway here...",
+  "listeningPrayer": "Listening Prayer",
+  "listeningPrayerGuidance": "Record your impressions during the listening prayer. New fields appear as you write.",
+  "impressionHint": "Write your impression here...",
+  "assignedTo": "For:",
+  "receivedImpressions": "Received Impressions",
+  "ownImpressions": "Your Impressions",
+  "threeHighlights": "3 highlights from listening prayer"
+}
