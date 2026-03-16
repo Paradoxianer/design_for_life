@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../models/prayer_impression.dart';
 
 class PrayerImpressionCard extends StatelessWidget {
@@ -17,7 +16,6 @@ class PrayerImpressionCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final l10n = AppLocalizations.of(context)!;
 
     return Card(
       elevation: 0,
@@ -35,7 +33,7 @@ class PrayerImpressionCard extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.only(bottom: 8.0),
                 child: Chip(
-                  label: Text(l10n.receivedImpressions, style: const TextStyle(fontSize: 12)),
+                  label: const Text('Received Impression', style: TextStyle(fontSize: 12)),
                   backgroundColor: theme.colorScheme.secondaryContainer,
                 ),
               ),
@@ -48,8 +46,8 @@ class PrayerImpressionCard extends StatelessWidget {
                     TextPosition(offset: impression.text.length),
                   ),
                 maxLines: null,
-                decoration: InputDecoration(
-                  hintText: l10n.impressionHint,
+                decoration: const InputDecoration(
+                  hintText: 'Write your impression here...',
                   border: InputBorder.none,
                 ),
                 onChanged: onChanged,

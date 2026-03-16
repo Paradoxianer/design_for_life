@@ -71,15 +71,11 @@ class ListeningPrayerEditor extends DflModuleEditor {
 
   @override
   Widget build(BuildContext context) {
-    // We override build because we want the KeyTakeawayField to have a custom title
-    final l10n = AppLocalizations.of(context)!;
-    
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         buildContent(context),
         const SizedBox(height: 32),
-        // Special Takeaway Field for Listening Prayer
         KeyTakeawayField(
           takeaways: takeaways,
           onUpdate: onTakeawayUpdate,

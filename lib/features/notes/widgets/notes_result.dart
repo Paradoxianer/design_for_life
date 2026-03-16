@@ -1,6 +1,5 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../../core/widgets/dfl_module_result.dart';
 
 class NotesResult extends DflModuleResult {
@@ -17,13 +16,12 @@ class NotesResult extends DflModuleResult {
   @override
   Widget buildContent(BuildContext context) {
     final theme = Theme.of(context);
-    final l10n = AppLocalizations.of(context)!;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         // Notes Summary in a Frame
-        Text(l10n.notes, style: theme.textTheme.titleMedium),
+        Text('Notes Summary', style: theme.textTheme.titleMedium),
         const SizedBox(height: 12),
         Container(
           width: double.infinity,
@@ -48,7 +46,7 @@ class NotesResult extends DflModuleResult {
 
         if (imagePaths.isNotEmpty) ...[
           const SizedBox(height: 24),
-          Text(l10n.photosAndSlides, style: theme.textTheme.titleMedium),
+          Text('Photos & Slides', style: theme.textTheme.titleMedium),
           const SizedBox(height: 12),
           SizedBox(
             height: 120,
