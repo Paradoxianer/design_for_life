@@ -24,6 +24,7 @@ class ListeningPrayerScreen extends StatefulWidget {
 
 class _ListeningPrayerScreenState extends State<ListeningPrayerScreen> {
   late TextEditingController _takeawayController;
+  bool _isEditMode = true;
 
   @override
   void initState() {
@@ -55,6 +56,8 @@ class _ListeningPrayerScreenState extends State<ListeningPrayerScreen> {
 
         return DflModuleScaffold(
           title: widget.title,
+          isEditMode: _isEditMode,
+          onToggleMode: () => setState(() => _isEditMode = !_isEditMode),
           editor: ListeningPrayerEditor(
             impressions: { 'Impressions': impressions },
             takeaways: highlights,

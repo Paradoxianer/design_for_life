@@ -22,6 +22,8 @@ class GoalsScreen extends StatefulWidget {
 }
 
 class _GoalsScreenState extends State<GoalsScreen> {
+  bool _isEditMode = true;
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<GoalsBloc, GoalsState>(
@@ -35,6 +37,8 @@ class _GoalsScreenState extends State<GoalsScreen> {
 
         return DflModuleScaffold(
           title: widget.title,
+          isEditMode: _isEditMode,
+          onToggleMode: () => setState(() => _isEditMode = !_isEditMode),
           editor: GoalsEditor(
             sessionId: widget.sessionId,
             goals: goals,

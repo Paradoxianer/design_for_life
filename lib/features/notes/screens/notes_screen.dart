@@ -22,6 +22,7 @@ class NotesScreen extends StatefulWidget {
 
 class _NotesScreenState extends State<NotesScreen> {
   late TextEditingController _takeawayController;
+  bool _isEditMode = true;
 
   @override
   void initState() {
@@ -55,6 +56,8 @@ class _NotesScreenState extends State<NotesScreen> {
 
         return DflModuleScaffold(
           title: widget.title,
+          isEditMode: _isEditMode,
+          onToggleMode: () => setState(() => _isEditMode = !_isEditMode),
           onSave: () {
             // Manual save if needed
           },

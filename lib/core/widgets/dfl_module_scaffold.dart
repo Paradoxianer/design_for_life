@@ -5,44 +5,43 @@ class DflModuleScaffold extends StatelessWidget {
   final String title;
   final Widget editor;
   final Widget result;
-  final VoidCallback onSave;
+  final bool isEditMode;
+  final VoidCallback onToggleMode;
+  final VoidCallback? onSave;
 
   const DflModuleScaffold({
     super.key,
     required this.title,
     required this.editor,
     required this.result,
-    required this.onSave,
+    required this.isEditMode,
+    required this.onToggleMode,
+    this.onSave,
   });
 
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context);
     
-    return DefaultTabController(
-      length: 2,
-      child: Scaffold(
-        appBar: AppBar(
-          title: Text(title),
-          bottom: TabBar(
-            tabs: [
-              Tab(text: l10n?.editMode ?? 'Edit'),
-              Tab(text: l10n?.resultMode ?? 'Result'),
-            ],
-          ),
-          actions: [
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(title),
+        actions: [
+          if (onSave != null)
             IconButton(
               icon: const Icon(Icons.check),
               onPressed: onSave,
             ),
-          ],
-        ),
-        body: TabBarView(
-          children: [
-            editor,
-            result,
-          ],
-        ),
+          IconButton(
+            tooltip: isEditMode ? l10n?.resultMode : l10n?.editMode,
+            icon: Icon(isEditMode ? Icons.remove_red_eye_outlined : Icons.edit_outlined),
+            onPressed: onToggleMode,
+          ),
+        ],
+      ),
+      body: AnimatedSwitcher(
+        duration: const Duration(milliseconds: 300),
+        child: isEditMode ? editor : result,
       ),
     );
   }
