@@ -13,7 +13,6 @@ class ListeningPrayerBloc extends HydratedBloc<ListeningPrayerEvent, ListeningPr
     on<UpdateHighlight>(_onUpdateHighlight);
   }
 
-  // Interne Helper-Methode für den Zugriff auf die Liste einer Session
   List<PrayerImpression> _getImpressions(String sessionId) {
     return List<PrayerImpression>.from(state.impressions[sessionId] ?? []);
   }
@@ -31,17 +30,27 @@ class ListeningPrayerBloc extends HydratedBloc<ListeningPrayerEvent, ListeningPr
     debugPrint('BLOC_TEXT: ID=${event.impressionId}, Val=${event.text}');
     final sessionImpressions = _getImpressions(event.sessionId);
     
-    // Falls die Liste leer ist, erstellen wir den Eintrag einfach mit der ID, die die UI schickt
-    if (sessionImpressions.isEmpty) {
+    final index = sessionImpressions.indexWhere((i) => i.id == event.impressionId);
+    if (index != -1) {
+      sessionImpressions[index] = sessionImpressions[index].copyWith(text: event.text);
+    } else if (sessionImpressions.isEmpty || event.impressionId.startsWith('first_')) {
       sessionImpressions.add(PrayerImpression(id: event.impressionId, text: event.text));
-    } else {
-      final index = sessionImpressions.indexWhere((i) => i.id == event.impressionId);
-      if (index != -1) {
-        sessionImpressions[index] = sessionImpressions[index].copyWith(text: event.text);
-      } else {
-        // Fallback: Falls ID nicht gefunden (z.B. nach Hot Reload), hängen wir es an
-        sessionImpressions.add(PrayerImpression(id: event.impressionId, text: event.text));
-      }
+    }
+
+    final newMap = Map<String, List<PrayerImpression>>.from(state.impressions);
+    newMap[event.sessionId] = sessionImpressions;
+    emit(state.copyWith(impressions: newMap));
+  }
+
+  void _onUpdateImpressionImage(UpdateImpressionImage event, Emitter<ListeningPrayerState> emit) {
+    debugPrint('BLOC_IMAGE: ID=${event.impressionId}, Path=${event.imagePath}');
+    final sessionImpressions = _getImpressions(event.sessionId);
+    
+    final index = sessionImpressions.indexWhere((i) => i.id == event.impressionId);
+    if (index != -1) {
+      sessionImpressions[index] = sessionImpressions[index].copyWith(imagePath: event.imagePath);
+    } else if (sessionImpressions.isEmpty || event.impressionId.startsWith('first_')) {
+      sessionImpressions.add(PrayerImpression(id: event.impressionId, imagePath: event.imagePath));
     }
 
     final newMap = Map<String, List<PrayerImpression>>.from(state.impressions);
@@ -59,25 +68,12 @@ class ListeningPrayerBloc extends HydratedBloc<ListeningPrayerEvent, ListeningPr
       sessionImpressions[index] = sessionImpressions[index].copyWith(isCompleted: !wasCompleted);
       
       if (!wasCompleted) {
-        // Auto-Expansion: Immer ein neues leeres Feld, wenn alles andere "done" ist
         final hasActive = sessionImpressions.any((i) => !i.isCompleted);
         if (!hasActive) {
           sessionImpressions.add(PrayerImpression(id: DateTime.now().toIso8601String()));
         }
       }
 
-      final newMap = Map<String, List<PrayerImpression>>.from(state.impressions);
-      newMap[event.sessionId] = sessionImpressions;
-      emit(state.copyWith(impressions: newMap));
-    }
-  }
-
-  void _onUpdateImpressionImage(UpdateImpressionImage event, Emitter<ListeningPrayerState> emit) {
-    final sessionImpressions = _getImpressions(event.sessionId);
-    final index = sessionImpressions.indexWhere((i) => i.id == event.impressionId);
-    
-    if (index != -1) {
-      sessionImpressions[index] = sessionImpressions[index].copyWith(imagePath: event.imagePath);
       final newMap = Map<String, List<PrayerImpression>>.from(state.impressions);
       newMap[event.sessionId] = sessionImpressions;
       emit(state.copyWith(impressions: newMap));
