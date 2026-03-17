@@ -2,6 +2,7 @@
 
 ## 1. Code-Architektur & Qualität
 * **Modularität:** UI-Elemente konsequent in eigene Widgets auslagern. Keine "Monster-Build-Methoden".
+* **Simple but Elegant:** Strebe nach maximaler Einfachheit und Eleganz. Komplexität soll in einfache, wartbare Strukturen übersetzt werden, ohne jemals die geforderte Funktionalität zu verringern.
 * **DRY & KISS:** Vermeide Duplikate, aber verhindere Over-Engineering. Nutze Flutter-Standards vor Eigenlösungen.
 * **Logic Separation:** UI (Widgets) strikt von der Logik trennen. Die `build`-Methode bleibt rein deklarativ.
 * **Immutability:** Nutze `final` und `const` konsequent für Performance und Vorhersehbarkeit.
