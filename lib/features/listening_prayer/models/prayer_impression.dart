@@ -4,28 +4,32 @@ class PrayerImpression extends Equatable {
   final String id;
   final String text;
   final String? imagePath;
-  final String? assignedTo;
+  final String? authorName; // Name der Person, die den Eindruck hatte
+  final bool isCompleted;
   final bool isReceived;
 
   const PrayerImpression({
     required this.id,
     this.text = '',
     this.imagePath,
-    this.assignedTo,
+    this.authorName,
+    this.isCompleted = false,
     this.isReceived = false,
   });
 
   PrayerImpression copyWith({
     String? text,
     String? imagePath,
-    String? assignedTo,
+    String? authorName,
+    bool? isCompleted,
     bool? isReceived,
   }) {
     return PrayerImpression(
       id: id,
       text: text ?? this.text,
       imagePath: imagePath ?? this.imagePath,
-      assignedTo: assignedTo ?? this.assignedTo,
+      authorName: authorName ?? this.authorName,
+      isCompleted: isCompleted ?? this.isCompleted,
       isReceived: isReceived ?? this.isReceived,
     );
   }
@@ -35,7 +39,8 @@ class PrayerImpression extends Equatable {
       'id': id,
       'text': text,
       'imagePath': imagePath,
-      'assignedTo': assignedTo,
+      'authorName': authorName,
+      'isCompleted': isCompleted,
       'isReceived': isReceived,
     };
   }
@@ -45,11 +50,12 @@ class PrayerImpression extends Equatable {
       id: json['id'] as String,
       text: json['text'] as String? ?? '',
       imagePath: json['imagePath'] as String?,
-      assignedTo: json['assignedTo'] as String?,
+      authorName: json['authorName'] as String?,
+      isCompleted: json['isCompleted'] as bool? ?? false,
       isReceived: json['isReceived'] as bool? ?? false,
     );
   }
 
   @override
-  List<Object?> get props => [id, text, imagePath, assignedTo, isReceived];
+  List<Object?> get props => [id, text, imagePath, authorName, isCompleted, isReceived];
 }

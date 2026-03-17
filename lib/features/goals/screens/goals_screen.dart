@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:design_for_life/l10n/generated/app_localizations.dart';
 import '../../../core/widgets/dfl_module_scaffold.dart';
 import '../bloc/goals_bloc.dart';
 import '../widgets/goals_editor.dart';
@@ -44,18 +43,12 @@ class _GoalsScreenState extends State<GoalsScreen> {
             goals: goals,
             takeaways: const [],
             takeawayController: TextEditingController(),
-            onUpdate: (index, value) {
-              // Goals logic doesn't use standard takeaways, 
-              // but we fulfill the interface requirements.
-            },
+            onUpdate: (index, value) {},
           ),
           result: GoalsResult(
             goals: goals,
-            smartChecks: const {}, 
           ),
-          onSave: () {
-            // Manual save if needed
-          },
+          onSave: () {},
         );
       },
     );

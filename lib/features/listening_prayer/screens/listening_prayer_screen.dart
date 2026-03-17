@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:design_for_life/l10n/generated/app_localizations.dart';
 import '../bloc/listening_prayer_bloc.dart';
 import '../bloc/listening_prayer_event.dart';
 import '../bloc/listening_prayer_state.dart';
@@ -23,33 +22,11 @@ class ListeningPrayerScreen extends StatefulWidget {
 }
 
 class _ListeningPrayerScreenState extends State<ListeningPrayerScreen> {
-  late TextEditingController _takeawayController;
   bool _isEditMode = true;
 
   @override
-  void initState() {
-    super.initState();
-    _takeawayController = TextEditingController();
-  }
-
-  @override
-  void dispose() {
-    _takeawayController.dispose();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
-    return BlocConsumer<ListeningPrayerBloc, ListeningPrayerState>(
-      listener: (context, state) {
-        final highlights = state.highlights[widget.sessionId];
-        if (highlights != null) {
-          final newContent = highlights.join('\n');
-          if (_takeawayController.text != newContent) {
-            _takeawayController.text = newContent;
-          }
-        }
-      },
+    return BlocBuilder<ListeningPrayerBloc, ListeningPrayerState>(
       builder: (context, state) {
         final impressions = state.impressions[widget.sessionId] ?? [];
         final highlights = state.highlights[widget.sessionId] ?? [];
@@ -59,12 +36,9 @@ class _ListeningPrayerScreenState extends State<ListeningPrayerScreen> {
           isEditMode: _isEditMode,
           onToggleMode: () => setState(() => _isEditMode = !_isEditMode),
           editor: ListeningPrayerEditor(
-            impressions: { 'Impressions': impressions },
+            sessionId: widget.sessionId,
+            impressions: impressions,
             takeaways: highlights,
-            takeawayController: _takeawayController,
-            onImpressionsUpdate: (newMap) {
-              // Logic for mapping back to individual UpdateImpression events
-            },
             onTakeawaysUpdate: (newList) {
               for (int i = 0; i < newList.length; i++) {
                 context.read<ListeningPrayerBloc>().add(
@@ -78,7 +52,7 @@ class _ListeningPrayerScreenState extends State<ListeningPrayerScreen> {
             },
           ),
           result: ListeningPrayerResult(
-            impressions: { 'Impressions': impressions },
+            impressions: { 'Eindrücke': impressions },
           ),
           onSave: () {},
         );

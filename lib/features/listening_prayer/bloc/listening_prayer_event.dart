@@ -1,5 +1,4 @@
 import 'package:equatable/equatable.dart';
-import '../models/prayer_impression.dart';
 
 abstract class ListeningPrayerEvent extends Equatable {
   const ListeningPrayerEvent();
@@ -8,12 +7,20 @@ abstract class ListeningPrayerEvent extends Equatable {
   List<Object?> get props => [];
 }
 
-class UpdateImpression extends ListeningPrayerEvent {
+class AddImpression extends ListeningPrayerEvent {
+  final String sessionId;
+  const AddImpression({required this.sessionId});
+
+  @override
+  List<Object?> get props => [sessionId];
+}
+
+class UpdateImpressionText extends ListeningPrayerEvent {
   final String sessionId;
   final String impressionId;
   final String text;
 
-  const UpdateImpression({
+  const UpdateImpressionText({
     required this.sessionId,
     required this.impressionId,
     required this.text,
@@ -23,13 +30,32 @@ class UpdateImpression extends ListeningPrayerEvent {
   List<Object?> get props => [sessionId, impressionId, text];
 }
 
-class AddImpression extends ListeningPrayerEvent {
+class ToggleImpressionCompletion extends ListeningPrayerEvent {
   final String sessionId;
+  final String impressionId;
 
-  const AddImpression({required this.sessionId});
+  const ToggleImpressionCompletion({
+    required this.sessionId,
+    required this.impressionId,
+  });
 
   @override
-  List<Object?> get props => [sessionId];
+  List<Object?> get props => [sessionId, impressionId];
+}
+
+class UpdateImpressionImage extends ListeningPrayerEvent {
+  final String sessionId;
+  final String impressionId;
+  final String? imagePath;
+
+  const UpdateImpressionImage({
+    required this.sessionId,
+    required this.impressionId,
+    this.imagePath,
+  });
+
+  @override
+  List<Object?> get props => [sessionId, impressionId, imagePath];
 }
 
 class UpdateHighlight extends ListeningPrayerEvent {

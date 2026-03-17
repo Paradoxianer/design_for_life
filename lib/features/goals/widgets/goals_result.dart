@@ -4,17 +4,17 @@ import '../models/goal.dart';
 
 class GoalsResult extends StatelessWidget {
   final List<Goal> goals;
-  final Map<int, Map<String, bool>> smartChecks;
+  final Map<int, Map<String, bool>>? smartChecks;
 
   const GoalsResult({
     super.key,
     required this.goals,
-    required this.smartChecks,
+    this.smartChecks,
   });
 
   @override
   Widget build(BuildContext context) {
-    final l10n = AppLocalizations.of(context)!;
+    final l10n = AppLocalizations.of(context);
     
     return SingleChildScrollView(
       padding: const EdgeInsets.all(16),
@@ -22,7 +22,7 @@ class GoalsResult extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            l10n.goalsTitle,
+            l10n?.goalsTitle ?? 'SMART Goals',
             style: Theme.of(context).textTheme.titleLarge,
           ),
           const SizedBox(height: 16),
