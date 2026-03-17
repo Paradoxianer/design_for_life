@@ -15,7 +15,6 @@ class GoalsEditor extends DflModuleEditor {
     required this.goals,
     required super.takeaways,
     required super.onUpdate,
-    required super.takeawayController,
   });
 
   @override

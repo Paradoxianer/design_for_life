@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:design_for_life/core/blocs/entry_list_bloc.dart';
 import '../bloc/listening_prayer_bloc.dart';
-import '../bloc/listening_prayer_event.dart';
-import '../bloc/listening_prayer_state.dart';
 import '../widgets/listening_prayer_editor.dart';
 import '../widgets/listening_prayer_result.dart';
 import '../../../core/widgets/dfl_module_scaffold.dart';
-import '../models/prayer_impression.dart';
+import '../../../core/models/dfl_entry.dart';
 
 class ListeningPrayerScreen extends StatefulWidget {
   final String sessionId;
@@ -27,15 +26,13 @@ class _ListeningPrayerScreenState extends State<ListeningPrayerScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<ListeningPrayerBloc, ListeningPrayerState>(
+    return BlocBuilder<ListeningPrayerBloc, EntryListState>(
       builder: (context, state) {
-        final impressions = state.impressions[widget.sessionId] ?? [];
-        final highlights = state.highlights[widget.sessionId] ?? [];
+        final impressions = state.entries[widget.sessionId] ?? [];
+        final highlights = state.takeaways[widget.sessionId] ?? const ['', '', ''];
 
-        // Wir nutzen eine konsistente ID für den allerersten Eintrag, 
-        // damit der Bloc ihn erkennt, auch wenn er noch nicht im State gespeichert ist.
         final displayImpressions = impressions.isEmpty 
-            ? [PrayerImpression(id: 'first_${widget.sessionId}')]
+            ? [DflEntry(id: 'initial_${widget.sessionId}')] 
             : impressions;
 
         return DflModuleScaffold(
@@ -49,11 +46,7 @@ class _ListeningPrayerScreenState extends State<ListeningPrayerScreen> {
             onTakeawaysUpdate: (newList) {
               for (int i = 0; i < newList.length; i++) {
                 context.read<ListeningPrayerBloc>().add(
-                  UpdateHighlight(
-                    sessionId: widget.sessionId,
-                    index: i,
-                    text: newList[i],
-                  ),
+                  UpdateTakeaway(widget.sessionId, i, newList[i]),
                 );
               }
             },

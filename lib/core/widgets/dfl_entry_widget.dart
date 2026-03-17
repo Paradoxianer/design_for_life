@@ -58,18 +58,18 @@ class _DflEntryWidgetState extends State<DflEntryWidget> {
       padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
         color: isDone 
-            ? theme.colorScheme.primaryContainer.withOpacity(0.3) 
+            ? theme.colorScheme.primaryContainer.withValues(alpha: 0.3) 
             : theme.colorScheme.surface,
         borderRadius: BorderRadius.circular(16),
         border: Border.all(
           color: isDone 
-              ? theme.colorScheme.primary.withOpacity(0.5) 
-              : theme.colorScheme.outline.withOpacity(0.2),
+              ? theme.colorScheme.primary.withValues(alpha: 0.5) 
+              : theme.colorScheme.outline.withValues(alpha: 0.2),
           width: isDone ? 2 : 1,
         ),
         boxShadow: isDone ? [] : [
           BoxShadow(
-            color: Colors.black.withOpacity(0.05),
+            color: Colors.black.withValues(alpha: 0.05),
             blurRadius: 10,
             offset: const Offset(0, 4),
           ),
@@ -105,7 +105,7 @@ class _DflEntryWidgetState extends State<DflEntryWidget> {
                     ),
                     color: isDone 
                         ? Colors.green 
-                        : (hasContent ? Colors.green.withOpacity(0.7) : Colors.grey.withOpacity(0.5)),
+                        : (hasContent ? Colors.green.withValues(alpha: 0.7) : Colors.grey.withValues(alpha: 0.5)),
                     onPressed: () {
                       if (hasContent || isDone) widget.onToggleCompleted();
                     },

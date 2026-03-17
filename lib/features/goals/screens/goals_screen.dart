@@ -42,7 +42,6 @@ class _GoalsScreenState extends State<GoalsScreen> {
             sessionId: widget.sessionId,
             goals: goals,
             takeaways: const [],
-            takeawayController: TextEditingController(),
             onUpdate: (index, value) {},
           ),
           result: GoalsResult(

@@ -5,13 +5,11 @@ abstract class DflModuleEditor extends StatelessWidget {
   final List<String> takeaways;
   final Function(int, String) onUpdate;
   final bool isReadOnly;
-  final TextEditingController takeawayController;
 
   const DflModuleEditor({
     super.key,
     required this.takeaways,
     required this.onUpdate,
-    required this.takeawayController,
     this.isReadOnly = false,
   });
 

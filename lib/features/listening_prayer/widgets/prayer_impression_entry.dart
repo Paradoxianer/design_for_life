@@ -2,10 +2,10 @@ import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import '../models/prayer_impression.dart';
+import '../../../core/models/dfl_entry.dart';
 
 class PrayerImpressionEntry extends StatefulWidget {
-  final PrayerImpression impression;
+  final DflEntry impression;
   final Function(String) onTextChanged;
   final Function(String?) onImageChanged;
   final VoidCallback onToggleCompleted;
@@ -56,18 +56,18 @@ class _PrayerImpressionEntryState extends State<PrayerImpressionEntry> {
       padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
         color: isDone 
-            ? theme.colorScheme.primaryContainer.withOpacity(0.3) 
+            ? theme.colorScheme.primaryContainer.withValues(alpha: 0.3) 
             : theme.colorScheme.surface,
         borderRadius: BorderRadius.circular(16),
         border: Border.all(
           color: isDone 
-              ? theme.colorScheme.primary.withOpacity(0.5) 
-              : theme.colorScheme.outline.withOpacity(0.2),
+              ? theme.colorScheme.primary.withValues(alpha: 0.5) 
+              : theme.colorScheme.outline.withValues(alpha: 0.2),
           width: isDone ? 2 : 1,
         ),
         boxShadow: isDone ? [] : [
           BoxShadow(
-            color: Colors.black.withOpacity(0.05),
+            color: Colors.black.withValues(alpha: 0.05),
             blurRadius: 10,
             offset: const Offset(0, 4),
           ),
@@ -94,7 +94,6 @@ class _PrayerImpressionEntryState extends State<PrayerImpressionEntry> {
                     contentPadding: EdgeInsets.symmetric(vertical: 8),
                   ),
                   onChanged: (val) {
-                    debugPrint('TEXT_CHANGE: ID=${widget.impression.id}, Text=$val');
                     widget.onTextChanged(val);
                   },
                 ),
@@ -109,9 +108,8 @@ class _PrayerImpressionEntryState extends State<PrayerImpressionEntry> {
                     ),
                     color: isDone 
                         ? Colors.green 
-                        : (hasContent ? Colors.green.withOpacity(0.7) : Colors.grey.withOpacity(0.5)),
+                        : (hasContent ? Colors.green.withValues(alpha: 0.7) : Colors.grey.withValues(alpha: 0.5)),
                     onPressed: () {
-                      debugPrint('BUTTON_CLICK: ID=${widget.impression.id}, HasContent=$hasContent, IsDone=$isDone');
                       if (hasContent || isDone) {
                         widget.onToggleCompleted();
                       }
@@ -122,9 +120,8 @@ class _PrayerImpressionEntryState extends State<PrayerImpressionEntry> {
                       icon: const Icon(Icons.add_a_photo_outlined),
                       onPressed: () async {
                         final picker = ImagePicker();
-                        final image = await picker.pickImage(source: ImageSource.gallery); // Gallery for web testing
+                        final image = await picker.pickImage(source: ImageSource.gallery);
                         if (image != null) {
-                          debugPrint('IMAGE_CHANGE: ID=${widget.impression.id}, Path=${image.path}');
                           widget.onImageChanged(image.path);
                         }
                       },
@@ -146,7 +143,6 @@ class _PrayerImpressionEntryState extends State<PrayerImpressionEntry> {
                       top: 8,
                       child: GestureDetector(
                         onTap: () {
-                          debugPrint('IMAGE_REMOVE: ID=${widget.impression.id}');
                           widget.onImageChanged(null);
                         },
                         child: Container(
@@ -163,10 +159,10 @@ class _PrayerImpressionEntryState extends State<PrayerImpressionEntry> {
               ),
             ),
           ],
-          if (widget.impression.authorName != null || widget.impression.isReceived) ...[
+          if (widget.impression.metadata != null && widget.impression.metadata!.isNotEmpty) ...[
             const SizedBox(height: 8),
             Text(
-              widget.impression.authorName ?? 'Empfangener Eindruck',
+              widget.impression.metadata!,
               style: theme.textTheme.labelSmall?.copyWith(
                 color: theme.colorScheme.secondary,
                 fontStyle: FontStyle.italic,

@@ -2,10 +2,10 @@ import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:design_for_life/l10n/generated/app_localizations.dart';
-import '../models/prayer_impression.dart';
+import '../../../core/models/dfl_entry.dart';
 
 class ListeningPrayerResult extends StatelessWidget {
-  final Map<String, List<PrayerImpression>> impressions;
+  final Map<String, List<DflEntry>> impressions;
 
   const ListeningPrayerResult({
     super.key,
@@ -39,16 +39,15 @@ class ListeningPrayerResult extends StatelessWidget {
   Widget _buildImpressionSection(
     BuildContext context,
     String title,
-    List<PrayerImpression> items,
+    List<DflEntry> items,
   ) {
-    // Nur fertige Eindrücke mit Inhalt anzeigen
     final completedItems = items.where((e) => e.text.isNotEmpty || e.imagePath != null).toList();
     if (completedItems.isEmpty) return const SizedBox.shrink();
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        if (title != 'Eindrücke') // Nur anzeigen, wenn es nicht der Standard-Key ist
+        if (title != 'Eindrücke')
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 8.0),
             child: Text(
@@ -64,14 +63,14 @@ class ListeningPrayerResult extends StatelessWidget {
     );
   }
 
-  Widget _buildResultEntry(BuildContext context, PrayerImpression item) {
+  Widget _buildResultEntry(BuildContext context, DflEntry item) {
     final theme = Theme.of(context);
     
     return Container(
       margin: const EdgeInsets.only(bottom: 12),
       padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
-        color: theme.colorScheme.surfaceVariant.withOpacity(0.3),
+        color: theme.colorScheme.surfaceContainerHighest.withValues(alpha: 0.3),
         borderRadius: BorderRadius.circular(12),
       ),
       child: Column(
@@ -92,11 +91,11 @@ class ListeningPrayerResult extends StatelessWidget {
               child: _buildImage(item.imagePath!),
             ),
           ],
-          if (item.authorName != null)
+          if (item.metadata != null && item.metadata!.isNotEmpty)
             Padding(
               padding: const EdgeInsets.only(top: 8.0),
               child: Text(
-                'Von: ${item.authorName}',
+                'Von: ${item.metadata}',
                 style: theme.textTheme.labelSmall?.copyWith(fontStyle: FontStyle.italic),
               ),
             ),

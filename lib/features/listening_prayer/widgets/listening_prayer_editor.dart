@@ -3,13 +3,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:design_for_life/l10n/generated/app_localizations.dart';
 import '../../../core/widgets/key_takeaway_field.dart';
 import '../bloc/listening_prayer_bloc.dart';
-import '../bloc/listening_prayer_event.dart';
-import '../models/prayer_impression.dart';
+import 'package:design_for_life/core/blocs/entry_list_bloc.dart';
+import 'package:design_for_life/core/models/dfl_entry.dart';
 import 'prayer_impression_entry.dart';
 
 class ListeningPrayerEditor extends StatelessWidget {
   final String sessionId;
-  final List<PrayerImpression> impressions;
+  final List<DflEntry> impressions;
   final List<String> takeaways;
   final Function(List<String>) onTakeawaysUpdate;
 
@@ -23,20 +23,14 @@ class ListeningPrayerEditor extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final l10n = AppLocalizations.of(context)!;
+    final l10n = AppLocalizations.of(context);
     final bloc = context.read<ListeningPrayerBloc>();
-
-    // Sicherstellen, dass immer mindestens ein leerer Eintrag vorhanden ist
-    final activeImpressions = List<PrayerImpression>.from(impressions);
-    if (activeImpressions.isEmpty || activeImpressions.every((i) => i.isCompleted)) {
-      // Bloc add initial empty if needed
-    }
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          l10n.listeningPrayer,
+          l10n?.listeningPrayer ?? 'Listening Prayer',
           style: Theme.of(context).textTheme.titleLarge?.copyWith(
             fontWeight: FontWeight.bold,
           ),
@@ -48,27 +42,26 @@ class ListeningPrayerEditor extends StatelessWidget {
         ),
         const SizedBox(height: 24),
         
-        // Dynamische Liste der Eindrücke
-        ...activeImpressions.map((impression) => PrayerImpressionEntry(
+        ...impressions.map((impression) => PrayerImpressionEntry(
           impression: impression,
           onTextChanged: (text) {
-            bloc.add(UpdateImpressionText(
-              sessionId: sessionId,
-              impressionId: impression.id,
-              text: text,
+            bloc.add(UpdateEntryText(
+              sessionId,
+              impression.id,
+              text,
             ));
           },
           onImageChanged: (path) {
-            bloc.add(UpdateImpressionImage(
-              sessionId: sessionId,
-              impressionId: impression.id,
-              imagePath: path,
+            bloc.add(UpdateEntryImage(
+              sessionId,
+              impression.id,
+              path,
             ));
           },
           onToggleCompleted: () {
-            bloc.add(ToggleImpressionCompletion(
-              sessionId: sessionId,
-              impressionId: impression.id,
+            bloc.add(ToggleEntryCompletion(
+              sessionId,
+              impression.id,
             ));
           },
         )),
@@ -84,7 +77,9 @@ class ListeningPrayerEditor extends StatelessWidget {
             if (index < newList.length) {
               newList[index] = value;
             } else {
-              while (newList.length <= index) newList.add('');
+              while (newList.length <= index) {
+                newList.add('');
+              }
               newList[index] = value;
             }
             onTakeawaysUpdate(newList);

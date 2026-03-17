@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:equatable/equatable.dart';
 import '../models/dfl_entry.dart';
