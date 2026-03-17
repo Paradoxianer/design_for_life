@@ -3,7 +3,7 @@ import 'key_takeaway_field.dart';
 
 abstract class DflModuleEditor extends StatelessWidget {
   final List<String> takeaways;
-  final Function(List<String>) onUpdate;
+  final Function(int, String) onUpdate;
   final bool isReadOnly;
   final TextEditingController takeawayController;
 
@@ -26,7 +26,6 @@ abstract class DflModuleEditor extends StatelessWidget {
           const Divider(),
           const SizedBox(height: 16),
           KeyTakeawayField(
-            controller: takeawayController,
             takeaways: takeaways,
             onUpdate: onUpdate,
             isReadOnly: isReadOnly,

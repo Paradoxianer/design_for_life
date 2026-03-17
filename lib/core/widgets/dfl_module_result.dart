@@ -6,7 +6,7 @@ class DflModuleResult extends StatelessWidget {
   final Widget result;
   final TextEditingController takeawayController;
   final List<String> takeaways;
-  final Function(List<String>) onUpdate;
+  final Function(int, String) onUpdate;
   final bool isReadOnly;
 
   const DflModuleResult({
@@ -31,8 +31,6 @@ class DflModuleResult extends StatelessWidget {
           const Divider(),
           const SizedBox(height: 16),
           KeyTakeawayField(
-            controller: takeawayController,
-            label: 'Key Takeaways',
             takeaways: takeaways,
             onUpdate: onUpdate,
             isReadOnly: isReadOnly,

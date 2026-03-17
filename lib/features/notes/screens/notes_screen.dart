@@ -64,18 +64,14 @@ class _NotesScreenState extends State<NotesScreen> {
             imagePaths: imagePaths,
             takeaways: takeaways,
             takeawayController: _takeawayController,
-            onUpdate: (newList) {
-              for (int i = 0; i < newList.length; i++) {
-                if (i < takeaways.length && newList[i] != takeaways[i]) {
-                  context.read<NotesBloc>().add(
-                    UpdateTakeaway(
-                      sessionId: widget.sessionId,
-                      index: i,
-                      text: newList[i],
-                    ),
-                  );
-                }
-              }
+            onUpdate: (index, value) {
+              context.read<NotesBloc>().add(
+                UpdateTakeaway(
+                  sessionId: widget.sessionId,
+                  index: index,
+                  text: value,
+                ),
+              );
             },
           ),
           result: NotesResult(
@@ -83,7 +79,7 @@ class _NotesScreenState extends State<NotesScreen> {
             imagePaths: imagePaths,
             takeaways: takeaways,
             takeawayController: _takeawayController,
-            onUpdate: (newList) {},
+            onUpdate: (index, value) {},
           ),
         );
       },

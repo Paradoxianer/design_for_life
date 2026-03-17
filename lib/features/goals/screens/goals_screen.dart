@@ -40,7 +40,10 @@ class _GoalsScreenState extends State<GoalsScreen> {
             goals: goals,
             takeaways: const [],
             takeawayController: TextEditingController(),
-            onUpdate: (newList) {},
+            onUpdate: (index, value) {
+              // Goals logic doesn't use standard takeaways, 
+              // but we fulfill the interface requirements.
+            },
           ),
           result: GoalsResult(
             goals: goals,

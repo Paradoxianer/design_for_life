@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../l10n/generated/app_localizations.dart';
+import 'package:design_for_life/l10n/generated/app_localizations.dart';
 
 class DflModuleScaffold extends StatelessWidget {
   final String title;
@@ -17,7 +17,7 @@ class DflModuleScaffold extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final l10n = AppLocalizations.of(context)!;
+    final l10n = AppLocalizations.of(context);
     
     return DefaultTabController(
       length: 2,
@@ -26,8 +26,8 @@ class DflModuleScaffold extends StatelessWidget {
           title: Text(title),
           bottom: TabBar(
             tabs: [
-              Tab(text: l10n.editMode),
-              Tab(text: l10n.resultMode),
+              Tab(text: l10n?.editMode ?? 'Edit'),
+              Tab(text: l10n?.resultMode ?? 'Result'),
             ],
           ),
           actions: [
