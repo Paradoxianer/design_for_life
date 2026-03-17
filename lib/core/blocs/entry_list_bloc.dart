@@ -107,9 +107,11 @@ abstract class EntryListBloc extends HydratedBloc<EntryListEvent, EntryListState
     return List<DflEntry>.from(state.entries[sessionId] ?? []);
   }
 
+  String _generateId() => DateTime.now().millisecondsSinceEpoch.toString();
+
   void _onAddEntry(AddEntry event, Emitter<EntryListState> emit) {
     final sessionEntries = _getEntries(event.sessionId);
-    sessionEntries.add(DflEntry(id: DateTime.now().toIso8601String()));
+    sessionEntries.add(DflEntry(id: _generateId()));
     
     final newMap = Map<String, List<DflEntry>>.from(state.entries);
     newMap[event.sessionId] = sessionEntries;
@@ -122,7 +124,8 @@ abstract class EntryListBloc extends HydratedBloc<EntryListEvent, EntryListState
     
     if (index != -1) {
       sessionEntries[index] = sessionEntries[index].copyWith(text: event.text);
-    } else if (sessionEntries.isEmpty || event.entryId.startsWith('initial_')) {
+    } else {
+      // Falls es ein Initial-Eintrag war oder die Liste leer ist
       sessionEntries.add(DflEntry(id: event.entryId, text: event.text));
     }
 
@@ -133,16 +136,23 @@ abstract class EntryListBloc extends HydratedBloc<EntryListEvent, EntryListState
 
   void _onToggleEntryCompletion(ToggleEntryCompletion event, Emitter<EntryListState> emit) {
     final sessionEntries = _getEntries(event.sessionId);
-    final index = sessionEntries.indexWhere((i) => i.id == event.entryId);
+    int index = sessionEntries.indexWhere((i) => i.id == event.entryId);
     
+    // Falls der Eintrag noch nicht existiert (z.B. initialer Haken ohne Text)
+    if (index == -1 && event.entryId.startsWith('initial_')) {
+      sessionEntries.add(DflEntry(id: event.entryId, isCompleted: true));
+      index = sessionEntries.length - 1;
+    }
+
     if (index != -1) {
       final wasCompleted = sessionEntries[index].isCompleted;
       sessionEntries[index] = sessionEntries[index].copyWith(isCompleted: !wasCompleted);
       
+      // Wenn ein Eintrag abgeschlossen wurde, prüfen ob ein neuer leerer nachrücken muss
       if (!wasCompleted) {
         final hasActive = sessionEntries.any((i) => !i.isCompleted);
         if (!hasActive) {
-          sessionEntries.add(DflEntry(id: DateTime.now().toIso8601String()));
+          sessionEntries.add(DflEntry(id: _generateId()));
         }
       }
 
@@ -158,7 +168,7 @@ abstract class EntryListBloc extends HydratedBloc<EntryListEvent, EntryListState
     
     if (index != -1) {
       sessionEntries[index] = sessionEntries[index].copyWith(imagePath: event.imagePath);
-    } else if (sessionEntries.isEmpty || event.entryId.startsWith('initial_')) {
+    } else {
       sessionEntries.add(DflEntry(id: event.entryId, imagePath: event.imagePath));
     }
 

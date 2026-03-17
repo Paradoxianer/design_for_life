@@ -43,6 +43,7 @@ class ListeningPrayerEditor extends StatelessWidget {
         const SizedBox(height: 24),
         
         ...impressions.map((impression) => PrayerImpressionEntry(
+          key: ValueKey(impression.id), // Key für korrekte UI-Aktualisierung
           impression: impression,
           onTextChanged: (text) {
             bloc.add(UpdateEntryText(

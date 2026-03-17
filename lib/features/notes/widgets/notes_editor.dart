@@ -50,6 +50,7 @@ class NotesEditor extends DflModuleEditor {
         const SizedBox(height: 24),
         
         ...entries.map((entry) => DflEntryWidget(
+          key: ValueKey(entry.id), // Key für korrekte UI-Aktualisierung
           entry: entry,
           hintText: l10n.notesHint,
           onTextChanged: (text) {
