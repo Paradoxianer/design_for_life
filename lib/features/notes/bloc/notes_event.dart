@@ -4,50 +4,71 @@ abstract class NotesEvent extends Equatable {
   const NotesEvent();
 
   @override
-  List<Object> get props => [];
+  List<Object?> get props => [];
 }
 
-class UpdateNoteText extends NotesEvent {
+class AddNoteEntry extends NotesEvent {
   final String sessionId;
-  final String text;
-
-  const UpdateNoteText({required this.sessionId, required this.text});
+  const AddNoteEntry({required this.sessionId});
 
   @override
-  List<Object> get props => [sessionId, text];
+  List<Object?> get props => [sessionId];
 }
 
-class UpdateTakeaway extends NotesEvent {
+class UpdateNoteEntryText extends NotesEvent {
+  final String sessionId;
+  final String entryId;
+  final String text;
+
+  const UpdateNoteEntryText({
+    required this.sessionId,
+    required this.entryId,
+    required this.text,
+  });
+
+  @override
+  List<Object?> get props => [sessionId, entryId, text];
+}
+
+class ToggleNoteEntryCompletion extends NotesEvent {
+  final String sessionId;
+  final String entryId;
+
+  const ToggleNoteEntryCompletion({
+    required this.sessionId,
+    required this.entryId,
+  });
+
+  @override
+  List<Object?> get props => [sessionId, entryId];
+}
+
+class UpdateNoteEntryImage extends NotesEvent {
+  final String sessionId;
+  final String entryId;
+  final String? imagePath;
+
+  const UpdateNoteEntryImage({
+    required this.sessionId,
+    required this.entryId,
+    this.imagePath,
+  });
+
+  @override
+  List<Object?> get props => [sessionId, entryId, imagePath];
+}
+
+class UpdateNoteTakeaway extends NotesEvent {
   final String sessionId;
   final int index;
   final String text;
 
-  const UpdateTakeaway({
+  const UpdateNoteTakeaway({
     required this.sessionId,
     required this.index,
     required this.text,
   });
 
   @override
-  List<Object> get props => [sessionId, index, text];
-}
-
-class AddNoteImage extends NotesEvent {
-  final String sessionId;
-  final String imagePath;
-
-  const AddNoteImage({required this.sessionId, required this.imagePath});
-
-  @override
-  List<Object> get props => [sessionId, imagePath];
-}
-
-class RemoveNoteImage extends NotesEvent {
-  final String sessionId;
-  final String imagePath;
-
-  const RemoveNoteImage({required this.sessionId, required this.imagePath});
-
-  @override
-  List<Object> get props => [sessionId, imagePath];
+  List<Object?> get props => [sessionId, index, text];
 }
