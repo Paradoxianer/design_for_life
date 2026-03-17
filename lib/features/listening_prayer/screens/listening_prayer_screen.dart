@@ -6,6 +6,7 @@ import '../bloc/listening_prayer_state.dart';
 import '../widgets/listening_prayer_editor.dart';
 import '../widgets/listening_prayer_result.dart';
 import '../../../core/widgets/dfl_module_scaffold.dart';
+import '../models/prayer_impression.dart';
 
 class ListeningPrayerScreen extends StatefulWidget {
   final String sessionId;
@@ -31,13 +32,19 @@ class _ListeningPrayerScreenState extends State<ListeningPrayerScreen> {
         final impressions = state.impressions[widget.sessionId] ?? [];
         final highlights = state.highlights[widget.sessionId] ?? [];
 
+        // Falls die Liste leer ist, fügen wir für die UI einen initialen Dummy hinzu,
+        // damit der User sofort tippen kann.
+        final displayImpressions = impressions.isEmpty 
+            ? [PrayerImpression(id: 'initial_${widget.sessionId}')] 
+            : impressions;
+
         return DflModuleScaffold(
           title: widget.title,
           isEditMode: _isEditMode,
           onToggleMode: () => setState(() => _isEditMode = !_isEditMode),
           editor: ListeningPrayerEditor(
             sessionId: widget.sessionId,
-            impressions: impressions,
+            impressions: displayImpressions,
             takeaways: highlights,
             onTakeawaysUpdate: (newList) {
               for (int i = 0; i < newList.length; i++) {

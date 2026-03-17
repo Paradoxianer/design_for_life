@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import '../models/prayer_impression.dart';
 
-class PrayerImpressionEntry extends StatelessWidget {
+class PrayerImpressionEntry extends StatefulWidget {
   final PrayerImpression impression;
   final Function(String) onTextChanged;
   final Function(String?) onImageChanged;
@@ -18,23 +18,52 @@ class PrayerImpressionEntry extends StatelessWidget {
   });
 
   @override
+  State<PrayerImpressionEntry> createState() => _PrayerImpressionEntryState();
+}
+
+class _PrayerImpressionEntryState extends State<PrayerImpressionEntry> {
+  late TextEditingController _controller;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = TextEditingController(text: widget.impression.text);
+  }
+
+  @override
+  void didUpdateWidget(PrayerImpressionEntry oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.impression.text != widget.impression.text && _controller.text != widget.impression.text) {
+      _controller.text = widget.impression.text;
+    }
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final isDone = widget.impression.isCompleted;
 
     return Container(
       margin: const EdgeInsets.only(bottom: 16),
       padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
-        color: impression.isCompleted 
-            ? theme.colorScheme.surfaceVariant.withOpacity(0.5) 
+        color: isDone 
+            ? theme.colorScheme.primaryContainer.withOpacity(0.3) 
             : theme.colorScheme.surface,
         borderRadius: BorderRadius.circular(16),
         border: Border.all(
-          color: impression.isCompleted 
-              ? Colors.transparent 
+          color: isDone 
+              ? theme.colorScheme.primary.withOpacity(0.5) 
               : theme.colorScheme.outline.withOpacity(0.2),
+          width: isDone ? 2 : 1,
         ),
-        boxShadow: impression.isCompleted ? [] : [
+        boxShadow: isDone ? [] : [
           BoxShadow(
             color: Colors.black.withOpacity(0.05),
             blurRadius: 10,
@@ -48,47 +77,42 @@ class PrayerImpressionEntry extends StatelessWidget {
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Text Area (Embossed Look)
               Expanded(
                 child: TextField(
-                  controller: TextEditingController(text: impression.text)
-                    ..selection = TextSelection.fromPosition(
-                      TextPosition(offset: impression.text.length),
-                    ),
+                  controller: _controller,
                   maxLines: null,
-                  enabled: !impression.isCompleted,
-                  decoration: InputDecoration(
+                  enabled: !isDone,
+                  style: theme.textTheme.bodyLarge?.copyWith(
+                    color: isDone ? theme.colorScheme.onSurfaceVariant : null,
+                  ),
+                  decoration: const InputDecoration(
                     hintText: 'Schreibe deinen Eindruck...',
                     border: InputBorder.none,
                     isDense: true,
-                    contentPadding: const EdgeInsets.symmetric(vertical: 8),
+                    contentPadding: EdgeInsets.symmetric(vertical: 8),
                   ),
-                  onChanged: onTextChanged,
+                  onChanged: widget.onTextChanged,
                 ),
               ),
               const SizedBox(width: 8),
-              // Action Column (Photo & Check)
               Column(
                 children: [
                   IconButton(
                     icon: Icon(
-                      impression.isCompleted 
-                          ? Icons.check_circle 
-                          : Icons.check_circle_outline,
-                      color: impression.isCompleted 
-                          ? Colors.green 
-                          : theme.colorScheme.primary.withOpacity(0.5),
+                      isDone ? Icons.check_circle : Icons.check_circle_outline,
+                      size: 28,
                     ),
-                    onPressed: onToggleCompleted,
+                    color: isDone ? Colors.green : theme.colorScheme.primary.withOpacity(0.4),
+                    onPressed: widget.onToggleCompleted,
                   ),
-                  if (!impression.isCompleted)
+                  if (!isDone)
                     IconButton(
                       icon: const Icon(Icons.add_a_photo_outlined),
                       onPressed: () async {
                         final picker = ImagePicker();
                         final image = await picker.pickImage(source: ImageSource.camera);
                         if (image != null) {
-                          onImageChanged(image.path);
+                          widget.onImageChanged(image.path);
                         }
                       },
                     ),
@@ -96,24 +120,24 @@ class PrayerImpressionEntry extends StatelessWidget {
               ),
             ],
           ),
-          if (impression.imagePath != null) ...[
+          if (widget.impression.imagePath != null) ...[
             const SizedBox(height: 12),
             ClipRRect(
               borderRadius: BorderRadius.circular(12),
               child: Stack(
                 children: [
                   Image.file(
-                    File(impression.imagePath!),
+                    File(widget.impression.imagePath!),
                     width: double.infinity,
                     height: 200,
                     fit: BoxFit.cover,
                   ),
-                  if (!impression.isCompleted)
+                  if (!isDone)
                     Positioned(
                       right: 8,
                       top: 8,
                       child: GestureDetector(
-                        onTap: () => onImageChanged(null),
+                        onTap: () => widget.onImageChanged(null),
                         child: Container(
                           padding: const EdgeInsets.all(4),
                           decoration: const BoxDecoration(
@@ -128,10 +152,10 @@ class PrayerImpressionEntry extends StatelessWidget {
               ),
             ),
           ],
-          if (impression.authorName != null || impression.isReceived) ...[
+          if (widget.impression.authorName != null || widget.impression.isReceived) ...[
             const SizedBox(height: 8),
             Text(
-              impression.authorName ?? 'Empfangener Eindruck',
+              widget.impression.authorName ?? 'Empfangener Eindruck',
               style: theme.textTheme.labelSmall?.copyWith(
                 color: theme.colorScheme.secondary,
                 fontStyle: FontStyle.italic,
