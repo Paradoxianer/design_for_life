@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import '../models/prayer_impression.dart';
@@ -48,6 +49,7 @@ class _PrayerImpressionEntryState extends State<PrayerImpressionEntry> {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final isDone = widget.impression.isCompleted;
+    final hasContent = widget.impression.text.trim().isNotEmpty || widget.impression.imagePath != null;
 
     return Container(
       margin: const EdgeInsets.only(bottom: 16),
@@ -91,7 +93,10 @@ class _PrayerImpressionEntryState extends State<PrayerImpressionEntry> {
                     isDense: true,
                     contentPadding: EdgeInsets.symmetric(vertical: 8),
                   ),
-                  onChanged: widget.onTextChanged,
+                  onChanged: (val) {
+                    debugPrint('TEXT_CHANGE: ID=${widget.impression.id}, Text=$val');
+                    widget.onTextChanged(val);
+                  },
                 ),
               ),
               const SizedBox(width: 8),
@@ -102,16 +107,24 @@ class _PrayerImpressionEntryState extends State<PrayerImpressionEntry> {
                       isDone ? Icons.check_circle : Icons.check_circle_outline,
                       size: 28,
                     ),
-                    color: isDone ? Colors.green : theme.colorScheme.primary.withOpacity(0.4),
-                    onPressed: widget.onToggleCompleted,
+                    color: isDone 
+                        ? Colors.green 
+                        : (hasContent ? Colors.green.withOpacity(0.7) : Colors.grey.withOpacity(0.5)),
+                    onPressed: () {
+                      debugPrint('BUTTON_CLICK: ID=${widget.impression.id}, HasContent=$hasContent, IsDone=$isDone');
+                      if (hasContent || isDone) {
+                        widget.onToggleCompleted();
+                      }
+                    },
                   ),
                   if (!isDone)
                     IconButton(
                       icon: const Icon(Icons.add_a_photo_outlined),
                       onPressed: () async {
                         final picker = ImagePicker();
-                        final image = await picker.pickImage(source: ImageSource.camera);
+                        final image = await picker.pickImage(source: ImageSource.gallery); // Gallery for web testing
                         if (image != null) {
+                          debugPrint('IMAGE_CHANGE: ID=${widget.impression.id}, Path=${image.path}');
                           widget.onImageChanged(image.path);
                         }
                       },
@@ -126,18 +139,16 @@ class _PrayerImpressionEntryState extends State<PrayerImpressionEntry> {
               borderRadius: BorderRadius.circular(12),
               child: Stack(
                 children: [
-                  Image.file(
-                    File(widget.impression.imagePath!),
-                    width: double.infinity,
-                    height: 200,
-                    fit: BoxFit.cover,
-                  ),
+                  _buildImage(widget.impression.imagePath!),
                   if (!isDone)
                     Positioned(
                       right: 8,
                       top: 8,
                       child: GestureDetector(
-                        onTap: () => widget.onImageChanged(null),
+                        onTap: () {
+                          debugPrint('IMAGE_REMOVE: ID=${widget.impression.id}');
+                          widget.onImageChanged(null);
+                        },
                         child: Container(
                           padding: const EdgeInsets.all(4),
                           decoration: const BoxDecoration(
@@ -165,5 +176,23 @@ class _PrayerImpressionEntryState extends State<PrayerImpressionEntry> {
         ],
       ),
     );
+  }
+
+  Widget _buildImage(String path) {
+    if (kIsWeb) {
+      return Image.network(
+        path,
+        width: double.infinity,
+        height: 200,
+        fit: BoxFit.cover,
+      );
+    } else {
+      return Image.file(
+        File(path),
+        width: double.infinity,
+        height: 200,
+        fit: BoxFit.cover,
+      );
+    }
   }
 }

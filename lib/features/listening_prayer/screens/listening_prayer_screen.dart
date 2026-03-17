@@ -32,10 +32,10 @@ class _ListeningPrayerScreenState extends State<ListeningPrayerScreen> {
         final impressions = state.impressions[widget.sessionId] ?? [];
         final highlights = state.highlights[widget.sessionId] ?? [];
 
-        // Falls die Liste leer ist, fügen wir für die UI einen initialen Dummy hinzu,
-        // damit der User sofort tippen kann.
+        // Wir nutzen eine konsistente ID für den allerersten Eintrag, 
+        // damit der Bloc ihn erkennt, auch wenn er noch nicht im State gespeichert ist.
         final displayImpressions = impressions.isEmpty 
-            ? [PrayerImpression(id: 'initial_${widget.sessionId}')] 
+            ? [PrayerImpression(id: 'first_${widget.sessionId}')]
             : impressions;
 
         return DflModuleScaffold(

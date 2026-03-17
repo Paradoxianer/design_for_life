@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'listening_prayer_event.dart';
 import 'listening_prayer_state.dart';
@@ -12,37 +13,45 @@ class ListeningPrayerBloc extends HydratedBloc<ListeningPrayerEvent, ListeningPr
     on<UpdateHighlight>(_onUpdateHighlight);
   }
 
-  List<PrayerImpression> _getEffectiveImpressions(String sessionId) {
-    final list = state.impressions[sessionId] ?? [];
-    if (list.isEmpty) {
-      return [PrayerImpression(id: DateTime.now().toIso8601String())];
-    }
-    return list;
+  // Interne Helper-Methode für den Zugriff auf die Liste einer Session
+  List<PrayerImpression> _getImpressions(String sessionId) {
+    return List<PrayerImpression>.from(state.impressions[sessionId] ?? []);
   }
 
   void _onAddImpression(AddImpression event, Emitter<ListeningPrayerState> emit) {
-    final sessionImpressions = List<PrayerImpression>.from(state.impressions[event.sessionId] ?? []);
+    final sessionImpressions = _getImpressions(event.sessionId);
     sessionImpressions.add(PrayerImpression(id: DateTime.now().toIso8601String()));
     
-    final newImpressions = Map<String, List<PrayerImpression>>.from(state.impressions);
-    newImpressions[event.sessionId] = sessionImpressions;
-    emit(state.copyWith(impressions: newImpressions));
+    final newMap = Map<String, List<PrayerImpression>>.from(state.impressions);
+    newMap[event.sessionId] = sessionImpressions;
+    emit(state.copyWith(impressions: newMap));
   }
 
   void _onUpdateImpressionText(UpdateImpressionText event, Emitter<ListeningPrayerState> emit) {
-    final sessionImpressions = List<PrayerImpression>.from(_getEffectiveImpressions(event.sessionId));
-    final index = sessionImpressions.indexWhere((i) => i.id == event.impressionId);
+    debugPrint('BLOC_TEXT: ID=${event.impressionId}, Val=${event.text}');
+    final sessionImpressions = _getImpressions(event.sessionId);
     
-    if (index != -1) {
-      sessionImpressions[index] = sessionImpressions[index].copyWith(text: event.text);
-      final newImpressions = Map<String, List<PrayerImpression>>.from(state.impressions);
-      newImpressions[event.sessionId] = sessionImpressions;
-      emit(state.copyWith(impressions: newImpressions));
+    // Falls die Liste leer ist, erstellen wir den Eintrag einfach mit der ID, die die UI schickt
+    if (sessionImpressions.isEmpty) {
+      sessionImpressions.add(PrayerImpression(id: event.impressionId, text: event.text));
+    } else {
+      final index = sessionImpressions.indexWhere((i) => i.id == event.impressionId);
+      if (index != -1) {
+        sessionImpressions[index] = sessionImpressions[index].copyWith(text: event.text);
+      } else {
+        // Fallback: Falls ID nicht gefunden (z.B. nach Hot Reload), hängen wir es an
+        sessionImpressions.add(PrayerImpression(id: event.impressionId, text: event.text));
+      }
     }
+
+    final newMap = Map<String, List<PrayerImpression>>.from(state.impressions);
+    newMap[event.sessionId] = sessionImpressions;
+    emit(state.copyWith(impressions: newMap));
   }
 
   void _onToggleImpressionCompletion(ToggleImpressionCompletion event, Emitter<ListeningPrayerState> emit) {
-    final sessionImpressions = List<PrayerImpression>.from(_getEffectiveImpressions(event.sessionId));
+    debugPrint('BLOC_TOGGLE: ID=${event.impressionId}');
+    final sessionImpressions = _getImpressions(event.sessionId);
     final index = sessionImpressions.indexWhere((i) => i.id == event.impressionId);
     
     if (index != -1) {
@@ -50,27 +59,28 @@ class ListeningPrayerBloc extends HydratedBloc<ListeningPrayerEvent, ListeningPr
       sessionImpressions[index] = sessionImpressions[index].copyWith(isCompleted: !wasCompleted);
       
       if (!wasCompleted) {
-        final hasUncompleted = sessionImpressions.any((i) => !i.isCompleted);
-        if (!hasUncompleted) {
-          sessionImpressions.add(PrayerImpression(id: DateTime.now().add(const Duration(milliseconds: 1)).toIso8601String()));
+        // Auto-Expansion: Immer ein neues leeres Feld, wenn alles andere "done" ist
+        final hasActive = sessionImpressions.any((i) => !i.isCompleted);
+        if (!hasActive) {
+          sessionImpressions.add(PrayerImpression(id: DateTime.now().toIso8601String()));
         }
       }
 
-      final newImpressions = Map<String, List<PrayerImpression>>.from(state.impressions);
-      newImpressions[event.sessionId] = sessionImpressions;
-      emit(state.copyWith(impressions: newImpressions));
+      final newMap = Map<String, List<PrayerImpression>>.from(state.impressions);
+      newMap[event.sessionId] = sessionImpressions;
+      emit(state.copyWith(impressions: newMap));
     }
   }
 
   void _onUpdateImpressionImage(UpdateImpressionImage event, Emitter<ListeningPrayerState> emit) {
-    final sessionImpressions = List<PrayerImpression>.from(_getEffectiveImpressions(event.sessionId));
+    final sessionImpressions = _getImpressions(event.sessionId);
     final index = sessionImpressions.indexWhere((i) => i.id == event.impressionId);
     
     if (index != -1) {
       sessionImpressions[index] = sessionImpressions[index].copyWith(imagePath: event.imagePath);
-      final newImpressions = Map<String, List<PrayerImpression>>.from(state.impressions);
-      newImpressions[event.sessionId] = sessionImpressions;
-      emit(state.copyWith(impressions: newImpressions));
+      final newMap = Map<String, List<PrayerImpression>>.from(state.impressions);
+      newMap[event.sessionId] = sessionImpressions;
+      emit(state.copyWith(impressions: newMap));
     }
   }
 
@@ -78,9 +88,9 @@ class ListeningPrayerBloc extends HydratedBloc<ListeningPrayerEvent, ListeningPr
     final sessionHighlights = List<String>.from(state.highlights[event.sessionId] ?? ['', '', '']);
     if (event.index < sessionHighlights.length) {
       sessionHighlights[event.index] = event.text;
-      final newHighlights = Map<String, List<String>>.from(state.highlights);
-      newHighlights[event.sessionId] = sessionHighlights;
-      emit(state.copyWith(highlights: newHighlights));
+      final newMap = Map<String, List<String>>.from(state.highlights);
+      newMap[event.sessionId] = sessionHighlights;
+      emit(state.copyWith(highlights: newMap));
     }
   }
 
