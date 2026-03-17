@@ -53,6 +53,12 @@ class _ListeningPrayerScreenState extends State<ListeningPrayerScreen> {
           ),
           result: ListeningPrayerResult(
             impressions: { 'Eindrücke': impressions },
+            takeaways: highlights,
+            onUpdate: (index, value) {
+              context.read<ListeningPrayerBloc>().add(
+                UpdateTakeaway(widget.sessionId, index, value),
+              );
+            },
           ),
           onSave: () {},
         );
