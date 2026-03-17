@@ -45,10 +45,20 @@ class ListeningPrayerEditor extends StatelessWidget {
         const Divider(),
         const SizedBox(height: 16),
         KeyTakeawayField(
-          controller: takeawayController,
-          label: l10n.threeHighlights,
+          // Hinweis: controller wurde entfernt, da KeyTakeawayField jetzt 3 Einzelfelder nutzt
           takeaways: takeaways,
-          onUpdate: onTakeawaysUpdate,
+          onUpdate: (index, value) {
+            final newList = List<String>.from(takeaways);
+            if (index < newList.length) {
+              newList[index] = value;
+            } else {
+              while (newList.length <= index) {
+                newList.add('');
+              }
+              newList[index] = value;
+            }
+            onTakeawaysUpdate(newList);
+          },
         ),
       ],
     );
