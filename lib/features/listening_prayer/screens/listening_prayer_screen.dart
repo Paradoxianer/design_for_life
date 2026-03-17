@@ -60,7 +60,6 @@ class _ListeningPrayerScreenState extends State<ListeningPrayerScreen> {
               );
             },
           ),
-          onSave: () {},
         );
       },
     );

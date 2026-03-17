@@ -63,6 +63,7 @@ class NotesResult extends StatelessWidget {
     final theme = Theme.of(context);
     
     return Container(
+      width: double.infinity,
       margin: const EdgeInsets.only(bottom: 12),
       padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
@@ -73,13 +74,7 @@ class NotesResult extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           if (item.text.isNotEmpty)
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Text('• ', style: TextStyle(fontWeight: FontWeight.bold)),
-                Expanded(child: Text(item.text, style: theme.textTheme.bodyLarge)),
-              ],
-            ),
+            Text(item.text, style: theme.textTheme.bodyLarge),
           if (item.imagePath != null) ...[
             const SizedBox(height: 12),
             ClipRRect(
