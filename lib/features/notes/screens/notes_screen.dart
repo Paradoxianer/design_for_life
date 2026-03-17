@@ -22,7 +22,7 @@ class NotesScreen extends StatefulWidget {
 }
 
 class _NotesScreenState extends State<NotesScreen> {
-  bool _isEditMode = true;
+  bool? _isEditModeOverride;
 
   @override
   Widget build(BuildContext context) {
@@ -30,16 +30,20 @@ class _NotesScreenState extends State<NotesScreen> {
       builder: (context, state) {
         final entries = state.entries[widget.sessionId] ?? [];
         final takeaways = state.takeaways[widget.sessionId] ?? const ['', '', ''];
+        
+        final hasContent = entries.any((e) => e.text.trim().isNotEmpty || e.imagePath != null);
+        
+        // Initialer Modus: Result wenn Inhalt da ist, sonst Editor
+        final bool currentMode = _isEditModeOverride ?? !hasContent;
 
-        // Sicherstellen, dass im Edit-Modus immer mindestens ein Feld da ist
         final displayEntries = entries.isEmpty 
             ? [DflEntry(id: 'initial_${widget.sessionId}')] 
             : entries;
 
         return DflModuleScaffold(
           title: widget.title,
-          isEditMode: _isEditMode,
-          onToggleMode: () => setState(() => _isEditMode = !_isEditMode),
+          isEditMode: currentMode,
+          onToggleMode: () => setState(() => _isEditModeOverride = !currentMode),
           editor: NotesEditor(
             sessionId: widget.sessionId,
             entries: displayEntries,

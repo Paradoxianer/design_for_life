@@ -22,7 +22,7 @@ class ListeningPrayerScreen extends StatefulWidget {
 }
 
 class _ListeningPrayerScreenState extends State<ListeningPrayerScreen> {
-  bool _isEditMode = true;
+  bool? _isEditModeOverride;
 
   @override
   Widget build(BuildContext context) {
@@ -31,14 +31,19 @@ class _ListeningPrayerScreenState extends State<ListeningPrayerScreen> {
         final impressions = state.entries[widget.sessionId] ?? [];
         final highlights = state.takeaways[widget.sessionId] ?? const ['', '', ''];
 
+        final hasContent = impressions.any((e) => e.text.trim().isNotEmpty || e.imagePath != null);
+        
+        // Initialer Modus: Result wenn Inhalt da ist, sonst Editor
+        final bool currentMode = _isEditModeOverride ?? !hasContent;
+
         final displayImpressions = impressions.isEmpty 
             ? [DflEntry(id: 'initial_${widget.sessionId}')] 
             : impressions;
 
         return DflModuleScaffold(
           title: widget.title,
-          isEditMode: _isEditMode,
-          onToggleMode: () => setState(() => _isEditMode = !_isEditMode),
+          isEditMode: currentMode,
+          onToggleMode: () => setState(() => _isEditModeOverride = !currentMode),
           editor: ListeningPrayerEditor(
             sessionId: widget.sessionId,
             impressions: displayImpressions,

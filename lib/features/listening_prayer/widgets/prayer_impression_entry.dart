@@ -83,7 +83,8 @@ class _PrayerImpressionEntryState extends State<PrayerImpressionEntry> {
                 child: TextField(
                   controller: _controller,
                   maxLines: null,
-                  enabled: !isDone,
+                  // Immer aktiviert lassen für sofortige Editierbarkeit
+                  enabled: true, 
                   style: theme.textTheme.bodyLarge?.copyWith(
                     color: isDone ? theme.colorScheme.onSurfaceVariant : null,
                   ),
@@ -115,17 +116,16 @@ class _PrayerImpressionEntryState extends State<PrayerImpressionEntry> {
                       }
                     },
                   ),
-                  if (!isDone)
-                    IconButton(
-                      icon: const Icon(Icons.add_a_photo_outlined),
-                      onPressed: () async {
-                        final picker = ImagePicker();
-                        final image = await picker.pickImage(source: ImageSource.gallery);
-                        if (image != null) {
-                          widget.onImageChanged(image.path);
-                        }
-                      },
-                    ),
+                  IconButton(
+                    icon: const Icon(Icons.add_a_photo_outlined),
+                    onPressed: () async {
+                      final picker = ImagePicker();
+                      final image = await picker.pickImage(source: ImageSource.gallery);
+                      if (image != null) {
+                        widget.onImageChanged(image.path);
+                      }
+                    },
+                  ),
                 ],
               ),
             ],
@@ -137,24 +137,23 @@ class _PrayerImpressionEntryState extends State<PrayerImpressionEntry> {
               child: Stack(
                 children: [
                   _buildImage(widget.impression.imagePath!),
-                  if (!isDone)
-                    Positioned(
-                      right: 8,
-                      top: 8,
-                      child: GestureDetector(
-                        onTap: () {
-                          widget.onImageChanged(null);
-                        },
-                        child: Container(
-                          padding: const EdgeInsets.all(4),
-                          decoration: const BoxDecoration(
-                            color: Colors.black54,
-                            shape: BoxShape.circle,
-                          ),
-                          child: const Icon(Icons.close, color: Colors.white, size: 16),
+                  Positioned(
+                    right: 8,
+                    top: 8,
+                    child: GestureDetector(
+                      onTap: () {
+                        widget.onImageChanged(null);
+                      },
+                      child: Container(
+                        padding: const EdgeInsets.all(4),
+                        decoration: const BoxDecoration(
+                          color: Colors.black54,
+                          shape: BoxShape.circle,
                         ),
+                        child: const Icon(Icons.close, color: Colors.white, size: 16),
                       ),
                     ),
+                  ),
                 ],
               ),
             ),
