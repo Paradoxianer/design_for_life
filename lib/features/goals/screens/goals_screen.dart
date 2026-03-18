@@ -6,28 +6,23 @@ import '../widgets/goals_editor.dart';
 import '../widgets/goals_result.dart';
 import '../models/goal.dart';
 
-class GoalsScreen extends StatefulWidget {
+class GoalsScreen extends StatelessWidget {
   final String sessionId;
   final String title;
+  final bool initialEditMode;
 
   const GoalsScreen({
     super.key,
     required this.sessionId,
     required this.title,
+    this.initialEditMode = true,
   });
-
-  @override
-  State<GoalsScreen> createState() => _GoalsScreenState();
-}
-
-class _GoalsScreenState extends State<GoalsScreen> {
-  bool _isEditMode = true;
 
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<GoalsBloc, GoalsState>(
       builder: (context, state) {
-        final goals = state.goals[widget.sessionId] ??
+        final goals = state.goals[sessionId] ??
             const [
               Goal(),
               Goal(),
@@ -35,11 +30,10 @@ class _GoalsScreenState extends State<GoalsScreen> {
             ];
 
         return DflModuleScaffold(
-          title: widget.title,
-          isEditMode: _isEditMode,
-          onToggleMode: () => setState(() => _isEditMode = !_isEditMode),
+          title: title,
+          initialEditMode: initialEditMode,
           editor: GoalsEditor(
-            sessionId: widget.sessionId,
+            sessionId: sessionId,
             goals: goals,
             takeaways: const [],
             onUpdate: (index, value) {},

@@ -7,7 +7,7 @@ import '../widgets/listening_prayer_editor.dart';
 import '../widgets/listening_prayer_result.dart';
 import '../../../core/widgets/dfl_module_scaffold.dart';
 
-class ListeningPrayerScreen extends StatefulWidget {
+class ListeningPrayerScreen extends StatelessWidget {
   final String sessionId;
   final String title;
   final bool initialEditMode;
@@ -20,72 +20,37 @@ class ListeningPrayerScreen extends StatefulWidget {
   });
 
   @override
-  State<ListeningPrayerScreen> createState() => _ListeningPrayerScreenState();
-}
-
-class _ListeningPrayerScreenState extends State<ListeningPrayerScreen> {
-  late bool _isEditMode;
-
-  @override
-  void initState() {
-    super.initState();
-    _isEditMode = widget.initialEditMode;
-  }
-
-  @override
   Widget build(BuildContext context) {
     return BlocBuilder<ListeningPrayerBloc, EntryListState>(
       builder: (context, state) {
-        final impressions = state.entries[widget.sessionId] ?? [];
-        final highlights = state.takeaways[widget.sessionId] ?? const ['', '', ''];
+        final impressions = state.entries[sessionId] ?? [];
+        final highlights = state.takeaways[sessionId] ?? const ['', '', ''];
 
         final displayImpressions = impressions.isEmpty 
-            ? [DflEntry(id: 'initial_${widget.sessionId}')] 
+            ? [DflEntry(id: 'initial_$sessionId')] 
             : impressions;
 
         return DflModuleScaffold(
-          title: widget.title,
-          isEditMode: _isEditMode,
-          onToggleMode: () => setState(() => _isEditMode = !_isEditMode),
-          editor: Column(
-            children: [
-              Expanded(
-                child: ListeningPrayerEditor(
-                  sessionId: widget.sessionId,
-                  impressions: displayImpressions,
-                  takeaways: highlights,
-                  onTakeawaysUpdate: (newList) {
-                    for (int i = 0; i < newList.length; i++) {
-                      context.read<ListeningPrayerBloc>().add(
-                        UpdateTakeaway(widget.sessionId, i, newList[i]),
-                      );
-                    }
-                  },
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: SizedBox(
-                  width: double.infinity,
-                  child: ElevatedButton.icon(
-                    onPressed: () => setState(() => _isEditMode = false),
-                    icon: const Icon(Icons.check),
-                    label: const Text('Fertig'),
-                    style: ElevatedButton.styleFrom(
-                      padding: const EdgeInsets.symmetric(vertical: 16),
-                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-                    ),
-                  ),
-                ),
-              ),
-            ],
+          title: title,
+          initialEditMode: initialEditMode,
+          editor: ListeningPrayerEditor(
+            sessionId: sessionId,
+            impressions: displayImpressions,
+            takeaways: highlights,
+            onTakeawaysUpdate: (newList) {
+              for (int i = 0; i < newList.length; i++) {
+                context.read<ListeningPrayerBloc>().add(
+                  UpdateTakeaway(sessionId, i, newList[i]),
+                );
+              }
+            },
           ),
           result: ListeningPrayerResult(
             impressions: { 'Eindrücke': impressions },
             takeaways: highlights,
             onUpdate: (index, value) {
               context.read<ListeningPrayerBloc>().add(
-                UpdateTakeaway(widget.sessionId, index, value),
+                UpdateTakeaway(sessionId, index, value),
               );
             },
           ),

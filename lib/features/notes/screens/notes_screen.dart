@@ -7,7 +7,7 @@ import '../bloc/notes_bloc.dart';
 import '../widgets/notes_editor.dart';
 import '../widgets/notes_result.dart';
 
-class NotesScreen extends StatefulWidget {
+class NotesScreen extends StatelessWidget {
   final String sessionId;
   final String title;
   final bool initialEditMode;
@@ -20,40 +20,26 @@ class NotesScreen extends StatefulWidget {
   });
 
   @override
-  State<NotesScreen> createState() => _NotesScreenState();
-}
-
-class _NotesScreenState extends State<NotesScreen> {
-  late bool _isEditMode;
-
-  @override
-  void initState() {
-    super.initState();
-    _isEditMode = widget.initialEditMode;
-  }
-
-  @override
   Widget build(BuildContext context) {
     return BlocBuilder<NotesBloc, EntryListState>(
       builder: (context, state) {
-        final entries = state.entries[widget.sessionId] ?? [];
-        final takeaways = state.takeaways[widget.sessionId] ?? const ['', '', ''];
+        final entries = state.entries[sessionId] ?? [];
+        final takeaways = state.takeaways[sessionId] ?? const ['', '', ''];
 
         final displayEntries = entries.isEmpty 
-            ? [DflEntry(id: 'initial_${widget.sessionId}')] 
+            ? [DflEntry(id: 'initial_$sessionId')] 
             : entries;
 
         return DflModuleScaffold(
-          title: widget.title,
-          isEditMode: _isEditMode,
-          onToggleMode: () => setState(() => _isEditMode = !_isEditMode),
+          title: title,
+          initialEditMode: initialEditMode,
           editor: NotesEditor(
-            sessionId: widget.sessionId,
+            sessionId: sessionId,
             entries: displayEntries,
             takeaways: takeaways,
             onUpdate: (index, value) {
               context.read<NotesBloc>().add(
-                UpdateTakeaway(widget.sessionId, index, value),
+                UpdateTakeaway(sessionId, index, value),
               );
             },
           ),
@@ -62,7 +48,7 @@ class _NotesScreenState extends State<NotesScreen> {
             takeaways: takeaways,
             onUpdate: (index, value) {
                context.read<NotesBloc>().add(
-                UpdateTakeaway(widget.sessionId, index, value),
+                UpdateTakeaway(sessionId, index, value),
               );
             },
           ),
