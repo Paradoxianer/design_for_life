@@ -1,23 +1,38 @@
 import 'package:flutter/material.dart';
 import 'package:design_for_life/l10n/generated/app_localizations.dart';
 
-class DflModuleScaffold extends StatelessWidget {
+class DflModuleScaffold extends StatefulWidget {
   final String title;
   final Widget editor;
   final Widget result;
-  final bool isEditMode;
-  final VoidCallback onToggleMode;
-  final VoidCallback? onSave;
+  final bool initialEditMode;
 
   const DflModuleScaffold({
     super.key,
     required this.title,
     required this.editor,
     required this.result,
-    required this.isEditMode,
-    required this.onToggleMode,
-    this.onSave,
+    this.initialEditMode = true,
   });
+
+  @override
+  State<DflModuleScaffold> createState() => _DflModuleScaffoldState();
+}
+
+class _DflModuleScaffoldState extends State<DflModuleScaffold> {
+  late bool _isEditMode;
+
+  @override
+  void initState() {
+    super.initState();
+    _isEditMode = widget.initialEditMode;
+  }
+
+  void _toggleMode() {
+    setState(() {
+      _isEditMode = !_isEditMode;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -25,23 +40,39 @@ class DflModuleScaffold extends StatelessWidget {
     
     return Scaffold(
       appBar: AppBar(
-        title: Text(title),
+        title: Text(widget.title),
         actions: [
-          if (onSave != null)
-            IconButton(
-              icon: const Icon(Icons.check),
-              onPressed: onSave,
-            ),
           IconButton(
-            tooltip: isEditMode ? l10n?.resultMode : l10n?.editMode,
-            icon: Icon(isEditMode ? Icons.remove_red_eye_outlined : Icons.edit_outlined),
-            onPressed: onToggleMode,
+            tooltip: _isEditMode ? l10n.resultMode : l10n.editMode,
+            icon: Icon(_isEditMode ? Icons.remove_red_eye_outlined : Icons.edit_outlined),
+            onPressed: _toggleMode,
           ),
         ],
       ),
       body: AnimatedSwitcher(
         duration: const Duration(milliseconds: 300),
-        child: isEditMode ? editor : result,
+        child: _isEditMode 
+          ? Column(
+              children: [
+                Expanded(child: widget.editor),
+                Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: SizedBox(
+                    width: double.infinity,
+                    child: ElevatedButton.icon(
+                      onPressed: _toggleMode,
+                      icon: const Icon(Icons.check),
+                      label: const Text('Fertig'),
+                      style: ElevatedButton.styleFrom(
+                        padding: const EdgeInsets.symmetric(vertical: 16),
+                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            )
+          : widget.result,
       ),
     );
   }

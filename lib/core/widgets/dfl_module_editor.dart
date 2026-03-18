@@ -5,14 +5,14 @@ abstract class DflModuleEditor extends StatelessWidget {
   final List<String> takeaways;
   final Function(int, String) onUpdate;
   final bool isReadOnly;
-  final TextEditingController takeawayController;
+  final bool showTakeaways;
 
   const DflModuleEditor({
     super.key,
     required this.takeaways,
     required this.onUpdate,
-    required this.takeawayController,
     this.isReadOnly = false,
+    this.showTakeaways = true,
   });
 
   @override
@@ -22,14 +22,16 @@ abstract class DflModuleEditor extends StatelessWidget {
       child: Column(
         children: [
           buildContent(context),
-          const SizedBox(height: 32),
-          const Divider(),
-          const SizedBox(height: 16),
-          KeyTakeawayField(
-            takeaways: takeaways,
-            onUpdate: onUpdate,
-            isReadOnly: isReadOnly,
-          ),
+          if (showTakeaways) ...[
+            const SizedBox(height: 32),
+            const Divider(),
+            const SizedBox(height: 16),
+            KeyTakeawayField(
+              takeaways: takeaways,
+              onUpdate: onUpdate,
+              isReadOnly: isReadOnly,
+            ),
+          ],
         ],
       ),
     );

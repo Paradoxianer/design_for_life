@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import '../models/prayer_impression.dart';
+import '../../../core/models/dfl_entry.dart';
 
 class PrayerImpressionCard extends StatelessWidget {
-  final PrayerImpression impression;
+  final DflEntry impression;
   final Function(String) onChanged;
   final bool isReadOnly;
 
@@ -29,11 +29,11 @@ class PrayerImpressionCard extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            if (impression.isReceived)
+            if (impression.metadata != null)
               Padding(
                 padding: const EdgeInsets.only(bottom: 8.0),
                 child: Chip(
-                  label: const Text('Received Impression', style: TextStyle(fontSize: 12)),
+                  label: Text(impression.metadata!, style: const TextStyle(fontSize: 12)),
                   backgroundColor: theme.colorScheme.secondaryContainer,
                 ),
               ),
@@ -47,7 +47,7 @@ class PrayerImpressionCard extends StatelessWidget {
                   ),
                 maxLines: null,
                 decoration: const InputDecoration(
-                  hintText: 'Write your impression here...',
+                  hintText: 'Schreibe deinen Eindruck hier...',
                   border: InputBorder.none,
                 ),
                 onChanged: onChanged,

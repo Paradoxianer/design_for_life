@@ -1,49 +1,50 @@
 import 'package:equatable/equatable.dart';
+import 'note_entry.dart';
 
 class NoteContent extends Equatable {
   final String sessionId;
-  final String text;
+  final List<NoteEntry> entries;
   final List<String> takeaways;
-  final List<String> imagePaths;
 
   const NoteContent({
     required this.sessionId,
-    this.text = '',
+    this.entries = const [],
     this.takeaways = const ['', '', ''],
-    this.imagePaths = const [],
   });
 
   NoteContent copyWith({
-    String? text,
+    List<NoteEntry>? entries,
     List<String>? takeaways,
-    List<String>? imagePaths,
   }) {
     return NoteContent(
       sessionId: sessionId,
-      text: text ?? this.text,
+      entries: entries ?? this.entries,
       takeaways: takeaways ?? this.takeaways,
-      imagePaths: imagePaths ?? this.imagePaths,
     );
   }
 
   Map<String, dynamic> toJson() {
     return {
       'sessionId': sessionId,
-      'text': text,
+      'entries': entries.map((e) => e.toJson()).toList(),
       'takeaways': takeaways,
-      'imagePaths': imagePaths,
     };
   }
 
   factory NoteContent.fromJson(Map<String, dynamic> json) {
     return NoteContent(
       sessionId: json['sessionId'] as String,
-      text: json['text'] as String? ?? '',
-      takeaways: (json['takeaways'] as List<dynamic>?)?.map((e) => e as String).toList() ?? const ['', '', ''],
-      imagePaths: (json['imagePaths'] as List<dynamic>?)?.map((e) => e as String).toList() ?? const [],
+      entries: (json['entries'] as List<dynamic>?)
+              ?.map((e) => NoteEntry.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          const [],
+      takeaways: (json['takeaways'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList() ??
+          const ['', '', ''],
     );
   }
 
   @override
-  List<Object?> get props => [sessionId, text, takeaways, imagePaths];
+  List<Object?> get props => [sessionId, entries, takeaways];
 }

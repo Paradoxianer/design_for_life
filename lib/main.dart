@@ -4,7 +4,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:go_router/go_router.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:design_for_life/l10n/generated/app_localizations.dart';
 
 import 'core/theme/app_theme.dart';
@@ -54,7 +53,12 @@ class DflApp extends StatelessWidget {
           builder: (context, state) {
             final sessionId = state.pathParameters['sessionId']!;
             final title = state.uri.queryParameters['title'] ?? 'Notes';
-            return NotesScreen(sessionId: sessionId, title: title);
+            final mode = state.uri.queryParameters['mode'];
+            return NotesScreen(
+              sessionId: sessionId, 
+              title: title,
+              initialEditMode: mode != 'result',
+            );
           },
         ),
         GoRoute(
@@ -62,7 +66,12 @@ class DflApp extends StatelessWidget {
           builder: (context, state) {
             final sessionId = state.pathParameters['sessionId']!;
             final title = state.uri.queryParameters['title'] ?? 'Listening Prayer';
-            return ListeningPrayerScreen(sessionId: sessionId, title: title);
+            final mode = state.uri.queryParameters['mode'];
+            return ListeningPrayerScreen(
+              sessionId: sessionId, 
+              title: title,
+              initialEditMode: mode != 'result',
+            );
           },
         ),
         GoRoute(
@@ -70,7 +79,12 @@ class DflApp extends StatelessWidget {
           builder: (context, state) {
             final sessionId = state.pathParameters['sessionId']!;
             final title = state.uri.queryParameters['title'] ?? 'Goals';
-            return GoalsScreen(sessionId: sessionId, title: title);
+            final mode = state.uri.queryParameters['mode'];
+            return GoalsScreen(
+              sessionId: sessionId, 
+              title: title,
+              initialEditMode: mode != 'result',
+            );
           },
         ),
       ],

@@ -18,16 +18,16 @@ class KeyTakeawayField extends StatelessWidget {
     final theme = Theme.of(context);
     final l10n = AppLocalizations.of(context);
     
-    final String titleLabel = l10n?.keyTakeaways ?? 'Key Takeaways';
-    final String hintLabel = l10n?.takeawayHint ?? 'Enter your key takeaway here...';
+    final String titleLabel = l10n.keyTakeaways;
+    final String hintLabel = l10n.takeawayHint;
 
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: theme.colorScheme.tertiary.withOpacity(0.1),
+        color: theme.colorScheme.tertiary.withValues(alpha: 0.1),
         borderRadius: BorderRadius.circular(12),
         border: Border.all(
-          color: theme.colorScheme.tertiary.withOpacity(0.3),
+          color: theme.colorScheme.tertiary.withValues(alpha: 0.3),
         ),
       ),
       child: Column(

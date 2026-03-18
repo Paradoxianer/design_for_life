@@ -4,19 +4,19 @@ import 'key_takeaway_field.dart';
 class DflModuleResult extends StatelessWidget {
   final String title;
   final Widget result;
-  final TextEditingController takeawayController;
   final List<String> takeaways;
-  final Function(int, String) onUpdate;
+  final Function(int, String)? onUpdate;
   final bool isReadOnly;
+  final bool showTakeaways;
 
   const DflModuleResult({
     super.key,
     required this.title,
     required this.result,
-    required this.takeawayController,
     required this.takeaways,
-    required this.onUpdate,
+    this.onUpdate,
     this.isReadOnly = true,
+    this.showTakeaways = true,
   });
 
   @override
@@ -27,14 +27,16 @@ class DflModuleResult extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           result,
-          const SizedBox(height: 32),
-          const Divider(),
-          const SizedBox(height: 16),
-          KeyTakeawayField(
-            takeaways: takeaways,
-            onUpdate: onUpdate,
-            isReadOnly: isReadOnly,
-          ),
+          if (showTakeaways) ...[
+            const SizedBox(height: 32),
+            const Divider(),
+            const SizedBox(height: 16),
+            KeyTakeawayField(
+              takeaways: takeaways,
+              onUpdate: onUpdate ?? (i, v) {},
+              isReadOnly: isReadOnly,
+            ),
+          ],
         ],
       ),
     );
