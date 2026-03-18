@@ -14,7 +14,7 @@
 
 ## 3. Git- & Commit-Disziplin
 * **Conventional Commits:** Nutze strikt das Format `type: description` (z.B. `feat:`, `fix:`, `refactor:`, `chore:`).
-* **Issue-Integration:** Die Issue-Nummer muss Teil der Commit-Nachricht sein (z.B. `feat: add biometric login (#42)`).
+* **Issue-Integration:**  Wenn ein Issue durch einen commit geschlossen wird füge fixe: #issuenr hinzu
 * **Scope-Reinheit:** Ein Commit sollte nur Änderungen enthalten, die zum referenzierten Issue gehören.
 
 ## 4. Sicherheit & Fehlerbehandlung
