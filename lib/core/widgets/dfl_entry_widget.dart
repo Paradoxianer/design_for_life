@@ -55,12 +55,7 @@ class _DflEntryWidgetState extends State<DflEntryWidget> {
       children: [
         Container(
           margin: const EdgeInsets.only(bottom: 16),
-          padding: EdgeInsets.only(
-            left: 16,
-            top: 16,
-            bottom: 16,
-            right: widget.onDelete != null ? 44 : 16, // Platz für Lösch-Button schaffen
-          ),
+          padding: const EdgeInsets.fromLTRB(16, 16, 12, 16), // Konstantes Padding
           decoration: BoxDecoration(
             color: theme.colorScheme.surface,
             borderRadius: BorderRadius.circular(16),
@@ -95,16 +90,20 @@ class _DflEntryWidgetState extends State<DflEntryWidget> {
                       onChanged: widget.onTextChanged,
                     ),
                   ),
-                  const SizedBox(width: 8),
-                  IconButton(
-                    icon: const Icon(Icons.add_a_photo_outlined),
-                    onPressed: () async {
-                      final picker = ImagePicker();
-                      final image = await picker.pickImage(source: ImageSource.gallery);
-                      if (image != null) widget.onImageChanged(image.path);
-                    },
-                    padding: EdgeInsets.zero,
-                    constraints: const BoxConstraints(),
+                  const SizedBox(width: 4),
+                  // Feste Spalte für den Foto-Button (verhindert Springen)
+                  SizedBox(
+                    width: 40,
+                    child: IconButton(
+                      icon: const Icon(Icons.add_a_photo_outlined),
+                      onPressed: () async {
+                        final picker = ImagePicker();
+                        final image = await picker.pickImage(source: ImageSource.gallery);
+                        if (image != null) widget.onImageChanged(image.path);
+                      },
+                      padding: EdgeInsets.zero,
+                      constraints: const BoxConstraints(),
+                    ),
                   ),
                 ],
               ),

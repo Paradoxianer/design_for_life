@@ -53,12 +53,7 @@ class _PrayerImpressionEntryState extends State<PrayerImpressionEntry> {
       children: [
         Container(
           margin: const EdgeInsets.only(bottom: 16),
-          padding: EdgeInsets.only(
-            left: 16,
-            top: 16,
-            bottom: 16,
-            right: widget.onDelete != null ? 44 : 16, // Platz für Lösch-Button
-          ),
+          padding: const EdgeInsets.fromLTRB(16, 16, 12, 16),
           decoration: BoxDecoration(
             color: theme.colorScheme.surface,
             borderRadius: BorderRadius.circular(16),
@@ -94,18 +89,21 @@ class _PrayerImpressionEntryState extends State<PrayerImpressionEntry> {
                       onChanged: widget.onTextChanged,
                     ),
                   ),
-                  const SizedBox(width: 8),
-                  IconButton(
-                    icon: const Icon(Icons.add_a_photo_outlined),
-                    onPressed: () async {
-                      final picker = ImagePicker();
-                      final image = await picker.pickImage(source: ImageSource.gallery);
-                      if (image != null) {
-                        widget.onImageChanged(image.path);
-                      }
-                    },
-                    padding: EdgeInsets.zero,
-                    constraints: const BoxConstraints(),
+                  const SizedBox(width: 4),
+                  SizedBox(
+                    width: 40,
+                    child: IconButton(
+                      icon: const Icon(Icons.add_a_photo_outlined),
+                      onPressed: () async {
+                        final picker = ImagePicker();
+                        final image = await picker.pickImage(source: ImageSource.gallery);
+                        if (image != null) {
+                          widget.onImageChanged(image.path);
+                        }
+                      },
+                      padding: EdgeInsets.zero,
+                      constraints: const BoxConstraints(),
+                    ),
                   ),
                 ],
               ),
@@ -142,8 +140,8 @@ class _PrayerImpressionEntryState extends State<PrayerImpressionEntry> {
         ),
         if (widget.onDelete != null)
           Positioned(
-            right: 0,
-            top: 0,
+            right: 4,
+            top: 4,
             child: IconButton(
               onPressed: widget.onDelete,
               icon: Container(
