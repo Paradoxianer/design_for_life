@@ -42,24 +42,32 @@ class ListeningPrayerEditor extends StatelessWidget {
         ),
         const SizedBox(height: 24),
         
-        ...impressions.map((impression) => PrayerImpressionEntry(
-          key: ValueKey(impression.id),
-          impression: impression,
-          onTextChanged: (text) {
-            bloc.add(UpdateEntryText(
-              sessionId,
-              impression.id,
-              text,
-            ));
-          },
-          onImageChanged: (path) {
-            bloc.add(UpdateEntryImage(
-              sessionId,
-              impression.id,
-              path,
-            ));
-          },
-        )),
+        ...List.generate(impressions.length, (index) {
+          final impression = impressions[index];
+          final isLast = index == impressions.length - 1;
+
+          return PrayerImpressionEntry(
+            key: ValueKey(impression.id),
+            impression: impression,
+            onTextChanged: (text) {
+              bloc.add(UpdateEntryText(
+                sessionId,
+                impression.id,
+                text,
+              ));
+            },
+            onImageChanged: (path) {
+              bloc.add(UpdateEntryImage(
+                sessionId,
+                impression.id,
+                path,
+              ));
+            },
+            onDelete: isLast ? null : () {
+              bloc.add(DeleteEntry(sessionId, impression.id));
+            },
+          );
+        }),
 
         const SizedBox(height: 32),
         const Divider(),

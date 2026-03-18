@@ -9,6 +9,7 @@ class DflEntryWidget extends StatefulWidget {
   final String hintText;
   final Function(String) onTextChanged;
   final Function(String?) onImageChanged;
+  final VoidCallback? onDelete;
 
   const DflEntryWidget({
     super.key,
@@ -16,6 +17,7 @@ class DflEntryWidget extends StatefulWidget {
     this.hintText = 'Schreibe hier...',
     required this.onTextChanged,
     required this.onImageChanged,
+    this.onDelete,
   });
 
   @override
@@ -49,78 +51,96 @@ class _DflEntryWidgetState extends State<DflEntryWidget> {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
 
-    return Container(
-      margin: const EdgeInsets.only(bottom: 16),
-      padding: const EdgeInsets.all(12),
-      decoration: BoxDecoration(
-        color: theme.colorScheme.surface,
-        borderRadius: BorderRadius.circular(16),
-        border: Border.all(
-          color: theme.colorScheme.outline.withValues(alpha: 0.2),
-          width: 1,
-        ),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withValues(alpha: 0.05),
-            blurRadius: 10,
-            offset: const Offset(0, 4),
-          ),
-        ],
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Expanded(
-                child: TextField(
-                  controller: _controller,
-                  maxLines: null,
-                  decoration: InputDecoration(
-                    hintText: widget.hintText,
-                    border: InputBorder.none,
-                    isDense: true,
-                    contentPadding: const EdgeInsets.symmetric(vertical: 8),
-                  ),
-                  onChanged: widget.onTextChanged,
-                ),
-              ),
-              const SizedBox(width: 8),
-              IconButton(
-                icon: const Icon(Icons.add_a_photo_outlined),
-                onPressed: () async {
-                  final picker = ImagePicker();
-                  final image = await picker.pickImage(source: ImageSource.gallery);
-                  if (image != null) widget.onImageChanged(image.path);
-                },
+    return Stack(
+      children: [
+        Container(
+          margin: const EdgeInsets.only(bottom: 16),
+          padding: const EdgeInsets.all(12),
+          decoration: BoxDecoration(
+            color: theme.colorScheme.surface,
+            borderRadius: BorderRadius.circular(16),
+            border: Border.all(
+              color: theme.colorScheme.outline.withValues(alpha: 0.2),
+              width: 1,
+            ),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withValues(alpha: 0.05),
+                blurRadius: 10,
+                offset: const Offset(0, 4),
               ),
             ],
           ),
-          if (widget.entry.imagePath != null) ...[
-            const SizedBox(height: 12),
-            ClipRRect(
-              borderRadius: BorderRadius.circular(12),
-              child: Stack(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  _buildImage(widget.entry.imagePath!),
-                  Positioned(
-                    right: 8, top: 8,
-                    child: GestureDetector(
-                      onTap: () => widget.onImageChanged(null),
-                      child: Container(
-                        padding: const EdgeInsets.all(4),
-                        decoration: const BoxDecoration(color: Colors.black54, shape: BoxShape.circle),
-                        child: const Icon(Icons.close, color: Colors.white, size: 16),
+                  Expanded(
+                    child: TextField(
+                      controller: _controller,
+                      maxLines: null,
+                      decoration: InputDecoration(
+                        hintText: widget.hintText,
+                        border: InputBorder.none,
+                        isDense: true,
+                        contentPadding: const EdgeInsets.symmetric(vertical: 8),
                       ),
+                      onChanged: widget.onTextChanged,
                     ),
                   ),
+                  const SizedBox(width: 8),
+                  IconButton(
+                    icon: const Icon(Icons.add_a_photo_outlined),
+                    onPressed: () async {
+                      final picker = ImagePicker();
+                      final image = await picker.pickImage(source: ImageSource.gallery);
+                      if (image != null) widget.onImageChanged(image.path);
+                    },
+                  ),
+                  if (widget.onDelete != null)
+                    const SizedBox(width: 32), // Platz für den Lösch-Button im Stack
                 ],
               ),
+              if (widget.entry.imagePath != null) ...[
+                const SizedBox(height: 12),
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(12),
+                  child: Stack(
+                    children: [
+                      _buildImage(widget.entry.imagePath!),
+                      Positioned(
+                        right: 8, top: 8,
+                        child: GestureDetector(
+                          onTap: () => widget.onImageChanged(null),
+                          child: Container(
+                            padding: const EdgeInsets.all(4),
+                            decoration: const BoxDecoration(color: Colors.black54, shape: BoxShape.circle),
+                            child: const Icon(Icons.close, color: Colors.white, size: 16),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ],
+          ),
+        ),
+        if (widget.onDelete != null)
+          Positioned(
+            right: 4,
+            top: 4,
+            child: IconButton(
+              icon: const Icon(Icons.close, size: 20),
+              color: theme.colorScheme.error.withValues(alpha: 0.5),
+              onPressed: widget.onDelete,
+              padding: EdgeInsets.zero,
+              constraints: const BoxConstraints(),
             ),
-          ],
-        ],
-      ),
+          ),
+      ],
     );
   }
 

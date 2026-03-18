@@ -18,13 +18,14 @@ class DflEntry extends Equatable {
   DflEntry copyWith({
     String? text,
     String? imagePath,
+    bool clearImagePath = false,
     String? metadata,
     bool? isCompleted,
   }) {
     return DflEntry(
       id: id,
       text: text ?? this.text,
-      imagePath: imagePath ?? this.imagePath,
+      imagePath: clearImagePath ? null : (imagePath ?? this.imagePath),
       metadata: metadata ?? this.metadata,
       isCompleted: isCompleted ?? this.isCompleted,
     );

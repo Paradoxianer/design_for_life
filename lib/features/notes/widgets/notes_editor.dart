@@ -49,17 +49,25 @@ class NotesEditor extends DflModuleEditor {
         ),
         const SizedBox(height: 24),
         
-        ...entries.map((entry) => DflEntryWidget(
-          key: ValueKey(entry.id),
-          entry: entry,
-          hintText: l10n.notesHint,
-          onTextChanged: (text) {
-            bloc.add(UpdateEntryText(sessionId, entry.id, text));
-          },
-          onImageChanged: (path) {
-            bloc.add(UpdateEntryImage(sessionId, entry.id, path));
-          },
-        )),
+        ...List.generate(entries.length, (index) {
+          final entry = entries[index];
+          final isLast = index == entries.length - 1;
+
+          return DflEntryWidget(
+            key: ValueKey(entry.id),
+            entry: entry,
+            hintText: l10n.notesHint,
+            onTextChanged: (text) {
+              bloc.add(UpdateEntryText(sessionId, entry.id, text));
+            },
+            onImageChanged: (path) {
+              bloc.add(UpdateEntryImage(sessionId, entry.id, path));
+            },
+            onDelete: isLast ? null : () {
+              bloc.add(DeleteEntry(sessionId, entry.id));
+            },
+          );
+        }),
       ],
     );
   }

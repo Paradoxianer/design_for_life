@@ -42,6 +42,14 @@ class UpdateEntryImage extends EntryListEvent {
   List<Object?> get props => [sessionId, entryId, imagePath];
 }
 
+class DeleteEntry extends EntryListEvent {
+  final String sessionId;
+  final String entryId;
+  const DeleteEntry(this.sessionId, this.entryId);
+  @override
+  List<Object?> get props => [sessionId, entryId];
+}
+
 class UpdateTakeaway extends EntryListEvent {
   final String sessionId;
   final int index;
@@ -100,6 +108,7 @@ abstract class EntryListBloc extends HydratedBloc<EntryListEvent, EntryListState
     on<UpdateEntryText>(_onUpdateEntryText);
     on<ToggleEntryCompletion>(_onToggleEntryCompletion);
     on<UpdateEntryImage>(_onUpdateEntryImage);
+    on<DeleteEntry>(_onDeleteEntry);
     on<UpdateTakeaway>(_onUpdateTakeaway);
   }
 
@@ -128,7 +137,6 @@ abstract class EntryListBloc extends HydratedBloc<EntryListEvent, EntryListState
       sessionEntries.add(DflEntry(id: event.entryId, text: event.text));
     }
 
-    // Automatisch ein neues Feld hinzufügen, wenn das letzte Feld befüllt wird
     if (sessionEntries.isNotEmpty && 
         sessionEntries.last.id == event.entryId && 
         (event.text.isNotEmpty || sessionEntries.last.imagePath != null)) {
@@ -171,17 +179,29 @@ abstract class EntryListBloc extends HydratedBloc<EntryListEvent, EntryListState
     final index = sessionEntries.indexWhere((i) => i.id == event.entryId);
     
     if (index != -1) {
-      sessionEntries[index] = sessionEntries[index].copyWith(imagePath: event.imagePath);
-    } else {
+      if (event.imagePath == null) {
+        sessionEntries[index] = sessionEntries[index].copyWith(clearImagePath: true);
+      } else {
+        sessionEntries[index] = sessionEntries[index].copyWith(imagePath: event.imagePath);
+      }
+    } else if (event.imagePath != null) {
       sessionEntries.add(DflEntry(id: event.entryId, imagePath: event.imagePath));
     }
 
-    // Automatisch ein neues Feld hinzufügen, wenn das letzte Feld befüllt wird
     if (sessionEntries.isNotEmpty && 
         sessionEntries.last.id == event.entryId && 
-        (event.imagePath != null || sessionEntries.last.text.isNotEmpty)) {
+        (sessionEntries.last.imagePath != null || sessionEntries.last.text.isNotEmpty)) {
       sessionEntries.add(DflEntry(id: _generateId()));
     }
+
+    final newMap = Map<String, List<DflEntry>>.from(state.entries);
+    newMap[event.sessionId] = sessionEntries;
+    emit(state.copyWith(entries: newMap));
+  }
+
+  void _onDeleteEntry(DeleteEntry event, Emitter<EntryListState> emit) {
+    final sessionEntries = _getEntries(event.sessionId);
+    sessionEntries.removeWhere((i) => i.id == event.entryId);
 
     final newMap = Map<String, List<DflEntry>>.from(state.entries);
     newMap[event.sessionId] = sessionEntries;
