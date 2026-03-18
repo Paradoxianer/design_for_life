@@ -55,7 +55,7 @@ class _DflEntryWidgetState extends State<DflEntryWidget> {
       children: [
         Container(
           margin: const EdgeInsets.only(bottom: 16),
-          padding: const EdgeInsets.fromLTRB(16, 16, 12, 16), // Konstantes Padding
+          padding: const EdgeInsets.fromLTRB(16, 16, 12, 16),
           decoration: BoxDecoration(
             color: theme.colorScheme.surface,
             borderRadius: BorderRadius.circular(16),
@@ -81,6 +81,7 @@ class _DflEntryWidgetState extends State<DflEntryWidget> {
                     child: TextField(
                       controller: _controller,
                       maxLines: null,
+                      minLines: 2, // Garantiert Platz für beide Icons
                       decoration: InputDecoration(
                         hintText: widget.hintText,
                         border: InputBorder.none,
@@ -91,7 +92,6 @@ class _DflEntryWidgetState extends State<DflEntryWidget> {
                     ),
                   ),
                   const SizedBox(width: 4),
-                  // Feste Spalte für den Foto-Button (verhindert Springen)
                   SizedBox(
                     width: 40,
                     child: IconButton(
@@ -138,6 +138,8 @@ class _DflEntryWidgetState extends State<DflEntryWidget> {
             top: 4,
             child: IconButton(
               onPressed: widget.onDelete,
+              padding: EdgeInsets.zero, // Hitbox verkleinern
+              constraints: const BoxConstraints(),
               icon: Container(
                 padding: const EdgeInsets.all(4),
                 decoration: BoxDecoration(

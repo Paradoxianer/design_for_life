@@ -79,6 +79,7 @@ class _PrayerImpressionEntryState extends State<PrayerImpressionEntry> {
                     child: TextField(
                       controller: _controller,
                       maxLines: null,
+                      minLines: 2, // Garantiert Platz für beide Icons
                       style: theme.textTheme.bodyLarge,
                       decoration: const InputDecoration(
                         hintText: 'Schreibe deinen Eindruck...',
@@ -144,6 +145,8 @@ class _PrayerImpressionEntryState extends State<PrayerImpressionEntry> {
             top: 4,
             child: IconButton(
               onPressed: widget.onDelete,
+              padding: EdgeInsets.zero,
+              constraints: const BoxConstraints(),
               icon: Container(
                 padding: const EdgeInsets.all(4),
                 decoration: BoxDecoration(
