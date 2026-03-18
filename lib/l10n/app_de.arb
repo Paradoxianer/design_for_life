@@ -26,9 +26,15 @@
     }
   },
   "goalHint": "Was möchtest du erreichen?",
+  "smartCheck": "Überprüfe, ob dein Ziel \"SMART\" ist:",
   "smartSpecific": "Spezifisch",
+  "smartSpecificDesc": "Ist das Ziel klar definiert?",
   "smartMeasurable": "Messbar",
+  "smartMeasurableDesc": "Ist der Fortschritt nachvollziehbar?",
   "smartAchievable": "Attraktiv",
+  "smartAchievableDesc": "Ist es realistisch und erstrebenswert?",
   "smartRelevant": "Relevant",
-  "smartTimeBound": "Terminiert"
+  "smartRelevantDesc": "Passt es zu deinem Weg?",
+  "smartTimeBound": "Terminiert",
+  "smartTimeBoundDesc": "Bis wann soll es erreicht sein?"
 }

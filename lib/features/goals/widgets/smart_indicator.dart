@@ -2,12 +2,14 @@ import 'package:flutter/material.dart';
 
 class SmartIndicator extends StatelessWidget {
   final String label;
+  final String tooltip;
   final bool isActive;
   final VoidCallback? onTap;
 
   const SmartIndicator({
     super.key,
     required this.label,
+    required this.tooltip,
     required this.isActive,
     this.onTap,
   });
@@ -18,21 +20,35 @@ class SmartIndicator extends StatelessWidget {
     final color = isActive ? theme.colorScheme.primary : Colors.grey.shade300;
     final textColor = isActive ? Colors.white : Colors.grey.shade600;
 
-    return GestureDetector(
-      onTap: onTap,
-      child: Container(
-        width: 32,
-        height: 32,
-        decoration: BoxDecoration(
-          color: color,
-          shape: BoxShape.circle,
-        ),
-        alignment: Alignment.center,
-        child: Text(
-          label,
-          style: TextStyle(
-            color: textColor,
-            fontWeight: FontWeight.bold,
+    return Tooltip(
+      message: tooltip,
+      child: GestureDetector(
+        onTap: onTap,
+        child: AnimatedContainer(
+          duration: const Duration(milliseconds: 200),
+          width: 40,
+          height: 40,
+          decoration: BoxDecoration(
+            color: color,
+            shape: BoxShape.circle,
+            boxShadow: isActive
+                ? [
+                    BoxShadow(
+                      color: theme.colorScheme.primary.withValues(alpha: 0.3),
+                      blurRadius: 8,
+                      offset: const Offset(0, 2),
+                    )
+                  ]
+                : null,
+          ),
+          alignment: Alignment.center,
+          child: Text(
+            label,
+            style: TextStyle(
+              color: textColor,
+              fontWeight: FontWeight.bold,
+              fontSize: 16,
+            ),
           ),
         ),
       ),

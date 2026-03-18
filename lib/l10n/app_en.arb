@@ -29,9 +29,15 @@
     }
   },
   "goalHint": "What do you want to achieve?",
+  "smartCheck": "Check if your goal is SMART:",
   "smartSpecific": "Specific",
+  "smartSpecificDesc": "Is the goal clearly defined?",
   "smartMeasurable": "Measurable",
+  "smartMeasurableDesc": "Can you track your progress?",
   "smartAchievable": "Achievable",
+  "smartAchievableDesc": "Is it realistic and attainable?",
   "smartRelevant": "Relevant",
-  "smartTimeBound": "Time-bound"
+  "smartRelevantDesc": "Does it matter to your journey?",
+  "smartTimeBound": "Time-bound",
+  "smartTimeBoundDesc": "What is the deadline?"
 }
