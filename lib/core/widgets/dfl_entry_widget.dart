@@ -55,7 +55,12 @@ class _DflEntryWidgetState extends State<DflEntryWidget> {
       children: [
         Container(
           margin: const EdgeInsets.only(bottom: 16),
-          padding: const EdgeInsets.all(12),
+          padding: EdgeInsets.only(
+            left: 16,
+            top: 16,
+            bottom: 16,
+            right: widget.onDelete != null ? 44 : 16, // Platz für Lösch-Button schaffen
+          ),
           decoration: BoxDecoration(
             color: theme.colorScheme.surface,
             borderRadius: BorderRadius.circular(16),
@@ -101,7 +106,6 @@ class _DflEntryWidgetState extends State<DflEntryWidget> {
                     padding: EdgeInsets.zero,
                     constraints: const BoxConstraints(),
                   ),
-                  const SizedBox(width: 4), // Kleiner Puffer zum Rand
                 ],
               ),
               if (widget.entry.imagePath != null) ...[
@@ -131,8 +135,8 @@ class _DflEntryWidgetState extends State<DflEntryWidget> {
         ),
         if (widget.onDelete != null)
           Positioned(
-            right: 0,
-            top: 0,
+            right: 4,
+            top: 4,
             child: IconButton(
               onPressed: widget.onDelete,
               icon: Container(

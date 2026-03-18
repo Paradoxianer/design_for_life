@@ -49,63 +49,52 @@ class _PrayerImpressionEntryState extends State<PrayerImpressionEntry> {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
 
-    return Container(
-      margin: const EdgeInsets.only(bottom: 16),
-      padding: const EdgeInsets.all(12),
-      decoration: BoxDecoration(
-        color: theme.colorScheme.surface,
-        borderRadius: BorderRadius.circular(16),
-        border: Border.all(
-          color: theme.colorScheme.outline.withValues(alpha: 0.2),
-          width: 1,
-        ),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withValues(alpha: 0.05),
-            blurRadius: 10,
-            offset: const Offset(0, 4),
+    return Stack(
+      children: [
+        Container(
+          margin: const EdgeInsets.only(bottom: 16),
+          padding: EdgeInsets.only(
+            left: 16,
+            top: 16,
+            bottom: 16,
+            right: widget.onDelete != null ? 44 : 16, // Platz für Lösch-Button
           ),
-        ],
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.end, // Bild-Button klebt unten am Text
-            children: [
-              Expanded(
-                child: TextField(
-                  controller: _controller,
-                  maxLines: null,
-                  style: theme.textTheme.bodyLarge,
-                  decoration: const InputDecoration(
-                    hintText: 'Schreibe deinen Eindruck...',
-                    border: InputBorder.none,
-                    isDense: true,
-                    contentPadding: EdgeInsets.symmetric(vertical: 8),
-                  ),
-                  onChanged: widget.onTextChanged,
-                ),
+          decoration: BoxDecoration(
+            color: theme.colorScheme.surface,
+            borderRadius: BorderRadius.circular(16),
+            border: Border.all(
+              color: theme.colorScheme.outline.withValues(alpha: 0.2),
+              width: 1,
+            ),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withValues(alpha: 0.05),
+                blurRadius: 10,
+                offset: const Offset(0, 4),
               ),
-              const SizedBox(width: 8),
-              Column(
-                mainAxisSize: MainAxisSize.min,
+            ],
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
-                  if (widget.onDelete != null)
-                    IconButton(
-                      icon: Container(
-                        padding: const EdgeInsets.all(4),
-                        decoration: BoxDecoration(
-                          color: theme.colorScheme.surface,
-                          shape: BoxShape.circle,
-                          border: Border.all(color: theme.colorScheme.outline.withValues(alpha: 0.1)),
-                        ),
-                        child: const Icon(Icons.close, size: 16, color: Colors.black87),
+                  Expanded(
+                    child: TextField(
+                      controller: _controller,
+                      maxLines: null,
+                      style: theme.textTheme.bodyLarge,
+                      decoration: const InputDecoration(
+                        hintText: 'Schreibe deinen Eindruck...',
+                        border: InputBorder.none,
+                        isDense: true,
+                        contentPadding: EdgeInsets.symmetric(vertical: 8),
                       ),
-                      onPressed: widget.onDelete,
-                      padding: const EdgeInsets.only(bottom: 4),
-                      constraints: const BoxConstraints(),
+                      onChanged: widget.onTextChanged,
                     ),
+                  ),
+                  const SizedBox(width: 8),
                   IconButton(
                     icon: const Icon(Icons.add_a_photo_outlined),
                     onPressed: () async {
@@ -120,38 +109,61 @@ class _PrayerImpressionEntryState extends State<PrayerImpressionEntry> {
                   ),
                 ],
               ),
+              if (widget.impression.imagePath != null) ...[
+                const SizedBox(height: 12),
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(12),
+                  child: Stack(
+                    children: [
+                      _buildImage(widget.impression.imagePath!),
+                      Positioned(
+                        right: 8,
+                        top: 8,
+                        child: GestureDetector(
+                          onTap: () {
+                            widget.onImageChanged(null);
+                          },
+                          child: Container(
+                            padding: const EdgeInsets.all(4),
+                            decoration: const BoxDecoration(
+                              color: Colors.black54,
+                              shape: BoxShape.circle,
+                            ),
+                            child: const Icon(Icons.close, color: Colors.white, size: 16),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
             ],
           ),
-          if (widget.impression.imagePath != null) ...[
-            const SizedBox(height: 12),
-            ClipRRect(
-              borderRadius: BorderRadius.circular(12),
-              child: Stack(
-                children: [
-                  _buildImage(widget.impression.imagePath!),
-                  Positioned(
-                    right: 8,
-                    top: 8,
-                    child: GestureDetector(
-                      onTap: () {
-                        widget.onImageChanged(null);
-                      },
-                      child: Container(
-                        padding: const EdgeInsets.all(4),
-                        decoration: const BoxDecoration(
-                          color: Colors.black54,
-                          shape: BoxShape.circle,
-                        ),
-                        child: const Icon(Icons.close, color: Colors.white, size: 16),
-                      ),
-                    ),
-                  ),
-                ],
+        ),
+        if (widget.onDelete != null)
+          Positioned(
+            right: 0,
+            top: 0,
+            child: IconButton(
+              onPressed: widget.onDelete,
+              icon: Container(
+                padding: const EdgeInsets.all(4),
+                decoration: BoxDecoration(
+                  color: theme.colorScheme.surface,
+                  shape: BoxShape.circle,
+                  border: Border.all(color: theme.colorScheme.outline.withValues(alpha: 0.1)),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withValues(alpha: 0.05),
+                      blurRadius: 4,
+                    )
+                  ],
+                ),
+                child: const Icon(Icons.close, size: 14, color: Colors.black87),
               ),
             ),
-          ],
-        ],
-      ),
+          ),
+      ],
     );
   }
 
