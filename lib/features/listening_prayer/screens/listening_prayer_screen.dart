@@ -10,11 +10,13 @@ import '../../../core/widgets/dfl_module_scaffold.dart';
 class ListeningPrayerScreen extends StatefulWidget {
   final String sessionId;
   final String title;
+  final bool initialEditMode;
 
   const ListeningPrayerScreen({
     super.key,
     required this.sessionId,
     required this.title,
+    this.initialEditMode = true,
   });
 
   @override
@@ -22,7 +24,13 @@ class ListeningPrayerScreen extends StatefulWidget {
 }
 
 class _ListeningPrayerScreenState extends State<ListeningPrayerScreen> {
-  bool _isEditMode = true;
+  late bool _isEditMode;
+
+  @override
+  void initState() {
+    super.initState();
+    _isEditMode = widget.initialEditMode;
+  }
 
   @override
   Widget build(BuildContext context) {

@@ -10,11 +10,13 @@ import '../widgets/notes_result.dart';
 class NotesScreen extends StatefulWidget {
   final String sessionId;
   final String title;
+  final bool initialEditMode;
 
   const NotesScreen({
     super.key,
     required this.sessionId,
     required this.title,
+    this.initialEditMode = true,
   });
 
   @override
@@ -22,7 +24,13 @@ class NotesScreen extends StatefulWidget {
 }
 
 class _NotesScreenState extends State<NotesScreen> {
-  bool _isEditMode = true;
+  late bool _isEditMode;
+
+  @override
+  void initState() {
+    super.initState();
+    _isEditMode = widget.initialEditMode;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -39,36 +47,15 @@ class _NotesScreenState extends State<NotesScreen> {
           title: widget.title,
           isEditMode: _isEditMode,
           onToggleMode: () => setState(() => _isEditMode = !_isEditMode),
-          editor: Column(
-            children: [
-              Expanded(
-                child: NotesEditor(
-                  sessionId: widget.sessionId,
-                  entries: displayEntries,
-                  takeaways: takeaways,
-                  onUpdate: (index, value) {
-                    context.read<NotesBloc>().add(
-                      UpdateTakeaway(widget.sessionId, index, value),
-                    );
-                  },
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: SizedBox(
-                  width: double.infinity,
-                  child: ElevatedButton.icon(
-                    onPressed: () => setState(() => _isEditMode = false),
-                    icon: const Icon(Icons.check),
-                    label: const Text('Fertig'),
-                    style: ElevatedButton.styleFrom(
-                      padding: const EdgeInsets.symmetric(vertical: 16),
-                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-                    ),
-                  ),
-                ),
-              ),
-            ],
+          editor: NotesEditor(
+            sessionId: widget.sessionId,
+            entries: displayEntries,
+            takeaways: takeaways,
+            onUpdate: (index, value) {
+              context.read<NotesBloc>().add(
+                UpdateTakeaway(widget.sessionId, index, value),
+              );
+            },
           ),
           result: NotesResult(
             entries: entries,

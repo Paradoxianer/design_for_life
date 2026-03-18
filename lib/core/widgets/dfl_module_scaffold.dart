@@ -7,7 +7,6 @@ class DflModuleScaffold extends StatelessWidget {
   final Widget result;
   final bool isEditMode;
   final VoidCallback onToggleMode;
-  final VoidCallback? onSave;
 
   const DflModuleScaffold({
     super.key,
@@ -16,7 +15,6 @@ class DflModuleScaffold extends StatelessWidget {
     required this.result,
     required this.isEditMode,
     required this.onToggleMode,
-    this.onSave,
   });
 
   @override
@@ -27,11 +25,6 @@ class DflModuleScaffold extends StatelessWidget {
       appBar: AppBar(
         title: Text(title),
         actions: [
-          if (onSave != null)
-            IconButton(
-              icon: const Icon(Icons.check),
-              onPressed: onSave,
-            ),
           IconButton(
             tooltip: isEditMode ? l10n.resultMode : l10n.editMode,
             icon: Icon(isEditMode ? Icons.remove_red_eye_outlined : Icons.edit_outlined),
@@ -41,7 +34,28 @@ class DflModuleScaffold extends StatelessWidget {
       ),
       body: AnimatedSwitcher(
         duration: const Duration(milliseconds: 300),
-        child: isEditMode ? editor : result,
+        child: isEditMode 
+          ? Column(
+              children: [
+                Expanded(child: editor),
+                Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: SizedBox(
+                    width: double.infinity,
+                    child: ElevatedButton.icon(
+                      onPressed: onToggleMode,
+                      icon: const Icon(Icons.check),
+                      label: const Text('Fertig'),
+                      style: ElevatedButton.styleFrom(
+                        padding: const EdgeInsets.symmetric(vertical: 16),
+                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            )
+          : result,
       ),
     );
   }
