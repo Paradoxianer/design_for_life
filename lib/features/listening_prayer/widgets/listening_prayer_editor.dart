@@ -37,13 +37,13 @@ class ListeningPrayerEditor extends StatelessWidget {
         ),
         const SizedBox(height: 8),
         Text(
-          'Erfasse hier deine Eindrücke. Nutze den Haken, um einen Eintrag abzuschließen.',
+          'Erfasse hier deine Eindrücke.',
           style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: Colors.grey),
         ),
         const SizedBox(height: 24),
         
         ...impressions.map((impression) => PrayerImpressionEntry(
-          key: ValueKey(impression.id), // Key für korrekte UI-Aktualisierung
+          key: ValueKey(impression.id),
           impression: impression,
           onTextChanged: (text) {
             bloc.add(UpdateEntryText(
@@ -57,12 +57,6 @@ class ListeningPrayerEditor extends StatelessWidget {
               sessionId,
               impression.id,
               path,
-            ));
-          },
-          onToggleCompleted: () {
-            bloc.add(ToggleEntryCompletion(
-              sessionId,
-              impression.id,
             ));
           },
         )),

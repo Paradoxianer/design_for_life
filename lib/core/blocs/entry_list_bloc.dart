@@ -125,8 +125,14 @@ abstract class EntryListBloc extends HydratedBloc<EntryListEvent, EntryListState
     if (index != -1) {
       sessionEntries[index] = sessionEntries[index].copyWith(text: event.text);
     } else {
-      // Falls es ein Initial-Eintrag war oder die Liste leer ist
       sessionEntries.add(DflEntry(id: event.entryId, text: event.text));
+    }
+
+    // Automatisch ein neues Feld hinzufügen, wenn das letzte Feld befüllt wird
+    if (sessionEntries.isNotEmpty && 
+        sessionEntries.last.id == event.entryId && 
+        (event.text.isNotEmpty || sessionEntries.last.imagePath != null)) {
+      sessionEntries.add(DflEntry(id: _generateId()));
     }
 
     final newMap = Map<String, List<DflEntry>>.from(state.entries);
@@ -138,7 +144,6 @@ abstract class EntryListBloc extends HydratedBloc<EntryListEvent, EntryListState
     final sessionEntries = _getEntries(event.sessionId);
     int index = sessionEntries.indexWhere((i) => i.id == event.entryId);
     
-    // Falls der Eintrag noch nicht existiert (z.B. initialer Haken ohne Text)
     if (index == -1 && event.entryId.startsWith('initial_')) {
       sessionEntries.add(DflEntry(id: event.entryId, isCompleted: true));
       index = sessionEntries.length - 1;
@@ -148,7 +153,6 @@ abstract class EntryListBloc extends HydratedBloc<EntryListEvent, EntryListState
       final wasCompleted = sessionEntries[index].isCompleted;
       sessionEntries[index] = sessionEntries[index].copyWith(isCompleted: !wasCompleted);
       
-      // Wenn ein Eintrag abgeschlossen wurde, prüfen ob ein neuer leerer nachrücken muss
       if (!wasCompleted) {
         final hasActive = sessionEntries.any((i) => !i.isCompleted);
         if (!hasActive) {
@@ -170,6 +174,13 @@ abstract class EntryListBloc extends HydratedBloc<EntryListEvent, EntryListState
       sessionEntries[index] = sessionEntries[index].copyWith(imagePath: event.imagePath);
     } else {
       sessionEntries.add(DflEntry(id: event.entryId, imagePath: event.imagePath));
+    }
+
+    // Automatisch ein neues Feld hinzufügen, wenn das letzte Feld befüllt wird
+    if (sessionEntries.isNotEmpty && 
+        sessionEntries.last.id == event.entryId && 
+        (event.imagePath != null || sessionEntries.last.text.isNotEmpty)) {
+      sessionEntries.add(DflEntry(id: _generateId()));
     }
 
     final newMap = Map<String, List<DflEntry>>.from(state.entries);

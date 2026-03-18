@@ -8,14 +8,12 @@ class PrayerImpressionEntry extends StatefulWidget {
   final DflEntry impression;
   final Function(String) onTextChanged;
   final Function(String?) onImageChanged;
-  final VoidCallback onToggleCompleted;
 
   const PrayerImpressionEntry({
     super.key,
     required this.impression,
     required this.onTextChanged,
     required this.onImageChanged,
-    required this.onToggleCompleted,
   });
 
   @override
@@ -48,24 +46,18 @@ class _PrayerImpressionEntryState extends State<PrayerImpressionEntry> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final isDone = widget.impression.isCompleted;
-    final hasContent = widget.impression.text.trim().isNotEmpty || widget.impression.imagePath != null;
 
     return Container(
       margin: const EdgeInsets.only(bottom: 16),
       padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
-        color: isDone 
-            ? theme.colorScheme.primaryContainer.withValues(alpha: 0.3) 
-            : theme.colorScheme.surface,
+        color: theme.colorScheme.surface,
         borderRadius: BorderRadius.circular(16),
         border: Border.all(
-          color: isDone 
-              ? theme.colorScheme.primary.withValues(alpha: 0.5) 
-              : theme.colorScheme.outline.withValues(alpha: 0.2),
-          width: isDone ? 2 : 1,
+          color: theme.colorScheme.outline.withValues(alpha: 0.2),
+          width: 1,
         ),
-        boxShadow: isDone ? [] : [
+        boxShadow: [
           BoxShadow(
             color: Colors.black.withValues(alpha: 0.05),
             blurRadius: 10,
@@ -83,50 +75,27 @@ class _PrayerImpressionEntryState extends State<PrayerImpressionEntry> {
                 child: TextField(
                   controller: _controller,
                   maxLines: null,
-                  // Immer aktiviert lassen für sofortige Editierbarkeit
-                  enabled: true, 
-                  style: theme.textTheme.bodyLarge?.copyWith(
-                    color: isDone ? theme.colorScheme.onSurfaceVariant : null,
-                  ),
+                  enabled: true,
+                  style: theme.textTheme.bodyLarge,
                   decoration: const InputDecoration(
                     hintText: 'Schreibe deinen Eindruck...',
                     border: InputBorder.none,
                     isDense: true,
                     contentPadding: EdgeInsets.symmetric(vertical: 8),
                   ),
-                  onChanged: (val) {
-                    widget.onTextChanged(val);
-                  },
+                  onChanged: widget.onTextChanged,
                 ),
               ),
               const SizedBox(width: 8),
-              Column(
-                children: [
-                  IconButton(
-                    icon: Icon(
-                      isDone ? Icons.check_circle : Icons.check_circle_outline,
-                      size: 28,
-                    ),
-                    color: isDone 
-                        ? Colors.green 
-                        : (hasContent ? Colors.green.withValues(alpha: 0.7) : Colors.grey.withValues(alpha: 0.5)),
-                    onPressed: () {
-                      if (hasContent || isDone) {
-                        widget.onToggleCompleted();
-                      }
-                    },
-                  ),
-                  IconButton(
-                    icon: const Icon(Icons.add_a_photo_outlined),
-                    onPressed: () async {
-                      final picker = ImagePicker();
-                      final image = await picker.pickImage(source: ImageSource.gallery);
-                      if (image != null) {
-                        widget.onImageChanged(image.path);
-                      }
-                    },
-                  ),
-                ],
+              IconButton(
+                icon: const Icon(Icons.add_a_photo_outlined),
+                onPressed: () async {
+                  final picker = ImagePicker();
+                  final image = await picker.pickImage(source: ImageSource.gallery);
+                  if (image != null) {
+                    widget.onImageChanged(image.path);
+                  }
+                },
               ),
             ],
           ),

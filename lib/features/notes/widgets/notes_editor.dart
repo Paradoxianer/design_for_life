@@ -50,7 +50,7 @@ class NotesEditor extends DflModuleEditor {
         const SizedBox(height: 24),
         
         ...entries.map((entry) => DflEntryWidget(
-          key: ValueKey(entry.id), // Key für korrekte UI-Aktualisierung
+          key: ValueKey(entry.id),
           entry: entry,
           hintText: l10n.notesHint,
           onTextChanged: (text) {
@@ -58,9 +58,6 @@ class NotesEditor extends DflModuleEditor {
           },
           onImageChanged: (path) {
             bloc.add(UpdateEntryImage(sessionId, entry.id, path));
-          },
-          onToggleCompleted: () {
-            bloc.add(ToggleEntryCompletion(sessionId, entry.id));
           },
         )),
       ],

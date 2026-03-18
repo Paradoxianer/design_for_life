@@ -9,7 +9,6 @@ class DflEntryWidget extends StatefulWidget {
   final String hintText;
   final Function(String) onTextChanged;
   final Function(String?) onImageChanged;
-  final VoidCallback onToggleCompleted;
 
   const DflEntryWidget({
     super.key,
@@ -17,7 +16,6 @@ class DflEntryWidget extends StatefulWidget {
     this.hintText = 'Schreibe hier...',
     required this.onTextChanged,
     required this.onImageChanged,
-    required this.onToggleCompleted,
   });
 
   @override
@@ -50,24 +48,18 @@ class _DflEntryWidgetState extends State<DflEntryWidget> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final isDone = widget.entry.isCompleted;
-    final hasContent = widget.entry.text.trim().isNotEmpty || widget.entry.imagePath != null;
 
     return Container(
       margin: const EdgeInsets.only(bottom: 16),
       padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
-        color: isDone 
-            ? theme.colorScheme.primaryContainer.withValues(alpha: 0.3) 
-            : theme.colorScheme.surface,
+        color: theme.colorScheme.surface,
         borderRadius: BorderRadius.circular(16),
         border: Border.all(
-          color: isDone 
-              ? theme.colorScheme.primary.withValues(alpha: 0.5) 
-              : theme.colorScheme.outline.withValues(alpha: 0.2),
-          width: isDone ? 2 : 1,
+          color: theme.colorScheme.outline.withValues(alpha: 0.2),
+          width: 1,
         ),
-        boxShadow: isDone ? [] : [
+        boxShadow: [
           BoxShadow(
             color: Colors.black.withValues(alpha: 0.05),
             blurRadius: 10,
@@ -85,8 +77,6 @@ class _DflEntryWidgetState extends State<DflEntryWidget> {
                 child: TextField(
                   controller: _controller,
                   maxLines: null,
-                  // Immer aktiviert lassen für sofortige Editierbarkeit
-                  enabled: true, 
                   decoration: InputDecoration(
                     hintText: widget.hintText,
                     border: InputBorder.none,
@@ -97,29 +87,13 @@ class _DflEntryWidgetState extends State<DflEntryWidget> {
                 ),
               ),
               const SizedBox(width: 8),
-              Column(
-                children: [
-                  IconButton(
-                    icon: Icon(
-                      isDone ? Icons.check_circle : Icons.check_circle_outline,
-                      size: 28,
-                    ),
-                    color: isDone 
-                        ? Colors.green 
-                        : (hasContent ? Colors.green.withValues(alpha: 0.7) : Colors.grey.withValues(alpha: 0.5)),
-                    onPressed: () {
-                      if (hasContent || isDone) widget.onToggleCompleted();
-                    },
-                  ),
-                  IconButton(
-                    icon: const Icon(Icons.add_a_photo_outlined),
-                    onPressed: () async {
-                      final picker = ImagePicker();
-                      final image = await picker.pickImage(source: ImageSource.gallery);
-                      if (image != null) widget.onImageChanged(image.path);
-                    },
-                  ),
-                ],
+              IconButton(
+                icon: const Icon(Icons.add_a_photo_outlined),
+                onPressed: () async {
+                  final picker = ImagePicker();
+                  final image = await picker.pickImage(source: ImageSource.gallery);
+                  if (image != null) widget.onImageChanged(image.path);
+                },
               ),
             ],
           ),
@@ -142,16 +116,6 @@ class _DflEntryWidgetState extends State<DflEntryWidget> {
                     ),
                   ),
                 ],
-              ),
-            ),
-          ],
-          if (widget.entry.metadata != null) ...[
-            const SizedBox(height: 8),
-            Text(
-              widget.entry.metadata!,
-              style: theme.textTheme.labelSmall?.copyWith(
-                color: theme.colorScheme.secondary,
-                fontStyle: FontStyle.italic,
               ),
             ),
           ],

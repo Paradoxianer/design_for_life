@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:design_for_life/core/blocs/entry_list_bloc.dart';
+import 'package:design_for_life/core/models/dfl_entry.dart';
 import '../bloc/listening_prayer_bloc.dart';
 import '../widgets/listening_prayer_editor.dart';
 import '../widgets/listening_prayer_result.dart';
 import '../../../core/widgets/dfl_module_scaffold.dart';
-import '../../../core/models/dfl_entry.dart';
 
 class ListeningPrayerScreen extends StatefulWidget {
   final String sessionId;
@@ -22,7 +22,7 @@ class ListeningPrayerScreen extends StatefulWidget {
 }
 
 class _ListeningPrayerScreenState extends State<ListeningPrayerScreen> {
-  bool? _isEditModeOverride;
+  bool _isEditMode = true;
 
   @override
   Widget build(BuildContext context) {
@@ -31,30 +31,46 @@ class _ListeningPrayerScreenState extends State<ListeningPrayerScreen> {
         final impressions = state.entries[widget.sessionId] ?? [];
         final highlights = state.takeaways[widget.sessionId] ?? const ['', '', ''];
 
-        final hasContent = impressions.any((e) => e.text.trim().isNotEmpty || e.imagePath != null);
-        
-        // Initialer Modus: Result wenn Inhalt da ist, sonst Editor
-        final bool currentMode = _isEditModeOverride ?? !hasContent;
-
         final displayImpressions = impressions.isEmpty 
             ? [DflEntry(id: 'initial_${widget.sessionId}')] 
             : impressions;
 
         return DflModuleScaffold(
           title: widget.title,
-          isEditMode: currentMode,
-          onToggleMode: () => setState(() => _isEditModeOverride = !currentMode),
-          editor: ListeningPrayerEditor(
-            sessionId: widget.sessionId,
-            impressions: displayImpressions,
-            takeaways: highlights,
-            onTakeawaysUpdate: (newList) {
-              for (int i = 0; i < newList.length; i++) {
-                context.read<ListeningPrayerBloc>().add(
-                  UpdateTakeaway(widget.sessionId, i, newList[i]),
-                );
-              }
-            },
+          isEditMode: _isEditMode,
+          onToggleMode: () => setState(() => _isEditMode = !_isEditMode),
+          editor: Column(
+            children: [
+              Expanded(
+                child: ListeningPrayerEditor(
+                  sessionId: widget.sessionId,
+                  impressions: displayImpressions,
+                  takeaways: highlights,
+                  onTakeawaysUpdate: (newList) {
+                    for (int i = 0; i < newList.length; i++) {
+                      context.read<ListeningPrayerBloc>().add(
+                        UpdateTakeaway(widget.sessionId, i, newList[i]),
+                      );
+                    }
+                  },
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: SizedBox(
+                  width: double.infinity,
+                  child: ElevatedButton.icon(
+                    onPressed: () => setState(() => _isEditMode = false),
+                    icon: const Icon(Icons.check),
+                    label: const Text('Fertig'),
+                    style: ElevatedButton.styleFrom(
+                      padding: const EdgeInsets.symmetric(vertical: 16),
+                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                    ),
+                  ),
+                ),
+              ),
+            ],
           ),
           result: ListeningPrayerResult(
             impressions: { 'Eindrücke': impressions },
