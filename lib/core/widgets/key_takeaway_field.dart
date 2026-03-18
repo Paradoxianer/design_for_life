@@ -16,7 +16,7 @@ class KeyTakeawayField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final l10n = AppLocalizations.of(context)!;
+    final l10n = AppLocalizations.of(context);
     
     final String titleLabel = l10n.keyTakeaways;
     final String hintLabel = l10n.takeawayHint;

@@ -19,7 +19,7 @@ class ListeningPrayerResult extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final l10n = AppLocalizations.of(context);
+    final l10n = AppLocalizations.of(context)!;
     final theme = Theme.of(context);
     
     return SingleChildScrollView(
@@ -28,7 +28,7 @@ class ListeningPrayerResult extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            l10n?.listeningPrayer ?? 'Listening Prayer',
+            l10n.listeningPrayer,
             style: theme.textTheme.titleLarge,
           ),
           const SizedBox(height: 16),

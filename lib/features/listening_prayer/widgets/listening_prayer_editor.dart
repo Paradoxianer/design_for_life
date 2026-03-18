@@ -23,21 +23,21 @@ class ListeningPrayerEditor extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final l10n = AppLocalizations.of(context);
+    final l10n = AppLocalizations.of(context)!;
     final bloc = context.read<ListeningPrayerBloc>();
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          l10n?.listeningPrayer ?? 'Listening Prayer',
+          l10n.listeningPrayer,
           style: Theme.of(context).textTheme.titleLarge?.copyWith(
             fontWeight: FontWeight.bold,
           ),
         ),
         const SizedBox(height: 8),
         Text(
-          'Erfasse hier deine Eindrücke.',
+          l10n.listeningPrayerGuidance,
           style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: Colors.grey),
         ),
         const SizedBox(height: 24),

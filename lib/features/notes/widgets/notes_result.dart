@@ -20,7 +20,7 @@ class NotesResult extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final l10n = AppLocalizations.of(context)!;
+    final l10n = AppLocalizations.of(context);
     final displayEntries = entries.where((e) => e.text.isNotEmpty || e.imagePath != null).toList();
 
     return SingleChildScrollView(
