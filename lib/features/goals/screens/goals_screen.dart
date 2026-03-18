@@ -47,7 +47,6 @@ class _GoalsScreenState extends State<GoalsScreen> {
           result: GoalsResult(
             goals: goals,
           ),
-          onSave: () {},
         );
       },
     );

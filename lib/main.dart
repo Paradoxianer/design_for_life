@@ -53,7 +53,12 @@ class DflApp extends StatelessWidget {
           builder: (context, state) {
             final sessionId = state.pathParameters['sessionId']!;
             final title = state.uri.queryParameters['title'] ?? 'Notes';
-            return NotesScreen(sessionId: sessionId, title: title);
+            final mode = state.uri.queryParameters['mode'];
+            return NotesScreen(
+              sessionId: sessionId, 
+              title: title,
+              initialEditMode: mode != 'result',
+            );
           },
         ),
         GoRoute(
@@ -61,7 +66,12 @@ class DflApp extends StatelessWidget {
           builder: (context, state) {
             final sessionId = state.pathParameters['sessionId']!;
             final title = state.uri.queryParameters['title'] ?? 'Listening Prayer';
-            return ListeningPrayerScreen(sessionId: sessionId, title: title);
+            final mode = state.uri.queryParameters['mode'];
+            return ListeningPrayerScreen(
+              sessionId: sessionId, 
+              title: title,
+              initialEditMode: mode != 'result',
+            );
           },
         ),
         GoRoute(
@@ -69,7 +79,12 @@ class DflApp extends StatelessWidget {
           builder: (context, state) {
             final sessionId = state.pathParameters['sessionId']!;
             final title = state.uri.queryParameters['title'] ?? 'Goals';
-            return GoalsScreen(sessionId: sessionId, title: title);
+            final mode = state.uri.queryParameters['mode'];
+            return GoalsScreen(
+              sessionId: sessionId, 
+              title: title,
+              initialEditMode: mode != 'result',
+            );
           },
         ),
       ],
