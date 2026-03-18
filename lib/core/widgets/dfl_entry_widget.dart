@@ -75,7 +75,7 @@ class _DflEntryWidgetState extends State<DflEntryWidget> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
                   Expanded(
                     child: TextField(
@@ -98,9 +98,10 @@ class _DflEntryWidgetState extends State<DflEntryWidget> {
                       final image = await picker.pickImage(source: ImageSource.gallery);
                       if (image != null) widget.onImageChanged(image.path);
                     },
+                    padding: EdgeInsets.zero,
+                    constraints: const BoxConstraints(),
                   ),
-                  if (widget.onDelete != null)
-                    const SizedBox(width: 32), // Platz für den Lösch-Button im Stack
+                  const SizedBox(width: 4), // Kleiner Puffer zum Rand
                 ],
               ),
               if (widget.entry.imagePath != null) ...[
@@ -130,14 +131,25 @@ class _DflEntryWidgetState extends State<DflEntryWidget> {
         ),
         if (widget.onDelete != null)
           Positioned(
-            right: 4,
-            top: 4,
+            right: 0,
+            top: 0,
             child: IconButton(
-              icon: const Icon(Icons.close, size: 20),
-              color: theme.colorScheme.error.withValues(alpha: 0.5),
               onPressed: widget.onDelete,
-              padding: EdgeInsets.zero,
-              constraints: const BoxConstraints(),
+              icon: Container(
+                padding: const EdgeInsets.all(4),
+                decoration: BoxDecoration(
+                  color: theme.colorScheme.surface,
+                  shape: BoxShape.circle,
+                  border: Border.all(color: theme.colorScheme.outline.withValues(alpha: 0.1)),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withValues(alpha: 0.05),
+                      blurRadius: 4,
+                    )
+                  ],
+                ),
+                child: const Icon(Icons.close, size: 14, color: Colors.black87),
+              ),
             ),
           ),
       ],

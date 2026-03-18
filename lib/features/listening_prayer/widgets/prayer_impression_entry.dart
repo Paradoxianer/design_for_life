@@ -49,48 +49,63 @@ class _PrayerImpressionEntryState extends State<PrayerImpressionEntry> {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
 
-    return Stack(
-      children: [
-        Container(
-          margin: const EdgeInsets.only(bottom: 16),
-          padding: const EdgeInsets.all(12),
-          decoration: BoxDecoration(
-            color: theme.colorScheme.surface,
-            borderRadius: BorderRadius.circular(16),
-            border: Border.all(
-              color: theme.colorScheme.outline.withValues(alpha: 0.2),
-              width: 1,
-            ),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black.withValues(alpha: 0.05),
-                blurRadius: 10,
-                offset: const Offset(0, 4),
-              ),
-            ],
+    return Container(
+      margin: const EdgeInsets.only(bottom: 16),
+      padding: const EdgeInsets.all(12),
+      decoration: BoxDecoration(
+        color: theme.colorScheme.surface,
+        borderRadius: BorderRadius.circular(16),
+        border: Border.all(
+          color: theme.colorScheme.outline.withValues(alpha: 0.2),
+          width: 1,
+        ),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withValues(alpha: 0.05),
+            blurRadius: 10,
+            offset: const Offset(0, 4),
           ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+        ],
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.end, // Bild-Button klebt unten am Text
             children: [
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Expanded(
-                    child: TextField(
-                      controller: _controller,
-                      maxLines: null,
-                      enabled: true,
-                      style: theme.textTheme.bodyLarge,
-                      decoration: const InputDecoration(
-                        hintText: 'Schreibe deinen Eindruck...',
-                        border: InputBorder.none,
-                        isDense: true,
-                        contentPadding: EdgeInsets.symmetric(vertical: 8),
-                      ),
-                      onChanged: widget.onTextChanged,
-                    ),
+              Expanded(
+                child: TextField(
+                  controller: _controller,
+                  maxLines: null,
+                  style: theme.textTheme.bodyLarge,
+                  decoration: const InputDecoration(
+                    hintText: 'Schreibe deinen Eindruck...',
+                    border: InputBorder.none,
+                    isDense: true,
+                    contentPadding: EdgeInsets.symmetric(vertical: 8),
                   ),
-                  const SizedBox(width: 8),
+                  onChanged: widget.onTextChanged,
+                ),
+              ),
+              const SizedBox(width: 8),
+              Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  if (widget.onDelete != null)
+                    IconButton(
+                      icon: Container(
+                        padding: const EdgeInsets.all(4),
+                        decoration: BoxDecoration(
+                          color: theme.colorScheme.surface,
+                          shape: BoxShape.circle,
+                          border: Border.all(color: theme.colorScheme.outline.withValues(alpha: 0.1)),
+                        ),
+                        child: const Icon(Icons.close, size: 16, color: Colors.black87),
+                      ),
+                      onPressed: widget.onDelete,
+                      padding: const EdgeInsets.only(bottom: 4),
+                      constraints: const BoxConstraints(),
+                    ),
                   IconButton(
                     icon: const Icon(Icons.add_a_photo_outlined),
                     onPressed: () async {
@@ -100,83 +115,51 @@ class _PrayerImpressionEntryState extends State<PrayerImpressionEntry> {
                         widget.onImageChanged(image.path);
                       }
                     },
+                    padding: EdgeInsets.zero,
+                    constraints: const BoxConstraints(),
                   ),
-                  if (widget.onDelete != null)
-                    const SizedBox(width: 32),
                 ],
               ),
-              if (widget.impression.imagePath != null) ...[
-                const SizedBox(height: 12),
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(12),
-                  child: Stack(
-                    children: [
-                      _buildImage(widget.impression.imagePath!),
-                      Positioned(
-                        right: 8,
-                        top: 8,
-                        child: GestureDetector(
-                          onTap: () {
-                            widget.onImageChanged(null);
-                          },
-                          child: Container(
-                            padding: const EdgeInsets.all(4),
-                            decoration: const BoxDecoration(
-                              color: Colors.black54,
-                              shape: BoxShape.circle,
-                            ),
-                            child: const Icon(Icons.close, color: Colors.white, size: 16),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-              if (widget.impression.metadata != null && widget.impression.metadata!.isNotEmpty) ...[
-                const SizedBox(height: 8),
-                Text(
-                  widget.impression.metadata!,
-                  style: theme.textTheme.labelSmall?.copyWith(
-                    color: theme.colorScheme.secondary,
-                    fontStyle: FontStyle.italic,
-                  ),
-                ),
-              ],
             ],
           ),
-        ),
-        if (widget.onDelete != null)
-          Positioned(
-            right: 4,
-            top: 4,
-            child: IconButton(
-              icon: const Icon(Icons.close, size: 20),
-              color: theme.colorScheme.error.withValues(alpha: 0.5),
-              onPressed: widget.onDelete,
-              padding: EdgeInsets.zero,
-              constraints: const BoxConstraints(),
+          if (widget.impression.imagePath != null) ...[
+            const SizedBox(height: 12),
+            ClipRRect(
+              borderRadius: BorderRadius.circular(12),
+              child: Stack(
+                children: [
+                  _buildImage(widget.impression.imagePath!),
+                  Positioned(
+                    right: 8,
+                    top: 8,
+                    child: GestureDetector(
+                      onTap: () {
+                        widget.onImageChanged(null);
+                      },
+                      child: Container(
+                        padding: const EdgeInsets.all(4),
+                        decoration: const BoxDecoration(
+                          color: Colors.black54,
+                          shape: BoxShape.circle,
+                        ),
+                        child: const Icon(Icons.close, color: Colors.white, size: 16),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
-          ),
-      ],
+          ],
+        ],
+      ),
     );
   }
 
   Widget _buildImage(String path) {
     if (kIsWeb) {
-      return Image.network(
-        path,
-        width: double.infinity,
-        height: 200,
-        fit: BoxFit.cover,
-      );
+      return Image.network(path, width: double.infinity, height: 200, fit: BoxFit.cover);
     } else {
-      return Image.file(
-        File(path),
-        width: double.infinity,
-        height: 200,
-        fit: BoxFit.cover,
-      );
+      return Image.file(File(path), width: double.infinity, height: 200, fit: BoxFit.cover);
     }
   }
 }
