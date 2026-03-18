@@ -1,220 +1,79 @@
-
-# Architecture – DFL App
+# Architecture – DFL App (Lean & Local-First)
 
 ## 1. Overview
-The DFL App uses a modular, privacy-first architecture designed for spiritual sensitivity, offline capability, and strict control over visibility and sharing. The system consists of three main layers:
-
-1. **Client Application (Flutter Frontend)** – iOS, Android and optionally Web  
-2. **Backend API Service** – Secure REST/GraphQL API  
-3. **Database + Secure File Storage** – Encrypted relational DB and object storage  
-
-An additional **Interpersonal Prayer Notes Module** supports leaders and participants who receive spiritual impressions for others.
+The DFL App follows a **Local-First** philosophy. The primary "Source of Truth" for all personal reflection data is the user's device. The backend acts primarily as a **Coordinator** for event metadata and a **Relay** for interpersonal communication (Listening Prayer).
 
 ---
 
-## 2. High‑Level Architecture Diagram (Improved ASCII Version)
+## 2. High‑Level Architecture
 
 ```
-                           +------------------------+
-                           |     Admin Web Panel    |
-                           |  (Optional Future)      |
-                           +-----------+------------+
-                                       |
-                                       v
-                             Authentication & Roles
-                                       |
-                                       v
-+---------------------+       +-------------------------+       +----------------------------+
-|  Mobile/Web Client  | <---->|      Backend API        | <---->|  Database & File Storage   |
-| (Flutter Frontend)  |       |  (Node.js /.NET Core)   |       | (PostgreSQL + Encrypted    |
-|                     |       |                         |       |  Object Storage - EU)      |
-| - Offline Storage   |       | - Auth & RBAC           |       |                            |
-| - Local Encryption  |       | - Questionnaire Logic   |       | - Users                    |
-| - Sync Engine       |       | - Sharing Rules         |       | - Groups                   |
-| - Presentation Mode |       | - Prayer Notes Handling |       | - Questionnaires           |
-+---------------------+       | - Materials & Schedule  |       | - Visibility Settings      |
-                              | - Sync Processing       |       | - Prayer Notes (Encrypted) |
-                              +-------------------------+       +----------------------------+
++------------------------+       +----------------------------+
+|  Mobile Client (App)   | <---->|      Lean Backend          |
+|  (Flutter + Hydrated)  |       |  (Relay & Coordinator)     |
++-----------+------------+       +-------------+--------------+
+            |                                  |
+            v                                  v
++------------------------+       +----------------------------+
+|  Local Storage         |       |  Server Storage            |
+|  (Encrypted / SQLite)  |       |  (PostgreSQL / Redis)      |
+|                        |       |                            |
+| - Tests & Results      |       | - Event Schedules          |
+| - Personal Notes       |       | - Group Assignments        |
+| - Life Tree Data       |       | - Prayer Note Inbox (Temp) |
++------------------------+       +----------------------------+
 ```
 
 ---
 
-## 3. Client Application (Flutter Frontend)
+## 3. Client Strategy (The Core)
 
-### 3.1 Responsibilities
-- Render UI (questionnaires, Life Tree, notes, materials)
-- Handle offline-first data entry
-- Store data encrypted on-device
-- Sync changes to backend when online
-- Allow participants to decide visibility of each item:
-  - **Private**
-  - **Shared with Leader**
-  - **Temporary Presentation**
-- Provide Presentation Mode for group sessions
-- Allow writing *Prayer Notes* for others
+### 3.1 Local-First Persistence
+- All reflection modules (Gifts, Values, Tree, Notes, Goals) store data locally immediately.
+- Use of `HydratedBLoC` for seamless state persistence across app restarts.
+- No mandatory internet connection required for core functionality.
 
-### 3.2 Offline Capability
-- Notes, questionnaires, Life Trees and prayer notes must work fully offline  
-- Local encrypted database required  
-- Sync queue must merge changes gracefully  
-
-### 3.3 Presentation Mode
-Creates a clean, minimal, non-editable view of:
-- Life Tree summaries
-- Gift/Values summaries
-- Listening prayer summaries
-
-Used for:
-- Showing content on screen
-- Temporary sharing with leaders  
-(Leader access ends automatically)
+### 3.2 UI/Logic Separation
+- **Static Assets:** Questionnaire questions and logic are bundled within the app (no server-side rendering).
+- **Module Pattern:** Every feature uses the `Editor` -> `Result` -> `Takeaway` flow.
 
 ---
 
-## 4. Backend API Layer
+## 4. Backend Strategy (The Minimalist)
 
-### 4.1 Responsibilities
-- Authentication (JWT/OAuth)
-- Role-based access control (RBAC)
-- Enforcement of all visibility and sharing rules
-- Store & retrieve questionnaire results
-- Manage Life Trees and materials
-- Manage prayer notes (leader/participant → participant)
-- Handle sync jobs for offline clients
+### 4.1 Event Coordinator
+- Serves the current weekend schedule (Timeline).
+- Manages registrations and group assignments (who is in which small group).
+- Does **not** store full questionnaire answers, only high-level results if shared.
 
-### 4.2 Privacy Enforcement
-The backend **always** checks visibility flags before returning data:
-
-- Leaders never see private or unshared content  
-- Leaders never see full Life Trees or listening prayer details  
-- Admins never see prayer notes  
-- Prayer notes are encrypted and only visible to the recipient  
-
-### 4.3 API Endpoints (Conceptual)
-- `/auth/*`
-- `/questionnaires/*`
-- `/life-tree/*`
-- `/notes/*`
-- `/materials/*`
-- `/groups/*`
-- `/visibility/*`
-- `/prayer-notes/*` ← NEW
+### 4.2 Prayer Note Relay (Message-Oriented)
+- Acts as a temporary "Inbox" for Listening Prayer impressions.
+- **Workflow:** Sender pushes encrypted note -> Server stores temporarily -> Recipient's app pulls and persists locally -> Server deletes note.
+- **Privacy:** Content is encrypted on the sender's device. The server never sees the plain text.
 
 ---
 
-## 5. Database & Storage Layer (Updated)
+## 5. Sync & Privacy Rules
 
-### 5.1 Core Tables
-- `users`
-- `groups`
-- `user_group_assignments`
-- `questionnaire_gifts`
-- `questionnaire_values`
-- `life_tree`
-- `notes_private`
-- `notes_shared_summary`
-- `materials`
-- `event_schedule`
-- `visibility_settings`
+### 5.1 Personal Data
+- **Notes, Goals, Tree:** Private by default. Optional sync to a private user partition only for multi-device support.
+- **Test Results:** Stay local unless "Shared with Leader" is active.
 
-### 5.2 NEW: Prayer Notes Table
-```
-prayer_notes
-------------
-id (PK)
-from_user_id (FK -> users)
-to_user_id   (FK -> users)
-content_encrypted
-created_at
-immutable (boolean)
-visibility = 'private_to_recipient'
-read_at (nullable)
-```
-
-### 5.3 File Storage
-Encrypted storage for:
-- Life Tree images
-- PDF/materials
-- Optional: audio notes (future)
-
-Stored in EU region (GDPR compliant).
+### 5.2 Interpersonal Sharing
+- **Shared View:** When a participant joins a session, their "Top 3 Takeaways" are made visible to the assigned group leader for the duration of the event.
+- **Listening Prayer:** Received notes are integrated directly into the recipient's `ListeningPrayerResult` view, marked with a sender reference (e.g., Mail icon + Name).
 
 ---
 
-## 6. Role-Based Access Control (RBAC)
-
-### Participant
-- Create, edit, view their own content  
-- Decide what is shared with leader  
-- Send prayer notes to others  
-- Receive prayer notes  
-
-### Small Group Leader
-- See **only shared summaries**  
-- Create prayer notes for group members  
-- Cannot read prayer notes after sending  
-- Cannot edit sent prayer notes  
-
-### Administrator
-- Full system configuration  
-- Upload materials  
-- Manage accounts  
-- Can NEVER see prayer notes  
+## 6. Technical Stack
+- **Frontend:** Flutter (iOS/Android).
+- **State Management:** BLoC + HydratedBLoC.
+- **Database (Local):** SQLite (via sqflite or drift) for larger datasets like Life Tree.
+- **Backend:** Lightweight API (Node.js/Go/Python) + PostgreSQL.
+- **Relay:** Simple message queue or REST-Inbox.
 
 ---
 
-## 7. Sharing & Visibility Rules (Updated)
-
-### Sharing Levels
-- `private`  
-- `shared_leader`  
-- `temporary_session` (presentation-only)
-
-### Prayer Notes Exception
-Prayer notes:
-- Are always private to the recipient  
-- Do NOT use the normal sharing system  
-- Do NOT appear in "Leader's View"  
-- Cannot be made public or shared  
-
----
-
-## 8. Interpersonal Prayer Notes Module (New)
-
-### Purpose
-To enable leaders and participants to deliver spiritually sensitive impressions to others, securely and privately.
-
-### Key Properties
-- Sender writes → note goes to recipient’s private inbox  
-- Sender can see only metadata afterward (optional)  
-- Content encrypted at rest  
-- Backend enforces immutability  
-- No one except the recipient can view it  
-- Not included in leader dashboards  
-
----
-
-## 9. Sync & Conflict Handling
-
-### Behavior
-1. User edits offline  
-2. Local changes saved encrypted  
-3. When online, sync engine attempts upload  
-4. Backend merges changes or flags conflicts  
-5. Prayer notes & questionnaires are append-only  
-
----
-
-## 10. Deployment & Hosting
-- EU Cloud (AWS Frankfurt, Azure EU, Hetzner Cloud)
-- Docker-based backend
-- Static file hosting for materials
-- Automated backups daily
-
----
-
-## 11. Scalability & Future Enhancements
-- Multi-event support  
-- Deep linking for reference-person invitations  
-- Extended questionnaire types  
-- Audio-based prayer notes (optional future)  
+## 7. Data Retention & Cleanup
+- Personal reflection data is permanent (stored on device/private cloud).
+- Event-specific data (Group assignments, temporary shared takeaways, Relay inbox) is purged 30 days after an event concludes.

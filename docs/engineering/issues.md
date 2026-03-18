@@ -1,5 +1,5 @@
 ﻿# 📋 GitHub Issues Roadmap
-_Last updated: 18.03.2026 11:26_
+_Last updated: 18.03.2026 15:49_
 _Sorted by Release and Priority (High > Medium > Low)_
 
 ## 🔥 ✨ #2: feat: hardcoded dfl weekend timeline ui [prio: 1, feature] 🏁 [Release 1 (MVP)]

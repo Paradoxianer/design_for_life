@@ -1,84 +1,55 @@
-# Requirements – DFL App
+# Requirements – DFL App (Lean Edition)
 
-## 1. Purpose of the Application
-The DFL App supports the Design for Life weekend by providing simple tools for
-preparation, reflection, and organization.  
-It reduces paperwork, helps leaders prepare, and gives participants quick access
-to everything they need—while keeping the focus on personal interaction and the
-spiritual experience of the weekend.
+## 1. Purpose
+The DFL App is a **Local-First** tool to support participants during the Design for Life weekend. It focuses on personal reflection, offline capability, and minimal server dependency.
 
 ---
 
-## 2. User Roles
+## 2. User Roles & Core Sync-Needs
 
 ### **Participants**
-- Discover and register for DFL events.
-- Fill in questionnaires (spiritual gifts and values).
-- Upload or create their personal “Life Tree”.
-- Take private notes and "Key Takeaways" for every session.
-- Create a "Summary Collage" of their insights.
-- Define SMART Goals.
-- View the weekend schedule and room assignments (as text).
-- Decide which information is shared with leaders.
-- **Provide Feedback:** Fill out a seminar feedback form at the end of the event.
-- *Note:* Participants do NOT see teaching materials/PDFs in the app (Leader-only).
+- **Offline-First:** All tests (Gifts, Values) and reflections (Notes, Goals) work without internet.
+- **Relay-Prayer:** Receive encrypted spiritual impressions directly into the `ListeningPrayerResult` view (Sender-Name & Mail-Icon included).
+- **Personal Data Sovereignty:** Reflection data stays on the device. Optional private cloud-sync for backup.
+- **Seminar Feedback:** Shared at the end of the event (visible to Leaders/Admins).
 
 ### **Small Group Leaders**
-- View participants assigned to their group via a simplified dropdown.
-- Access participants’ shared questionnaire results and summaries.
-- Add leader-only preparation notes.
-- Access teaching materials, PDFs, and images for preparation.
-- Plan 1:1 conversations and share specific results/feedback with participants.
-- **View Feedback:** View aggregated or individual feedback from participants to improve future seminars.
+- **Coordination:** View group assignments (synced from server).
+- **Preparation:** Access leader-only materials (PDFs/Images).
+- **Insight:** View "Shared Takeaways" of their group members during the session.
+- **Ministry:** Send prayer impressions to participants (One-way push to recipient's local storage).
 
 ### **Administrators**
-- Full event management (Create events with pre-filled standard schedule).
-- Manage user accounts, roles, and group assignments (inline dropdowns).
-- Manage leader-only materials and copy them from previous events as templates.
-- **Analyze Feedback:** Access all participant feedback for seminar evaluation and quality management.
+- **Event Management:** Define schedule (Timeline) and rooms.
+- **Group Management:** Simple assignment of participants to leaders.
 
 ---
 
-## 3. Functional Requirements
+## 3. Simplified Functional Modules
 
-### **3.1 Event & Registration**
-- **Event Discovery:** Browse upcoming events.
-- **Registration:** Simple register/unregister.
-- **Template Logic:** New events automatically load the standard DFL schedule.
+### **3.1 Static Reflection Modules**
+- **Logic:** The logic for Gifts/Values tests is bundled in the app. No server-side questionnaire engine.
+- **Updates:** Changes to tests are delivered via App-Store updates.
 
-### **3.2 Module Architecture (Unified Pattern)**
-All reflection modules (Gifts, Values, Life Tree, Listening Prayer) follow:
-- **Edit Mode:** For data entry.
-- **Result Mode:** For visualization.
-- **Key Takeaways:** 1–3 main points per module (stored for Collage).
+### **3.2 Listening Prayer (Relay Mode)**
+- **One-Way-Push:** Impressions are sent from a leader/participant to a recipient.
+- **Integration:** Received notes appear seamlessly in the recipient's result view.
+- **Ephemeral Relay:** The server only holds notes until they are delivered to the recipient's app.
 
-### **3.3 Participant Features**
-- **Schedule:** View timeline with session titles and room names (text field).
-- **Reflection Tools:** Gifts, Values, Life Tree, Listening Prayer, Collage, Goals.
-- **Privacy:** Personal reflection data is permanent and private unless shared.
-- **Seminar Feedback:** A dedicated form at the end of the schedule to rate the experience and provide comments.
-
-### **3.4 Small Group Leaders**
-- **Leader Materials:** Access to PDFs/Images for session preparation.
-- **Inline Grouping:** Assign participants to groups (e.g., "1", "2") via a simple dropdown in the participant list.
-- **Feedback Access:** View submitted feedback from participants (visible to all Leaders and Admins).
-
-### **3.5 Administrators & Event Management**
-- **Simplified Schedule:** Edit session titles, times, and rooms (text field with autocomplete).
-- **Grouping:** Create new groups via a "+" option in the participant's group dropdown.
-- **Material Templates:** Choose to copy materials from a previous event when creating a new one.
-- **Feedback Management:** Export or view all seminar feedback for analysis.
+### **3.3 Event Coordination**
+- **Timeline:** Managed centrally, synced to all participants.
+- **Cleanup:** Coordination data (groups, temporary shares) is deleted 30 days after the event.
 
 ---
 
-## 4. Non‑Functional Requirements
-- **Simplicity (KISS):** No complex room or group management screens. Inline editing where possible.
-- **Data Permanence:** Personal reflection data (Life Tree, Notes) belongs to the user and is kept permanently.
-- **Privacy:** Only explicitly shared data (e.g., Listening Prayer impressions, Feedback) is distributed via the backend.
+## 4. Non‑Functional Requirements (Optimized)
+- **KISS:** No complex backend logic. Flat JSON storage for test results.
+- **Privacy:** Multi-layer encryption for spiritual impressions.
+- **Battery & Data:** Minimal background sync. No persistent web-socket connections required.
 
 ---
 
 ## 5. Out of Scope
-- Participant access to teaching materials.
-- Automated spiritual scoring.
-- Complex infrastructure management.
+- Real-time chat or social networking.
+- Server-side evaluation of spiritual tests.
+- Complex resource/room booking systems.
