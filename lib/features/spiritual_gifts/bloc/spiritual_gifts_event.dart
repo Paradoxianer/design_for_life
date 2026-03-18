@@ -7,6 +7,14 @@ abstract class SpiritualGiftsEvent extends Equatable {
   List<Object?> get props => [];
 }
 
+class InitTest extends SpiritualGiftsEvent {
+  final String locale;
+  const InitTest({required this.locale});
+
+  @override
+  List<Object?> get props => [locale];
+}
+
 class AnswerQuestion extends SpiritualGiftsEvent {
   final String questionId;
   final int score;
@@ -16,5 +24,7 @@ class AnswerQuestion extends SpiritualGiftsEvent {
   @override
   List<Object?> get props => [questionId, score];
 }
+
+class PreviousQuestion extends SpiritualGiftsEvent {}
 
 class ResetTest extends SpiritualGiftsEvent {}

@@ -20,6 +20,32 @@ class SpiritualGift extends Equatable {
     required this.questions,
   });
 
+  factory SpiritualGift.fromJson(Map<String, dynamic> json) {
+    return SpiritualGift(
+      id: json['id'] as String,
+      name: json['name'] as String,
+      originalWord: json['originalWord'] as String,
+      meaning: json['meaning'] as String,
+      bibleReferences: List<String>.from(json['bibleReferences'] ?? []),
+      description: json['description'] as String,
+      questions: (json['questions'] as List)
+          .map((q) => GiftQuestion.fromJson(q))
+          .toList(),
+    );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'name': name,
+      'originalWord': originalWord,
+      'meaning': meaning,
+      'bibleReferences': bibleReferences,
+      'description': description,
+      'questions': questions.map((q) => q.toJson()).toList(),
+    };
+  }
+
   @override
   List<Object?> get props => [
         id,
