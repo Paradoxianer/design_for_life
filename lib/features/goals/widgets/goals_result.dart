@@ -14,7 +14,7 @@ class GoalsResult extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final l10n = AppLocalizations.of(context);
+    final l10n = AppLocalizations.of(context)!;
     
     return SingleChildScrollView(
       padding: const EdgeInsets.all(16),
@@ -22,7 +22,7 @@ class GoalsResult extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            l10n?.goalsTitle ?? 'SMART Goals',
+            l10n.goalsTitle,
             style: Theme.of(context).textTheme.titleLarge,
           ),
           const SizedBox(height: 16),

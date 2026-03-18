@@ -21,7 +21,7 @@ class DflModuleScaffold extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final l10n = AppLocalizations.of(context);
+    final l10n = AppLocalizations.of(context)!;
     
     return Scaffold(
       appBar: AppBar(
@@ -33,7 +33,7 @@ class DflModuleScaffold extends StatelessWidget {
               onPressed: onSave,
             ),
           IconButton(
-            tooltip: isEditMode ? l10n?.resultMode : l10n?.editMode,
+            tooltip: isEditMode ? l10n.resultMode : l10n.editMode,
             icon: Icon(isEditMode ? Icons.remove_red_eye_outlined : Icons.edit_outlined),
             onPressed: onToggleMode,
           ),
