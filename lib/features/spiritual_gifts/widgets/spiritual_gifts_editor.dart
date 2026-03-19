@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../bloc/spiritual_gifts_bloc.dart';
-import '../models/spiritual_gift.dart';
+import '../models/gift_question.dart';
 import '../models/gift_data.dart';
 
 class SpiritualGiftsEditor extends StatefulWidget {
@@ -22,7 +22,7 @@ class _SpiritualGiftsEditorState extends State<SpiritualGiftsEditor> {
   @override
   void initState() {
     super.initState();
-    _pageController = PageController(viewportFraction: 0.7);
+    _pageController = PageController(viewportFraction: 0.6);
   }
 
   @override
@@ -65,16 +65,9 @@ class _SpiritualGiftsEditorState extends State<SpiritualGiftsEditor> {
                 controller: _pageController,
                 scrollDirection: Axis.vertical,
                 itemCount: state.questionOrder.length,
-                onPageChanged: (index) {
-                  // Erlaubt manuelles Scrollen ohne Fortschrittsverlust
-                  if (index != state.currentQuestionIndex) {
-                    // Wir könnten hier ein Event feuern, um den Index zu syncen, 
-                    // aber auto-advance macht das meist schon.
-                  }
-                },
                 itemBuilder: (context, index) {
                   final questionId = state.questionOrder[index];
-                  final gift = GiftData.allGifts.firstWhere(
+                  final gift = state.gifts.firstWhere(
                     (g) => g.questions.any((q) => q.id == questionId),
                   );
                   final question = gift.questions.firstWhere((q) => q.id == questionId);
@@ -84,11 +77,11 @@ class _SpiritualGiftsEditorState extends State<SpiritualGiftsEditor> {
                     animation: _pageController,
                     builder: (context, child) {
                       double value = 1.0;
-                      if (_pageController.position.haveDimensions) {
-                        value = _pageController.page! - index;
-                        value = (1 - (value.abs() * 0.3)).clamp(0.0, 1.0);
-                      } else if (index != state.currentQuestionIndex) {
-                        value = 0.7; // Default für nicht-fokussierte Items beim Start
+                      if (_pageController.position.hasContentDimensions) {
+                        value = (_pageController.page! - index).abs();
+                        value = (1 - (value * 0.4)).clamp(0.0, 1.0);
+                      } else {
+                        value = index == state.currentQuestionIndex ? 1.0 : 0.6;
                       }
 
                       return Center(
@@ -198,17 +191,17 @@ class _QuestionCard extends StatelessWidget {
                 Text(
                   labels[index],
                   style: TextStyle(
-                    fontSize: 13,
-                    fontWeight: isSelected ? FontWeight.bold : FontWeight.w500,
+                    fontSize: 14,
+                    fontWeight: FontWeight.bold,
                     color: isSelected ? Colors.white : theme.colorScheme.onSurface,
                   ),
                   textAlign: TextAlign.center,
                 ),
-                const SizedBox(height: 2),
+                const SizedBox(height: 4),
                 Text(
                   '$index',
                   style: TextStyle(
-                    fontSize: 10,
+                    fontSize: 11,
                     color: isSelected ? Colors.white70 : theme.colorScheme.onSurfaceVariant,
                   ),
                 ),
