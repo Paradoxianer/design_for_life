@@ -19,16 +19,22 @@ class SpiritualGiftsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return DflModuleScaffold(
-      title: title,
-      initialEditMode: initialEditMode,
-      editor: SpiritualGiftsEditor(sessionId: sessionId),
-      result: SpiritualGiftsResult(
-        takeaways: const [], // TODO: Link with actual takeaways from a Bloc
-        onTakeawaysUpdate: (takeaways) {
-          // TODO: Implementation for updating takeaways
-        },
-      ),
+    return BlocBuilder<SpiritualGiftsBloc, SpiritualGiftsState>(
+      builder: (context, state) {
+        return DflModuleScaffold(
+          title: title,
+          initialEditMode: initialEditMode,
+          editor: SpiritualGiftsEditor(sessionId: sessionId),
+          result: SpiritualGiftsResult(
+            takeaways: state.takeaways[sessionId] ?? const [],
+            onTakeawaysUpdate: (takeaways) {
+              context.read<SpiritualGiftsBloc>().add(
+                    UpdateTakeaways(sessionId: sessionId, takeaways: takeaways),
+                  );
+            },
+          ),
+        );
+      },
     );
   }
 }

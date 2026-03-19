@@ -14,6 +14,9 @@ import 'features/listening_prayer/bloc/listening_prayer_bloc.dart';
 import 'features/listening_prayer/screens/listening_prayer_screen.dart';
 import 'features/goals/bloc/goals_bloc.dart';
 import 'features/goals/screens/goals_screen.dart';
+import 'features/spiritual_gifts/bloc/spiritual_gifts_bloc.dart';
+import 'features/spiritual_gifts/repositories/gifts_repository.dart';
+import 'features/spiritual_gifts/screens/spiritual_gifts_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -24,12 +27,17 @@ void main() async {
         : await getApplicationDocumentsDirectory(),
   );
 
+  final giftsRepository = GiftsRepository();
+
   runApp(
     MultiBlocProvider(
       providers: [
         BlocProvider(create: (context) => NotesBloc()),
         BlocProvider(create: (context) => ListeningPrayerBloc()),
         BlocProvider(create: (context) => GoalsBloc()),
+        BlocProvider(
+          create: (context) => SpiritualGiftsBloc(repository: giftsRepository),
+        ),
       ],
       child: const DflApp(),
     ),
@@ -82,6 +90,19 @@ class DflApp extends StatelessWidget {
             final mode = state.uri.queryParameters['mode'];
             return GoalsScreen(
               sessionId: sessionId, 
+              title: title,
+              initialEditMode: mode != 'result',
+            );
+          },
+        ),
+        GoRoute(
+          path: '/spiritual-gifts/:sessionId',
+          builder: (context, state) {
+            final sessionId = state.pathParameters['sessionId']!;
+            final title = state.uri.queryParameters['title'] ?? 'Spiritual Gifts';
+            final mode = state.uri.queryParameters['mode'];
+            return SpiritualGiftsScreen(
+              sessionId: sessionId,
               title: title,
               initialEditMode: mode != 'result',
             );

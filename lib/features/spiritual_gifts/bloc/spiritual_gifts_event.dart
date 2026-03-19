@@ -28,3 +28,13 @@ class AnswerQuestion extends SpiritualGiftsEvent {
 class PreviousQuestion extends SpiritualGiftsEvent {}
 
 class ResetTest extends SpiritualGiftsEvent {}
+
+class UpdateTakeaways extends SpiritualGiftsEvent {
+  final String sessionId;
+  final List<String> takeaways;
+
+  const UpdateTakeaways({required this.sessionId, required this.takeaways});
+
+  @override
+  List<Object?> get props => [sessionId, takeaways];
+}

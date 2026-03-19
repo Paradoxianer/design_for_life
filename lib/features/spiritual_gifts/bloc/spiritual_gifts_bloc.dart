@@ -48,6 +48,12 @@ class SpiritualGiftsBloc extends HydratedBloc<SpiritualGiftsEvent, SpiritualGift
       }
     });
 
+    on<UpdateTakeaways>((event, emit) {
+      final newTakeaways = Map<String, List<String>>.from(state.takeaways);
+      newTakeaways[event.sessionId] = event.takeaways;
+      emit(state.copyWith(takeaways: newTakeaways));
+    });
+
     on<ResetTest>((event, emit) {
       final allQuestionIds = state.gifts
           .expand((gift) => gift.questions.map((q) => q.id))
@@ -59,6 +65,7 @@ class SpiritualGiftsBloc extends HydratedBloc<SpiritualGiftsEvent, SpiritualGift
         questionOrder: allQuestionIds,
         currentQuestionIndex: 0,
         answers: {},
+        takeaways: state.takeaways,
       ));
     });
   }
