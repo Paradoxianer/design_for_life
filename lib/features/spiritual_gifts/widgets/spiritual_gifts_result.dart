@@ -27,7 +27,7 @@ class SpiritualGiftsResult extends StatelessWidget {
               ),
               const SizedBox(height: 8),
               Text(
-                'Tippe auf eine Gabe, um Details und Bibelstellen zu sehen.',
+                'Tippe auf eine Gabe, um Details und Bibelstellen zu sehen. Deine Top 3 werden automatisch übernommen.',
                 style: theme.textTheme.bodyMedium?.copyWith(color: theme.colorScheme.onSurfaceVariant),
               ),
               const SizedBox(height: 24),

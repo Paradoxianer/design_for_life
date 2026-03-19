@@ -24,7 +24,9 @@ class SpiritualGiftsScreen extends StatelessWidget {
         return DflModuleScaffold(
           title: title,
           initialEditMode: initialEditMode,
-          onWillToggleMode: () => _validateCompletion(context, state),
+          onWillToggleMode: () async {
+            return await _validateCompletion(context, state);
+          },
           editor: SpiritualGiftsEditor(sessionId: sessionId),
           result: const SpiritualGiftsResult(),
         );
@@ -32,12 +34,12 @@ class SpiritualGiftsScreen extends StatelessWidget {
     );
   }
 
-  bool _validateCompletion(BuildContext context, SpiritualGiftsState state) {
+  Future<bool> _validateCompletion(BuildContext context, SpiritualGiftsState state) async {
     final totalQuestions = state.questionOrder.length;
     final answeredQuestions = state.answers.length;
 
     if (answeredQuestions < totalQuestions) {
-      showDialog(
+      final bool? result = await showDialog<bool>(
         context: context,
         builder: (context) => AlertDialog(
           title: const Text('Test unvollständig'),
@@ -47,24 +49,18 @@ class SpiritualGiftsScreen extends StatelessWidget {
           ),
           actions: [
             TextButton(
-              onPressed: () => Navigator.pop(context),
+              onPressed: () => Navigator.pop(context, false),
               child: const Text('Weiter ausfüllen'),
             ),
             ElevatedButton(
-              onPressed: () {
-                Navigator.pop(context);
-                // Hier müsste man manuell den State im Scaffold triggern
-                // Aber da wir in Flutter sind, ist es sauberer, wenn der Scaffold
-                // eine Controller-Logik hätte. Für den Moment erlauben wir es
-                // durch Rückgabe von true nach dem Dialog-Close (komplexer Flow).
-              },
+              onPressed: () => Navigator.pop(context, true),
               child: const Text('Trotzdem beenden'),
             ),
           ],
         ),
       );
-      return false; // Verhindert den Wechsel sofort
+      return result ?? false;
     }
-    return true; // Alles okay
+    return true;
   }
 }

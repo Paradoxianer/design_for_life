@@ -17,13 +17,24 @@ class SpiritualGiftsEditor extends StatefulWidget {
 
 class _SpiritualGiftsEditorState extends State<SpiritualGiftsEditor> {
   late ScrollController _scrollController;
-  final double _itemHeight = 180.0; // Deutlich kompakter
+  final double _itemHeight = 180.0;
 
   @override
   void initState() {
     super.initState();
     _scrollController = ScrollController();
-    _scrollController.addListener(() => setState(() {}));
+    _scrollController.addListener(() {
+      if (mounted) setState(() {});
+    });
+
+    // Initialisiere das Laden der Gaben nach dem ersten Frame
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (mounted) {
+        context.read<SpiritualGiftsBloc>().add(
+          InitTest(locale: Localizations.localeOf(context).languageCode),
+        );
+      }
+    });
   }
 
   @override
@@ -37,7 +48,7 @@ class _SpiritualGiftsEditorState extends State<SpiritualGiftsEditor> {
       _scrollController.animateTo(
         index * _itemHeight,
         duration: const Duration(milliseconds: 400),
-        curve: Curves.easeOutCubic,
+        curve: Curves.easeInOut,
       );
     }
   }
@@ -50,15 +61,11 @@ class _SpiritualGiftsEditorState extends State<SpiritualGiftsEditor> {
       },
       builder: (context, state) {
         if (state.questionOrder.isEmpty) {
-          context.read<SpiritualGiftsBloc>().add(
-            InitTest(locale: Localizations.localeOf(context).languageCode),
-          );
           return const Center(child: CircularProgressIndicator());
         }
 
         final screenHeight = MediaQuery.of(context).size.height;
-        // Padding oben/unten, damit die erste/letzte Karte mittig stehen kann
-        final verticalPadding = (screenHeight / 2) - (_itemHeight / 2) - 80;
+        final verticalPadding = (screenHeight / 2) - (_itemHeight / 2) - 100;
 
         return Column(
           children: [
@@ -75,22 +82,28 @@ class _SpiritualGiftsEditorState extends State<SpiritualGiftsEditor> {
                 itemCount: state.questionOrder.length,
                 itemBuilder: (context, index) {
                   final questionId = state.questionOrder[index];
-                  final gift = state.gifts.firstWhere((g) => g.questions.any((q) => q.id == questionId));
-                  final question = gift.questions.firstWhere((q) => q.id == questionId);
+                  
+                  // Sicherstellen, dass die Gaben geladen sind, bevor wir suchen
+                  if (state.gifts.isEmpty) return const SizedBox.shrink();
+
+                  final gift = state.gifts.firstWhere(
+                    (g) => g.questions.any((q) => q.id == questionId),
+                    orElse: () => state.gifts.first, // Fallback
+                  );
+                  final question = gift.questions.firstWhere(
+                    (q) => q.id == questionId,
+                    orElse: () => gift.questions.first, // Fallback
+                  );
                   final score = state.answers[questionId];
 
-                  double scale = 0.8;
-                  double opacity = 0.5;
-
+                  double scale = 0.85;
                   if (_scrollController.hasClients) {
                     final offset = _scrollController.offset;
                     final distance = (offset - (index * _itemHeight)).abs();
                     final normalized = (distance / _itemHeight).clamp(0.0, 1.0);
-                    scale = 1.0 - (normalized * 0.25);
-                    opacity = 1.0 - (normalized * 0.5);
+                    scale = 1.0 - (normalized * 0.15);
                   } else if (index == state.currentQuestionIndex) {
                     scale = 1.0;
-                    opacity = 1.0;
                   }
 
                   return Container(
@@ -99,7 +112,7 @@ class _SpiritualGiftsEditorState extends State<SpiritualGiftsEditor> {
                     child: Transform.scale(
                       scale: scale,
                       child: Opacity(
-                        opacity: opacity.clamp(0.3, 1.0),
+                        opacity: scale.clamp(0.5, 1.0),
                         child: _QuestionCard(
                           question: question,
                           currentScore: score,
@@ -139,8 +152,8 @@ class _QuestionCard extends StatelessWidget {
 
     return Card(
       margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
-      elevation: 4,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+      elevation: 2,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
       child: Padding(
         padding: const EdgeInsets.all(16),
         child: Column(
@@ -153,7 +166,7 @@ class _QuestionCard extends StatelessWidget {
               maxLines: 2,
               overflow: TextOverflow.ellipsis,
             ),
-            const SizedBox(height: 12),
+            const SizedBox(height: 16),
             _buildChoiceRow(context),
           ],
         ),
@@ -176,20 +189,18 @@ class _QuestionCard extends StatelessWidget {
             children: [
               AnimatedContainer(
                 duration: const Duration(milliseconds: 200),
-                width: 42,
-                height: 42,
+                width: 40,
+                height: 40,
                 decoration: BoxDecoration(
                   color: isSelected ? theme.colorScheme.primary : theme.colorScheme.surfaceVariant,
-                  shape: BoxShape.circle,
-                  border: Border.all(color: isSelected ? theme.colorScheme.primary : Colors.transparent),
+                  borderRadius: BorderRadius.circular(8),
                 ),
                 alignment: Alignment.center,
                 child: Text(
-                  labels[index].substring(0, 1), // Nur erster Buchstabe für Kompaktheit
+                  labels[index].substring(0, 1),
                   style: TextStyle(
                     color: isSelected ? Colors.white : theme.colorScheme.onSurface,
                     fontWeight: FontWeight.bold,
-                    fontSize: 12,
                   ),
                 ),
               ),

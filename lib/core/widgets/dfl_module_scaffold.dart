@@ -32,7 +32,7 @@ class _DflModuleScaffoldState extends State<DflModuleScaffold> {
 
   Future<void> _toggleMode() async {
     if (_isEditMode && widget.onWillToggleMode != null) {
-      final shouldToggle = await widget.onWillToggleMode!();
+      final bool shouldToggle = await widget.onWillToggleMode!();
       if (!shouldToggle) return;
     }
     setState(() {
