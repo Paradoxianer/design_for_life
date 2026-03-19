@@ -104,9 +104,9 @@ class _SpiritualGiftsEditorState extends State<SpiritualGiftsEditor> {
               child: CarouselView(
                 controller: _carouselController,
                 scrollDirection: Axis.vertical,
-                itemExtent: 220, // Höhe der Karte im vertikalen Modus
-                shrinkExtent: 150,
-                enableSplash: false, // WICHTIG: Erlaubt Interaktion mit Children
+                itemExtent: 240, // Etwas mehr Platz für die seriösen Texte
+                shrinkExtent: 180,
+                enableSplash: false,
                 padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
                 children: List.generate(state.questionOrder.length, (index) {
                   final questionId = state.questionOrder[index];
@@ -161,17 +161,16 @@ class _QuestionCard extends StatelessWidget {
       margin: EdgeInsets.zero,
       elevation: currentScore != null ? 4 : 1,
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(20),
+        borderRadius: BorderRadius.circular(24),
         side: BorderSide(
           color: currentScore != null ? theme.colorScheme.primary.withOpacity(0.5) : Colors.transparent,
           width: 2,
         ),
       ),
       child: Padding(
-        padding: const EdgeInsets.all(16),
+        padding: const EdgeInsets.all(20),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Text(
               question.text,
@@ -179,48 +178,54 @@ class _QuestionCard extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               ),
               textAlign: TextAlign.center,
-              maxLines: 2,
+              maxLines: 3,
               overflow: TextOverflow.ellipsis,
             ),
-            const SizedBox(height: 16),
-            SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+            const SizedBox(height: 24),
+            Center(
+              child: Wrap(
+                spacing: 10,
+                runSpacing: 12,
+                alignment: WrapAlignment.center,
                 children: List.generate(6, (index) {
                   final isSelected = currentScore == index;
-                  return Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 4),
-                    child: InkWell(
-                      onTap: isReadOnly ? null : () => onAnswer(index),
-                      borderRadius: BorderRadius.circular(10),
-                      child: AnimatedContainer(
-                        duration: const Duration(milliseconds: 200),
-                        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-                        decoration: BoxDecoration(
-                          color: isSelected ? theme.colorScheme.primary : theme.colorScheme.surfaceVariant,
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        child: Column(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            Text(
-                              _getLabel(index),
-                              style: TextStyle(
-                                color: isSelected ? Colors.white : theme.colorScheme.onSurface,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 11,
-                              ),
+                  return InkWell(
+                    onTap: isReadOnly ? null : () => onAnswer(index),
+                    borderRadius: BorderRadius.circular(12),
+                    child: AnimatedContainer(
+                      duration: const Duration(milliseconds: 200),
+                      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
+                      decoration: BoxDecoration(
+                        color: isSelected ? theme.colorScheme.primary : theme.colorScheme.surfaceVariant,
+                        borderRadius: BorderRadius.circular(12),
+                        boxShadow: isSelected ? [
+                          BoxShadow(
+                            color: theme.colorScheme.primary.withOpacity(0.2),
+                            blurRadius: 8,
+                            offset: const Offset(0, 2),
+                          )
+                        ] : null,
+                      ),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Text(
+                            _getLabel(index),
+                            style: TextStyle(
+                              color: isSelected ? Colors.white : theme.colorScheme.onSurface,
+                              fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
+                              fontSize: 12,
                             ),
-                            Text(
-                              '$index',
-                              style: TextStyle(
-                                color: isSelected ? Colors.white70 : theme.colorScheme.onSurfaceVariant,
-                                fontSize: 10,
-                              ),
+                          ),
+                          const SizedBox(height: 2),
+                          Text(
+                            '$index',
+                            style: TextStyle(
+                              color: isSelected ? Colors.white70 : theme.colorScheme.onSurfaceVariant,
+                              fontSize: 10,
                             ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
                     ),
                   );
@@ -238,9 +243,9 @@ class _QuestionCard extends StatelessWidget {
       case 0: return 'Gar nicht';
       case 1: return 'Kaum';
       case 2: return 'Wenig';
-      case 3: return 'Etwas';
-      case 4: return 'Oft';
-      case 5: return 'Voll!';
+      case 3: return 'Teilweise';
+      case 4: return 'Viel';
+      case 5: return 'Sehr stark';
       default: return '';
     }
   }
