@@ -21,7 +21,7 @@ class StaticTimelineData {
       title: 'Gruppenarbeit – Lebensbaum zeichnen + Auswerten',
       description: 'Erstellung des persönlichen Lebensbaums in der Gruppe.',
       type: SessionType.groupWork,
-      moduleRoute: 'life-tree', // Hinweis: Muss in main.dart noch definiert werden
+      moduleRoute: 'life-tree', 
     ),
     DflSession(
       id: 'session_4',
@@ -35,7 +35,7 @@ class StaticTimelineData {
       title: 'Gaben (Auswertung, Austausch)',
       description: 'Entdeckung und Einordnung der geistlichen Gaben.',
       type: SessionType.groupWork,
-      moduleRoute: 'spiritual-gifts',
+      moduleRoute: 'spiritual-gifts/session_5?title=Geistliche Gaben',
     ),
     DflSession(
       id: 'session_6',
