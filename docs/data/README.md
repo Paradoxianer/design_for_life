@@ -13,8 +13,8 @@ The gift questions are categorized into three main types:
 -- **F (Feedback)**: Questions designed to gather feedback or opinions from participants.
 
 
-### placeholder sections for values_test.csv (Wertetest)
-- This section is reserved for the future documentation of the `values_test.csv` file.
+### placeholder sections for values_test.md (Wertetest)
+- This section is reserved for the future documentation of the `values_test.md` file.
 - It will include details on its purpose and the expected structure.
 
 ### placeholder sections for feedback_form.csv (Feedbackbogen)
