@@ -13,18 +13,19 @@ class SpiritualGiftsBloc extends HydratedBloc<SpiritualGiftsEvent, SpiritualGift
     on<InitTest>((event, emit) async {
       final gifts = await repository.loadGifts(event.locale);
       
-      if (state.questionOrder.isEmpty) {
-        // Erste Initialisierung: Fragen sammeln und mischen
-        final allQuestionIds = gifts
+      List<String> questionOrder = List.from(state.questionOrder);
+      if (questionOrder.isEmpty) {
+        // Fragen mischen, falls noch nicht geschehen
+        questionOrder = gifts
             .expand((gift) => gift.questions.map((q) => q.id))
             .toList()
           ..shuffle();
-        
-        emit(state.copyWith(
-          questionOrder: allQuestionIds,
-          currentQuestionIndex: 0,
-        ));
       }
+      
+      emit(state.copyWith(
+        gifts: gifts,
+        questionOrder: questionOrder,
+      ));
     });
 
     on<AnswerQuestion>((event, emit) {
@@ -48,10 +49,16 @@ class SpiritualGiftsBloc extends HydratedBloc<SpiritualGiftsEvent, SpiritualGift
     });
 
     on<ResetTest>((event, emit) {
-      // Beim Reset mischen wir neu
-      final allQuestionIds = List<String>.from(state.questionOrder)..shuffle();
-      emit(const SpiritualGiftsState().copyWith(
+      final allQuestionIds = state.gifts
+          .expand((gift) => gift.questions.map((q) => q.id))
+          .toList()
+        ..shuffle();
+        
+      emit(const SpiritualGiftsState(gifts: []).copyWith(
+        gifts: state.gifts,
         questionOrder: allQuestionIds,
+        currentQuestionIndex: 0,
+        answers: {},
       ));
     });
   }
