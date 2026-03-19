@@ -36,8 +36,12 @@ class _SpiritualGiftsEditorState extends State<SpiritualGiftsEditor> {
           if (mounted) {
             final state = context.read<SpiritualGiftsBloc>().state;
             if (state.questionOrder.isNotEmpty) {
+              // Scrolltarget so wählen, dass eine beantwortete Frage darüber steht
+              final target = (state.currentQuestionIndex > 0) 
+                  ? state.currentQuestionIndex - 1 
+                  : 0;
               _carouselController.animateToItem(
-                state.currentQuestionIndex,
+                target,
                 duration: const Duration(milliseconds: 500),
                 curve: Curves.easeInOut,
               );
@@ -60,8 +64,13 @@ class _SpiritualGiftsEditorState extends State<SpiritualGiftsEditor> {
       listenWhen: (previous, current) => 
           previous.currentQuestionIndex != current.currentQuestionIndex,
       listener: (context, state) {
+        // Wir scrollen zum Index - 1, damit die unbeantwortete Frage die zweite im Viewport ist
+        final scrollTarget = (state.currentQuestionIndex > 0) 
+            ? state.currentQuestionIndex - 1 
+            : 0;
+            
         _carouselController.animateToItem(
-          state.currentQuestionIndex,
+          scrollTarget,
           duration: const Duration(milliseconds: 600),
           curve: Curves.easeInOutCubic,
         );
@@ -104,7 +113,7 @@ class _SpiritualGiftsEditorState extends State<SpiritualGiftsEditor> {
               child: CarouselView(
                 controller: _carouselController,
                 scrollDirection: Axis.vertical,
-                itemExtent: 150, // Maximale Kompaktheit
+                itemExtent: 150,
                 shrinkExtent: 120,
                 enableSplash: false,
                 padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 16),
@@ -159,7 +168,7 @@ class _QuestionCard extends StatelessWidget {
 
     return Card(
       margin: const EdgeInsets.symmetric(vertical: 2),
-      elevation: 4, // Etwas mehr Schatten für bessere Abhebung
+      elevation: 4,
       shadowColor: Colors.black.withOpacity(0.2),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(16),
@@ -169,7 +178,7 @@ class _QuestionCard extends StatelessWidget {
         ),
       ),
       child: Padding(
-        padding: const EdgeInsets.all(10), // Sehr kompaktes Padding
+        padding: const EdgeInsets.all(10),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -206,7 +215,7 @@ class _QuestionCard extends StatelessWidget {
                         Text(
                           _getLabel(index),
                           style: TextStyle(
-                            color: isSelected ? Colors.white : Colors.black, // Hoher Kontrast: Schwarz
+                            color: isSelected ? Colors.white : Colors.black,
                             fontWeight: isSelected ? FontWeight.bold : FontWeight.w600,
                             fontSize: 10,
                           ),
