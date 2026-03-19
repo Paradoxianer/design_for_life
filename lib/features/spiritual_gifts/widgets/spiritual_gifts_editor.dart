@@ -16,16 +16,12 @@ class SpiritualGiftsEditor extends StatefulWidget {
 }
 
 class _SpiritualGiftsEditorState extends State<SpiritualGiftsEditor> {
-  late ScrollController _scrollController;
-  final double _itemHeight = 200.0;
+  late CarouselController _carouselController;
 
   @override
   void initState() {
     super.initState();
-    _scrollController = ScrollController();
-    _scrollController.addListener(() {
-      if (mounted) setState(() {});
-    });
+    _carouselController = CarouselController();
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (mounted) {
@@ -36,12 +32,15 @@ class _SpiritualGiftsEditorState extends State<SpiritualGiftsEditor> {
           ),
         );
         
-        // Verzoegerter Sprung zum Fortschritt nach dem Laden
         Future.delayed(const Duration(milliseconds: 500), () {
           if (mounted) {
             final state = context.read<SpiritualGiftsBloc>().state;
             if (state.questionOrder.isNotEmpty) {
-              _scrollToIndex(state.firstUnansweredIndex, instant: true);
+              _carouselController.animateToItem(
+                state.currentQuestionIndex,
+                duration: const Duration(milliseconds: 500),
+                curve: Curves.easeInOut,
+              );
             }
           }
         });
@@ -51,35 +50,21 @@ class _SpiritualGiftsEditorState extends State<SpiritualGiftsEditor> {
 
   @override
   void dispose() {
-    _scrollController.dispose();
+    _carouselController.dispose();
     super.dispose();
-  }
-
-  void _scrollToIndex(int index, {bool instant = false}) {
-    if (_scrollController.hasClients) {
-      final target = index * _itemHeight;
-      if (instant) {
-        _scrollController.jumpTo(target);
-      } else {
-        _scrollController.animateTo(
-          target,
-          duration: const Duration(milliseconds: 500),
-          curve: Curves.easeInOutCubic,
-        );
-      }
-    }
   }
 
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<SpiritualGiftsBloc, SpiritualGiftsState>(
+      listenWhen: (previous, current) => 
+          previous.currentQuestionIndex != current.currentQuestionIndex,
       listener: (context, state) {
-        // Nur automatisch weiterscrollen, wenn das beantwortete Item das "letzte neue" war
-        // Damit verhindern wir Springen bei Korrekturen weiter oben.
-        final answeredIndex = state.currentQuestionIndex - 1;
-        if (answeredIndex >= 0 && answeredIndex == state.answers.length - 1) {
-          _scrollToIndex(state.currentQuestionIndex);
-        }
+        _carouselController.animateToItem(
+          state.currentQuestionIndex,
+          duration: const Duration(milliseconds: 600),
+          curve: Curves.easeInOutCubic,
+        );
       },
       builder: (context, state) {
         if (!state.isLoaded || state.questionOrder.isEmpty) {
@@ -95,24 +80,35 @@ class _SpiritualGiftsEditorState extends State<SpiritualGiftsEditor> {
           );
         }
 
-        final screenHeight = MediaQuery.of(context).size.height;
-        final verticalPadding = (screenHeight / 2) - (_itemHeight / 2) - 100;
-
         return Column(
           children: [
-            LinearProgressIndicator(
-              value: state.progress,
-              backgroundColor: Colors.grey.shade200,
-              minHeight: 4,
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 8),
+              child: Column(
+                children: [
+                  LinearProgressIndicator(
+                    value: state.progress,
+                    backgroundColor: Colors.grey.shade200,
+                    borderRadius: BorderRadius.circular(10),
+                    minHeight: 8,
+                  ),
+                  const SizedBox(height: 8),
+                  Text(
+                    'Frage ${state.answers.length} von ${state.questionOrder.length}',
+                    style: Theme.of(context).textTheme.labelSmall,
+                  ),
+                ],
+              ),
             ),
             Expanded(
-              child: ListView.builder(
-                controller: _scrollController,
-                physics: const BouncingScrollPhysics(),
-                padding: EdgeInsets.only(top: verticalPadding, bottom: verticalPadding),
-                itemCount: state.questionOrder.length,
-                itemExtent: _itemHeight,
-                itemBuilder: (context, index) {
+              child: CarouselView(
+                controller: _carouselController,
+                scrollDirection: Axis.vertical,
+                itemExtent: 220, // Höhe der Karte im vertikalen Modus
+                shrinkExtent: 150,
+                enableSplash: false, // WICHTIG: Erlaubt Interaktion mit Children
+                padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+                children: List.generate(state.questionOrder.length, (index) {
                   final questionId = state.questionOrder[index];
                   final gift = state.gifts.firstWhere(
                     (g) => g.questions.any((q) => q.id == questionId),
@@ -124,35 +120,17 @@ class _SpiritualGiftsEditorState extends State<SpiritualGiftsEditor> {
                   );
                   final score = state.answers[questionId];
 
-                  double scale = 0.85;
-                  if (_scrollController.hasClients) {
-                    final offset = _scrollController.offset;
-                    final distance = (offset - (index * _itemHeight)).abs();
-                    final normalized = (distance / _itemHeight).clamp(0.0, 1.0);
-                    scale = 1.0 - (normalized * 0.15);
-                  }
-
-                  return Container(
-                    height: _itemHeight,
-                    alignment: Alignment.center,
-                    child: Transform.scale(
-                      scale: scale,
-                      child: Opacity(
-                        opacity: scale.clamp(0.5, 1.0),
-                        child: _QuestionCard(
-                          question: question,
-                          currentScore: score,
-                          isReadOnly: state.isCompleted,
-                          onAnswer: (s) {
-                            context.read<SpiritualGiftsBloc>().add(
-                              AnswerQuestion(questionId: questionId, score: s),
-                            );
-                          },
-                        ),
-                      ),
-                    ),
+                  return _QuestionCard(
+                    question: question,
+                    currentScore: score,
+                    isReadOnly: state.isCompleted,
+                    onAnswer: (s) {
+                      context.read<SpiritualGiftsBloc>().add(
+                        AnswerQuestion(questionId: questionId, score: s),
+                      );
+                    },
                   );
-                },
+                }),
               ),
             ),
           ],
@@ -180,84 +158,90 @@ class _QuestionCard extends StatelessWidget {
     final theme = Theme.of(context);
 
     return Card(
-      margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
+      margin: EdgeInsets.zero,
       elevation: currentScore != null ? 4 : 1,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(20),
         side: BorderSide(
-          color: currentScore != null ? theme.colorScheme.primary.withValues(alpha: 0.5) : Colors.transparent,
+          color: currentScore != null ? theme.colorScheme.primary.withOpacity(0.5) : Colors.transparent,
           width: 2,
         ),
       ),
       child: Padding(
         padding: const EdgeInsets.all(16),
         child: Column(
-          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Text(
               question.text,
               style: theme.textTheme.titleMedium?.copyWith(
                 fontWeight: FontWeight.bold,
-                fontSize: 15,
               ),
               textAlign: TextAlign.center,
               maxLines: 2,
               overflow: TextOverflow.ellipsis,
             ),
             const SizedBox(height: 16),
-            _buildChoiceRow(context),
+            SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: List.generate(6, (index) {
+                  final isSelected = currentScore == index;
+                  return Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 4),
+                    child: InkWell(
+                      onTap: isReadOnly ? null : () => onAnswer(index),
+                      borderRadius: BorderRadius.circular(10),
+                      child: AnimatedContainer(
+                        duration: const Duration(milliseconds: 200),
+                        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                        decoration: BoxDecoration(
+                          color: isSelected ? theme.colorScheme.primary : theme.colorScheme.surfaceVariant,
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Text(
+                              _getLabel(index),
+                              style: TextStyle(
+                                color: isSelected ? Colors.white : theme.colorScheme.onSurface,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 11,
+                              ),
+                            ),
+                            Text(
+                              '$index',
+                              style: TextStyle(
+                                color: isSelected ? Colors.white70 : theme.colorScheme.onSurfaceVariant,
+                                fontSize: 10,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  );
+                }),
+              ),
+            ),
           ],
         ),
       ),
     );
   }
 
-  Widget _buildChoiceRow(BuildContext context) {
-    final List<String> labels = ['Gar nicht', 'Kaum', 'Wenig', 'Etwas', 'Oft', 'Voll!'];
-    final theme = Theme.of(context);
-    
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      children: List.generate(6, (index) {
-        final isSelected = currentScore == index;
-        
-        return InkWell(
-          onTap: isReadOnly ? null : () => onAnswer(index),
-          borderRadius: BorderRadius.circular(8),
-          child: Opacity(
-            opacity: isReadOnly && !isSelected ? 0.5 : 1.0,
-            child: Column(
-              children: [
-                AnimatedContainer(
-                  duration: const Duration(milliseconds: 200),
-                  padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
-                  decoration: BoxDecoration(
-                    color: isSelected ? theme.colorScheme.primary : theme.colorScheme.surfaceVariant,
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  child: Text(
-                    labels[index],
-                    style: TextStyle(
-                      color: isSelected ? Colors.white : theme.colorScheme.onSurface,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 12,
-                    ),
-                  ),
-                ),
-                const SizedBox(height: 4),
-                Text(
-                  '$index',
-                  style: TextStyle(
-                    fontSize: 10, 
-                    color: isSelected ? theme.colorScheme.primary : theme.colorScheme.onSurfaceVariant,
-                    fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
-                  ),
-                ),
-              ],
-            ),
-          ),
-        );
-      }),
-    );
+  String _getLabel(int index) {
+    switch (index) {
+      case 0: return 'Gar nicht';
+      case 1: return 'Kaum';
+      case 2: return 'Wenig';
+      case 3: return 'Etwas';
+      case 4: return 'Oft';
+      case 5: return 'Voll!';
+      default: return '';
+    }
   }
 }

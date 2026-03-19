@@ -24,6 +24,7 @@ class SpiritualGiftsBloc extends HydratedBloc<SpiritualGiftsEvent, SpiritualGift
       emit(state.copyWith(
         gifts: gifts,
         questionOrder: questionOrder,
+        currentQuestionIndex: state.answers.length >= questionOrder.length ? 0 : state.firstUnansweredIndex,
       ));
     });
 
@@ -31,16 +32,15 @@ class SpiritualGiftsBloc extends HydratedBloc<SpiritualGiftsEvent, SpiritualGift
       final newAnswers = Map<String, int>.from(state.answers);
       newAnswers[event.questionId] = event.score;
       
-      // Berechne nächsten Index
-      int nextIndex = state.currentQuestionIndex;
-      if (event.questionId == state.questionOrder[state.currentQuestionIndex]) {
-        nextIndex = (state.currentQuestionIndex + 1).clamp(0, state.questionOrder.length - 1);
-      }
-
       var newState = state.copyWith(
         answers: newAnswers,
-        currentQuestionIndex: nextIndex,
       );
+
+      // Wir setzen den Index immer auf die nächste unbeantwortete Frage,
+      // es sei denn, der Test ist komplett.
+      if (!newState.isCompleted) {
+        newState = newState.copyWith(currentQuestionIndex: newState.firstUnansweredIndex);
+      }
 
       // Automatische Takeaways generieren, wenn fertig
       if (newState.isCompleted) {
