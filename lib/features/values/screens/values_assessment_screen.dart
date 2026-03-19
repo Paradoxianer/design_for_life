@@ -20,7 +20,7 @@ class ValuesAssessmentScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => ValuesBloc()..add(const ValuesEvent.started()),
+      create: (context) => ValuesBloc()..add(const ValuesStarted()),
       child: BlocBuilder<ValuesBloc, ValuesState>(
         builder: (context, state) {
           return DflModuleScaffold(
