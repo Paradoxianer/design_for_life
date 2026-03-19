@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../bloc/values_bloc.dart';
 import '../bloc/values_event.dart';
+import '../bloc/values_state.dart';
 import '../models/value_item.dart';
 
 class ValuesRatingView extends StatelessWidget {
@@ -77,7 +78,7 @@ class _ValueRatingTile extends StatelessWidget {
         selected: {value.rating},
         onSelectionChanged: (Set<int> newSelection) {
           context.read<ValuesBloc>().add(
-            ValuesEvent.updateRating(value.name, newSelection.first),
+            UpdateRating(value.name, newSelection.first),
           );
         },
       ),

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../bloc/values_bloc.dart';
 import '../bloc/values_event.dart';
+import '../bloc/values_state.dart';
 
 class ValuesReflectionView extends StatelessWidget {
   const ValuesReflectionView({super.key});
@@ -31,7 +32,7 @@ class ValuesReflectionView extends StatelessWidget {
               maxLines: 5,
               controller: TextEditingController(text: state.reflectionThoughts)
                 ..selection = TextSelection.collapsed(offset: state.reflectionThoughts.length),
-              onChanged: (text) => context.read<ValuesBloc>().add(ValuesEvent.updateReflection(text)),
+              onChanged: (text) => context.read<ValuesBloc>().add(UpdateReflection(text)),
             ),
             const SizedBox(height: 32),
             Text(
@@ -50,7 +51,7 @@ class ValuesReflectionView extends StatelessWidget {
               ),
               controller: TextEditingController(text: state.nextLifePhaseDescription)
                 ..selection = TextSelection.collapsed(offset: state.nextLifePhaseDescription.length),
-              onChanged: (text) => context.read<ValuesBloc>().add(ValuesEvent.updateNextLifePhase(text)),
+              onChanged: (text) => context.read<ValuesBloc>().add(UpdateNextLifePhase(text)),
             ),
             const SizedBox(height: 24),
             const Text(
@@ -66,7 +67,7 @@ class ValuesReflectionView extends StatelessWidget {
                   label: Text(value.name),
                   selected: isSelected,
                   onSelected: (_) {
-                    context.read<ValuesBloc>().add(ValuesEvent.toggleNextLifeValue(value));
+                    context.read<ValuesBloc>().add(ToggleNextLifeValue(value));
                   },
                 );
               }).toList(),

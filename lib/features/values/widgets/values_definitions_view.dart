@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../bloc/values_bloc.dart';
 import '../bloc/values_event.dart';
+import '../bloc/values_state.dart';
 
 class ValuesDefinitionsView extends StatelessWidget {
   const ValuesDefinitionsView({super.key});
@@ -46,7 +47,7 @@ class ValuesDefinitionsView extends StatelessWidget {
                       ..selection = TextSelection.collapsed(offset: value.definition?.length ?? 0),
                     onChanged: (text) {
                       context.read<ValuesBloc>().add(
-                        ValuesEvent.updateDefinition(value.name, text),
+                        UpdateDefinition(value.name, text),
                       );
                     },
                   ),

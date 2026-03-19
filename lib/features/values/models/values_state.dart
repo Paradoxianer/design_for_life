@@ -1,24 +1,58 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
 import 'value_item.dart';
 
-part 'values_state.freezed.dart';
-part 'values_state.g.dart';
+class ValuesState {
+  final List<ValueItem> allValues;
+  final String reflectionThoughts;
+  final String nextLifePhaseDescription;
+  final List<ValueItem> nextLifePhaseValues;
 
-@freezed
-class ValuesState with _$ValuesState {
-  const factory ValuesState({
-    @Default([]) List<ValueItem> allValues,
-    @Default('') String reflectionThoughts,
-    @Default('') String nextLifePhaseDescription,
-    @Default([]) List<ValueItem> nextLifePhaseValues,
-  }) = _ValuesState;
-
-  factory ValuesState.fromJson(Map<String, dynamic> json) => _$ValuesStateFromJson(json);
-
-  const ValuesState._();
+  const ValuesState({
+    this.allValues = const [],
+    this.reflectionThoughts = '',
+    this.nextLifePhaseDescription = '',
+    this.nextLifePhaseValues = const [],
+  });
 
   List<ValueItem> get topEightValues =>
       allValues.where((v) => v.rating == 1).toList();
 
   bool get isValid => topEightValues.length == 8;
+
+  ValuesState copyWith({
+    List<ValueItem>? allValues,
+    String? reflectionThoughts,
+    String? nextLifePhaseDescription,
+    List<ValueItem>? nextLifePhaseValues,
+  }) {
+    return ValuesState(
+      allValues: allValues ?? this.allValues,
+      reflectionThoughts: reflectionThoughts ?? this.reflectionThoughts,
+      nextLifePhaseDescription: nextLifePhaseDescription ?? this.nextLifePhaseDescription,
+      nextLifePhaseValues: nextLifePhaseValues ?? this.nextLifePhaseValues,
+    );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'allValues': allValues.map((v) => v.toJson()).toList(),
+      'reflectionThoughts': reflectionThoughts,
+      'nextLifePhaseDescription': nextLifePhaseDescription,
+      'nextLifePhaseValues': nextLifePhaseValues.map((v) => v.toJson()).toList(),
+    };
+  }
+
+  factory ValuesState.fromJson(Map<String, dynamic> json) {
+    return ValuesState(
+      allValues: (json['allValues'] as List<dynamic>?)
+              ?.map((e) => ValueItem.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          [],
+      reflectionThoughts: json['reflectionThoughts'] as String? ?? '',
+      nextLifePhaseDescription: json['nextLifePhaseDescription'] as String? ?? '',
+      nextLifePhaseValues: (json['nextLifePhaseValues'] as List<dynamic>?)
+              ?.map((e) => ValueItem.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          [],
+    );
+  }
 }

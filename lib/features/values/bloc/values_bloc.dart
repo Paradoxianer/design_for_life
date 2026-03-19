@@ -5,47 +5,48 @@ import '../models/static_values_data.dart';
 
 class ValuesBloc extends HydratedBloc<ValuesEvent, ValuesState> {
   ValuesBloc() : super(const ValuesState()) {
-    on<ValuesEvent>((event, emit) {
-      event.map(
-        started: (e) {
-          if (state.allValues.isEmpty) {
-            emit(state.copyWith(allValues: StaticValuesData.initialValues));
-          }
-        },
-        updateRating: (e) {
-          final updatedValues = state.allValues.map((v) {
-            if (v.name == e.name) {
-              return v.copyWith(rating: e.rating);
-            }
-            return v;
-          }).toList();
-          emit(state.copyWith(allValues: updatedValues));
-        },
-        updateDefinition: (e) {
-          final updatedValues = state.allValues.map((v) {
-            if (v.name == e.name) {
-              return v.copyWith(definition: e.definition);
-            }
-            return v;
-          }).toList();
-          emit(state.copyWith(allValues: updatedValues));
-        },
-        updateReflection: (e) {
-          emit(state.copyWith(reflectionThoughts: e.thoughts));
-        },
-        updateNextLifePhase: (e) {
-          emit(state.copyWith(nextLifePhaseDescription: e.description));
-        },
-        toggleNextLifeValue: (e) {
-          final current = List.from(state.nextLifePhaseValues);
-          if (current.any((v) => v.name == e.value.name)) {
-            current.removeWhere((v) => v.name == e.value.name);
-          } else if (current.length < 8) {
-            current.add(e.value);
-          }
-          emit(state.copyWith(nextLifePhaseValues: List.from(current)));
-        },
-      );
+    on<ValuesStarted>((event, emit) {
+      if (state.allValues.isEmpty) {
+        emit(state.copyWith(allValues: StaticValuesData.initialValues));
+      }
+    });
+
+    on<UpdateRating>((event, emit) {
+      final updatedValues = state.allValues.map((v) {
+        if (v.name == event.name) {
+          return v.copyWith(rating: event.rating);
+        }
+        return v;
+      }).toList();
+      emit(state.copyWith(allValues: updatedValues));
+    });
+
+    on<UpdateDefinition>((event, emit) {
+      final updatedValues = state.allValues.map((v) {
+        if (v.name == event.name) {
+          return v.copyWith(definition: event.definition);
+        }
+        return v;
+      }).toList();
+      emit(state.copyWith(allValues: updatedValues));
+    });
+
+    on<UpdateReflection>((event, emit) {
+      emit(state.copyWith(reflectionThoughts: event.thoughts));
+    });
+
+    on<UpdateNextLifePhase>((event, emit) {
+      emit(state.copyWith(nextLifePhaseDescription: event.description));
+    });
+
+    on<ToggleNextLifeValue>((event, emit) {
+      final current = List.from(state.nextLifePhaseValues);
+      if (current.any((v) => v.name == event.value.name)) {
+        current.removeWhere((v) => v.name == event.value.name);
+      } else if (current.length < 8) {
+        current.add(event.value);
+      }
+      emit(state.copyWith(nextLifePhaseValues: List.from(current)));
     });
   }
 
