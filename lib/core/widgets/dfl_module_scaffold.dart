@@ -6,7 +6,7 @@ class DflModuleScaffold extends StatefulWidget {
   final Widget editor;
   final Widget result;
   final bool initialEditMode;
-  final bool Function()? onWillToggleMode; // Validierung vor dem Wechsel
+  final Future<bool> Function()? onWillToggleMode;
 
   const DflModuleScaffold({
     super.key,
@@ -30,9 +30,10 @@ class _DflModuleScaffoldState extends State<DflModuleScaffold> {
     _isEditMode = widget.initialEditMode;
   }
 
-  void _toggleMode() {
+  Future<void> _toggleMode() async {
     if (_isEditMode && widget.onWillToggleMode != null) {
-      if (!widget.onWillToggleMode!()) return;
+      final shouldToggle = await widget.onWillToggleMode!();
+      if (!shouldToggle) return;
     }
     setState(() {
       _isEditMode = !_isEditMode;

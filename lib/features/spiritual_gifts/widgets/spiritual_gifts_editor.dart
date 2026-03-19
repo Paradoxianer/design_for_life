@@ -17,12 +17,13 @@ class SpiritualGiftsEditor extends StatefulWidget {
 
 class _SpiritualGiftsEditorState extends State<SpiritualGiftsEditor> {
   late ScrollController _scrollController;
-  final double _itemExtent = 280.0; // Feste Höhe für die Zoom-Berechnung
+  final double _itemHeight = 180.0; // Deutlich kompakter
 
   @override
   void initState() {
     super.initState();
     _scrollController = ScrollController();
+    _scrollController.addListener(() => setState(() {}));
   }
 
   @override
@@ -34,9 +35,9 @@ class _SpiritualGiftsEditorState extends State<SpiritualGiftsEditor> {
   void _scrollToIndex(int index) {
     if (_scrollController.hasClients) {
       _scrollController.animateTo(
-        index * _itemExtent,
-        duration: const Duration(milliseconds: 500),
-        curve: Curves.easeInOutCubic,
+        index * _itemHeight,
+        duration: const Duration(milliseconds: 400),
+        curve: Curves.easeOutCubic,
       );
     }
   }
@@ -45,7 +46,6 @@ class _SpiritualGiftsEditorState extends State<SpiritualGiftsEditor> {
   Widget build(BuildContext context) {
     return BlocConsumer<SpiritualGiftsBloc, SpiritualGiftsState>(
       listener: (context, state) {
-        // Sync scroll position when auto-advancing
         _scrollToIndex(state.currentQuestionIndex);
       },
       builder: (context, state) {
@@ -56,59 +56,53 @@ class _SpiritualGiftsEditorState extends State<SpiritualGiftsEditor> {
           return const Center(child: CircularProgressIndicator());
         }
 
+        final screenHeight = MediaQuery.of(context).size.height;
+        // Padding oben/unten, damit die erste/letzte Karte mittig stehen kann
+        final verticalPadding = (screenHeight / 2) - (_itemHeight / 2) - 80;
+
         return Column(
           children: [
             LinearProgressIndicator(
               value: state.progress,
               backgroundColor: Colors.grey.shade200,
-              minHeight: 6,
+              minHeight: 4,
             ),
             Expanded(
-              child: NotificationListener<ScrollNotification>(
-                onNotification: (notification) {
-                  // Wir nutzen AnimatedBuilder für den Zoom-Effekt basierend auf Scroll-Position
-                  setState(() {});
-                  return false;
-                },
-                child: ListView.builder(
-                  controller: _scrollController,
-                  physics: const BouncingScrollPhysics(),
-                  padding: EdgeInsets.symmetric(
-                    vertical: (MediaQuery.of(context).size.height / 2) - (_itemExtent / 2),
-                  ),
-                  itemCount: state.questionOrder.length,
-                  itemExtent: _itemExtent,
-                  itemBuilder: (context, index) {
-                    final questionId = state.questionOrder[index];
-                    final gift = state.gifts.firstWhere(
-                      (g) => g.questions.any((q) => q.id == questionId),
-                    );
-                    final question = gift.questions.firstWhere((q) => q.id == questionId);
-                    final score = state.answers[questionId];
+              child: ListView.builder(
+                controller: _scrollController,
+                physics: const BouncingScrollPhysics(),
+                padding: EdgeInsets.only(top: verticalPadding, bottom: verticalPadding),
+                itemCount: state.questionOrder.length,
+                itemBuilder: (context, index) {
+                  final questionId = state.questionOrder[index];
+                  final gift = state.gifts.firstWhere((g) => g.questions.any((q) => q.id == questionId));
+                  final question = gift.questions.firstWhere((q) => q.id == questionId);
+                  final score = state.answers[questionId];
 
-                    // Zoom-Berechnung
-                    double scale = 0.7;
-                    double opacity = 0.4;
-                    if (_scrollController.hasClients) {
-                      final offset = _scrollController.offset;
-                      final itemPosition = index * _itemExtent;
-                      final difference = (offset - itemPosition).abs();
-                      final normalized = (difference / _itemExtent).clamp(0.0, 1.0);
-                      scale = 1.0 - (normalized * 0.3);
-                      opacity = 1.0 - (normalized * 0.6);
-                    } else if (index == state.currentQuestionIndex) {
-                      scale = 1.0;
-                      opacity = 1.0;
-                    }
+                  double scale = 0.8;
+                  double opacity = 0.5;
 
-                    return Transform.scale(
+                  if (_scrollController.hasClients) {
+                    final offset = _scrollController.offset;
+                    final distance = (offset - (index * _itemHeight)).abs();
+                    final normalized = (distance / _itemHeight).clamp(0.0, 1.0);
+                    scale = 1.0 - (normalized * 0.25);
+                    opacity = 1.0 - (normalized * 0.5);
+                  } else if (index == state.currentQuestionIndex) {
+                    scale = 1.0;
+                    opacity = 1.0;
+                  }
+
+                  return Container(
+                    height: _itemHeight,
+                    alignment: Alignment.center,
+                    child: Transform.scale(
                       scale: scale,
                       child: Opacity(
-                        opacity: opacity.clamp(0.2, 1.0),
+                        opacity: opacity.clamp(0.3, 1.0),
                         child: _QuestionCard(
                           question: question,
                           currentScore: score,
-                          isFocused: scale > 0.9,
                           onAnswer: (s) {
                             context.read<SpiritualGiftsBloc>().add(
                               AnswerQuestion(questionId: questionId, score: s),
@@ -116,9 +110,9 @@ class _SpiritualGiftsEditorState extends State<SpiritualGiftsEditor> {
                           },
                         ),
                       ),
-                    );
-                  },
-                ),
+                    ),
+                  );
+                },
               ),
             ),
           ],
@@ -131,13 +125,11 @@ class _SpiritualGiftsEditorState extends State<SpiritualGiftsEditor> {
 class _QuestionCard extends StatelessWidget {
   final GiftQuestion question;
   final int? currentScore;
-  final bool isFocused;
   final Function(int) onAnswer;
 
   const _QuestionCard({
     required this.question,
     required this.currentScore,
-    required this.isFocused,
     required this.onAnswer,
   });
 
@@ -145,96 +137,68 @@ class _QuestionCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
 
-    return Container(
-      width: double.infinity,
-      margin: const EdgeInsets.symmetric(horizontal: 16),
-      padding: const EdgeInsets.all(20),
-      decoration: BoxDecoration(
-        color: theme.colorScheme.surface,
-        borderRadius: BorderRadius.circular(24),
-        border: Border.all(
-          color: isFocused ? theme.colorScheme.primary : theme.dividerColor.withValues(alpha: 0.3),
-          width: isFocused ? 2 : 1,
-        ),
-        boxShadow: isFocused ? [
-          BoxShadow(
-            color: Colors.black.withValues(alpha: 0.05),
-            blurRadius: 20,
-            offset: const Offset(0, 10),
-          )
-        ] : null,
-      ),
-      child: IgnorePointer(
-        ignoring: !isFocused,
+    return Card(
+      margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
+      elevation: 4,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+      child: Padding(
+        padding: const EdgeInsets.all(16),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisSize: MainAxisSize.min,
           children: [
             Text(
               question.text,
-              style: theme.textTheme.titleMedium?.copyWith(
-                fontWeight: FontWeight.bold,
-                height: 1.3,
-              ),
+              style: theme.textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
               textAlign: TextAlign.center,
-              maxLines: 3,
+              maxLines: 2,
               overflow: TextOverflow.ellipsis,
             ),
-            const SizedBox(height: 24),
-            _buildChoiceGrid(context),
+            const SizedBox(height: 12),
+            _buildChoiceRow(context),
           ],
         ),
       ),
     );
   }
 
-  Widget _buildChoiceGrid(BuildContext context) {
+  Widget _buildChoiceRow(BuildContext context) {
     final List<String> labels = ['Gar nicht', 'Kaum', 'Wenig', 'Etwas', 'Oft', 'Voll!'];
     
-    return Wrap(
-      spacing: 8,
-      runSpacing: 8,
-      alignment: WrapAlignment.center,
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: List.generate(6, (index) {
         final isSelected = currentScore == index;
         final theme = Theme.of(context);
         
         return InkWell(
           onTap: () => onAnswer(index),
-          borderRadius: BorderRadius.circular(12),
-          child: AnimatedContainer(
-            duration: const Duration(milliseconds: 200),
-            width: 90,
-            padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 4),
-            decoration: BoxDecoration(
-              color: isSelected ? theme.colorScheme.primary : theme.colorScheme.surfaceVariant.withValues(alpha: 0.3),
-              borderRadius: BorderRadius.circular(12),
-              border: Border.all(
-                color: isSelected ? theme.colorScheme.primary : Colors.transparent,
-                width: 2,
-              ),
-            ),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Text(
-                  labels[index],
+          child: Column(
+            children: [
+              AnimatedContainer(
+                duration: const Duration(milliseconds: 200),
+                width: 42,
+                height: 42,
+                decoration: BoxDecoration(
+                  color: isSelected ? theme.colorScheme.primary : theme.colorScheme.surfaceVariant,
+                  shape: BoxShape.circle,
+                  border: Border.all(color: isSelected ? theme.colorScheme.primary : Colors.transparent),
+                ),
+                alignment: Alignment.center,
+                child: Text(
+                  labels[index].substring(0, 1), // Nur erster Buchstabe für Kompaktheit
                   style: TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.bold,
                     color: isSelected ? Colors.white : theme.colorScheme.onSurface,
-                  ),
-                  textAlign: TextAlign.center,
-                ),
-                const SizedBox(height: 2),
-                Text(
-                  '$index',
-                  style: TextStyle(
-                    fontSize: 11,
-                    color: isSelected ? Colors.white70 : theme.colorScheme.onSurfaceVariant,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 12,
                   ),
                 ),
-              ],
-            ),
+              ),
+              const SizedBox(height: 4),
+              Text(
+                '$index',
+                style: TextStyle(fontSize: 10, color: theme.colorScheme.onSurfaceVariant),
+              ),
+            ],
           ),
         );
       }),
