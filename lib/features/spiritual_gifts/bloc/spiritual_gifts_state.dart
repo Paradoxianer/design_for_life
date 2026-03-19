@@ -5,25 +5,35 @@ class SpiritualGiftsState extends Equatable {
   final Map<String, int> answers; // questionId -> score (0-5)
   final List<String> questionOrder; // Liste der IDs in zufälliger Reihenfolge
   final int currentQuestionIndex;
-  final Map<String, List<String>> takeaways; // sessionId -> list of takeaways
+  final String? currentSessionId;
+  final Map<String, List<String>> takeaways;
 
   const SpiritualGiftsState({
     this.gifts = const [],
     this.answers = const {},
     this.questionOrder = const [],
     this.currentQuestionIndex = 0,
+    this.currentSessionId,
     this.takeaways = const {},
   });
 
   bool get isLoaded => gifts.isNotEmpty;
-  bool get isCompleted => questionOrder.isNotEmpty && currentQuestionIndex >= questionOrder.length;
-  double get progress => questionOrder.isEmpty ? 0 : (currentQuestionIndex / questionOrder.length).clamp(0.0, 1.0);
+  bool get isCompleted => questionOrder.isNotEmpty && answers.length >= questionOrder.length;
+  double get progress => questionOrder.isEmpty ? 0 : (answers.length / questionOrder.length).clamp(0.0, 1.0);
+
+  int get firstUnansweredIndex {
+    for (int i = 0; i < questionOrder.length; i++) {
+      if (!answers.containsKey(questionOrder[i])) return i;
+    }
+    return questionOrder.isEmpty ? 0 : questionOrder.length - 1;
+  }
 
   SpiritualGiftsState copyWith({
     List<SpiritualGift>? gifts,
     Map<String, int>? answers,
     List<String>? questionOrder,
     int? currentQuestionIndex,
+    String? currentSessionId,
     Map<String, List<String>>? takeaways,
   }) {
     return SpiritualGiftsState(
@@ -31,11 +41,11 @@ class SpiritualGiftsState extends Equatable {
       answers: answers ?? this.answers,
       questionOrder: questionOrder ?? this.questionOrder,
       currentQuestionIndex: currentQuestionIndex ?? this.currentQuestionIndex,
+      currentSessionId: currentSessionId ?? this.currentSessionId,
       takeaways: takeaways ?? this.takeaways,
     );
   }
 
-  // Berechnet die Summe pro Gabe basierend auf den Antworten
   Map<String, int> getScoresPerGift() {
     final scores = <String, int>{};
     for (final gift in gifts) {
@@ -48,7 +58,6 @@ class SpiritualGiftsState extends Equatable {
     return scores;
   }
 
-  // Liefert alle Gaben sortiert nach Punktzahl
   List<SpiritualGift> getRankedGifts() {
     final scores = getScoresPerGift();
     final sortedGifts = List<SpiritualGift>.from(gifts);
@@ -56,7 +65,7 @@ class SpiritualGiftsState extends Equatable {
       final scoreA = scores[a.id] ?? 0;
       final scoreB = scores[b.id] ?? 0;
       if (scoreA == scoreB) return a.name.compareTo(b.name);
-      return scoreB.compareTo(scoreA); // Absteigend
+      return scoreB.compareTo(scoreA);
     });
     return sortedGifts;
   }
@@ -67,6 +76,7 @@ class SpiritualGiftsState extends Equatable {
       'answers': answers,
       'questionOrder': questionOrder,
       'currentQuestionIndex': currentQuestionIndex,
+      'currentSessionId': currentSessionId,
       'takeaways': takeaways,
     };
   }
@@ -77,6 +87,7 @@ class SpiritualGiftsState extends Equatable {
       answers: Map<String, int>.from(json['answers'] ?? {}),
       questionOrder: List<String>.from(json['questionOrder'] ?? []),
       currentQuestionIndex: json['currentQuestionIndex'] ?? 0,
+      currentSessionId: json['currentSessionId'] as String?,
       takeaways: (json['takeaways'] as Map<String, dynamic>?)?.map(
             (k, v) => MapEntry(k, List<String>.from(v as List)),
           ) ??
@@ -85,5 +96,5 @@ class SpiritualGiftsState extends Equatable {
   }
 
   @override
-  List<Object?> get props => [gifts, answers, questionOrder, currentQuestionIndex, takeaways];
+  List<Object?> get props => [gifts, answers, questionOrder, currentQuestionIndex, currentSessionId, takeaways];
 }

@@ -15,7 +15,6 @@ class SpiritualGiftsBloc extends HydratedBloc<SpiritualGiftsEvent, SpiritualGift
       
       List<String> questionOrder = List.from(state.questionOrder);
       if (questionOrder.isEmpty) {
-        // Fragen mischen, falls noch nicht geschehen
         questionOrder = gifts
             .expand((gift) => gift.questions.map((q) => q.id))
             .toList()
@@ -32,20 +31,26 @@ class SpiritualGiftsBloc extends HydratedBloc<SpiritualGiftsEvent, SpiritualGift
       final newAnswers = Map<String, int>.from(state.answers);
       newAnswers[event.questionId] = event.score;
       
-      int nextIndex = state.currentQuestionIndex + 1;
-      
-      emit(state.copyWith(
+      // Berechne nächsten Index
+      int nextIndex = state.currentQuestionIndex;
+      if (event.questionId == state.questionOrder[state.currentQuestionIndex]) {
+        nextIndex = (state.currentQuestionIndex + 1).clamp(0, state.questionOrder.length - 1);
+      }
+
+      var newState = state.copyWith(
         answers: newAnswers,
         currentQuestionIndex: nextIndex,
-      ));
-    });
+      );
 
-    on<PreviousQuestion>((event, emit) {
-      if (state.currentQuestionIndex > 0) {
-        emit(state.copyWith(
-          currentQuestionIndex: state.currentQuestionIndex - 1,
-        ));
+      // Automatische Takeaways generieren, wenn fertig
+      if (newState.isCompleted) {
+        final top3 = newState.getRankedGifts().take(3).map((g) => g.name).toList();
+        final newTakeaways = Map<String, List<String>>.from(state.takeaways);
+        newTakeaways[newState.currentSessionId ?? 'default'] = top3;
+        newState = newState.copyWith(takeaways: newTakeaways);
       }
+
+      emit(newState);
     });
 
     on<UpdateTakeaways>((event, emit) {
@@ -60,12 +65,11 @@ class SpiritualGiftsBloc extends HydratedBloc<SpiritualGiftsEvent, SpiritualGift
           .toList()
         ..shuffle();
         
-      emit(const SpiritualGiftsState(gifts: []).copyWith(
+      emit(const SpiritualGiftsState().copyWith(
         gifts: state.gifts,
         questionOrder: allQuestionIds,
         currentQuestionIndex: 0,
         answers: {},
-        takeaways: state.takeaways,
       ));
     });
   }

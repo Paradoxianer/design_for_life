@@ -9,12 +9,18 @@ class GiftsRepository {
     if (_cachedGifts != null) return _cachedGifts!;
 
     try {
-      final String response = await rootBundle.loadString('assets/data/gifts_$locale.json');
+      String response;
+      try {
+        response = await rootBundle.loadString('assets/data/gifts_$locale.json');
+      } catch (e) {
+        // Fallback to German if locale is not found
+        response = await rootBundle.loadString('assets/data/gifts_de.json');
+      }
+      
       final List<dynamic> data = json.decode(response);
-      _cachedGifts = data.map((json) => SpiritualGift.fromJson(json)).toList();
+      _cachedGifts = data.map((json) => SpiritualGift.fromJson(json as Map<String, dynamic>)).toList();
       return _cachedGifts!;
     } catch (e) {
-      // Fallback oder Error Handling
       return [];
     }
   }

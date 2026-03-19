@@ -9,10 +9,11 @@ abstract class SpiritualGiftsEvent extends Equatable {
 
 class InitTest extends SpiritualGiftsEvent {
   final String locale;
-  const InitTest({required this.locale});
+  final String sessionId;
+  const InitTest({required this.locale, required this.sessionId});
 
   @override
-  List<Object?> get props => [locale];
+  List<Object?> get props => [locale, sessionId];
 }
 
 class AnswerQuestion extends SpiritualGiftsEvent {
