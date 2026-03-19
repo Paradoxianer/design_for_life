@@ -22,8 +22,8 @@ class _SpiritualGiftsEditorState extends State<SpiritualGiftsEditor> {
   @override
   void initState() {
     super.initState();
-    // viewportFraction verringert, um mehr Karten gleichzeitig zu sehen
-    _pageController = PageController(viewportFraction: 0.45);
+    // Zeigt ca. 3-5 Karten gleichzeitig
+    _pageController = PageController(viewportFraction: 0.33, initialPage: 0);
   }
 
   @override
@@ -66,7 +66,6 @@ class _SpiritualGiftsEditorState extends State<SpiritualGiftsEditor> {
                 controller: _pageController,
                 scrollDirection: Axis.vertical,
                 itemCount: state.questionOrder.length,
-                physics: const BouncingScrollPhysics(),
                 itemBuilder: (context, index) {
                   final questionId = state.questionOrder[index];
                   final gift = state.gifts.firstWhere(
@@ -81,10 +80,10 @@ class _SpiritualGiftsEditorState extends State<SpiritualGiftsEditor> {
                       double value = 1.0;
                       if (_pageController.position.hasContentDimensions) {
                         value = (_pageController.page! - index).abs();
-                        // Aggressiveres Scaling für den "Herauszoom"-Effekt
-                        value = (1 - (value * 0.4)).clamp(0.0, 1.0);
+                        // Herauszoom-Effekt: Aktives Element = 1.0, Inaktive = 0.7
+                        value = (1 - (value * 0.35)).clamp(0.5, 1.0);
                       } else {
-                        value = index == state.currentQuestionIndex ? 1.0 : 0.6;
+                        value = index == state.currentQuestionIndex ? 1.0 : 0.7;
                       }
 
                       final isFocused = value > 0.9;
@@ -93,7 +92,7 @@ class _SpiritualGiftsEditorState extends State<SpiritualGiftsEditor> {
                         child: Transform.scale(
                           scale: value,
                           child: Opacity(
-                            opacity: value.clamp(0.3, 1.0),
+                            opacity: value.clamp(0.4, 1.0),
                             child: IgnorePointer(
                               ignoring: !isFocused,
                               child: child,
@@ -139,8 +138,8 @@ class _QuestionCard extends StatelessWidget {
 
     return Container(
       width: double.infinity,
-      padding: const EdgeInsets.all(20),
-      margin: const EdgeInsets.symmetric(horizontal: 12),
+      padding: const EdgeInsets.all(16),
+      margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
       decoration: BoxDecoration(
         color: theme.colorScheme.surface,
         borderRadius: BorderRadius.circular(24),
@@ -160,13 +159,13 @@ class _QuestionCard extends StatelessWidget {
             question.text,
             style: theme.textTheme.titleMedium?.copyWith(
               fontWeight: FontWeight.bold,
-              height: 1.3,
+              height: 1.2,
             ),
             textAlign: TextAlign.center,
             maxLines: 3,
             overflow: TextOverflow.ellipsis,
           ),
-          const SizedBox(height: 24),
+          const SizedBox(height: 16),
           _buildChoiceGrid(context),
         ],
       ),
@@ -177,8 +176,8 @@ class _QuestionCard extends StatelessWidget {
     final List<String> labels = ['Gar nicht', 'Kaum', 'Wenig', 'Etwas', 'Oft', 'Voll!'];
     
     return Wrap(
-      spacing: 8,
-      runSpacing: 8,
+      spacing: 6,
+      runSpacing: 6,
       alignment: WrapAlignment.center,
       children: List.generate(6, (index) {
         final isSelected = currentScore == index;
@@ -189,8 +188,8 @@ class _QuestionCard extends StatelessWidget {
           borderRadius: BorderRadius.circular(12),
           child: AnimatedContainer(
             duration: const Duration(milliseconds: 200),
-            width: 90,
-            padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 4),
+            width: 85,
+            padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 4),
             decoration: BoxDecoration(
               color: isSelected ? theme.colorScheme.primary : theme.colorScheme.surfaceVariant.withValues(alpha: 0.3),
               borderRadius: BorderRadius.circular(12),
@@ -204,7 +203,7 @@ class _QuestionCard extends StatelessWidget {
                 Text(
                   labels[index],
                   style: TextStyle(
-                    fontSize: 15, // Text jetzt im Fokus
+                    fontSize: 14,
                     fontWeight: FontWeight.bold,
                     color: isSelected ? Colors.white : theme.colorScheme.onSurface,
                   ),
@@ -214,7 +213,7 @@ class _QuestionCard extends StatelessWidget {
                 Text(
                   '$index',
                   style: TextStyle(
-                    fontSize: 11, // Zahl dezent darunter
+                    fontSize: 10,
                     color: isSelected ? Colors.white70 : theme.colorScheme.onSurfaceVariant,
                   ),
                 ),
