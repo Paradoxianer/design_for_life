@@ -90,9 +90,9 @@ class _SpiritualGiftsEditorState extends State<SpiritualGiftsEditor> {
                     value: state.progress,
                     backgroundColor: Colors.grey.shade200,
                     borderRadius: BorderRadius.circular(10),
-                    minHeight: 8,
+                    minHeight: 6,
                   ),
-                  const SizedBox(height: 8),
+                  const SizedBox(height: 4),
                   Text(
                     'Frage ${state.answers.length} von ${state.questionOrder.length}',
                     style: Theme.of(context).textTheme.labelSmall,
@@ -104,10 +104,10 @@ class _SpiritualGiftsEditorState extends State<SpiritualGiftsEditor> {
               child: CarouselView(
                 controller: _carouselController,
                 scrollDirection: Axis.vertical,
-                itemExtent: 240, // Etwas mehr Platz für die seriösen Texte
-                shrinkExtent: 180,
+                itemExtent: 150, // Maximale Kompaktheit
+                shrinkExtent: 120,
                 enableSplash: false,
-                padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+                padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 16),
                 children: List.generate(state.questionOrder.length, (index) {
                   final questionId = state.questionOrder[index];
                   final gift = state.gifts.firstWhere(
@@ -158,79 +158,72 @@ class _QuestionCard extends StatelessWidget {
     final theme = Theme.of(context);
 
     return Card(
-      margin: EdgeInsets.zero,
-      elevation: currentScore != null ? 4 : 1,
+      margin: const EdgeInsets.symmetric(vertical: 2),
+      elevation: 4, // Etwas mehr Schatten für bessere Abhebung
+      shadowColor: Colors.black.withOpacity(0.2),
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(24),
+        borderRadius: BorderRadius.circular(16),
         side: BorderSide(
-          color: currentScore != null ? theme.colorScheme.primary.withOpacity(0.5) : Colors.transparent,
-          width: 2,
+          color: currentScore != null ? theme.colorScheme.primary.withOpacity(0.5) : Colors.black12,
+          width: 1.2,
         ),
       ),
       child: Padding(
-        padding: const EdgeInsets.all(20),
+        padding: const EdgeInsets.all(10), // Sehr kompaktes Padding
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
               question.text,
-              style: theme.textTheme.titleMedium?.copyWith(
+              style: theme.textTheme.titleSmall?.copyWith(
                 fontWeight: FontWeight.bold,
+                fontSize: 13,
               ),
               textAlign: TextAlign.center,
-              maxLines: 3,
+              maxLines: 2,
               overflow: TextOverflow.ellipsis,
             ),
-            const SizedBox(height: 24),
-            Center(
-              child: Wrap(
-                spacing: 10,
-                runSpacing: 12,
-                alignment: WrapAlignment.center,
-                children: List.generate(6, (index) {
-                  final isSelected = currentScore == index;
-                  return InkWell(
-                    onTap: isReadOnly ? null : () => onAnswer(index),
-                    borderRadius: BorderRadius.circular(12),
-                    child: AnimatedContainer(
-                      duration: const Duration(milliseconds: 200),
-                      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
-                      decoration: BoxDecoration(
-                        color: isSelected ? theme.colorScheme.primary : theme.colorScheme.surfaceVariant,
-                        borderRadius: BorderRadius.circular(12),
-                        boxShadow: isSelected ? [
-                          BoxShadow(
-                            color: theme.colorScheme.primary.withOpacity(0.2),
-                            blurRadius: 8,
-                            offset: const Offset(0, 2),
-                          )
-                        ] : null,
-                      ),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Text(
-                            _getLabel(index),
-                            style: TextStyle(
-                              color: isSelected ? Colors.white : theme.colorScheme.onSurface,
-                              fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
-                              fontSize: 12,
-                            ),
-                          ),
-                          const SizedBox(height: 2),
-                          Text(
-                            '$index',
-                            style: TextStyle(
-                              color: isSelected ? Colors.white70 : theme.colorScheme.onSurfaceVariant,
-                              fontSize: 10,
-                            ),
-                          ),
-                        ],
-                      ),
+            const SizedBox(height: 10),
+            Wrap(
+              spacing: 6,
+              runSpacing: 6,
+              alignment: WrapAlignment.center,
+              children: List.generate(6, (index) {
+                final isSelected = currentScore == index;
+                return InkWell(
+                  onTap: isReadOnly ? null : () => onAnswer(index),
+                  borderRadius: BorderRadius.circular(8),
+                  child: AnimatedContainer(
+                    duration: const Duration(milliseconds: 200),
+                    padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 5),
+                    decoration: BoxDecoration(
+                      color: isSelected ? theme.colorScheme.primary : theme.colorScheme.surfaceVariant,
+                      borderRadius: BorderRadius.circular(8),
                     ),
-                  );
-                }),
-              ),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Text(
+                          _getLabel(index),
+                          style: TextStyle(
+                            color: isSelected ? Colors.white : Colors.black, // Hoher Kontrast: Schwarz
+                            fontWeight: isSelected ? FontWeight.bold : FontWeight.w600,
+                            fontSize: 10,
+                          ),
+                        ),
+                        Text(
+                          '$index',
+                          style: TextStyle(
+                            color: isSelected ? Colors.white70 : Colors.black87,
+                            fontSize: 9,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                );
+              }),
             ),
           ],
         ),
