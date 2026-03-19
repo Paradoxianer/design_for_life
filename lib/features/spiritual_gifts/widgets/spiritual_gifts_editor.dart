@@ -22,7 +22,8 @@ class _SpiritualGiftsEditorState extends State<SpiritualGiftsEditor> {
   @override
   void initState() {
     super.initState();
-    _pageController = PageController(viewportFraction: 0.6);
+    // viewportFraction verringert, um mehr Karten gleichzeitig zu sehen
+    _pageController = PageController(viewportFraction: 0.45);
   }
 
   @override
@@ -40,8 +41,8 @@ class _SpiritualGiftsEditorState extends State<SpiritualGiftsEditor> {
             state.currentQuestionIndex < state.questionOrder.length) {
           _pageController.animateToPage(
             state.currentQuestionIndex,
-            duration: const Duration(milliseconds: 400),
-            curve: Curves.easeInOutCubic,
+            duration: const Duration(milliseconds: 500),
+            curve: Curves.fastOutSlowIn,
           );
         }
       },
@@ -65,6 +66,7 @@ class _SpiritualGiftsEditorState extends State<SpiritualGiftsEditor> {
                 controller: _pageController,
                 scrollDirection: Axis.vertical,
                 itemCount: state.questionOrder.length,
+                physics: const BouncingScrollPhysics(),
                 itemBuilder: (context, index) {
                   final questionId = state.questionOrder[index];
                   final gift = state.gifts.firstWhere(
@@ -79,17 +81,23 @@ class _SpiritualGiftsEditorState extends State<SpiritualGiftsEditor> {
                       double value = 1.0;
                       if (_pageController.position.hasContentDimensions) {
                         value = (_pageController.page! - index).abs();
+                        // Aggressiveres Scaling für den "Herauszoom"-Effekt
                         value = (1 - (value * 0.4)).clamp(0.0, 1.0);
                       } else {
                         value = index == state.currentQuestionIndex ? 1.0 : 0.6;
                       }
 
+                      final isFocused = value > 0.9;
+
                       return Center(
                         child: Transform.scale(
                           scale: value,
                           child: Opacity(
-                            opacity: value,
-                            child: child,
+                            opacity: value.clamp(0.3, 1.0),
+                            child: IgnorePointer(
+                              ignoring: !isFocused,
+                              child: child,
+                            ),
                           ),
                         ),
                       );
@@ -131,8 +139,8 @@ class _QuestionCard extends StatelessWidget {
 
     return Container(
       width: double.infinity,
-      padding: const EdgeInsets.all(24),
-      margin: const EdgeInsets.symmetric(horizontal: 16),
+      padding: const EdgeInsets.all(20),
+      margin: const EdgeInsets.symmetric(horizontal: 12),
       decoration: BoxDecoration(
         color: theme.colorScheme.surface,
         borderRadius: BorderRadius.circular(24),
@@ -140,8 +148,8 @@ class _QuestionCard extends StatelessWidget {
         boxShadow: [
           BoxShadow(
             color: Colors.black.withValues(alpha: 0.05),
-            blurRadius: 20,
-            offset: const Offset(0, 10),
+            blurRadius: 15,
+            offset: const Offset(0, 8),
           ),
         ],
       ),
@@ -150,10 +158,15 @@ class _QuestionCard extends StatelessWidget {
         children: [
           Text(
             question.text,
-            style: theme.textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold),
+            style: theme.textTheme.titleMedium?.copyWith(
+              fontWeight: FontWeight.bold,
+              height: 1.3,
+            ),
             textAlign: TextAlign.center,
+            maxLines: 3,
+            overflow: TextOverflow.ellipsis,
           ),
-          const SizedBox(height: 32),
+          const SizedBox(height: 24),
           _buildChoiceGrid(context),
         ],
       ),
@@ -176,8 +189,8 @@ class _QuestionCard extends StatelessWidget {
           borderRadius: BorderRadius.circular(12),
           child: AnimatedContainer(
             duration: const Duration(milliseconds: 200),
-            width: 95,
-            padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 4),
+            width: 90,
+            padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 4),
             decoration: BoxDecoration(
               color: isSelected ? theme.colorScheme.primary : theme.colorScheme.surfaceVariant.withValues(alpha: 0.3),
               borderRadius: BorderRadius.circular(12),
@@ -191,17 +204,17 @@ class _QuestionCard extends StatelessWidget {
                 Text(
                   labels[index],
                   style: TextStyle(
-                    fontSize: 14,
+                    fontSize: 15, // Text jetzt im Fokus
                     fontWeight: FontWeight.bold,
                     color: isSelected ? Colors.white : theme.colorScheme.onSurface,
                   ),
                   textAlign: TextAlign.center,
                 ),
-                const SizedBox(height: 4),
+                const SizedBox(height: 2),
                 Text(
                   '$index',
                   style: TextStyle(
-                    fontSize: 11,
+                    fontSize: 11, // Zahl dezent darunter
                     color: isSelected ? Colors.white70 : theme.colorScheme.onSurfaceVariant,
                   ),
                 ),
