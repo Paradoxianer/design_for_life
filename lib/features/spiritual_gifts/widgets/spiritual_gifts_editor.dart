@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:design_for_life/l10n/generated/app_localizations.dart';
 import '../bloc/spiritual_gifts_bloc.dart';
 import '../models/spiritual_gift.dart';
 import '../models/gift_data.dart';
 
-class SpiritualGiftsEditor extends StatelessWidget {
+class SpiritualGiftsEditor extends StatefulWidget {
   final String sessionId;
 
   const SpiritualGiftsEditor({
@@ -14,8 +13,38 @@ class SpiritualGiftsEditor extends StatelessWidget {
   });
 
   @override
+  State<SpiritualGiftsEditor> createState() => _SpiritualGiftsEditorState();
+}
+
+class _SpiritualGiftsEditorState extends State<SpiritualGiftsEditor> {
+  late PageController _pageController;
+
+  @override
+  void initState() {
+    super.initState();
+    _pageController = PageController(viewportFraction: 0.7);
+  }
+
+  @override
+  void dispose() {
+    _pageController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return BlocBuilder<SpiritualGiftsBloc, SpiritualGiftsState>(
+    return BlocConsumer<SpiritualGiftsBloc, SpiritualGiftsState>(
+      listener: (context, state) {
+        if (_pageController.hasClients && 
+            _pageController.page?.round() != state.currentQuestionIndex &&
+            state.currentQuestionIndex < state.questionOrder.length) {
+          _pageController.animateToPage(
+            state.currentQuestionIndex,
+            duration: const Duration(milliseconds: 400),
+            curve: Curves.easeInOutCubic,
+          );
+        }
+      },
       builder: (context, state) {
         if (state.questionOrder.isEmpty) {
           context.read<SpiritualGiftsBloc>().add(
@@ -24,65 +53,65 @@ class SpiritualGiftsEditor extends StatelessWidget {
           return const Center(child: CircularProgressIndicator());
         }
 
-        if (state.isCompleted) {
-          return _buildCompletionScreen(context);
-        }
-
-        final questionId = state.questionOrder[state.currentQuestionIndex];
-        // Suche die Frage in den Daten
-        final gift = GiftData.allGifts.firstWhere(
-          (g) => g.questions.any((q) => q.id == questionId),
-        );
-        final question = gift.questions.firstWhere((q) => q.id == questionId);
-
         return Column(
           children: [
             LinearProgressIndicator(
               value: state.progress,
               backgroundColor: Colors.grey.shade200,
-              minHeight: 8,
-            ),
-            Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    'Frage ${state.currentQuestionIndex + 1} von ${state.questionOrder.length}',
-                    style: Theme.of(context).textTheme.labelMedium,
-                  ),
-                  if (state.currentQuestionIndex > 0)
-                    TextButton.icon(
-                      onPressed: () => context.read<SpiritualGiftsBloc>().add(PreviousQuestion()),
-                      icon: const Icon(Icons.arrow_back, size: 16),
-                      label: const Text('Zurück'),
-                    ),
-                ],
-              ),
+              minHeight: 6,
             ),
             Expanded(
-              child: Center(
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 24.0),
-                  child: AnimatedSwitcher(
-                    duration: const Duration(milliseconds: 300),
-                    child: KeyedSubtree(
-                      key: ValueKey(questionId),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            question.text,
-                            style: Theme.of(context).textTheme.headlineSmall,
-                            textAlign: MainCenter,
+              child: PageView.builder(
+                controller: _pageController,
+                scrollDirection: Axis.vertical,
+                itemCount: state.questionOrder.length,
+                onPageChanged: (index) {
+                  // Erlaubt manuelles Scrollen ohne Fortschrittsverlust
+                  if (index != state.currentQuestionIndex) {
+                    // Wir könnten hier ein Event feuern, um den Index zu syncen, 
+                    // aber auto-advance macht das meist schon.
+                  }
+                },
+                itemBuilder: (context, index) {
+                  final questionId = state.questionOrder[index];
+                  final gift = GiftData.allGifts.firstWhere(
+                    (g) => g.questions.any((q) => q.id == questionId),
+                  );
+                  final question = gift.questions.firstWhere((q) => q.id == questionId);
+                  final score = state.answers[questionId];
+
+                  return AnimatedBuilder(
+                    animation: _pageController,
+                    builder: (context, child) {
+                      double value = 1.0;
+                      if (_pageController.position.haveDimensions) {
+                        value = _pageController.page! - index;
+                        value = (1 - (value.abs() * 0.3)).clamp(0.0, 1.0);
+                      } else if (index != state.currentQuestionIndex) {
+                        value = 0.7; // Default für nicht-fokussierte Items beim Start
+                      }
+
+                      return Center(
+                        child: Transform.scale(
+                          scale: value,
+                          child: Opacity(
+                            opacity: value,
+                            child: child,
                           ),
-                          const SizedBox(height: 48),
-                          _buildChoiceButtons(context, questionId, state.answers[questionId]),
-                        ],
-                      ),
+                        ),
+                      );
+                    },
+                    child: _QuestionCard(
+                      question: question,
+                      currentScore: score,
+                      onAnswer: (s) {
+                        context.read<SpiritualGiftsBloc>().add(
+                          AnswerQuestion(questionId: questionId, score: s),
+                        );
+                      },
                     ),
-                  ),
-                ),
+                  );
+                },
               ),
             ),
           ],
@@ -90,58 +119,97 @@ class SpiritualGiftsEditor extends StatelessWidget {
       },
     );
   }
+}
 
-  Widget _buildChoiceButtons(BuildContext context, String questionId, int? currentScore) {
+class _QuestionCard extends StatelessWidget {
+  final GiftQuestion question;
+  final int? currentScore;
+  final Function(int) onAnswer;
+
+  const _QuestionCard({
+    required this.question,
+    required this.currentScore,
+    required this.onAnswer,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
+    return Container(
+      width: double.infinity,
+      padding: const EdgeInsets.all(24),
+      margin: const EdgeInsets.symmetric(horizontal: 16),
+      decoration: BoxDecoration(
+        color: theme.colorScheme.surface,
+        borderRadius: BorderRadius.circular(24),
+        border: Border.all(color: theme.dividerColor.withValues(alpha: 0.5)),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withValues(alpha: 0.05),
+            blurRadius: 20,
+            offset: const Offset(0, 10),
+          ),
+        ],
+      ),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Text(
+            question.text,
+            style: theme.textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold),
+            textAlign: TextAlign.center,
+          ),
+          const SizedBox(height: 32),
+          _buildChoiceGrid(context),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildChoiceGrid(BuildContext context) {
     final List<String> labels = ['Gar nicht', 'Kaum', 'Wenig', 'Etwas', 'Oft', 'Voll!'];
     
     return Wrap(
-      spacing: 12,
-      runSpacing: 12,
+      spacing: 8,
+      runSpacing: 8,
       alignment: WrapAlignment.center,
       children: List.generate(6, (index) {
         final isSelected = currentScore == index;
+        final theme = Theme.of(context);
+        
         return InkWell(
-          onTap: () {
-            context.read<SpiritualGiftsBloc>().add(
-              AnswerQuestion(questionId: questionId, score: index),
-            );
-          },
-          borderRadius: BorderRadius.circular(16),
+          onTap: () => onAnswer(index),
+          borderRadius: BorderRadius.circular(12),
           child: AnimatedContainer(
             duration: const Duration(milliseconds: 200),
-            width: 100,
-            padding: const EdgeInsets.symmetric(vertical: 16),
+            width: 95,
+            padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 4),
             decoration: BoxDecoration(
-              color: isSelected ? Theme.of(context).colorScheme.primary : Colors.white,
-              borderRadius: BorderRadius.circular(16),
+              color: isSelected ? theme.colorScheme.primary : theme.colorScheme.surfaceVariant.withValues(alpha: 0.3),
+              borderRadius: BorderRadius.circular(12),
               border: Border.all(
-                color: isSelected ? Theme.of(context).colorScheme.primary : Colors.grey.shade300,
+                color: isSelected ? theme.colorScheme.primary : Colors.transparent,
                 width: 2,
               ),
-              boxShadow: isSelected ? [
-                BoxShadow(
-                  color: Theme.of(context).colorScheme.primary.withOpacity(0.3),
-                  blurRadius: 8,
-                  offset: const Offset(0, 4),
-                )
-              ] : null,
             ),
             child: Column(
               children: [
                 Text(
-                  '$index',
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                    color: isSelected ? Colors.white : Colors.black87,
-                  ),
-                ),
-                const SizedBox(height: 4),
-                Text(
                   labels[index],
                   style: TextStyle(
+                    fontSize: 13,
+                    fontWeight: isSelected ? FontWeight.bold : FontWeight.w500,
+                    color: isSelected ? Colors.white : theme.colorScheme.onSurface,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+                const SizedBox(height: 2),
+                Text(
+                  '$index',
+                  style: TextStyle(
                     fontSize: 10,
-                    color: isSelected ? Colors.white70 : Colors.grey,
+                    color: isSelected ? Colors.white70 : theme.colorScheme.onSurfaceVariant,
                   ),
                 ),
               ],
@@ -151,31 +219,4 @@ class SpiritualGiftsEditor extends StatelessWidget {
       }),
     );
   }
-
-  Widget _buildCompletionScreen(BuildContext context) {
-    return Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          const Icon(Icons.check_circle_outline, size: 80, color: Colors.green),
-          const SizedBox(height: 24),
-          Text(
-            'Test abgeschlossen!',
-            style: Theme.of(context).textTheme.headlineMedium,
-          ),
-          const SizedBox(height: 16),
-          const Text('Schau dir jetzt deine Ergebnisse an.'),
-          const SizedBox(height: 32),
-          ElevatedButton(
-            onPressed: () {
-              // Hier könnte man den Modus auf "Result" umschalten
-            },
-            child: const Text('Ergebnisse zeigen'),
-          ),
-        ],
-      ),
-    );
-  }
 }
-
-const MainCenter = TextAlign.center;

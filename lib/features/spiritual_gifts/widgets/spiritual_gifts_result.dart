@@ -2,17 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../bloc/spiritual_gifts_bloc.dart';
 import '../models/spiritual_gift.dart';
-import '../../../core/widgets/key_takeaway_field.dart';
 
 class SpiritualGiftsResult extends StatelessWidget {
-  final List<String> takeaways;
-  final Function(List<String>) onTakeawaysUpdate;
-
-  const SpiritualGiftsResult({
-    super.key,
-    required this.takeaways,
-    required this.onTakeawaysUpdate,
-  });
+  const SpiritualGiftsResult({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +27,7 @@ class SpiritualGiftsResult extends StatelessWidget {
               ),
               const SizedBox(height: 8),
               Text(
-                'Tippe auf eine Gabe, um mehr über sie zu erfahren.',
+                'Tippe auf eine Gabe, um Details und Bibelstellen zu sehen.',
                 style: theme.textTheme.bodyMedium?.copyWith(color: theme.colorScheme.onSurfaceVariant),
               ),
               const SizedBox(height: 24),
@@ -54,24 +46,6 @@ class SpiritualGiftsResult extends StatelessWidget {
                   maxScore: maxPossibleScore,
                 );
               }),
-
-              const SizedBox(height: 32),
-              const Divider(),
-              const SizedBox(height: 16),
-              
-              KeyTakeawayField(
-                takeaways: takeaways,
-                onUpdate: (index, value) {
-                  final newList = List<String>.from(takeaways);
-                  if (index < newList.length) {
-                    newList[index] = value;
-                  } else {
-                    while (newList.length <= index) newList.add('');
-                    newList[index] = value;
-                  }
-                  onTakeawaysUpdate(newList);
-                },
-              ),
               const SizedBox(height: 40),
             ],
           ),
@@ -152,7 +126,7 @@ class _GiftResultCard extends StatelessWidget {
               ),
               const SizedBox(height: 8),
               LinearProgressIndicator(
-                value: score / maxScore,
+                value: (score / maxScore).clamp(0.0, 1.0),
                 backgroundColor: theme.colorScheme.surfaceContainerHighest,
                 color: isTop3 ? color : theme.colorScheme.primary,
                 minHeight: 6,
@@ -188,6 +162,7 @@ class _GiftDetailSheet extends StatelessWidget {
       initialChildSize: 0.7,
       minChildSize: 0.5,
       maxChildSize: 0.95,
+      expand: false,
       builder: (_, controller) => Container(
         decoration: BoxDecoration(
           color: theme.colorScheme.surface,
@@ -195,26 +170,44 @@ class _GiftDetailSheet extends StatelessWidget {
         ),
         child: Column(
           children: [
-            const SizedBox(height: 12),
-            Container(
-              width: 40,
-              height: 4,
-              decoration: BoxDecoration(
-                color: Colors.grey.shade300,
-                borderRadius: BorderRadius.circular(2),
+            const SizedBox(height: 8),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  width: 40,
+                  height: 4,
+                  decoration: BoxDecoration(
+                    color: Colors.grey.shade300,
+                    borderRadius: BorderRadius.circular(2),
+                  ),
+                ),
+              ],
+            ),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(24, 8, 8, 0),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: Text(
+                      gift.name,
+                      style: theme.textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                  IconButton(
+                    icon: const Icon(Icons.close),
+                    onPressed: () => Navigator.pop(context),
+                  ),
+                ],
               ),
             ),
+            const Divider(),
             Expanded(
               child: ListView(
                 controller: controller,
-                padding: const EdgeInsets.all(24),
+                padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
                 children: [
-                  Text(
-                    gift.name,
-                    style: theme.textTheme.headlineMedium?.copyWith(fontWeight: FontWeight.bold),
-                  ),
                   if (gift.originalWord.isNotEmpty) ...[
-                    const SizedBox(height: 4),
                     Text(
                       gift.originalWord,
                       style: theme.textTheme.bodyMedium?.copyWith(
@@ -222,8 +215,8 @@ class _GiftDetailSheet extends StatelessWidget {
                         color: theme.colorScheme.secondary,
                       ),
                     ),
+                    const SizedBox(height: 16),
                   ],
-                  const SizedBox(height: 16),
                   _Section(title: 'Bedeutung', content: gift.meaning),
                   const SizedBox(height: 24),
                   _Section(title: 'Beschreibung', content: gift.description),
@@ -239,7 +232,7 @@ class _GiftDetailSheet extends StatelessWidget {
                     children: gift.bibleReferences.map((ref) => ActionChip(
                       label: Text(ref, style: const TextStyle(fontSize: 12)),
                       onPressed: () {
-                        // Später: Link zu Bibelserver
+                        // Logic for external link
                       },
                       avatar: const Icon(Icons.menu_book, size: 14),
                       backgroundColor: theme.colorScheme.surfaceContainerHighest,
