@@ -34,3 +34,9 @@ class ToggleNextLifeValue extends ValuesEvent {
   final ValueItem value;
   const ToggleNextLifeValue(this.value);
 }
+
+class ReorderTopValues extends ValuesEvent {
+  final int oldIndex;
+  final int newIndex;
+  const ReorderTopValues(this.oldIndex, this.newIndex);
+}

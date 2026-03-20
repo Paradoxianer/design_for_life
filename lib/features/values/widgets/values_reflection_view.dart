@@ -63,9 +63,10 @@ class ValuesReflectionView extends StatelessWidget {
             Wrap(
               spacing: 8,
               children: state.allValues.map((value) {
-                final isSelected = state.nextLifePhaseValues.any((v) => v.name == value.name);
+                final selectedIndex = state.nextLifePhaseValues.indexWhere((v) => v.name == value.name);
+                final isSelected = selectedIndex != -1;
                 return FilterChip(
-                  label: Text(value.name),
+                  label: Text(isSelected ? '${selectedIndex + 1}. ${value.name}' : value.name),
                   selected: isSelected,
                   onSelected: (_) {
                     context.read<ValuesBloc>().add(ToggleNextLifeValue(value));
