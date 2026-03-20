@@ -18,6 +18,21 @@ class ValuesState {
 
   bool get isValid => topEightValues.length == 8;
 
+  /// A module is considered completed when at least the top 3 values (Key Takeaways)
+  /// are selected and have a personal definition.
+  bool get isCompleted {
+    final top8 = topEightValues;
+    if (top8.length < 3) return false;
+    
+    // Check if the first 3 (Key Takeaways) have a definition
+    for (int i = 0; i < 3; i++) {
+      if (top8[i].definition == null || top8[i].definition!.trim().isEmpty) {
+        return false;
+      }
+    }
+    return true;
+  }
+
   ValuesState copyWith({
     List<ValueItem>? allValues,
     String? reflectionThoughts,

@@ -5,6 +5,7 @@ import 'package:design_for_life/l10n/generated/app_localizations.dart';
 import 'package:design_for_life/features/notes/bloc/notes_bloc.dart';
 import 'package:design_for_life/features/listening_prayer/bloc/listening_prayer_bloc.dart';
 import 'package:design_for_life/features/goals/bloc/goals_bloc.dart';
+import 'package:design_for_life/features/values/bloc/values_bloc.dart';
 import 'package:design_for_life/core/blocs/entry_list_bloc.dart';
 import '../models/static_timeline_data.dart';
 import '../models/dfl_session.dart';
@@ -56,21 +57,23 @@ class _TimelineCardWrapper extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     bool isCompleted = false;
-    String? sessionId;
 
     if (session.moduleRoute != null) {
       if (session.moduleRoute!.startsWith('notes/')) {
-        sessionId = session.moduleRoute!.split('/')[1].split('?')[0];
+        final sessionId = session.moduleRoute!.split('/')[1].split('?')[0];
         final state = context.watch<NotesBloc>().state;
         isCompleted = _hasEntryContent(state, sessionId);
       } else if (session.moduleRoute!.startsWith('listening-prayer/')) {
-        sessionId = session.moduleRoute!.split('/')[1].split('?')[0];
+        final sessionId = session.moduleRoute!.split('/')[1].split('?')[0];
         final state = context.watch<ListeningPrayerBloc>().state;
         isCompleted = _hasEntryContent(state, sessionId);
       } else if (session.moduleRoute!.startsWith('goals/')) {
-        sessionId = session.moduleRoute!.split('/')[1].split('?')[0];
+        final sessionId = session.moduleRoute!.split('/')[1].split('?')[0];
         final state = context.watch<GoalsBloc>().state;
         isCompleted = _hasGoalsContent(state, sessionId);
+      } else if (session.moduleRoute == 'values-assessment') {
+        final state = context.watch<ValuesBloc>().state;
+        isCompleted = state.isCompleted;
       }
     }
 
@@ -88,7 +91,7 @@ class _TimelineCardWrapper extends StatelessWidget {
     );
 
     return TimelineCard(
-      session: updatedSession,
+      session: updated_session,
       onTap: () {
         if (session.moduleRoute != null) {
           final route = isCompleted 
