@@ -36,7 +36,6 @@ class _SpiritualGiftsEditorState extends State<SpiritualGiftsEditor> {
           if (mounted) {
             final state = context.read<SpiritualGiftsBloc>().state;
             if (state.questionOrder.isNotEmpty) {
-              // Scrolltarget so wählen, dass eine beantwortete Frage darüber steht
               final target = (state.currentQuestionIndex > 0) 
                   ? state.currentQuestionIndex - 1 
                   : 0;
@@ -64,7 +63,6 @@ class _SpiritualGiftsEditorState extends State<SpiritualGiftsEditor> {
       listenWhen: (previous, current) => 
           previous.currentQuestionIndex != current.currentQuestionIndex,
       listener: (context, state) {
-        // Wir scrollen zum Index - 1, damit die unbeantwortete Frage die zweite im Viewport ist
         final scrollTarget = (state.currentQuestionIndex > 0) 
             ? state.currentQuestionIndex - 1 
             : 0;
@@ -169,11 +167,11 @@ class _QuestionCard extends StatelessWidget {
     return Card(
       margin: const EdgeInsets.symmetric(vertical: 2),
       elevation: 4,
-      shadowColor: Colors.black.withOpacity(0.2),
+      shadowColor: Colors.black.withValues(alpha: 0.2),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(16),
         side: BorderSide(
-          color: currentScore != null ? theme.colorScheme.primary.withOpacity(0.5) : Colors.black12,
+          color: currentScore != null ? theme.colorScheme.primary.withValues(alpha: 0.5) : Colors.black12,
           width: 1.2,
         ),
       ),
@@ -206,7 +204,7 @@ class _QuestionCard extends StatelessWidget {
                     duration: const Duration(milliseconds: 200),
                     padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 5),
                     decoration: BoxDecoration(
-                      color: isSelected ? theme.colorScheme.primary : theme.colorScheme.surfaceVariant,
+                      color: isSelected ? theme.colorScheme.primary : theme.colorScheme.surfaceContainerHighest,
                       borderRadius: BorderRadius.circular(8),
                     ),
                     child: Column(

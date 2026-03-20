@@ -19,10 +19,12 @@ class SpiritualGiftsState extends Equatable {
 
   bool get isLoaded => gifts.isNotEmpty;
   
-  /// The module is considered completed if all questions are answered
-  /// AND at least the top 3 takeaways are defined for the current session.
-  bool isCompleted(String sessionId) {
-    final allAnswered = questionOrder.isNotEmpty && answers.length >= questionOrder.length;
+  /// General test completion: All questions answered.
+  bool get isCompleted => questionOrder.isNotEmpty && answers.length >= questionOrder.length;
+
+  /// Full module completion for a specific session: Test done AND takeaways set.
+  bool isSessionCompleted(String sessionId) {
+    final allAnswered = isCompleted;
     final sessionTakeaways = takeaways[sessionId] ?? [];
     final hasTakeaways = sessionTakeaways.length >= 3 && 
                          sessionTakeaways.take(3).every((t) => t.trim().isNotEmpty);

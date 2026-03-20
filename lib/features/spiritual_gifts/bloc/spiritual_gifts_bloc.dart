@@ -36,17 +36,17 @@ class SpiritualGiftsBloc extends HydratedBloc<SpiritualGiftsEvent, SpiritualGift
         answers: newAnswers,
       );
 
-      // Wir setzen den Index immer auf die nächste unbeantwortete Frage,
-      // es sei denn, der Test ist komplett.
+      // We set the index to the next unanswered question unless the test is complete
       if (!newState.isCompleted) {
         newState = newState.copyWith(currentQuestionIndex: newState.firstUnansweredIndex);
       }
 
-      // Automatische Takeaways generieren, wenn fertig
+      // Automatic takeaways generation when test is completed
       if (newState.isCompleted) {
         final top3 = newState.getRankedGifts().take(3).map((g) => g.name).toList();
         final newTakeaways = Map<String, List<String>>.from(state.takeaways);
-        newTakeaways[newState.currentSessionId ?? 'default'] = top3;
+        final sessionId = newState.currentSessionId ?? 'default';
+        newTakeaways[sessionId] = top3;
         newState = newState.copyWith(takeaways: newTakeaways);
       }
 
