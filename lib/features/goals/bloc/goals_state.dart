@@ -7,6 +7,12 @@ class GoalsState extends Equatable {
     this.goals = const {},
   });
 
+  /// A session is considered completed if it has at least one goal with text.
+  bool isCompleted(String sessionId) {
+    final sessionGoals = goals[sessionId] ?? [];
+    return sessionGoals.any((g) => g.text.trim().isNotEmpty);
+  }
+
   @override
   List<Object?> get props => [goals];
 

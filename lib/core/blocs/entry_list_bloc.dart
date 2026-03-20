@@ -69,6 +69,12 @@ class EntryListState extends Equatable {
     this.takeaways = const {},
   });
 
+  /// A session is considered completed if it has at least one entry with text or an image.
+  bool isCompleted(String sessionId) {
+    final sessionEntries = entries[sessionId] ?? [];
+    return sessionEntries.any((e) => e.text.trim().isNotEmpty || e.imagePath != null);
+  }
+
   @override
   List<Object?> get props => [entries, takeaways];
 
