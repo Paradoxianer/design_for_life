@@ -12,6 +12,7 @@ class ValuesReflectionView extends StatelessWidget {
     return BlocBuilder<ValuesBloc, ValuesState>(
       builder: (context, state) {
         return ListView(
+          shrinkWrap: true,
           padding: const EdgeInsets.all(16),
           children: [
             Text(

@@ -15,11 +15,19 @@ class ValuesDefinitionsView extends StatelessWidget {
 
         if (top8.isEmpty) {
           return const Center(
-            child: Text('Bitte wähle zuerst 8 Werte in Phase 1 aus.'),
+            child: Padding(
+              padding: EdgeInsets.all(32.0),
+              child: Text(
+                'Bitte wähle zuerst 8 Werte in Phase 1 (Bewertung) aus.',
+                textAlign: TextAlign.center,
+              ),
+            ),
           );
         }
 
         return ListView.builder(
+          shrinkWrap: true,
+          physics: const NeverScrollableScrollPhysics(), // Stepper handles scrolling if needed or parent scroll
           padding: const EdgeInsets.all(16),
           itemCount: top8.length,
           itemBuilder: (context, index) {

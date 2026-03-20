@@ -15,53 +15,57 @@ class _ValuesEditorState extends State<ValuesEditor> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Theme(
-          data: Theme.of(context).copyWith(
-            canvasColor: Colors.transparent,
+    return Theme(
+      data: Theme.of(context).copyWith(
+        canvasColor: Colors.transparent,
+      ),
+      child: Stepper(
+        type: StepperType.horizontal,
+        currentStep: _currentStep,
+        onStepTapped: (step) => setState(() => _currentStep = step),
+        onStepContinue: _currentStep < 2 ? () => setState(() => _currentStep++) : null,
+        onStepCancel: _currentStep > 0 ? () => setState(() => _currentStep--) : null,
+        controlsBuilder: (context, details) {
+          return Padding(
+            padding: const EdgeInsets.only(top: 16.0),
+            child: Row(
+              children: [
+                if (_currentStep < 2)
+                  ElevatedButton(
+                    onPressed: details.onStepContinue,
+                    child: const Text('Weiter'),
+                  ),
+                if (_currentStep > 0) ...[
+                  const SizedBox(width: 8),
+                  TextButton(
+                    onPressed: details.onStepCancel,
+                    child: const Text('Zurück'),
+                  ),
+                ],
+              ],
+            ),
+          );
+        },
+        steps: [
+          Step(
+            title: const Text('Bewertung'),
+            content: const ValuesRatingView(),
+            isActive: _currentStep >= 0,
+            state: _currentStep > 0 ? StepState.complete : StepState.indexed,
           ),
-          child: Stepper(
-            type: StepperType.horizontal,
-            currentStep: _currentStep,
-            onStepTapped: (step) => setState(() => _currentStep = step),
-            onStepContinue: _currentStep < 2 
-                ? () => setState(() => _currentStep++) 
-                : null,
-            onStepCancel: _currentStep > 0 
-                ? () => setState(() => _currentStep--) 
-                : null,
-            steps: const [
-              Step(
-                title: Text('Bewertung'),
-                content: SizedBox.shrink(),
-                isActive: true,
-              ),
-              Step(
-                title: Text('Definition'),
-                content: SizedBox.shrink(),
-                isActive: true,
-              ),
-              Step(
-                title: Text('Reflektion'),
-                content: SizedBox.shrink(),
-                isActive: true,
-              ),
-            ],
-            controlsBuilder: (context, details) => const SizedBox.shrink(),
+          Step(
+            title: const Text('Definition'),
+            content: const ValuesDefinitionsView(),
+            isActive: _currentStep >= 1,
+            state: _currentStep > 1 ? StepState.complete : StepState.indexed,
           ),
-        ),
-        Expanded(
-          child: IndexedStack(
-            index: _currentStep,
-            children: const [
-              ValuesRatingView(),
-              ValuesDefinitionsView(),
-              ValuesReflectionView(),
-            ],
+          Step(
+            title: const Text('Reflektion'),
+            content: const ValuesReflectionView(),
+            isActive: _currentStep >= 2,
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
