@@ -55,31 +55,30 @@ class _TimelineCardWrapper extends StatelessWidget {
 
   const _TimelineCardWrapper({required this.session});
 
+  String _parseId(String route) {
+    // Extracts 'session_1' from 'notes/session_1?title=...'
+    final parts = route.split('/');
+    if (parts.length > 1) {
+      return parts[1].split('?')[0];
+    }
+    return '';
+  }
+
   @override
   Widget build(BuildContext context) {
     bool isCompleted = false;
+    final route = session.moduleRoute ?? '';
 
-    if (session.moduleRoute != null) {
-      if (session.moduleRoute!.startsWith('notes/')) {
-        final sessionId = session.moduleRoute!.split('/')[1].split('?')[0];
-        final state = context.watch<NotesBloc>().state;
-        isCompleted = state.isCompleted(sessionId);
-      } else if (session.moduleRoute!.startsWith('listening-prayer/')) {
-        final sessionId = session.moduleRoute!.split('/')[1].split('?')[0];
-        final state = context.watch<ListeningPrayerBloc>().state;
-        isCompleted = state.isCompleted(sessionId);
-      } else if (session.moduleRoute!.startsWith('goals/')) {
-        final sessionId = session.moduleRoute!.split('/')[1].split('?')[0];
-        final state = context.watch<GoalsBloc>().state;
-        isCompleted = state.isCompleted(sessionId);
-      } else if (session.moduleRoute == 'values') {
-        final state = context.watch<ValuesBloc>().state;
-        isCompleted = state.isCompleted;
-      } else if (session.moduleRoute!.startsWith('spiritual-gifts/')) {
-        final sessionId = session.moduleRoute!.split('/')[1].split('?')[0];
-        final state = context.watch<SpiritualGiftsBloc>().state;
-        isCompleted = state.isSessionCompleted(sessionId);
-      }
+    if (route.startsWith('notes/')) {
+      isCompleted = context.watch<NotesBloc>().state.isCompleted(_parseId(route));
+    } else if (route.startsWith('listening-prayer/')) {
+      isCompleted = context.watch<ListeningPrayerBloc>().state.isCompleted(_parseId(route));
+    } else if (route.startsWith('goals/')) {
+      isCompleted = context.watch<GoalsBloc>().state.isCompleted(_parseId(route));
+    } else if (route.startsWith('spiritual-gifts/')) {
+      isCompleted = context.watch<SpiritualGiftsBloc>().state.isSessionCompleted(_parseId(route));
+    } else if (route == 'values') {
+      isCompleted = context.watch<ValuesBloc>().state.isCompleted;
     }
 
     final updatedSession = DflSession(
@@ -99,10 +98,10 @@ class _TimelineCardWrapper extends StatelessWidget {
       session: updatedSession,
       onTap: () {
         if (session.moduleRoute != null) {
-          final route = isCompleted 
+          final targetRoute = isCompleted 
             ? '${session.moduleRoute}${session.moduleRoute!.contains('?') ? '&' : '?'}mode=result'
             : session.moduleRoute!;
-          context.push('/$route');
+          context.push('/$targetRoute');
         }
       },
     );
