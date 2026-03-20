@@ -36,5 +36,28 @@
   "smartRelevant": "Relevant",
   "smartRelevantDesc": "Bringt dich dieses Ziel auf deinem Weg wirklich weiter?",
   "smartTimeBound": "Terminiert",
-  "smartTimeBoundDesc": "Gibt es einen klaren Termin oder Zeitrahmen?"
+  "smartTimeBoundDesc": "Gibt es einen klaren Termin oder Zeitrahmen?",
+  "valuesTitle": "Werte herausfinden",
+  "valuesPhase1Title": "Bewertung",
+  "valuesPhase1Guidance": "Gehe die Liste durch und bewerte jeden Wert:\n1 = Sehr wichtig für mich\n2 = Wichtig für mich\n3 = Weniger wichtig für mich\n\nZiel: Wähle genau 8 Werte mit der Bewertung '1' aus.",
+  "valuesSelectionStatus": "Wähle genau 8 Werte mit \"1\". Aktuell: {count} / 8",
+  "@valuesSelectionStatus": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "valuesPhase2Title": "Persönliche Definition",
+  "valuesPhase2Guidance": "Sortiere deine Top-8 Werte per Drag & Drop nach ihrer Priorität für dich. Definiere dann kurz, was dieser Wert für dich ganz persönlich bedeutet. Die ersten 3 Plätze sind deine absoluten Key Takeaways.",
+  "valuesDefinitionLabel": "Meine Definition",
+  "valuesDefinitionHint": "Was bedeutet dieser Wert für mich?",
+  "valuesPhase3Title": "Reflektion & Zukunft",
+  "valuesPhase3Guidance": "Übernimm Verantwortung für deine Werte und blicke nach vorne.",
+  "valuesReflectionLabel": "Was denkst du über deine Auswahl? Gab es Überraschungen?",
+  "valuesReflectionHint": "Deine Gedanken hier...",
+  "valuesNextPhaseLabel": "Beschreibe deinen nächsten Lebensabschnitt (z.B. neuer Job, Rente):",
+  "valuesNextPhaseHint": "Zukünftige Phase...",
+  "valuesNextPhaseValuesGuidance": "Wähle bis zu 8 Werte aus der Liste, die für diesen neuen Abschnitt besonders wichtig sein werden (klicke in der gewünschten Reihenfolge):",
+  "valuesResultTitle": "Meine Top 8 Werte"
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:design_for_life/l10n/generated/app_localizations.dart';
 import '../bloc/values_bloc.dart';
 import '../bloc/values_event.dart';
 import '../bloc/values_state.dart';
@@ -17,18 +18,17 @@ class _ValuesDefinitionsViewState extends State<ValuesDefinitionsView> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
+    
     return BlocBuilder<ValuesBloc, ValuesState>(
       builder: (context, state) {
         final top8 = state.topEightValues;
         
-        // Sync local values with BLoC state
         if (_localValues == null || 
             _localValues!.length != top8.length ||
             !_localValues!.every((v) => top8.any((t) => t.name == v.name))) {
-          // Re-initialize if count or names changed (Phase 1 selection)
           _localValues = List.from(top8);
         } else {
-          // Keep local order but update CONTENT (definitions) from BLoC state
           _localValues = _localValues!.map((localItem) {
             return top8.firstWhere((t) => t.name == localItem.name);
           }).toList();
@@ -53,17 +53,16 @@ class _ValuesDefinitionsViewState extends State<ValuesDefinitionsView> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
                 child: Text(
-                  'Sortiere deine Top-Werte nach Priorität. Die ersten 3 Plätze sind deine Key Takeaways.',
-                  style: TextStyle(fontStyle: FontStyle.italic),
+                  l10n.valuesPhase2Guidance,
+                  style: const TextStyle(fontStyle: FontStyle.italic),
                 ),
               ),
               Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // Fixed Slot Column
                   Column(
                     children: List.generate(_localValues!.length, (index) {
                       final isKeySlot = index < 3;
@@ -83,7 +82,6 @@ class _ValuesDefinitionsViewState extends State<ValuesDefinitionsView> {
                       );
                     }),
                   ),
-                  // Reorderable List
                   Expanded(
                     child: ReorderableListView.builder(
                       shrinkWrap: true,
@@ -92,13 +90,11 @@ class _ValuesDefinitionsViewState extends State<ValuesDefinitionsView> {
                       itemCount: _localValues!.length,
                       onReorder: (oldIndex, newIndex) {
                         setState(() {
-                          // Local update for immediate visual feedback
                           final item = _localValues!.removeAt(oldIndex);
                           int insertIndex = newIndex;
                           if (insertIndex > oldIndex) insertIndex--;
                           _localValues!.insert(insertIndex, item);
                         });
-                        // Persist to BLoC
                         context.read<ValuesBloc>().add(ReorderTopValues(oldIndex, newIndex));
                       },
                       itemBuilder: (context, index) {
@@ -198,7 +194,6 @@ class _DefinitionFieldState extends State<_DefinitionField> {
 
   void _onFocusChange() {
     if (!_focusNode.hasFocus) {
-      // Sync with BLoC only when focus is lost (blur)
       widget.onSaved(_controller.text);
     }
   }
@@ -206,7 +201,6 @@ class _DefinitionFieldState extends State<_DefinitionField> {
   @override
   void didUpdateWidget(_DefinitionField oldWidget) {
     super.didUpdateWidget(oldWidget);
-    // Sync controller with external changes only if the field doesn't have focus
     if (!_focusNode.hasFocus && widget.value.definition != _controller.text) {
       _controller.text = widget.value.definition ?? '';
     }
@@ -222,15 +216,16 @@ class _DefinitionFieldState extends State<_DefinitionField> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
     return TextField(
       controller: _controller,
       focusNode: _focusNode,
-      decoration: const InputDecoration(
-        labelText: 'Meine Definition',
-        border: OutlineInputBorder(),
+      decoration: InputDecoration(
+        labelText: l10n.valuesDefinitionLabel,
+        border: const OutlineInputBorder(),
         isDense: true,
-        contentPadding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-        hintText: 'Was bedeutet dieser Wert für mich?',
+        contentPadding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+        hintText: l10n.valuesDefinitionHint,
       ),
       maxLines: 2,
       minLines: 2,

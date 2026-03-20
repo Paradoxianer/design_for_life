@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:design_for_life/l10n/generated/app_localizations.dart';
 import '../bloc/values_bloc.dart';
 import '../bloc/values_event.dart';
 import '../bloc/values_state.dart';
@@ -10,13 +11,23 @@ class ValuesRatingView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
+    
     return BlocBuilder<ValuesBloc, ValuesState>(
       builder: (context, state) {
         final top8Count = state.topEightValues.length;
         
         return Column(
           mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+              child: Text(
+                l10n.valuesPhase1Guidance,
+                style: const TextStyle(fontStyle: FontStyle.italic),
+              ),
+            ),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Card(
@@ -33,7 +44,7 @@ class ValuesRatingView extends StatelessWidget {
                       const SizedBox(width: 12),
                       Expanded(
                         child: Text(
-                          'Wähle genau 8 Werte mit "1" (sehr wichtig) aus. Aktuell: $top8Count / 8',
+                          l10n.valuesSelectionStatus(top8Count),
                           style: TextStyle(
                             fontSize: 13,
                             fontWeight: FontWeight.bold,
@@ -49,7 +60,7 @@ class ValuesRatingView extends StatelessWidget {
             Flexible(
               child: ListView.builder(
                 shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(), // Let the Stepper or outer ScrollView handle it
+                physics: const NeverScrollableScrollPhysics(),
                 itemCount: state.allValues.length,
                 itemBuilder: (context, index) {
                   final value = state.allValues[index];

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:design_for_life/l10n/generated/app_localizations.dart';
 import '../bloc/values_bloc.dart';
 import '../bloc/values_state.dart';
 
@@ -8,6 +9,8 @@ class ValuesResult extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
+    
     return BlocBuilder<ValuesBloc, ValuesState>(
       builder: (context, state) {
         final top8 = state.topEightValues;
@@ -22,7 +25,7 @@ class ValuesResult extends StatelessWidget {
           padding: const EdgeInsets.all(16),
           children: [
             Text(
-              'Meine Top 8 Werte',
+              l10n.valuesResultTitle,
               style: Theme.of(context).textTheme.headlineSmall,
             ),
             const SizedBox(height: 16),
@@ -37,8 +40,8 @@ class ValuesResult extends StatelessWidget {
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(12),
                   side: isKeyTakeaway
-                      ? BorderSide(color: Theme.of(context).colorScheme.primary.withOpacity(0.5), width: 1)
-                      : BorderSide(color: Colors.grey.withOpacity(0.2), width: 1),
+                      ? BorderSide(color: Theme.of(context).colorScheme.primary.withValues(alpha: 0.5), width: 1)
+                      : BorderSide(color: Colors.grey.withValues(alpha: 0.2), width: 1),
                 ),
                 child: Padding(
                   padding: const EdgeInsets.all(16.0),
@@ -83,11 +86,11 @@ class ValuesResult extends StatelessWidget {
                   ),
                 ),
               );
-            }).toList(),
+            }),
             if (state.reflectionThoughts.isNotEmpty) ...[
               const SizedBox(height: 24),
               Text(
-                'Reflektion',
+                l10n.valuesPhase3Title,
                 style: Theme.of(context).textTheme.titleLarge,
               ),
               const SizedBox(height: 8),
@@ -96,7 +99,7 @@ class ValuesResult extends StatelessWidget {
             if (state.nextLifePhaseDescription.isNotEmpty) ...[
               const SizedBox(height: 24),
               Text(
-                'Nächster Lebensabschnitt',
+                l10n.valuesNextPhaseLabel,
                 style: Theme.of(context).textTheme.titleLarge,
               ),
               const SizedBox(height: 8),
@@ -108,7 +111,7 @@ class ValuesResult extends StatelessWidget {
                   final idx = entry.key;
                   final v = entry.value;
                   return Chip(label: Text('${idx + 1}. ${v.name}'));
-                }).toList(),
+                }),
               ),
             ],
           ],

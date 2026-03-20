@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:design_for_life/l10n/generated/app_localizations.dart';
 import '../bloc/values_bloc.dart';
 import '../bloc/values_event.dart';
 import '../bloc/values_state.dart';
@@ -9,6 +10,8 @@ class ValuesReflectionView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
+    
     return BlocBuilder<ValuesBloc, ValuesState>(
       builder: (context, state) {
         return ListView(
@@ -16,19 +19,26 @@ class ValuesReflectionView extends StatelessWidget {
           padding: const EdgeInsets.all(16),
           children: [
             Text(
-              'Reflektion',
+              l10n.valuesPhase3Title,
               style: Theme.of(context).textTheme.titleLarge,
             ),
             const SizedBox(height: 16),
-            const Text(
-              'Was denkst du über die Punkte, die du ausgesucht hast? Gibt es irgendwelche Überraschungen?',
-              style: TextStyle(fontStyle: FontStyle.italic),
+            Padding(
+              padding: const EdgeInsets.only(bottom: 16.0),
+              child: Text(
+                l10n.valuesPhase3Guidance,
+                style: const TextStyle(fontStyle: FontStyle.italic),
+              ),
+            ),
+            Text(
+              l10n.valuesReflectionLabel,
+              style: const TextStyle(fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 8),
             TextField(
-              decoration: const InputDecoration(
-                border: OutlineInputBorder(),
-                hintText: 'Deine Gedanken...',
+              decoration: InputDecoration(
+                border: const OutlineInputBorder(),
+                hintText: l10n.valuesReflectionHint,
               ),
               maxLines: 5,
               controller: TextEditingController(text: state.reflectionThoughts)
@@ -37,29 +47,24 @@ class ValuesReflectionView extends StatelessWidget {
             ),
             const SizedBox(height: 32),
             Text(
-              'Mein nächster Lebensabschnitt',
-              style: Theme.of(context).textTheme.titleLarge,
-            ),
-            const SizedBox(height: 16),
-            const Text(
-              'Beschreibe deinen nächsten Lebensabschnitt (z.B. neuer Job, Rente, etc.):',
+              l10n.valuesNextPhaseLabel,
+              style: const TextStyle(fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 8),
             TextField(
-              decoration: const InputDecoration(
-                border: OutlineInputBorder(),
-                hintText: 'Zukünftige Phase...',
+              decoration: InputDecoration(
+                border: const OutlineInputBorder(),
+                hintText: l10n.valuesNextPhaseHint,
               ),
               controller: TextEditingController(text: state.nextLifePhaseDescription)
                 ..selection = TextSelection.collapsed(offset: state.nextLifePhaseDescription.length),
               onChanged: (text) => context.read<ValuesBloc>().add(UpdateNextLifePhase(text)),
             ),
             const SizedBox(height: 24),
-            const Text(
-              'Wähle bis zu 8 Werte, die für diesen neuen Abschnitt wichtig sein werden:',
-              style: TextStyle(fontWeight: FontWeight.bold),
+            Text(
+              l10n.valuesNextPhaseValuesGuidance,
             ),
-            const SizedBox(height: 8),
+            const SizedBox(height: 12),
             Wrap(
               spacing: 8,
               children: state.allValues.map((value) {
