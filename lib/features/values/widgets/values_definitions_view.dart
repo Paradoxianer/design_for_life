@@ -21,12 +21,17 @@ class _ValuesDefinitionsViewState extends State<ValuesDefinitionsView> {
       builder: (context, state) {
         final top8 = state.topEightValues;
         
-        // Sync local values with BLoC state, but only if fundamentally different
-        // (e.g., different items selected or first initialization)
+        // Sync local values with BLoC state
         if (_localValues == null || 
             _localValues!.length != top8.length ||
             !_localValues!.every((v) => top8.any((t) => t.name == v.name))) {
+          // Re-initialize if count or names changed (Phase 1 selection)
           _localValues = List.from(top8);
+        } else {
+          // Keep local order but update CONTENT (definitions) from BLoC state
+          _localValues = _localValues!.map((localItem) {
+            return top8.firstWhere((t) => t.name == localItem.name);
+          }).toList();
         }
 
         if (_localValues!.isEmpty) {
@@ -144,7 +149,7 @@ class _ValuesDefinitionsViewState extends State<ValuesDefinitionsView> {
                                   Expanded(
                                     child: _DefinitionField(
                                       value: value,
-                                      onChanged: (text) {
+                                      onSaved: (text) {
                                         context.read<ValuesBloc>().add(
                                           UpdateDefinition(value.name, text),
                                         );
@@ -169,12 +174,11 @@ class _ValuesDefinitionsViewState extends State<ValuesDefinitionsView> {
   }
 }
 
-// Helper widget to manage its own controller and avoid cursor jumping/rendering glitches
 class _DefinitionField extends StatefulWidget {
   final ValueItem value;
-  final ValueChanged<String> onChanged;
+  final ValueChanged<String> onSaved;
 
-  const _DefinitionField({required this.value, required this.onChanged});
+  const _DefinitionField({required this.value, required this.onSaved});
 
   @override
   State<_DefinitionField> createState() => _DefinitionFieldState();
@@ -182,25 +186,36 @@ class _DefinitionField extends StatefulWidget {
 
 class _DefinitionFieldState extends State<_DefinitionField> {
   late TextEditingController _controller;
+  late FocusNode _focusNode;
 
   @override
   void initState() {
     super.initState();
     _controller = TextEditingController(text: widget.value.definition);
+    _focusNode = FocusNode();
+    _focusNode.addListener(_onFocusChange);
+  }
+
+  void _onFocusChange() {
+    if (!_focusNode.hasFocus) {
+      // Sync with BLoC only when focus is lost (blur)
+      widget.onSaved(_controller.text);
+    }
   }
 
   @override
   void didUpdateWidget(_DefinitionField oldWidget) {
     super.didUpdateWidget(oldWidget);
-    // Only update text if it's actually different from what's in the controller
-    // to prevent cursor jumps
-    if (widget.value.definition != _controller.text) {
+    // Sync controller with external changes only if the field doesn't have focus
+    if (!_focusNode.hasFocus && widget.value.definition != _controller.text) {
       _controller.text = widget.value.definition ?? '';
     }
   }
 
   @override
   void dispose() {
+    _focusNode.removeListener(_onFocusChange);
+    _focusNode.dispose();
     _controller.dispose();
     super.dispose();
   }
@@ -209,6 +224,7 @@ class _DefinitionFieldState extends State<_DefinitionField> {
   Widget build(BuildContext context) {
     return TextField(
       controller: _controller,
+      focusNode: _focusNode,
       decoration: const InputDecoration(
         labelText: 'Meine Definition',
         border: OutlineInputBorder(),
@@ -218,7 +234,6 @@ class _DefinitionFieldState extends State<_DefinitionField> {
       ),
       maxLines: 2,
       minLines: 2,
-      onChanged: widget.onChanged,
     );
   }
 }
