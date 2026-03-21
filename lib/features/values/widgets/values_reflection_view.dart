@@ -35,15 +35,11 @@ class ValuesReflectionView extends StatelessWidget {
               style: const TextStyle(fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 8),
-            TextField(
-              decoration: InputDecoration(
-                border: const OutlineInputBorder(),
-                hintText: l10n.valuesReflectionHint,
-              ),
+            _ReflectionTextField(
+              initialValue: state.reflectionThoughts,
+              hintText: l10n.valuesReflectionHint,
               maxLines: 5,
-              controller: TextEditingController(text: state.reflectionThoughts)
-                ..selection = TextSelection.collapsed(offset: state.reflectionThoughts.length),
-              onChanged: (text) => context.read<ValuesBloc>().add(UpdateReflection(text)),
+              onSaved: (text) => context.read<ValuesBloc>().add(UpdateReflection(text)),
             ),
             const SizedBox(height: 32),
             Text(
@@ -51,14 +47,11 @@ class ValuesReflectionView extends StatelessWidget {
               style: const TextStyle(fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 8),
-            TextField(
-              decoration: InputDecoration(
-                border: const OutlineInputBorder(),
-                hintText: l10n.valuesNextPhaseHint,
-              ),
-              controller: TextEditingController(text: state.nextLifePhaseDescription)
-                ..selection = TextSelection.collapsed(offset: state.nextLifePhaseDescription.length),
-              onChanged: (text) => context.read<ValuesBloc>().add(UpdateNextLifePhase(text)),
+            _ReflectionTextField(
+              initialValue: state.nextLifePhaseDescription,
+              hintText: l10n.valuesNextPhaseHint,
+              maxLines: 1,
+              onSaved: (text) => context.read<ValuesBloc>().add(UpdateNextLifePhase(text)),
             ),
             const SizedBox(height: 24),
             Text(
@@ -82,6 +75,71 @@ class ValuesReflectionView extends StatelessWidget {
           ],
         );
       },
+    );
+  }
+}
+
+class _ReflectionTextField extends StatefulWidget {
+  final String initialValue;
+  final String hintText;
+  final int maxLines;
+  final ValueChanged<String> onSaved;
+
+  const _ReflectionTextField({
+    required this.initialValue,
+    required this.hintText,
+    required this.maxLines,
+    required this.onSaved,
+  });
+
+  @override
+  State<_ReflectionTextField> createState() => _ReflectionTextFieldState();
+}
+
+class _ReflectionTextFieldState extends State<_ReflectionTextField> {
+  late TextEditingController _controller;
+  late FocusNode _focusNode;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = TextEditingController(text: widget.initialValue);
+    _focusNode = FocusNode();
+    _focusNode.addListener(_onFocusChange);
+  }
+
+  void _onFocusChange() {
+    if (!_focusNode.hasFocus) {
+      widget.onSaved(_controller.text);
+    }
+  }
+
+  @override
+  void didUpdateWidget(_ReflectionTextField oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (!_focusNode.hasFocus && widget.initialValue != _controller.text) {
+      _controller.text = widget.initialValue;
+    }
+  }
+
+  @override
+  void dispose() {
+    _focusNode.removeListener(_onFocusChange);
+    _focusNode.dispose();
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return TextField(
+      controller: _controller,
+      focusNode: _focusNode,
+      decoration: InputDecoration(
+        border: const OutlineInputBorder(),
+        hintText: widget.hintText,
+      ),
+      maxLines: widget.maxLines,
     );
   }
 }
