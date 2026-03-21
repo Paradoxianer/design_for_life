@@ -7,7 +7,6 @@ import 'package:design_for_life/features/listening_prayer/bloc/listening_prayer_
 import 'package:design_for_life/features/goals/bloc/goals_bloc.dart';
 import 'package:design_for_life/features/values/bloc/values_bloc.dart';
 import 'package:design_for_life/features/spiritual_gifts/bloc/spiritual_gifts_bloc.dart';
-import 'package:design_for_life/core/blocs/entry_list_bloc.dart';
 import '../models/static_timeline_data.dart';
 import '../models/dfl_session.dart';
 import '../widgets/timeline_card.dart';
@@ -56,7 +55,6 @@ class _TimelineCardWrapper extends StatelessWidget {
   const _TimelineCardWrapper({required this.session});
 
   String _parseId(String route) {
-    // Extracts 'session_1' from 'notes/session_1?title=...'
     final parts = route.split('/');
     if (parts.length > 1) {
       return parts[1].split('?')[0];

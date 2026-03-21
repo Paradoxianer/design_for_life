@@ -110,4 +110,60 @@ class AppLocalizationsDe extends AppLocalizations {
   @override
   String get smartTimeBoundDesc =>
       'Gibt es einen klaren Termin oder Zeitrahmen?';
+
+  @override
+  String get valuesTitle => 'Werte herausfinden';
+
+  @override
+  String get valuesPhase1Title => 'Bewertung';
+
+  @override
+  String get valuesPhase1Guidance =>
+      'Gehe die Liste durch und bewerte jeden Wert:\n1 = Sehr wichtig für mich\n2 = Wichtig für mich\n3 = Weniger wichtig für mich\n\nZiel: Wähle genau 8 Werte mit der Bewertung \'1\' aus.';
+
+  @override
+  String valuesSelectionStatus(int count) {
+    return 'Wähle genau 8 Werte mit \"1\". Aktuell: $count / 8';
+  }
+
+  @override
+  String get valuesPhase2Title => 'Persönliche Definition';
+
+  @override
+  String get valuesPhase2Guidance =>
+      'Sortiere deine Top-8 Werte per Drag & Drop nach ihrer Priorität für dich. Definiere dann kurz, was dieser Wert für dich ganz persönlich bedeutet. Die ersten 3 Plätze sind deine absoluten Key Takeaways.';
+
+  @override
+  String get valuesDefinitionLabel => 'Meine Definition';
+
+  @override
+  String get valuesDefinitionHint => 'Was bedeutet dieser Wert für mich?';
+
+  @override
+  String get valuesPhase3Title => 'Reflektion & Zukunft';
+
+  @override
+  String get valuesPhase3Guidance =>
+      'Übernimm Verantwortung für deine Werte und blicke nach vorne.';
+
+  @override
+  String get valuesReflectionLabel =>
+      'Was denkst du über deine Auswahl? Gab es Überraschungen?';
+
+  @override
+  String get valuesReflectionHint => 'Deine Gedanken hier...';
+
+  @override
+  String get valuesNextPhaseLabel =>
+      'Beschreibe deinen nächsten Lebensabschnitt (z.B. neuer Job, Rente):';
+
+  @override
+  String get valuesNextPhaseHint => 'Zukünftige Phase...';
+
+  @override
+  String get valuesNextPhaseValuesGuidance =>
+      'Wähle bis zu 8 Werte aus der Liste, die für diesen neuen Abschnitt besonders wichtig sein werden (klicke in der gewünschten Reihenfolge):';
+
+  @override
+  String get valuesResultTitle => 'Meine Top 8 Werte';
 }

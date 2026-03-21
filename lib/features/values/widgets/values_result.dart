@@ -111,7 +111,7 @@ class ValuesResult extends StatelessWidget {
                   final idx = entry.key;
                   final v = entry.value;
                   return Chip(label: Text('${idx + 1}. ${v.name}'));
-                }),
+                }).toList(),
               ),
             ],
           ],

@@ -283,6 +283,102 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Is there a specific deadline or timeframe?'**
   String get smartTimeBoundDesc;
+
+  /// No description provided for @valuesTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Discover Values'**
+  String get valuesTitle;
+
+  /// No description provided for @valuesPhase1Title.
+  ///
+  /// In en, this message translates to:
+  /// **'Rating'**
+  String get valuesPhase1Title;
+
+  /// No description provided for @valuesPhase1Guidance.
+  ///
+  /// In en, this message translates to:
+  /// **'Go through the list and rate each value:\n1 = Very important to me\n2 = Important to me\n3 = Less important to me\n\nGoal: Select exactly 8 values with the rating \'1\'.'**
+  String get valuesPhase1Guidance;
+
+  /// No description provided for @valuesSelectionStatus.
+  ///
+  /// In en, this message translates to:
+  /// **'Select exactly 8 values with \"1\". Current: {count} / 8'**
+  String valuesSelectionStatus(int count);
+
+  /// No description provided for @valuesPhase2Title.
+  ///
+  /// In en, this message translates to:
+  /// **'Personal Definition'**
+  String get valuesPhase2Title;
+
+  /// No description provided for @valuesPhase2Guidance.
+  ///
+  /// In en, this message translates to:
+  /// **'Sort your top-8 values via drag & drop according to their priority for you. Then briefly define what each value means to you personally. The first 3 slots are your absolute key takeaways.'**
+  String get valuesPhase2Guidance;
+
+  /// No description provided for @valuesDefinitionLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'My Definition'**
+  String get valuesDefinitionLabel;
+
+  /// No description provided for @valuesDefinitionHint.
+  ///
+  /// In en, this message translates to:
+  /// **'What does this value mean to me?'**
+  String get valuesDefinitionHint;
+
+  /// No description provided for @valuesPhase3Title.
+  ///
+  /// In en, this message translates to:
+  /// **'Reflection & Future'**
+  String get valuesPhase3Title;
+
+  /// No description provided for @valuesPhase3Guidance.
+  ///
+  /// In en, this message translates to:
+  /// **'Take responsibility for your values and look ahead.'**
+  String get valuesPhase3Guidance;
+
+  /// No description provided for @valuesReflectionLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'What do you think about your selection? Any surprises?'**
+  String get valuesReflectionLabel;
+
+  /// No description provided for @valuesReflectionHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Your thoughts here...'**
+  String get valuesReflectionHint;
+
+  /// No description provided for @valuesNextPhaseLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Describe your next life stage (e.g., new job, retirement):'**
+  String get valuesNextPhaseLabel;
+
+  /// No description provided for @valuesNextPhaseHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Future phase...'**
+  String get valuesNextPhaseHint;
+
+  /// No description provided for @valuesNextPhaseValuesGuidance.
+  ///
+  /// In en, this message translates to:
+  /// **'Select up to 8 values from the list that will be especially important for this new stage (click in the desired order):'**
+  String get valuesNextPhaseValuesGuidance;
+
+  /// No description provided for @valuesResultTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'My Top 8 Values'**
+  String get valuesResultTitle;
 }
 
 class _AppLocalizationsDelegate

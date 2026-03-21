@@ -39,5 +39,28 @@
   "smartRelevant": "Relevant",
   "smartRelevantDesc": "Does this goal truly matter for your overall journey?",
   "smartTimeBound": "Time-bound",
-  "smartTimeBoundDesc": "Is there a specific deadline or timeframe?"
+  "smartTimeBoundDesc": "Is there a specific deadline or timeframe?",
+  "valuesTitle": "Discover Values",
+  "valuesPhase1Title": "Rating",
+  "valuesPhase1Guidance": "Go through the list and rate each value:\n1 = Very important to me\n2 = Important to me\n3 = Less important to me\n\nGoal: Select exactly 8 values with the rating '1'.",
+  "valuesSelectionStatus": "Select exactly 8 values with \"1\". Current: {count} / 8",
+  "@valuesSelectionStatus": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "valuesPhase2Title": "Personal Definition",
+  "valuesPhase2Guidance": "Sort your top-8 values via drag & drop according to their priority for you. Then briefly define what each value means to you personally. The first 3 slots are your absolute key takeaways.",
+  "valuesDefinitionLabel": "My Definition",
+  "valuesDefinitionHint": "What does this value mean to me?",
+  "valuesPhase3Title": "Reflection & Future",
+  "valuesPhase3Guidance": "Take responsibility for your values and look ahead.",
+  "valuesReflectionLabel": "What do you think about your selection? Any surprises?",
+  "valuesReflectionHint": "Your thoughts here...",
+  "valuesNextPhaseLabel": "Describe your next life stage (e.g., new job, retirement):",
+  "valuesNextPhaseHint": "Future phase...",
+  "valuesNextPhaseValuesGuidance": "Select up to 8 values from the list that will be especially important for this new stage (click in the desired order):",
+  "valuesResultTitle": "My Top 8 Values"
 }

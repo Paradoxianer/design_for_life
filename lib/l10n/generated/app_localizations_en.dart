@@ -108,4 +108,60 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get smartTimeBoundDesc => 'Is there a specific deadline or timeframe?';
+
+  @override
+  String get valuesTitle => 'Discover Values';
+
+  @override
+  String get valuesPhase1Title => 'Rating';
+
+  @override
+  String get valuesPhase1Guidance =>
+      'Go through the list and rate each value:\n1 = Very important to me\n2 = Important to me\n3 = Less important to me\n\nGoal: Select exactly 8 values with the rating \'1\'.';
+
+  @override
+  String valuesSelectionStatus(int count) {
+    return 'Select exactly 8 values with \"1\". Current: $count / 8';
+  }
+
+  @override
+  String get valuesPhase2Title => 'Personal Definition';
+
+  @override
+  String get valuesPhase2Guidance =>
+      'Sort your top-8 values via drag & drop according to their priority for you. Then briefly define what each value means to you personally. The first 3 slots are your absolute key takeaways.';
+
+  @override
+  String get valuesDefinitionLabel => 'My Definition';
+
+  @override
+  String get valuesDefinitionHint => 'What does this value mean to me?';
+
+  @override
+  String get valuesPhase3Title => 'Reflection & Future';
+
+  @override
+  String get valuesPhase3Guidance =>
+      'Take responsibility for your values and look ahead.';
+
+  @override
+  String get valuesReflectionLabel =>
+      'What do you think about your selection? Any surprises?';
+
+  @override
+  String get valuesReflectionHint => 'Your thoughts here...';
+
+  @override
+  String get valuesNextPhaseLabel =>
+      'Describe your next life stage (e.g., new job, retirement):';
+
+  @override
+  String get valuesNextPhaseHint => 'Future phase...';
+
+  @override
+  String get valuesNextPhaseValuesGuidance =>
+      'Select up to 8 values from the list that will be especially important for this new stage (click in the desired order):';
+
+  @override
+  String get valuesResultTitle => 'My Top 8 Values';
 }
