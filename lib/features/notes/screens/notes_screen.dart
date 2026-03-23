@@ -76,6 +76,7 @@ class NotesScreen extends StatelessWidget {
           shareableContent: shareContent.items.isNotEmpty ? shareContent : null,
           onShare: (selectedItems) {
             ShareService.shareContent(
+              context: context,
               content: shareContent,
               selectedItems: selectedItems,
             );

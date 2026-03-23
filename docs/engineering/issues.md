@@ -1,5 +1,5 @@
 ﻿# 📋 GitHub Issues Roadmap
-_Last updated: 23.03.2026 15:06_
+_Last updated: 23.03.2026 18:29_
 _Sorted by Release and Priority (High > Medium > Low)_
 
 ## ✨ #9: feat: implement seminar feedback form [feature] 🏁 [Release 1 (MVP)]
@@ -10,23 +10,20 @@ Abschluss-Fragebogen (Rating + Text) für das Ende des Kurses (Wireframe 3.10).
 
 ---
 
-## #12: enhance the editor result workflow with a share worflow 🏁 [Release 1 (MVP)]
+## #14: values ui enhancement 🏁 [Release 1 (MVP)]
 ---
 **Status / Description:**
 
-Just fo the MVP we could use a "normale" share package like "share plus" for sharing details.
-We could implemtn that in the result view there will be a extra button share in the appbar...
-when clicked the user can choose what to share ... and it will then open the normal "share" dialog of the device.
+Its hard to make shure that you hit the right Numer for the right value..
+it would help if every second "row" would have a slightly darker backgorund to better determine which value belongs to wich "score"
 
 ---
 
-## #13: "Fertig" Button is misleading 🏁 [Release 1 (MVP)]
+## #15: Bei den Werten sollte die Anzeige "wähle genau 8 ...." wenn man nach unten scorllt.. oben angepinnt bleiben 🏁 [Release 1 (MVP)]
 ---
 **Status / Description:**
 
-Especially in the Values Editor you could think that it brings you to the next "stage" of the editor.
-It would make more sence to call this button "Abschließen" or something like this... 
-And in Value Edtior it would make sence to place the Previous  and Next  Button on the same "level"  beside the "Abschließen" Buttton.. the naming of the main button should be the same in every module of course... (maybe make the button more smaller not over the whole widht of the app ) :-)
+Ist das möglich oder sollten wir dieses Ticke einfach schließen?
 
 ---
 

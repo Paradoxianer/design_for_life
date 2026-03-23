@@ -63,6 +63,7 @@ class _ValuesAssessmentScreenState extends State<ValuesAssessmentScreen> {
             shareableContent: shareContent,
             onShare: (selectedItems) {
               ShareService.shareContent(
+                context: context,
                 content: shareContent,
                 selectedItems: selectedItems,
               );
