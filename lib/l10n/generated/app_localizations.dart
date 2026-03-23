@@ -397,6 +397,54 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Previous'**
   String get previous;
+
+  /// No description provided for @share.
+  ///
+  /// In en, this message translates to:
+  /// **'Share'**
+  String get share;
+
+  /// No description provided for @shareTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'What do you want to share?'**
+  String get shareTitle;
+
+  /// No description provided for @selectAll.
+  ///
+  /// In en, this message translates to:
+  /// **'Select All'**
+  String get selectAll;
+
+  /// No description provided for @deselectAll.
+  ///
+  /// In en, this message translates to:
+  /// **'Deselect All'**
+  String get deselectAll;
+
+  /// No description provided for @cancel.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel'**
+  String get cancel;
+
+  /// No description provided for @shareSubject.
+  ///
+  /// In en, this message translates to:
+  /// **'My results from DFL Weekend'**
+  String get shareSubject;
+
+  /// No description provided for @shareFooter.
+  ///
+  /// In en, this message translates to:
+  /// **'Created during the DFL Weekend'**
+  String get shareFooter;
+
+  /// No description provided for @shareIntro.
+  ///
+  /// In en, this message translates to:
+  /// **'Check out my results:'**
+  String get shareIntro;
 }
 
 class _AppLocalizationsDelegate

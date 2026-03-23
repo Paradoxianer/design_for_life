@@ -175,4 +175,28 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get previous => 'Zurück';
+
+  @override
+  String get share => 'Teilen';
+
+  @override
+  String get shareTitle => 'Was möchtest du teilen?';
+
+  @override
+  String get selectAll => 'Alle auswählen';
+
+  @override
+  String get deselectAll => 'Nichts auswählen';
+
+  @override
+  String get cancel => 'Abbrechen';
+
+  @override
+  String get shareSubject => 'Meine Ergebnisse vom DFL-Wochenende';
+
+  @override
+  String get shareFooter => 'Erstellt während des DFL-Wochenendes';
+
+  @override
+  String get shareIntro => 'Schau dir meine Ergebnisse an:';
 }

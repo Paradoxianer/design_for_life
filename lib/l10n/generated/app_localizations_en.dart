@@ -173,4 +173,28 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get previous => 'Previous';
+
+  @override
+  String get share => 'Share';
+
+  @override
+  String get shareTitle => 'What do you want to share?';
+
+  @override
+  String get selectAll => 'Select All';
+
+  @override
+  String get deselectAll => 'Deselect All';
+
+  @override
+  String get cancel => 'Cancel';
+
+  @override
+  String get shareSubject => 'My results from DFL Weekend';
+
+  @override
+  String get shareFooter => 'Created during the DFL Weekend';
+
+  @override
+  String get shareIntro => 'Check out my results:';
 }
