@@ -25,25 +25,36 @@ class FeedbackScreen extends StatelessWidget {
     final response = state.response;
     final List<ShareableItem> items = [];
 
-    // Add key ratings to share content
-    items.add(ShareableItem(
-      id: 'fb_overall',
-      label: l10n.feedbackContentExpectations,
-      textValue: l10n.feedbackLabel(response.contentExpectations),
-    ));
-    items.add(ShareableItem(
-      id: 'fb_god',
-      label: l10n.feedbackSpeakerGodWorking,
-      textValue: l10n.feedbackLabel(response.speakerGodWorking),
-    ));
+    // 1. Content
+    items.add(ShareableItem(id: 'c1', label: l10n.feedbackContentExpectations, textValue: response.contentExpectations.toString()));
+    items.add(ShareableItem(id: 'c2', label: l10n.feedbackContentPracticalUtility, textValue: response.contentPracticalUtility.toString()));
+    items.add(ShareableItem(id: 'c3', label: l10n.feedbackContentStructure, textValue: response.contentStructure.toString()));
 
-    if (response.generalNotes.isNotEmpty) {
-      items.add(ShareableItem(
-        id: 'fb_notes',
-        label: l10n.feedbackGeneralNotes,
-        textValue: response.generalNotes,
-      ));
-    }
+    // 2. Speaker
+    items.add(ShareableItem(id: 's1', label: l10n.feedbackSpeakerGodWorking, textValue: response.speakerGodWorking.toString()));
+    items.add(ShareableItem(id: 's2', label: l10n.feedbackSpeakerFaithProgress, textValue: response.speakerFaithProgress.toString()));
+    items.add(ShareableItem(id: 's3', label: l10n.feedbackSpeakerDidactics, textValue: response.speakerDidactics.toString()));
+    items.add(ShareableItem(id: 's4', label: l10n.feedbackSpeakerMethods, textValue: response.speakerMethods.toString()));
+    items.add(ShareableItem(id: 's5', label: l10n.feedbackSpeakerInvolvement, textValue: response.speakerInvolvement.toString()));
+    items.add(ShareableItem(id: 's6', label: l10n.feedbackSpeakerRespect, textValue: response.speakerRespect.toString()));
+    items.add(ShareableItem(id: 's7', label: l10n.feedbackAtmosphere, textValue: response.atmosphere.toString()));
+
+    // 3. Docs
+    items.add(ShareableItem(id: 'd1', label: l10n.feedbackDocsStructure, textValue: response.docsStructure.toString()));
+    items.add(ShareableItem(id: 'd2', label: l10n.feedbackDocsUnderstandability, textValue: response.docsUnderstandability.toString()));
+    items.add(ShareableItem(id: 'd3', label: l10n.feedbackDocsDifficulty, textValue: response.docsDifficulty.toString()));
+
+    // 4. Org
+    items.add(ShareableItem(id: 'o1', label: l10n.feedbackRoomsAppropriateness, textValue: response.roomsAppropriateness.toString()));
+    items.add(ShareableItem(id: 'o2', label: l10n.feedbackPrepQuality, textValue: response.prepQuality.toString()));
+    items.add(ShareableItem(id: 'o3', label: l10n.feedbackDuration, textValue: response.duration.toString()));
+    items.add(ShareableItem(id: 'o4', label: l10n.feedbackTempo, textValue: response.tempo.toString()));
+    items.add(ShareableItem(id: 'o5', label: l10n.feedbackCatering, textValue: response.catering.toString()));
+
+    // 5. Comments
+    if (response.commentsMissing.isNotEmpty) items.add(ShareableItem(id: 'comm1', label: l10n.feedbackCommentsMissing, textValue: response.commentsMissing));
+    if (response.recommendation.isNotEmpty) items.add(ShareableItem(id: 'comm2', label: l10n.feedbackRecommendation, textValue: response.recommendation));
+    if (response.generalNotes.isNotEmpty) items.add(ShareableItem(id: 'comm3', label: l10n.feedbackGeneralNotes, textValue: response.generalNotes));
 
     return ShareableContent(
       title: l10n.feedbackTitle,

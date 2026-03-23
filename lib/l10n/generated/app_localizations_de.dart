@@ -199,4 +199,105 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get shareIntro => 'Schau dir meine Ergebnisse an:';
+
+  @override
+  String get feedbackTitle => 'Feedbackbogen';
+
+  @override
+  String get feedbackGuidance =>
+      'Bitte gib uns deine Rückmeldung zum Seminar, damit wir beim nächsten Mal es noch besser gestalten können.\n(1 = Beste Bewertung, 6 = Schlechteste)';
+
+  @override
+  String get feedbackSectionContent => 'Inhalt des Seminars';
+
+  @override
+  String get feedbackContentExpectations =>
+      'Die Inhalte entsprachen meinen Erwartungen';
+
+  @override
+  String get feedbackContentPracticalUtility =>
+      'Ich habe nützliche Anregungen für meine tägliche Praxis gewonnen';
+
+  @override
+  String get feedbackContentStructure =>
+      'Gliederung & Verständlichkeit des Themenkomplexes';
+
+  @override
+  String get feedbackSectionSpeaker => 'Referent & Durchführung';
+
+  @override
+  String get feedbackSpeakerGodWorking =>
+      'Ich hatte den Eindruck, dass Gott wirken konnte';
+
+  @override
+  String get feedbackSpeakerFaithProgress =>
+      'Das Seminar hat mich in meinem Glaubensleben weitergebracht';
+
+  @override
+  String get feedbackSpeakerDidactics => 'Didaktische Fähigkeiten';
+
+  @override
+  String get feedbackSpeakerMethods =>
+      'Die eingesetzten Methoden waren zielführend';
+
+  @override
+  String get feedbackSpeakerInvolvement =>
+      'Der Referent hat die Teilnehmer aktiv eingebunden';
+
+  @override
+  String get feedbackSpeakerRespect =>
+      'Der Referent hat sich höflich und respektvoll verhalten';
+
+  @override
+  String get feedbackAtmosphere => 'Allgemeine Kursatmosphäre und Gruppenklima';
+
+  @override
+  String get feedbackSectionDocs => 'Seminarunterlagen';
+
+  @override
+  String get feedbackDocsStructure => 'Struktur und Übersichtlichkeit';
+
+  @override
+  String get feedbackDocsUnderstandability => 'Verständlichkeit';
+
+  @override
+  String get feedbackDocsDifficulty => 'Schwierigkeitsgrad';
+
+  @override
+  String get feedbackSectionOrg => 'Organisation & Infrastruktur';
+
+  @override
+  String get feedbackRoomsAppropriateness =>
+      'Angemessenheit der Räumlichkeiten';
+
+  @override
+  String get feedbackPrepQuality =>
+      'Vorbereitung des Seminars durch den Veranstalter';
+
+  @override
+  String get feedbackDuration => 'Dauer der Veranstaltung';
+
+  @override
+  String get feedbackTempo => 'Tempo der Veranstaltung';
+
+  @override
+  String get feedbackCatering => 'Verpflegung';
+
+  @override
+  String get feedbackSectionComments => 'Kommentare';
+
+  @override
+  String get feedbackCommentsMissing => 'Was kam zu kurz?';
+
+  @override
+  String get feedbackRecommendation =>
+      'Würden Sie dieses Seminar weiterempfehlen?';
+
+  @override
+  String get feedbackGeneralNotes => 'Anmerkungen';
+
+  @override
+  String feedbackLabel(int rating) {
+    return 'Bewertung: $rating';
+  }
 }
