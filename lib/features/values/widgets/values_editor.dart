@@ -1,68 +1,49 @@
 import 'package:flutter/material.dart';
+import 'package:design_for_life/l10n/generated/app_localizations.dart';
 import 'values_rating_view.dart';
 import 'values_definitions_view.dart';
 import 'values_reflection_view.dart';
 
-class ValuesEditor extends StatefulWidget {
-  const ValuesEditor({super.key});
+class ValuesEditor extends StatelessWidget {
+  final int currentStep;
+  final ValueChanged<int> onStepTapped;
 
-  @override
-  State<ValuesEditor> createState() => _ValuesEditorState();
-}
-
-class _ValuesEditorState extends State<ValuesEditor> {
-  int _currentStep = 0;
+  const ValuesEditor({
+    super.key,
+    required this.currentStep,
+    required this.onStepTapped,
+  });
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
+
     return Theme(
       data: Theme.of(context).copyWith(
         canvasColor: Colors.transparent,
       ),
       child: Stepper(
         type: StepperType.horizontal,
-        currentStep: _currentStep,
-        onStepTapped: (step) => setState(() => _currentStep = step),
-        onStepContinue: _currentStep < 2 ? () => setState(() => _currentStep++) : null,
-        onStepCancel: _currentStep > 0 ? () => setState(() => _currentStep--) : null,
-        controlsBuilder: (context, details) {
-          return Padding(
-            padding: const EdgeInsets.only(top: 16.0),
-            child: Row(
-              children: [
-                if (_currentStep < 2)
-                  ElevatedButton(
-                    onPressed: details.onStepContinue,
-                    child: const Text('Weiter'),
-                  ),
-                if (_currentStep > 0) ...[
-                  const SizedBox(width: 8),
-                  TextButton(
-                    onPressed: details.onStepCancel,
-                    child: const Text('Zurück'),
-                  ),
-                ],
-              ],
-            ),
-          );
-        },
+        currentStep: currentStep,
+        onStepTapped: onStepTapped,
+        controlsBuilder: (context, details) => const SizedBox.shrink(),
         steps: [
           Step(
-            title: const Text('Bewertung'),
+            title: Text(l10n.valuesPhase1Title),
             content: const ValuesRatingView(),
-            isActive: _currentStep >= 0,
-            state: _currentStep > 0 ? StepState.complete : StepState.indexed,
+            isActive: currentStep >= 0,
+            state: currentStep > 0 ? StepState.complete : StepState.indexed,
           ),
           Step(
-            title: const Text('Definition'),
+            title: Text(l10n.valuesPhase2Title),
             content: const ValuesDefinitionsView(),
-            isActive: _currentStep >= 1,
-            state: _currentStep > 1 ? StepState.complete : StepState.indexed,
+            isActive: currentStep >= 1,
+            state: currentStep > 1 ? StepState.complete : StepState.indexed,
           ),
           Step(
-            title: const Text('Reflektion'),
+            title: Text(l10n.valuesPhase3Title),
             content: const ValuesReflectionView(),
-            isActive: _currentStep >= 2,
+            isActive: currentStep >= 2,
           ),
         ],
       ),

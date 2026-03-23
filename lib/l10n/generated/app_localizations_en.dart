@@ -164,4 +164,13 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get valuesResultTitle => 'My Top 8 Values';
+
+  @override
+  String get finish => 'Finish';
+
+  @override
+  String get next => 'Next';
+
+  @override
+  String get previous => 'Previous';
 }

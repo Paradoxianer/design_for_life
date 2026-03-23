@@ -59,5 +59,8 @@
   "valuesNextPhaseLabel": "Beschreibe deinen nächsten Lebensabschnitt (z.B. neuer Job, Rente):",
   "valuesNextPhaseHint": "Zukünftige Phase...",
   "valuesNextPhaseValuesGuidance": "Wähle bis zu 8 Werte aus der Liste, die für diesen neuen Abschnitt besonders wichtig sein werden (klicke in der gewünschten Reihenfolge):",
-  "valuesResultTitle": "Meine Top 8 Werte"
+  "valuesResultTitle": "Meine Top 8 Werte",
+  "finish": "Abschließen",
+  "next": "Weiter",
+  "previous": "Zurück"
 }

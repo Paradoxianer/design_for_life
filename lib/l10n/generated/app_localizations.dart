@@ -379,6 +379,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'My Top 8 Values'**
   String get valuesResultTitle;
+
+  /// No description provided for @finish.
+  ///
+  /// In en, this message translates to:
+  /// **'Finish'**
+  String get finish;
+
+  /// No description provided for @next.
+  ///
+  /// In en, this message translates to:
+  /// **'Next'**
+  String get next;
+
+  /// No description provided for @previous.
+  ///
+  /// In en, this message translates to:
+  /// **'Previous'**
+  String get previous;
 }
 
 class _AppLocalizationsDelegate

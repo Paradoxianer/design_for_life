@@ -7,7 +7,7 @@ import '../bloc/values_state.dart';
 import '../widgets/values_editor.dart';
 import '../widgets/values_result.dart';
 
-class ValuesAssessmentScreen extends StatelessWidget {
+class ValuesAssessmentScreen extends StatefulWidget {
   final String title;
   final bool initialEditMode;
 
@@ -18,18 +18,29 @@ class ValuesAssessmentScreen extends StatelessWidget {
   });
 
   @override
+  State<ValuesAssessmentScreen> createState() => _ValuesAssessmentScreenState();
+}
+
+class _ValuesAssessmentScreenState extends State<ValuesAssessmentScreen> {
+  final GlobalKey<DflModuleScaffoldState> _scaffoldKey = GlobalKey<DflModuleScaffoldState>();
+
+  @override
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => ValuesBloc()..add(const ValuesStarted()),
       child: BlocBuilder<ValuesBloc, ValuesState>(
         builder: (context, state) {
           return DflModuleScaffold(
-            title: title,
-            initialEditMode: initialEditMode,
+            key: _scaffoldKey,
+            title: widget.title,
+            initialEditMode: widget.initialEditMode,
             onWillToggleMode: () async {
               return await _validateCompletion(context, state);
             },
-            editor: const ValuesEditor(),
+            customFooter: const SizedBox.shrink(),
+            editor: ValuesEditor(
+              onFinish: () => _scaffoldKey.currentState?.toggleMode(),
+            ),
             result: const ValuesResult(),
           );
         },

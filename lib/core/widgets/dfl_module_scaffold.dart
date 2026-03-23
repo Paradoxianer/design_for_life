@@ -7,6 +7,7 @@ class DflModuleScaffold extends StatefulWidget {
   final Widget result;
   final bool initialEditMode;
   final Future<bool> Function()? onWillToggleMode;
+  final Widget? customFooter;
 
   const DflModuleScaffold({
     super.key,
@@ -15,13 +16,14 @@ class DflModuleScaffold extends StatefulWidget {
     required this.result,
     this.initialEditMode = true,
     this.onWillToggleMode,
+    this.customFooter,
   });
 
   @override
-  State<DflModuleScaffold> createState() => _DflModuleScaffoldState();
+  State<DflModuleScaffold> createState() => DflModuleScaffoldState();
 }
 
-class _DflModuleScaffoldState extends State<DflModuleScaffold> {
+class DflModuleScaffoldState extends State<DflModuleScaffold> {
   late bool _isEditMode;
 
   @override
@@ -30,7 +32,7 @@ class _DflModuleScaffoldState extends State<DflModuleScaffold> {
     _isEditMode = widget.initialEditMode;
   }
 
-  Future<void> _toggleMode() async {
+  Future<void> toggleMode() async {
     if (_isEditMode && widget.onWillToggleMode != null) {
       final bool shouldToggle = await widget.onWillToggleMode!();
       if (!shouldToggle) return;
@@ -51,7 +53,7 @@ class _DflModuleScaffoldState extends State<DflModuleScaffold> {
           IconButton(
             tooltip: _isEditMode ? l10n.resultMode : l10n.editMode,
             icon: Icon(_isEditMode ? Icons.remove_red_eye_outlined : Icons.edit_outlined),
-            onPressed: _toggleMode,
+            onPressed: toggleMode,
           ),
         ],
       ),
@@ -63,14 +65,13 @@ class _DflModuleScaffoldState extends State<DflModuleScaffold> {
                 Expanded(child: widget.editor),
                 Padding(
                   padding: const EdgeInsets.all(16.0),
-                  child: SizedBox(
-                    width: double.infinity,
+                  child: widget.customFooter ?? Center(
                     child: ElevatedButton.icon(
-                      onPressed: _toggleMode,
+                      onPressed: toggleMode,
                       icon: const Icon(Icons.check),
-                      label: const Text('Fertig'),
+                      label: Text(l10n.finish),
                       style: ElevatedButton.styleFrom(
-                        padding: const EdgeInsets.symmetric(vertical: 16),
+                        padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 24),
                         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
                       ),
                     ),

@@ -166,4 +166,13 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get valuesResultTitle => 'Meine Top 8 Werte';
+
+  @override
+  String get finish => 'Abschließen';
+
+  @override
+  String get next => 'Weiter';
+
+  @override
+  String get previous => 'Zurück';
 }

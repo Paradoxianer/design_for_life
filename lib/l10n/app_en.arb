@@ -62,5 +62,8 @@
   "valuesNextPhaseLabel": "Describe your next life stage (e.g., new job, retirement):",
   "valuesNextPhaseHint": "Future phase...",
   "valuesNextPhaseValuesGuidance": "Select up to 8 values from the list that will be especially important for this new stage (click in the desired order):",
-  "valuesResultTitle": "My Top 8 Values"
+  "valuesResultTitle": "My Top 8 Values",
+  "finish": "Finish",
+  "next": "Next",
+  "previous": "Previous"
 }
