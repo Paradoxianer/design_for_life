@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:design_for_life/l10n/generated/app_localizations.dart';
+import '../models/shareable_content.dart';
+import 'share_selection_dialog.dart';
 
 class DflModuleScaffold extends StatefulWidget {
   final String title;
@@ -8,6 +10,8 @@ class DflModuleScaffold extends StatefulWidget {
   final bool initialEditMode;
   final Future<bool> Function()? onWillToggleMode;
   final Widget? customFooter;
+  final ShareableContent? shareableContent;
+  final Function(List<ShareableItem>)? onShare;
 
   const DflModuleScaffold({
     super.key,
@@ -17,6 +21,8 @@ class DflModuleScaffold extends StatefulWidget {
     this.initialEditMode = true,
     this.onWillToggleMode,
     this.customFooter,
+    this.shareableContent,
+    this.onShare,
   });
 
   @override
@@ -42,6 +48,18 @@ class DflModuleScaffoldState extends State<DflModuleScaffold> {
     });
   }
 
+  void _showShareDialog() {
+    if (widget.shareableContent == null || widget.onShare == null) return;
+
+    showDialog(
+      context: context,
+      builder: (context) => ShareSelectionDialog(
+        content: widget.shareableContent!,
+        onShare: widget.onShare!,
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context);
@@ -50,6 +68,12 @@ class DflModuleScaffoldState extends State<DflModuleScaffold> {
       appBar: AppBar(
         title: Text(widget.title),
         actions: [
+          if (!_isEditMode && widget.shareableContent != null)
+            IconButton(
+              tooltip: 'Teilen',
+              icon: const Icon(Icons.share_outlined),
+              onPressed: _showShareDialog,
+            ),
           IconButton(
             tooltip: _isEditMode ? l10n.resultMode : l10n.editMode,
             icon: Icon(_isEditMode ? Icons.remove_red_eye_outlined : Icons.edit_outlined),

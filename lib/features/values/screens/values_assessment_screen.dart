@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:design_for_life/l10n/generated/app_localizations.dart';
 import '../../../core/widgets/dfl_module_scaffold.dart';
+import '../../../core/models/shareable_content.dart';
+import '../../../core/services/share_service.dart';
 import '../bloc/values_bloc.dart';
 import '../bloc/values_event.dart';
 import '../bloc/values_state.dart';
@@ -26,6 +28,21 @@ class _ValuesAssessmentScreenState extends State<ValuesAssessmentScreen> {
   final GlobalKey<DflModuleScaffoldState> _scaffoldKey = GlobalKey<DflModuleScaffoldState>();
   int _currentStep = 0;
 
+  ShareableContent _getShareableContent(ValuesState state) {
+    return ShareableContent(
+      title: 'Meine Werte',
+      items: state.topEightValues.asMap().entries.map((entry) {
+        final index = entry.key;
+        final value = entry.value;
+        return ShareableItem(
+          id: 'value_$index',
+          label: '${index + 1}. ${value.name}',
+          textValue: value.definition,
+        );
+      }).toList(),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context);
@@ -34,6 +51,8 @@ class _ValuesAssessmentScreenState extends State<ValuesAssessmentScreen> {
       create: (context) => ValuesBloc()..add(const ValuesStarted()),
       child: BlocBuilder<ValuesBloc, ValuesState>(
         builder: (context, state) {
+          final shareContent = _getShareableContent(state);
+          
           return DflModuleScaffold(
             key: _scaffoldKey,
             title: widget.title,
@@ -41,10 +60,16 @@ class _ValuesAssessmentScreenState extends State<ValuesAssessmentScreen> {
             onWillToggleMode: () async {
               return await _validateCompletion(context, state);
             },
+            shareableContent: shareContent,
+            onShare: (selectedItems) {
+              ShareService.shareContent(
+                content: shareContent,
+                selectedItems: selectedItems,
+              );
+            },
             customFooter: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                // Links: Zurück
                 SizedBox(
                   width: 100,
                   child: _currentStep > 0
@@ -55,8 +80,6 @@ class _ValuesAssessmentScreenState extends State<ValuesAssessmentScreen> {
                         )
                       : const SizedBox.shrink(),
                 ),
-
-                // Mitte: Abschließen
                 ElevatedButton.icon(
                   onPressed: () => _scaffoldKey.currentState?.toggleMode(),
                   icon: const Icon(Icons.check),
@@ -68,8 +91,6 @@ class _ValuesAssessmentScreenState extends State<ValuesAssessmentScreen> {
                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
                   ),
                 ),
-
-                // Rechts: Weiter
                 SizedBox(
                   width: 100,
                   child: _currentStep < 2
