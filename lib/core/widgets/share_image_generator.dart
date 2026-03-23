@@ -1,29 +1,38 @@
-import 'dart:io';
 import 'dart:typed_data';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:screenshot/screenshot.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:share_plus/share_plus.dart';
+import 'dart:io' as io;
 import '../models/shareable_content.dart';
 
 class ShareImageGenerator {
   static final ScreenshotController screenshotController = ScreenshotController();
 
-  static Future<String?> generateShareImage(ShareableContent content, List<ShareableItem> selectedItems) async {
+  static Future<XFile?> generateShareImage(ShareableContent content, List<ShareableItem> selectedItems) async {
     try {
       final Uint8List? imageBytes = await screenshotController.captureFromWidget(
-        _buildShareCard(content, selectedItems),
+        Material(child: _buildShareCard(content, selectedItems)),
         delay: const Duration(milliseconds: 100),
         pixelRatio: 2.0,
       );
 
       if (imageBytes == null) return null;
 
-      final directory = await getTemporaryDirectory();
-      final imagePath = '${directory.path}/share_result_${DateTime.now().millisecondsSinceEpoch}.png';
-      final imageFile = File(imagePath);
-      await imageFile.writeAsBytes(imageBytes);
-
-      return imagePath;
+      if (kIsWeb) {
+        return XFile.fromData(
+          imageBytes,
+          mimeType: 'image/png',
+          name: 'dfl_result.png',
+        );
+      } else {
+        final directory = await getTemporaryDirectory();
+        final imagePath = '${directory.path}/share_result_${DateTime.now().millisecondsSinceEpoch}.png';
+        final imageFile = io.File(imagePath);
+        await imageFile.writeAsBytes(imageBytes);
+        return XFile(imagePath);
+      }
     } catch (e) {
       debugPrint('Error generating share image: $e');
       return null;
@@ -107,7 +116,7 @@ class ShareImageGenerator {
           const SizedBox(height: 16),
           const Center(
             child: Text(
-              'www.dfl-weekend.de',
+              'Erstellt während des DFL-Wochenendes',
               style: TextStyle(
                 fontSize: 12,
                 color: Colors.grey,
