@@ -14,7 +14,7 @@ class ShareImageGenerator {
     try {
       final Uint8List? imageBytes = await screenshotController.captureFromWidget(
         Material(child: _buildShareCard(content, selectedItems)),
-        delay: const Duration(milliseconds: 100),
+        delay: const Duration(milliseconds: 200),
         pixelRatio: 2.0,
       );
 
@@ -53,7 +53,16 @@ class ShareImageGenerator {
         children: [
           Row(
             children: [
-              const Icon(Icons.auto_awesome, color: Colors.blue, size: 32),
+              Image.asset(
+                'assets/DFL_Logo.png',
+                width: 40,
+                height: 40,
+                errorBuilder: (context, error, stackTrace) => const Icon(
+                  Icons.auto_awesome,
+                  color: Colors.blue,
+                  size: 40,
+                ),
+              ),
               const SizedBox(width: 12),
               Expanded(
                 child: Column(

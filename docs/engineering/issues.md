@@ -1,31 +1,6 @@
 ﻿# 📋 GitHub Issues Roadmap
-_Last updated: 20.03.2026 15:45_
+_Last updated: 23.03.2026 15:06_
 _Sorted by Release and Priority (High > Medium > Low)_
-
-## ⚡ ✨ #11: feat: implement values assessment module [prio: 2, feature] 🏁 [Release 1 (MVP)]
----
-**Status / Description:**
-
-## Description
-Implement the values assessment module based on the requirements in alues_test.md. This module is a core part of the self-profile and serves as input for the Synthesis Matrix (#6).
-
-## Requirements
-- **Phase 1: Rating**
-  - Interactive list of values to be rated: 1 (very important), 2 (important), 3 (not important).
-  - Validation: Ensure exactly 8 values are marked with '1'.
-- **Phase 2: Personal Definitions**
-  - Input fields for personal definitions of the top 8 selected values.
-- **Phase 3: Reflection & Future Outlook**
-  - Implement reflection questions.
-  - 'Next Life Phase' matrix to compare current vs. future values.
-- **Data Persistence**
-  - Integration with SynthesisBloc to share the top 8 values.
-
-## Technical Details
-- Follow the DflModuleScaffold pattern.
-- Ensure proper localization support (l10n).
-
----
 
 ## ✨ #9: feat: implement seminar feedback form [feature] 🏁 [Release 1 (MVP)]
 ---
@@ -42,6 +17,16 @@ Abschluss-Fragebogen (Rating + Text) für das Ende des Kurses (Wireframe 3.10).
 Just fo the MVP we could use a "normale" share package like "share plus" for sharing details.
 We could implemtn that in the result view there will be a extra button share in the appbar...
 when clicked the user can choose what to share ... and it will then open the normal "share" dialog of the device.
+
+---
+
+## #13: "Fertig" Button is misleading 🏁 [Release 1 (MVP)]
+---
+**Status / Description:**
+
+Especially in the Values Editor you could think that it brings you to the next "stage" of the editor.
+It would make more sence to call this button "Abschließen" or something like this... 
+And in Value Edtior it would make sence to place the Previous  and Next  Button on the same "level"  beside the "Abschließen" Buttton.. the naming of the main button should be the same in every module of course... (maybe make the button more smaller not over the whole widht of the app ) :-)
 
 ---
 
