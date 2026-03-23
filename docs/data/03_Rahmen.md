@@ -1,0 +1,5 @@
+## **Rahmen** {#rahmen}
+
+Wir empfehlen dieses Konzept sehr, da hier Zusammenhänge klar werden und man sich direkt auf Gott konzentrieren kann. Allgemein ist DFL so ausgelegt, dass es an einem Wochenende durchgeführt werden kann. Für dieses Wochenende wäre es ideal wegzufahren,  sodass auch die Umgebung eine entspannte Atmosphäre bietet. Gerade diese wichtige Frage: *„Was hat Gott mit meinem Leben vor?„* sollte wirklich abgesondert von der gewohnten Umgebung in Ruhe angegangen werden, um aus gewohnten Denkmustern herauskommen zu können. Außerdem ist es hilfreich für ein gutes geistliches Klima und regen Austausch zwischen den Teilnehmern. Außerdem sollte die Gruppe vor Ort  übernachten, damit die Leute nicht aus der geistlichen Atmosphäre herausgerissen werden.  
+Eine DFL als  Gemeindeveranstaltung durchzuführen ist eine weitere Möglichkeit und bereits mehrfach erprobt. Dadurch fallen viele Organisatorische Herausforderungen weg, die Hürden und Kosten Für die Teilnehmer sind weitaus geringer.  
+Natürlich ist auch ein Durchführen in einer Kleingruppe denkbar, dies ist jedoch bisher noch nicht erprobt :-).
