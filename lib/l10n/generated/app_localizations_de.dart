@@ -205,7 +205,25 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get feedbackGuidance =>
-      'Bitte gib uns deine Rückmeldung zum Seminar, damit wir beim nächsten Mal es noch besser gestalten können.\n(1 = Beste Bewertung, 6 = Schlechteste)';
+      'Bitte gib uns deine Rückmeldung zum Seminar, damit wir beim nächsten Mal es noch besser gestalten können.';
+
+  @override
+  String get feedbackRating1 => 'Sehr gut';
+
+  @override
+  String get feedbackRating2 => 'Gut';
+
+  @override
+  String get feedbackRating3 => 'Befriedigend';
+
+  @override
+  String get feedbackRating4 => 'Ausreichend';
+
+  @override
+  String get feedbackRating5 => 'Mangelhaft';
+
+  @override
+  String get feedbackRating6 => 'Ungenügend';
 
   @override
   String get feedbackSectionContent => 'Inhalt des Seminars';

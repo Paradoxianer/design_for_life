@@ -18,6 +18,15 @@ class FeedbackEditor extends StatelessWidget {
     final l10n = AppLocalizations.of(context);
     final theme = Theme.of(context);
 
+    final ratingLabels = [
+      l10n.feedbackRating1,
+      l10n.feedbackRating2,
+      l10n.feedbackRating3,
+      l10n.feedbackRating4,
+      l10n.feedbackRating5,
+      l10n.feedbackRating6,
+    ];
+
     return ListView(
       padding: const EdgeInsets.all(16.0),
       children: [
@@ -25,16 +34,19 @@ class FeedbackEditor extends StatelessWidget {
         RatingSelector(
           label: l10n.feedbackContentExpectations,
           currentRating: response.contentExpectations,
+          ratingLabels: ratingLabels,
           onRatingChanged: (val) => onChanged(response.copyWith(contentExpectations: val)),
         ),
         RatingSelector(
           label: l10n.feedbackContentPracticalUtility,
           currentRating: response.contentPracticalUtility,
+          ratingLabels: ratingLabels,
           onRatingChanged: (val) => onChanged(response.copyWith(contentPracticalUtility: val)),
         ),
         RatingSelector(
           label: l10n.feedbackContentStructure,
           currentRating: response.contentStructure,
+          ratingLabels: ratingLabels,
           onRatingChanged: (val) => onChanged(response.copyWith(contentStructure: val)),
         ),
 
@@ -43,36 +55,43 @@ class FeedbackEditor extends StatelessWidget {
         RatingSelector(
           label: l10n.feedbackSpeakerGodWorking,
           currentRating: response.speakerGodWorking,
+          ratingLabels: ratingLabels,
           onRatingChanged: (val) => onChanged(response.copyWith(speakerGodWorking: val)),
         ),
         RatingSelector(
           label: l10n.feedbackSpeakerFaithProgress,
           currentRating: response.speakerFaithProgress,
+          ratingLabels: ratingLabels,
           onRatingChanged: (val) => onChanged(response.copyWith(speakerFaithProgress: val)),
         ),
         RatingSelector(
           label: l10n.feedbackSpeakerDidactics,
           currentRating: response.speakerDidactics,
+          ratingLabels: ratingLabels,
           onRatingChanged: (val) => onChanged(response.copyWith(speakerDidactics: val)),
         ),
         RatingSelector(
           label: l10n.feedbackSpeakerMethods,
           currentRating: response.speakerMethods,
+          ratingLabels: ratingLabels,
           onRatingChanged: (val) => onChanged(response.copyWith(speakerMethods: val)),
         ),
         RatingSelector(
           label: l10n.feedbackSpeakerInvolvement,
           currentRating: response.speakerInvolvement,
+          ratingLabels: ratingLabels,
           onRatingChanged: (val) => onChanged(response.copyWith(speakerInvolvement: val)),
         ),
         RatingSelector(
           label: l10n.feedbackSpeakerRespect,
           currentRating: response.speakerRespect,
+          ratingLabels: ratingLabels,
           onRatingChanged: (val) => onChanged(response.copyWith(speakerRespect: val)),
         ),
         RatingSelector(
           label: l10n.feedbackAtmosphere,
           currentRating: response.atmosphere,
+          ratingLabels: ratingLabels,
           onRatingChanged: (val) => onChanged(response.copyWith(atmosphere: val)),
         ),
 
@@ -81,16 +100,19 @@ class FeedbackEditor extends StatelessWidget {
         RatingSelector(
           label: l10n.feedbackDocsStructure,
           currentRating: response.docsStructure,
+          ratingLabels: ratingLabels,
           onRatingChanged: (val) => onChanged(response.copyWith(docsStructure: val)),
         ),
         RatingSelector(
           label: l10n.feedbackDocsUnderstandability,
           currentRating: response.docsUnderstandability,
+          ratingLabels: ratingLabels,
           onRatingChanged: (val) => onChanged(response.copyWith(docsUnderstandability: val)),
         ),
         RatingSelector(
           label: l10n.feedbackDocsDifficulty,
           currentRating: response.docsDifficulty,
+          ratingLabels: ratingLabels,
           onRatingChanged: (val) => onChanged(response.copyWith(docsDifficulty: val)),
         ),
 
@@ -99,26 +121,31 @@ class FeedbackEditor extends StatelessWidget {
         RatingSelector(
           label: l10n.feedbackRoomsAppropriateness,
           currentRating: response.roomsAppropriateness,
+          ratingLabels: ratingLabels,
           onRatingChanged: (val) => onChanged(response.copyWith(roomsAppropriateness: val)),
         ),
         RatingSelector(
           label: l10n.feedbackPrepQuality,
           currentRating: response.prepQuality,
+          ratingLabels: ratingLabels,
           onRatingChanged: (val) => onChanged(response.copyWith(prepQuality: val)),
         ),
         RatingSelector(
           label: l10n.feedbackDuration,
           currentRating: response.duration,
+          ratingLabels: ratingLabels,
           onRatingChanged: (val) => onChanged(response.copyWith(duration: val)),
         ),
         RatingSelector(
           label: l10n.feedbackTempo,
           currentRating: response.tempo,
+          ratingLabels: ratingLabels,
           onRatingChanged: (val) => onChanged(response.copyWith(tempo: val)),
         ),
         RatingSelector(
           label: l10n.feedbackCatering,
           currentRating: response.catering,
+          ratingLabels: ratingLabels,
           onRatingChanged: (val) => onChanged(response.copyWith(catering: val)),
         ),
 

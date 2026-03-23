@@ -455,8 +455,44 @@ abstract class AppLocalizations {
   /// No description provided for @feedbackGuidance.
   ///
   /// In en, this message translates to:
-  /// **'Please give us your feedback on the seminar so that we can make it even better next time.\n(1 = Best rating, 6 = Worst)'**
+  /// **'Please give us your feedback on the seminar so that we can make it even better next time.'**
   String get feedbackGuidance;
+
+  /// No description provided for @feedbackRating1.
+  ///
+  /// In en, this message translates to:
+  /// **'Excellent'**
+  String get feedbackRating1;
+
+  /// No description provided for @feedbackRating2.
+  ///
+  /// In en, this message translates to:
+  /// **'Good'**
+  String get feedbackRating2;
+
+  /// No description provided for @feedbackRating3.
+  ///
+  /// In en, this message translates to:
+  /// **'Satisfactory'**
+  String get feedbackRating3;
+
+  /// No description provided for @feedbackRating4.
+  ///
+  /// In en, this message translates to:
+  /// **'Sufficient'**
+  String get feedbackRating4;
+
+  /// No description provided for @feedbackRating5.
+  ///
+  /// In en, this message translates to:
+  /// **'Poor'**
+  String get feedbackRating5;
+
+  /// No description provided for @feedbackRating6.
+  ///
+  /// In en, this message translates to:
+  /// **'Very Poor'**
+  String get feedbackRating6;
 
   /// No description provided for @feedbackSectionContent.
   ///
