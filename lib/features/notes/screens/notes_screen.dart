@@ -35,14 +35,18 @@ class NotesScreen extends StatelessWidget {
       }
     }
 
-    // Add Note Entries
+    // Add Note Entries (Text and Images)
     for (int i = 0; i < entries.length; i++) {
       final entry = entries[i];
-      if (entry.text.trim().isNotEmpty) {
+      final hasText = entry.text.trim().isNotEmpty;
+      final hasImage = entry.imagePath != null && entry.imagePath!.isNotEmpty;
+
+      if (hasText || hasImage) {
         items.add(ShareableItem(
           id: 'note_entry_${entry.id}',
           label: 'Notiz ${i + 1}',
-          textValue: entry.text,
+          textValue: hasText ? entry.text : null,
+          imagePath: hasImage ? entry.imagePath : null,
         ));
       }
     }

@@ -24,7 +24,7 @@ class ListeningPrayerScreen extends StatelessWidget {
   ShareableContent _getShareableContent(List<DflEntry> impressions, List<String> highlights) {
     final List<ShareableItem> items = [];
 
-    // Add Highlights first as they are most important
+    // Add Highlights first
     for (int i = 0; i < highlights.length; i++) {
       if (highlights[i].trim().isNotEmpty) {
         items.add(ShareableItem(
@@ -35,14 +35,18 @@ class ListeningPrayerScreen extends StatelessWidget {
       }
     }
 
-    // Add Impressions
+    // Add Impressions (Text and Images)
     for (int i = 0; i < impressions.length; i++) {
       final entry = impressions[i];
-      if (entry.text.trim().isNotEmpty) {
+      final hasText = entry.text.trim().isNotEmpty;
+      final hasImage = entry.imagePath != null && entry.imagePath!.isNotEmpty;
+
+      if (hasText || hasImage) {
         items.add(ShareableItem(
           id: 'lp_impression_${entry.id}',
           label: 'Eindruck ${i + 1}',
-          textValue: entry.text,
+          textValue: hasText ? entry.text : null,
+          imagePath: hasImage ? entry.imagePath : null,
         ));
       }
     }

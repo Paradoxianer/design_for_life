@@ -14,7 +14,7 @@ class ShareImageGenerator {
     try {
       final Uint8List? imageBytes = await screenshotController.captureFromWidget(
         Material(child: _buildShareCard(content, selectedItems)),
-        delay: const Duration(milliseconds: 200),
+        delay: const Duration(milliseconds: 300), // Slightly longer for images to load
         pixelRatio: 2.0,
       );
 
@@ -94,14 +94,14 @@ class ShareImageGenerator {
           const Divider(),
           const SizedBox(height: 16),
           ...selectedItems.map((item) => Padding(
-            padding: const EdgeInsets.only(bottom: 16),
+            padding: const EdgeInsets.only(bottom: 20),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
                   item.label,
                   style: const TextStyle(
-                    fontSize: 18,
+                    fontSize: 16,
                     fontWeight: FontWeight.bold,
                     color: Colors.black87,
                   ),
@@ -113,8 +113,17 @@ class ShareImageGenerator {
                     style: TextStyle(
                       fontSize: 14,
                       fontStyle: FontStyle.italic,
-                      color: Colors.grey[700],
+                      color: Colors.grey[800],
                     ),
+                  ),
+                ],
+                if (item.imagePath != null) ...[
+                  const SizedBox(height: 12),
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(8),
+                    child: kIsWeb 
+                      ? Image.network(item.imagePath!, width: double.infinity, height: 200, fit: BoxFit.cover)
+                      : Image.file(io.File(item.imagePath!), width: double.infinity, height: 200, fit: BoxFit.cover),
                   ),
                 ],
               ],
