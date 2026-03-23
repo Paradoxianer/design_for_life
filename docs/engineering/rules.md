@@ -8,7 +8,7 @@
 * **Immutability:** Nutze `final` und `const` konsequent für Performance und Vorhersehbarkeit.
 
 ## 2. GitHub Workflow & Issue Tracking
-* **Issue-Zwang:** Jede Änderung muss einem GitHub Issue zugeordnet sein. Nutze die GitHub CLI (`gh`), um Issues zu verwalten, zu listen oder zu erstellen, falls eine Aufgabe noch nicht dokumentiert ist.
+* **Issue:** Editiere niemals issues.md die Datei wird per script erzeugt. Nutze die GitHub CLI (`gh`), um Issues zu verwalten, zu listen oder zu erstellen, falls eine Aufgabe noch nicht dokumentiert ist.
 * **Referenzierung:** Verknüpfe Code-Änderungen immer mit der entsprechenden Issue-Nummer.
 * **Automatisches Schließen:** Nutze in Commits oder PR-Beschreibungen Closing-Keywords (z.B. `fixes #123`), um den Workflow zu automatisieren.
 
