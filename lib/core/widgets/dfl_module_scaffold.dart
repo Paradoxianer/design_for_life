@@ -70,7 +70,7 @@ class DflModuleScaffoldState extends State<DflModuleScaffold> {
         actions: [
           if (!_isEditMode && widget.shareableContent != null)
             IconButton(
-              tooltip: 'Teilen',
+              tooltip: l10n.share,
               icon: const Icon(Icons.share_outlined),
               onPressed: _showShareDialog,
             ),

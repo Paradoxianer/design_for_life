@@ -62,5 +62,13 @@
   "valuesResultTitle": "Meine Top 8 Werte",
   "finish": "Abschließen",
   "next": "Weiter",
-  "previous": "Zurück"
+  "previous": "Zurück",
+  "share": "Teilen",
+  "shareTitle": "Was möchtest du teilen?",
+  "selectAll": "Alle auswählen",
+  "deselectAll": "Nichts auswählen",
+  "cancel": "Abbrechen",
+  "shareSubject": "Meine Ergebnisse vom DFL-Wochenende",
+  "shareFooter": "Erstellt während des DFL-Wochenendes",
+  "shareIntro": "Schau dir meine Ergebnisse an:"
 }

@@ -4,17 +4,26 @@ import 'package:flutter/material.dart';
 import 'package:screenshot/screenshot.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:share_plus/share_plus.dart';
+import 'package:design_for_life/l10n/generated/app_localizations.dart';
 import 'dart:io' as io;
 import '../models/shareable_content.dart';
 
 class ShareImageGenerator {
   static final ScreenshotController screenshotController = ScreenshotController();
 
-  static Future<XFile?> generateShareImage(ShareableContent content, List<ShareableItem> selectedItems) async {
+  static Future<XFile?> generateShareImage({
+    required BuildContext context,
+    required ShareableContent content,
+    required List<ShareableItem> selectedItems,
+  }) async {
+    final l10n = AppLocalizations.of(context);
+    
     try {
       final Uint8List? imageBytes = await screenshotController.captureFromWidget(
-        Material(child: _buildShareCard(content, selectedItems)),
-        delay: const Duration(milliseconds: 300), // Slightly longer for images to load
+        Material(
+          child: _buildShareCard(context, content, selectedItems, l10n),
+        ),
+        delay: const Duration(milliseconds: 300),
         pixelRatio: 2.0,
       );
 
@@ -39,7 +48,7 @@ class ShareImageGenerator {
     }
   }
 
-  static Widget _buildShareCard(ShareableContent content, List<ShareableItem> selectedItems) {
+  static Widget _buildShareCard(BuildContext context, ShareableContent content, List<ShareableItem> selectedItems, AppLocalizations l10n) {
     return Container(
       width: 400,
       padding: const EdgeInsets.all(24),
@@ -113,7 +122,7 @@ class ShareImageGenerator {
                     style: TextStyle(
                       fontSize: 14,
                       fontStyle: FontStyle.italic,
-                      color: Colors.grey[800],
+                      color: Colors.grey[700],
                     ),
                   ),
                 ],
@@ -132,10 +141,10 @@ class ShareImageGenerator {
           const SizedBox(height: 16),
           const Divider(),
           const SizedBox(height: 16),
-          const Center(
+          Center(
             child: Text(
-              'Erstellt während des DFL-Wochenendes',
-              style: TextStyle(
+              l10n.shareFooter,
+              style: const TextStyle(
                 fontSize: 12,
                 color: Colors.grey,
               ),

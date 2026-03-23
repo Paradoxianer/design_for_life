@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:design_for_life/l10n/generated/app_localizations.dart';
 import '../models/shareable_content.dart';
 
 class ShareSelectionDialog extends StatefulWidget {
@@ -32,12 +33,12 @@ class _ShareSelectionDialogState extends State<ShareSelectionDialog> {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
+    final l10n = AppLocalizations.of(context);
     final allSelected = _items.every((item) => item.isSelected);
     final anySelected = _items.any((item) => item.isSelected);
 
     return AlertDialog(
-      title: Text(widget.content.title),
+      title: Text(l10n.shareTitle),
       content: SizedBox(
         width: double.maxFinite,
         child: Column(
@@ -47,7 +48,7 @@ class _ShareSelectionDialogState extends State<ShareSelectionDialog> {
               children: [
                 TextButton(
                   onPressed: () => _toggleAll(!allSelected),
-                  child: Text(allSelected ? 'Nichts auswählen' : 'Alle auswählen'),
+                  child: Text(allSelected ? l10n.deselectAll : l10n.selectAll),
                 ),
               ],
             ),
@@ -80,7 +81,7 @@ class _ShareSelectionDialogState extends State<ShareSelectionDialog> {
       actions: [
         TextButton(
           onPressed: () => Navigator.pop(context),
-          child: const Text('Abbrechen'),
+          child: Text(l10n.cancel),
         ),
         ElevatedButton.icon(
           onPressed: anySelected ? () {
@@ -88,7 +89,7 @@ class _ShareSelectionDialogState extends State<ShareSelectionDialog> {
             Navigator.pop(context);
           } : null,
           icon: const Icon(Icons.share),
-          label: const Text('Teilen'),
+          label: Text(l10n.share),
         ),
       ],
     );

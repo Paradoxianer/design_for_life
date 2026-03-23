@@ -65,5 +65,13 @@
   "valuesResultTitle": "My Top 8 Values",
   "finish": "Finish",
   "next": "Next",
-  "previous": "Previous"
+  "previous": "Previous",
+  "share": "Share",
+  "shareTitle": "What do you want to share?",
+  "selectAll": "Select All",
+  "deselectAll": "Deselect All",
+  "cancel": "Cancel",
+  "shareSubject": "My results from DFL Weekend",
+  "shareFooter": "Created during the DFL Weekend",
+  "shareIntro": "Check out my results:"
 }
