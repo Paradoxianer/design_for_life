@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:design_for_life/core/blocs/entry_list_bloc.dart';
 import 'package:design_for_life/core/models/dfl_entry.dart';
+import 'package:design_for_life/core/models/shareable_content.dart';
+import 'package:design_for_life/core/services/share_service.dart';
 import '../../../core/widgets/dfl_module_scaffold.dart';
 import '../bloc/notes_bloc.dart';
 import '../widgets/notes_editor.dart';
@@ -19,6 +21,38 @@ class NotesScreen extends StatelessWidget {
     this.initialEditMode = true,
   });
 
+  ShareableContent _getShareableContent(List<DflEntry> entries, List<String> takeaways) {
+    final List<ShareableItem> items = [];
+
+    // Add Key Takeaways first
+    for (int i = 0; i < takeaways.length; i++) {
+      if (takeaways[i].trim().isNotEmpty) {
+        items.add(ShareableItem(
+          id: 'note_takeaway_$i',
+          label: 'Erkenntnis ${i + 1}',
+          textValue: takeaways[i],
+        ));
+      }
+    }
+
+    // Add Note Entries
+    for (int i = 0; i < entries.length; i++) {
+      final entry = entries[i];
+      if (entry.text.trim().isNotEmpty) {
+        items.add(ShareableItem(
+          id: 'note_entry_${entry.id}',
+          label: 'Notiz ${i + 1}',
+          textValue: entry.text,
+        ));
+      }
+    }
+
+    return ShareableContent(
+      title: 'Meine Notizen: $title',
+      items: items,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<NotesBloc, EntryListState>(
@@ -30,9 +64,18 @@ class NotesScreen extends StatelessWidget {
             ? [DflEntry(id: 'initial_$sessionId')] 
             : entries;
 
+        final shareContent = _getShareableContent(entries, takeaways);
+
         return DflModuleScaffold(
           title: title,
           initialEditMode: initialEditMode,
+          shareableContent: shareContent.items.isNotEmpty ? shareContent : null,
+          onShare: (selectedItems) {
+            ShareService.shareContent(
+              content: shareContent,
+              selectedItems: selectedItems,
+            );
+          },
           editor: NotesEditor(
             sessionId: sessionId,
             entries: displayEntries,
