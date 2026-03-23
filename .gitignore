@@ -63,3 +63,8 @@ lib/generated_plugin_registrant.dart
 
 # L10n
 lib/l10n/generated/
+
+# Project Specific Exclusions
+docs/data/
+docs/engineering/issues.md
+pubspec.lock
