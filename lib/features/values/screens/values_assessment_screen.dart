@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:design_for_life/l10n/generated/app_localizations.dart';
 import '../../../core/widgets/dfl_module_scaffold.dart';
 import '../bloc/values_bloc.dart';
 import '../bloc/values_event.dart';
@@ -23,9 +24,12 @@ class ValuesAssessmentScreen extends StatefulWidget {
 
 class _ValuesAssessmentScreenState extends State<ValuesAssessmentScreen> {
   final GlobalKey<DflModuleScaffoldState> _scaffoldKey = GlobalKey<DflModuleScaffoldState>();
+  int _currentStep = 0;
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
+
     return BlocProvider(
       create: (context) => ValuesBloc()..add(const ValuesStarted()),
       child: BlocBuilder<ValuesBloc, ValuesState>(
@@ -37,9 +41,59 @@ class _ValuesAssessmentScreenState extends State<ValuesAssessmentScreen> {
             onWillToggleMode: () async {
               return await _validateCompletion(context, state);
             },
-            customFooter: const SizedBox.shrink(),
+            customFooter: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                // Links: Zurück
+                SizedBox(
+                  width: 100,
+                  child: _currentStep > 0
+                      ? TextButton.icon(
+                          onPressed: () => setState(() => _currentStep--),
+                          icon: const Icon(Icons.chevron_left),
+                          label: Text(l10n.previous),
+                        )
+                      : const SizedBox.shrink(),
+                ),
+
+                // Mitte: Abschließen
+                ElevatedButton.icon(
+                  onPressed: () => _scaffoldKey.currentState?.toggleMode(),
+                  icon: const Icon(Icons.check),
+                  label: Text(l10n.finish),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Theme.of(context).colorScheme.primaryContainer,
+                    foregroundColor: Theme.of(context).colorScheme.onPrimaryContainer,
+                    padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
+                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                  ),
+                ),
+
+                // Rechts: Weiter
+                SizedBox(
+                  width: 100,
+                  child: _currentStep < 2
+                      ? ElevatedButton(
+                          onPressed: () => setState(() => _currentStep++),
+                          style: ElevatedButton.styleFrom(
+                            padding: const EdgeInsets.symmetric(vertical: 12),
+                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                          ),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Text(l10n.next),
+                              const Icon(Icons.chevron_right),
+                            ],
+                          ),
+                        )
+                      : const SizedBox.shrink(),
+                ),
+              ],
+            ),
             editor: ValuesEditor(
-              onFinish: () => _scaffoldKey.currentState?.toggleMode(),
+              currentStep: _currentStep,
+              onStepTapped: (step) => setState(() => _currentStep = step),
             ),
             result: const ValuesResult(),
           );
