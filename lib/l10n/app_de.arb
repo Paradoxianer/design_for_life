@@ -70,5 +70,41 @@
   "cancel": "Abbrechen",
   "shareSubject": "Meine Ergebnisse vom DFL-Wochenende",
   "shareFooter": "Erstellt während des DFL-Wochenendes",
-  "shareIntro": "Schau dir meine Ergebnisse an:"
+  "shareIntro": "Schau dir meine Ergebnisse an:",
+  "feedbackTitle": "Feedbackbogen",
+  "feedbackGuidance": "Bitte gib uns deine Rückmeldung zum Seminar, damit wir beim nächsten Mal es noch besser gestalten können.\n(1 = Beste Bewertung, 6 = Schlechteste)",
+  "feedbackSectionContent": "Inhalt des Seminars",
+  "feedbackContentExpectations": "Die Inhalte entsprachen meinen Erwartungen",
+  "feedbackContentPracticalUtility": "Ich habe nützliche Anregungen für meine tägliche Praxis gewonnen",
+  "feedbackContentStructure": "Gliederung & Verständlichkeit des Themenkomplexes",
+  "feedbackSectionSpeaker": "Referent & Durchführung",
+  "feedbackSpeakerGodWorking": "Ich hatte den Eindruck, dass Gott wirken konnte",
+  "feedbackSpeakerFaithProgress": "Das Seminar hat mich in meinem Glaubensleben weitergebracht",
+  "feedbackSpeakerDidactics": "Didaktische Fähigkeiten",
+  "feedbackSpeakerMethods": "Die eingesetzten Methoden waren zielführend",
+  "feedbackSpeakerInvolvement": "Der Referent hat die Teilnehmer aktiv eingebunden",
+  "feedbackSpeakerRespect": "Der Referent hat sich höflich und respektvoll verhalten",
+  "feedbackAtmosphere": "Allgemeine Kursatmosphäre und Gruppenklima",
+  "feedbackSectionDocs": "Seminarunterlagen",
+  "feedbackDocsStructure": "Struktur und Übersichtlichkeit",
+  "feedbackDocsUnderstandability": "Verständlichkeit",
+  "feedbackDocsDifficulty": "Schwierigkeitsgrad",
+  "feedbackSectionOrg": "Organisation & Infrastruktur",
+  "feedbackRoomsAppropriateness": "Angemessenheit der Räumlichkeiten",
+  "feedbackPrepQuality": "Vorbereitung des Seminars durch den Veranstalter",
+  "feedbackDuration": "Dauer der Veranstaltung",
+  "feedbackTempo": "Tempo der Veranstaltung",
+  "feedbackCatering": "Verpflegung",
+  "feedbackSectionComments": "Kommentare",
+  "feedbackCommentsMissing": "Was kam zu kurz?",
+  "feedbackRecommendation": "Würden Sie dieses Seminar weiterempfehlen?",
+  "feedbackGeneralNotes": "Anmerkungen",
+  "feedbackLabel": "Bewertung: {rating}",
+  "@feedbackLabel": {
+    "placeholders": {
+      "rating": {
+        "type": "int"
+      }
+    }
+  }
 }

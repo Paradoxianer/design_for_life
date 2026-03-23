@@ -1,5 +1,5 @@
 ﻿# 📋 GitHub Issues Roadmap
-_Last updated: 23.03.2026 18:29_
+_Last updated: 23.03.2026 18:30_
 _Sorted by Release and Priority (High > Medium > Low)_
 
 ## ✨ #9: feat: implement seminar feedback form [feature] 🏁 [Release 1 (MVP)]

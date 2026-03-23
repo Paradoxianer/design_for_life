@@ -19,6 +19,8 @@ import 'features/spiritual_gifts/repositories/gifts_repository.dart';
 import 'features/spiritual_gifts/screens/spiritual_gifts_screen.dart';
 import 'features/values/bloc/values_bloc.dart';
 import 'features/values/screens/values_assessment_screen.dart';
+import 'features/feedback/bloc/feedback_bloc.dart';
+import 'features/feedback/screens/feedback_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -41,6 +43,7 @@ void main() async {
           create: (context) => SpiritualGiftsBloc(repository: giftsRepository),
         ),
         BlocProvider(create: (context) => ValuesBloc()),
+        BlocProvider(create: (context) => FeedbackBloc()),
       ],
       child: const DflApp(),
     ),
@@ -117,6 +120,17 @@ class DflApp extends StatelessWidget {
             final title = state.uri.queryParameters['title'] ?? 'Werte herausfinden';
             final mode = state.uri.queryParameters['mode'];
             return ValuesAssessmentScreen(
+              title: title,
+              initialEditMode: mode != 'result',
+            );
+          },
+        ),
+        GoRoute(
+          path: '/feedback',
+          builder: (context, state) {
+            final title = state.uri.queryParameters['title'] ?? 'Feedbackbogen';
+            final mode = state.uri.queryParameters['mode'];
+            return FeedbackScreen(
               title: title,
               initialEditMode: mode != 'result',
             );
