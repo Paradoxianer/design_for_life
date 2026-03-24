@@ -12,6 +12,7 @@ class ValuesRatingView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context);
+    final theme = Theme.of(context);
     
     return BlocBuilder<ValuesBloc, ValuesState>(
       builder: (context, state) {
@@ -64,7 +65,16 @@ class ValuesRatingView extends StatelessWidget {
                 itemCount: state.allValues.length,
                 itemBuilder: (context, index) {
                   final value = state.allValues[index];
-                  return _ValueRatingTile(value: value);
+                  // #14: Zebra Stripes (alternating background colors)
+                  final isEven = index % 2 == 0;
+                  final backgroundColor = isEven 
+                      ? Colors.transparent 
+                      : theme.colorScheme.surfaceVariant.withOpacity(0.3);
+
+                  return Container(
+                    color: backgroundColor,
+                    child: _ValueRatingTile(value: value),
+                  );
                 },
               ),
             ),
