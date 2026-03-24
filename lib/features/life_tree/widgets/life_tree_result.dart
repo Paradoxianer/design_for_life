@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:design_for_life/core/models/dfl_entry.dart';
 import 'package:design_for_life/core/widgets/dfl_module_result.dart';
-import 'package:design_for_life/core/widgets/dfl_entry_widget.dart';
 import '../models/life_tree_node_data.dart';
 
 class LifeTreeResult extends StatelessWidget {
@@ -51,10 +50,44 @@ class LifeTreeResult extends StatelessWidget {
             style: theme.textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
           ),
           const SizedBox(height: 12),
-          ...entries.map((entry) => DflEntryWidget(
-                entry: entry,
-                // Removed isReadOnly: true because it's not supported by DflEntryWidget
-              )),
+          ...entries.map((entry) => _DflEntryReadOnlyWidget(entry: entry)),
+        ],
+      ),
+    );
+  }
+}
+
+class _DflEntryReadOnlyWidget extends StatelessWidget {
+  final DflEntry entry;
+
+  const _DflEntryReadOnlyWidget({required this.entry});
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    return Container(
+      margin: const EdgeInsets.only(bottom: 16),
+      padding: const EdgeInsets.all(16),
+      decoration: BoxDecoration(
+        color: theme.colorScheme.surface,
+        borderRadius: BorderRadius.circular(16),
+        border: Border.all(
+          color: theme.colorScheme.outline.withValues(alpha: 0.2),
+          width: 1,
+        ),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          if (entry.text.isNotEmpty)
+            Text(entry.text, style: theme.textTheme.bodyMedium),
+          if (entry.imagePath != null) ...[
+            const SizedBox(height: 12),
+            ClipRRect(
+              borderRadius: BorderRadius.circular(12),
+              child: Image.network(entry.imagePath!, width: double.infinity, height: 200, fit: BoxFit.cover),
+            ),
+          ],
         ],
       ),
     );
