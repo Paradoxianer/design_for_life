@@ -27,8 +27,6 @@ class LifeTreeScreen extends StatelessWidget {
     String? treeImagePath,
   ) {
     final List<ShareableItem> items = [];
-
-    // Add Key Takeaways
     for (int i = 0; i < takeaways.length; i++) {
       if (takeaways[i].trim().isNotEmpty) {
         items.add(ShareableItem(
@@ -38,32 +36,17 @@ class LifeTreeScreen extends StatelessWidget {
         ));
       }
     }
-
-    // Add Analog Entries
-    for (int i = 0; i < entries.length; i++) {
-      final entry = entries[i];
+    for (var entry in entries) {
       if (entry.text.trim().isNotEmpty || entry.imagePath != null) {
         items.add(ShareableItem(
           id: 'life_tree_entry_${entry.id}',
-          label: 'Notiz ${i + 1}',
+          label: 'Notiz',
           textValue: entry.text.isNotEmpty ? entry.text : null,
           imagePath: entry.imagePath,
         ));
       }
     }
-
-    if (treeImagePath != null) {
-      items.add(ShareableItem(
-        id: 'life_tree_digital',
-        label: 'Digitaler Lebensbaum',
-        imagePath: treeImagePath,
-      ));
-    }
-
-    return ShareableContent(
-      title: 'Mein Lebensbaum: $title',
-      items: items,
-    );
+    return ShareableContent(title: 'Mein Lebensbaum: $title', items: items);
   }
 
   @override
@@ -79,39 +62,24 @@ class LifeTreeScreen extends StatelessWidget {
             ? [DflEntry(id: 'initial_$sessionId')] 
             : entries;
 
-        final shareContent = _getShareableContent(entries, takeaways, null);
-
         return DflModuleScaffold(
           title: title,
           initialEditMode: initialEditMode,
-          shareableContent: shareContent.items.isNotEmpty ? shareContent : null,
-          onShare: (selectedItems) {
-            ShareService.shareContent(
-              context: context,
-              content: shareContent,
-              selectedItems: selectedItems,
-            );
-          },
+          shareableContent: _getShareableContent(entries, takeaways, null),
+          onShare: (items) => ShareService.shareContent(context: context, content: _getShareableContent(entries, takeaways, null), selectedItems: items),
           editor: LifeTreeEditor(
+            key: ValueKey('life_tree_editor_$sessionId'), // STABLE KEY
             sessionId: sessionId,
             entries: displayEntries,
             takeaways: takeaways,
             nodes: nodes,
-            onUpdate: (index, value) {
-              context.read<LifeTreeBloc>().add(
-                UpdateTakeaway(sessionId, index, value),
-              );
-            },
+            onUpdate: (index, value) => context.read<LifeTreeBloc>().add(UpdateTakeaway(sessionId, index, value)),
           ),
           result: LifeTreeResult(
             entries: entries,
             takeaways: takeaways,
             nodes: nodes,
-            onUpdate: (index, value) {
-              context.read<LifeTreeBloc>().add(
-                UpdateTakeaway(sessionId, index, value),
-              );
-            },
+            onUpdate: (index, value) => context.read<LifeTreeBloc>().add(UpdateTakeaway(sessionId, index, value)),
           ),
         );
       },
