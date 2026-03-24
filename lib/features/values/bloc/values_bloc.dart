@@ -51,7 +51,7 @@ class ValuesBloc extends HydratedBloc<ValuesEvent, ValuesState> {
     });
 
     on<ReorderTopValues>((event, emit) {
-      final top8 = state.topEightValues;
+      final top8 = List<ValueItem>.from(state.topEightValues);
       if (top8.isEmpty) return;
 
       final item = top8.removeAt(event.oldIndex);
@@ -59,22 +59,15 @@ class ValuesBloc extends HydratedBloc<ValuesEvent, ValuesState> {
       if (newIdx > event.oldIndex) newIdx--;
       top8.insert(newIdx, item);
 
-      // We need to update allValues while maintaining the new order for the rating=1 items
-      final updatedAllValues = List<ValueItem>.from(state.allValues);
-      
-      // Remove all current top 8 from their positions
-      final top8Names = top8.map((v) => v.name).toSet();
-      updatedAllValues.removeWhere((v) => top8Names.contains(v.name));
-      
-      // Insert them back at the beginning or keep their relative positions?
-      // To keep it simple and consistent with the getter, we can put them at the front
-      // or just replace them where the first one was.
-      // Let's find the index of the first rating=1 item and insert all 8 there.
-      int firstTopIdx = state.allValues.indexWhere((v) => v.rating == 1);
-      if (firstTopIdx == -1) firstTopIdx = 0;
-      
-      updatedAllValues.insertAll(firstTopIdx, top8);
-      
+      // Create a map for quick access to the new order
+      final nameToOrder = {for (int i = 0; i < top8.length; i++) top8[i].name: i};
+
+      // Create a list of all other values (rating != 1)
+      final otherValues = state.allValues.where((v) => v.rating != 1).toList();
+
+      // Combine: first the top 8 in their new order, then all others
+      final updatedAllValues = [...top8, ...otherValues];
+
       emit(state.copyWith(allValues: updatedAllValues));
     });
   }
