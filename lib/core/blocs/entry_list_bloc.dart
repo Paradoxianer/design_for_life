@@ -109,7 +109,7 @@ class EntryListState extends Equatable {
 
 // Generic Bloc Implementation
 abstract class EntryListBloc extends HydratedBloc<EntryListEvent, EntryListState> {
-  EntryListBloc() : super(const EntryListState()) {
+  EntryListBloc([EntryListState initialState = const EntryListState()]) : super(initialState) {
     on<AddEntry>(_onAddEntry);
     on<UpdateEntryText>(_onUpdateEntryText);
     on<ToggleEntryCompletion>(_onToggleEntryCompletion);

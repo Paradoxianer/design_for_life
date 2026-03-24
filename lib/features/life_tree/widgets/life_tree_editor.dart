@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:graphview/GraphView.dart';
 import 'package:design_for_life/core/models/dfl_entry.dart';
 import 'package:design_for_life/core/blocs/entry_list_bloc.dart';
-import 'package:design_for_life/l10n/generated/app_localizations.dart';
 import '../../../core/widgets/dfl_module_editor.dart';
 import '../../../core/widgets/dfl_entry_widget.dart';
 import '../bloc/life_tree_bloc.dart';
@@ -30,7 +29,13 @@ class LifeTreeEditor extends DflModuleEditor {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        _buildGraphSection(context, bloc),
+        _LifeTreeGraphSection(
+          sessionId: sessionId,
+          nodes: nodes,
+          onAddNode: (parentId, text) => bloc.add(AddTreeNode(sessionId, parentId: parentId, text: text)),
+          onUpdateText: (nodeId, text) => bloc.add(UpdateTreeNodeText(sessionId, nodeId, text)),
+          onDeleteNode: (nodeId) => bloc.add(DeleteTreeNode(sessionId, nodeId)),
+        ),
         const SizedBox(height: 32),
         const Divider(),
         const SizedBox(height: 24),
@@ -61,38 +66,82 @@ class LifeTreeEditor extends DflModuleEditor {
       ],
     );
   }
+}
 
-  Widget _buildGraphSection(BuildContext context, LifeTreeBloc bloc) {
-    if (nodes.isEmpty) {
+class _LifeTreeGraphSection extends StatefulWidget {
+  final String sessionId;
+  final List<LifeTreeNodeData> nodes;
+  final Function(String?, String) onAddNode;
+  final Function(String, String) onUpdateText;
+  final Function(String) onDeleteNode;
+
+  const _LifeTreeGraphSection({
+    required this.sessionId,
+    required this.nodes,
+    required this.onAddNode,
+    required this.onUpdateText,
+    required this.onDeleteNode,
+  });
+
+  @override
+  State<_LifeTreeGraphSection> createState() => _LifeTreeGraphSectionState();
+}
+
+class _LifeTreeGraphSectionState extends State<_LifeTreeGraphSection> {
+  final Graph graph = Graph()..isTree = true;
+  late BuchheimWalkerConfiguration builder;
+
+  @override
+  void initState() {
+    super.initState();
+    builder = BuchheimWalkerConfiguration()
+      ..siblingSeparation = (50)
+      ..levelSeparation = (50)
+      ..subtreeSeparation = (50)
+      ..orientation = BuchheimWalkerConfiguration.ORIENTATION_TOP_BOTTOM;
+    _updateGraph();
+  }
+
+  @override
+  void didUpdateWidget(_LifeTreeGraphSection oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (widget.nodes != oldWidget.nodes) {
+      _updateGraph();
+    }
+  }
+
+  void _updateGraph() {
+    graph.nodes.clear();
+    graph.edges.clear();
+    
+    if (widget.nodes.isEmpty) return;
+
+    final Map<String, Node> nodeMap = {};
+
+    for (var nodeData in widget.nodes) {
+      final node = Node.Id(nodeData.id);
+      nodeMap[nodeData.id] = node;
+      graph.addNode(node);
+    }
+
+    for (var nodeData in widget.nodes) {
+      if (nodeData.parentId != null && nodeMap.containsKey(nodeData.parentId)) {
+        graph.addEdge(nodeMap[nodeData.parentId]!, nodeMap[nodeData.id]!);
+      }
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    if (widget.nodes.isEmpty) {
       return Center(
         child: ElevatedButton.icon(
-          onPressed: () {
-            bloc.add(AddTreeNode(sessionId, text: 'Geburt'));
-          },
+          onPressed: () => widget.onAddNode(null, 'Geburt'),
           icon: const Icon(Icons.add),
           label: const Text('Lebensbaum starten (Geburt)'),
         ),
       );
     }
-
-    final Graph graph = Graph()..isTree = true;
-    final Map<String, Node> nodeMap = {};
-
-    for (var nodeData in nodes) {
-      nodeMap[nodeData.id] = Node.Id(nodeData.id);
-    }
-
-    for (var nodeData in nodes) {
-      if (nodeData.parentId != null && nodeMap.containsKey(nodeData.parentId)) {
-        graph.addEdge(nodeMap[nodeData.parentId]!, nodeMap[nodeData.id]!);
-      }
-    }
-
-    final builder = BuchheimWalkerConfiguration()
-      ..siblingSeparation = (50)
-      ..levelSeparation = (50)
-      ..subtreeSeparation = (50)
-      ..orientation = BuchheimWalkerConfiguration.ORIENTATION_TOP_BOTTOM;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -109,17 +158,19 @@ class LifeTreeEditor extends DflModuleEditor {
         const SizedBox(height: 16),
         Container(
           height: 400,
+          width: double.infinity,
           decoration: BoxDecoration(
             border: Border.all(color: Colors.grey.shade300),
             borderRadius: BorderRadius.circular(8),
             color: Colors.grey.shade50,
           ),
           child: InteractiveViewer(
-            constrained: false,
+            constrained: false, 
             boundaryMargin: const EdgeInsets.all(100),
             minScale: 0.1,
             maxScale: 2.0,
             child: GraphView(
+              key: ValueKey(widget.nodes.length), // Force rebuild on structural change
               graph: graph,
               algorithm: BuchheimWalkerAlgorithm(builder, TreeEdgeRenderer(builder)),
               paint: Paint()
@@ -128,21 +179,17 @@ class LifeTreeEditor extends DflModuleEditor {
                 ..style = PaintingStyle.stroke,
               builder: (Node node) {
                 final nodeId = node.key?.value as String;
-                final nodeData = nodes.firstWhere((n) => n.id == nodeId);
+                final nodeData = widget.nodes.firstWhere(
+                  (n) => n.id == nodeId,
+                  orElse: () => LifeTreeNodeData(id: nodeId, text: ''),
+                );
                 return _TreeNodeWidget(
+                  key: ValueKey('node_$nodeId'),
                   nodeData: nodeData,
-                  onChanged: (text) {
-                    bloc.add(UpdateTreeNodeText(sessionId, nodeId, text));
-                  },
-                  onAddChild: () {
-                    bloc.add(AddTreeNode(sessionId, parentId: nodeId));
-                  },
-                  onAddSibling: () {
-                    bloc.add(AddTreeNode(sessionId, parentId: nodeData.parentId));
-                  },
-                  onDelete: () {
-                    bloc.add(DeleteTreeNode(sessionId, nodeId));
-                  },
+                  onChanged: (text) => widget.onUpdateText(nodeId, text),
+                  onAddChild: () => widget.onAddNode(nodeId, ''),
+                  onAddSibling: () => widget.onAddNode(nodeData.parentId, ''),
+                  onDelete: () => widget.onDeleteNode(nodeId),
                 );
               },
             ),
@@ -161,6 +208,7 @@ class _TreeNodeWidget extends StatefulWidget {
   final VoidCallback onDelete;
 
   const _TreeNodeWidget({
+    super.key,
     required this.nodeData,
     required this.onChanged,
     required this.onAddChild,
@@ -182,9 +230,11 @@ class _TreeNodeWidgetState extends State<_TreeNodeWidget> {
     super.initState();
     _controller = TextEditingController(text: widget.nodeData.text);
     _focusNode.addListener(() {
-      setState(() {
-        _isFocused = _focusNode.hasFocus;
-      });
+      if (mounted) {
+        setState(() {
+          _isFocused = _focusNode.hasFocus;
+        });
+      }
     });
   }
 
