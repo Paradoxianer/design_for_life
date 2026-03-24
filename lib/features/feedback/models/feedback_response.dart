@@ -56,6 +56,28 @@ class FeedbackResponse extends Equatable {
     this.generalNotes = '',
   });
 
+  /// Checks if all numerical ratings (1-6) are filled out (not 0).
+  bool get allRatingsFilled {
+    return contentExpectations > 0 &&
+        contentPracticalUtility > 0 &&
+        contentStructure > 0 &&
+        speakerGodWorking > 0 &&
+        speakerFaithProgress > 0 &&
+        speakerDidactics > 0 &&
+        speakerMethods > 0 &&
+        speakerInvolvement > 0 &&
+        speakerRespect > 0 &&
+        atmosphere > 0 &&
+        docsStructure > 0 &&
+        docsUnderstandability > 0 &&
+        docsDifficulty > 0 &&
+        roomsAppropriateness > 0 &&
+        prepQuality > 0 &&
+        duration > 0 &&
+        tempo > 0 &&
+        catering > 0;
+  }
+
   FeedbackResponse copyWith({
     int? contentExpectations,
     int? contentPracticalUtility,

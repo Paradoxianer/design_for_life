@@ -21,12 +21,12 @@ class ValuesState {
   /// A module is considered completed when at least 3 values are selected 
   /// AND the first 3 (Key Takeaways) have a personal definition.
   bool get isCompleted {
-    final topItems = topEightValues;
-    if (topItems.length < 3) return false;
+    final top8 = topEightValues;
+    if (top8.length < 3) return false;
     
-    // The first 3 items in the filtered list are the Key Takeaways
+    // Check if the first 3 (Key Takeaways) have a definition
     for (int i = 0; i < 3; i++) {
-      final definition = topItems[i].definition;
+      final definition = top8[i].definition;
       if (definition == null || definition.trim().isEmpty) {
         return false;
       }

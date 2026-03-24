@@ -28,6 +28,13 @@ class _ValuesAssessmentScreenState extends State<ValuesAssessmentScreen> {
   final GlobalKey<DflModuleScaffoldState> _scaffoldKey = GlobalKey<DflModuleScaffoldState>();
   int _currentStep = 0;
 
+  @override
+  void initState() {
+    super.initState();
+    // Initialize the global bloc when the screen is first opened
+    context.read<ValuesBloc>().add(const ValuesStarted());
+  }
+
   ShareableContent _getShareableContent(ValuesState state) {
     return ShareableContent(
       title: 'Meine Werte',
@@ -47,80 +54,77 @@ class _ValuesAssessmentScreenState extends State<ValuesAssessmentScreen> {
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context);
 
-    return BlocProvider(
-      create: (context) => ValuesBloc()..add(const ValuesStarted()),
-      child: BlocBuilder<ValuesBloc, ValuesState>(
-        builder: (context, state) {
-          final shareContent = _getShareableContent(state);
-          
-          return DflModuleScaffold(
-            key: _scaffoldKey,
-            title: widget.title,
-            initialEditMode: widget.initialEditMode,
-            onWillToggleMode: () async {
-              return await _validateCompletion(context, state);
-            },
-            shareableContent: shareContent,
-            onShare: (selectedItems) {
-              ShareService.shareContent(
-                context: context,
-                content: shareContent,
-                selectedItems: selectedItems,
-              );
-            },
-            customFooter: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                SizedBox(
-                  width: 100,
-                  child: _currentStep > 0
-                      ? TextButton.icon(
-                          onPressed: () => setState(() => _currentStep--),
-                          icon: const Icon(Icons.chevron_left),
-                          label: Text(l10n.previous),
-                        )
-                      : const SizedBox.shrink(),
+    return BlocBuilder<ValuesBloc, ValuesState>(
+      builder: (context, state) {
+        final shareContent = _getShareableContent(state);
+        
+        return DflModuleScaffold(
+          key: _scaffoldKey,
+          title: widget.title,
+          initialEditMode: widget.initialEditMode,
+          onWillToggleMode: () async {
+            return await _validateCompletion(context, state);
+          },
+          shareableContent: shareContent.items.isNotEmpty ? shareContent : null,
+          onShare: (selectedItems) {
+            ShareService.shareContent(
+              context: context,
+              content: shareContent,
+              selectedItems: selectedItems,
+            );
+          },
+          customFooter: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              SizedBox(
+                width: 100,
+                child: _currentStep > 0
+                    ? TextButton.icon(
+                        onPressed: () => setState(() => _currentStep--),
+                        icon: const Icon(Icons.chevron_left),
+                        label: Text(l10n.previous),
+                      )
+                    : const SizedBox.shrink(),
+              ),
+              ElevatedButton.icon(
+                onPressed: () => _scaffoldKey.currentState?.toggleMode(),
+                icon: const Icon(Icons.check),
+                label: Text(l10n.finish),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Theme.of(context).colorScheme.primaryContainer,
+                  foregroundColor: Theme.of(context).colorScheme.onPrimaryContainer,
+                  padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
                 ),
-                ElevatedButton.icon(
-                  onPressed: () => _scaffoldKey.currentState?.toggleMode(),
-                  icon: const Icon(Icons.check),
-                  label: Text(l10n.finish),
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Theme.of(context).colorScheme.primaryContainer,
-                    foregroundColor: Theme.of(context).colorScheme.onPrimaryContainer,
-                    padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-                  ),
-                ),
-                SizedBox(
-                  width: 100,
-                  child: _currentStep < 2
-                      ? ElevatedButton(
-                          onPressed: () => setState(() => _currentStep++),
-                          style: ElevatedButton.styleFrom(
-                            padding: const EdgeInsets.symmetric(vertical: 12),
-                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-                          ),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              Text(l10n.next),
-                              const Icon(Icons.chevron_right),
-                            ],
-                          ),
-                        )
-                      : const SizedBox.shrink(),
-                ),
-              ],
-            ),
-            editor: ValuesEditor(
-              currentStep: _currentStep,
-              onStepTapped: (step) => setState(() => _currentStep = step),
-            ),
-            result: const ValuesResult(),
-          );
-        },
-      ),
+              ),
+              SizedBox(
+                width: 100,
+                child: _currentStep < 2
+                    ? ElevatedButton(
+                        onPressed: () => setState(() => _currentStep++),
+                        style: ElevatedButton.styleFrom(
+                          padding: const EdgeInsets.symmetric(vertical: 12),
+                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                        ),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Text(l10n.next),
+                            const Icon(Icons.chevron_right),
+                          ],
+                        ),
+                      )
+                    : const SizedBox.shrink(),
+              ),
+            ],
+          ),
+          editor: ValuesEditor(
+            currentStep: _currentStep,
+            onStepTapped: (step) => setState(() => _currentStep = step),
+          ),
+          result: const ValuesResult(),
+        );
+      },
     );
   }
 

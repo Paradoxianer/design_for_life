@@ -13,7 +13,7 @@ class SpiritualGiftsBloc extends HydratedBloc<SpiritualGiftsEvent, SpiritualGift
     on<InitTest>((event, emit) async {
       final gifts = await repository.loadGifts(event.locale);
       
-      List<String> questionOrder = List.from(state.questionOrder);
+      List<String> questionOrder = state.questionOrder;
       if (questionOrder.isEmpty) {
         questionOrder = gifts
             .expand((gift) => gift.questions.map((q) => q.id))
@@ -24,6 +24,7 @@ class SpiritualGiftsBloc extends HydratedBloc<SpiritualGiftsEvent, SpiritualGift
       emit(state.copyWith(
         gifts: gifts,
         questionOrder: questionOrder,
+        currentSessionId: event.sessionId,
         currentQuestionIndex: state.answers.length >= questionOrder.length ? 0 : state.firstUnansweredIndex,
       ));
     });
@@ -46,7 +47,9 @@ class SpiritualGiftsBloc extends HydratedBloc<SpiritualGiftsEvent, SpiritualGift
         final top3 = newState.getRankedGifts().take(3).map((g) => g.name).toList();
         final newTakeaways = Map<String, List<String>>.from(state.takeaways);
         final sessionId = newState.currentSessionId ?? 'default';
-        newTakeaways[sessionId] = top3;
+        if (newTakeaways[sessionId] == null || newTakeaways[sessionId]!.isEmpty) {
+          newTakeaways[sessionId] = top3;
+        }
         newState = newState.copyWith(takeaways: newTakeaways);
       }
 

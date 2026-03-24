@@ -7,6 +7,7 @@ import 'package:design_for_life/features/listening_prayer/bloc/listening_prayer_
 import 'package:design_for_life/features/goals/bloc/goals_bloc.dart';
 import 'package:design_for_life/features/values/bloc/values_bloc.dart';
 import 'package:design_for_life/features/spiritual_gifts/bloc/spiritual_gifts_bloc.dart';
+import 'package:design_for_life/features/feedback/bloc/feedback_bloc.dart';
 import '../models/static_timeline_data.dart';
 import '../models/dfl_session.dart';
 import '../widgets/timeline_card.dart';
@@ -64,19 +65,25 @@ class _TimelineCardWrapper extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    bool isCompleted = false;
     final route = session.moduleRoute ?? '';
+    bool isCompleted = false;
 
     if (route.startsWith('notes/')) {
-      isCompleted = context.watch<NotesBloc>().state.isCompleted(_parseId(route));
+      final sessionId = _parseId(route);
+      isCompleted = context.watch<NotesBloc>().state.isCompleted(sessionId);
     } else if (route.startsWith('listening-prayer/')) {
-      isCompleted = context.watch<ListeningPrayerBloc>().state.isCompleted(_parseId(route));
+      final sessionId = _parseId(route);
+      isCompleted = context.watch<ListeningPrayerBloc>().state.isCompleted(sessionId);
     } else if (route.startsWith('goals/')) {
-      isCompleted = context.watch<GoalsBloc>().state.isCompleted(_parseId(route));
+      final sessionId = _parseId(route);
+      isCompleted = context.watch<GoalsBloc>().state.isCompleted(sessionId);
     } else if (route.startsWith('spiritual-gifts/')) {
-      isCompleted = context.watch<SpiritualGiftsBloc>().state.isSessionCompleted(_parseId(route));
+      final sessionId = _parseId(route);
+      isCompleted = context.watch<SpiritualGiftsBloc>().state.isSessionCompleted(sessionId);
     } else if (route == 'values') {
       isCompleted = context.watch<ValuesBloc>().state.isCompleted;
+    } else if (route == 'feedback') {
+      isCompleted = context.watch<FeedbackBloc>().state.response.allRatingsFilled;
     }
 
     final updatedSession = DflSession(

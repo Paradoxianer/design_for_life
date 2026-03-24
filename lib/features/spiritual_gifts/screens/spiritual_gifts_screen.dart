@@ -7,7 +7,7 @@ import '../bloc/spiritual_gifts_bloc.dart';
 import '../widgets/spiritual_gifts_editor.dart';
 import '../widgets/spiritual_gifts_result.dart';
 
-class SpiritualGiftsScreen extends StatelessWidget {
+class SpiritualGiftsScreen extends StatefulWidget {
   final String sessionId;
   final String title;
   final bool initialEditMode;
@@ -19,10 +19,32 @@ class SpiritualGiftsScreen extends StatelessWidget {
     this.initialEditMode = true,
   });
 
+  @override
+  State<SpiritualGiftsScreen> createState() => _SpiritualGiftsScreenState();
+}
+
+class _SpiritualGiftsScreenState extends State<SpiritualGiftsScreen> {
+  @override
+  void initState() {
+    super.initState();
+    // Initialize the global bloc for the specific session
+    // We use postFrameCallback to avoid Localizations dependency error in initState
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (mounted) {
+        context.read<SpiritualGiftsBloc>().add(
+          InitTest(
+            locale: Localizations.localeOf(context).languageCode,
+            sessionId: widget.sessionId,
+          ),
+        );
+      }
+    });
+  }
+
   ShareableContent _getShareableContent(SpiritualGiftsState state) {
     final rankedGifts = state.getRankedGifts();
     final topThree = rankedGifts.take(3).toList();
-    final takeaways = state.takeaways[sessionId] ?? [];
+    final takeaways = state.takeaways[widget.sessionId] ?? [];
 
     final List<ShareableItem> items = [];
 
@@ -59,8 +81,8 @@ class SpiritualGiftsScreen extends StatelessWidget {
         final shareContent = _getShareableContent(state);
 
         return DflModuleScaffold(
-          title: title,
-          initialEditMode: initialEditMode,
+          title: widget.title,
+          initialEditMode: widget.initialEditMode,
           shareableContent: shareContent.items.isNotEmpty ? shareContent : null,
           onShare: (selectedItems) {
             ShareService.shareContent(
@@ -72,7 +94,7 @@ class SpiritualGiftsScreen extends StatelessWidget {
           onWillToggleMode: () async {
             return await _validateCompletion(context, state);
           },
-          editor: SpiritualGiftsEditor(sessionId: sessionId),
+          editor: SpiritualGiftsEditor(sessionId: widget.sessionId),
           result: const SpiritualGiftsResult(),
         );
       },

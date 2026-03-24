@@ -8,7 +8,9 @@ abstract class FeedbackEvent extends Equatable {
   List<Object?> get props => [];
 }
 
-class FeedbackStarted extends FeedbackEvent {}
+class FeedbackStarted extends FeedbackEvent {
+  const FeedbackStarted();
+}
 
 class UpdateFeedback extends FeedbackEvent {
   final FeedbackResponse response;
