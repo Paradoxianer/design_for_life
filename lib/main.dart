@@ -21,6 +21,8 @@ import 'features/values/bloc/values_bloc.dart';
 import 'features/values/screens/values_assessment_screen.dart';
 import 'features/feedback/bloc/feedback_bloc.dart';
 import 'features/feedback/screens/feedback_screen.dart';
+import 'features/life_tree/bloc/life_tree_bloc.dart';
+import 'features/life_tree/screens/life_tree_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -44,6 +46,7 @@ void main() async {
         ),
         BlocProvider(create: (context) => ValuesBloc()),
         BlocProvider(create: (context) => FeedbackBloc()),
+        BlocProvider(create: (context) => LifeTreeBloc()),
       ],
       child: const DflApp(),
     ),
@@ -69,6 +72,19 @@ class DflApp extends StatelessWidget {
             final title = state.uri.queryParameters['title'] ?? 'Notes';
             final mode = state.uri.queryParameters['mode'];
             return NotesScreen(
+              sessionId: sessionId, 
+              title: title,
+              initialEditMode: mode != 'result',
+            );
+          },
+        ),
+        GoRoute(
+          path: '/life-tree/:sessionId',
+          builder: (context, state) {
+            final sessionId = state.pathParameters['sessionId']!;
+            final title = state.uri.queryParameters['title'] ?? 'Lebensbaum';
+            final mode = state.uri.queryParameters['mode'];
+            return LifeTreeScreen(
               sessionId: sessionId, 
               title: title,
               initialEditMode: mode != 'result',

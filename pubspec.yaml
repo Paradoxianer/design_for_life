@@ -27,6 +27,7 @@ dependencies:
   # UI Components
   flutter_svg: ^2.0.9
   google_fonts: ^6.1.0
+  graphview: ^1.2.0
   
   # Media & Files
   image_picker: ^1.0.7
