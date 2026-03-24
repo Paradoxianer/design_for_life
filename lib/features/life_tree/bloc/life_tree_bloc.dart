@@ -80,7 +80,7 @@ class DeleteTreeNode extends LifeTreeEvent {
 }
 
 class LifeTreeBloc extends EntryListBloc {
-  LifeTreeBloc() : super() {
+  LifeTreeBloc() : super(const LifeTreeState()) {
     on<AddTreeNode>(_onAddTreeNode);
     on<UpdateTreeNodeText>(_onUpdateTreeNodeText);
     on<DeleteTreeNode>(_onDeleteTreeNode);

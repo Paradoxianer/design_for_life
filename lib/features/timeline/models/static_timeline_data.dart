@@ -21,7 +21,7 @@ class StaticTimelineData {
       title: 'Gruppenarbeit – Lebensbaum zeichnen + Auswerten',
       description: 'Erstellung des persönlichen Lebensbaums in der Gruppe.',
       type: SessionType.groupWork,
-      moduleRoute: 'life-tree', 
+      moduleRoute: 'life-tree/session_3?title=Lebensbaum',
     ),
     DflSession(
       id: 'session_4',
