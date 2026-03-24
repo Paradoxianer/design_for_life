@@ -27,9 +27,11 @@ class LifeTreeEditor extends DflModuleEditor {
     final bloc = context.read<LifeTreeBloc>();
 
     return Column(
+      key: ValueKey('editor_col_$sessionId'),
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         _LifeTreeGraphSection(
+          key: ValueKey('graph_section_$sessionId'),
           sessionId: sessionId,
           nodes: nodes,
           onAddNode: (parentId, text) => bloc.add(AddTreeNode(sessionId, parentId: parentId, text: text)),
@@ -52,15 +54,9 @@ class LifeTreeEditor extends DflModuleEditor {
             key: ValueKey(entry.id),
             entry: entry,
             hintText: 'Notiz oder Beschreibung...',
-            onTextChanged: (text) {
-              bloc.add(UpdateEntryText(sessionId, entry.id, text));
-            },
-            onImageChanged: (path) {
-              bloc.add(UpdateEntryImage(sessionId, entry.id, path));
-            },
-            onDelete: isLast ? null : () {
-              bloc.add(DeleteEntry(sessionId, entry.id));
-            },
+            onTextChanged: (text) => bloc.add(UpdateEntryText(sessionId, entry.id, text)),
+            onImageChanged: (path) => bloc.add(UpdateEntryImage(sessionId, entry.id, path)),
+            onDelete: isLast ? null : () => bloc.add(DeleteEntry(sessionId, entry.id)),
           );
         }),
       ],
@@ -76,6 +72,7 @@ class _LifeTreeGraphSection extends StatefulWidget {
   final Function(String) onDeleteNode;
 
   const _LifeTreeGraphSection({
+    super.key,
     required this.sessionId,
     required this.nodes,
     required this.onAddNode,
@@ -88,45 +85,66 @@ class _LifeTreeGraphSection extends StatefulWidget {
 }
 
 class _LifeTreeGraphSectionState extends State<_LifeTreeGraphSection> {
-  final Graph graph = Graph()..isTree = true;
+  late Graph graph;
   late BuchheimWalkerConfiguration builder;
+  late Algorithm algorithm;
+  final Map<String, Node> _nodeCache = {};
 
   @override
   void initState() {
     super.initState();
+    graph = Graph()..isTree = true;
+    
     builder = BuchheimWalkerConfiguration()
       ..siblingSeparation = (50)
       ..levelSeparation = (50)
       ..subtreeSeparation = (50)
       ..orientation = BuchheimWalkerConfiguration.ORIENTATION_TOP_BOTTOM;
-    _updateGraph();
+    
+    algorithm = BuchheimWalkerAlgorithm(builder, TreeEdgeRenderer(builder));
+    
+    _syncGraph();
   }
 
   @override
   void didUpdateWidget(_LifeTreeGraphSection oldWidget) {
     super.didUpdateWidget(oldWidget);
     if (widget.nodes != oldWidget.nodes) {
-      _updateGraph();
+      _syncGraph();
     }
   }
 
-  void _updateGraph() {
-    graph.nodes.clear();
-    graph.edges.clear();
+  void _syncGraph() {
+    // Surgical update to keep GraphView stable
+    final Set<String> targetIds = widget.nodes.map((n) => n.id).toSet();
     
-    if (widget.nodes.isEmpty) return;
-
-    final Map<String, Node> nodeMap = {};
-
-    for (var nodeData in widget.nodes) {
-      final node = Node.Id(nodeData.id);
-      nodeMap[nodeData.id] = node;
-      graph.addNode(node);
+    // Remove nodes that are no longer in the data
+    final currentNodes = List<Node>.from(graph.nodes);
+    for (var node in currentNodes) {
+      final id = node.key?.value as String;
+      if (!targetIds.contains(id)) {
+        graph.removeNode(node);
+        _nodeCache.remove(id);
+      }
     }
 
+    // Add or Update nodes
     for (var nodeData in widget.nodes) {
-      if (nodeData.parentId != null && nodeMap.containsKey(nodeData.parentId)) {
-        graph.addEdge(nodeMap[nodeData.parentId]!, nodeMap[nodeData.id]!);
+      final node = _nodeCache.putIfAbsent(nodeData.id, () => Node.Id(nodeData.id));
+      if (!graph.nodes.contains(node)) {
+        graph.addNode(node);
+      }
+    }
+
+    // Always rebuild edges to reflect structural changes
+    graph.edges.clear();
+    for (var nodeData in widget.nodes) {
+      if (nodeData.parentId != null) {
+        final parent = _nodeCache[nodeData.parentId];
+        final child = _nodeCache[nodeData.id];
+        if (parent != null && child != null) {
+          graph.addEdge(parent, child);
+        }
       }
     }
   }
@@ -146,18 +164,10 @@ class _LifeTreeGraphSectionState extends State<_LifeTreeGraphSection> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          'Digitaler Lebensbaum',
-          style: Theme.of(context).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
-        ),
-        const SizedBox(height: 8),
-        Text(
-          'Tippe auf ein Element zum Bearbeiten. Neue Zweige erscheinen automatisch.',
-          style: Theme.of(context).textTheme.bodySmall,
-        ),
+        Text('Digitaler Lebensbaum', style: Theme.of(context).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold)),
         const SizedBox(height: 16),
         Container(
-          height: 400,
+          height: 500, 
           width: double.infinity,
           decoration: BoxDecoration(
             border: Border.all(color: Colors.grey.shade300),
@@ -166,25 +176,19 @@ class _LifeTreeGraphSectionState extends State<_LifeTreeGraphSection> {
           ),
           child: InteractiveViewer(
             constrained: false, 
-            boundaryMargin: const EdgeInsets.all(100),
-            minScale: 0.1,
+            boundaryMargin: const EdgeInsets.all(400),
+            minScale: 0.01,
             maxScale: 2.0,
             child: GraphView(
-              key: ValueKey(widget.nodes.length), // Force rebuild on structural change
               graph: graph,
-              algorithm: BuchheimWalkerAlgorithm(builder, TreeEdgeRenderer(builder)),
-              paint: Paint()
-                ..color = Colors.green
-                ..strokeWidth = 1
-                ..style = PaintingStyle.stroke,
+              algorithm: algorithm,
+              paint: Paint()..color = Colors.green..strokeWidth = 1..style = PaintingStyle.stroke,
               builder: (Node node) {
                 final nodeId = node.key?.value as String;
-                final nodeData = widget.nodes.firstWhere(
-                  (n) => n.id == nodeId,
-                  orElse: () => LifeTreeNodeData(id: nodeId, text: ''),
-                );
+                final nodeData = widget.nodes.firstWhere((n) => n.id == nodeId, orElse: () => LifeTreeNodeData(id: nodeId, text: '...'));
+                
                 return _TreeNodeWidget(
-                  key: ValueKey('node_$nodeId'),
+                  key: ValueKey('node_wid_$nodeId'),
                   nodeData: nodeData,
                   onChanged: (text) => widget.onUpdateText(nodeId, text),
                   onAddChild: () => widget.onAddNode(nodeId, ''),
@@ -224,17 +228,14 @@ class _TreeNodeWidgetState extends State<_TreeNodeWidget> {
   late TextEditingController _controller;
   final FocusNode _focusNode = FocusNode();
   bool _isFocused = false;
+  bool _isHovered = false;
 
   @override
   void initState() {
     super.initState();
     _controller = TextEditingController(text: widget.nodeData.text);
     _focusNode.addListener(() {
-      if (mounted) {
-        setState(() {
-          _isFocused = _focusNode.hasFocus;
-        });
-      }
+      if (mounted) setState(() => _isFocused = _focusNode.hasFocus);
     });
   }
 
@@ -256,70 +257,66 @@ class _TreeNodeWidgetState extends State<_TreeNodeWidget> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final bool showButtons = _isFocused || _isHovered;
 
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Container(
-              constraints: const BoxConstraints(minWidth: 100, maxWidth: 200),
-              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(8),
-                border: Border.all(
-                  color: _isFocused ? theme.primaryColor : Colors.grey.shade400,
-                  width: _isFocused ? 2 : 1,
-                ),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black.withValues(alpha: 0.05),
-                    blurRadius: 4,
-                    offset: const Offset(0, 2),
-                  ),
-                ],
-              ),
-              child: TextField(
-                controller: _controller,
-                focusNode: _focusNode,
-                decoration: const InputDecoration(
-                  isDense: true,
-                  border: InputBorder.none,
-                  contentPadding: EdgeInsets.zero,
-                ),
-                style: theme.textTheme.bodyMedium,
-                onChanged: widget.onChanged,
-              ),
-            ),
-            if (_isFocused && widget.nodeData.parentId != null) ...[
-              IconButton(
-                icon: const Icon(Icons.delete_outline, size: 20, color: Colors.red),
-                onPressed: widget.onDelete,
-              ),
-            ],
-          ],
-        ),
-        if (_isFocused) ...[
-          const SizedBox(height: 8),
-          Row(
+    return MouseRegion(
+      onEnter: (_) => setState(() => _isHovered = true),
+      onExit: (_) => setState(() => _isHovered = false),
+      child: Material( 
+        color: Colors.transparent,
+        child: Container(
+          // Rigid sizing to prevent GraphView layout recalculation on hover
+          width: 200, 
+          height: 100, 
+          padding: const EdgeInsets.all(8),
+          child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              _GhostNodeButton(
-                label: '+ Kind',
-                onTap: widget.onAddChild,
-              ),
-              const SizedBox(width: 8),
-              if (widget.nodeData.parentId != null)
-                _GhostNodeButton(
-                  label: '+ Geschwister',
-                  onTap: widget.onAddSibling,
+              Container(
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(8),
+                  border: Border.all(
+                    color: _isFocused ? theme.primaryColor : Colors.grey.shade400,
+                    width: _isFocused ? 2 : 1,
+                  ),
+                  boxShadow: [
+                    BoxShadow(color: Colors.black.withOpacity(0.05), blurRadius: 4, offset: const Offset(0, 2)),
+                  ],
                 ),
+                child: TextField(
+                  controller: _controller,
+                  focusNode: _focusNode,
+                  decoration: const InputDecoration(
+                    isDense: true, 
+                    border: InputBorder.none, 
+                    contentPadding: EdgeInsets.symmetric(horizontal: 12, vertical: 10)
+                  ),
+                  style: theme.textTheme.bodyMedium,
+                  onChanged: widget.onChanged,
+                ),
+              ),
+              const SizedBox(height: 8),
+              // Use Visibility with 'maintainSize' to keep the layout rigid
+              Visibility(
+                visible: showButtons,
+                maintainSize: true, 
+                maintainAnimation: true,
+                maintainState: true,
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    _GhostNodeButton(label: '+ Kind', onTap: widget.onAddChild),
+                    const SizedBox(width: 8),
+                    if (widget.nodeData.parentId != null)
+                      _GhostNodeButton(label: '+ Geschwister', onTap: widget.onAddSibling),
+                  ],
+                ),
+              ),
             ],
           ),
-        ],
-      ],
+        ),
+      ),
     );
   }
 }
@@ -332,14 +329,14 @@ class _GhostNodeButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
+    return InkWell(
       onTap: onTap,
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
         decoration: BoxDecoration(
           color: Colors.grey.shade200,
           borderRadius: BorderRadius.circular(4),
-          border: Border.all(color: Colors.grey.shade400, style: BorderStyle.none),
+          border: Border.all(color: Colors.grey.shade400),
         ),
         child: Text(
           label,
