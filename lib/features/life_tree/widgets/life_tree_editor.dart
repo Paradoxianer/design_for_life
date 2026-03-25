@@ -115,10 +115,8 @@ class _LifeTreeGraphSectionState extends State<_LifeTreeGraphSection> {
   }
 
   void _syncGraph() {
-    // Surgical update to keep GraphView stable
     final Set<String> targetIds = widget.nodes.map((n) => n.id).toSet();
     
-    // Remove nodes that are no longer in the data
     final currentNodes = List<Node>.from(graph.nodes);
     for (var node in currentNodes) {
       final id = node.key?.value as String;
@@ -128,7 +126,6 @@ class _LifeTreeGraphSectionState extends State<_LifeTreeGraphSection> {
       }
     }
 
-    // Add or Update nodes
     for (var nodeData in widget.nodes) {
       final node = _nodeCache.putIfAbsent(nodeData.id, () => Node.Id(nodeData.id));
       if (!graph.nodes.contains(node)) {
@@ -136,7 +133,6 @@ class _LifeTreeGraphSectionState extends State<_LifeTreeGraphSection> {
       }
     }
 
-    // Always rebuild edges to reflect structural changes
     graph.edges.clear();
     for (var nodeData in widget.nodes) {
       if (nodeData.parentId != null) {
@@ -265,54 +261,67 @@ class _TreeNodeWidgetState extends State<_TreeNodeWidget> {
       child: Material( 
         color: Colors.transparent,
         child: Container(
-          // Rigid sizing to prevent GraphView layout recalculation on hover
           width: 200, 
           height: 100, 
           padding: const EdgeInsets.all(8),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
+          child: Stack(
+            clipBehavior: Clip.none,
             children: [
-              Container(
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(8),
-                  border: Border.all(
-                    color: _isFocused ? theme.primaryColor : Colors.grey.shade400,
-                    width: _isFocused ? 2 : 1,
+              Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Container(
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(8),
+                      border: Border.all(
+                        color: _isFocused ? theme.primaryColor : Colors.grey.shade400,
+                        width: _isFocused ? 2 : 1,
+                      ),
+                      boxShadow: [
+                        BoxShadow(color: Colors.black.withValues(alpha: 0.05), blurRadius: 4, offset: const Offset(0, 2)),
+                      ],
+                    ),
+                    child: TextField(
+                      controller: _controller,
+                      focusNode: _focusNode,
+                      decoration: const InputDecoration(
+                        isDense: true, 
+                        border: InputBorder.none, 
+                        contentPadding: EdgeInsets.symmetric(horizontal: 12, vertical: 10)
+                      ),
+                      style: theme.textTheme.bodyMedium,
+                      onChanged: widget.onChanged,
+                    ),
                   ),
-                  boxShadow: [
-                    BoxShadow(color: Colors.black.withOpacity(0.05), blurRadius: 4, offset: const Offset(0, 2)),
-                  ],
-                ),
-                child: TextField(
-                  controller: _controller,
-                  focusNode: _focusNode,
-                  decoration: const InputDecoration(
-                    isDense: true, 
-                    border: InputBorder.none, 
-                    contentPadding: EdgeInsets.symmetric(horizontal: 12, vertical: 10)
+                  const SizedBox(height: 8),
+                  Visibility(
+                    visible: showButtons,
+                    maintainSize: true, 
+                    maintainAnimation: true,
+                    maintainState: true,
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        _GhostNodeButton(label: '+ Kind', onTap: widget.onAddChild),
+                        const SizedBox(width: 8),
+                        if (widget.nodeData.parentId != null)
+                          _GhostNodeButton(label: '+ Geschwister', onTap: widget.onAddSibling),
+                      ],
+                    ),
                   ),
-                  style: theme.textTheme.bodyMedium,
-                  onChanged: widget.onChanged,
-                ),
+                ],
               ),
-              const SizedBox(height: 8),
-              // Use Visibility with 'maintainSize' to keep the layout rigid
-              Visibility(
-                visible: showButtons,
-                maintainSize: true, 
-                maintainAnimation: true,
-                maintainState: true,
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    _GhostNodeButton(label: '+ Kind', onTap: widget.onAddChild),
-                    const SizedBox(width: 8),
-                    if (widget.nodeData.parentId != null)
-                      _GhostNodeButton(label: '+ Geschwister', onTap: widget.onAddSibling),
-                  ],
+              // Delete Button (x) in the top right corner
+              if (showButtons && widget.nodeData.parentId != null)
+                Positioned(
+                  top: -4,
+                  right: -4,
+                  child: _GhostNodeButton(
+                    label: 'x', 
+                    onTap: widget.onDelete,
+                  ),
                 ),
-              ),
             ],
           ),
         ),
