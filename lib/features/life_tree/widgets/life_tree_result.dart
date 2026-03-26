@@ -29,6 +29,7 @@ class _LifeTreeResultState extends State<LifeTreeResult> {
   late BuchheimWalkerConfiguration builder;
   late Algorithm algorithm;
   final Map<String, Node> _nodeCache = {};
+  final TransformationController _transformationController = TransformationController();
 
   @override
   void initState() {
@@ -41,6 +42,12 @@ class _LifeTreeResultState extends State<LifeTreeResult> {
     
     algorithm = BuchheimWalkerAlgorithm(builder, TreeEdgeRenderer(builder));
     _syncGraph();
+
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (mounted) {
+        _transformationController.value = Matrix4.identity()..translate(150.0, 50.0);
+      }
+    });
   }
 
   @override
@@ -108,11 +115,13 @@ class _LifeTreeResultState extends State<LifeTreeResult> {
                 color: theme.colorScheme.surfaceContainerHighest.withValues(alpha: 0.1),
               ),
               child: InteractiveViewer(
+                transformationController: _transformationController,
                 constrained: false,
-                boundaryMargin: const EdgeInsets.all(100),
+                boundaryMargin: const EdgeInsets.all(800),
                 minScale: 0.1,
                 maxScale: 2.0,
-                child: Center( // Center for better initial visibility
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 200, vertical: 50),
                   child: GraphView(
                     graph: graph,
                     algorithm: algorithm,
@@ -150,7 +159,8 @@ class _ReadOnlyNodeWidget extends StatelessWidget {
     final theme = Theme.of(context);
     
     Widget content = Container(
-      constraints: const BoxConstraints(minWidth: 100, maxWidth: 160),
+      width: 160, 
+      height: 70, // Fixed size to prevent layout jumps in GraphView
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
       decoration: BoxDecoration(
         color: Colors.white,
@@ -164,24 +174,23 @@ class _ReadOnlyNodeWidget extends StatelessWidget {
           ),
         ],
       ),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Text(
-            nodeData.text.isEmpty ? '...' : nodeData.text,
-            style: theme.textTheme.bodyMedium?.copyWith(fontWeight: FontWeight.w500),
-            textAlign: TextAlign.center,
-          ),
-          if (nodeData.note.isNotEmpty) ...[
-            const SizedBox(height: 4),
+      child: Center(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
             Text(
-              nodeData.note,
-              maxLines: 1,
+              nodeData.text.isEmpty ? '...' : nodeData.text,
+              style: theme.textTheme.bodyMedium?.copyWith(fontWeight: FontWeight.w500),
+              textAlign: TextAlign.center,
+              maxLines: 2,
               overflow: TextOverflow.ellipsis,
-              style: const TextStyle(fontSize: 10, fontStyle: FontStyle.italic, color: Colors.grey),
             ),
+            if (nodeData.note.isNotEmpty) ...[
+              const SizedBox(height: 4),
+              const Icon(Icons.speaker_notes, size: 12, color: Colors.grey),
+            ],
           ],
-        ],
+        ),
       ),
     );
 
@@ -189,6 +198,13 @@ class _ReadOnlyNodeWidget extends StatelessWidget {
       return Tooltip(
         message: nodeData.note,
         preferBelow: false,
+        padding: const EdgeInsets.all(12),
+        margin: const EdgeInsets.symmetric(horizontal: 20),
+        decoration: BoxDecoration(
+          color: theme.colorScheme.onSurfaceVariant.withValues(alpha: 0.9),
+          borderRadius: BorderRadius.circular(8),
+        ),
+        textStyle: const TextStyle(color: Colors.white, fontSize: 12, fontStyle: FontStyle.italic),
         child: content,
       );
     }
