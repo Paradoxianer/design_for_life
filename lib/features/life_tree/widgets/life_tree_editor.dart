@@ -109,10 +109,8 @@ class _LifeTreeGraphSectionState extends State<_LifeTreeGraphSection> {
     
     _syncGraph();
 
-    // Initial centering logic: point to the middle of a large canvas
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (mounted) {
-        // Translation values to bring the root somewhat to the center top
         _transformationController.value = Matrix4.identity()..translate(150.0, 50.0);
       }
     });
@@ -242,8 +240,8 @@ class _TreeNodeWidget extends StatefulWidget {
 class _TreeNodeWidgetState extends State<_TreeNodeWidget> {
   late TextEditingController _textController;
   late TextEditingController _noteController;
-  final FocusNode _focusNode = FocusNode();
-  bool _isFocused = false;
+  final FocusNode _textFocusNode = FocusNode();
+  final FocusNode _noteFocusNode = FocusNode();
   bool _isHovered = false;
   bool _showNoteOverlay = false;
 
@@ -252,18 +250,33 @@ class _TreeNodeWidgetState extends State<_TreeNodeWidget> {
     super.initState();
     _textController = TextEditingController(text: widget.nodeData.text);
     _noteController = TextEditingController(text: widget.nodeData.note);
-    _focusNode.addListener(() {
-      if (mounted) setState(() => _isFocused = _focusNode.hasFocus);
+    
+    _textFocusNode.addListener(() {
+      if (!_textFocusNode.hasFocus && mounted) {
+        if (_textController.text != widget.nodeData.text) {
+          widget.onChanged(_textController.text);
+        }
+      }
+      setState(() {});
+    });
+
+    _noteFocusNode.addListener(() {
+      if (!_noteFocusNode.hasFocus && mounted) {
+        if (_showNoteOverlay && _noteController.text != widget.nodeData.note) {
+          widget.onNoteChanged(_noteController.text);
+        }
+      }
+      setState(() {});
     });
   }
 
   @override
   void didUpdateWidget(_TreeNodeWidget oldWidget) {
     super.didUpdateWidget(oldWidget);
-    if (widget.nodeData.text != _textController.text && !_focusNode.hasFocus) {
+    if (widget.nodeData.text != _textController.text && !_textFocusNode.hasFocus) {
       _textController.text = widget.nodeData.text;
     }
-    if (widget.nodeData.note != _noteController.text) {
+    if (widget.nodeData.note != _noteController.text && !_noteFocusNode.hasFocus) {
       _noteController.text = widget.nodeData.note;
     }
   }
@@ -272,14 +285,27 @@ class _TreeNodeWidgetState extends State<_TreeNodeWidget> {
   void dispose() {
     _textController.dispose();
     _noteController.dispose();
-    _focusNode.dispose();
+    _textFocusNode.dispose();
+    _noteFocusNode.dispose();
     super.dispose();
+  }
+
+  void _saveNote() {
+    widget.onNoteChanged(_noteController.text);
+    setState(() => _showNoteOverlay = false);
+  }
+
+  void _deleteNoteAndClose() {
+    _noteController.text = '';
+    widget.onNoteChanged('');
+    setState(() => _showNoteOverlay = false);
   }
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final bool showButtons = _isFocused || _isHovered;
+    final bool isFocused = _textFocusNode.hasFocus || _noteFocusNode.hasFocus;
+    final bool showButtons = isFocused || _isHovered;
 
     return MouseRegion(
       onEnter: (_) => setState(() => _isHovered = true),
@@ -302,8 +328,8 @@ class _TreeNodeWidgetState extends State<_TreeNodeWidget> {
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(8),
                       border: Border.all(
-                        color: _isFocused ? theme.primaryColor : Colors.grey.shade400,
-                        width: _isFocused ? 2 : 1,
+                        color: _textFocusNode.hasFocus ? theme.primaryColor : Colors.grey.shade400,
+                        width: _textFocusNode.hasFocus ? 2 : 1,
                       ),
                       boxShadow: [
                         BoxShadow(color: Colors.black.withValues(alpha: 0.05), blurRadius: 4, offset: const Offset(0, 2)),
@@ -317,7 +343,7 @@ class _TreeNodeWidgetState extends State<_TreeNodeWidget> {
                             Expanded(
                               child: TextField(
                                 controller: _textController,
-                                focusNode: _focusNode,
+                                focusNode: _textFocusNode,
                                 decoration: const InputDecoration(
                                   isDense: true, 
                                   border: InputBorder.none, 
@@ -325,20 +351,24 @@ class _TreeNodeWidgetState extends State<_TreeNodeWidget> {
                                   hintText: 'Ereignis...',
                                 ),
                                 style: theme.textTheme.bodyMedium,
-                                onChanged: widget.onChanged,
+                                onSubmitted: (val) => widget.onChanged(val),
                               ),
                             ),
                             if (showButtons)
                               IconButton(
                                 icon: Icon(Icons.speaker_notes, size: 16, color: theme.primaryColor.withValues(alpha: 0.6)),
-                                onPressed: () => setState(() => _showNoteOverlay = !_showNoteOverlay),
+                                onPressed: () {
+                                  setState(() => _showNoteOverlay = !_showNoteOverlay);
+                                  if (_showNoteOverlay) {
+                                    _noteFocusNode.requestFocus();
+                                  }
+                                },
                                 constraints: const BoxConstraints(),
                                 padding: const EdgeInsets.only(right: 8),
                                 tooltip: 'Notiz bearbeiten',
                               ),
                           ],
                         ),
-                        // Small Note Preview inside node (if not editing)
                         if (!_showNoteOverlay && widget.nodeData.note.isNotEmpty)
                           Padding(
                             padding: const EdgeInsets.only(left: 10, right: 10, bottom: 6),
@@ -353,7 +383,6 @@ class _TreeNodeWidgetState extends State<_TreeNodeWidget> {
                     ),
                   ),
                   const SizedBox(height: 8),
-                  // Ghost Buttons (maintain size to keep node position stable)
                   Visibility(
                     visible: showButtons,
                     maintainSize: true, 
@@ -372,12 +401,11 @@ class _TreeNodeWidgetState extends State<_TreeNodeWidget> {
                 ],
               ),
               
-              // Note Dialog/Overlay (positioned above the node)
               if (_showNoteOverlay)
                 Positioned(
-                  bottom: 110,
+                  top: -20, // Positioned over the node
                   child: Container(
-                    width: 220,
+                    width: 260, 
                     padding: const EdgeInsets.all(12),
                     decoration: BoxDecoration(
                       color: Colors.white,
@@ -392,42 +420,57 @@ class _TreeNodeWidgetState extends State<_TreeNodeWidget> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            const Text('Notiz bearbeiten', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12)),
+                            const Text('Notiz bearbeiten', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13)),
                             Row(
                               children: [
-                                GestureDetector(
-                                  onTap: () => setState(() => _showNoteOverlay = false),
-                                  child: Icon(Icons.check, size: 20, color: Colors.green.shade600),
+                                Material(
+                                  color: Colors.green.shade50,
+                                  borderRadius: BorderRadius.circular(20),
+                                  child: IconButton(
+                                    icon: const Icon(Icons.check, color: Colors.green, size: 24),
+                                    onPressed: _saveNote,
+                                    padding: const EdgeInsets.all(8),
+                                    constraints: const BoxConstraints(),
+                                    visualDensity: VisualDensity.compact,
+                                    tooltip: 'Speichern',
+                                  ),
                                 ),
-                                const SizedBox(width: 12),
-                                GestureDetector(
-                                  onTap: () => setState(() => _showNoteOverlay = false),
-                                  child: const Icon(Icons.close, size: 18, color: Colors.grey),
+                                const SizedBox(width: 8),
+                                Material(
+                                  color: Colors.grey.shade100,
+                                  borderRadius: BorderRadius.circular(20),
+                                  child: IconButton(
+                                    icon: const Icon(Icons.close, color: Colors.redAccent, size: 24),
+                                    onPressed: _deleteNoteAndClose,
+                                    padding: const EdgeInsets.all(8),
+                                    constraints: const BoxConstraints(),
+                                    visualDensity: VisualDensity.compact,
+                                    tooltip: 'Notiz löschen',
+                                  ),
                                 ),
                               ],
                             ),
                           ],
                         ),
-                        const SizedBox(height: 8),
+                        const SizedBox(height: 12),
                         TextField(
                           controller: _noteController,
-                          maxLines: 3,
+                          focusNode: _noteFocusNode,
+                          maxLines: 5,
                           autofocus: true,
                           decoration: const InputDecoration(
                             hintText: 'Deine Gedanken...',
                             border: OutlineInputBorder(),
                             isDense: true,
-                            contentPadding: EdgeInsets.all(8),
+                            contentPadding: EdgeInsets.all(12),
                           ),
-                          style: const TextStyle(fontSize: 12),
-                          onChanged: widget.onNoteChanged,
+                          style: const TextStyle(fontSize: 13),
                         ),
                       ],
                     ),
                   ),
                 ),
 
-              // Delete Button (x) top right - matching Ghost Button style
               if (showButtons && widget.nodeData.parentId != null)
                 Positioned(
                   top: -8,
