@@ -10,7 +10,7 @@ import '../models/life_tree_node_data.dart';
 import '../widgets/life_tree_editor.dart';
 import '../widgets/life_tree_result.dart';
 
-class LifeTreeScreen extends StatelessWidget {
+class LifeTreeScreen extends StatefulWidget {
   final String sessionId;
   final String title;
   final bool initialEditMode;
@@ -21,6 +21,13 @@ class LifeTreeScreen extends StatelessWidget {
     required this.title,
     this.initialEditMode = true,
   });
+
+  @override
+  State<LifeTreeScreen> createState() => _LifeTreeScreenState();
+}
+
+class _LifeTreeScreenState extends State<LifeTreeScreen> {
+  bool _shareIncludeNotes = false;
 
   ShareableContent _getShareableContent(
     List<DflEntry> entries, 
@@ -42,22 +49,37 @@ class LifeTreeScreen extends StatelessWidget {
 
     // 2. Tree Structure (Digital)
     if (nodes.isNotEmpty) {
-      items.add(const ShareableItem(
-        id: 'tree_header',
-        label: '--- Digitaler Lebensbaum ---',
+      // Grafik-Item (Das Bild vom Baum)
+      items.add(ShareableItem(
+        id: 'tree_graph',
+        label: 'Digitaler Lebensbaum (Grafik)',
         isSelected: true,
+        data: {
+          'type': 'life_tree_graph',
+          'nodes': nodes,
+          'showNotes': _shareIncludeNotes,
+        },
+      ));
+
+      // Toggle for nodes in share selection
+      items.add(ShareableItem(
+        id: 'tree_include_notes',
+        label: 'Notizen im Baum anzeigen',
+        isSelected: _shareIncludeNotes,
       ));
       
+      // Textuelle Liste der Ereignisse (Optional, falls jemand nur Text will)
       for (var node in nodes) {
         if (node.text.trim().isNotEmpty) {
           String text = node.text;
-          if (node.note.trim().isNotEmpty) {
+          if (_shareIncludeNotes && node.note.trim().isNotEmpty) {
             text += '\nNotiz: ${node.note}';
           }
           items.add(ShareableItem(
             id: 'node_${node.id}',
             label: 'Ereignis: ${node.text}',
             textValue: text,
+            isSelected: false, // Default text nodes to unselected if graph is present
           ));
         }
       }
@@ -65,17 +87,11 @@ class LifeTreeScreen extends StatelessWidget {
 
     // 3. Entries (Analog/Notes)
     if (entries.isNotEmpty) {
-       items.add(const ShareableItem(
-        id: 'entries_header',
-        label: '--- Notizen & Zeichnungen ---',
-        isSelected: true,
-      ));
-      
       for (var entry in entries) {
         if (entry.text.trim().isNotEmpty || entry.imagePath != null) {
           items.add(ShareableItem(
             id: 'entry_${entry.id}',
-            label: 'Notiz',
+            label: 'Notiz / Zeichnung',
             textValue: entry.text.isNotEmpty ? entry.text : null,
             imagePath: entry.imagePath,
           ));
@@ -83,7 +99,7 @@ class LifeTreeScreen extends StatelessWidget {
       }
     }
 
-    return ShareableContent(title: 'Mein Lebensbaum: $title', items: items);
+    return ShareableContent(title: 'Mein Lebensbaum: ${widget.title}', items: items);
   }
 
   @override
@@ -91,38 +107,46 @@ class LifeTreeScreen extends StatelessWidget {
     return BlocBuilder<LifeTreeBloc, EntryListState>(
       builder: (context, state) {
         final lifeTreeState = state as LifeTreeState;
-        final entries = lifeTreeState.entries[sessionId] ?? [];
-        final takeaways = lifeTreeState.takeaways[sessionId] ?? const ['', '', ''];
-        final nodes = lifeTreeState.treeNodes[sessionId] ?? [];
+        final entries = lifeTreeState.entries[widget.sessionId] ?? [];
+        final takeaways = lifeTreeState.takeaways[widget.sessionId] ?? const ['', '', ''];
+        final nodes = lifeTreeState.treeNodes[widget.sessionId] ?? [];
 
         final displayEntries = entries.isEmpty 
-            ? [DflEntry(id: 'initial_$sessionId')] 
+            ? [DflEntry(id: 'initial_${widget.sessionId}')] 
             : entries;
 
         final shareContent = _getShareableContent(entries, takeaways, nodes);
 
         return DflModuleScaffold(
-          title: title,
-          initialEditMode: initialEditMode,
+          title: widget.title,
+          initialEditMode: widget.initialEditMode,
           shareableContent: shareContent,
-          onShare: (items) => ShareService.shareContent(
-            context: context, 
-            content: shareContent, 
-            selectedItems: items
-          ),
+          onShare: (items) {
+            // Update the notes toggle based on user selection in dialog
+            final notesItem = items.firstWhere((i) => i.id == 'tree_include_notes', orElse: () => const ShareableItem(id: 'none', label: ''));
+            if (notesItem.id != 'none') {
+              setState(() => _shareIncludeNotes = notesItem.isSelected);
+            }
+            
+            ShareService.shareContent(
+              context: context, 
+              content: shareContent, 
+              selectedItems: items
+            );
+          },
           editor: LifeTreeEditor(
-            key: ValueKey('life_tree_editor_$sessionId'),
-            sessionId: sessionId,
+            key: ValueKey('life_tree_editor_${widget.sessionId}'),
+            sessionId: widget.sessionId,
             entries: displayEntries,
             takeaways: takeaways,
             nodes: nodes,
-            onUpdate: (index, value) => context.read<LifeTreeBloc>().add(UpdateTakeaway(sessionId, index, value)),
+            onUpdate: (index, value) => context.read<LifeTreeBloc>().add(UpdateTakeaway(widget.sessionId, index, value)),
           ),
           result: LifeTreeResult(
             entries: entries,
             takeaways: takeaways,
             nodes: nodes,
-            onUpdate: (index, value) => context.read<LifeTreeBloc>().add(UpdateTakeaway(sessionId, index, value)),
+            onUpdate: (index, value) => context.read<LifeTreeBloc>().add(UpdateTakeaway(widget.sessionId, index, value)),
           ),
         );
       },

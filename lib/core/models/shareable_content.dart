@@ -6,6 +6,7 @@ class ShareableItem extends Equatable {
   final String? textValue;
   final String? imagePath;
   final bool isSelected;
+  final dynamic data;
 
   const ShareableItem({
     required this.id,
@@ -13,10 +14,12 @@ class ShareableItem extends Equatable {
     this.textValue,
     this.imagePath,
     this.isSelected = true,
+    this.data,
   });
 
   ShareableItem copyWith({
     bool? isSelected,
+    dynamic data,
   }) {
     return ShareableItem(
       id: id,
@@ -24,11 +27,12 @@ class ShareableItem extends Equatable {
       textValue: textValue,
       imagePath: imagePath,
       isSelected: isSelected ?? this.isSelected,
+      data: data ?? this.data,
     );
   }
 
   @override
-  List<Object?> get props => [id, label, textValue, imagePath, isSelected];
+  List<Object?> get props => [id, label, textValue, imagePath, isSelected, data];
 }
 
 class ShareableContent extends Equatable {

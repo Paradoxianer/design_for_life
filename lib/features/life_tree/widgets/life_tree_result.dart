@@ -11,6 +11,7 @@ class LifeTreeResult extends StatefulWidget {
   final List<LifeTreeNodeData> nodes;
   final List<String> takeaways;
   final Function(int, String)? onUpdate;
+  final bool showNotesInitially;
 
   const LifeTreeResult({
     super.key,
@@ -18,6 +19,7 @@ class LifeTreeResult extends StatefulWidget {
     required this.takeaways,
     required this.nodes,
     this.onUpdate,
+    this.showNotesInitially = false,
   });
 
   @override
@@ -30,13 +32,15 @@ class _LifeTreeResultState extends State<LifeTreeResult> {
   late Algorithm algorithm;
   final Map<String, Node> _nodeCache = {};
   final TransformationController _transformationController = TransformationController();
+  bool _showNotes = false;
 
   @override
   void initState() {
     super.initState();
+    _showNotes = widget.showNotesInitially;
     builder = BuchheimWalkerConfiguration()
       ..siblingSeparation = (50)
-      ..levelSeparation = (50)
+      ..levelSeparation = (80) // Increased to accommodate inline notes
       ..subtreeSeparation = (50)
       ..orientation = BuchheimWalkerConfiguration.ORIENTATION_TOP_BOTTOM;
     
@@ -101,13 +105,30 @@ class _LifeTreeResultState extends State<LifeTreeResult> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           if (widget.nodes.isNotEmpty) ...[
-            Text(
-              'Digitaler Lebensbaum',
-              style: theme.textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  'Digitaler Lebensbaum',
+                  style: theme.textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
+                ),
+                Row(
+                  children: [
+                    Text('Notizen anzeigen', style: theme.textTheme.bodySmall),
+                    Transform.scale(
+                      scale: 0.8,
+                      child: Switch(
+                        value: _showNotes,
+                        onChanged: (v) => setState(() => _showNotes = v),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
             ),
-            const SizedBox(height: 16),
+            const SizedBox(height: 8),
             Container(
-              height: 450,
+              height: 500,
               width: double.infinity,
               decoration: BoxDecoration(
                 border: Border.all(color: theme.dividerColor),
@@ -129,7 +150,7 @@ class _LifeTreeResultState extends State<LifeTreeResult> {
                     builder: (Node node) {
                       final nodeId = node.key?.value as String;
                       final nodeData = widget.nodes.firstWhere((n) => n.id == nodeId, orElse: () => LifeTreeNodeData(id: nodeId, text: ''));
-                      return _ReadOnlyNodeWidget(nodeData: nodeData);
+                      return _ReadOnlyNodeWidget(nodeData: nodeData, showNote: _showNotes);
                     },
                   ),
                 ),
@@ -152,16 +173,17 @@ class _LifeTreeResultState extends State<LifeTreeResult> {
 
 class _ReadOnlyNodeWidget extends StatelessWidget {
   final LifeTreeNodeData nodeData;
-  const _ReadOnlyNodeWidget({required this.nodeData});
+  final bool showNote;
+  const _ReadOnlyNodeWidget({required this.nodeData, required this.showNote});
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final bool hasNote = nodeData.note.isNotEmpty;
     
-    Widget content = Container(
-      width: 160, 
-      height: 70, // Fixed size to prevent layout jumps in GraphView
-      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+    return Container(
+      width: 170,
+      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(8),
@@ -174,42 +196,34 @@ class _ReadOnlyNodeWidget extends StatelessWidget {
           ),
         ],
       ),
-      child: Center(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Text(
+            nodeData.text.isEmpty ? '...' : nodeData.text,
+            style: theme.textTheme.bodyMedium?.copyWith(fontWeight: FontWeight.bold),
+            textAlign: TextAlign.center,
+            maxLines: 2,
+            overflow: TextOverflow.ellipsis,
+          ),
+          if (hasNote && showNote) ...[
+            const SizedBox(height: 4),
+            const Divider(height: 8, thickness: 0.5),
             Text(
-              nodeData.text.isEmpty ? '...' : nodeData.text,
-              style: theme.textTheme.bodyMedium?.copyWith(fontWeight: FontWeight.w500),
+              nodeData.note,
+              style: theme.textTheme.bodySmall?.copyWith(
+                fontStyle: FontStyle.italic,
+                fontSize: 10,
+                color: Colors.grey.shade700,
+              ),
               textAlign: TextAlign.center,
-              maxLines: 2,
+              maxLines: 4,
               overflow: TextOverflow.ellipsis,
             ),
-            if (nodeData.note.isNotEmpty) ...[
-              const SizedBox(height: 4),
-              const Icon(Icons.speaker_notes, size: 12, color: Colors.grey),
-            ],
           ],
-        ),
+        ],
       ),
     );
-
-    if (nodeData.note.isNotEmpty) {
-      return Tooltip(
-        message: nodeData.note,
-        preferBelow: false,
-        padding: const EdgeInsets.all(12),
-        margin: const EdgeInsets.symmetric(horizontal: 20),
-        decoration: BoxDecoration(
-          color: theme.colorScheme.onSurfaceVariant.withValues(alpha: 0.9),
-          borderRadius: BorderRadius.circular(8),
-        ),
-        textStyle: const TextStyle(color: Colors.white, fontSize: 12, fontStyle: FontStyle.italic),
-        child: content,
-      );
-    }
-
-    return content;
   }
 }
 
