@@ -71,6 +71,24 @@ class UpdateTreeNodeText extends LifeTreeEvent {
   List<Object?> get props => [sessionId, nodeId, text];
 }
 
+class UpdateTreeNodeType extends LifeTreeEvent {
+  final String sessionId;
+  final String nodeId;
+  final LifeTreeNodeType type;
+  const UpdateTreeNodeType(this.sessionId, this.nodeId, this.type);
+  @override
+  List<Object?> get props => [sessionId, nodeId, type];
+}
+
+class UpdateTreeNodeNote extends LifeTreeEvent {
+  final String sessionId;
+  final String nodeId;
+  final String note;
+  const UpdateTreeNodeNote(this.sessionId, this.nodeId, this.note);
+  @override
+  List<Object?> get props => [sessionId, nodeId, note];
+}
+
 class DeleteTreeNode extends LifeTreeEvent {
   final String sessionId;
   final String nodeId;
@@ -83,6 +101,8 @@ class LifeTreeBloc extends EntryListBloc {
   LifeTreeBloc() : super(const LifeTreeState()) {
     on<AddTreeNode>(_onAddTreeNode);
     on<UpdateTreeNodeText>(_onUpdateTreeNodeText);
+    on<UpdateTreeNodeType>(_onUpdateTreeNodeType);
+    on<UpdateTreeNodeNote>(_onUpdateTreeNodeNote);
     on<DeleteTreeNode>(_onDeleteTreeNode);
   }
 
@@ -108,6 +128,28 @@ class LifeTreeBloc extends EntryListBloc {
     final index = nodes.indexWhere((n) => n.id == event.nodeId);
     if (index != -1) {
       nodes[index] = nodes[index].copyWith(text: event.text);
+      final newMap = Map<String, List<LifeTreeNodeData>>.from(state.treeNodes);
+      newMap[event.sessionId] = nodes;
+      emit(state.copyWith(treeNodes: newMap));
+    }
+  }
+
+  void _onUpdateTreeNodeType(UpdateTreeNodeType event, Emitter<EntryListState> emit) {
+    final nodes = List<LifeTreeNodeData>.from(state.treeNodes[event.sessionId] ?? []);
+    final index = nodes.indexWhere((n) => n.id == event.nodeId);
+    if (index != -1) {
+      nodes[index] = nodes[index].copyWith(type: event.type);
+      final newMap = Map<String, List<LifeTreeNodeData>>.from(state.treeNodes);
+      newMap[event.sessionId] = nodes;
+      emit(state.copyWith(treeNodes: newMap));
+    }
+  }
+
+  void _onUpdateTreeNodeNote(UpdateTreeNodeNote event, Emitter<EntryListState> emit) {
+    final nodes = List<LifeTreeNodeData>.from(state.treeNodes[event.sessionId] ?? []);
+    final index = nodes.indexWhere((n) => n.id == event.nodeId);
+    if (index != -1) {
+      nodes[index] = nodes[index].copyWith(note: event.note);
       final newMap = Map<String, List<LifeTreeNodeData>>.from(state.treeNodes);
       newMap[event.sessionId] = nodes;
       emit(state.copyWith(treeNodes: newMap));
