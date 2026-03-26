@@ -35,7 +35,7 @@ class _LifeTreeResultState extends State<LifeTreeResult> {
     super.initState();
     builder = BuchheimWalkerConfiguration()
       ..siblingSeparation = (50)
-      ..levelSeparation = (70)
+      ..levelSeparation = (50)
       ..subtreeSeparation = (50)
       ..orientation = BuchheimWalkerConfiguration.ORIENTATION_TOP_BOTTOM;
     
@@ -105,22 +105,24 @@ class _LifeTreeResultState extends State<LifeTreeResult> {
               decoration: BoxDecoration(
                 border: Border.all(color: theme.dividerColor),
                 borderRadius: BorderRadius.circular(12),
-                color: theme.colorScheme.surfaceContainerHighest.withValues(alpha: 0.2),
+                color: theme.colorScheme.surfaceContainerHighest.withValues(alpha: 0.1),
               ),
               child: InteractiveViewer(
                 constrained: false,
                 boundaryMargin: const EdgeInsets.all(100),
                 minScale: 0.1,
                 maxScale: 2.0,
-                child: GraphView(
-                  graph: graph,
-                  algorithm: algorithm,
-                  paint: Paint()..color = Colors.green.shade400..strokeWidth = 1.5..style = PaintingStyle.stroke,
-                  builder: (Node node) {
-                    final nodeId = node.key?.value as String;
-                    final nodeData = widget.nodes.firstWhere((n) => n.id == nodeId, orElse: () => LifeTreeNodeData(id: nodeId, text: ''));
-                    return _ReadOnlyNodeWidget(nodeData: nodeData);
-                  },
+                child: Center( // Center for better initial visibility
+                  child: GraphView(
+                    graph: graph,
+                    algorithm: algorithm,
+                    paint: Paint()..color = Colors.green.shade400..strokeWidth = 1.5..style = PaintingStyle.stroke,
+                    builder: (Node node) {
+                      final nodeId = node.key?.value as String;
+                      final nodeData = widget.nodes.firstWhere((n) => n.id == nodeId, orElse: () => LifeTreeNodeData(id: nodeId, text: ''));
+                      return _ReadOnlyNodeWidget(nodeData: nodeData);
+                    },
+                  ),
                 ),
               ),
             ),
@@ -128,7 +130,7 @@ class _LifeTreeResultState extends State<LifeTreeResult> {
           ],
           
           Text(
-            'Analoge Notizen & Zeichnungen',
+            'Notizen & Zeichnungen',
             style: theme.textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
           ),
           const SizedBox(height: 12),
@@ -146,18 +148,14 @@ class _ReadOnlyNodeWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final isLeaf = nodeData.type == LifeTreeNodeType.leaf;
     
     Widget content = Container(
-      constraints: const BoxConstraints(minWidth: 100, maxWidth: 180),
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+      constraints: const BoxConstraints(minWidth: 100, maxWidth: 160),
+      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(isLeaf ? 20 : 8),
-        border: Border.all(
-          color: isLeaf ? Colors.green.shade300 : Colors.green.shade100, 
-          width: isLeaf ? 2 : 1.5,
-        ),
+        borderRadius: BorderRadius.circular(8),
+        border: Border.all(color: Colors.green.shade200, width: 1),
         boxShadow: [
           BoxShadow(
             color: Colors.black.withValues(alpha: 0.05),
@@ -166,22 +164,22 @@ class _ReadOnlyNodeWidget extends StatelessWidget {
           ),
         ],
       ),
-      child: Row(
+      child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Flexible(
-            child: Text(
-              nodeData.text.isEmpty ? '...' : nodeData.text,
-              style: theme.textTheme.bodyMedium?.copyWith(
-                fontWeight: isLeaf ? FontWeight.bold : FontWeight.w500,
-                color: isLeaf ? Colors.green.shade900 : Colors.black87,
-              ),
-              textAlign: TextAlign.center,
-            ),
+          Text(
+            nodeData.text.isEmpty ? '...' : nodeData.text,
+            style: theme.textTheme.bodyMedium?.copyWith(fontWeight: FontWeight.w500),
+            textAlign: TextAlign.center,
           ),
           if (nodeData.note.isNotEmpty) ...[
-            const SizedBox(width: 4),
-            Icon(Icons.info_outline, size: 14, color: theme.primaryColor.withValues(alpha: 0.5)),
+            const SizedBox(height: 4),
+            Text(
+              nodeData.note,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+              style: const TextStyle(fontSize: 10, fontStyle: FontStyle.italic, color: Colors.grey),
+            ),
           ],
         ],
       ),
@@ -190,13 +188,7 @@ class _ReadOnlyNodeWidget extends StatelessWidget {
     if (nodeData.note.isNotEmpty) {
       return Tooltip(
         message: nodeData.note,
-        padding: const EdgeInsets.all(12),
-        margin: const EdgeInsets.symmetric(horizontal: 20),
-        decoration: BoxDecoration(
-          color: theme.colorScheme.onSurfaceVariant.withValues(alpha: 0.9),
-          borderRadius: BorderRadius.circular(8),
-        ),
-        textStyle: const TextStyle(color: Colors.white, fontSize: 12),
+        preferBelow: false,
         child: content,
       );
     }

@@ -24,7 +24,6 @@ class LifeTreeEditor extends DflModuleEditor {
 
   @override
   Widget buildContent(BuildContext context) {
-    // Explicitly getting the bloc
     final lifeTreeBloc = BlocProvider.of<LifeTreeBloc>(context);
 
     return Column(
@@ -37,7 +36,6 @@ class LifeTreeEditor extends DflModuleEditor {
           nodes: nodes,
           onAddNode: (parentId, text) => lifeTreeBloc.add(AddTreeNode(sessionId, parentId: parentId, text: text)),
           onUpdateText: (nodeId, text) => lifeTreeBloc.add(UpdateTreeNodeText(sessionId, nodeId, text)),
-          onUpdateType: (nodeId, type) => lifeTreeBloc.add(UpdateTreeNodeType(sessionId, nodeId, type)),
           onUpdateNote: (nodeId, note) => lifeTreeBloc.add(UpdateTreeNodeNote(sessionId, nodeId, note)),
           onDeleteNode: (nodeId) => lifeTreeBloc.add(DeleteTreeNode(sessionId, nodeId)),
         ),
@@ -45,7 +43,7 @@ class LifeTreeEditor extends DflModuleEditor {
         const Divider(),
         const SizedBox(height: 24),
         Text(
-          'Analoge Notizen & Zeichnungen',
+          'Notizen & Zeichnungen',
           style: Theme.of(context).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
         ),
         const SizedBox(height: 12),
@@ -72,7 +70,6 @@ class _LifeTreeGraphSection extends StatefulWidget {
   final List<LifeTreeNodeData> nodes;
   final Function(String?, String) onAddNode;
   final Function(String, String) onUpdateText;
-  final Function(String, LifeTreeNodeType) onUpdateType;
   final Function(String, String) onUpdateNote;
   final Function(String) onDeleteNode;
 
@@ -82,7 +79,6 @@ class _LifeTreeGraphSection extends StatefulWidget {
     required this.nodes,
     required this.onAddNode,
     required this.onUpdateText,
-    required this.onUpdateType,
     required this.onUpdateNote,
     required this.onDeleteNode,
   });
@@ -104,7 +100,7 @@ class _LifeTreeGraphSectionState extends State<_LifeTreeGraphSection> {
     
     builder = BuchheimWalkerConfiguration()
       ..siblingSeparation = (50)
-      ..levelSeparation = (70)
+      ..levelSeparation = (50)
       ..subtreeSeparation = (50)
       ..orientation = BuchheimWalkerConfiguration.ORIENTATION_TOP_BOTTOM;
     
@@ -170,7 +166,7 @@ class _LifeTreeGraphSectionState extends State<_LifeTreeGraphSection> {
         Text('Digitaler Lebensbaum', style: Theme.of(context).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold)),
         const SizedBox(height: 16),
         Container(
-          height: 600, 
+          height: 500, 
           width: double.infinity,
           decoration: BoxDecoration(
             border: Border.all(color: Colors.grey.shade300),
@@ -180,7 +176,7 @@ class _LifeTreeGraphSectionState extends State<_LifeTreeGraphSection> {
           child: InteractiveViewer(
             constrained: false, 
             boundaryMargin: const EdgeInsets.all(400),
-            minScale: 0.01,
+            minScale: 0.1,
             maxScale: 2.0,
             child: GraphView(
               graph: graph,
@@ -194,7 +190,6 @@ class _LifeTreeGraphSectionState extends State<_LifeTreeGraphSection> {
                   key: ValueKey('node_wid_$nodeId'),
                   nodeData: nodeData,
                   onChanged: (text) => widget.onUpdateText(nodeId, text),
-                  onTypeChanged: (type) => widget.onTypeChanged(nodeId, type),
                   onNoteChanged: (note) => widget.onUpdateNote(nodeId, note),
                   onAddChild: () => widget.onAddNode(nodeId, ''),
                   onAddSibling: () => widget.onAddNode(nodeData.parentId, ''),
@@ -212,7 +207,6 @@ class _LifeTreeGraphSectionState extends State<_LifeTreeGraphSection> {
 class _TreeNodeWidget extends StatefulWidget {
   final LifeTreeNodeData nodeData;
   final ValueChanged<String> onChanged;
-  final ValueChanged<LifeTreeNodeType> onTypeChanged;
   final ValueChanged<String> onNoteChanged;
   final VoidCallback onAddChild;
   final VoidCallback onAddSibling;
@@ -222,7 +216,6 @@ class _TreeNodeWidget extends StatefulWidget {
     super.key,
     required this.nodeData,
     required this.onChanged,
-    required this.onTypeChanged,
     required this.onNoteChanged,
     required this.onAddChild,
     required this.onAddSibling,
@@ -239,14 +232,13 @@ class _TreeNodeWidgetState extends State<_TreeNodeWidget> {
   final FocusNode _focusNode = FocusNode();
   bool _isFocused = false;
   bool _isHovered = false;
-  bool _showNoteField = false;
+  bool _showNoteOverlay = false;
 
   @override
   void initState() {
     super.initState();
     _textController = TextEditingController(text: widget.nodeData.text);
     _noteController = TextEditingController(text: widget.nodeData.note);
-    _showNoteField = widget.nodeData.note.isNotEmpty;
     _focusNode.addListener(() {
       if (mounted) setState(() => _isFocused = _focusNode.hasFocus);
     });
@@ -274,30 +266,31 @@ class _TreeNodeWidgetState extends State<_TreeNodeWidget> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final bool isActive = _isFocused || _isHovered;
-    final isLeaf = widget.nodeData.type == LifeTreeNodeType.leaf;
+    final bool showButtons = _isFocused || _isHovered;
 
     return MouseRegion(
       onEnter: (_) => setState(() => _isHovered = true),
       onExit: (_) => setState(() => _isHovered = false),
       child: Material( 
         color: Colors.transparent,
-        child: Container(
-          width: 220, 
-          padding: const EdgeInsets.all(8),
+        child: SizedBox(
+          width: 180, 
+          height: 100, 
           child: Stack(
             clipBehavior: Clip.none,
+            alignment: Alignment.topCenter,
             children: [
+              // Main Node Box
               Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Container(
                     decoration: BoxDecoration(
                       color: Colors.white,
-                      borderRadius: BorderRadius.circular(isLeaf ? 20 : 8),
+                      borderRadius: BorderRadius.circular(8),
                       border: Border.all(
-                        color: _isFocused ? theme.primaryColor : (isLeaf ? Colors.green.shade300 : Colors.grey.shade400),
-                        width: _isFocused ? 2 : 1.5,
+                        color: _isFocused ? theme.primaryColor : Colors.grey.shade400,
+                        width: _isFocused ? 2 : 1,
                       ),
                       boxShadow: [
                         BoxShadow(color: Colors.black.withValues(alpha: 0.05), blurRadius: 4, offset: const Offset(0, 2)),
@@ -315,98 +308,113 @@ class _TreeNodeWidgetState extends State<_TreeNodeWidget> {
                                 decoration: const InputDecoration(
                                   isDense: true, 
                                   border: InputBorder.none, 
-                                  contentPadding: EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+                                  contentPadding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
                                   hintText: 'Ereignis...',
                                 ),
-                                style: theme.textTheme.bodyMedium?.copyWith(
-                                  fontWeight: isLeaf ? FontWeight.bold : FontWeight.normal,
-                                ),
+                                style: theme.textTheme.bodyMedium,
                                 onChanged: widget.onChanged,
                               ),
                             ),
-                            if (isActive)
+                            if (showButtons)
                               IconButton(
-                                icon: Icon(
-                                  _showNoteField ? Icons.speaker_notes_off_outlined : Icons.note_add_outlined,
-                                  size: 18,
-                                  color: theme.primaryColor.withValues(alpha: 0.7),
-                                ),
-                                onPressed: () => setState(() => _showNoteField = !_showNoteField),
-                                tooltip: 'Notiz hinzufügen',
+                                icon: Icon(Icons.speaker_notes, size: 16, color: theme.primaryColor.withValues(alpha: 0.6)),
+                                onPressed: () => setState(() => _showNoteOverlay = !_showNoteOverlay),
                                 constraints: const BoxConstraints(),
                                 padding: const EdgeInsets.only(right: 8),
+                                tooltip: 'Notiz bearbeiten',
                               ),
                           ],
                         ),
-                        if (_showNoteField)
-                          Container(
-                            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
-                            decoration: BoxDecoration(
-                              color: theme.primaryColor.withValues(alpha: 0.05),
-                              borderRadius: BorderRadius.only(
-                                bottomLeft: Radius.circular(isLeaf ? 20 : 8),
-                                bottomRight: Radius.circular(isLeaf ? 20 : 8),
-                              ),
-                            ),
-                            child: TextField(
-                              controller: _noteController,
-                              maxLines: null,
-                              decoration: const InputDecoration(
-                                hintText: 'Notiz...',
-                                border: InputBorder.none,
-                                isDense: true,
-                                hintStyle: TextStyle(fontSize: 12),
-                              ),
-                              style: const TextStyle(fontSize: 12, fontStyle: FontStyle.italic),
-                              onChanged: widget.onNoteChanged,
+                        // Small Note Preview inside node (if not editing)
+                        if (!_showNoteOverlay && widget.nodeData.note.isNotEmpty)
+                          Padding(
+                            padding: const EdgeInsets.only(left: 10, right: 10, bottom: 6),
+                            child: Text(
+                              widget.nodeData.note,
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                              style: const TextStyle(fontSize: 10, fontStyle: FontStyle.italic, color: Colors.grey),
                             ),
                           ),
                       ],
                     ),
                   ),
                   const SizedBox(height: 8),
+                  // Ghost Buttons (maintain size to keep node position stable)
                   Visibility(
-                    visible: isActive,
+                    visible: showButtons,
                     maintainSize: true, 
                     maintainAnimation: true,
                     maintainState: true,
                     child: Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        _GhostNodeButton(
-                          icon: isLeaf ? Icons.eco : Icons.account_tree_outlined,
-                          label: isLeaf ? 'Ast' : 'Blatt', 
-                          onTap: () => widget.onTypeChanged(
-                            isLeaf ? LifeTreeNodeType.branch : LifeTreeNodeType.leaf,
-                          ),
-                        ),
-                        const SizedBox(width: 8),
-                        _GhostNodeButton(icon: Icons.add, label: 'Kind', onTap: widget.onAddChild),
+                        _GhostNodeButton(label: '+ Kind', onTap: widget.onAddChild),
                         const SizedBox(width: 8),
                         if (widget.nodeData.parentId != null)
-                          _GhostNodeButton(icon: Icons.add, label: 'Seite', onTap: widget.onAddSibling),
+                          _GhostNodeButton(label: '+ Geschwister', onTap: widget.onAddSibling),
                       ],
                     ),
                   ),
                 ],
               ),
-              if (isActive && widget.nodeData.parentId != null)
+              
+              // Note Dialog/Overlay (positioned above the node)
+              if (_showNoteOverlay)
+                Positioned(
+                  bottom: 110,
+                  child: Container(
+                    width: 220,
+                    padding: const EdgeInsets.all(12),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(12),
+                      boxShadow: [BoxShadow(color: Colors.black26, blurRadius: 10, offset: const Offset(0, 4))],
+                      border: Border.all(color: theme.primaryColor.withValues(alpha: 0.3)),
+                    ),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            const Text('Notiz', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12)),
+                            GestureDetector(
+                              onTap: () => setState(() => _showNoteOverlay = false),
+                              child: const Icon(Icons.close, size: 16),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(height: 8),
+                        TextField(
+                          controller: _noteController,
+                          maxLines: 3,
+                          autofocus: true,
+                          decoration: const InputDecoration(
+                            hintText: 'Schreibe hier deine Gedanken...',
+                            border: OutlineInputBorder(),
+                            contentPadding: EdgeInsets.all(8),
+                          ),
+                          style: const TextStyle(fontSize: 12),
+                          onChanged: widget.onNoteChanged,
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+
+              // Delete Button (x) top right
+              if (showButtons && widget.nodeData.parentId != null)
                 Positioned(
                   top: -8,
                   right: -8,
-                  child: GestureDetector(
+                  child: InkWell(
                     onTap: widget.onDelete,
                     child: Container(
                       padding: const EdgeInsets.all(2),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        shape: BoxShape.circle,
-                        border: Border.all(color: Colors.red.shade200),
-                        boxShadow: [
-                          BoxShadow(color: Colors.black.withValues(alpha: 0.1), blurRadius: 2),
-                        ],
-                      ),
-                      child: Icon(Icons.close, size: 14, color: Colors.red.shade400),
+                      decoration: const BoxDecoration(color: Colors.white, shape: BoxShape.circle),
+                      child: Icon(Icons.cancel, size: 20, color: Colors.red.shade400),
                     ),
                   ),
                 ),
@@ -419,37 +427,25 @@ class _TreeNodeWidgetState extends State<_TreeNodeWidget> {
 }
 
 class _GhostNodeButton extends StatelessWidget {
-  final IconData icon;
   final String label;
   final VoidCallback onTap;
 
-  const _GhostNodeButton({required this.icon, required this.label, required this.onTap});
+  const _GhostNodeButton({required this.label, required this.onTap});
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: onTap,
-      borderRadius: BorderRadius.circular(4),
       child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 4),
+        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: Colors.grey.shade200,
           borderRadius: BorderRadius.circular(4),
-          border: Border.all(color: Colors.grey.shade300),
-          boxShadow: [
-             BoxShadow(color: Colors.black.withValues(alpha: 0.05), blurRadius: 2, offset: const Offset(0, 1)),
-          ],
+          border: Border.all(color: Colors.grey.shade400),
         ),
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Icon(icon, size: 12, color: Colors.grey.shade600),
-            const SizedBox(width: 4),
-            Text(
-              label,
-              style: TextStyle(fontSize: 10, color: Colors.grey.shade700, fontWeight: FontWeight.bold),
-            ),
-          ],
+        child: Text(
+          label,
+          style: TextStyle(fontSize: 10, color: Colors.grey.shade700, fontWeight: FontWeight.bold),
         ),
       ),
     );

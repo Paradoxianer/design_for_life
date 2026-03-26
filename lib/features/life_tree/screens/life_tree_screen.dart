@@ -29,43 +29,57 @@ class LifeTreeScreen extends StatelessWidget {
   ) {
     final List<ShareableItem> items = [];
     
-    // Key Takeaways
+    // 1. Key Takeaways
     for (int i = 0; i < takeaways.length; i++) {
       if (takeaways[i].trim().isNotEmpty) {
         items.add(ShareableItem(
-          id: 'life_tree_takeaway_$i',
+          id: 'takeaway_$i',
           label: 'Erkenntnis ${i + 1}',
           textValue: takeaways[i],
         ));
       }
     }
 
-    // Digital Tree Nodes
-    for (var node in nodes) {
-      if (node.text.trim().isNotEmpty) {
-        String label = node.type == LifeTreeNodeType.leaf ? 'Blatt' : 'Ast';
-        String text = node.text;
-        if (node.note.trim().isNotEmpty) {
-          text += '\nNotiz: ${node.note}';
+    // 2. Tree Structure (Digital)
+    if (nodes.isNotEmpty) {
+      items.add(const ShareableItem(
+        id: 'tree_header',
+        label: '--- Digitaler Lebensbaum ---',
+        isSelected: true,
+      ));
+      
+      for (var node in nodes) {
+        if (node.text.trim().isNotEmpty) {
+          String text = node.text;
+          if (node.note.trim().isNotEmpty) {
+            text += '\nNotiz: ${node.note}';
+          }
+          items.add(ShareableItem(
+            id: 'node_${node.id}',
+            label: 'Ereignis: ${node.text}',
+            textValue: text,
+          ));
         }
-        
-        items.add(ShareableItem(
-          id: 'tree_node_${node.id}',
-          label: label,
-          textValue: text,
-        ));
       }
     }
 
-    // Analog Entries
-    for (var entry in entries) {
-      if (entry.text.trim().isNotEmpty || entry.imagePath != null) {
-        items.add(ShareableItem(
-          id: 'life_tree_entry_${entry.id}',
-          label: 'Analoge Notiz',
-          textValue: entry.text.isNotEmpty ? entry.text : null,
-          imagePath: entry.imagePath,
-        ));
+    // 3. Entries (Analog/Notes)
+    if (entries.isNotEmpty) {
+       items.add(const ShareableItem(
+        id: 'entries_header',
+        label: '--- Notizen & Zeichnungen ---',
+        isSelected: true,
+      ));
+      
+      for (var entry in entries) {
+        if (entry.text.trim().isNotEmpty || entry.imagePath != null) {
+          items.add(ShareableItem(
+            id: 'entry_${entry.id}',
+            label: 'Notiz',
+            textValue: entry.text.isNotEmpty ? entry.text : null,
+            imagePath: entry.imagePath,
+          ));
+        }
       }
     }
 
