@@ -6,6 +6,7 @@ import 'package:design_for_life/core/models/shareable_content.dart';
 import 'package:design_for_life/core/services/share_service.dart';
 import '../../../core/widgets/dfl_module_scaffold.dart';
 import '../bloc/life_tree_bloc.dart';
+import '../models/life_tree_node_data.dart';
 import '../widgets/life_tree_editor.dart';
 import '../widgets/life_tree_result.dart';
 
@@ -24,9 +25,11 @@ class LifeTreeScreen extends StatelessWidget {
   ShareableContent _getShareableContent(
     List<DflEntry> entries, 
     List<String> takeaways,
-    String? treeImagePath,
+    List<LifeTreeNodeData> nodes,
   ) {
     final List<ShareableItem> items = [];
+    
+    // Key Takeaways
     for (int i = 0; i < takeaways.length; i++) {
       if (takeaways[i].trim().isNotEmpty) {
         items.add(ShareableItem(
@@ -36,16 +39,36 @@ class LifeTreeScreen extends StatelessWidget {
         ));
       }
     }
+
+    // Digital Tree Nodes
+    for (var node in nodes) {
+      if (node.text.trim().isNotEmpty) {
+        String label = node.type == LifeTreeNodeType.leaf ? 'Blatt' : 'Ast';
+        String text = node.text;
+        if (node.note.trim().isNotEmpty) {
+          text += '\nNotiz: ${node.note}';
+        }
+        
+        items.add(ShareableItem(
+          id: 'tree_node_${node.id}',
+          label: label,
+          textValue: text,
+        ));
+      }
+    }
+
+    // Analog Entries
     for (var entry in entries) {
       if (entry.text.trim().isNotEmpty || entry.imagePath != null) {
         items.add(ShareableItem(
           id: 'life_tree_entry_${entry.id}',
-          label: 'Notiz',
+          label: 'Analoge Notiz',
           textValue: entry.text.isNotEmpty ? entry.text : null,
           imagePath: entry.imagePath,
         ));
       }
     }
+
     return ShareableContent(title: 'Mein Lebensbaum: $title', items: items);
   }
 
@@ -62,13 +85,19 @@ class LifeTreeScreen extends StatelessWidget {
             ? [DflEntry(id: 'initial_$sessionId')] 
             : entries;
 
+        final shareContent = _getShareableContent(entries, takeaways, nodes);
+
         return DflModuleScaffold(
           title: title,
           initialEditMode: initialEditMode,
-          shareableContent: _getShareableContent(entries, takeaways, null),
-          onShare: (items) => ShareService.shareContent(context: context, content: _getShareableContent(entries, takeaways, null), selectedItems: items),
+          shareableContent: shareContent,
+          onShare: (items) => ShareService.shareContent(
+            context: context, 
+            content: shareContent, 
+            selectedItems: items
+          ),
           editor: LifeTreeEditor(
-            key: ValueKey('life_tree_editor_$sessionId'), // STABLE KEY
+            key: ValueKey('life_tree_editor_$sessionId'),
             sessionId: sessionId,
             entries: displayEntries,
             takeaways: takeaways,

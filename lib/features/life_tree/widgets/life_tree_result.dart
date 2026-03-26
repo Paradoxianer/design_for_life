@@ -35,7 +35,7 @@ class _LifeTreeResultState extends State<LifeTreeResult> {
     super.initState();
     builder = BuchheimWalkerConfiguration()
       ..siblingSeparation = (50)
-      ..levelSeparation = (50)
+      ..levelSeparation = (70)
       ..subtreeSeparation = (50)
       ..orientation = BuchheimWalkerConfiguration.ORIENTATION_TOP_BOTTOM;
     
@@ -100,12 +100,12 @@ class _LifeTreeResultState extends State<LifeTreeResult> {
             ),
             const SizedBox(height: 16),
             Container(
-              height: 400,
+              height: 450,
               width: double.infinity,
               decoration: BoxDecoration(
                 border: Border.all(color: theme.dividerColor),
-                borderRadius: BorderRadius.circular(8),
-                color: theme.colorScheme.surfaceContainerHighest.withValues(alpha: 0.3),
+                borderRadius: BorderRadius.circular(12),
+                color: theme.colorScheme.surfaceContainerHighest.withValues(alpha: 0.2),
               ),
               child: InteractiveViewer(
                 constrained: false,
@@ -115,11 +115,11 @@ class _LifeTreeResultState extends State<LifeTreeResult> {
                 child: GraphView(
                   graph: graph,
                   algorithm: algorithm,
-                  paint: Paint()..color = Colors.green..strokeWidth = 1..style = PaintingStyle.stroke,
+                  paint: Paint()..color = Colors.green.shade400..strokeWidth = 1.5..style = PaintingStyle.stroke,
                   builder: (Node node) {
                     final nodeId = node.key?.value as String;
                     final nodeData = widget.nodes.firstWhere((n) => n.id == nodeId, orElse: () => LifeTreeNodeData(id: nodeId, text: ''));
-                    return _ReadOnlyNodeWidget(text: nodeData.text);
+                    return _ReadOnlyNodeWidget(nodeData: nodeData);
                   },
                 ),
               ),
@@ -140,19 +140,24 @@ class _LifeTreeResultState extends State<LifeTreeResult> {
 }
 
 class _ReadOnlyNodeWidget extends StatelessWidget {
-  final String text;
-  const _ReadOnlyNodeWidget({required this.text});
+  final LifeTreeNodeData nodeData;
+  const _ReadOnlyNodeWidget({required this.nodeData});
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    return Container(
+    final isLeaf = nodeData.type == LifeTreeNodeType.leaf;
+    
+    Widget content = Container(
       constraints: const BoxConstraints(minWidth: 100, maxWidth: 180),
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(8),
-        border: Border.all(color: Colors.green.shade200, width: 1.5),
+        borderRadius: BorderRadius.circular(isLeaf ? 20 : 8),
+        border: Border.all(
+          color: isLeaf ? Colors.green.shade300 : Colors.green.shade100, 
+          width: isLeaf ? 2 : 1.5,
+        ),
         boxShadow: [
           BoxShadow(
             color: Colors.black.withValues(alpha: 0.05),
@@ -161,12 +166,42 @@ class _ReadOnlyNodeWidget extends StatelessWidget {
           ),
         ],
       ),
-      child: Text(
-        text.isEmpty ? '...' : text,
-        style: theme.textTheme.bodyMedium?.copyWith(fontWeight: FontWeight.w500),
-        textAlign: TextAlign.center,
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Flexible(
+            child: Text(
+              nodeData.text.isEmpty ? '...' : nodeData.text,
+              style: theme.textTheme.bodyMedium?.copyWith(
+                fontWeight: isLeaf ? FontWeight.bold : FontWeight.w500,
+                color: isLeaf ? Colors.green.shade900 : Colors.black87,
+              ),
+              textAlign: TextAlign.center,
+            ),
+          ),
+          if (nodeData.note.isNotEmpty) ...[
+            const SizedBox(width: 4),
+            Icon(Icons.info_outline, size: 14, color: theme.primaryColor.withValues(alpha: 0.5)),
+          ],
+        ],
       ),
     );
+
+    if (nodeData.note.isNotEmpty) {
+      return Tooltip(
+        message: nodeData.note,
+        padding: const EdgeInsets.all(12),
+        margin: const EdgeInsets.symmetric(horizontal: 20),
+        decoration: BoxDecoration(
+          color: theme.colorScheme.onSurfaceVariant.withValues(alpha: 0.9),
+          borderRadius: BorderRadius.circular(8),
+        ),
+        textStyle: const TextStyle(color: Colors.white, fontSize: 12),
+        child: content,
+      );
+    }
+
+    return content;
   }
 }
 
