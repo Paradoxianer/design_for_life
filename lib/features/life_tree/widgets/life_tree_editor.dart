@@ -92,6 +92,7 @@ class _LifeTreeGraphSectionState extends State<_LifeTreeGraphSection> {
   late BuchheimWalkerConfiguration builder;
   late Algorithm algorithm;
   final Map<String, Node> _nodeCache = {};
+  final TransformationController _transformationController = TransformationController();
 
   @override
   void initState() {
@@ -107,6 +108,14 @@ class _LifeTreeGraphSectionState extends State<_LifeTreeGraphSection> {
     algorithm = BuchheimWalkerAlgorithm(builder, TreeEdgeRenderer(builder));
     
     _syncGraph();
+
+    // Initial centering logic: point to the middle of a large canvas
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (mounted) {
+        // Translation values to bring the root somewhat to the center top
+        _transformationController.value = Matrix4.identity()..translate(150.0, 50.0);
+      }
+    });
   }
 
   @override
@@ -174,28 +183,32 @@ class _LifeTreeGraphSectionState extends State<_LifeTreeGraphSection> {
             color: Colors.grey.shade50,
           ),
           child: InteractiveViewer(
+            transformationController: _transformationController,
             constrained: false, 
-            boundaryMargin: const EdgeInsets.all(400),
+            boundaryMargin: const EdgeInsets.all(1000),
             minScale: 0.1,
             maxScale: 2.0,
-            child: GraphView(
-              graph: graph,
-              algorithm: algorithm,
-              paint: Paint()..color = Colors.green..strokeWidth = 1..style = PaintingStyle.stroke,
-              builder: (Node node) {
-                final nodeId = node.key?.value as String;
-                final nodeData = widget.nodes.firstWhere((n) => n.id == nodeId, orElse: () => LifeTreeNodeData(id: nodeId, text: '...'));
-                
-                return _TreeNodeWidget(
-                  key: ValueKey('node_wid_$nodeId'),
-                  nodeData: nodeData,
-                  onChanged: (text) => widget.onUpdateText(nodeId, text),
-                  onNoteChanged: (note) => widget.onUpdateNote(nodeId, note),
-                  onAddChild: () => widget.onAddNode(nodeId, ''),
-                  onAddSibling: () => widget.onAddNode(nodeData.parentId, ''),
-                  onDelete: () => widget.onDeleteNode(nodeId),
-                );
-              },
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 200, vertical: 50),
+              child: GraphView(
+                graph: graph,
+                algorithm: algorithm,
+                paint: Paint()..color = Colors.green..strokeWidth = 1..style = PaintingStyle.stroke,
+                builder: (Node node) {
+                  final nodeId = node.key?.value as String;
+                  final nodeData = widget.nodes.firstWhere((n) => n.id == nodeId, orElse: () => LifeTreeNodeData(id: nodeId, text: '...'));
+                  
+                  return _TreeNodeWidget(
+                    key: ValueKey('node_wid_$nodeId'),
+                    nodeData: nodeData,
+                    onChanged: (text) => widget.onUpdateText(nodeId, text),
+                    onNoteChanged: (note) => widget.onUpdateNote(nodeId, note),
+                    onAddChild: () => widget.onAddNode(nodeId, ''),
+                    onAddSibling: () => widget.onAddNode(nodeData.parentId, ''),
+                    onDelete: () => widget.onDeleteNode(nodeId),
+                  );
+                },
+              ),
             ),
           ),
         ),
@@ -379,10 +392,19 @@ class _TreeNodeWidgetState extends State<_TreeNodeWidget> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            const Text('Notiz', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12)),
-                            GestureDetector(
-                              onTap: () => setState(() => _showNoteOverlay = false),
-                              child: const Icon(Icons.close, size: 16),
+                            const Text('Notiz bearbeiten', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12)),
+                            Row(
+                              children: [
+                                GestureDetector(
+                                  onTap: () => setState(() => _showNoteOverlay = false),
+                                  child: Icon(Icons.check, size: 20, color: Colors.green.shade600),
+                                ),
+                                const SizedBox(width: 12),
+                                GestureDetector(
+                                  onTap: () => setState(() => _showNoteOverlay = false),
+                                  child: const Icon(Icons.close, size: 18, color: Colors.grey),
+                                ),
+                              ],
                             ),
                           ],
                         ),
@@ -392,8 +414,9 @@ class _TreeNodeWidgetState extends State<_TreeNodeWidget> {
                           maxLines: 3,
                           autofocus: true,
                           decoration: const InputDecoration(
-                            hintText: 'Schreibe hier deine Gedanken...',
+                            hintText: 'Deine Gedanken...',
                             border: OutlineInputBorder(),
+                            isDense: true,
                             contentPadding: EdgeInsets.all(8),
                           ),
                           style: const TextStyle(fontSize: 12),
@@ -404,18 +427,14 @@ class _TreeNodeWidgetState extends State<_TreeNodeWidget> {
                   ),
                 ),
 
-              // Delete Button (x) top right
+              // Delete Button (x) top right - matching Ghost Button style
               if (showButtons && widget.nodeData.parentId != null)
                 Positioned(
                   top: -8,
                   right: -8,
-                  child: InkWell(
+                  child: _GhostNodeButton(
+                    label: 'x', 
                     onTap: widget.onDelete,
-                    child: Container(
-                      padding: const EdgeInsets.all(2),
-                      decoration: const BoxDecoration(color: Colors.white, shape: BoxShape.circle),
-                      child: Icon(Icons.cancel, size: 20, color: Colors.red.shade400),
-                    ),
                   ),
                 ),
             ],
