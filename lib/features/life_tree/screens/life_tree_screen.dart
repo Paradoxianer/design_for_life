@@ -29,18 +29,16 @@ class LifeTreeScreen extends StatefulWidget {
 }
 
 class _LifeTreeScreenState extends State<LifeTreeScreen> {
-  bool _shareIncludeNotes = false;
   final ScreenshotController _screenshotController = ScreenshotController();
 
   ShareableContent _getShareableContent(
     List<DflEntry> entries, 
     List<String> takeaways,
     List<LifeTreeNodeData> nodes,
-    Uint8List? capturedGraph,
   ) {
     final List<ShareableItem> items = [];
     
-    // 1. Key Takeaways
+    // 1. Key Takeaways (werden im ShareService als Text formatiert)
     for (int i = 0; i < takeaways.length; i++) {
       if (takeaways[i].trim().isNotEmpty) {
         items.add(ShareableItem(
@@ -51,38 +49,25 @@ class _LifeTreeScreenState extends State<LifeTreeScreen> {
       }
     }
 
-    // 2. Tree Structure (Digital)
+    // 2. Digitaler Baum (Grafik)
     if (nodes.isNotEmpty) {
       items.add(ShareableItem(
         id: 'tree_graph',
         label: 'Digitaler Lebensbaum (Grafik)',
         isSelected: true,
-        data: {
-          'type': 'life_tree_graph',
-          'nodes': nodes,
-          'showNotes': _shareIncludeNotes,
-          'capturedImage': capturedGraph, // Hier übergeben wir das echte Bild
-        },
-      ));
-
-      items.add(ShareableItem(
-        id: 'tree_include_notes',
-        label: 'Notizen im Baum anzeigen',
-        isSelected: _shareIncludeNotes,
+        data: { 'type': 'life_tree_graph' },
       ));
     }
 
-    // 3. Entries (Analog/Notes)
-    if (entries.isNotEmpty) {
-      for (var entry in entries) {
-        if (entry.text.trim().isNotEmpty || entry.imagePath != null) {
-          items.add(ShareableItem(
-            id: 'entry_${entry.id}',
-            label: 'Notiz / Zeichnung',
-            textValue: entry.text.isNotEmpty ? entry.text : null,
-            imagePath: entry.imagePath,
-          ));
-        }
+    // 3. Einträge (Analog/Notizen/Zeichnungen)
+    for (var entry in entries) {
+      if (entry.text.trim().isNotEmpty || entry.imagePath != null) {
+        items.add(ShareableItem(
+          id: 'entry_${entry.id}',
+          label: 'Notiz / Zeichnung',
+          textValue: entry.text.isNotEmpty ? entry.text : null,
+          imagePath: entry.imagePath,
+        ));
       }
     }
 
@@ -105,45 +90,41 @@ class _LifeTreeScreenState extends State<LifeTreeScreen> {
         return DflModuleScaffold(
           title: widget.title,
           initialEditMode: widget.initialEditMode,
-          shareableContent: _getShareableContent(entries, takeaways, nodes, null),
+          shareableContent: _getShareableContent(entries, takeaways, nodes),
           onShare: (selectedItems) async {
-            // 1. Falls der Graph gewählt wurde, machen wir JETZT den Screenshot vom echten Widget
             Uint8List? capturedImage;
-            final hasGraph = selectedItems.any((i) => i.id == 'tree_graph');
             
-            if (hasGraph) {
+            // Wenn die Grafik ausgewählt wurde, machen wir JETZT den Screenshot
+            if (selectedItems.any((i) => i.id == 'tree_graph')) {
               try {
-                // Wir warten kurz, um sicherzugehen, dass das UI stabil ist
+                // Ein kurzer Moment für das System, um den Layer-Buffer bereitzustellen
+                await Future.delayed(const Duration(milliseconds: 150));
                 capturedImage = await _screenshotController.capture();
+                if (capturedImage == null) {
+                   debugPrint('Screenshot returned null - retrying once...');
+                   capturedImage = await _screenshotController.capture();
+                }
               } catch (e) {
-                debugPrint('Screenshot failed: $e');
+                debugPrint('Error during screenshot capture: $e');
               }
             }
 
-            // 2. Wir bauen den Content neu zusammen, diesmal mit dem echten Bild-Byte-Array
-            final fullContent = _getShareableContent(entries, takeaways, nodes, capturedImage);
-            
-            // 3. Update toggle state
-            final notesItem = selectedItems.firstWhere((i) => i.id == 'tree_include_notes', orElse: () => const ShareableItem(id: 'none', label: ''));
-            if (notesItem.id != 'none') {
-              setState(() => _shareIncludeNotes = notesItem.isSelected);
-            }
-            
-            // 4. Teilen auslösen
             if (mounted) {
+              // Wir übergeben das Bild in den Daten des entsprechenden Items
+              final enrichedItems = selectedItems.map((si) {
+                if (si.id == 'tree_graph' && capturedImage != null) {
+                  return si.copyWith(data: {
+                    ...si.data,
+                    'capturedImage': capturedImage,
+                  });
+                }
+                return si;
+              }).toList();
+
               ShareService.shareContent(
                 context: context, 
-                content: fullContent, 
-                selectedItems: selectedItems.map((si) {
-                  // Wir müssen sicherstellen, dass das 'tree_graph' Item das Bild in seinen Daten hat
-                  if (si.id == 'tree_graph') {
-                    return si.copyWith(data: {
-                      ...si.data,
-                      'capturedImage': capturedImage,
-                    });
-                  }
-                  return si;
-                }).toList(),
+                content: _getShareableContent(entries, takeaways, nodes),
+                selectedItems: enrichedItems
               );
             }
           },
@@ -159,7 +140,7 @@ class _LifeTreeScreenState extends State<LifeTreeScreen> {
             entries: entries,
             takeaways: takeaways,
             nodes: nodes,
-            screenshotController: _screenshotController, // Controller weitergeben
+            screenshotController: _screenshotController,
             onUpdate: (index, value) => context.read<LifeTreeBloc>().add(UpdateTakeaway(widget.sessionId, index, value)),
           ),
         );
