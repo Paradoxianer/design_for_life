@@ -87,18 +87,30 @@ class _LifeTreeGraphSection extends StatefulWidget {
   State<_LifeTreeGraphSection> createState() => _LifeTreeGraphSectionState();
 }
 
-class _LifeTreeGraphSectionState extends State<_LifeTreeGraphSection> {
+class _LifeTreeGraphSectionState extends State<_LifeTreeGraphSection> with TickerProviderStateMixin {
   late Graph graph;
   late BuchheimWalkerConfiguration builder;
   late Algorithm algorithm;
   final Map<String, Node> _nodeCache = {};
   final TransformationController _transformationController = TransformationController();
+  late AnimationController _animationController;
+  Animation<Matrix4>? _animation;
+  String? _lastAddedNodeId;
 
   @override
   void initState() {
     super.initState();
     graph = Graph()..isTree = true;
     
+    _animationController = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 500),
+    )..addListener(() {
+      if (_animation != null) {
+        _transformationController.value = _animation!.value;
+      }
+    });
+
     builder = BuchheimWalkerConfiguration()
       ..siblingSeparation = (50)
       ..levelSeparation = (50)
@@ -120,7 +132,44 @@ class _LifeTreeGraphSectionState extends State<_LifeTreeGraphSection> {
   void didUpdateWidget(_LifeTreeGraphSection oldWidget) {
     super.didUpdateWidget(oldWidget);
     if (widget.nodes != oldWidget.nodes) {
+      if (widget.nodes.length > oldWidget.nodes.length) {
+        final newNode = widget.nodes.firstWhere(
+          (n) => !oldWidget.nodes.any((on) => on.id == n.id),
+          orElse: () => widget.nodes.last,
+        );
+        _lastAddedNodeId = newNode.id;
+        
+        WidgetsBinding.instance.addPostFrameCallback((_) {
+          _scrollToNode(newNode.id);
+        });
+      }
       _syncGraph();
+    }
+  }
+
+  void _scrollToNode(String nodeId) {
+    if (!mounted) return;
+    
+    final node = _nodeCache[nodeId];
+    if (node != null) {
+      final x = node.x;
+      final y = node.y;
+      
+      // Calculate target translation
+      final targetX = -x + 250 - 90; 
+      final targetY = -y + 150 - 50; 
+      final targetMatrix = Matrix4.identity()..translate(targetX + 200, targetY + 50);
+
+      // Create smooth animation from current position to target
+      _animation = Matrix4Tween(
+        begin: _transformationController.value,
+        end: targetMatrix,
+      ).animate(CurvedAnimation(
+        parent: _animationController,
+        curve: Curves.easeInOutCubic,
+      ));
+      
+      _animationController.forward(from: 0);
     }
   }
 
@@ -156,6 +205,13 @@ class _LifeTreeGraphSectionState extends State<_LifeTreeGraphSection> {
   }
 
   @override
+  void dispose() {
+    _animationController.dispose();
+    _transformationController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     if (widget.nodes.isEmpty) {
       return Center(
@@ -186,6 +242,12 @@ class _LifeTreeGraphSectionState extends State<_LifeTreeGraphSection> {
             boundaryMargin: const EdgeInsets.all(1000),
             minScale: 0.1,
             maxScale: 2.0,
+            onInteractionStart: (_) {
+              // Stop ongoing scroll animation if user interacts manually
+              if (_animationController.isAnimating) {
+                _animationController.stop();
+              }
+            },
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 200, vertical: 50),
               child: GraphView(
@@ -199,6 +261,7 @@ class _LifeTreeGraphSectionState extends State<_LifeTreeGraphSection> {
                   return _TreeNodeWidget(
                     key: ValueKey('node_wid_$nodeId'),
                     nodeData: nodeData,
+                    autofocus: nodeId == _lastAddedNodeId,
                     onChanged: (text) => widget.onUpdateText(nodeId, text),
                     onNoteChanged: (note) => widget.onUpdateNote(nodeId, note),
                     onAddChild: () => widget.onAddNode(nodeId, ''),
@@ -217,6 +280,7 @@ class _LifeTreeGraphSectionState extends State<_LifeTreeGraphSection> {
 
 class _TreeNodeWidget extends StatefulWidget {
   final LifeTreeNodeData nodeData;
+  final bool autofocus;
   final ValueChanged<String> onChanged;
   final ValueChanged<String> onNoteChanged;
   final VoidCallback onAddChild;
@@ -226,6 +290,7 @@ class _TreeNodeWidget extends StatefulWidget {
   const _TreeNodeWidget({
     super.key,
     required this.nodeData,
+    this.autofocus = false,
     required this.onChanged,
     required this.onNoteChanged,
     required this.onAddChild,
@@ -268,6 +333,12 @@ class _TreeNodeWidgetState extends State<_TreeNodeWidget> {
       }
       setState(() {});
     });
+
+    if (widget.autofocus) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        _textFocusNode.requestFocus();
+      });
+    }
   }
 
   @override
@@ -305,7 +376,7 @@ class _TreeNodeWidgetState extends State<_TreeNodeWidget> {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final bool isFocused = _textFocusNode.hasFocus || _noteFocusNode.hasFocus;
-    final bool showButtons = isFocused || _isHovered;
+    final bool showButtons = (isFocused || _isHovered) && !_showNoteOverlay;
 
     return MouseRegion(
       onEnter: (_) => setState(() => _isHovered = true),
@@ -403,7 +474,7 @@ class _TreeNodeWidgetState extends State<_TreeNodeWidget> {
               
               if (_showNoteOverlay)
                 Positioned(
-                  top: -20, // Positioned over the node
+                  top: -10, // Positioned over the node
                   child: Container(
                     width: 260, 
                     padding: const EdgeInsets.all(12),
@@ -420,16 +491,16 @@ class _TreeNodeWidgetState extends State<_TreeNodeWidget> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            const Text('Notiz bearbeiten', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13)),
+                            const Text('Notiz', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13)),
                             Row(
                               children: [
                                 Material(
                                   color: Colors.green.shade50,
                                   borderRadius: BorderRadius.circular(20),
                                   child: IconButton(
-                                    icon: const Icon(Icons.check, color: Colors.green, size: 24),
+                                    icon: const Icon(Icons.check, color: Colors.green, size: 20),
                                     onPressed: _saveNote,
-                                    padding: const EdgeInsets.all(8),
+                                    padding: const EdgeInsets.all(6),
                                     constraints: const BoxConstraints(),
                                     visualDensity: VisualDensity.compact,
                                     tooltip: 'Speichern',
@@ -440,29 +511,29 @@ class _TreeNodeWidgetState extends State<_TreeNodeWidget> {
                                   color: Colors.grey.shade100,
                                   borderRadius: BorderRadius.circular(20),
                                   child: IconButton(
-                                    icon: const Icon(Icons.close, color: Colors.redAccent, size: 24),
+                                    icon: const Icon(Icons.close, color: Colors.redAccent, size: 20),
                                     onPressed: _deleteNoteAndClose,
-                                    padding: const EdgeInsets.all(8),
+                                    padding: const EdgeInsets.all(6),
                                     constraints: const BoxConstraints(),
                                     visualDensity: VisualDensity.compact,
-                                    tooltip: 'Notiz löschen',
+                                    tooltip: 'Schließen / Löschen',
                                   ),
                                 ),
                               ],
                             ),
                           ],
                         ),
-                        const SizedBox(height: 12),
+                        const SizedBox(height: 8),
                         TextField(
                           controller: _noteController,
                           focusNode: _noteFocusNode,
-                          maxLines: 5,
+                          maxLines: 3,
                           autofocus: true,
                           decoration: const InputDecoration(
                             hintText: 'Deine Gedanken...',
                             border: OutlineInputBorder(),
                             isDense: true,
-                            contentPadding: EdgeInsets.all(12),
+                            contentPadding: EdgeInsets.all(10),
                           ),
                           style: const TextStyle(fontSize: 13),
                         ),

@@ -13,6 +13,15 @@ class LifeTreeState extends EntryListState {
   });
 
   @override
+  bool isCompleted(String sessionId) {
+    // A life tree is completed if there are analog entries OR digital tree nodes with text
+    final hasAnalog = super.isCompleted(sessionId);
+    final nodes = treeNodes[sessionId] ?? [];
+    final hasDigital = nodes.any((n) => n.text.trim().isNotEmpty);
+    return hasAnalog || hasDigital;
+  }
+
+  @override
   LifeTreeState copyWith({
     Map<String, List<DflEntry>>? entries,
     Map<String, List<String>>? takeaways,
