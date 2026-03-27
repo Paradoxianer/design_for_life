@@ -60,6 +60,36 @@
   "valuesNextPhaseHint": "Zukünftige Phase...",
   "valuesNextPhaseValuesGuidance": "Wähle bis zu 8 Werte aus der Liste, die für diesen neuen Abschnitt besonders wichtig sein werden (klicke in der gewünschten Reihenfolge):",
   "valuesResultTitle": "Meine Top 8 Werte",
+  "lifeTreeTitle": "Mein Lebensbaum",
+  "lifeTreeDigital": "Digitaler Lebensbaum",
+  "lifeTreeAnalog": "Notizen & Zeichnungen",
+  "lifeTreeStart": "Lebensbaum starten (Geburt)",
+  "lifeTreeBirth": "Geburt",
+  "lifeTreeNodeHint": "Ereignis...",
+  "lifeTreeAddChild": "+ Kind",
+  "lifeTreeAddSibling": "+ Geschwister",
+  "lifeTreeEditNote": "Notiz bearbeiten",
+  "lifeTreeShowNotes": "Notizen anzeigen",
+  "lifeTreeNoteHint": "Deine Gedanken...",
+  "lifeTreeSaveNote": "Speichern",
+  "lifeTreeDeleteNote": "Schließen / Löschen",
+  "lifeTreeShareGraph": "Digitaler Lebensbaum (Grafik)",
+  "lifeTreeShareEvent": "Ereignis: {text}",
+  "@lifeTreeShareEvent": {
+    "placeholders": {
+      "text": {
+        "type": "String"
+      }
+    }
+  },
+  "lifeTreeShareNote": "Notiz: {text}",
+  "@lifeTreeShareNote": {
+    "placeholders": {
+      "text": {
+        "type": "String"
+      }
+    }
+  },
   "finish": "Abschließen",
   "next": "Weiter",
   "previous": "Zurück",
@@ -81,7 +111,7 @@
   "feedbackRating6": "Ungenügend",
   "feedbackSectionContent": "Inhalt des Seminars",
   "feedbackContentExpectations": "Die Inhalte entsprachen meinen Erwartungen",
-  "feedbackContentPracticalUtility": "Ich habe nützliche Anregungen für meine tägliche Praxis gewonnen",
+  "feedbackContentPracticalUtility": "Ich habe nützliche Anregungen für meine täglich Praxis gewonnen",
   "feedbackContentStructure": "Gliederung & Verständlichkeit des Themenkomplexes",
   "feedbackSectionSpeaker": "Referent & Durchführung",
   "feedbackSpeakerGodWorking": "Ich hatte den Eindruck, dass Gott wirken konnte",

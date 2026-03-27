@@ -63,6 +63,36 @@
   "valuesNextPhaseHint": "Future phase...",
   "valuesNextPhaseValuesGuidance": "Select up to 8 values from the list that will be especially important for this new stage (click in the desired order):",
   "valuesResultTitle": "My Top 8 Values",
+  "lifeTreeTitle": "My Life Tree",
+  "lifeTreeDigital": "Digital Life Tree",
+  "lifeTreeAnalog": "Notes & Drawings",
+  "lifeTreeStart": "Start Life Tree (Birth)",
+  "lifeTreeBirth": "Birth",
+  "lifeTreeNodeHint": "Event...",
+  "lifeTreeAddChild": "+ Child",
+  "lifeTreeAddSibling": "+ Sibling",
+  "lifeTreeEditNote": "Edit Note",
+  "lifeTreeShowNotes": "Show Notes",
+  "lifeTreeNoteHint": "Your thoughts...",
+  "lifeTreeSaveNote": "Save",
+  "lifeTreeDeleteNote": "Close / Delete",
+  "lifeTreeShareGraph": "Digital Life Tree (Graph)",
+  "lifeTreeShareEvent": "Event: {text}",
+  "@lifeTreeShareEvent": {
+    "placeholders": {
+      "text": {
+        "type": "String"
+      }
+    }
+  },
+  "lifeTreeShareNote": "Note: {text}",
+  "@lifeTreeShareNote": {
+    "placeholders": {
+      "text": {
+        "type": "String"
+      }
+    }
+  },
   "finish": "Finish",
   "next": "Next",
   "previous": "Previous",
