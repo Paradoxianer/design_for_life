@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:graphview/GraphView.dart';
+import 'package:design_for_life/l10n/generated/app_localizations.dart';
 import 'package:design_for_life/core/models/dfl_entry.dart';
 import 'package:design_for_life/core/blocs/entry_list_bloc.dart';
 import '../../../core/widgets/dfl_module_editor.dart';
@@ -25,6 +26,7 @@ class LifeTreeEditor extends DflModuleEditor {
   @override
   Widget buildContent(BuildContext context) {
     final lifeTreeBloc = BlocProvider.of<LifeTreeBloc>(context);
+    final l10n = AppLocalizations.of(context);
 
     return Column(
       key: ValueKey('editor_col_$sessionId'),
@@ -43,7 +45,7 @@ class LifeTreeEditor extends DflModuleEditor {
         const Divider(),
         const SizedBox(height: 24),
         Text(
-          'Notizen & Zeichnungen',
+          l10n.lifeTreeAnalog,
           style: Theme.of(context).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
         ),
         const SizedBox(height: 12),
@@ -54,7 +56,7 @@ class LifeTreeEditor extends DflModuleEditor {
           return DflEntryWidget(
             key: ValueKey(entry.id),
             entry: entry,
-            hintText: 'Notiz oder Beschreibung...',
+            hintText: l10n.notesHint,
             onTextChanged: (text) => lifeTreeBloc.add(UpdateEntryText(sessionId, entry.id, text)),
             onImageChanged: (path) => lifeTreeBloc.add(UpdateEntryImage(sessionId, entry.id, path)),
             onDelete: isLast ? null : () => lifeTreeBloc.add(DeleteEntry(sessionId, entry.id)),
@@ -155,12 +157,10 @@ class _LifeTreeGraphSectionState extends State<_LifeTreeGraphSection> with Ticke
       final x = node.x;
       final y = node.y;
       
-      // Calculate target translation
       final targetX = -x + 250 - 90; 
       final targetY = -y + 150 - 50; 
       final targetMatrix = Matrix4.identity()..translate(targetX + 200, targetY + 50);
 
-      // Create smooth animation from current position to target
       _animation = Matrix4Tween(
         begin: _transformationController.value,
         end: targetMatrix,
@@ -213,12 +213,14 @@ class _LifeTreeGraphSectionState extends State<_LifeTreeGraphSection> with Ticke
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
+
     if (widget.nodes.isEmpty) {
       return Center(
         child: ElevatedButton.icon(
-          onPressed: () => widget.onAddNode(null, 'Geburt'),
+          onPressed: () => widget.onAddNode(null, l10n.lifeTreeBirth),
           icon: const Icon(Icons.add),
-          label: const Text('Lebensbaum starten (Geburt)'),
+          label: Text(l10n.lifeTreeStart),
         ),
       );
     }
@@ -226,7 +228,7 @@ class _LifeTreeGraphSectionState extends State<_LifeTreeGraphSection> with Ticke
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text('Digitaler Lebensbaum', style: Theme.of(context).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold)),
+        Text(l10n.lifeTreeDigital, style: Theme.of(context).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold)),
         const SizedBox(height: 16),
         Container(
           height: 500, 
@@ -243,7 +245,6 @@ class _LifeTreeGraphSectionState extends State<_LifeTreeGraphSection> with Ticke
             minScale: 0.1,
             maxScale: 2.0,
             onInteractionStart: (_) {
-              // Stop ongoing scroll animation if user interacts manually
               if (_animationController.isAnimating) {
                 _animationController.stop();
               }
@@ -375,6 +376,7 @@ class _TreeNodeWidgetState extends State<_TreeNodeWidget> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final l10n = AppLocalizations.of(context);
     final bool isFocused = _textFocusNode.hasFocus || _noteFocusNode.hasFocus;
     final bool showButtons = (isFocused || _isHovered) && !_showNoteOverlay;
 
@@ -390,7 +392,6 @@ class _TreeNodeWidgetState extends State<_TreeNodeWidget> {
             clipBehavior: Clip.none,
             alignment: Alignment.topCenter,
             children: [
-              // Main Node Box
               Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
@@ -415,11 +416,11 @@ class _TreeNodeWidgetState extends State<_TreeNodeWidget> {
                               child: TextField(
                                 controller: _textController,
                                 focusNode: _textFocusNode,
-                                decoration: const InputDecoration(
+                                decoration: InputDecoration(
                                   isDense: true, 
                                   border: InputBorder.none, 
-                                  contentPadding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-                                  hintText: 'Ereignis...',
+                                  contentPadding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                                  hintText: l10n.lifeTreeNodeHint,
                                 ),
                                 style: theme.textTheme.bodyMedium,
                                 onSubmitted: (val) => widget.onChanged(val),
@@ -436,7 +437,7 @@ class _TreeNodeWidgetState extends State<_TreeNodeWidget> {
                                 },
                                 constraints: const BoxConstraints(),
                                 padding: const EdgeInsets.only(right: 8),
-                                tooltip: 'Notiz bearbeiten',
+                                tooltip: l10n.lifeTreeEditNote,
                               ),
                           ],
                         ),
@@ -462,10 +463,10 @@ class _TreeNodeWidgetState extends State<_TreeNodeWidget> {
                     child: Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        _GhostNodeButton(label: '+ Kind', onTap: widget.onAddChild),
+                        _GhostNodeButton(label: l10n.lifeTreeAddChild, onTap: widget.onAddChild),
                         const SizedBox(width: 8),
                         if (widget.nodeData.parentId != null)
-                          _GhostNodeButton(label: '+ Geschwister', onTap: widget.onAddSibling),
+                          _GhostNodeButton(label: l10n.lifeTreeAddSibling, onTap: widget.onAddSibling),
                       ],
                     ),
                   ),
@@ -474,7 +475,7 @@ class _TreeNodeWidgetState extends State<_TreeNodeWidget> {
               
               if (_showNoteOverlay)
                 Positioned(
-                  top: -10, // Positioned over the node
+                  top: -10, 
                   child: Container(
                     width: 260, 
                     padding: const EdgeInsets.all(12),
@@ -491,7 +492,7 @@ class _TreeNodeWidgetState extends State<_TreeNodeWidget> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            const Text('Notiz', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13)),
+                            Text(l10n.lifeTreeEditNote, style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 13)),
                             Row(
                               children: [
                                 Material(
@@ -503,7 +504,7 @@ class _TreeNodeWidgetState extends State<_TreeNodeWidget> {
                                     padding: const EdgeInsets.all(6),
                                     constraints: const BoxConstraints(),
                                     visualDensity: VisualDensity.compact,
-                                    tooltip: 'Speichern',
+                                    tooltip: l10n.lifeTreeSaveNote,
                                   ),
                                 ),
                                 const SizedBox(width: 8),
@@ -516,7 +517,7 @@ class _TreeNodeWidgetState extends State<_TreeNodeWidget> {
                                     padding: const EdgeInsets.all(6),
                                     constraints: const BoxConstraints(),
                                     visualDensity: VisualDensity.compact,
-                                    tooltip: 'Schließen / Löschen',
+                                    tooltip: l10n.lifeTreeDeleteNote,
                                   ),
                                 ),
                               ],
@@ -527,13 +528,13 @@ class _TreeNodeWidgetState extends State<_TreeNodeWidget> {
                         TextField(
                           controller: _noteController,
                           focusNode: _noteFocusNode,
-                          maxLines: 3,
+                          maxLines: 3, 
                           autofocus: true,
-                          decoration: const InputDecoration(
-                            hintText: 'Deine Gedanken...',
-                            border: OutlineInputBorder(),
+                          decoration: InputDecoration(
+                            hintText: l10n.lifeTreeNoteHint,
+                            border: const OutlineInputBorder(),
                             isDense: true,
-                            contentPadding: EdgeInsets.all(10),
+                            contentPadding: const EdgeInsets.all(10),
                           ),
                           style: const TextStyle(fontSize: 13),
                         ),
