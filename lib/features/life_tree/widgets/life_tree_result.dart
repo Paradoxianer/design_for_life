@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:graphview/GraphView.dart';
+import 'package:screenshot/screenshot.dart';
 import 'package:design_for_life/core/models/dfl_entry.dart';
 import 'package:design_for_life/core/widgets/dfl_module_result.dart';
 import '../models/life_tree_node_data.dart';
@@ -12,6 +13,7 @@ class LifeTreeResult extends StatefulWidget {
   final List<String> takeaways;
   final Function(int, String)? onUpdate;
   final bool showNotesInitially;
+  final ScreenshotController? screenshotController;
 
   const LifeTreeResult({
     super.key,
@@ -20,6 +22,7 @@ class LifeTreeResult extends StatefulWidget {
     required this.nodes,
     this.onUpdate,
     this.showNotesInitially = false,
+    this.screenshotController,
   });
 
   @override
@@ -40,7 +43,7 @@ class _LifeTreeResultState extends State<LifeTreeResult> {
     _showNotes = widget.showNotesInitially;
     builder = BuchheimWalkerConfiguration()
       ..siblingSeparation = (50)
-      ..levelSeparation = (80) // Increased to accommodate inline notes
+      ..levelSeparation = (80)
       ..subtreeSeparation = (50)
       ..orientation = BuchheimWalkerConfiguration.ORIENTATION_TOP_BOTTOM;
     
@@ -141,17 +144,23 @@ class _LifeTreeResultState extends State<LifeTreeResult> {
                 boundaryMargin: const EdgeInsets.all(800),
                 minScale: 0.1,
                 maxScale: 2.0,
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 200, vertical: 50),
-                  child: GraphView(
-                    graph: graph,
-                    algorithm: algorithm,
-                    paint: Paint()..color = Colors.green.shade400..strokeWidth = 1.5..style = PaintingStyle.stroke,
-                    builder: (Node node) {
-                      final nodeId = node.key?.value as String;
-                      final nodeData = widget.nodes.firstWhere((n) => n.id == nodeId, orElse: () => LifeTreeNodeData(id: nodeId, text: ''));
-                      return _ReadOnlyNodeWidget(nodeData: nodeData, showNote: _showNotes);
-                    },
+                // Wir wrappen den Inhalt des Viewers. Da constrained: false,
+                // hat dieser Screenshot immer die volle Größe des Graphen!
+                child: Screenshot(
+                  controller: widget.screenshotController ?? ScreenshotController(),
+                  child: Container(
+                    color: Colors.white, // Wichtig für den Screenshot-Hintergrund
+                    padding: const EdgeInsets.symmetric(horizontal: 200, vertical: 50),
+                    child: GraphView(
+                      graph: graph,
+                      algorithm: algorithm,
+                      paint: Paint()..color = Colors.green.shade400..strokeWidth = 1.5..style = PaintingStyle.stroke,
+                      builder: (Node node) {
+                        final nodeId = node.key?.value as String;
+                        final nodeData = widget.nodes.firstWhere((n) => n.id == nodeId, orElse: () => LifeTreeNodeData(id: nodeId, text: ''));
+                        return _ReadOnlyNodeWidget(nodeData: nodeData, showNote: _showNotes);
+                      },
+                    ),
                   ),
                 ),
               ),

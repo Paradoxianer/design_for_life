@@ -1,5 +1,7 @@
+import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:screenshot/screenshot.dart';
 import 'package:design_for_life/core/blocs/entry_list_bloc.dart';
 import 'package:design_for_life/core/models/dfl_entry.dart';
 import 'package:design_for_life/core/models/shareable_content.dart';
@@ -28,11 +30,13 @@ class LifeTreeScreen extends StatefulWidget {
 
 class _LifeTreeScreenState extends State<LifeTreeScreen> {
   bool _shareIncludeNotes = false;
+  final ScreenshotController _screenshotController = ScreenshotController();
 
   ShareableContent _getShareableContent(
     List<DflEntry> entries, 
     List<String> takeaways,
     List<LifeTreeNodeData> nodes,
+    Uint8List? capturedGraph,
   ) {
     final List<ShareableItem> items = [];
     
@@ -49,7 +53,6 @@ class _LifeTreeScreenState extends State<LifeTreeScreen> {
 
     // 2. Tree Structure (Digital)
     if (nodes.isNotEmpty) {
-      // Grafik-Item (Das Bild vom Baum)
       items.add(ShareableItem(
         id: 'tree_graph',
         label: 'Digitaler Lebensbaum (Grafik)',
@@ -58,31 +61,15 @@ class _LifeTreeScreenState extends State<LifeTreeScreen> {
           'type': 'life_tree_graph',
           'nodes': nodes,
           'showNotes': _shareIncludeNotes,
+          'capturedImage': capturedGraph, // Hier übergeben wir das echte Bild
         },
       ));
 
-      // Toggle for nodes in share selection
       items.add(ShareableItem(
         id: 'tree_include_notes',
         label: 'Notizen im Baum anzeigen',
         isSelected: _shareIncludeNotes,
       ));
-      
-      // Textuelle Liste der Ereignisse (Optional, falls jemand nur Text will)
-      for (var node in nodes) {
-        if (node.text.trim().isNotEmpty) {
-          String text = node.text;
-          if (_shareIncludeNotes && node.note.trim().isNotEmpty) {
-            text += '\nNotiz: ${node.note}';
-          }
-          items.add(ShareableItem(
-            id: 'node_${node.id}',
-            label: 'Ereignis: ${node.text}',
-            textValue: text,
-            isSelected: false, // Default text nodes to unselected if graph is present
-          ));
-        }
-      }
     }
 
     // 3. Entries (Analog/Notes)
@@ -115,24 +102,50 @@ class _LifeTreeScreenState extends State<LifeTreeScreen> {
             ? [DflEntry(id: 'initial_${widget.sessionId}')] 
             : entries;
 
-        final shareContent = _getShareableContent(entries, takeaways, nodes);
-
         return DflModuleScaffold(
           title: widget.title,
           initialEditMode: widget.initialEditMode,
-          shareableContent: shareContent,
-          onShare: (items) {
-            // Update the notes toggle based on user selection in dialog
-            final notesItem = items.firstWhere((i) => i.id == 'tree_include_notes', orElse: () => const ShareableItem(id: 'none', label: ''));
+          shareableContent: _getShareableContent(entries, takeaways, nodes, null),
+          onShare: (selectedItems) async {
+            // 1. Falls der Graph gewählt wurde, machen wir JETZT den Screenshot vom echten Widget
+            Uint8List? capturedImage;
+            final hasGraph = selectedItems.any((i) => i.id == 'tree_graph');
+            
+            if (hasGraph) {
+              try {
+                // Wir warten kurz, um sicherzugehen, dass das UI stabil ist
+                capturedImage = await _screenshotController.capture();
+              } catch (e) {
+                debugPrint('Screenshot failed: $e');
+              }
+            }
+
+            // 2. Wir bauen den Content neu zusammen, diesmal mit dem echten Bild-Byte-Array
+            final fullContent = _getShareableContent(entries, takeaways, nodes, capturedImage);
+            
+            // 3. Update toggle state
+            final notesItem = selectedItems.firstWhere((i) => i.id == 'tree_include_notes', orElse: () => const ShareableItem(id: 'none', label: ''));
             if (notesItem.id != 'none') {
               setState(() => _shareIncludeNotes = notesItem.isSelected);
             }
             
-            ShareService.shareContent(
-              context: context, 
-              content: shareContent, 
-              selectedItems: items
-            );
+            // 4. Teilen auslösen
+            if (mounted) {
+              ShareService.shareContent(
+                context: context, 
+                content: fullContent, 
+                selectedItems: selectedItems.map((si) {
+                  // Wir müssen sicherstellen, dass das 'tree_graph' Item das Bild in seinen Daten hat
+                  if (si.id == 'tree_graph') {
+                    return si.copyWith(data: {
+                      ...si.data,
+                      'capturedImage': capturedImage,
+                    });
+                  }
+                  return si;
+                }).toList(),
+              );
+            }
           },
           editor: LifeTreeEditor(
             key: ValueKey('life_tree_editor_${widget.sessionId}'),
@@ -146,6 +159,7 @@ class _LifeTreeScreenState extends State<LifeTreeScreen> {
             entries: entries,
             takeaways: takeaways,
             nodes: nodes,
+            screenshotController: _screenshotController, // Controller weitergeben
             onUpdate: (index, value) => context.read<LifeTreeBloc>().add(UpdateTakeaway(widget.sessionId, index, value)),
           ),
         );
