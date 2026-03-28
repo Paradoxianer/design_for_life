@@ -380,6 +380,102 @@ abstract class AppLocalizations {
   /// **'My Top 8 Values'**
   String get valuesResultTitle;
 
+  /// No description provided for @lifeTreeTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'My Life Tree'**
+  String get lifeTreeTitle;
+
+  /// No description provided for @lifeTreeDigital.
+  ///
+  /// In en, this message translates to:
+  /// **'Digital Life Tree'**
+  String get lifeTreeDigital;
+
+  /// No description provided for @lifeTreeAnalog.
+  ///
+  /// In en, this message translates to:
+  /// **'Notes & Drawings'**
+  String get lifeTreeAnalog;
+
+  /// No description provided for @lifeTreeStart.
+  ///
+  /// In en, this message translates to:
+  /// **'Start Life Tree (Birth)'**
+  String get lifeTreeStart;
+
+  /// No description provided for @lifeTreeBirth.
+  ///
+  /// In en, this message translates to:
+  /// **'Birth'**
+  String get lifeTreeBirth;
+
+  /// No description provided for @lifeTreeNodeHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Event...'**
+  String get lifeTreeNodeHint;
+
+  /// No description provided for @lifeTreeAddChild.
+  ///
+  /// In en, this message translates to:
+  /// **'+ Child'**
+  String get lifeTreeAddChild;
+
+  /// No description provided for @lifeTreeAddSibling.
+  ///
+  /// In en, this message translates to:
+  /// **'+ Sibling'**
+  String get lifeTreeAddSibling;
+
+  /// No description provided for @lifeTreeEditNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit Note'**
+  String get lifeTreeEditNote;
+
+  /// No description provided for @lifeTreeShowNotes.
+  ///
+  /// In en, this message translates to:
+  /// **'Show Notes'**
+  String get lifeTreeShowNotes;
+
+  /// No description provided for @lifeTreeNoteHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Your thoughts...'**
+  String get lifeTreeNoteHint;
+
+  /// No description provided for @lifeTreeSaveNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Save'**
+  String get lifeTreeSaveNote;
+
+  /// No description provided for @lifeTreeDeleteNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Close / Delete'**
+  String get lifeTreeDeleteNote;
+
+  /// No description provided for @lifeTreeShareGraph.
+  ///
+  /// In en, this message translates to:
+  /// **'Digital Life Tree (Graph)'**
+  String get lifeTreeShareGraph;
+
+  /// No description provided for @lifeTreeShareEvent.
+  ///
+  /// In en, this message translates to:
+  /// **'Event: {text}'**
+  String lifeTreeShareEvent(String text);
+
+  /// No description provided for @lifeTreeShareNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Note: {text}'**
+  String lifeTreeShareNote(String text);
+
   /// No description provided for @finish.
   ///
   /// In en, this message translates to:

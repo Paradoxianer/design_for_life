@@ -168,6 +168,58 @@ class AppLocalizationsDe extends AppLocalizations {
   String get valuesResultTitle => 'Meine Top 8 Werte';
 
   @override
+  String get lifeTreeTitle => 'Mein Lebensbaum';
+
+  @override
+  String get lifeTreeDigital => 'Digitaler Lebensbaum';
+
+  @override
+  String get lifeTreeAnalog => 'Notizen & Zeichnungen';
+
+  @override
+  String get lifeTreeStart => 'Lebensbaum starten (Geburt)';
+
+  @override
+  String get lifeTreeBirth => 'Geburt';
+
+  @override
+  String get lifeTreeNodeHint => 'Ereignis...';
+
+  @override
+  String get lifeTreeAddChild => '+ Kind';
+
+  @override
+  String get lifeTreeAddSibling => '+ Geschwister';
+
+  @override
+  String get lifeTreeEditNote => 'Notiz bearbeiten';
+
+  @override
+  String get lifeTreeShowNotes => 'Notizen anzeigen';
+
+  @override
+  String get lifeTreeNoteHint => 'Deine Gedanken...';
+
+  @override
+  String get lifeTreeSaveNote => 'Speichern';
+
+  @override
+  String get lifeTreeDeleteNote => 'Schließen / Löschen';
+
+  @override
+  String get lifeTreeShareGraph => 'Digitaler Lebensbaum (Grafik)';
+
+  @override
+  String lifeTreeShareEvent(String text) {
+    return 'Ereignis: $text';
+  }
+
+  @override
+  String lifeTreeShareNote(String text) {
+    return 'Notiz: $text';
+  }
+
+  @override
   String get finish => 'Abschließen';
 
   @override
@@ -234,7 +286,7 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get feedbackContentPracticalUtility =>
-      'Ich habe nützliche Anregungen für meine tägliche Praxis gewonnen';
+      'Ich habe nützliche Anregungen für meine täglich Praxis gewonnen';
 
   @override
   String get feedbackContentStructure =>
