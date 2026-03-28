@@ -3,6 +3,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:graphview/GraphView.dart';
 import 'package:screenshot/screenshot.dart';
+import 'package:design_for_life/l10n/generated/app_localizations.dart';
 import 'package:design_for_life/core/models/dfl_entry.dart';
 import 'package:design_for_life/core/widgets/dfl_module_result.dart';
 import '../models/life_tree_node_data.dart';
@@ -37,6 +38,10 @@ class _LifeTreeResultState extends State<LifeTreeResult> {
   final TransformationController _transformationController = TransformationController();
   bool _showNotes = false;
 
+  // Canvas Offsets (Must be identical to Editor)
+  static const double _canvasPaddingX = 400.0;
+  static const double _canvasPaddingY = 200.0;
+
   @override
   void initState() {
     super.initState();
@@ -52,7 +57,9 @@ class _LifeTreeResultState extends State<LifeTreeResult> {
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (mounted) {
-        _transformationController.value = Matrix4.identity()..translate(150.0, 50.0);
+        // Initial centering of the root node
+        // Target: Center of view (250) minus (RootX=0 + Padding=400) minus HalfNodeWidth=85
+        _transformationController.value = Matrix4.identity()..translate(-235.0, 50.0);
       }
     });
   }
@@ -99,9 +106,10 @@ class _LifeTreeResultState extends State<LifeTreeResult> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final l10n = AppLocalizations.of(context);
 
     return DflModuleResult(
-      title: 'Mein Lebensbaum',
+      title: l10n.lifeTreeTitle,
       takeaways: widget.takeaways,
       onUpdate: widget.onUpdate,
       result: Column(
@@ -112,12 +120,12 @@ class _LifeTreeResultState extends State<LifeTreeResult> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  'Digitaler Lebensbaum',
+                  l10n.lifeTreeDigital,
                   style: theme.textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
                 ),
                 Row(
                   children: [
-                    Text('Notizen anzeigen', style: theme.textTheme.bodySmall),
+                    Text(l10n.lifeTreeShowNotes, style: theme.textTheme.bodySmall),
                     Transform.scale(
                       scale: 0.8,
                       child: Switch(
@@ -133,10 +141,11 @@ class _LifeTreeResultState extends State<LifeTreeResult> {
             Container(
               height: 500,
               width: double.infinity,
+              clipBehavior: Clip.antiAlias,
               decoration: BoxDecoration(
-                border: Border.all(color: theme.dividerColor),
+                border: Border.all(color: theme.dividerColor.withValues(alpha: 0.1)),
                 borderRadius: BorderRadius.circular(12),
-                color: theme.colorScheme.surfaceContainerHighest.withValues(alpha: 0.1),
+                color: Colors.white,
               ),
               child: InteractiveViewer(
                 transformationController: _transformationController,
@@ -144,17 +153,18 @@ class _LifeTreeResultState extends State<LifeTreeResult> {
                 boundaryMargin: const EdgeInsets.all(800),
                 minScale: 0.1,
                 maxScale: 2.0,
-                // Wir wrappen den Inhalt des Viewers. Da constrained: false,
-                // hat dieser Screenshot immer die volle Größe des Graphen!
                 child: Screenshot(
                   controller: widget.screenshotController ?? ScreenshotController(),
                   child: Container(
-                    color: Colors.white, // Wichtig für den Screenshot-Hintergrund
-                    padding: const EdgeInsets.symmetric(horizontal: 200, vertical: 50),
+                    color: Colors.white,
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: _canvasPaddingX, 
+                      vertical: _canvasPaddingY
+                    ),
                     child: GraphView(
                       graph: graph,
                       algorithm: algorithm,
-                      paint: Paint()..color = Colors.green.shade400..strokeWidth = 1.5..style = PaintingStyle.stroke,
+                      paint: Paint()..color = Colors.green.shade400..strokeWidth = 1.5..strokeCap = StrokeCap.round..style = PaintingStyle.stroke,
                       builder: (Node node) {
                         final nodeId = node.key?.value as String;
                         final nodeData = widget.nodes.firstWhere((n) => n.id == nodeId, orElse: () => LifeTreeNodeData(id: nodeId, text: ''));
@@ -169,7 +179,7 @@ class _LifeTreeResultState extends State<LifeTreeResult> {
           ],
           
           Text(
-            'Notizen & Zeichnungen',
+            l10n.lifeTreeAnalog,
             style: theme.textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
           ),
           const SizedBox(height: 12),
