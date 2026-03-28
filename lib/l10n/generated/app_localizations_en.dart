@@ -166,6 +166,58 @@ class AppLocalizationsEn extends AppLocalizations {
   String get valuesResultTitle => 'My Top 8 Values';
 
   @override
+  String get lifeTreeTitle => 'My Life Tree';
+
+  @override
+  String get lifeTreeDigital => 'Digital Life Tree';
+
+  @override
+  String get lifeTreeAnalog => 'Notes & Drawings';
+
+  @override
+  String get lifeTreeStart => 'Start Life Tree (Birth)';
+
+  @override
+  String get lifeTreeBirth => 'Birth';
+
+  @override
+  String get lifeTreeNodeHint => 'Event...';
+
+  @override
+  String get lifeTreeAddChild => '+ Child';
+
+  @override
+  String get lifeTreeAddSibling => '+ Sibling';
+
+  @override
+  String get lifeTreeEditNote => 'Edit Note';
+
+  @override
+  String get lifeTreeShowNotes => 'Show Notes';
+
+  @override
+  String get lifeTreeNoteHint => 'Your thoughts...';
+
+  @override
+  String get lifeTreeSaveNote => 'Save';
+
+  @override
+  String get lifeTreeDeleteNote => 'Close / Delete';
+
+  @override
+  String get lifeTreeShareGraph => 'Digital Life Tree (Graph)';
+
+  @override
+  String lifeTreeShareEvent(String text) {
+    return 'Event: $text';
+  }
+
+  @override
+  String lifeTreeShareNote(String text) {
+    return 'Note: $text';
+  }
+
+  @override
   String get finish => 'Finish';
 
   @override
