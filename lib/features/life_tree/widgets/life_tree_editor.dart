@@ -233,10 +233,11 @@ class _LifeTreeGraphSectionState extends State<_LifeTreeGraphSection> with Ticke
         Container(
           height: 500, 
           width: double.infinity,
+          clipBehavior: Clip.antiAlias,
           decoration: BoxDecoration(
             border: Border.all(color: Colors.grey.shade300),
-            borderRadius: BorderRadius.circular(8),
-            color: Colors.grey.shade50,
+            borderRadius: BorderRadius.circular(12),
+            color: Colors.white,
           ),
           child: InteractiveViewer(
             transformationController: _transformationController,
@@ -249,12 +250,13 @@ class _LifeTreeGraphSectionState extends State<_LifeTreeGraphSection> with Ticke
                 _animationController.stop();
               }
             },
-            child: Padding(
+            child: Container(
+              color: Colors.white,
               padding: const EdgeInsets.symmetric(horizontal: 200, vertical: 50),
               child: GraphView(
                 graph: graph,
                 algorithm: algorithm,
-                paint: Paint()..color = Colors.green..strokeWidth = 1..style = PaintingStyle.stroke,
+                paint: Paint()..color = Colors.green.shade400..strokeWidth = 1.5..style = PaintingStyle.stroke,
                 builder: (Node node) {
                   final nodeId = node.key?.value as String;
                   final nodeData = widget.nodes.firstWhere((n) => n.id == nodeId, orElse: () => LifeTreeNodeData(id: nodeId, text: '...'));
@@ -400,11 +402,15 @@ class _TreeNodeWidgetState extends State<_TreeNodeWidget> {
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(8),
                       border: Border.all(
-                        color: _textFocusNode.hasFocus ? theme.primaryColor : Colors.grey.shade400,
+                        color: _textFocusNode.hasFocus ? theme.primaryColor : Colors.grey.shade300,
                         width: _textFocusNode.hasFocus ? 2 : 1,
                       ),
                       boxShadow: [
-                        BoxShadow(color: Colors.black.withValues(alpha: 0.05), blurRadius: 4, offset: const Offset(0, 2)),
+                        BoxShadow(
+                          color: Colors.black.withValues(alpha: 0.05), 
+                          blurRadius: 4, 
+                          offset: const Offset(0, 2)
+                        ),
                       ],
                     ),
                     child: Column(
@@ -482,7 +488,9 @@ class _TreeNodeWidgetState extends State<_TreeNodeWidget> {
                     decoration: BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(12),
-                      boxShadow: [BoxShadow(color: Colors.black26, blurRadius: 10, offset: const Offset(0, 4))],
+                      boxShadow: [
+                        BoxShadow(color: Colors.black26, blurRadius: 10, offset: const Offset(0, 4))
+                      ],
                       border: Border.all(color: theme.primaryColor.withValues(alpha: 0.3)),
                     ),
                     child: Column(
@@ -573,9 +581,9 @@ class _GhostNodeButton extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
         decoration: BoxDecoration(
-          color: Colors.grey.shade200,
+          color: Colors.grey.shade100,
           borderRadius: BorderRadius.circular(4),
-          border: Border.all(color: Colors.grey.shade400),
+          border: Border.all(color: Colors.grey.shade300),
         ),
         child: Text(
           label,
