@@ -80,7 +80,7 @@ The application is tailored to three primary user groups:
 
 ## 🏗️ Project Structure
 
-All documentation is organised in the `/docs` directory:
+All documentation is organised in the `/docs` directory:  
 docs/  
 ├── vision/  
 ├── requirements/  
