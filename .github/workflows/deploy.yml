@@ -27,7 +27,7 @@ jobs:
         run: flutter pub get
 
       - name: Web build
-        run: flutter build web --release
+        run: flutter build web --release --base-href "/design_for_life/"
 
       - name: Deploy auf GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
