@@ -25,6 +25,8 @@ import 'features/life_tree/bloc/life_tree_bloc.dart';
 import 'features/life_tree/screens/life_tree_screen.dart';
 
 void main() async {
+  const lang = String.fromEnvironment('LANGUAGE');
+  print("LANGUAGE = $lang");
   WidgetsFlutterBinding.ensureInitialized();
   
   HydratedBloc.storage = await HydratedStorage.build(

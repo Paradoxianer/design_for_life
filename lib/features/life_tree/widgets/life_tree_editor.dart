@@ -89,20 +89,132 @@ class _LifeTreeGraphSection extends StatefulWidget {
   State<_LifeTreeGraphSection> createState() => _LifeTreeGraphSectionState();
 }
 
-class _LifeTreeGraphSectionState extends State<_LifeTreeGraphSection> with TickerProviderStateMixin {
+class _LifeTreeGraphSectionState extends State<_LifeTreeGraphSection> {
+  final TransformationController _transformationController = TransformationController();
+
+  void _enterFullscreen() {
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) => _FullscreenGraphViewer(
+          nodes: widget.nodes,
+          onAddNode: widget.onAddNode,
+          onUpdateText: widget.onUpdateText,
+          onUpdateNote: widget.onUpdateNote,
+          onDeleteNode: widget.onDeleteNode,
+          initialMatrix: _transformationController.value,
+        ),
+      ),
+    ).then((resultMatrix) {
+      if (resultMatrix is Matrix4) {
+        _transformationController.value = resultMatrix;
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    _transformationController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
+
+    if (widget.nodes.isEmpty) {
+      return Center(
+        child: ElevatedButton.icon(
+          onPressed: () {
+            widget.onAddNode(null, l10n.lifeTreeBirth);
+          },
+          icon: const Icon(Icons.add),
+          label: Text(l10n.lifeTreeStart),
+        ),
+      );
+    }
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(l10n.lifeTreeDigital, style: Theme.of(context).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold)),
+        const SizedBox(height: 16),
+        Stack(
+          children: [
+            GestureDetector(
+              onDoubleTap: _enterFullscreen,
+              child: Container(
+                height: 500, 
+                width: double.infinity,
+                clipBehavior: Clip.antiAlias,
+                decoration: BoxDecoration(
+                  border: Border.all(color: Colors.grey.shade300),
+                  borderRadius: BorderRadius.circular(12),
+                  color: Colors.white,
+                ),
+                child: _LifeTreeGraphViewOnly(
+                  nodes: widget.nodes,
+                  onAddNode: widget.onAddNode,
+                  onUpdateText: widget.onUpdateText,
+                  onUpdateNote: widget.onUpdateNote,
+                  onDeleteNode: widget.onDeleteNode,
+                  transformationController: _transformationController,
+                ),
+              ),
+            ),
+            Positioned(
+              top: 8,
+              right: 8,
+              child: IconButton.filledTonal(
+                onPressed: _enterFullscreen,
+                icon: const Icon(Icons.fullscreen),
+                tooltip: l10n.lifeTreeFullscreen,
+              ),
+            ),
+          ],
+        ),
+      ],
+    );
+  }
+}
+
+class _LifeTreeGraphViewOnly extends StatefulWidget {
+  final List<LifeTreeNodeData> nodes;
+  final Function(String?, String) onAddNode;
+  final Function(String, String) onUpdateText;
+  final Function(String, String) onUpdateNote;
+  final Function(String) onDeleteNode;
+  final TransformationController? transformationController;
+
+  const _LifeTreeGraphViewOnly({
+    required this.nodes,
+    required this.onAddNode,
+    required this.onUpdateText,
+    required this.onUpdateNote,
+    required this.onDeleteNode,
+    this.transformationController,
+  });
+
+  @override
+  State<_LifeTreeGraphViewOnly> createState() => _LifeTreeGraphViewOnlyState();
+}
+
+class _LifeTreeGraphViewOnlyState extends State<_LifeTreeGraphViewOnly> with TickerProviderStateMixin {
   late Graph graph;
   late BuchheimWalkerConfiguration builder;
   late Algorithm algorithm;
   final Map<String, Node> _nodeCache = {};
-  final TransformationController _transformationController = TransformationController();
+  late TransformationController _transformationController;
   late AnimationController _animationController;
   Animation<Matrix4>? _animation;
   String? _lastAddedNodeId;
+  BoxConstraints? _lastConstraints;
+  bool _initialScrollDone = false;
 
   @override
   void initState() {
     super.initState();
     graph = Graph()..isTree = true;
+    _transformationController = widget.transformationController ?? TransformationController();
     
     _animationController = AnimationController(
       vsync: this,
@@ -122,16 +234,10 @@ class _LifeTreeGraphSectionState extends State<_LifeTreeGraphSection> with Ticke
     algorithm = BuchheimWalkerAlgorithm(builder, TreeEdgeRenderer(builder));
     
     _syncGraph();
-
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      if (mounted) {
-        _transformationController.value = Matrix4.identity()..translate(150.0, 50.0);
-      }
-    });
   }
 
   @override
-  void didUpdateWidget(_LifeTreeGraphSection oldWidget) {
+  void didUpdateWidget(_LifeTreeGraphViewOnly oldWidget) {
     super.didUpdateWidget(oldWidget);
     if (widget.nodes != oldWidget.nodes) {
       if (widget.nodes.length > oldWidget.nodes.length) {
@@ -149,27 +255,44 @@ class _LifeTreeGraphSectionState extends State<_LifeTreeGraphSection> with Ticke
     }
   }
 
-  void _scrollToNode(String nodeId) {
-    if (!mounted) return;
+  void _scrollToNode(String nodeId, {bool immediate = false}) {
+    if (!mounted || _lastConstraints == null) return;
     
     final node = _nodeCache[nodeId];
     if (node != null) {
+      final width = _lastConstraints!.maxWidth;
+      final height = _lastConstraints!.maxHeight == double.infinity ? 500.0 : _lastConstraints!.maxHeight;
+
       final x = node.x;
       final y = node.y;
       
-      final targetX = -x + 250 - 90; 
-      final targetY = -y + 150 - 50; 
-      final targetMatrix = Matrix4.identity()..translate(targetX + 200, targetY + 50);
-
-      _animation = Matrix4Tween(
-        begin: _transformationController.value,
-        end: targetMatrix,
-      ).animate(CurvedAnimation(
-        parent: _animationController,
-        curve: Curves.easeInOutCubic,
-      ));
+      final nodeCenterX = x + 90;
+      final nodeCenterY = y + 50;
       
-      _animationController.forward(from: 0);
+      final viewportCenterX = width / 2;
+      final viewportCenterY = height / 2;
+      
+      const paddingX = 200.0;
+      const paddingY = 50.0;
+
+      final targetX = viewportCenterX - (nodeCenterX + paddingX);
+      final targetY = viewportCenterY - (nodeCenterY + paddingY);
+      
+      final targetMatrix = Matrix4.identity()..translate(targetX, targetY);
+
+      if (immediate) {
+        _transformationController.value = targetMatrix;
+      } else {
+        _animation = Matrix4Tween(
+          begin: _transformationController.value,
+          end: targetMatrix,
+        ).animate(CurvedAnimation(
+          parent: _animationController,
+          curve: Curves.easeInOutCubic,
+        ));
+        
+        _animationController.forward(from: 0);
+      }
     }
   }
 
@@ -207,6 +330,98 @@ class _LifeTreeGraphSectionState extends State<_LifeTreeGraphSection> with Ticke
   @override
   void dispose() {
     _animationController.dispose();
+    if (widget.transformationController == null) {
+      _transformationController.dispose();
+    }
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        _lastConstraints = constraints;
+        if (!_initialScrollDone && widget.nodes.isNotEmpty) {
+          _initialScrollDone = true;
+          final rootNode = widget.nodes.firstWhere((n) => n.parentId == null, orElse: () => widget.nodes.first);
+          WidgetsBinding.instance.addPostFrameCallback((_) {
+            _scrollToNode(rootNode.id, immediate: true);
+          });
+        }
+
+        return InteractiveViewer(
+          transformationController: _transformationController,
+          constrained: false, 
+          boundaryMargin: const EdgeInsets.all(1000),
+          minScale: 0.1,
+          maxScale: 2.0,
+          onInteractionStart: (_) {
+            if (_animationController.isAnimating) {
+              _animationController.stop();
+            }
+          },
+          child: Container(
+            color: Colors.white,
+            padding: const EdgeInsets.symmetric(horizontal: 200, vertical: 50),
+            child: GraphView(
+              graph: graph,
+              algorithm: algorithm,
+              paint: Paint()..color = Colors.green.shade400..strokeWidth = 1.5..style = PaintingStyle.stroke,
+              builder: (Node node) {
+                final nodeId = node.key?.value as String;
+                final nodeData = widget.nodes.firstWhere((n) => n.id == nodeId, orElse: () => LifeTreeNodeData(id: nodeId, text: '...'));
+                
+                return _TreeNodeWidget(
+                  key: ValueKey('node_wid_$nodeId'),
+                  nodeData: nodeData,
+                  autofocus: nodeId == _lastAddedNodeId,
+                  onChanged: (text) => widget.onUpdateText(nodeId, text),
+                  onNoteChanged: (note) => widget.onUpdateNote(nodeId, note),
+                  onAddChild: () => widget.onAddNode(nodeId, ''),
+                  onAddSibling: () => widget.onAddNode(nodeData.parentId, ''),
+                  onDelete: () => widget.onDeleteNode(nodeId),
+                );
+              },
+            ),
+          ),
+        );
+      },
+    );
+  }
+}
+
+class _FullscreenGraphViewer extends StatefulWidget {
+  final List<LifeTreeNodeData> nodes;
+  final Function(String?, String) onAddNode;
+  final Function(String, String) onUpdateText;
+  final Function(String, String) onUpdateNote;
+  final Function(String) onDeleteNode;
+  final Matrix4 initialMatrix;
+
+  const _FullscreenGraphViewer({
+    required this.nodes,
+    required this.onAddNode,
+    required this.onUpdateText,
+    required this.onUpdateNote,
+    required this.onDeleteNode,
+    required this.initialMatrix,
+  });
+
+  @override
+  State<_FullscreenGraphViewer> createState() => _FullscreenGraphViewerState();
+}
+
+class _FullscreenGraphViewerState extends State<_FullscreenGraphViewer> {
+  late TransformationController _transformationController;
+
+  @override
+  void initState() {
+    super.initState();
+    _transformationController = TransformationController(widget.initialMatrix);
+  }
+
+  @override
+  void dispose() {
     _transformationController.dispose();
     super.dispose();
   }
@@ -215,68 +430,32 @@ class _LifeTreeGraphSectionState extends State<_LifeTreeGraphSection> with Ticke
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context);
 
-    if (widget.nodes.isEmpty) {
-      return Center(
-        child: ElevatedButton.icon(
-          onPressed: () => widget.onAddNode(null, l10n.lifeTreeBirth),
-          icon: const Icon(Icons.add),
-          label: Text(l10n.lifeTreeStart),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(l10n.lifeTreeDigital),
+        leading: IconButton(
+          icon: const Icon(Icons.close),
+          onPressed: () => Navigator.of(context).pop(_transformationController.value),
         ),
-      );
-    }
-
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(l10n.lifeTreeDigital, style: Theme.of(context).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold)),
-        const SizedBox(height: 16),
-        Container(
-          height: 500, 
-          width: double.infinity,
-          clipBehavior: Clip.antiAlias,
-          decoration: BoxDecoration(
-            border: Border.all(color: Colors.grey.shade300),
-            borderRadius: BorderRadius.circular(12),
-            color: Colors.white,
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.fullscreen_exit),
+            onPressed: () => Navigator.of(context).pop(_transformationController.value),
+            tooltip: l10n.lifeTreeExitFullscreen,
           ),
-          child: InteractiveViewer(
-            transformationController: _transformationController,
-            constrained: false, 
-            boundaryMargin: const EdgeInsets.all(1000),
-            minScale: 0.1,
-            maxScale: 2.0,
-            onInteractionStart: (_) {
-              if (_animationController.isAnimating) {
-                _animationController.stop();
-              }
-            },
-            child: Container(
-              color: Colors.white,
-              padding: const EdgeInsets.symmetric(horizontal: 200, vertical: 50),
-              child: GraphView(
-                graph: graph,
-                algorithm: algorithm,
-                paint: Paint()..color = Colors.green.shade400..strokeWidth = 1.5..style = PaintingStyle.stroke,
-                builder: (Node node) {
-                  final nodeId = node.key?.value as String;
-                  final nodeData = widget.nodes.firstWhere((n) => n.id == nodeId, orElse: () => LifeTreeNodeData(id: nodeId, text: '...'));
-                  
-                  return _TreeNodeWidget(
-                    key: ValueKey('node_wid_$nodeId'),
-                    nodeData: nodeData,
-                    autofocus: nodeId == _lastAddedNodeId,
-                    onChanged: (text) => widget.onUpdateText(nodeId, text),
-                    onNoteChanged: (note) => widget.onUpdateNote(nodeId, note),
-                    onAddChild: () => widget.onAddNode(nodeId, ''),
-                    onAddSibling: () => widget.onAddNode(nodeData.parentId, ''),
-                    onDelete: () => widget.onDeleteNode(nodeId),
-                  );
-                },
-              ),
-            ),
-          ),
+        ],
+      ),
+      body: Container(
+        color: Colors.white,
+        child: _LifeTreeGraphViewOnly(
+          nodes: widget.nodes,
+          onAddNode: widget.onAddNode,
+          onUpdateText: widget.onUpdateText,
+          onUpdateNote: widget.onUpdateNote,
+          onDeleteNode: widget.onDeleteNode,
+          transformationController: _transformationController,
         ),
-      ],
+      ),
     );
   }
 }

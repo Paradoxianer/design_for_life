@@ -74,6 +74,8 @@
   "lifeTreeSaveNote": "Speichern",
   "lifeTreeDeleteNote": "Schließen / Löschen",
   "lifeTreeShareGraph": "Digitaler Lebensbaum (Grafik)",
+  "lifeTreeFullscreen": "Vollbildmodus",
+  "lifeTreeExitFullscreen": "Vollbild beenden",
   "lifeTreeShareEvent": "Ereignis: {text}",
   "@lifeTreeShareEvent": {
     "placeholders": {
