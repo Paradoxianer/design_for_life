@@ -8,6 +8,7 @@ import 'package:design_for_life/features/goals/bloc/goals_bloc.dart';
 import 'package:design_for_life/features/values/bloc/values_bloc.dart';
 import 'package:design_for_life/features/spiritual_gifts/bloc/spiritual_gifts_bloc.dart';
 import 'package:design_for_life/features/feedback/bloc/feedback_bloc.dart';
+import 'package:design_for_life/features/life_tree/bloc/life_tree_bloc.dart';
 import '../models/static_timeline_data.dart';
 import '../models/dfl_session.dart';
 import '../widgets/timeline_card.dart';
@@ -80,6 +81,9 @@ class _TimelineCardWrapper extends StatelessWidget {
     } else if (route.startsWith('spiritual-gifts/')) {
       final sessionId = _parseId(route);
       isCompleted = context.watch<SpiritualGiftsBloc>().state.isSessionCompleted(sessionId);
+    } else if (route.startsWith('life-tree/')) {
+      final sessionId = _parseId(route);
+      isCompleted = context.watch<LifeTreeBloc>().state.isCompleted(sessionId);
     } else if (route == 'values') {
       isCompleted = context.watch<ValuesBloc>().state.isCompleted;
     } else if (route == 'feedback') {
