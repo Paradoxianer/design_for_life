@@ -11,14 +11,27 @@ class SpiritualGiftsBloc extends HydratedBloc<SpiritualGiftsEvent, SpiritualGift
 
   SpiritualGiftsBloc({required this.repository}) : super(const SpiritualGiftsState()) {
     on<InitTest>((event, emit) async {
+      // If we already have the gifts for this session and the locale matches, skip reload
+      if (state.isLoaded && 
+          state.currentSessionId == event.sessionId && 
+          repository.cachedLocale == event.locale) {
+        return;
+      }
+
       final gifts = await repository.loadGifts(event.locale);
       
-      List<String> questionOrder = state.questionOrder;
-      if (questionOrder.isEmpty) {
-        questionOrder = gifts
-            .expand((gift) => gift.questions.map((q) => q.id))
-            .toList()
-          ..shuffle();
+      // Clear question order if gifts were reloaded to ensure sync
+      // We ONLY include non-reference questions in the main test
+      List<String> questionOrder = gifts
+          .expand((gift) => gift.questions)
+          .where((q) => q.type != QuestionType.reference)
+          .map((q) => q.id)
+          .toList();
+          
+      if (state.questionOrder.length != questionOrder.length) {
+        questionOrder.shuffle();
+      } else {
+        questionOrder = state.questionOrder;
       }
       
       emit(state.copyWith(

@@ -22,37 +22,38 @@ void _convert(String locale) {
   // Header überspringen
   for (var i = 1; i < lines.length; i++) {
     final line = lines[i].trim();
-    if (line.isEmpty || line == ',,,,,,') continue;
+    if (line.isEmpty || line.split(',').every((p) => p.trim().isEmpty)) continue;
 
     final parts = _splitCsvLine(line);
-    if (parts.length < 7) continue;
+    if (parts.length < 9) continue;
 
-    final giftName = parts[0].trim();
+    final giftId = parts[0].trim(); // Gabe-ID (G01, G02...)
+    final giftName = parts[1].trim();
     
-    if (giftName.isNotEmpty) {
+    if (giftId.isNotEmpty && (currentGift == null || currentGift['id'] != giftId)) {
       // Neue Gabe gefunden
       currentGift = {
-        'id': _generateId(giftName, locale),
+        'id': giftId,
         'name': giftName,
-        'originalWord': parts[1].trim(),
-        'meaning': parts[2].trim(),
-        'bibleReferences': parts[3].split(';').map((e) => e.trim()).where((e) => e.isNotEmpty).toList(),
-        'description': parts[4].trim(),
+        'originalWord': parts[3].trim(),
+        'meaning': parts[4].trim(),
+        'bibleReferences': parts[5].split(';').map((e) => e.trim()).where((e) => e.isNotEmpty).toList(),
+        'description': parts[6].trim(),
         'questions': [],
       };
       gifts.add(currentGift);
     }
 
-    if (currentGift != null && parts[6].isNotEmpty) {
-      final typeChar = parts[5].trim().toUpperCase();
-      final type = typeChar == 'E' ? 'experience' : 
-                   (typeChar == 'N' ? 'nature' : 
-                   (typeChar == 'F' ? 'feedback' : 'reference'));
+    if (currentGift != null && parts[8].isNotEmpty) {
+      final typeChar = parts[7].trim().toUpperCase();
+      final type = typeChar == 'ERLEBNIS' || typeChar == 'EXPERIENCE' ? 'experience' : 
+                   (typeChar == 'NEIGUNG' || typeChar == 'NATURE' ? 'nature' : 
+                   (typeChar == 'FRUCHT' || typeChar == 'FRUIT' ? 'feedback' : 'reference'));
       
       currentGift['questions'].add({
-        'id': '${currentGift['id']}_${currentGift['questions'].length + 1}',
+        'id': parts[2].trim().isNotEmpty ? parts[2].trim() : '${currentGift['id']}_Q${currentGift['questions'].length + 1}',
         'type': type,
-        'text': parts[6].trim(),
+        'text': parts[8].trim(),
       });
     }
   }
@@ -60,45 +61,6 @@ void _convert(String locale) {
   final output = File('assets/data/gifts_$locale.json');
   output.writeAsStringSync(const JsonEncoder.withIndent('  ').convert(gifts));
   print('Erfolgreich ${gifts.length} Gaben für $locale konvertiert.');
-}
-
-String _generateId(String name, String locale) {
-  // Wir mappen englische Namen auf die gleichen IDs wie deutsche, 
-  // falls sie in einer Map definiert sind. Ansonsten generieren wir sie.
-  // Für die Konsistenz zwischen den Sprachen wäre eine feste ID-Map ideal.
-  final Map<String, String> translationMap = {
-    'word of wisdom': 'wort_der_weisheit',
-    'word of knowledge': 'wort_der_erkenntnis',
-    'faith': 'glaube',
-    'gifts of healings': 'gaben_der_heilungen',
-    'working of miracles': 'wirkungen_von_wundern',
-    'prophecy': 'prophetie',
-    'discerning of spirits': 'unterscheidung_der_geister',
-    'kinds of tongues': 'arten_von_zungen',
-    'interpretation of tongues': 'auslegung_der_zungen',
-    'service': 'dienst_diakonie',
-    'teaching': 'lehren',
-    'exhortation': 'ermahnung_zuspruch',
-    'giving': 'geben',
-    'leadership': 'leiten_verwalten',
-    'mercy': 'barmherzigkeit',
-    'apostleship': 'apostelamt',
-    'evangelist': 'evangelist',
-    'shepherd': 'hirte_pastor',
-  };
-
-  final lowerName = name.toLowerCase();
-  if (translationMap.containsKey(lowerName)) {
-    return translationMap[lowerName]!;
-  }
-
-  return lowerName
-      .replaceAll(' / ', '_')
-      .replaceAll(' ', '_')
-      .replaceAll('ä', 'ae')
-      .replaceAll('ö', 'oe')
-      .replaceAll('ü', 'ue')
-      .replaceAll('ß', 'ss');
 }
 
 List<String> _splitCsvLine(String line) {

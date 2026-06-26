@@ -1,1143 +1,1006 @@
 [
   {
-    "id": "g01",
-    "name": "G01",
-    "originalWord": "Wort der Weisheit",
-    "meaning": "G01_F1",
+    "id": "G01",
+    "name": "Wort der Weisheit",
+    "originalWord": "λόγος σοφίας (lógos sophías, Gr.); חָכְמָה (chokhmáh, Hebr.)",
+    "meaning": "Übernatürliches Wort, das Gottes Plan oder Lösung offenbart",
     "bibleReferences": [
-      "λόγος σοφίας (lógos sophías, Gr.)",
-      "חָכְמָה (chokhmáh, Hebr.)"
+      "1. Kor 12,8",
+      "Jak 1,5",
+      "1. Kön 3,5-12",
+      "Ex 31,3",
+      "Spr 2,6"
     ],
-    "description": "Übernatürliches Wort, das Gottes Plan oder Lösung offenbart",
-    "questions": []
-  },
-  {
-    "id": "g01",
-    "name": "G01",
-    "originalWord": "Wort der Weisheit",
-    "meaning": "G01_F2",
-    "bibleReferences": [],
     "description": "",
-    "questions": []
+    "questions": [
+      {
+        "id": "G01_F1",
+        "type": "experience",
+        "text": "In Konflikten wurde mir schon eine Lösung geschenkt, die den Streit sofort beendete (vgl. Salomos Urteil, 1. Kön 3)."
+      },
+      {
+        "id": "G01_F2",
+        "type": "experience",
+        "text": "Ich konnte schon komplexe biblische Prinzipien auf eine sehr praktische Alltagssituation anwenden."
+      },
+      {
+        "id": "G01_F3",
+        "type": "experience",
+        "text": "In brenzligen Situationen fielen mir Worte ein, denen Gegner nichts entgegenzusetzen hatten (vgl. Lk 21,15)."
+      },
+      {
+        "id": "G01_F4",
+        "type": "nature",
+        "text": "Ich dränge danach, Gottes verborgene Pläne für die Zukunft unserer Gemeinde zu verstehen."
+      },
+      {
+        "id": "G01_F5",
+        "type": "nature",
+        "text": "Es ist mir wichtig, für festgefahrene Probleme göttliche Strategien statt menschlicher Kompromisse zu finden."
+      },
+      {
+        "id": "G01_F6",
+        "type": "feedback",
+        "text": "Andere sagen, dass meine Ratschläge ihnen geholfen haben, Gottes Willen in Krisen klar zu sehen."
+      },
+      {
+        "id": "G01_F7",
+        "type": "feedback",
+        "text": "Durch meine Beiträge in Sitzungen herrscht oft plötzlich Klarheit und Frieden über den nächsten Schritt."
+      },
+      {
+        "id": "G01_Q8",
+        "type": "reference",
+        "text": "Bietet die Person in festgefahrenen Situationen Lösungen an, die den Frieden wiederherstellen?"
+      },
+      {
+        "id": "G01_Q9",
+        "type": "reference",
+        "text": "Hast du erlebt, dass die Ratschläge dieser Person langfristig zu guten Ergebnissen führten?"
+      }
+    ]
   },
   {
-    "id": "g01",
-    "name": "G01",
-    "originalWord": "Wort der Weisheit",
-    "meaning": "G01_F3",
-    "bibleReferences": [],
-    "description": "",
-    "questions": []
-  },
-  {
-    "id": "g01",
-    "name": "G01",
-    "originalWord": "Wort der Weisheit",
-    "meaning": "G01_F4",
-    "bibleReferences": [],
-    "description": "",
-    "questions": []
-  },
-  {
-    "id": "g01",
-    "name": "G01",
-    "originalWord": "Wort der Weisheit",
-    "meaning": "G01_F5",
-    "bibleReferences": [],
-    "description": "",
-    "questions": []
-  },
-  {
-    "id": "g01",
-    "name": "G01",
-    "originalWord": "Wort der Weisheit",
-    "meaning": "G01_F6",
-    "bibleReferences": [],
-    "description": "",
-    "questions": []
-  },
-  {
-    "id": "g01",
-    "name": "G01",
-    "originalWord": "Wort der Weisheit",
-    "meaning": "G01_F7",
-    "bibleReferences": [],
-    "description": "",
-    "questions": []
-  },
-  {
-    "id": "g02",
-    "name": "G02",
-    "originalWord": "Wort der Erkenntnis",
-    "meaning": "G02_F1",
+    "id": "G02",
+    "name": "Wort der Erkenntnis",
+    "originalWord": "λόγος γνώσεως (lógos gnóseōs, Gr.)",
+    "meaning": "Übernatürliches Wissen oder Einblick in Geheimnisse Gottes",
     "bibleReferences": [
-      "λόγος γνώσεως (lógos gnóseōs, Gr.)"
+      "1. Kor 12,8",
+      "1. Kor 13,2"
     ],
-    "description": "Übernatürliches Wissen oder Einblick in Geheimnisse Gottes",
-    "questions": []
-  },
-  {
-    "id": "g02",
-    "name": "G02",
-    "originalWord": "Wort der Erkenntnis",
-    "meaning": "G02_F2",
-    "bibleReferences": [],
     "description": "",
-    "questions": []
+    "questions": [
+      {
+        "id": "G02_F1",
+        "type": "experience",
+        "text": "Ich wusste schon Dinge über die Lebensumstände einer Person, die ich auf natürlichem Weg nicht wissen konnte (vgl. Joh 4,17-18)."
+      },
+      {
+        "id": "G02_F2",
+        "type": "experience",
+        "text": "Gott hat mir beim Gebet ein spezifisches Bild oder Wort für die Situation eines anderen gegeben."
+      },
+      {
+        "id": "G02_F3",
+        "type": "experience",
+        "text": "Ich habe beim Bibellesen plötzlich einen tiefen Zusammenhang verstanden, der mir vorher völlig verborgen war."
+      },
+      {
+        "id": "G02_F4",
+        "type": "nature",
+        "text": "Ich habe das Verlangen, dass Gott mir Geheimnisse offenbart, um Menschen gezielter dienen zu können."
+      },
+      {
+        "id": "G02_F5",
+        "type": "nature",
+        "text": "Ich forsche gerne tief in der Schrift, um die Schätze der Erkenntnis zu heben (vgl. Kol 2,3)."
+      },
+      {
+        "id": "G02_F6",
+        "type": "feedback",
+        "text": "Menschen sind oft erschüttert oder tief berührt, weil ich Dinge anspreche, die nur Gott wissen konnte."
+      },
+      {
+        "id": "G02_F7",
+        "type": "feedback",
+        "text": "Meine Einsichten haben dazu geführt, dass verborgene Sünden oder Blockaden ans Licht kamen und Heilung begann."
+      },
+      {
+        "id": "G02_Q8",
+        "type": "reference",
+        "text": "Hat die Person schon Informationen über Umstände geteilt, die sie auf natürlichem Weg nicht wissen konnte?"
+      },
+      {
+        "id": "G02_Q9",
+        "type": "reference",
+        "text": "Führen die Einsichten dieser Person dazu, dass verborgene Probleme gelöst oder Wahrheiten klarer werden?"
+      }
+    ]
   },
   {
-    "id": "g02",
-    "name": "G02",
-    "originalWord": "Wort der Erkenntnis",
-    "meaning": "G02_F3",
-    "bibleReferences": [],
-    "description": "",
-    "questions": []
-  },
-  {
-    "id": "g02",
-    "name": "G02",
-    "originalWord": "Wort der Erkenntnis",
-    "meaning": "G02_F4",
-    "bibleReferences": [],
-    "description": "",
-    "questions": []
-  },
-  {
-    "id": "g02",
-    "name": "G02",
-    "originalWord": "Wort der Erkenntnis",
-    "meaning": "G02_F5",
-    "bibleReferences": [],
-    "description": "",
-    "questions": []
-  },
-  {
-    "id": "g02",
-    "name": "G02",
-    "originalWord": "Wort der Erkenntnis",
-    "meaning": "G02_F6",
-    "bibleReferences": [],
-    "description": "",
-    "questions": []
-  },
-  {
-    "id": "g02",
-    "name": "G02",
-    "originalWord": "Wort der Erkenntnis",
-    "meaning": "G02_F7",
-    "bibleReferences": [],
-    "description": "",
-    "questions": []
-  },
-  {
-    "id": "g03",
-    "name": "G03",
-    "originalWord": "Glaube",
-    "meaning": "G03_F1",
+    "id": "G03",
+    "name": "Glaube",
+    "originalWord": "πίστις (pístis, Gr.)",
+    "meaning": "Besonderer, wundertätiger Glaube, der Berge versetzt",
     "bibleReferences": [
-      "πίστις (pístis, Gr.)"
+      "1. Kor 12,9",
+      "1. Kor 13,2",
+      "Mt 17,20",
+      "Hebr 11"
     ],
-    "description": "Besonderer, wundertätiger Glaube, der Berge versetzt",
-    "questions": []
-  },
-  {
-    "id": "g03",
-    "name": "G03",
-    "originalWord": "Glaube",
-    "meaning": "G03_F2",
-    "bibleReferences": [],
-    "description": "",
-    "questions": []
-  },
-  {
-    "id": "g03",
-    "name": "G03",
-    "originalWord": "Glaube",
-    "meaning": "G03_F3",
-    "bibleReferences": [],
-    "description": "",
-    "questions": []
-  },
-  {
-    "id": "g03",
-    "name": "G03",
-    "originalWord": "Glaube",
-    "meaning": "G03_F4",
-    "bibleReferences": [],
-    "description": "",
-    "questions": []
-  },
-  {
-    "id": "g03",
-    "name": "G03",
-    "originalWord": "Glaube",
-    "meaning": "G03_F5",
-    "bibleReferences": [],
-    "description": "",
-    "questions": []
-  },
-  {
-    "id": "g03",
-    "name": "G03",
-    "originalWord": "Glaube",
-    "meaning": "G03_F6",
-    "bibleReferences": [],
-    "description": "",
-    "questions": []
-  },
-  {
-    "id": "g03",
-    "name": "G03",
-    "originalWord": "Glaube",
-    "meaning": "G03_F7",
-    "bibleReferences": [],
-    "description": "",
-    "questions": []
-  },
-  {
-    "id": "g04",
-    "name": "G04",
-    "originalWord": "Heilung",
-    "meaning": "G04_F1",
-    "bibleReferences": [],
-    "description": "",
-    "questions": []
-  },
-  {
-    "id": "g04",
-    "name": "G04",
-    "originalWord": "Heilung",
-    "meaning": "G04_F2",
-    "bibleReferences": [],
-    "description": "",
-    "questions": []
-  },
-  {
-    "id": "g04",
-    "name": "G04",
-    "originalWord": "Heilung",
-    "meaning": "G04_F3",
-    "bibleReferences": [],
-    "description": "",
-    "questions": []
-  },
-  {
-    "id": "g04",
-    "name": "G04",
-    "originalWord": "Heilung",
-    "meaning": "G04_F4",
-    "bibleReferences": [],
-    "description": "",
-    "questions": []
-  },
-  {
-    "id": "g04",
-    "name": "G04",
-    "originalWord": "Heilung",
-    "meaning": "G04_F5",
-    "bibleReferences": [],
-    "description": "",
-    "questions": []
-  },
-  {
-    "id": "g04",
-    "name": "G04",
-    "originalWord": "Heilung",
-    "meaning": "G04_F6",
-    "bibleReferences": [],
-    "description": "",
-    "questions": []
-  },
-  {
-    "id": "g04",
-    "name": "G04",
-    "originalWord": "Heilung",
-    "meaning": "G04_F7",
-    "bibleReferences": [],
-    "description": "",
-    "questions": []
-  },
-  {
-    "id": "g05",
-    "name": "G05",
-    "originalWord": "Wirkung von Wundern",
-    "meaning": "G05_F1",
-    "bibleReferences": [],
-    "description": "",
-    "questions": []
-  },
-  {
-    "id": "g05",
-    "name": "G05",
-    "originalWord": "Wirkung von Wundern",
-    "meaning": "G05_F2",
-    "bibleReferences": [],
-    "description": "",
-    "questions": []
-  },
-  {
-    "id": "g05",
-    "name": "G05",
-    "originalWord": "Wirkung von Wundern",
-    "meaning": "G05_F3",
-    "bibleReferences": [],
-    "description": "",
-    "questions": []
-  },
-  {
-    "id": "g05",
-    "name": "G05",
-    "originalWord": "Wirkung von Wundern",
-    "meaning": "G05_F4",
-    "bibleReferences": [],
-    "description": "",
-    "questions": []
-  },
-  {
-    "id": "g05",
-    "name": "G05",
-    "originalWord": "Wirkung von Wundern",
-    "meaning": "G05_F5",
-    "bibleReferences": [],
-    "description": "",
-    "questions": []
-  },
-  {
-    "id": "g05",
-    "name": "G05",
-    "originalWord": "Wirkung von Wundern",
-    "meaning": "G05_F6",
-    "bibleReferences": [],
-    "description": "",
-    "questions": []
-  },
-  {
-    "id": "g05",
-    "name": "G05",
-    "originalWord": "Wirkung von Wundern",
-    "meaning": "G05_F7",
-    "bibleReferences": [],
-    "description": "",
-    "questions": []
-  },
-  {
-    "id": "g06",
-    "name": "G06",
-    "originalWord": "Prophetie",
-    "meaning": "G06_F1",
-    "bibleReferences": [],
-    "description": "",
-    "questions": []
-  },
-  {
-    "id": "g06",
-    "name": "G06",
-    "originalWord": "Prophetie",
-    "meaning": "G06_F2",
-    "bibleReferences": [],
-    "description": "",
-    "questions": []
-  },
-  {
-    "id": "g06",
-    "name": "G06",
-    "originalWord": "Prophetie",
-    "meaning": "G06_F3",
-    "bibleReferences": [],
-    "description": "",
-    "questions": []
-  },
-  {
-    "id": "g06",
-    "name": "G06",
-    "originalWord": "Prophetie",
-    "meaning": "G06_F4",
-    "bibleReferences": [],
-    "description": "",
-    "questions": []
-  },
-  {
-    "id": "g06",
-    "name": "G06",
-    "originalWord": "Prophetie",
-    "meaning": "G06_F5",
-    "bibleReferences": [],
-    "description": "",
-    "questions": []
-  },
-  {
-    "id": "g06",
-    "name": "G06",
-    "originalWord": "Prophetie",
-    "meaning": "G06_F6",
-    "bibleReferences": [],
-    "description": "",
-    "questions": []
-  },
-  {
-    "id": "g06",
-    "name": "G06",
-    "originalWord": "Prophetie",
-    "meaning": "G06_F7",
-    "bibleReferences": [],
-    "description": "",
-    "questions": []
-  },
-  {
-    "id": "g07",
-    "name": "G07",
-    "originalWord": "Geisterunterscheidung",
-    "meaning": "G07_F1",
-    "bibleReferences": [],
-    "description": "",
-    "questions": []
-  },
-  {
-    "id": "g07",
-    "name": "G07",
-    "originalWord": "Geisterunterscheidung",
-    "meaning": "G07_F2",
-    "bibleReferences": [],
-    "description": "",
-    "questions": []
-  },
-  {
-    "id": "g07",
-    "name": "G07",
-    "originalWord": "Geisterunterscheidung",
-    "meaning": "G07_F3",
-    "bibleReferences": [],
-    "description": "",
-    "questions": []
-  },
-  {
-    "id": "g07",
-    "name": "G07",
-    "originalWord": "Geisterunterscheidung",
-    "meaning": "G07_F4",
-    "bibleReferences": [],
-    "description": "",
-    "questions": []
-  },
-  {
-    "id": "g07",
-    "name": "G07",
-    "originalWord": "Geisterunterscheidung",
-    "meaning": "G07_F5",
-    "bibleReferences": [],
-    "description": "",
-    "questions": []
-  },
-  {
-    "id": "g07",
-    "name": "G07",
-    "originalWord": "Geisterunterscheidung",
-    "meaning": "G07_F6",
-    "bibleReferences": [],
-    "description": "",
-    "questions": []
-  },
-  {
-    "id": "g07",
-    "name": "G07",
-    "originalWord": "Geisterunterscheidung",
-    "meaning": "G07_F7",
-    "bibleReferences": [],
-    "description": "",
-    "questions": []
-  },
-  {
-    "id": "g08",
-    "name": "G08",
-    "originalWord": "Sprachengebet (Zungen)",
-    "meaning": "G08_F1",
-    "bibleReferences": [],
-    "description": "",
-    "questions": []
-  },
-  {
-    "id": "g08",
-    "name": "G08",
-    "originalWord": "Sprachengebet (Zungen)",
-    "meaning": "G08_F2",
-    "bibleReferences": [],
-    "description": "",
-    "questions": []
-  },
-  {
-    "id": "g08",
-    "name": "G08",
-    "originalWord": "Sprachengebet (Zungen)",
-    "meaning": "G08_F3",
-    "bibleReferences": [],
-    "description": "",
-    "questions": []
-  },
-  {
-    "id": "g08",
-    "name": "G08",
-    "originalWord": "Sprachengebet (Zungen)",
-    "meaning": "G08_F4",
-    "bibleReferences": [],
-    "description": "",
-    "questions": []
-  },
-  {
-    "id": "g08",
-    "name": "G08",
-    "originalWord": "Sprachengebet (Zungen)",
-    "meaning": "G08_F5",
-    "bibleReferences": [],
-    "description": "",
-    "questions": []
-  },
-  {
-    "id": "g08",
-    "name": "G08",
-    "originalWord": "Sprachengebet (Zungen)",
-    "meaning": "G08_F6",
-    "bibleReferences": [],
-    "description": "",
-    "questions": []
-  },
-  {
-    "id": "g08",
-    "name": "G08",
-    "originalWord": "Sprachengebet (Zungen)",
-    "meaning": "G08_F7",
-    "bibleReferences": [],
-    "description": "",
-    "questions": []
-  },
-  {
-    "id": "g09",
-    "name": "G09",
-    "originalWord": "Auslegung der Sprachen",
-    "meaning": "G09_F1",
-    "bibleReferences": [],
-    "description": "",
-    "questions": []
-  },
-  {
-    "id": "g09",
-    "name": "G09",
-    "originalWord": "Auslegung der Sprachen",
-    "meaning": "G09_F2",
-    "bibleReferences": [],
-    "description": "",
-    "questions": []
-  },
-  {
-    "id": "g09",
-    "name": "G09",
-    "originalWord": "Auslegung der Sprachen",
-    "meaning": "G09_F3",
-    "bibleReferences": [],
-    "description": "",
-    "questions": []
-  },
-  {
-    "id": "g09",
-    "name": "G09",
-    "originalWord": "Auslegung der Sprachen",
-    "meaning": "G09_F4",
-    "bibleReferences": [],
-    "description": "",
-    "questions": []
-  },
-  {
-    "id": "g09",
-    "name": "G09",
-    "originalWord": "Auslegung der Sprachen",
-    "meaning": "G09_F5",
-    "bibleReferences": [],
-    "description": "",
-    "questions": []
-  },
-  {
-    "id": "g09",
-    "name": "G09",
-    "originalWord": "Auslegung der Sprachen",
-    "meaning": "G09_F6",
-    "bibleReferences": [],
-    "description": "",
-    "questions": []
-  },
-  {
-    "id": "g09",
-    "name": "G09",
-    "originalWord": "Auslegung der Sprachen",
-    "meaning": "G09_F7",
-    "bibleReferences": [],
-    "description": "",
-    "questions": []
-  },
-  {
-    "id": "g10",
-    "name": "G10",
-    "originalWord": "Dienst / Diakonie",
-    "meaning": "G10_F1",
-    "bibleReferences": [],
-    "description": "",
-    "questions": []
-  },
-  {
-    "id": "g10",
-    "name": "G10",
-    "originalWord": "Dienst / Diakonie",
-    "meaning": "G10_F2",
-    "bibleReferences": [],
-    "description": "",
-    "questions": []
-  },
-  {
-    "id": "g10",
-    "name": "G10",
-    "originalWord": "Dienst / Diakonie",
-    "meaning": "G10_F3",
-    "bibleReferences": [],
-    "description": "",
-    "questions": []
-  },
-  {
-    "id": "g10",
-    "name": "G10",
-    "originalWord": "Dienst / Diakonie",
-    "meaning": "G10_F4",
-    "bibleReferences": [],
-    "description": "",
-    "questions": []
-  },
-  {
-    "id": "g10",
-    "name": "G10",
-    "originalWord": "Dienst / Diakonie",
-    "meaning": "G10_F5",
-    "bibleReferences": [],
-    "description": "",
-    "questions": []
-  },
-  {
-    "id": "g10",
-    "name": "G10",
-    "originalWord": "Dienst / Diakonie",
-    "meaning": "G10_F6",
-    "bibleReferences": [],
-    "description": "",
-    "questions": []
-  },
-  {
-    "id": "g10",
-    "name": "G10",
-    "originalWord": "Dienst / Diakonie",
-    "meaning": "G10_F7",
-    "bibleReferences": [],
-    "description": "",
-    "questions": []
-  },
-  {
-    "id": "g11",
-    "name": "G11",
-    "originalWord": "Lehren",
-    "meaning": "G11_F1",
-    "bibleReferences": [],
-    "description": "",
-    "questions": []
-  },
-  {
-    "id": "g11",
-    "name": "G11",
-    "originalWord": "Lehren",
-    "meaning": "G11_F2",
-    "bibleReferences": [],
-    "description": "",
-    "questions": []
-  },
-  {
-    "id": "g11",
-    "name": "G11",
-    "originalWord": "Lehren",
-    "meaning": "G11_F3",
-    "bibleReferences": [],
-    "description": "",
-    "questions": []
-  },
-  {
-    "id": "g11",
-    "name": "G11",
-    "originalWord": "Lehren",
-    "meaning": "G11_F4",
-    "bibleReferences": [],
-    "description": "",
-    "questions": []
-  },
-  {
-    "id": "g11",
-    "name": "G11",
-    "originalWord": "Lehren",
-    "meaning": "G11_F5",
-    "bibleReferences": [],
-    "description": "",
-    "questions": []
-  },
-  {
-    "id": "g11",
-    "name": "G11",
-    "originalWord": "Lehren",
-    "meaning": "G11_F6",
-    "bibleReferences": [],
-    "description": "",
-    "questions": []
-  },
-  {
-    "id": "g11",
-    "name": "G11",
-    "originalWord": "Lehren",
-    "meaning": "G11_F7",
-    "bibleReferences": [],
-    "description": "",
-    "questions": []
-  },
-  {
-    "id": "g12",
-    "name": "G12",
-    "originalWord": "Ermahnung / Zuspruch",
-    "meaning": "G12_F1",
-    "bibleReferences": [],
-    "description": "",
-    "questions": []
-  },
-  {
-    "id": "g12",
-    "name": "G12",
-    "originalWord": "Ermahnung / Zuspruch",
-    "meaning": "G12_F2",
-    "bibleReferences": [],
-    "description": "",
-    "questions": []
-  },
-  {
-    "id": "g12",
-    "name": "G12",
-    "originalWord": "Ermahnung / Zuspruch",
-    "meaning": "G12_F3",
-    "bibleReferences": [],
-    "description": "",
-    "questions": []
-  },
-  {
-    "id": "g12",
-    "name": "G12",
-    "originalWord": "Ermahnung / Zuspruch",
-    "meaning": "G12_F4",
-    "bibleReferences": [],
-    "description": "",
-    "questions": []
-  },
-  {
-    "id": "g12",
-    "name": "G12",
-    "originalWord": "Ermahnung / Zuspruch",
-    "meaning": "G12_F5",
-    "bibleReferences": [],
-    "description": "",
-    "questions": []
-  },
-  {
-    "id": "g12",
-    "name": "G12",
-    "originalWord": "Ermahnung / Zuspruch",
-    "meaning": "G12_F6",
-    "bibleReferences": [],
-    "description": "",
-    "questions": []
-  },
-  {
-    "id": "g12",
-    "name": "G12",
-    "originalWord": "Ermahnung / Zuspruch",
-    "meaning": "G12_F7",
-    "bibleReferences": [],
-    "description": "",
-    "questions": []
-  },
-  {
-    "id": "g13",
-    "name": "G13",
-    "originalWord": "Geben",
-    "meaning": "G13_F1",
-    "bibleReferences": [],
-    "description": "",
-    "questions": []
-  },
-  {
-    "id": "g13",
-    "name": "G13",
-    "originalWord": "Geben",
-    "meaning": "G13_F2",
-    "bibleReferences": [],
-    "description": "",
-    "questions": []
-  },
-  {
-    "id": "g13",
-    "name": "G13",
-    "originalWord": "Geben",
-    "meaning": "G13_F3",
-    "bibleReferences": [],
-    "description": "",
-    "questions": []
-  },
-  {
-    "id": "g13",
-    "name": "G13",
-    "originalWord": "Geben",
-    "meaning": "G13_F4",
-    "bibleReferences": [],
-    "description": "",
-    "questions": []
-  },
-  {
-    "id": "g13",
-    "name": "G13",
-    "originalWord": "Geben",
-    "meaning": "G13_F5",
-    "bibleReferences": [],
-    "description": "",
-    "questions": []
-  },
-  {
-    "id": "g13",
-    "name": "G13",
-    "originalWord": "Geben",
-    "meaning": "G13_F6",
-    "bibleReferences": [],
-    "description": "",
-    "questions": []
-  },
-  {
-    "id": "g13",
-    "name": "G13",
-    "originalWord": "Geben",
-    "meaning": "G13_F7",
-    "bibleReferences": [],
-    "description": "",
-    "questions": []
-  },
-  {
-    "id": "g14",
-    "name": "G14",
-    "originalWord": "Leiten / Verwalten",
-    "meaning": "G14_F1",
-    "bibleReferences": [],
-    "description": "",
-    "questions": []
-  },
-  {
-    "id": "g14",
-    "name": "G14",
-    "originalWord": "Leiten / Verwalten",
-    "meaning": "G14_F2",
-    "bibleReferences": [],
-    "description": "",
-    "questions": []
-  },
-  {
-    "id": "g14",
-    "name": "G14",
-    "originalWord": "Leiten / Verwalten",
-    "meaning": "G14_F3",
-    "bibleReferences": [],
-    "description": "",
-    "questions": []
-  },
-  {
-    "id": "g14",
-    "name": "G14",
-    "originalWord": "Leiten / Verwalten",
-    "meaning": "G14_F4",
-    "bibleReferences": [],
-    "description": "",
-    "questions": []
-  },
-  {
-    "id": "g14",
-    "name": "G14",
-    "originalWord": "Leiten / Verwalten",
-    "meaning": "G14_F5",
-    "bibleReferences": [],
-    "description": "",
-    "questions": []
-  },
-  {
-    "id": "g14",
-    "name": "G14",
-    "originalWord": "Leiten / Verwalten",
-    "meaning": "G14_F6",
-    "bibleReferences": [],
-    "description": "",
-    "questions": []
-  },
-  {
-    "id": "g14",
-    "name": "G14",
-    "originalWord": "Leiten / Verwalten",
-    "meaning": "G14_F7",
-    "bibleReferences": [],
-    "description": "",
-    "questions": []
-  },
-  {
-    "id": "g15",
-    "name": "G15",
-    "originalWord": "Barmherzigkeit",
-    "meaning": "G15_F1",
-    "bibleReferences": [],
-    "description": "",
-    "questions": []
-  },
-  {
-    "id": "g15",
-    "name": "G15",
-    "originalWord": "Barmherzigkeit",
-    "meaning": "G15_F2",
-    "bibleReferences": [],
-    "description": "",
-    "questions": []
-  },
-  {
-    "id": "g15",
-    "name": "G15",
-    "originalWord": "Barmherzigkeit",
-    "meaning": "G15_F3",
-    "bibleReferences": [],
-    "description": "",
-    "questions": []
-  },
-  {
-    "id": "g15",
-    "name": "G15",
-    "originalWord": "Barmherzigkeit",
-    "meaning": "G15_F4",
-    "bibleReferences": [],
-    "description": "",
-    "questions": []
-  },
-  {
-    "id": "g15",
-    "name": "G15",
-    "originalWord": "Barmherzigkeit",
-    "meaning": "G15_F5",
-    "bibleReferences": [],
-    "description": "",
-    "questions": []
-  },
-  {
-    "id": "g15",
-    "name": "G15",
-    "originalWord": "Barmherzigkeit",
-    "meaning": "G15_F6",
-    "bibleReferences": [],
-    "description": "",
-    "questions": []
-  },
-  {
-    "id": "g15",
-    "name": "G15",
-    "originalWord": "Barmherzigkeit",
-    "meaning": "G15_F7",
-    "bibleReferences": [],
-    "description": "",
-    "questions": []
-  },
-  {
-    "id": "g16",
-    "name": "G16",
-    "originalWord": "Apostelamt",
-    "meaning": "G16_F1",
-    "bibleReferences": [],
-    "description": "",
-    "questions": []
-  },
-  {
-    "id": "g16",
-    "name": "G16",
-    "originalWord": "Apostelamt",
-    "meaning": "G16_F2",
-    "bibleReferences": [],
-    "description": "",
-    "questions": []
-  },
-  {
-    "id": "g16",
-    "name": "G16",
-    "originalWord": "Apostelamt",
-    "meaning": "G16_F3",
-    "bibleReferences": [],
-    "description": "",
-    "questions": []
-  },
-  {
-    "id": "g16",
-    "name": "G16",
-    "originalWord": "Apostelamt",
-    "meaning": "G16_F4",
-    "bibleReferences": [],
-    "description": "",
-    "questions": []
-  },
-  {
-    "id": "g16",
-    "name": "G16",
-    "originalWord": "Apostelamt",
-    "meaning": "G16_F5",
-    "bibleReferences": [],
-    "description": "",
-    "questions": []
-  },
-  {
-    "id": "g16",
-    "name": "G16",
-    "originalWord": "Apostelamt",
-    "meaning": "G16_F6",
-    "bibleReferences": [],
-    "description": "",
-    "questions": []
-  },
-  {
-    "id": "g16",
-    "name": "G16",
-    "originalWord": "Apostelamt",
-    "meaning": "G16_F7",
-    "bibleReferences": [],
-    "description": "",
-    "questions": []
-  },
-  {
-    "id": "g17",
-    "name": "G17",
-    "originalWord": "Evangelist",
-    "meaning": "G17_F1",
-    "bibleReferences": [],
-    "description": "",
-    "questions": []
-  },
-  {
-    "id": "g17",
-    "name": "G17",
-    "originalWord": "Evangelist",
-    "meaning": "G17_F2",
-    "bibleReferences": [],
-    "description": "",
-    "questions": []
-  },
-  {
-    "id": "g17",
-    "name": "G17",
-    "originalWord": "Evangelist",
-    "meaning": "G17_F3",
-    "bibleReferences": [],
-    "description": "",
-    "questions": []
-  },
-  {
-    "id": "g17",
-    "name": "G17",
-    "originalWord": "Evangelist",
-    "meaning": "G17_F4",
-    "bibleReferences": [],
-    "description": "",
-    "questions": []
-  },
-  {
-    "id": "g17",
-    "name": "G17",
-    "originalWord": "Evangelist",
-    "meaning": "G17_F5",
-    "bibleReferences": [],
-    "description": "",
-    "questions": []
-  },
-  {
-    "id": "g17",
-    "name": "G17",
-    "originalWord": "Evangelist",
-    "meaning": "G17_F6",
-    "bibleReferences": [],
-    "description": "",
-    "questions": []
-  },
-  {
-    "id": "g17",
-    "name": "G17",
-    "originalWord": "Evangelist",
-    "meaning": "G17_F7",
-    "bibleReferences": [],
-    "description": "",
-    "questions": []
-  },
-  {
-    "id": "g18",
-    "name": "G18",
-    "originalWord": "Hirte / Pastor",
-    "meaning": "G18_F1",
-    "bibleReferences": [],
-    "description": "",
-    "questions": []
-  },
-  {
-    "id": "g18",
-    "name": "G18",
-    "originalWord": "Hirte / Pastor",
-    "meaning": "G18_F2",
-    "bibleReferences": [],
-    "description": "",
-    "questions": []
-  },
-  {
-    "id": "g18",
-    "name": "G18",
-    "originalWord": "Hirte / Pastor",
-    "meaning": "G18_F3",
-    "bibleReferences": [],
-    "description": "",
-    "questions": []
-  },
-  {
-    "id": "g18",
-    "name": "G18",
-    "originalWord": "Hirte / Pastor",
-    "meaning": "G18_F4",
-    "bibleReferences": [],
-    "description": "",
-    "questions": []
-  },
-  {
-    "id": "g18",
-    "name": "G18",
-    "originalWord": "Hirte / Pastor",
-    "meaning": "G18_F5",
-    "bibleReferences": [],
-    "description": "",
-    "questions": []
-  },
-  {
-    "id": "g18",
-    "name": "G18",
-    "originalWord": "Hirte / Pastor",
-    "meaning": "G18_F6",
-    "bibleReferences": [],
-    "description": "",
-    "questions": []
-  },
-  {
-    "id": "g18",
-    "name": "G18",
-    "originalWord": "Hirte / Pastor",
-    "meaning": "G18_F7",
-    "bibleReferences": [],
     "description": "",
-    "questions": []
+    "questions": [
+      {
+        "id": "G03_F1",
+        "type": "experience",
+        "text": "Ich bin in Situationen ruhig geblieben, in denen alle anderen verzweifelten, weil ich Gottes Eingreifen sicher wusste."
+      },
+      {
+        "id": "G03_F2",
+        "type": "experience",
+        "text": "Ich habe für unmögliche Dinge gebetet und gesehen, wie Gott sie entgegen jeder Logik wahr gemacht hat."
+      },
+      {
+        "id": "G03_F3",
+        "type": "experience",
+        "text": "Ich habe schon Schritte gewagt (finanziell oder beruflich), die nur auf Vertrauen in Gottes Zusage basierten."
+      },
+      {
+        "id": "G03_F4",
+        "type": "nature",
+        "text": "Ich möchte Projekte anstoßen, für die momentan noch keine sichtbaren Ressourcen vorhanden sind."
+      },
+      {
+        "id": "G03_F5",
+        "type": "nature",
+        "text": "Mich langweilt Sicherheit; ich möchte sehen, wie Gott durch unser Vertrauen Mauern zum Einsturz bringt."
+      },
+      {
+        "id": "G03_F6",
+        "type": "feedback",
+        "text": "Mein unerschütterliches Vertrauen hat andere ermutigt, selbst wieder neu an Gottes Wunder zu glauben."
+      },
+      {
+        "id": "G03_F7",
+        "type": "feedback",
+        "text": "Durch mein Festhalten an Gottes Zusage wurden Ziele erreicht, die das Team/die Gemeinde längst aufgegeben hatte."
+      },
+      {
+        "id": "G03_Q8",
+        "type": "reference",
+        "text": "Bleibt die Person in Krisen auffallend ruhig und vertraut fest auf Gottes Eingreifen?"
+      },
+      {
+        "id": "G03_Q9",
+        "type": "reference",
+        "text": "Ermutigt das Gottvertrauen dieser Person andere dazu, selbst wieder mutiger zu glauben?"
+      }
+    ]
+  },
+  {
+    "id": "G04",
+    "name": "Heilung",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
+      {
+        "id": "G04_F1",
+        "type": "experience",
+        "text": "Auf mein Gebet hin sind Menschen von diagnostizierten Krankheiten gesund geworden."
+      },
+      {
+        "id": "G04_F2",
+        "type": "experience",
+        "text": "Ich spüre oft ein körperliches Mitempfinden (z. B. Hitze oder Kribbeln), wenn Gott jemanden heilen möchte."
+      },
+      {
+        "id": "G04_F3",
+        "type": "experience",
+        "text": "Ich habe erlebt, wie durch Gebet nicht nur körperliche, sondern auch tiefe seelische Wunden geheilt wurden."
+      },
+      {
+        "id": "G04_F4",
+        "type": "nature",
+        "text": "Ich verspüre ein starkes Drängen, kranken Menschen im Krankenhaus oder zu Hause die Hände aufzulegen."
+      },
+      {
+        "id": "G04_F5",
+        "type": "nature",
+        "text": "Ich glaube fest daran, dass Jesus heute noch genauso heilt wie zur Zeit der Apostel."
+      },
+      {
+        "id": "G04_F6",
+        "type": "feedback",
+        "text": "Kranke berichten mir regelmäßig, dass sie sich nach meinem Gebet deutlich besser fühlen oder schmerzfrei sind."
+      },
+      {
+        "id": "G04_F7",
+        "type": "feedback",
+        "text": "Mein Dienst hat dazu geführt, dass Ärzte über die unerwartete Genesung von Patienten staunten."
+      },
+      {
+        "id": "G04_Q8",
+        "type": "reference",
+        "text": "Betet die Person regelmäßig und gezielt für kranke Menschen um Genesung?"
+      },
+      {
+        "id": "G04_Q9",
+        "type": "reference",
+        "text": "Hast du erlebt, dass Menschen nach dem Gebet dieser Person körperlich oder seelisch gesund wurden?"
+      }
+    ]
+  },
+  {
+    "id": "G05",
+    "name": "Wirkung von Wundern",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
+      {
+        "id": "G05_F1",
+        "type": "experience",
+        "text": "Ich habe erlebt, wie Naturgesetze durch Gebet außer Kraft gesetzt wurden."
+      },
+      {
+        "id": "G05_F2",
+        "type": "experience",
+        "text": "Gott hat durch mich Zeichen gewirkt, die Außenstehende ehrfürchtig oder staunend werden ließen."
+      },
+      {
+        "id": "G05_F3",
+        "type": "experience",
+        "text": "Ich habe miterlebt, wie durch ein Gebet von mir eine Situation unmittelbar und sichtbar verändert wurde."
+      },
+      {
+        "id": "G05_F4",
+        "type": "nature",
+        "text": "Ich habe das tiefe Vertrauen, dass Gott auch heute noch sichtbare Zeichen seiner Macht tut, um sein Wort zu bestätigen."
+      },
+      {
+        "id": "G05_F5",
+        "type": "nature",
+        "text": "Ich möchte nicht nur über Gott reden, sondern seine Kraft konkret am Wirken sehen."
+      },
+      {
+        "id": "G05_F6",
+        "type": "feedback",
+        "text": "Menschen in meinem Umfeld haben durch sichtbare Machttaten Gottes zum Glauben gefunden."
+      },
+      {
+        "id": "G05_F7",
+        "type": "feedback",
+        "text": "Mein Dienst wird oft von außergewöhnlichen Begebenheiten begleitet, die menschlich nicht erklärbar sind."
+      },
+      {
+        "id": "G05_Q8",
+        "type": "reference",
+        "text": "Begleiten außergewöhnliche, übernatürliche Ereignisse den Dienst dieser Person?"
+      },
+      {
+        "id": "G05_Q9",
+        "type": "reference",
+        "text": "Führen diese Ereignisse dazu, dass Außenstehende Gott die Ehre geben oder zum Glauben finden?"
+      }
+    ]
+  },
+  {
+    "id": "G06",
+    "name": "Prophetie",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
+      {
+        "id": "G06_F1",
+        "type": "experience",
+        "text": "Ich habe schon Botschaften weitergegeben, die jemandes verborgene Gedanken offenbarten (vgl. 1. Kor 14,24-25)."
+      },
+      {
+        "id": "G06_F2",
+        "type": "experience",
+        "text": "Gott hat mir schon konkrete Warnungen oder Hinweise für die Zukunft gegeben (vgl. Agabus, Apg 11,28)."
+      },
+      {
+        "id": "G06_F3",
+        "type": "experience",
+        "text": "Wenn ich rede, spüre ich oft, dass es nicht meine eigenen Gedanken, sondern ein Impuls von oben ist."
+      },
+      {
+        "id": "G06_F4",
+        "type": "nature",
+        "text": "Ich brenne darauf, der Gemeinde das zu sagen, was Gott jetzt in diesem Moment wichtig ist."
+      },
+      {
+        "id": "G06_F5",
+        "type": "nature",
+        "text": "Es ist mir ein Anliegen, Menschen durch göttliche Offenbarung zu erbauen, zu trösten und zu ermahnen (1. Kor 14,3)."
+      },
+      {
+        "id": "G06_F6",
+        "type": "feedback",
+        "text": "Menschen sagen mir oft: Woher wusstest du das? Genau das hat Gott mir heute Morgen schon gesagt!"
+      },
+      {
+        "id": "G06_F7",
+        "type": "feedback",
+        "text": "Meine prophetischen Worte haben dazu beigetragen, dass Menschen neue Hoffnung schöpften oder umkehrten."
+      },
+      {
+        "id": "G06_Q8",
+        "type": "reference",
+        "text": "Teilt die Person Impulse oder Eindrücke mit, die genau in die aktuelle Lebenssituation anderer passen?"
+      },
+      {
+        "id": "G06_Q9",
+        "type": "reference",
+        "text": "Fühlen sich Menschen nach einer Botschaft dieser Person korrigiert, getröstet oder ermutigt?"
+      }
+    ]
+  },
+  {
+    "id": "G07",
+    "name": "Geisterunterscheidung",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
+      {
+        "id": "G07_F1",
+        "type": "experience",
+        "text": "Ich konnte schon erkennen, ob eine geistliche Manifestation echt war oder eine Täuschung (vgl. 1. Joh 4,1)."
+      },
+      {
+        "id": "G07_F2",
+        "type": "experience",
+        "text": "Ich habe schon wahrgenommen, wenn jemand mit falschen Motiven vorgab, im Namen Gottes zu handeln (vgl. Apg 16,16-18)."
+      },
+      {
+        "id": "G07_F3",
+        "type": "experience",
+        "text": "Ich spüre oft instinktiv, welche Atmosphäre (z.B. Okkultismus, Stolz oder Heiligkeit) eine Versammlung dominiert."
+      },
+      {
+        "id": "G07_F4",
+        "type": "nature",
+        "text": "Ich empfinde eine hohe Verantwortung, die Gemeinde vor verführerischen Einflüssen zu schützen."
+      },
+      {
+        "id": "G07_F5",
+        "type": "nature",
+        "text": "Ich möchte hinter die Kulissen der sichtbaren Welt schauen, um die geistlichen Ursachen von Problemen zu verstehen."
+      },
+      {
+        "id": "G07_F6",
+        "type": "feedback",
+        "text": "Die Leitung der Gemeinde schätzt mein Urteil, wenn es darum geht, neue Lehren oder Strömungen zu prüfen."
+      },
+      {
+        "id": "G07_F7",
+        "type": "feedback",
+        "text": "Durch meine Wachsamkeit wurde die Gemeinde schon vor Spaltung oder Irrwegen bewahrt."
+      },
+      {
+        "id": "G07_Q8",
+        "type": "reference",
+        "text": "Warnt die Person rechtzeitig vor ungesunden geistlichen Einflüssen oder falschen Motiven?"
+      },
+      {
+        "id": "G07_Q9",
+        "type": "reference",
+        "text": "Erweist sich die Einschätzung der Person über die Echtheit einer Situation im Nachhinein als richtig?"
+      }
+    ]
+  },
+  {
+    "id": "G08",
+    "name": "Sprachengebet (Zungen)",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
+      {
+        "id": "G08_F1",
+        "type": "experience",
+        "text": "Ich bete regelmäßig in einer Sprache, die ich nie gelernt habe (vgl. Apg 2,4)."
+      },
+      {
+        "id": "G08_F2",
+        "type": "experience",
+        "text": "Wenn ich in Sprachen bete, merke ich, wie mein innerer Mensch gestärkt und erbaut wird (1. Kor 14,4)."
+      },
+      {
+        "id": "G08_F3",
+        "type": "experience",
+        "text": "Ich habe erlebt, wie mein Sprachengebet in einer öffentlichen Versammlung zur Auslegung führte."
+      },
+      {
+        "id": "G08_F4",
+        "type": "nature",
+        "text": "Ich habe das Verlangen, im Gebet über meinen Verstand hinaus mit Gott zu kommunizieren."
+      },
+      {
+        "id": "G08_F5",
+        "type": "nature",
+        "text": "Ich möchte diese Gabe nutzen, um Gottes Geheimnisse im Geist auszusprechen (1. Kor 14,2)."
+      },
+      {
+        "id": "G08_F6",
+        "type": "feedback",
+        "text": "Mein Gebetsleben hat durch diese Gabe eine neue Tiefe und Leidenschaft gewonnen."
+      },
+      {
+        "id": "G08_F7",
+        "type": "feedback",
+        "text": "Wenn ich öffentlich in Sprachen rede (und ausgelegt wird), empfindet die Gemeinde dies als direkte Botschaft Gottes."
+      },
+      {
+        "id": "G08_Q8",
+        "type": "reference",
+        "text": "Nutzt die Person die Sprachenrede (Zungenrede) in einer Weise, die zur Erbauung beiträgt?"
+      },
+      {
+        "id": "G08_Q9",
+        "type": "reference",
+        "text": "Wenn die Person öffentlich in Sprachen redet, spürt man eine geistliche Intensität (bei anschließender Auslegung)?"
+      }
+    ]
+  },
+  {
+    "id": "G09",
+    "name": "Auslegung der Sprachen",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
+      {
+        "id": "G09_F1",
+        "type": "experience",
+        "text": "Wenn jemand in Sprachen betet, verstehe ich oft den Sinngehalt, ohne die Sprache gelernt zu haben."
+      },
+      {
+        "id": "G09_F2",
+        "type": "experience",
+        "text": "Ich habe schon erlebt, wie meine Auslegung genau die Antwort auf das Gebet eines anderen war."
+      },
+      {
+        "id": "G09_F3",
+        "type": "experience",
+        "text": "Ich habe den Mut, in einer Versammlung aufzustehen und die Deutung eines Sprachengebetes laut auszusprechen."
+      },
+      {
+        "id": "G09_F4",
+        "type": "nature",
+        "text": "Ich bete darum, dass Gott mir die Gabe schenkt, das Unverständliche für die Gemeinde verständlich zu machen."
+      },
+      {
+        "id": "G09_F5",
+        "type": "nature",
+        "text": "Es ist mir wichtig, dass die Gaben der Sprachenrede zur Erbauung aller dienen und nicht verwirren (1. Kor 14,26)."
+      },
+      {
+        "id": "G09_F6",
+        "type": "feedback",
+        "text": "Nach meiner Auslegung herrscht oft eine tiefe Einigkeit oder Anbetungsstimmung in der Gruppe."
+      },
+      {
+        "id": "G09_F7",
+        "type": "feedback",
+        "text": "Die Gemeinde wird durch meine Auslegung konkret ermutigt oder in der Wahrheit Gottes korrigiert."
+      },
+      {
+        "id": "G09_Q8",
+        "type": "reference",
+        "text": "Kann die Person Sprachenreden so deuten, dass der Inhalt für alle verständlich wird?"
+      },
+      {
+        "id": "G09_Q9",
+        "type": "reference",
+        "text": "Wird die Gemeinde durch die Auslegungen dieser Person konkret im Glauben gestärkt?"
+      }
+    ]
+  },
+  {
+    "id": "G10",
+    "name": "Dienst / Diakonie",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
+      {
+        "id": "G10_F1",
+        "type": "experience",
+        "text": "Ich habe schon oft Aufgaben im Hintergrund übernommen, damit andere ihren Dienst besser tun konnten (vgl. Apg 6,1-7)."
+      },
+      {
+        "id": "G10_F2",
+        "type": "experience",
+        "text": "Ich entdecke praktische Notwendigkeiten (Reparaturen, Vorbereitungen), die andere oft übersehen."
+      },
+      {
+        "id": "G10_F3",
+        "type": "experience",
+        "text": "Es bereitet mir Freude, Menschen ganz praktisch zu entlasten, ohne dass mein Name genannt wird."
+      },
+      {
+        "id": "G10_F4",
+        "type": "nature",
+        "text": "Ich helfe lieber tatkräftig mit, als lange theoretische Diskussionen zu führen."
+      },
+      {
+        "id": "G10_F5",
+        "type": "nature",
+        "text": "Ich möchte, dass alles in der Gemeinde reibungslos abläuft, und packe dafür überall an, wo Not am Mann ist."
+      },
+      {
+        "id": "G10_F6",
+        "type": "feedback",
+        "text": "Leiter sagen mir oft, dass ich für sie eine unverzichtbare Stütze im Alltag der Gemeinde bin."
+      },
+      {
+        "id": "G10_F7",
+        "type": "feedback",
+        "text": "Durch mein Zupacken fühlen sich Menschen in der Gemeinde wertgeschätzt und willkommen."
+      },
+      {
+        "id": "G10_Q8",
+        "type": "reference",
+        "text": "Übernimmt die Person bereitwillig praktische Aufgaben, die im Hintergrund anfallen?"
+      },
+      {
+        "id": "G10_Q9",
+        "type": "reference",
+        "text": "Würde die praktische Arbeit der Gemeinde spürbar leiden, wenn diese Person ihren Dienst einstellen würde?"
+      }
+    ]
+  },
+  {
+    "id": "G11",
+    "name": "Lehren",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
+      {
+        "id": "G11_F1",
+        "type": "experience",
+        "text": "Wenn ich die Bibel erkläre, sagen andere, dass sie komplexe Themen plötzlich verstehen (vgl. Apg 18,24-26)."
+      },
+      {
+        "id": "G11_F2",
+        "type": "experience",
+        "text": "Ich verbringe viel Zeit mit dem Studium der Schrift, um die Wahrheit systematisch weiterzugeben."
+      },
+      {
+        "id": "G11_F3",
+        "type": "experience",
+        "text": "Ich habe erlebt, wie durch meine Unterweisung falsche Lehren in einer Gruppe korrigiert wurden."
+      },
+      {
+        "id": "G11_F4",
+        "type": "nature",
+        "text": "Ich habe ein brennendes Verlangen, dass Christen in ihrem Glauben durch fundiertes Wissen wachsen."
+      },
+      {
+        "id": "G11_F5",
+        "type": "nature",
+        "text": "Mich begeistert es, biblische Zusammenhänge zu erforschen und sie logisch aufzubereiten."
+      },
+      {
+        "id": "G11_F6",
+        "type": "feedback",
+        "text": "Menschen berichten, dass sie durch meinen Unterricht eine stabilere Grundlage für ihr Leben gefunden haben."
+      },
+      {
+        "id": "G11_F7",
+        "type": "feedback",
+        "text": "Die Gruppe, die ich unterrichte, zeigt ein klares Wachstum in geistlicher Reife und Erkenntnis."
+      },
+      {
+        "id": "G11_Q8",
+        "type": "reference",
+        "text": "Kann die Person biblische Inhalte so erklären, dass sie leicht verständlich und logisch nachvollziehbar sind?"
+      },
+      {
+        "id": "G11_Q9",
+        "type": "reference",
+        "text": "Beobachtest du, dass Zuhörer nach seinen/ihren Ausführungen ein tieferes Verständnis der Wahrheit haben?"
+      }
+    ]
+  },
+  {
+    "id": "G12",
+    "name": "Ermahnung / Zuspruch",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
+      {
+        "id": "G12_F1",
+        "type": "experience",
+        "text": "Ich habe schon Menschen aus tiefster Mutlosigkeit herausgeholfen (vgl. Barnabas, der Sohn des Trostes, Apg 4,36)."
+      },
+      {
+        "id": "G12_F2",
+        "type": "experience",
+        "text": "Ich finde oft genau die richtigen Worte, um jemanden zu motivieren, in einer Krise nicht aufzugeben."
+      },
+      {
+        "id": "G12_F3",
+        "type": "experience",
+        "text": "Ich habe Menschen liebevoll, aber direkt auf blinde Flecken hingewiesen, was zu ihrer positiven Veränderung führte."
+      },
+      {
+        "id": "G12_F4",
+        "type": "nature",
+        "text": "Ich möchte Menschen helfen, ihr volles Potenzial in Gott auszuschöpfen."
+      },
+      {
+        "id": "G12_F5",
+        "type": "nature",
+        "text": "Ich kann nicht zusehen, wenn Geschwister resignieren; ich muss sie einfach ermutigen."
+      },
+      {
+        "id": "G12_F6",
+        "type": "feedback",
+        "text": "Leute kommen gezielt zu mir, wenn sie eine geistliche Stärkung oder einen Motivationsschub brauchen."
+      },
+      {
+        "id": "G12_F7",
+        "type": "feedback",
+        "text": "Nach Gesprächen mit mir fühlen sich Menschen befähigt, ihre Aufgaben mit neuer Kraft anzugehen."
+      },
+      {
+        "id": "G12_Q8",
+        "type": "reference",
+        "text": "Geht die Person aktiv auf Menschen zu, um sie zu trösten, zu ermutigen oder zu motivieren?"
+      },
+      {
+        "id": "G12_Q9",
+        "type": "reference",
+        "text": "Fühlen sich Menschen nach einem Gespräch mit dieser Person gestärkt und befähigt, weiterzugehen?"
+      }
+    ]
+  },
+  {
+    "id": "G13",
+    "name": "Geben",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
+      {
+        "id": "G13_F1",
+        "type": "experience",
+        "text": "Ich habe schon anonym und großzügig Geldbeträge gegeben, um eine Not zu lindern (vgl. Apg 4,34-37)."
+      },
+      {
+        "id": "G13_F2",
+        "type": "experience",
+        "text": "Gott hat mir schon unerwartet Ressourcen anvertraut, die ich direkt in das Reich Gottes weiterleiten konnte."
+      },
+      {
+        "id": "G13_F3",
+        "type": "experience",
+        "text": "Ich habe erlebt, wie mein finanzielles Opfer eine wichtige missionarische Arbeit erst ermöglichte."
+      },
+      {
+        "id": "G13_F4",
+        "type": "nature",
+        "text": "Ich sehe mein Geld und meinen Besitz primär als Werkzeuge für Gottes Reich, nicht für meinen Luxus."
+      },
+      {
+        "id": "G13_F5",
+        "type": "nature",
+        "text": "Es macht mir große Freude, großzügige Projekte zu finanzieren, wenn ich von deren Sinn überzeugt bin."
+      },
+      {
+        "id": "G13_F6",
+        "type": "feedback",
+        "text": "Durch meine Gaben wurden finanzielle Engpässe in der Gemeinde gelöst, oft genau zum richtigen Zeitpunkt."
+      },
+      {
+        "id": "G13_F7",
+        "type": "feedback",
+        "text": "Andere fühlen sich durch meine Freigebigkeit ermutigt, selbst vertrauensvoller mit ihren Finanzen umzugehen."
+      },
+      {
+        "id": "G13_Q8",
+        "type": "reference",
+        "text": "Agiert die Person überdurchschnittlich großzügig mit ihrem Besitz oder Geld, um Not zu lindern?"
+      },
+      {
+        "id": "G13_Q9",
+        "type": "reference",
+        "text": "Werden durch die finanzielle oder materielle Hilfe dieser Person Engpässe in der Gemeindearbeit gelöst?"
+      }
+    ]
+  },
+  {
+    "id": "G14",
+    "name": "Leiten / Verwalten",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
+      {
+        "id": "G14_F1",
+        "type": "experience",
+        "text": "Ich habe schon Teams oder Projekte so koordiniert, dass alle ihre Gaben optimal einsetzen konnten (vgl. Tit 1,5)."
+      },
+      {
+        "id": "G14_F2",
+        "type": "experience",
+        "text": "In unübersichtlichen Situationen behalte ich den Überblick und gebe die Richtung vor (vgl. den Steuermann, 1. Kor 12,28)."
+      },
+      {
+        "id": "G14_F3",
+        "type": "experience",
+        "text": "Ich habe erlebt, wie durch meine Planung Chaos in der Gemeindearbeit beseitigt wurde."
+      },
+      {
+        "id": "G14_F4",
+        "type": "nature",
+        "text": "Es motiviert mich, Visionen in konkrete, ausführbare Schritte und Strukturen zu übersetzen."
+      },
+      {
+        "id": "G14_F5",
+        "type": "nature",
+        "text": "Ich möchte Verantwortung übernehmen, damit die Gemeinde ihre Ziele effektiv erreicht."
+      },
+      {
+        "id": "G14_F6",
+        "type": "feedback",
+        "text": "Menschen folgen gerne meiner Leitung, weil sie sich durch meine Struktur sicher und gut geführt fühlen."
+      },
+      {
+        "id": "G14_F7",
+        "type": "feedback",
+        "text": "Unter meiner Verantwortung wachsen Bereiche der Gemeinde qualitativ und organisatorisch."
+      },
+      {
+        "id": "G14_Q8",
+        "type": "reference",
+        "text": "Koordiniert die Person Aufgaben und Menschen so, dass Ziele effektiv und geordnet erreicht werden?"
+      },
+      {
+        "id": "G14_Q9",
+        "type": "reference",
+        "text": "Vertrauen Menschen der Organisation dieser Person, weil sie Klarheit und Sicherheit vermittelt?"
+      }
+    ]
+  },
+  {
+    "id": "G15",
+    "name": "Barmherzigkeit",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
+      {
+        "id": "G15_F1",
+        "type": "experience",
+        "text": "Ich habe mich schon intensiv um Menschen gekümmert, die von allen anderen gemieden wurden (vgl. Lk 10,33-35)."
+      },
+      {
+        "id": "G15_F2",
+        "type": "experience",
+        "text": "Ich verbringe oft Zeit mit Trauernden oder Kranken, ohne dass es mich emotional erschöpft."
+      },
+      {
+        "id": "G15_F3",
+        "type": "experience",
+        "text": "Ich habe schon ganz praktisch Not gelindert, indem ich einfach nur da war und mitgelitten habe."
+      },
+      {
+        "id": "G15_F4",
+        "type": "nature",
+        "text": "Mein Herz blutet, wenn ich Ungerechtigkeit oder Einsamkeit sehe; ich muss dann handeln."
+      },
+      {
+        "id": "G15_F5",
+        "type": "nature",
+        "text": "Ich möchte die Liebe Jesu besonders denjenigen zeigen, die am Rande der Gesellschaft stehen."
+      },
+      {
+        "id": "G15_F6",
+        "type": "feedback",
+        "text": "Menschen in Krisen sagen mir oft, dass meine Anwesenheit ihnen neuen Lebensmut geschenkt hat."
+      },
+      {
+        "id": "G15_F7",
+        "type": "feedback",
+        "text": "Durch meinen Dienst fühlen sich Menschen in der Gemeinde bedingungslos angenommen und geliebt."
+      },
+      {
+        "id": "G15_Q8",
+        "type": "reference",
+        "text": "Sucht die Person gezielt die Nähe von Leidenden, Armen oder Einsamen?"
+      },
+      {
+        "id": "G15_Q9",
+        "type": "reference",
+        "text": "Erfahren Menschen durch die Zuwendung dieser Person eine tiefe emotionale Heilung und Annahme?"
+      }
+    ]
+  },
+  {
+    "id": "G16",
+    "name": "Apostelamt",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
+      {
+        "id": "G16_F1",
+        "type": "experience",
+        "text": "Ich habe schon geholfen, eine neue Gruppe oder Gemeinde dort zu gründen, wo es vorher nichts gab (Pionierarbeit)."
+      },
+      {
+        "id": "G16_F2",
+        "type": "experience",
+        "text": "Ich habe eine geistliche Autorität erlebt, die es mir ermöglichte, Leiter in anderen Gemeinden zuzurüsten."
+      },
+      {
+        "id": "G16_F3",
+        "type": "experience",
+        "text": "Gott hat mich schon in völlig fremde Kulturen oder Umfelder gesandt, um dort das Fundament des Glaubens zu legen."
+      },
+      {
+        "id": "G16_F4",
+        "type": "nature",
+        "text": "Ich spüre den Drang, ständig neue geistliche Terrains zu erschließen, statt nur Bestehendes zu verwalten."
+      },
+      {
+        "id": "G16_F5",
+        "type": "nature",
+        "text": "Ich trage eine Last für die weltweite Kirche und das Zusammenwirken verschiedener Gemeinden."
+      },
+      {
+        "id": "G16_F6",
+        "type": "feedback",
+        "text": "Es gibt Gemeinden oder Dienste, die heute existieren, weil ich den mutigen ersten Schritt gewagt habe."
+      },
+      {
+        "id": "G16_F7",
+        "type": "feedback",
+        "text": "Andere Leiter erkennen meine überregionale Verantwortung und suchen meinen Rat für ihre Werke."
+      },
+      {
+        "id": "G16_Q8",
+        "type": "reference",
+        "text": "Initiiert die Person erfolgreich neue Projekte oder Gründungen (Pioniergeist)?"
+      },
+      {
+        "id": "G16_Q9",
+        "type": "reference",
+        "text": "Besitzt die Person eine anerkannte geistliche Autorität über verschiedene Gruppen oder Gemeinden hinweg?"
+      }
+    ]
+  },
+  {
+    "id": "G17",
+    "name": "Evangelist",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
+      {
+        "id": "G17_F1",
+        "type": "experience",
+        "text": "Ich habe schon erlebt, wie Menschen nach einem Gespräch mit mir spontan ihr Leben Jesus anvertraut haben."
+      },
+      {
+        "id": "G17_F2",
+        "type": "experience",
+        "text": "Ich finde immer wieder natürliche Wege, um mit kirchenfernen Menschen über den Glauben ins Gespräch zu kommen."
+      },
+      {
+        "id": "G17_F3",
+        "type": "experience",
+        "text": "Ich habe schon vor Gruppen von Ungläubigen gesprochen und dabei eine besondere Vollmacht gespürt."
+      },
+      {
+        "id": "G17_F4",
+        "type": "nature",
+        "text": "Es brennt mir auf der Seele, dass Menschen ohne Jesus verloren gehen (vgl. Röm 9,2-3)."
+      },
+      {
+        "id": "G17_F5",
+        "type": "nature",
+        "text": "Ich suche ständig nach neuen Methoden, um das Evangelium zeitgemäß und verständlich zu kommunizieren."
+      },
+      {
+        "id": "G17_F6",
+        "type": "feedback",
+        "text": "In meinem Umfeld kommen regelmäßig Menschen zum Glauben und lassen sich taufen."
+      },
+      {
+        "id": "G17_F7",
+        "type": "feedback",
+        "text": "Ich motiviere die Gemeinde dazu, ihren Fokus wieder stärker auf die Menschen draußen zu richten."
+      },
+      {
+        "id": "G17_Q8",
+        "type": "reference",
+        "text": "Sucht die Person aktiv und furchtlos das Gespräch mit Menschen, die Jesus noch nicht kennen?"
+      },
+      {
+        "id": "G17_Q9",
+        "type": "reference",
+        "text": "Hast du miterlebt, dass Menschen durch den Einfluss dieser Person Schritte zum Glauben gemacht haben?"
+      }
+    ]
+  },
+  {
+    "id": "G18",
+    "name": "Hirte / Pastor",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
+      {
+        "id": "G18_F1",
+        "type": "experience",
+        "text": "Ich begleite Menschen über Jahre hinweg in ihrem geistlichen Wachstum und helfe ihnen durch Täler."
+      },
+      {
+        "id": "G18_F2",
+        "type": "experience",
+        "text": "Ich habe schon verirrte Geschwister gesucht und sie liebevoll in die Gemeinschaft zurückgeführt (vgl. Hes 34,16)."
+      },
+      {
+        "id": "G18_F3",
+        "type": "experience",
+        "text": "Ich schütze die Gruppe, für die ich verantwortlich bin, aktiv vor negativen Einflüssen oder Spaltung."
+      },
+      {
+        "id": "G18_F4",
+        "type": "nature",
+        "text": "Ich habe ein tiefes Interesse an der langfristigen Entwicklung und dem Wohlergehen einzelner Personen."
+      },
+      {
+        "id": "G18_F5",
+        "type": "nature",
+        "text": "Ich möchte eine Atmosphäre schaffen, in der sich Menschen geistlich sicher und zu Hause fühlen."
+      },
+      {
+        "id": "G18_F6",
+        "type": "feedback",
+        "text": "Menschen vertrauen mir ihre tiefsten Nöte an, weil sie wissen, dass ich für sie einstehe."
+      },
+      {
+        "id": "G18_F7",
+        "type": "feedback",
+        "text": "Die Gruppe, die ich betreue, zeichnet sich durch starken Zusammenhalt und gegenseitige Fürsorge aus."
+      },
+      {
+        "id": "G18_Q8",
+        "type": "reference",
+        "text": "Kümmert sich die Person langfristig und verlässlich um das geistliche Wohlergehen einer Gruppe?"
+      },
+      {
+        "id": "G18_Q9",
+        "type": "reference",
+        "text": "Entwickelt die von dieser Person betreute Gruppe eine starke Gemeinschaft und geistliche Reife?"
+      }
+    ]
   }
 ]
