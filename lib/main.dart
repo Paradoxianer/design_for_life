@@ -50,13 +50,18 @@ void main() async {
         BlocProvider(create: (context) => FeedbackBloc()),
         BlocProvider(create: (context) => LifeTreeBloc()),
       ],
-      child: const DflApp(),
+      child: DflApp(forcedLocale: lang),
     ),
   );
 }
 
 class DflApp extends StatelessWidget {
-  const DflApp({super.key});
+  final String? forcedLocale;
+
+  const DflApp({
+    super.key,
+    this.forcedLocale,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -162,6 +167,9 @@ class DflApp extends StatelessWidget {
       theme: AppTheme.lightTheme,
       routerConfig: router,
       debugShowCheckedModeBanner: false,
+      locale: forcedLocale != null && forcedLocale!.isNotEmpty 
+          ? Locale(forcedLocale!) 
+          : null,
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
     );
