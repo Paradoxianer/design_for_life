@@ -1,26 +1,60 @@
+import 'package:design_for_life/l10n/generated/app_localizations.dart';
 import 'value_item.dart';
 
 class StaticValuesData {
-  static const List<String> rawValues = [
-    'Genauigkeit', 'Familie', 'pers. Entwicklung',
-    'Ausführung', 'finanzielle Sicherheit', 'Beitrag/Mitarbeit',
-    'Aufstieg', 'Flexibilität', 'Leistung (Energie)',
-    'Abenteuer', 'Freundschaft', 'Prestige',
-    'Ästhetik', 'Großzügigkeit', 'Anerkennung',
-    'künstlerischer Ausdruck', 'Glück', 'pers. Glaube',
-    'Echtheit', 'Humor', 'Verantwortung',
-    'Gleichgewicht', 'Unabhängigkeit', 'Sicherheit',
-    'Herausforderung', 'Integrität', 'Selbstachtung',
-    'Befähigung', 'Lernen', 'Dienst',
-    'Wettbewerb', 'Freizeit', 'Beständigkeit',
-    'Anpassung', 'Wohnort', 'Toleranz',
-    'körperliche Fitness + Gesundheit', 'Liebe', 'Tradition',
-    'Kontrolle', 'Ausdauer - Beharrlichkeit', 'Vielfältigkeit',
-    'Kooperation', 'Natur', 'Einfluss',
-    'Kreativität', 'Organisation', 'Effektivität',
-    'Friede', 'Fairness', 'Loyalität'
-  ];
-
-  static List<ValueItem> get initialValues =>
-      rawValues.map((name) => ValueItem(name: name)).toList();
+  static List<ValueItem> getInitialValues(AppLocalizations l10n) {
+    return [
+      ValueItem(name: l10n.valueGenauigkeit),
+      ValueItem(name: l10n.valueFamilie),
+      ValueItem(name: l10n.valuePersEntwicklung),
+      ValueItem(name: l10n.valueAusfuehrung),
+      ValueItem(name: l10n.valueFinanzielleSicherheit),
+      ValueItem(name: l10n.valueBeitragMitarbeit),
+      ValueItem(name: l10n.valueAufstieg),
+      ValueItem(name: l10n.valueFlexibilitaet),
+      ValueItem(name: l10n.valueLeistungEnergie),
+      ValueItem(name: l10n.valueAbenteuer),
+      ValueItem(name: l10n.valueFreundschaft),
+      ValueItem(name: l10n.valuePrestige),
+      ValueItem(name: l10n.valueAesthetik),
+      ValueItem(name: l10n.valueGrosszuegigkeit),
+      ValueItem(name: l10n.valueAnerkennung),
+      ValueItem(name: l10n.valueKuenstlerischerAusdruck),
+      ValueItem(name: l10n.valueGlueck),
+      ValueItem(name: l10n.valuePersGlaube),
+      ValueItem(name: l10n.valueEchtheit),
+      ValueItem(name: l10n.valueHumor),
+      ValueItem(name: l10n.valueVerantwortung),
+      ValueItem(name: l10n.valueGleichgewicht),
+      ValueItem(name: l10n.valueUnabhaengigkeit),
+      ValueItem(name: l10n.valueSicherheit),
+      ValueItem(name: l10n.valueHerausforderung),
+      ValueItem(name: l10n.valueIntegritaet),
+      ValueItem(name: l10n.valueSelbstachtung),
+      ValueItem(name: l10n.valueBefaehigung),
+      ValueItem(name: l10n.valueLernen),
+      ValueItem(name: l10n.valueDienst),
+      ValueItem(name: l10n.valueWettbewerb),
+      ValueItem(name: l10n.valueFreizeit),
+      ValueItem(name: l10n.valueBestaendigkeit),
+      ValueItem(name: l10n.valueAnpassung),
+      ValueItem(name: l10n.valueWohnort),
+      ValueItem(name: l10n.valueToleranz),
+      ValueItem(name: l10n.valueKoerperlicheFitnessGesundheit),
+      ValueItem(name: l10n.valueLiebe),
+      ValueItem(name: l10n.valueTradition),
+      ValueItem(name: l10n.valueKontrolle),
+      ValueItem(name: l10n.valueAusdauerBeharrlichkeit),
+      ValueItem(name: l10n.valueVielfaeltigkeit),
+      ValueItem(name: l10n.valueKooperation),
+      ValueItem(name: l10n.valueNatur),
+      ValueItem(name: l10n.valueEinfluss),
+      ValueItem(name: l10n.valueKreativitaet),
+      ValueItem(name: l10n.valueOrganisation),
+      ValueItem(name: l10n.valueEffektivitaet),
+      ValueItem(name: l10n.valueFriede),
+      ValueItem(name: l10n.valueFairness),
+      ValueItem(name: l10n.valueLoyalitaet),
+    ];
+  }
 }

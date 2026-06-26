@@ -370,4 +370,227 @@ class AppLocalizationsEn extends AppLocalizations {
   String feedbackLabel(int rating) {
     return 'Rating: $rating';
   }
+
+  @override
+  String get session1Title => 'Session One: Hello, Good Evening and Welcome';
+
+  @override
+  String get session1Desc => 'Welcome and introduction to the DFL weekend.';
+
+  @override
+  String get session2Title => 'Session Two: Back to the Future';
+
+  @override
+  String get session2Desc => 'Reflection on one\'s own history.';
+
+  @override
+  String get session3Title => 'Group Work – Drawing the Life Tree + Evaluation';
+
+  @override
+  String get session3Desc =>
+      'Creating your personal life tree in a group setting.';
+
+  @override
+  String get session4Title => 'Session Three: The Here and Now';
+
+  @override
+  String get session4Desc => 'Present and Identity.';
+
+  @override
+  String get session5Title => 'Spiritual Gifts (Evaluation, Exchange)';
+
+  @override
+  String get session5Desc => 'Discovery and classification of spiritual gifts.';
+
+  @override
+  String get session6Title => 'Values (Complete all workbook tasks + Exchange)';
+
+  @override
+  String get session6Desc => 'Connections to spiritual gifts + life tree.';
+
+  @override
+  String get session7Title =>
+      'Session Four: Pray, Dream, Listen! (Listening Prayer)';
+
+  @override
+  String get session7Desc =>
+      'Practical introduction and time for listening prayer.';
+
+  @override
+  String get session8Title => 'Developing a Vision for the Future';
+
+  @override
+  String get session8Desc =>
+      'The Big Picture I (Collage) from life tree, gifts, values, and listening prayer.';
+
+  @override
+  String get session9Title => 'Session Five: Do you know the way to San Jose';
+
+  @override
+  String get session9Desc => 'Outlook and next steps.';
+
+  @override
+  String get session10Title => 'Setting 3 Goals';
+
+  @override
+  String get session10Desc => 'Personal goal setting in individual sessions.';
+
+  @override
+  String get session11Title => 'Group Photo';
+
+  @override
+  String get session12Title => 'Feedback Form';
+
+  @override
+  String get valueGenauigkeit => 'Accuracy';
+
+  @override
+  String get valueFamilie => 'Family';
+
+  @override
+  String get valuePersEntwicklung => 'Personal Development';
+
+  @override
+  String get valueAusfuehrung => 'Execution';
+
+  @override
+  String get valueFinanzielleSicherheit => 'Financial Security';
+
+  @override
+  String get valueBeitragMitarbeit => 'Contribution';
+
+  @override
+  String get valueAufstieg => 'Advancement';
+
+  @override
+  String get valueFlexibilitaet => 'Flexibility';
+
+  @override
+  String get valueLeistungEnergie => 'Achievement (Energy)';
+
+  @override
+  String get valueAbenteuer => 'Adventure';
+
+  @override
+  String get valueFreundschaft => 'Friendship';
+
+  @override
+  String get valuePrestige => 'Prestige';
+
+  @override
+  String get valueAesthetik => 'Aesthetics';
+
+  @override
+  String get valueGrosszuegigkeit => 'Generosity';
+
+  @override
+  String get valueAnerkennung => 'Recognition';
+
+  @override
+  String get valueKuenstlerischerAusdruck => 'Artistic Expression';
+
+  @override
+  String get valueGlueck => 'Happiness';
+
+  @override
+  String get valuePersGlaube => 'Personal Faith';
+
+  @override
+  String get valueEchtheit => 'Authenticity';
+
+  @override
+  String get valueHumor => 'Humor';
+
+  @override
+  String get valueVerantwortung => 'Responsibility';
+
+  @override
+  String get valueGleichgewicht => 'Balance';
+
+  @override
+  String get valueUnabhaengigkeit => 'Independence';
+
+  @override
+  String get valueSicherheit => 'Security';
+
+  @override
+  String get valueHerausforderung => 'Challenge';
+
+  @override
+  String get valueIntegritaet => 'Integrity';
+
+  @override
+  String get valueSelbstachtung => 'Self-respect';
+
+  @override
+  String get valueBefaehigung => 'Empowerment';
+
+  @override
+  String get valueLernen => 'Learning';
+
+  @override
+  String get valueDienst => 'Service';
+
+  @override
+  String get valueWettbewerb => 'Competition';
+
+  @override
+  String get valueFreizeit => 'Leisure';
+
+  @override
+  String get valueBestaendigkeit => 'Consistency';
+
+  @override
+  String get valueAnpassung => 'Adaptation';
+
+  @override
+  String get valueWohnort => 'Residence';
+
+  @override
+  String get valueToleranz => 'Tolerance';
+
+  @override
+  String get valueKoerperlicheFitnessGesundheit => 'Physical Fitness & Health';
+
+  @override
+  String get valueLiebe => 'Love';
+
+  @override
+  String get valueTradition => 'Tradition';
+
+  @override
+  String get valueKontrolle => 'Control';
+
+  @override
+  String get valueAusdauerBeharrlichkeit => 'Endurance - Perseverance';
+
+  @override
+  String get valueVielfaeltigkeit => 'Diversity';
+
+  @override
+  String get valueKooperation => 'Cooperation';
+
+  @override
+  String get valueNatur => 'Nature';
+
+  @override
+  String get valueEinfluss => 'Influence';
+
+  @override
+  String get valueKreativitaet => 'Creativity';
+
+  @override
+  String get valueOrganisation => 'Organization';
+
+  @override
+  String get valueEffektivitaet => 'Effectiveness';
+
+  @override
+  String get valueFriede => 'Peace';
+
+  @override
+  String get valueFairness => 'Fairness';
+
+  @override
+  String get valueLoyalitaet => 'Loyalty';
 }

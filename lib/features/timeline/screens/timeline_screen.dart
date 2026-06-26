@@ -20,7 +20,7 @@ class TimelineScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final l10n = AppLocalizations.of(context);
-    final sessions = StaticTimelineData.sessions;
+    final sessions = StaticTimelineData.getSessions(l10n);
 
     return Scaffold(
       body: CustomScrollView(

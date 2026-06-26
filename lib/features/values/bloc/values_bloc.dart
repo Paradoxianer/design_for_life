@@ -8,7 +8,7 @@ class ValuesBloc extends HydratedBloc<ValuesEvent, ValuesState> {
   ValuesBloc() : super(const ValuesState()) {
     on<ValuesStarted>((event, emit) {
       if (state.allValues.isEmpty) {
-        emit(state.copyWith(allValues: StaticValuesData.initialValues));
+        emit(state.copyWith(allValues: event.initialValues));
       }
     });
 

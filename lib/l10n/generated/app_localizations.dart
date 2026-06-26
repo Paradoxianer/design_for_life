@@ -763,6 +763,444 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Rating: {rating}'**
   String feedbackLabel(int rating);
+
+  /// No description provided for @session1Title.
+  ///
+  /// In en, this message translates to:
+  /// **'Session One: Hello, Good Evening and Welcome'**
+  String get session1Title;
+
+  /// No description provided for @session1Desc.
+  ///
+  /// In en, this message translates to:
+  /// **'Welcome and introduction to the DFL weekend.'**
+  String get session1Desc;
+
+  /// No description provided for @session2Title.
+  ///
+  /// In en, this message translates to:
+  /// **'Session Two: Back to the Future'**
+  String get session2Title;
+
+  /// No description provided for @session2Desc.
+  ///
+  /// In en, this message translates to:
+  /// **'Reflection on one\'s own history.'**
+  String get session2Desc;
+
+  /// No description provided for @session3Title.
+  ///
+  /// In en, this message translates to:
+  /// **'Group Work – Drawing the Life Tree + Evaluation'**
+  String get session3Title;
+
+  /// No description provided for @session3Desc.
+  ///
+  /// In en, this message translates to:
+  /// **'Creating your personal life tree in a group setting.'**
+  String get session3Desc;
+
+  /// No description provided for @session4Title.
+  ///
+  /// In en, this message translates to:
+  /// **'Session Three: The Here and Now'**
+  String get session4Title;
+
+  /// No description provided for @session4Desc.
+  ///
+  /// In en, this message translates to:
+  /// **'Present and Identity.'**
+  String get session4Desc;
+
+  /// No description provided for @session5Title.
+  ///
+  /// In en, this message translates to:
+  /// **'Spiritual Gifts (Evaluation, Exchange)'**
+  String get session5Title;
+
+  /// No description provided for @session5Desc.
+  ///
+  /// In en, this message translates to:
+  /// **'Discovery and classification of spiritual gifts.'**
+  String get session5Desc;
+
+  /// No description provided for @session6Title.
+  ///
+  /// In en, this message translates to:
+  /// **'Values (Complete all workbook tasks + Exchange)'**
+  String get session6Title;
+
+  /// No description provided for @session6Desc.
+  ///
+  /// In en, this message translates to:
+  /// **'Connections to spiritual gifts + life tree.'**
+  String get session6Desc;
+
+  /// No description provided for @session7Title.
+  ///
+  /// In en, this message translates to:
+  /// **'Session Four: Pray, Dream, Listen! (Listening Prayer)'**
+  String get session7Title;
+
+  /// No description provided for @session7Desc.
+  ///
+  /// In en, this message translates to:
+  /// **'Practical introduction and time for listening prayer.'**
+  String get session7Desc;
+
+  /// No description provided for @session8Title.
+  ///
+  /// In en, this message translates to:
+  /// **'Developing a Vision for the Future'**
+  String get session8Title;
+
+  /// No description provided for @session8Desc.
+  ///
+  /// In en, this message translates to:
+  /// **'The Big Picture I (Collage) from life tree, gifts, values, and listening prayer.'**
+  String get session8Desc;
+
+  /// No description provided for @session9Title.
+  ///
+  /// In en, this message translates to:
+  /// **'Session Five: Do you know the way to San Jose'**
+  String get session9Title;
+
+  /// No description provided for @session9Desc.
+  ///
+  /// In en, this message translates to:
+  /// **'Outlook and next steps.'**
+  String get session9Desc;
+
+  /// No description provided for @session10Title.
+  ///
+  /// In en, this message translates to:
+  /// **'Setting 3 Goals'**
+  String get session10Title;
+
+  /// No description provided for @session10Desc.
+  ///
+  /// In en, this message translates to:
+  /// **'Personal goal setting in individual sessions.'**
+  String get session10Desc;
+
+  /// No description provided for @session11Title.
+  ///
+  /// In en, this message translates to:
+  /// **'Group Photo'**
+  String get session11Title;
+
+  /// No description provided for @session12Title.
+  ///
+  /// In en, this message translates to:
+  /// **'Feedback Form'**
+  String get session12Title;
+
+  /// No description provided for @valueGenauigkeit.
+  ///
+  /// In en, this message translates to:
+  /// **'Accuracy'**
+  String get valueGenauigkeit;
+
+  /// No description provided for @valueFamilie.
+  ///
+  /// In en, this message translates to:
+  /// **'Family'**
+  String get valueFamilie;
+
+  /// No description provided for @valuePersEntwicklung.
+  ///
+  /// In en, this message translates to:
+  /// **'Personal Development'**
+  String get valuePersEntwicklung;
+
+  /// No description provided for @valueAusfuehrung.
+  ///
+  /// In en, this message translates to:
+  /// **'Execution'**
+  String get valueAusfuehrung;
+
+  /// No description provided for @valueFinanzielleSicherheit.
+  ///
+  /// In en, this message translates to:
+  /// **'Financial Security'**
+  String get valueFinanzielleSicherheit;
+
+  /// No description provided for @valueBeitragMitarbeit.
+  ///
+  /// In en, this message translates to:
+  /// **'Contribution'**
+  String get valueBeitragMitarbeit;
+
+  /// No description provided for @valueAufstieg.
+  ///
+  /// In en, this message translates to:
+  /// **'Advancement'**
+  String get valueAufstieg;
+
+  /// No description provided for @valueFlexibilitaet.
+  ///
+  /// In en, this message translates to:
+  /// **'Flexibility'**
+  String get valueFlexibilitaet;
+
+  /// No description provided for @valueLeistungEnergie.
+  ///
+  /// In en, this message translates to:
+  /// **'Achievement (Energy)'**
+  String get valueLeistungEnergie;
+
+  /// No description provided for @valueAbenteuer.
+  ///
+  /// In en, this message translates to:
+  /// **'Adventure'**
+  String get valueAbenteuer;
+
+  /// No description provided for @valueFreundschaft.
+  ///
+  /// In en, this message translates to:
+  /// **'Friendship'**
+  String get valueFreundschaft;
+
+  /// No description provided for @valuePrestige.
+  ///
+  /// In en, this message translates to:
+  /// **'Prestige'**
+  String get valuePrestige;
+
+  /// No description provided for @valueAesthetik.
+  ///
+  /// In en, this message translates to:
+  /// **'Aesthetics'**
+  String get valueAesthetik;
+
+  /// No description provided for @valueGrosszuegigkeit.
+  ///
+  /// In en, this message translates to:
+  /// **'Generosity'**
+  String get valueGrosszuegigkeit;
+
+  /// No description provided for @valueAnerkennung.
+  ///
+  /// In en, this message translates to:
+  /// **'Recognition'**
+  String get valueAnerkennung;
+
+  /// No description provided for @valueKuenstlerischerAusdruck.
+  ///
+  /// In en, this message translates to:
+  /// **'Artistic Expression'**
+  String get valueKuenstlerischerAusdruck;
+
+  /// No description provided for @valueGlueck.
+  ///
+  /// In en, this message translates to:
+  /// **'Happiness'**
+  String get valueGlueck;
+
+  /// No description provided for @valuePersGlaube.
+  ///
+  /// In en, this message translates to:
+  /// **'Personal Faith'**
+  String get valuePersGlaube;
+
+  /// No description provided for @valueEchtheit.
+  ///
+  /// In en, this message translates to:
+  /// **'Authenticity'**
+  String get valueEchtheit;
+
+  /// No description provided for @valueHumor.
+  ///
+  /// In en, this message translates to:
+  /// **'Humor'**
+  String get valueHumor;
+
+  /// No description provided for @valueVerantwortung.
+  ///
+  /// In en, this message translates to:
+  /// **'Responsibility'**
+  String get valueVerantwortung;
+
+  /// No description provided for @valueGleichgewicht.
+  ///
+  /// In en, this message translates to:
+  /// **'Balance'**
+  String get valueGleichgewicht;
+
+  /// No description provided for @valueUnabhaengigkeit.
+  ///
+  /// In en, this message translates to:
+  /// **'Independence'**
+  String get valueUnabhaengigkeit;
+
+  /// No description provided for @valueSicherheit.
+  ///
+  /// In en, this message translates to:
+  /// **'Security'**
+  String get valueSicherheit;
+
+  /// No description provided for @valueHerausforderung.
+  ///
+  /// In en, this message translates to:
+  /// **'Challenge'**
+  String get valueHerausforderung;
+
+  /// No description provided for @valueIntegritaet.
+  ///
+  /// In en, this message translates to:
+  /// **'Integrity'**
+  String get valueIntegritaet;
+
+  /// No description provided for @valueSelbstachtung.
+  ///
+  /// In en, this message translates to:
+  /// **'Self-respect'**
+  String get valueSelbstachtung;
+
+  /// No description provided for @valueBefaehigung.
+  ///
+  /// In en, this message translates to:
+  /// **'Empowerment'**
+  String get valueBefaehigung;
+
+  /// No description provided for @valueLernen.
+  ///
+  /// In en, this message translates to:
+  /// **'Learning'**
+  String get valueLernen;
+
+  /// No description provided for @valueDienst.
+  ///
+  /// In en, this message translates to:
+  /// **'Service'**
+  String get valueDienst;
+
+  /// No description provided for @valueWettbewerb.
+  ///
+  /// In en, this message translates to:
+  /// **'Competition'**
+  String get valueWettbewerb;
+
+  /// No description provided for @valueFreizeit.
+  ///
+  /// In en, this message translates to:
+  /// **'Leisure'**
+  String get valueFreizeit;
+
+  /// No description provided for @valueBestaendigkeit.
+  ///
+  /// In en, this message translates to:
+  /// **'Consistency'**
+  String get valueBestaendigkeit;
+
+  /// No description provided for @valueAnpassung.
+  ///
+  /// In en, this message translates to:
+  /// **'Adaptation'**
+  String get valueAnpassung;
+
+  /// No description provided for @valueWohnort.
+  ///
+  /// In en, this message translates to:
+  /// **'Residence'**
+  String get valueWohnort;
+
+  /// No description provided for @valueToleranz.
+  ///
+  /// In en, this message translates to:
+  /// **'Tolerance'**
+  String get valueToleranz;
+
+  /// No description provided for @valueKoerperlicheFitnessGesundheit.
+  ///
+  /// In en, this message translates to:
+  /// **'Physical Fitness & Health'**
+  String get valueKoerperlicheFitnessGesundheit;
+
+  /// No description provided for @valueLiebe.
+  ///
+  /// In en, this message translates to:
+  /// **'Love'**
+  String get valueLiebe;
+
+  /// No description provided for @valueTradition.
+  ///
+  /// In en, this message translates to:
+  /// **'Tradition'**
+  String get valueTradition;
+
+  /// No description provided for @valueKontrolle.
+  ///
+  /// In en, this message translates to:
+  /// **'Control'**
+  String get valueKontrolle;
+
+  /// No description provided for @valueAusdauerBeharrlichkeit.
+  ///
+  /// In en, this message translates to:
+  /// **'Endurance - Perseverance'**
+  String get valueAusdauerBeharrlichkeit;
+
+  /// No description provided for @valueVielfaeltigkeit.
+  ///
+  /// In en, this message translates to:
+  /// **'Diversity'**
+  String get valueVielfaeltigkeit;
+
+  /// No description provided for @valueKooperation.
+  ///
+  /// In en, this message translates to:
+  /// **'Cooperation'**
+  String get valueKooperation;
+
+  /// No description provided for @valueNatur.
+  ///
+  /// In en, this message translates to:
+  /// **'Nature'**
+  String get valueNatur;
+
+  /// No description provided for @valueEinfluss.
+  ///
+  /// In en, this message translates to:
+  /// **'Influence'**
+  String get valueEinfluss;
+
+  /// No description provided for @valueKreativitaet.
+  ///
+  /// In en, this message translates to:
+  /// **'Creativity'**
+  String get valueKreativitaet;
+
+  /// No description provided for @valueOrganisation.
+  ///
+  /// In en, this message translates to:
+  /// **'Organization'**
+  String get valueOrganisation;
+
+  /// No description provided for @valueEffektivitaet.
+  ///
+  /// In en, this message translates to:
+  /// **'Effectiveness'**
+  String get valueEffektivitaet;
+
+  /// No description provided for @valueFriede.
+  ///
+  /// In en, this message translates to:
+  /// **'Peace'**
+  String get valueFriede;
+
+  /// No description provided for @valueFairness.
+  ///
+  /// In en, this message translates to:
+  /// **'Fairness'**
+  String get valueFairness;
+
+  /// No description provided for @valueLoyalitaet.
+  ///
+  /// In en, this message translates to:
+  /// **'Loyalty'**
+  String get valueLoyalitaet;
 }
 
 class _AppLocalizationsDelegate

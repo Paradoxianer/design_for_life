@@ -376,4 +376,229 @@ class AppLocalizationsDe extends AppLocalizations {
   String feedbackLabel(int rating) {
     return 'Bewertung: $rating';
   }
+
+  @override
+  String get session1Title => 'Einheit Eins: Hallo, Guten Abend und Willkommen';
+
+  @override
+  String get session1Desc => 'Begrüßung und Einführung in das DFL Wochenende.';
+
+  @override
+  String get session2Title => 'Einheit Zwei: Zurück in die Zukunft';
+
+  @override
+  String get session2Desc => 'Reflektion über die eigene Geschichte.';
+
+  @override
+  String get session3Title => 'Gruppenarbeit – Lebensbaum zeichnen + Auswerten';
+
+  @override
+  String get session3Desc =>
+      'Erstellung des persönlichen Lebensbaums in der Gruppe.';
+
+  @override
+  String get session4Title => 'Einheit Drei: Das Hier und Jetzt';
+
+  @override
+  String get session4Desc => 'Gegenwart und Identität.';
+
+  @override
+  String get session5Title => 'Gaben (Auswertung, Austausch)';
+
+  @override
+  String get session5Desc => 'Entdeckung und Einordnung der geistlichen Gaben.';
+
+  @override
+  String get session6Title =>
+      'Werte (Alle Aufgaben Im Heft fertig + Austausch)';
+
+  @override
+  String get session6Desc => 'Zusammenhänge zu den Gaben + Lebensbaum.';
+
+  @override
+  String get session7Title =>
+      'Einheit Vier: Bete, Träume, Höre! (Hörendes Gebet)';
+
+  @override
+  String get session7Desc =>
+      'Praktische Einführung und Zeit des hörenden Gebets.';
+
+  @override
+  String get session8Title => 'Entwicklung einer Zukunftidee';
+
+  @override
+  String get session8Desc =>
+      'The Big Picture I (Collage) aus Lebensbaum, Gaben, Werten und hörendem Gebet.';
+
+  @override
+  String get session9Title => 'Einheit Fünf: Weißt Du den Weg nach San Jose';
+
+  @override
+  String get session9Desc => 'Ausblick und nächste Schritte.';
+
+  @override
+  String get session10Title => '3 Ziele festlegen';
+
+  @override
+  String get session10Desc => 'Persönliche Zielsetzung in Einzelgesprächen.';
+
+  @override
+  String get session11Title => 'Gruppenfoto';
+
+  @override
+  String get session12Title => 'Feedbackbogen';
+
+  @override
+  String get valueGenauigkeit => 'Genauigkeit';
+
+  @override
+  String get valueFamilie => 'Familie';
+
+  @override
+  String get valuePersEntwicklung => 'pers. Entwicklung';
+
+  @override
+  String get valueAusfuehrung => 'Ausführung';
+
+  @override
+  String get valueFinanzielleSicherheit => 'finanzielle Sicherheit';
+
+  @override
+  String get valueBeitragMitarbeit => 'Beitrag/Mitarbeit';
+
+  @override
+  String get valueAufstieg => 'Aufstieg';
+
+  @override
+  String get valueFlexibilitaet => 'Flexibilität';
+
+  @override
+  String get valueLeistungEnergie => 'Leistung (Energie)';
+
+  @override
+  String get valueAbenteuer => 'Abenteuer';
+
+  @override
+  String get valueFreundschaft => 'Freundschaft';
+
+  @override
+  String get valuePrestige => 'Prestige';
+
+  @override
+  String get valueAesthetik => 'Ästhetik';
+
+  @override
+  String get valueGrosszuegigkeit => 'Großzügigkeit';
+
+  @override
+  String get valueAnerkennung => 'Anerkennung';
+
+  @override
+  String get valueKuenstlerischerAusdruck => 'künstlerischer Ausdruck';
+
+  @override
+  String get valueGlueck => 'Glück';
+
+  @override
+  String get valuePersGlaube => 'pers. Glaube';
+
+  @override
+  String get valueEchtheit => 'Echtheit';
+
+  @override
+  String get valueHumor => 'Humor';
+
+  @override
+  String get valueVerantwortung => 'Verantwortung';
+
+  @override
+  String get valueGleichgewicht => 'Gleichgewicht';
+
+  @override
+  String get valueUnabhaengigkeit => 'Unabhängigkeit';
+
+  @override
+  String get valueSicherheit => 'Sicherheit';
+
+  @override
+  String get valueHerausforderung => 'Herausforderung';
+
+  @override
+  String get valueIntegritaet => 'Integrität';
+
+  @override
+  String get valueSelbstachtung => 'Selbstachtung';
+
+  @override
+  String get valueBefaehigung => 'Befähigung';
+
+  @override
+  String get valueLernen => 'Lernen';
+
+  @override
+  String get valueDienst => 'Dienst';
+
+  @override
+  String get valueWettbewerb => 'Wettbewerb';
+
+  @override
+  String get valueFreizeit => 'Freizeit';
+
+  @override
+  String get valueBestaendigkeit => 'Beständigkeit';
+
+  @override
+  String get valueAnpassung => 'Anpassung';
+
+  @override
+  String get valueWohnort => 'Wohnort';
+
+  @override
+  String get valueToleranz => 'Toleranz';
+
+  @override
+  String get valueKoerperlicheFitnessGesundheit =>
+      'körperliche Fitness + Gesundheit';
+
+  @override
+  String get valueLiebe => 'Liebe';
+
+  @override
+  String get valueTradition => 'Tradition';
+
+  @override
+  String get valueKontrolle => 'Kontrolle';
+
+  @override
+  String get valueAusdauerBeharrlichkeit => 'Ausdauer - Beharrlichkeit';
+
+  @override
+  String get valueVielfaeltigkeit => 'Vielfältigkeit';
+
+  @override
+  String get valueKooperation => 'Kooperation';
+
+  @override
+  String get valueNatur => 'Natur';
+
+  @override
+  String get valueEinfluss => 'Einfluss';
+
+  @override
+  String get valueKreativitaet => 'Kreativität';
+
+  @override
+  String get valueOrganisation => 'Organisation';
+
+  @override
+  String get valueEffektivitaet => 'Effektivität';
+
+  @override
+  String get valueFriede => 'Friede';
+
+  @override
+  String get valueFairness => 'Fairness';
+
+  @override
+  String get valueLoyalitaet => 'Loyalität';
 }

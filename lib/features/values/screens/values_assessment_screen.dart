@@ -7,6 +7,7 @@ import '../../../core/services/share_service.dart';
 import '../bloc/values_bloc.dart';
 import '../bloc/values_event.dart';
 import '../bloc/values_state.dart';
+import '../models/static_values_data.dart';
 import '../widgets/values_editor.dart';
 import '../widgets/values_result.dart';
 
@@ -32,12 +33,14 @@ class _ValuesAssessmentScreenState extends State<ValuesAssessmentScreen> {
   void initState() {
     super.initState();
     // Initialize the global bloc when the screen is first opened
-    context.read<ValuesBloc>().add(const ValuesStarted());
+    final l10n = AppLocalizations.of(context);
+    context.read<ValuesBloc>().add(ValuesStarted(StaticValuesData.getInitialValues(l10n)));
   }
 
-  ShareableContent _getShareableContent(ValuesState state) {
+  ShareableContent _getShareableContent(BuildContext context, ValuesState state) {
+    final l10n = AppLocalizations.of(context);
     return ShareableContent(
-      title: 'Meine Werte',
+      title: l10n.valuesResultTitle,
       items: state.topEightValues.asMap().entries.map((entry) {
         final index = entry.key;
         final value = entry.value;
@@ -56,7 +59,7 @@ class _ValuesAssessmentScreenState extends State<ValuesAssessmentScreen> {
 
     return BlocBuilder<ValuesBloc, ValuesState>(
       builder: (context, state) {
-        final shareContent = _getShareableContent(state);
+        final shareContent = _getShareableContent(context, state);
         
         return DflModuleScaffold(
           key: _scaffoldKey,
@@ -129,11 +132,12 @@ class _ValuesAssessmentScreenState extends State<ValuesAssessmentScreen> {
   }
 
   Future<bool> _validateCompletion(BuildContext context, ValuesState state) async {
+    final l10n = AppLocalizations.of(context);
     if (state.topEightValues.length != 8) {
       final bool? result = await showDialog<bool>(
         context: context,
         builder: (context) => AlertDialog(
-          title: const Text('Auswahl unvollständig'),
+          title: Text(l10n.valuesSelectionStatus(8)),
           content: Text(
             'Du hast aktuell ${state.topEightValues.length} von 8 Werten ausgewählt. '
             'Für ein optimales Ergebnis sollten es genau 8 sein. '
@@ -142,11 +146,11 @@ class _ValuesAssessmentScreenState extends State<ValuesAssessmentScreen> {
           actions: [
             TextButton(
               onPressed: () => Navigator.pop(context, false),
-              child: const Text('Zurück'),
+              child: Text(l10n.previous),
             ),
             ElevatedButton(
               onPressed: () => Navigator.pop(context, true),
-              child: const Text('Trotzdem weiter'),
+              child: Text(l10n.next),
             ),
           ],
         ),
