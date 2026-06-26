@@ -266,8 +266,10 @@ class _LifeTreeGraphViewOnlyState extends State<_LifeTreeGraphViewOnly> with Tic
       final x = node.x;
       final y = node.y;
       
+      // Node center (relative to graph origin)
+      // Node width is 180, height is 120
       final nodeCenterX = x + 90;
-      final nodeCenterY = y + 50;
+      final nodeCenterY = y + 60;
       
       final viewportCenterX = width / 2;
       final viewportCenterY = height / 2;
@@ -568,7 +570,7 @@ class _TreeNodeWidgetState extends State<_TreeNodeWidget> {
         color: Colors.transparent,
         child: SizedBox(
           width: 180, 
-          height: 100, 
+          height: 120, 
           child: Stack(
             clipBehavior: Clip.none,
             alignment: Alignment.topCenter,
@@ -604,15 +606,19 @@ class _TreeNodeWidgetState extends State<_TreeNodeWidget> {
                                 decoration: InputDecoration(
                                   isDense: true, 
                                   border: InputBorder.none, 
-                                  contentPadding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                                  contentPadding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
                                   hintText: l10n.lifeTreeNodeHint,
                                 ),
                                 style: theme.textTheme.bodyMedium,
                                 onSubmitted: (val) => widget.onChanged(val),
                               ),
                             ),
-                            if (showButtons)
-                              IconButton(
+                            Visibility(
+                              visible: showButtons,
+                              maintainSize: true,
+                              maintainAnimation: true,
+                              maintainState: true,
+                              child: IconButton(
                                 icon: Icon(Icons.speaker_notes, size: 16, color: theme.primaryColor.withValues(alpha: 0.6)),
                                 onPressed: () {
                                   setState(() => _showNoteOverlay = !_showNoteOverlay);
@@ -624,6 +630,7 @@ class _TreeNodeWidgetState extends State<_TreeNodeWidget> {
                                 padding: const EdgeInsets.only(right: 8),
                                 tooltip: l10n.lifeTreeEditNote,
                               ),
+                            ),
                           ],
                         ),
                         if (!_showNoteOverlay && widget.nodeData.note.isNotEmpty)
@@ -639,7 +646,7 @@ class _TreeNodeWidgetState extends State<_TreeNodeWidget> {
                       ],
                     ),
                   ),
-                  const SizedBox(height: 8),
+                  const SizedBox(height: 4),
                   Visibility(
                     visible: showButtons,
                     maintainSize: true, 
