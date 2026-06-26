@@ -14,39 +14,129 @@
     "description": "Die Gabe des Wortes der Weisheit beschreibt ein vom Heiligen Geist gegebenes Wort oder eine Einsicht, die Gottes Perspektive, Plan oder Lösung für eine konkrete Situation offenbart. Das griechische „logos sophias“ bezeichnet nicht allgemeine Weisheit, sondern ein spezifisches, situationsbezogenes Reden Gottes. In der Bibel zeigt sich diese Gabe z.B. bei Salomo (1. Kön 3), bei den Aposteln in schwierigen Entscheidungen (Apg 6; Apg 15) oder bei Jesus selbst, der göttliche Weisheit in Konfliktsituationen offenbarte. Diese Gabe bringt Klarheit, Orientierung und göttliche Strategie in komplexe Situationen und dient der Leitung und Erbauung der Gemeinde.",
     "questions": [
       {
-        "id": "ww_1",
+        "id": "wort_der_weisheit_1",
         "type": "experience",
-        "text": "Hast du schon erlebt dass dir in einer schwierigen Situation plötzlich eine klare geistliche Lösung eingefallen ist?"
-      },
+        "text": "Ich habe erlebt, dass Gott mir überraschend klare Lösungen zeigt."
+      }
+    ]
+  },
+  {
+    "id": "wort_der_weisheit",
+    "name": "Wort der Weisheit",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
       {
-        "id": "ww_2",
+        "id": "wort_der_weisheit_1",
         "type": "experience",
-        "text": "Haben Menschen dich schon um Rat gebeten weil sie deine geistliche Einschätzung schätzen?"
-      },
+        "text": "Andere bitten mich oft um Rat in schwierigen Situationen."
+      }
+    ]
+  },
+  {
+    "id": "wort_der_weisheit",
+    "name": "Wort der Weisheit",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
       {
-        "id": "ww_3",
+        "id": "wort_der_weisheit_1",
         "type": "experience",
-        "text": "Gab es Situationen in denen du Gottes Perspektive auf ein Problem erkannt hast?"
-      },
+        "text": "Ich spüre innere Klarheit bei komplexen Entscheidungen."
+      }
+    ]
+  },
+  {
+    "id": "wort_der_weisheit",
+    "name": "Wort der Weisheit",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
       {
-        "id": "ww_4",
+        "id": "wort_der_weisheit_1",
         "type": "nature",
         "text": "Es macht mir Freude Menschen zu helfen gute Entscheidungen vor Gott zu treffen."
-      },
+      }
+    ]
+  },
+  {
+    "id": "wort_der_weisheit",
+    "name": "Wort der Weisheit",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
       {
-        "id": "ww_5",
+        "id": "wort_der_weisheit_1",
         "type": "nature",
-        "text": "Ich denke gern darüber nach wie Gottes Prinzipien praktisch angewendet werden können."
-      },
+        "text": "Es ist mir wichtig, für festgefahrene Probleme göttliche Strategien statt menschlicher Kompromisse zu finden."
+      }
+    ]
+  },
+  {
+    "id": "wort_der_weisheit",
+    "name": "Wort der Weisheit",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
       {
-        "id": "ww_6",
+        "id": "wort_der_weisheit_1",
         "type": "feedback",
-        "text": "Andere sagen mir dass meine Ratschläge ihnen geholfen haben gute Entscheidungen zu treffen."
-      },
+        "text": "Andere sagen, dass meine Ratschläge ihnen geholfen haben, Gottes Willen in Krisen klar zu sehen."
+      }
+    ]
+  },
+  {
+    "id": "wort_der_weisheit",
+    "name": "Wort der Weisheit",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
       {
-        "id": "ww_7",
+        "id": "wort_der_weisheit_1",
         "type": "feedback",
-        "text": "Meine Einsichten bringen oft Klarheit in schwierige Situationen."
+        "text": "Ich sehe, dass mein Rat Menschen nachhaltig geholfen hat."
+      }
+    ]
+  },
+  {
+    "id": "wort_der_weisheit",
+    "name": "Wort der Weisheit",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
+      {
+        "id": "wort_der_weisheit_1",
+        "type": "reference",
+        "text": "Ich habe erlebt dass diese Person in schwierigen Situationen hilfreiche und gut durchdachte Lösungen einbringt."
+      }
+    ]
+  },
+  {
+    "id": "wort_der_weisheit",
+    "name": "Wort der Weisheit",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
+      {
+        "id": "wort_der_weisheit_1",
+        "type": "reference",
+        "text": "Die Beiträge dieser Person helfen anderen häufig gute Entscheidungen zu treffen."
       }
     ]
   },
@@ -62,39 +152,129 @@
     "description": "Das Wort der Erkenntnis beschreibt eine vom Heiligen Geist geschenkte Einsicht oder Information über eine Person, Situation oder geistliche Realität, die nicht durch natürliche Erkenntnis gewonnen wurde. Der Begriff „logos gnoseos“ meint eine konkrete Offenbarung von Wissen. In der Bibel zeigt sich diese Gabe etwa bei Petrus, der Ananias’ Täuschung erkennt (Apg 5), oder bei Jesus, der Gedanken und Lebenssituationen von Menschen kennt (Joh 4). Diese Gabe dient dazu, Wahrheit ans Licht zu bringen, Menschen zu helfen und Gottes Wirken sichtbar zu machen.",
     "questions": [
       {
-        "id": "we_1",
+        "id": "wort_der_erkenntnis_1",
         "type": "experience",
-        "text": "Hast du schon erlebt dass dir plötzlich ein geistlicher Zusammenhang klar wurde?"
-      },
+        "text": "Gott hat mir beim Gebet ein spezifisches Bild oder Wort für die Situation eines anderen gegeben."
+      }
+    ]
+  },
+  {
+    "id": "wort_der_erkenntnis",
+    "name": "Wort der Erkenntnis",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
       {
-        "id": "we_2",
+        "id": "wort_der_erkenntnis_1",
         "type": "experience",
         "text": "Gab es Momente in denen du Dinge über eine Situation erkannt hast die du vorher nicht wissen konntest?"
-      },
+      }
+    ]
+  },
+  {
+    "id": "wort_der_erkenntnis",
+    "name": "Wort der Erkenntnis",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
       {
-        "id": "we_3",
+        "id": "wort_der_erkenntnis_1",
         "type": "experience",
         "text": "Hast du erlebt dass Gott dir besondere Einsichten über Menschen oder Situationen gegeben hat?"
-      },
+      }
+    ]
+  },
+  {
+    "id": "wort_der_erkenntnis",
+    "name": "Wort der Erkenntnis",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
       {
-        "id": "we_4",
+        "id": "wort_der_erkenntnis_1",
         "type": "nature",
-        "text": "Ich habe Freude daran geistliche Zusammenhänge zu entdecken."
-      },
+        "text": "Ich habe das Verlangen, dass Gott mir Geheimnisse offenbart, um Menschen gezielter dienen zu können."
+      }
+    ]
+  },
+  {
+    "id": "wort_der_erkenntnis",
+    "name": "Wort der Erkenntnis",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
       {
-        "id": "we_5",
+        "id": "wort_der_erkenntnis_1",
         "type": "nature",
         "text": "Ich möchte Gottes Gedanken und Wahrheiten tiefer verstehen."
-      },
+      }
+    ]
+  },
+  {
+    "id": "wort_der_erkenntnis",
+    "name": "Wort der Erkenntnis",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
       {
-        "id": "we_6",
+        "id": "wort_der_erkenntnis_1",
         "type": "feedback",
         "text": "Andere erleben durch meine Einsichten neue Klarheit über geistliche Themen."
-      },
+      }
+    ]
+  },
+  {
+    "id": "wort_der_erkenntnis",
+    "name": "Wort der Erkenntnis",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
       {
-        "id": "we_7",
+        "id": "wort_der_erkenntnis_1",
         "type": "feedback",
-        "text": "Menschen sagen dass meine Beobachtungen ihnen helfen Situationen besser zu verstehen."
+        "text": "Ich fühle mich gedrängt, verborgene Dinge ans Licht zu bringen."
+      }
+    ]
+  },
+  {
+    "id": "wort_der_erkenntnis",
+    "name": "Wort der Erkenntnis",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
+      {
+        "id": "wort_der_erkenntnis_1",
+        "type": "reference",
+        "text": "Ich habe beobachtet dass diese Person Zusammenhänge erkennt die anderen zunächst nicht auffallen."
+      }
+    ]
+  },
+  {
+    "id": "wort_der_erkenntnis",
+    "name": "Wort der Erkenntnis",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
+      {
+        "id": "wort_der_erkenntnis_1",
+        "type": "reference",
+        "text": "Die Einsichten dieser Person helfen anderen Situationen besser zu verstehen."
       }
     ]
   },
@@ -112,39 +292,129 @@
     "description": "Die Gabe des Glaubens ist eine besondere, vom Heiligen Geist gewirkte Zuversicht, dass Gott in einer bestimmten Situation handeln wird. Sie geht über den allgemeinen rettenden Glauben hinaus und ist ein übernatürliches Vertrauen auf Gottes Macht und Verheißungen. Das griechische „pistis“ beschreibt hier ein starkes, festes Vertrauen auf Gottes Handeln. In der Bibel zeigt sich diese Gabe bei Personen wie Abraham (Röm 4) oder bei den Aposteln, die mutig Gottes Wirken erwarten. Diese Gabe stärkt andere im Glauben und öffnet Raum für Gottes übernatürliches Eingreifen.",
     "questions": [
       {
-        "id": "gl_1",
+        "id": "glaube_1",
         "type": "experience",
         "text": "Hast du erlebt dass du Gott in scheinbar unmöglichen Situationen besonders vertraut hast?"
-      },
+      }
+    ]
+  },
+  {
+    "id": "glaube",
+    "name": "Glaube",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
       {
-        "id": "gl_2",
+        "id": "glaube_1",
         "type": "experience",
         "text": "Gab es Momente in denen dein Vertrauen auf Gott andere ermutigt hat?"
-      },
+      }
+    ]
+  },
+  {
+    "id": "glaube",
+    "name": "Glaube",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
       {
-        "id": "gl_3",
+        "id": "glaube_1",
         "type": "experience",
-        "text": "Hast du erlebt dass Gott auf dein mutiges Vertrauen hin gehandelt hat?"
-      },
+        "text": "Haben Situationen sich durch deinen Glauben zum Guten verändert?"
+      }
+    ]
+  },
+  {
+    "id": "glaube",
+    "name": "Glaube",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
       {
-        "id": "gl_4",
+        "id": "glaube_1",
         "type": "nature",
         "text": "Ich vertraue darauf dass Gott auch große und unmögliche Dinge tun kann."
-      },
+      }
+    ]
+  },
+  {
+    "id": "glaube",
+    "name": "Glaube",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
       {
-        "id": "gl_5",
+        "id": "glaube_1",
         "type": "nature",
         "text": "Ich fühle mich motiviert Gott auch dann zu vertrauen wenn andere zweifeln."
-      },
+      }
+    ]
+  },
+  {
+    "id": "glaube",
+    "name": "Glaube",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
       {
-        "id": "gl_6",
+        "id": "glaube_1",
         "type": "feedback",
         "text": "Mein Vertrauen auf Gott stärkt häufig den Glauben anderer Menschen."
-      },
+      }
+    ]
+  },
+  {
+    "id": "glaube",
+    "name": "Glaube",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
       {
-        "id": "gl_7",
+        "id": "glaube_1",
         "type": "feedback",
-        "text": "Menschen sagen dass mein Glaube ihnen Mut macht."
+        "text": "Durch mein Festhalten an Gottes Zusage wurden Ziele erreicht, die das Team/die Gemeinde längst aufgegeben hatte."
+      }
+    ]
+  },
+  {
+    "id": "glaube",
+    "name": "Glaube",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
+      {
+        "id": "glaube_1",
+        "type": "reference",
+        "text": "Ich habe erlebt dass diese Person auch in schwierigen Situationen fest darauf vertraut dass Gott handeln kann."
+      }
+    ]
+  },
+  {
+    "id": "glaube",
+    "name": "Glaube",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
+      {
+        "id": "glaube_1",
+        "type": "reference",
+        "text": "Das Vertrauen dieser Person ermutigt und stärkt andere Menschen sichtbar."
       }
     ]
   },
@@ -163,39 +433,129 @@
     "description": "Die „Gaben der Heilungen“ beschreiben verschiedene Wirkungen göttlicher Heilung durch den Heiligen Geist. Das griechische „charismata iamaton“ steht im Plural und deutet darauf hin, dass Gott unterschiedliche Arten von Heilungen schenkt – körperlich, seelisch oder geistlich. In der Bibel werden Heilungen durch Jesus und die Apostel häufig beschrieben (z.B. Apg 3; Mk 16). Diese Gabe zeigt Gottes Mitgefühl für leidende Menschen und dient als Zeichen seines Reiches sowie zur Ermutigung des Glaubens.",
     "questions": [
       {
-        "id": "gh_1",
+        "id": "gaben_der_heilungen_1",
         "type": "experience",
         "text": "Hast du schon erlebt dass jemand nach deinem Gebet körperliche oder seelische Heilung erfahren hat?"
-      },
+      }
+    ]
+  },
+  {
+    "id": "gaben_der_heilungen",
+    "name": "Gaben der Heilungen",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
       {
-        "id": "gh_2",
+        "id": "gaben_der_heilungen_1",
         "type": "experience",
         "text": "Hast du häufig den Impuls für kranke Menschen zu beten?"
-      },
+      }
+    ]
+  },
+  {
+    "id": "gaben_der_heilungen",
+    "name": "Gaben der Heilungen",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
       {
-        "id": "gh_3",
+        "id": "gaben_der_heilungen_1",
         "type": "experience",
         "text": "Hast du erlebt dass Gott durch Gebet Heilung schenkt?"
-      },
+      }
+    ]
+  },
+  {
+    "id": "gaben_der_heilungen",
+    "name": "Gaben der Heilungen",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
       {
-        "id": "gh_4",
+        "id": "gaben_der_heilungen_1",
         "type": "nature",
-        "text": "Ich bete gern für kranke oder leidende Menschen."
-      },
+        "text": "Neigst du dazu, für Kranke zu beten und Heilung zu erwarten?"
+      }
+    ]
+  },
+  {
+    "id": "gaben_der_heilungen",
+    "name": "Gaben der Heilungen",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
       {
-        "id": "gh_5",
+        "id": "gaben_der_heilungen_1",
         "type": "nature",
-        "text": "Es bewegt mich wenn Menschen körperlich oder innerlich leiden."
-      },
+        "text": "Ich glaube fest daran, dass Jesus heute noch genauso heilt wie zur Zeit der Apostel."
+      }
+    ]
+  },
+  {
+    "id": "gaben_der_heilungen",
+    "name": "Gaben der Heilungen",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
       {
-        "id": "gh_6",
+        "id": "gaben_der_heilungen_1",
         "type": "feedback",
         "text": "Menschen berichten dass sie durch mein Gebet Trost oder Heilung erfahren haben."
-      },
+      }
+    ]
+  },
+  {
+    "id": "gaben_der_heilungen",
+    "name": "Gaben der Heilungen",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
       {
-        "id": "gh_7",
+        "id": "gaben_der_heilungen_1",
         "type": "feedback",
         "text": "Andere bitten mich gezielt für ihre Gesundheit zu beten."
+      }
+    ]
+  },
+  {
+    "id": "gaben_der_heilungen",
+    "name": "Gaben der Heilungen",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
+      {
+        "id": "gaben_der_heilungen_1",
+        "type": "reference",
+        "text": "Ich habe erlebt dass diese Person für kranke oder belastete Menschen betet."
+      }
+    ]
+  },
+  {
+    "id": "gaben_der_heilungen",
+    "name": "Gaben der Heilungen",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
+      {
+        "id": "gaben_der_heilungen_1",
+        "type": "reference",
+        "text": "Menschen berichten dass sie durch das Gebet dieser Person Hilfe oder Trost erfahren haben."
       }
     ]
   },
@@ -213,39 +573,129 @@
     "description": "Die „Wirkungen von Wundern“ beschreiben übernatürliche Machttaten Gottes, die über natürliche Möglichkeiten hinausgehen. Der Ausdruck „energemata dynameon“ bedeutet wörtlich „wirksame Taten von Macht“. In der Bibel zeigt sich diese Gabe z.B. bei Mose, Elia, Jesus und den Aposteln. Wunder können Befreiung, Versorgung, Naturwunder oder andere außergewöhnliche Eingriffe Gottes sein und bestätigen Gottes Macht und das Evangelium.",
     "questions": [
       {
-        "id": "wwu_1",
+        "id": "wirkungen_von_wundern_1",
         "type": "experience",
         "text": "Hast du Situationen erlebt in denen Gott auf übernatürliche Weise eingegriffen hat?"
-      },
+      }
+    ]
+  },
+  {
+    "id": "wirkungen_von_wundern",
+    "name": "Wirkungen von Wundern",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
       {
-        "id": "wwu_2",
+        "id": "wirkungen_von_wundern_1",
         "type": "experience",
         "text": "Hast du erlebt dass Gott durch dein Gebet außergewöhnliche Dinge getan hat?"
-      },
+      }
+    ]
+  },
+  {
+    "id": "wirkungen_von_wundern",
+    "name": "Wirkungen von Wundern",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
       {
-        "id": "wwu_3",
+        "id": "wirkungen_von_wundern_1",
         "type": "experience",
-        "text": "Gab es Momente in denen Gottes Macht deutlich sichtbar wurde?"
-      },
+        "text": "Ich erwarte übernatürliche Handlungen Gottes in meinem Umfeld."
+      }
+    ]
+  },
+  {
+    "id": "wirkungen_von_wundern",
+    "name": "Wirkungen von Wundern",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
       {
-        "id": "wwu_4",
+        "id": "wirkungen_von_wundern_1",
+        "type": "nature",
+        "text": "Ich habe das tiefe Vertrauen, dass Gott auch heute noch sichtbare Zeichen seiner Macht tut, um sein Wort zu bestätigen."
+      }
+    ]
+  },
+  {
+    "id": "wirkungen_von_wundern",
+    "name": "Wirkungen von Wundern",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
+      {
+        "id": "wirkungen_von_wundern_1",
         "type": "nature",
         "text": "Ich glaube dass Gott auch heute noch Wunder tun kann."
-      },
+      }
+    ]
+  },
+  {
+    "id": "wirkungen_von_wundern",
+    "name": "Wirkungen von Wundern",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
       {
-        "id": "wwu_5",
-        "type": "nature",
-        "text": "Ich bete mutig für Situationen die menschlich unmöglich erscheinen."
-      },
-      {
-        "id": "wwu_6",
+        "id": "wirkungen_von_wundern_1",
         "type": "feedback",
-        "text": "Mein Gebet ermutigt andere mit Gottes Eingreifen zu rechnen."
-      },
+        "text": "Menschen in meinem Umfeld haben durch sichtbare Machttaten Gottes zum Glauben gefunden."
+      }
+    ]
+  },
+  {
+    "id": "wirkungen_von_wundern",
+    "name": "Wirkungen von Wundern",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
       {
-        "id": "wwu_7",
+        "id": "wirkungen_von_wundern_1",
         "type": "feedback",
-        "text": "Menschen berichten von besonderen Erfahrungen mit Gottes Kraft."
+        "text": "Mein Dienst wird oft von außergewöhnlichen Begebenheiten begleitet, die menschlich nicht erklärbar sind."
+      }
+    ]
+  },
+  {
+    "id": "wirkungen_von_wundern",
+    "name": "Wirkungen von Wundern",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
+      {
+        "id": "wirkungen_von_wundern_1",
+        "type": "reference",
+        "text": "Ich habe erlebt dass diese Person für Situationen betet die menschlich schwer lösbar sind."
+      }
+    ]
+  },
+  {
+    "id": "wirkungen_von_wundern",
+    "name": "Wirkungen von Wundern",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
+      {
+        "id": "wirkungen_von_wundern_1",
+        "type": "reference",
+        "text": "Der Glaube dieser Person ermutigt andere mit außergewöhnlichem Eingreifen Gottes zu rechnen."
       }
     ]
   },
@@ -264,39 +714,129 @@
     "description": "Prophetie ist das vom Heiligen Geist inspirierte Reden im Auftrag Gottes zur Erbauung, Ermahnung und Ermutigung der Gemeinde (1. Kor 14,3). Der Begriff „propheteia“ bedeutet wörtlich „für jemanden sprechen“. Prophetie kann sowohl Offenbarung als auch Anwendung von Gottes Wort auf eine konkrete Situation sein. In der Bibel sehen wir prophetisches Reden bei alttestamentlichen Propheten sowie im Neuen Testament z.B. bei Agabus (Apg 11). Diese Gabe stärkt den Glauben, korrigiert Fehlentwicklungen und richtet den Blick der Gemeinde auf Gottes Willen.",
     "questions": [
       {
-        "id": "pr_1",
+        "id": "prophetie_1",
         "type": "experience",
-        "text": "Hast du schon den Eindruck gehabt dass Gott dir ein Wort für eine Person oder Gruppe gibt?"
-      },
+        "text": "Ich habe erlebt dass sich mein Eindruck über eine Situation später als richtig herausgestellt hat."
+      }
+    ]
+  },
+  {
+    "id": "prophetie",
+    "name": "Prophetie",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
       {
-        "id": "pr_2",
-        "type": "experience",
-        "text": "Gab es Situationen in denen deine Worte Menschen geistlich aufgebaut haben?"
-      },
-      {
-        "id": "pr_3",
+        "id": "prophetie_1",
         "type": "experience",
         "text": "Hast du erlebt dass jemand durch deine Worte Gottes Reden erkannt hat?"
-      },
+      }
+    ]
+  },
+  {
+    "id": "prophetie",
+    "name": "Prophetie",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
       {
-        "id": "pr_4",
-        "type": "nature",
-        "text": "Ich wünsche mir dass Gott durch mich zu anderen Menschen sprechen kann."
-      },
+        "id": "prophetie_1",
+        "type": "experience",
+        "text": "Ich habe Eindrücke oder Worte gehabt, die sich später bestätigten."
+      }
+    ]
+  },
+  {
+    "id": "prophetie",
+    "name": "Prophetie",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
       {
-        "id": "pr_5",
+        "id": "prophetie_1",
         "type": "nature",
         "text": "Ich achte darauf was Gott in einer Situation sagen möchte."
-      },
+      }
+    ]
+  },
+  {
+    "id": "prophetie",
+    "name": "Prophetie",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
       {
-        "id": "pr_6",
-        "type": "feedback",
-        "text": "Andere fühlen sich durch meine Worte ermutigt oder gestärkt."
-      },
+        "id": "prophetie_1",
+        "type": "nature",
+        "text": "Ich wünsche mir dass Gott durch mich zu anderen Menschen sprechen kann."
+      }
+    ]
+  },
+  {
+    "id": "prophetie",
+    "name": "Prophetie",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
       {
-        "id": "pr_7",
+        "id": "prophetie_1",
         "type": "feedback",
         "text": "Menschen bestätigen manchmal dass Gott durch meine Worte zu ihnen gesprochen hat."
+      }
+    ]
+  },
+  {
+    "id": "prophetie",
+    "name": "Prophetie",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
+      {
+        "id": "prophetie_1",
+        "type": "feedback",
+        "text": "Menschen wurden durch Aussagen von mir auf zukünftige Ereignisse  in ihrem Leben vorbereitet."
+      }
+    ]
+  },
+  {
+    "id": "prophetie",
+    "name": "Prophetie",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
+      {
+        "id": "prophetie_1",
+        "type": "reference",
+        "text": "Ich habe erlebt dass diese Person Worte von Gott weitergibt die andere als sehr passend oder stärkend empfinden."
+      }
+    ]
+  },
+  {
+    "id": "prophetie",
+    "name": "Prophetie",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
+      {
+        "id": "prophetie_1",
+        "type": "reference",
+        "text": "Man spürt dass Gott in bestimmten Situationen diese Person gebraucht um Botschaften weiterzugeben"
       }
     ]
   },
@@ -315,45 +855,135 @@
     "description": "Die Unterscheidung der Geister ist die Fähigkeit, geistliche Einflüsse zu erkennen und zu unterscheiden, ob sie von Gott, vom menschlichen Geist oder von dämonischen Mächten stammen. Der Begriff „diakrisis pneumaton“ bedeutet „Unterscheidung oder Prüfung von Geistern“. In der Bibel zeigt sich diese Gabe z.B. bei Petrus (Apg 5) oder Paulus (Apg 16). Sie schützt die Gemeinde vor Täuschung und hilft, Gottes Wirken klar zu erkennen.",
     "questions": [
       {
-        "id": "ug_1",
+        "id": "unterscheidung_der_geister_1",
         "type": "experience",
-        "text": "Hast du schon gespürt dass hinter einer Situation ein bestimmter geistlicher Einfluss steht?"
-      },
-      {
-        "id": "ug_2",
-        "type": "experience",
-        "text": "Hast du Situationen erlebt in denen du falsche geistliche Einflüsse erkannt hast?"
-      },
-      {
-        "id": "ug_3",
-        "type": "experience",
-        "text": "Hast du erlebt dass du geistlich beurteilen konntest ob etwas von Gott ist?"
-      },
-      {
-        "id": "ug_4",
-        "type": "nature",
-        "text": "Ich möchte verstehen welche geistlichen Kräfte in einer Situation wirken."
-      },
-      {
-        "id": "ug_5",
-        "type": "nature",
-        "text": "Ich prüfe geistliche Eindrücke sorgfältig."
-      },
-      {
-        "id": "ug_6",
-        "type": "feedback",
-        "text": "Andere fragen mich manchmal nach meiner geistlichen Einschätzung."
-      },
-      {
-        "id": "ug_7",
-        "type": "feedback",
-        "text": "Meine Einschätzung hilft manchmal Fehlentwicklungen zu erkennen."
+        "text": "Ich spüre, ob etwas von Gott, Menschen oder anderen Quellen kommt."
       }
     ]
   },
   {
-    "id": "arten_von_zungen",
-    "name": "Arten von Zungen",
+    "id": "unterscheidung_der_geister",
+    "name": "Unterscheidung der Geister",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
+      {
+        "id": "unterscheidung_der_geister_1",
+        "type": "experience",
+        "text": "Hast du Situationen erlebt in denen du falsche geistliche Einflüsse erkannt hast?"
+      }
+    ]
+  },
+  {
+    "id": "unterscheidung_der_geister",
+    "name": "Unterscheidung der Geister",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
+      {
+        "id": "unterscheidung_der_geister_1",
+        "type": "experience",
+        "text": "Ich erkenne ungesunde geistliche Einflüsse schnell."
+      }
+    ]
+  },
+  {
+    "id": "unterscheidung_der_geister",
+    "name": "Unterscheidung der Geister",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
+      {
+        "id": "unterscheidung_der_geister_1",
+        "type": "nature",
+        "text": "Ich möchte verstehen welche geistlichen Kräfte in einer Situation wirken."
+      }
+    ]
+  },
+  {
+    "id": "unterscheidung_der_geister",
+    "name": "Unterscheidung der Geister",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
+      {
+        "id": "unterscheidung_der_geister_1",
+        "type": "nature",
+        "text": "Ich prüfe geistliche Eindrücke sorgfältig."
+      }
+    ]
+  },
+  {
+    "id": "unterscheidung_der_geister",
+    "name": "Unterscheidung der Geister",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
+      {
+        "id": "unterscheidung_der_geister_1",
+        "type": "feedback",
+        "text": "Ich habe erlebt, wie Gott mir Täuschung offenbart hat."
+      }
+    ]
+  },
+  {
+    "id": "unterscheidung_der_geister",
+    "name": "Unterscheidung der Geister",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
+      {
+        "id": "unterscheidung_der_geister_1",
+        "type": "feedback",
+        "text": "Meine Einschätzung hilft manchmal geistliche Fehlentwicklungen zu erkennen."
+      }
+    ]
+  },
+  {
+    "id": "unterscheidung_der_geister",
+    "name": "Unterscheidung der Geister",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
+      {
+        "id": "unterscheidung_der_geister_1",
+        "type": "reference",
+        "text": "Ich habe beobachtet dass diese Person erkennt wenn etwas nicht geistlich nicht stimmt."
+      }
+    ]
+  },
+  {
+    "id": "unterscheidung_der_geister",
+    "name": "Unterscheidung der Geister",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
+      {
+        "id": "unterscheidung_der_geister_1",
+        "type": "reference",
+        "text": "Die Einschätzung dieser Person hilft anderen geistliche Situationen besser einzuordnen."
+      }
+    ]
+  },
+  {
+    "id": "zungenrede",
+    "name": "Zungenrede",
     "originalWord": "γένη γλωσσῶν (génē glōssōn, Gr.)",
     "meaning": "Reden in anderen Sprachen oder in der Gebetssprache des Geistes",
     "bibleReferences": [
@@ -366,45 +996,135 @@
     "description": "Die Gabe der Zungenrede beschreibt das vom Heiligen Geist inspirierte Sprechen in einer Sprache, die der Sprecher nicht gelernt hat. Das griechische „gene glosson“ bedeutet „verschiedene Arten von Sprachen“. In der Bibel erscheint diese Gabe erstmals zu Pfingsten (Apg 2) und wird besonders in 1. Korinther 12–14 erklärt. Sie kann sowohl als persönliche Gebetssprache als auch als öffentliches Zeichen für Gottes Wirken dienen.",
     "questions": [
       {
-        "id": "az_1",
+        "id": "zungenrede_1",
         "type": "experience",
-        "text": "Hast du erlebt dass du in einer geistlichen Gebetssprache betest?"
-      },
-      {
-        "id": "az_2",
-        "type": "experience",
-        "text": "Hast du Situationen erlebt in denen du in einer anderen Sprache gebetet hast?"
-      },
-      {
-        "id": "az_3",
-        "type": "experience",
-        "text": "Hast du erfahren dass Zungengebet dich im Glauben stärkt?"
-      },
-      {
-        "id": "az_4",
-        "type": "nature",
-        "text": "Ich bete gern spontan und frei im Gebet."
-      },
-      {
-        "id": "az_5",
-        "type": "nature",
-        "text": "Ich bin offen für übernatürliche Ausdrucksformen im Gebet."
-      },
-      {
-        "id": "az_6",
-        "type": "feedback",
-        "text": "Mein Gebetsleben wird durch geistliches Beten gestärkt."
-      },
-      {
-        "id": "az_7",
-        "type": "feedback",
-        "text": "Andere erleben mein Gebet als geistlich ermutigend."
+        "text": "Ich bete regelmäßig in einer Sprache, die ich nicht gelernt habe."
       }
     ]
   },
   {
-    "id": "auslegung_der_zungen",
-    "name": "Auslegung der Zungen",
+    "id": "zungenrede",
+    "name": "Zungenrede",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
+      {
+        "id": "zungenrede_1",
+        "type": "experience",
+        "text": "Ich spüre die Gegenwart Gottes im Zungengebet stark."
+      }
+    ]
+  },
+  {
+    "id": "zungenrede",
+    "name": "Zungenrede",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
+      {
+        "id": "zungenrede_1",
+        "type": "experience",
+        "text": "Hast du erfahren dass Zungengebet dich im Glauben stärkt?"
+      }
+    ]
+  },
+  {
+    "id": "zungenrede",
+    "name": "Zungenrede",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
+      {
+        "id": "zungenrede_1",
+        "type": "nature",
+        "text": "Ich habe das Verlangen, im Gebet über meinen Verstand hinaus mit Gott zu kommunizieren."
+      }
+    ]
+  },
+  {
+    "id": "zungenrede",
+    "name": "Zungenrede",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
+      {
+        "id": "zungenrede_1",
+        "type": "nature",
+        "text": "Ich bin offen für übernatürliche Ausdrucksformen im Gebet."
+      }
+    ]
+  },
+  {
+    "id": "zungenrede",
+    "name": "Zungenrede",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
+      {
+        "id": "zungenrede_1",
+        "type": "feedback",
+        "text": "Ich habe erlebt dass mein Gebet sich manchmal anders ausdrückt als ich erwartet habe."
+      }
+    ]
+  },
+  {
+    "id": "zungenrede",
+    "name": "Zungenrede",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
+      {
+        "id": "zungenrede_1",
+        "type": "feedback",
+        "text": "Wenn ich in mir unbekannten Sprachen bete, empfinden andere das als geistlich ermutigend."
+      }
+    ]
+  },
+  {
+    "id": "zungenrede",
+    "name": "Zungenrede",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
+      {
+        "id": "zungenrede_1",
+        "type": "reference",
+        "text": "Ich habe erlebt dass diese Person in mir unbekannten Sprachen betet."
+      }
+    ]
+  },
+  {
+    "id": "zungenrede",
+    "name": "Zungenrede",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
+      {
+        "id": "zungenrede_1",
+        "type": "reference",
+        "text": "Ich verstehe nicht immer alles was die Person betet, aber ich spüre Gottes Gegenwart wenn sie betet"
+      }
+    ]
+  },
+  {
+    "id": "auslegung_der_zungenrede",
+    "name": "Auslegung der Zungenrede",
     "originalWord": "ἑρμηνεία γλωσσῶν (hermēneía glōssōn, Gr.)",
     "meaning": "Deuten und Übersetzen der Zungenrede zur Erbauung der Gemeinde",
     "bibleReferences": [
@@ -414,39 +1134,129 @@
     "description": "Die Auslegung der Zungen ist die Fähigkeit, eine Zungenrede zu verstehen und für andere verständlich zu machen. Das griechische „hermeneia glosson“ bedeutet „Übersetzung oder Deutung von Sprachen“. Diese Gabe sorgt dafür, dass eine Zungenrede in der Gemeinde zur Erbauung dient, indem ihre Bedeutung verständlich wird (1. Kor 14).",
     "questions": [
       {
-        "id": "au_1",
+        "id": "auslegung_der_zungenrede_1",
         "type": "experience",
-        "text": "Hast du schon einmal eine Zungenrede verstanden oder erklären können?"
-      },
+        "text": "Wenn jemand in Sprachen betet, verstehe ich oft den Sinngehalt, ohne die Sprache gelernt zu haben."
+      }
+    ]
+  },
+  {
+    "id": "auslegung_der_zungenrede",
+    "name": "Auslegung der Zungenrede",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
       {
-        "id": "au_2",
+        "id": "auslegung_der_zungenrede_1",
         "type": "experience",
-        "text": "Hast du erlebt dass dir die Bedeutung eines geistlichen Gebets klar wurde?"
-      },
+        "text": "Ich habe schon erlebt, wie die Auslegung eines Gebet in fremder Sprache genau die Antwort auf das Gebet eines anderen war."
+      }
+    ]
+  },
+  {
+    "id": "auslegung_der_zungenrede",
+    "name": "Auslegung der Zungenrede",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
       {
-        "id": "au_3",
+        "id": "auslegung_der_zungenrede_1",
         "type": "experience",
-        "text": "Hast du erlebt dass Gott dir geholfen hat geistliche Botschaften zu verstehen?"
-      },
+        "text": "Hast du erlebt dass Gott dir geholfen hat geistliche Botschaften die für andere unverständlich waren zu verstehen?"
+      }
+    ]
+  },
+  {
+    "id": "auslegung_der_zungenrede",
+    "name": "Auslegung der Zungenrede",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
       {
-        "id": "au_4",
+        "id": "auslegung_der_zungenrede_1",
         "type": "nature",
-        "text": "Ich wünsche mir geistliche Botschaften verständlich zu machen."
-      },
+        "text": "Ich fühle eine Verantwortung, Zungengebet verständlich zu machen."
+      }
+    ]
+  },
+  {
+    "id": "auslegung_der_zungenrede",
+    "name": "Auslegung der Zungenrede",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
       {
-        "id": "au_5",
+        "id": "auslegung_der_zungenrede_1",
         "type": "nature",
-        "text": "Ich habe Freude daran geistliche Eindrücke zu deuten."
-      },
+        "text": "Fühlst du dich dazu hingezogen, Gebete in anderer Sprache zu deuten bzw. auszulegen?"
+      }
+    ]
+  },
+  {
+    "id": "auslegung_der_zungenrede",
+    "name": "Auslegung der Zungenrede",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
       {
-        "id": "au_6",
+        "id": "auslegung_der_zungenrede_1",
         "type": "feedback",
-        "text": "Andere werden durch meine Erklärung geistlicher Botschaften aufgebaut."
-      },
+        "text": "Nach meiner Auslegung von Zungenrede herrscht oft eine tiefe Einigkeit oder Anbetungsstimmung in der Gruppe."
+      }
+    ]
+  },
+  {
+    "id": "auslegung_der_zungenrede",
+    "name": "Auslegung der Zungenrede",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
       {
-        "id": "au_7",
+        "id": "auslegung_der_zungenrede_1",
         "type": "feedback",
-        "text": "Menschen verstehen geistliche Inhalte durch meine Erklärungen besser."
+        "text": "Meine Auslegung von Zungenrede hat ermutig, auf Warheit Gottes hingewiesen  und für liebevolle  Korrektur gesorgt"
+      }
+    ]
+  },
+  {
+    "id": "auslegung_der_zungenrede",
+    "name": "Auslegung der Zungenrede",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
+      {
+        "id": "auslegung_der_zungenrede_1",
+        "type": "reference",
+        "text": "Ich habe erlebt, dass die Person Gebet, die ich vorher nicht verstanden habe, auslegen konnte."
+      }
+    ]
+  },
+  {
+    "id": "auslegung_der_zungenrede",
+    "name": "Auslegung der Zungenrede",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
+      {
+        "id": "auslegung_der_zungenrede_1",
+        "type": "reference",
+        "text": "Die Person war in der Lage, mir Gebete in Sprachen, die ich nicht verstand, zu erklären."
       }
     ]
   },
@@ -464,39 +1274,129 @@
     "description": "Die Gabe des Dienstes beschreibt eine besondere Befähigung, anderen praktisch zu helfen und Bedürfnisse zu erkennen. Das griechische „diakonia“ bedeutet „Dienst“ oder „praktische Hilfe“. In der Bibel zeigt sich diese Gabe besonders im Dienst der ersten Diakone (Apg 6). Menschen mit dieser Gabe tragen wesentlich dazu bei, dass die Gemeinde praktisch funktioniert und Menschen konkrete Hilfe erfahren.",
     "questions": [
       {
-        "id": "di_1",
+        "id": "dienst_diakonie_1",
         "type": "experience",
-        "text": "Hast du oft erlebt dass du praktische Aufgaben übernommen hast um anderen zu helfen?"
-      },
+        "text": "Ich unterstütze gern praktisch, ohne im Vordergrund stehen zu müssen."
+      }
+    ]
+  },
+  {
+    "id": "dienst_diakonie",
+    "name": "Dienst / Diakonie",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
       {
-        "id": "di_2",
+        "id": "dienst_diakonie_1",
         "type": "experience",
-        "text": "Gab es Situationen in denen du spontan geholfen hast?"
-      },
+        "text": "Ich erkenne spontan, wo Hilfe gebraucht wird."
+      }
+    ]
+  },
+  {
+    "id": "dienst_diakonie",
+    "name": "Dienst / Diakonie",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
       {
-        "id": "di_3",
+        "id": "dienst_diakonie_1",
         "type": "experience",
-        "text": "Hast du erlebt dass dein praktischer Einsatz anderen sehr geholfen hat?"
-      },
+        "text": "Es bereitet mir Freude, Menschen ganz praktisch zu entlasten, ohne dass mein Name genannt wird."
+      }
+    ]
+  },
+  {
+    "id": "dienst_diakonie",
+    "name": "Dienst / Diakonie",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
       {
-        "id": "di_4",
+        "id": "dienst_diakonie_1",
         "type": "nature",
-        "text": "Ich habe Freude daran praktisch zu helfen."
-      },
+        "text": "Ich helfe lieber tatkräftig mit, als lange theoretische Diskussionen zu führen."
+      }
+    ]
+  },
+  {
+    "id": "dienst_diakonie",
+    "name": "Dienst / Diakonie",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
       {
-        "id": "di_5",
+        "id": "dienst_diakonie_1",
         "type": "nature",
-        "text": "Ich sehe schnell wo Hilfe gebraucht wird."
-      },
+        "text": "Ich möchte, dass alles in der Gemeinde reibungslos abläuft, und packe dafür überall an, wo Not am Mann ist."
+      }
+    ]
+  },
+  {
+    "id": "dienst_diakonie",
+    "name": "Dienst / Diakonie",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
       {
-        "id": "di_6",
+        "id": "dienst_diakonie_1",
         "type": "feedback",
-        "text": "Andere fühlen sich durch meine Hilfe unterstützt."
-      },
+        "text": "Leiter sagen mir oft, dass ich für sie eine unverzichtbare Stütze im Alltag der Gemeinde bin."
+      }
+    ]
+  },
+  {
+    "id": "dienst_diakonie",
+    "name": "Dienst / Diakonie",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
       {
-        "id": "di_7",
+        "id": "dienst_diakonie_1",
         "type": "feedback",
-        "text": "Mein Einsatz hilft dass Dinge gut funktionieren."
+        "text": "Durch mein Zupacken fühlen sich Menschen in der Gemeinde wertgeschätzt und willkommen."
+      }
+    ]
+  },
+  {
+    "id": "dienst_diakonie",
+    "name": "Dienst / Diakonie",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
+      {
+        "id": "dienst_diakonie_1",
+        "type": "reference",
+        "text": "Ich habe erlebt dass diese Person praktisch hilft wenn Unterstützung gebraucht wird."
+      }
+    ]
+  },
+  {
+    "id": "dienst_diakonie",
+    "name": "Dienst / Diakonie",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
+      {
+        "id": "dienst_diakonie_1",
+        "type": "reference",
+        "text": "Der Einsatz dieser Person hilft dass Aufgaben gut erledigt werden."
       }
     ]
   },
@@ -514,45 +1414,135 @@
     "description": "Die Gabe des Lehrens ist die Fähigkeit, Gottes Wort klar, verständlich und treu zu erklären. Der Begriff „didaskalia“ bezeichnet sowohl den Inhalt als auch die Tätigkeit des Lehrens. In der Bibel wird diese Gabe besonders mit Leitungsaufgaben verbunden (Eph 4,11). Sie hilft der Gemeinde, Gottes Wahrheit zu verstehen und im Glauben zu wachsen.",
     "questions": [
       {
-        "id": "le_1",
+        "id": "lehren_1",
         "type": "experience",
-        "text": "Hast du schon erlebt dass andere durch deine Erklärung etwas besser verstanden haben?"
-      },
+        "text": "Wenn ich die Bibel erkläre, sagen andere, dass sie komplexe Themen plötzlich verstehen (vgl. Apg 18,24-26)."
+      }
+    ]
+  },
+  {
+    "id": "lehren",
+    "name": "Lehren",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
       {
-        "id": "le_2",
+        "id": "lehren_1",
         "type": "experience",
-        "text": "Hast du öfter Bibeltexte oder Themen erklärt?"
-      },
+        "text": "Erlebst du es, dass deine Lehre Verständnis und geistliches Wachstum bringt?"
+      }
+    ]
+  },
+  {
+    "id": "lehren",
+    "name": "Lehren",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
       {
-        "id": "le_3",
+        "id": "lehren_1",
         "type": "experience",
         "text": "Hast du erlebt dass Menschen durch deine Erklärung geistlich gewachsen sind?"
-      },
+      }
+    ]
+  },
+  {
+    "id": "lehren",
+    "name": "Lehren",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
       {
-        "id": "le_4",
+        "id": "lehren_1",
         "type": "nature",
-        "text": "Ich beschäftige mich gern intensiv mit der Bibel."
-      },
+        "text": "Ich habe ein brennendes Verlangen, dass Christen in ihrem Glauben durch fundiertes Wissen wachsen."
+      }
+    ]
+  },
+  {
+    "id": "lehren",
+    "name": "Lehren",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
       {
-        "id": "le_5",
+        "id": "lehren_1",
         "type": "nature",
         "text": "Ich erkläre anderen gern was ich gelernt habe."
-      },
+      }
+    ]
+  },
+  {
+    "id": "lehren",
+    "name": "Lehren",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
       {
-        "id": "le_6",
+        "id": "lehren_1",
         "type": "feedback",
-        "text": "Andere sagen dass sie durch mich Dinge besser verstehen."
-      },
+        "text": "Menschen berichten, dass sie durch meinen Unterricht eine stabilere Grundlage für ihr Leben gefunden haben."
+      }
+    ]
+  },
+  {
+    "id": "lehren",
+    "name": "Lehren",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
       {
-        "id": "le_7",
+        "id": "lehren_1",
         "type": "feedback",
         "text": "Menschen wachsen im Glauben durch meine Erklärungen."
       }
     ]
   },
   {
-    "id": "ermahnung_zuspruch",
-    "name": "Ermahnung / Zuspruch",
+    "id": "lehren",
+    "name": "Lehren",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
+      {
+        "id": "lehren_1",
+        "type": "reference",
+        "text": "Ich habe erlebt dass diese Person Inhalte so erklärt dass andere sie gut verstehen."
+      }
+    ]
+  },
+  {
+    "id": "lehren",
+    "name": "Lehren",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
+      {
+        "id": "lehren_1",
+        "type": "reference",
+        "text": "Menschen lernen und entwickeln sich durch die Erklärungen dieser Person weiter."
+      }
+    ]
+  },
+  {
+    "id": "ermahnung",
+    "name": "Ermahnung",
     "originalWord": "παράκλησις (paráklēsis, Gr.)",
     "meaning": "Ermutigen, Trösten und Ermahnen",
     "bibleReferences": [
@@ -562,39 +1552,129 @@
     "description": "Die Gabe der Ermutigung oder Ermahnung („paraklesis“) beschreibt die Fähigkeit, Menschen durch Worte zu stärken, zu trösten und zum Glauben zu ermutigen. Das Wort steht in Verbindung mit dem Begriff „Paraklet“, der für den Heiligen Geist als Tröster verwendet wird. Diese Gabe hilft Menschen, schwierige Zeiten zu überwinden und im Glauben weiterzugehen.",
     "questions": [
       {
-        "id": "er_1",
+        "id": "ermahnung_1",
         "type": "experience",
-        "text": "Hast du erlebt dass du Menschen ermutigt hast weiterzugehen?"
-      },
+        "text": "Ich habe schon Menschen aus tiefster Mutlosigkeit herausgeholfen (vgl. Barnabas, der Sohn des Trostes, Apg 4,36)."
+      }
+    ]
+  },
+  {
+    "id": "ermahnung",
+    "name": "Ermahnung",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
       {
-        "id": "er_2",
+        "id": "ermahnung_1",
         "type": "experience",
-        "text": "Hast du Situationen erlebt in denen deine Worte Trost gegeben haben?"
-      },
+        "text": "Ich erkenne, was jemand braucht, um weiterzugehen."
+      }
+    ]
+  },
+  {
+    "id": "ermahnung",
+    "name": "Ermahnung",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
       {
-        "id": "er_3",
+        "id": "ermahnung_1",
         "type": "experience",
-        "text": "Hast du erlebt dass jemand durch deine Ermutigung neue Hoffnung bekam?"
-      },
+        "text": "Ich habe Menschen liebevoll, aber direkt auf blinde Flecken hingewiesen, was zu ihrer positiven Veränderung führte."
+      }
+    ]
+  },
+  {
+    "id": "ermahnung",
+    "name": "Ermahnung",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
       {
-        "id": "er_4",
+        "id": "ermahnung_1",
         "type": "nature",
-        "text": "Ich habe Freude daran Menschen zu ermutigen."
-      },
+        "text": "Neigst du dazu, anderen Zuspruch, Trost oder Ermahnung zu geben?"
+      }
+    ]
+  },
+  {
+    "id": "ermahnung",
+    "name": "Ermahnung",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
       {
-        "id": "er_5",
+        "id": "ermahnung_1",
         "type": "nature",
-        "text": "Ich merke schnell wenn jemand Ermutigung braucht."
-      },
+        "text": "Ich möchte Menschen helfen, ihr volles Potenzial in Gott auszuschöpfen."
+      }
+    ]
+  },
+  {
+    "id": "ermahnung",
+    "name": "Ermahnung",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
       {
-        "id": "er_6",
+        "id": "ermahnung_1",
         "type": "feedback",
-        "text": "Andere fühlen sich nach Gesprächen mit mir gestärkt."
-      },
+        "text": "Nach Gesprächen mit mir fühlen sich Menschen befähigt, ihre Aufgaben mit neuer Kraft anzugehen."
+      }
+    ]
+  },
+  {
+    "id": "ermahnung",
+    "name": "Ermahnung",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
       {
-        "id": "er_7",
+        "id": "ermahnung_1",
         "type": "feedback",
-        "text": "Menschen sagen dass meine Worte ihnen Hoffnung geben."
+        "text": "Führt deine Ermahnung oft zu Trost, Erneuerung und geistlichem Aufschwung?"
+      }
+    ]
+  },
+  {
+    "id": "ermahnung",
+    "name": "Ermahnung",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
+      {
+        "id": "ermahnung_1",
+        "type": "reference",
+        "text": "Ich habe erlebt dass diese Person andere ermahnt aber auch ermutigt hat."
+      }
+    ]
+  },
+  {
+    "id": "ermahnung",
+    "name": "Ermahnung",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
+      {
+        "id": "ermahnung_1",
+        "type": "reference",
+        "text": "Menschen wissen nach Gesprächen mit dieser Person, was sie in ihrem Leben ändern sollten."
       }
     ]
   },
@@ -611,45 +1691,135 @@
     "description": "Die Gabe des Gebens beschreibt eine besondere Bereitschaft und Freude, materielle oder finanzielle Ressourcen großzügig weiterzugeben. Das griechische „metadidonai“ bedeutet „teilen“ oder „weitergeben“. In der Bibel sehen wir Beispiele dafür in der frühen Gemeinde (Apg 4). Diese Gabe macht Gottes Versorgung sichtbar und unterstützt die Arbeit des Reiches Gottes.",
     "questions": [
       {
-        "id": "ge_1",
+        "id": "geben_1",
         "type": "experience",
-        "text": "Hast du erlebt dass du gern großzügig gegeben hast?"
-      },
-      {
-        "id": "ge_2",
-        "type": "experience",
-        "text": "Hast du Situationen erlebt in denen du bewusst auf eigene Dinge verzichtet hast um anderen zu helfen?"
-      },
-      {
-        "id": "ge_3",
-        "type": "experience",
-        "text": "Hast du erlebt dass Gott dich segnet wenn du großzügig gibst?"
-      },
-      {
-        "id": "ge_4",
-        "type": "nature",
-        "text": "Ich gebe gern von meinen Ressourcen weiter."
-      },
-      {
-        "id": "ge_5",
-        "type": "nature",
-        "text": "Es macht mir Freude andere finanziell oder materiell zu unterstützen."
-      },
-      {
-        "id": "ge_6",
-        "type": "feedback",
-        "text": "Mein Geben ermöglicht anderen wichtige Dinge."
-      },
-      {
-        "id": "ge_7",
-        "type": "feedback",
-        "text": "Andere erleben meine Großzügigkeit als Segen."
+        "text": "Ich gebe gern großzügig, ohne etwas dafür zu erwarten."
       }
     ]
   },
   {
-    "id": "leiten_verwalten",
-    "name": "Leiten / Verwalten",
+    "id": "geben",
+    "name": "Geben",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
+      {
+        "id": "geben_1",
+        "type": "experience",
+        "text": "Hast du Situationen erlebt in denen du bewusst auf eigene Dinge verzichtet hast um anderen zu helfen?"
+      }
+    ]
+  },
+  {
+    "id": "geben",
+    "name": "Geben",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
+      {
+        "id": "geben_1",
+        "type": "experience",
+        "text": "Ich empfinde Freude, wenn ich andere finanziell unterstützen kann."
+      }
+    ]
+  },
+  {
+    "id": "geben",
+    "name": "Geben",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
+      {
+        "id": "geben_1",
+        "type": "nature",
+        "text": "Ich sehe mein Geld und meinen Besitz primär als Werkzeuge für Gottes Reich, nicht für meinen Luxus."
+      }
+    ]
+  },
+  {
+    "id": "geben",
+    "name": "Geben",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
+      {
+        "id": "geben_1",
+        "type": "nature",
+        "text": "Ich fühle eine Verantwortung, Gottes Werk finanziell zu stärken."
+      }
+    ]
+  },
+  {
+    "id": "geben",
+    "name": "Geben",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
+      {
+        "id": "geben_1",
+        "type": "feedback",
+        "text": "Durch meine Gaben wurden finanzielle Engpässe in der Gemeinde gelöst, oft genau zum richtigen Zeitpunkt."
+      }
+    ]
+  },
+  {
+    "id": "geben",
+    "name": "Geben",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
+      {
+        "id": "geben_1",
+        "type": "feedback",
+        "text": "Ich sehe, dass mein Geben sichtbare Frucht bringt."
+      }
+    ]
+  },
+  {
+    "id": "geben",
+    "name": "Geben",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
+      {
+        "id": "geben_1",
+        "type": "reference",
+        "text": "Ich habe erlebt dass diese Person großzügig gibt."
+      }
+    ]
+  },
+  {
+    "id": "geben",
+    "name": "Geben",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
+      {
+        "id": "geben_1",
+        "type": "reference",
+        "text": "Diese Person legt weniger Wert auf ihren eigenen Wohlstand und unterstützt stattdessen andere von Herzen."
+      }
+    ]
+  },
+  {
+    "id": "leiten",
+    "name": "Leiten",
     "originalWord": "προϊστάμενος (proistámenos, Gr.)",
     "meaning": "Führen und Organisieren der Gemeinde (wie ein Steuermann)",
     "bibleReferences": [
@@ -661,39 +1831,129 @@
     "description": "Die Gabe der Leitung beschreibt die Fähigkeit, Menschen zu führen, Vision zu vermitteln und Strukturen zu organisieren. Das griechische Wort „proistamenos“ bedeutet „vorstehen“ oder „leiten“. In der Bibel wird diese Gabe mit Verantwortung für die Gemeinde verbunden (1. Thess 5). Sie hilft, dass Dienste koordiniert werden und die Gemeinde gemeinsam vorankommt.",
     "questions": [
       {
-        "id": "lei_1",
+        "id": "leiten_1",
         "type": "experience",
-        "text": "Hast du erlebt dass du Gruppen organisiert oder geleitet hast?"
-      },
+        "text": "Ich habe schon Teams oder Projekte so koordiniert, dass alle ihre Gaben optimal einsetzen konnten (vgl. Tit 1,5)."
+      }
+    ]
+  },
+  {
+    "id": "leiten",
+    "name": "Leiten",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
       {
-        "id": "lei_2",
+        "id": "leiten_1",
         "type": "experience",
         "text": "Haben Menschen dir Verantwortung übertragen?"
-      },
+      }
+    ]
+  },
+  {
+    "id": "leiten",
+    "name": "Leiten",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
       {
-        "id": "lei_3",
+        "id": "leiten_1",
         "type": "experience",
-        "text": "Hast du erlebt dass du Projekte oder Teams erfolgreich koordinieren konntest?"
-      },
+        "text": "Andere folgen meiner Leitung freiwillig und vertrauensvoll."
+      }
+    ]
+  },
+  {
+    "id": "leiten",
+    "name": "Leiten",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
       {
-        "id": "lei_4",
+        "id": "leiten_1",
         "type": "nature",
-        "text": "Ich übernehme gern Verantwortung."
-      },
+        "text": "Neigst du dazu, Verantwortung zu übernehmen und zu organisieren?"
+      }
+    ]
+  },
+  {
+    "id": "leiten",
+    "name": "Leiten",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
       {
-        "id": "lei_5",
+        "id": "leiten_1",
         "type": "nature",
-        "text": "Ich denke gern strategisch über Abläufe und Organisation nach."
-      },
+        "text": "Ich möchte Verantwortung übernehmen, damit die Gemeinde ihre Ziele effektiv erreicht."
+      }
+    ]
+  },
+  {
+    "id": "leiten",
+    "name": "Leiten",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
       {
-        "id": "lei_6",
+        "id": "leiten_1",
         "type": "feedback",
-        "text": "Menschen folgen gern meiner Leitung."
-      },
+        "text": "Ich bewahre Überblick auch in komplizierten Situationen."
+      }
+    ]
+  },
+  {
+    "id": "leiten",
+    "name": "Leiten",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
       {
-        "id": "lei_7",
+        "id": "leiten_1",
         "type": "feedback",
-        "text": "Unter meiner Leitung werden Ziele gut erreicht."
+        "text": "Unter meiner Verantwortung wachsen Bereiche der Gemeinde qualitativ und organisatorisch."
+      }
+    ]
+  },
+  {
+    "id": "leiten",
+    "name": "Leiten",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
+      {
+        "id": "leiten_1",
+        "type": "reference",
+        "text": "Ich habe erlebt dass diese Person Verantwortung übernimmt und Aufgaben organisiert."
+      }
+    ]
+  },
+  {
+    "id": "leiten",
+    "name": "Leiten",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
+      {
+        "id": "leiten_1",
+        "type": "reference",
+        "text": "Unter der Leitung dieser Person werden Ziele gut erreicht."
       }
     ]
   },
@@ -710,39 +1970,129 @@
     "description": "Die Gabe der Barmherzigkeit beschreibt ein besonderes Mitgefühl für Menschen in Not und die Bereitschaft, ihnen praktisch zu helfen. Das griechische „eleos“ bedeutet „Erbarmen“ oder „Mitgefühl“. In der Bibel wird Barmherzigkeit als Ausdruck von Gottes Charakter beschrieben (Mt 5,7). Menschen mit dieser Gabe bringen Gottes Liebe besonders zu leidenden Menschen.",
     "questions": [
       {
-        "id": "ba_1",
+        "id": "barmherzigkeit_1",
         "type": "experience",
-        "text": "Hast du oft mit Menschen mitgefühlt die leiden?"
-      },
+        "text": "Ich habe mich schon intensiv um Menschen gekümmert, die von allen anderen gemieden wurden (vgl. Lk 10,33-35)."
+      }
+    ]
+  },
+  {
+    "id": "barmherzigkeit",
+    "name": "Barmherzigkeit",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
       {
-        "id": "ba_2",
+        "id": "barmherzigkeit_1",
+        "type": "experience",
+        "text": "Ich gehe aktiv auf Leidende zu, um ihnen beizustehen."
+      }
+    ]
+  },
+  {
+    "id": "barmherzigkeit",
+    "name": "Barmherzigkeit",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
+      {
+        "id": "barmherzigkeit_1",
         "type": "experience",
         "text": "Hast du erlebt dass du dich besonders um Bedürftige kümmerst?"
-      },
+      }
+    ]
+  },
+  {
+    "id": "barmherzigkeit",
+    "name": "Barmherzigkeit",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
       {
-        "id": "ba_3",
-        "type": "experience",
-        "text": "Hast du Menschen in schweren Zeiten begleitet?"
-      },
-      {
-        "id": "ba_4",
+        "id": "barmherzigkeit_1",
         "type": "nature",
-        "text": "Es macht mir Freude Menschen praktisch und emotional zu helfen."
-      },
+        "text": "Es bewegt mich wenn Menschen leiden."
+      }
+    ]
+  },
+  {
+    "id": "barmherzigkeit",
+    "name": "Barmherzigkeit",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
       {
-        "id": "ba_5",
+        "id": "barmherzigkeit_1",
         "type": "nature",
-        "text": "Ich möchte Menschen praktisch und emotional helfen."
-      },
+        "text": "Ich möchte die Liebe Jesu besonders denjenigen zeigen, die am Rande der Gesellschaft stehen."
+      }
+    ]
+  },
+  {
+    "id": "barmherzigkeit",
+    "name": "Barmherzigkeit",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
       {
-        "id": "ba_6",
+        "id": "barmherzigkeit_1",
         "type": "feedback",
-        "text": "Menschen fühlen sich durch mich verstanden."
-      },
+        "text": "Menschen in Krisen sagen mir oft, dass meine Anwesenheit ihnen neuen Lebensmut geschenkt hat."
+      }
+    ]
+  },
+  {
+    "id": "barmherzigkeit",
+    "name": "Barmherzigkeit",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
       {
-        "id": "ba_7",
+        "id": "barmherzigkeit_1",
         "type": "feedback",
-        "text": "Andere erleben durch mich Trost und Unterstützung."
+        "text": "Durch meinen Dienst fühlen sich Menschen in der Gemeinde bedingungslos angenommen und geliebt."
+      }
+    ]
+  },
+  {
+    "id": "barmherzigkeit",
+    "name": "Barmherzigkeit",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
+      {
+        "id": "barmherzigkeit_1",
+        "type": "reference",
+        "text": "Ich habe erlebt dass diese Person Mitgefühl mit leidenden Menschen zeigt."
+      }
+    ]
+  },
+  {
+    "id": "barmherzigkeit",
+    "name": "Barmherzigkeit",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
+      {
+        "id": "barmherzigkeit_1",
+        "type": "reference",
+        "text": "Benachteiligte Menschen fühlen sich durch diese Person verstanden und unterstützt."
       }
     ]
   },
@@ -760,39 +2110,129 @@
     "description": "Die Gabe des Apostels beschreibt eine besondere Berufung, neue Werke oder Gemeinden zu gründen und geistliche Bewegungen zu initiieren. Das Wort „apostolos“ bedeutet „Gesandter“. In der Bibel sehen wir diese Gabe bei den Aposteln, die das Evangelium verbreiteten und Gemeinden gründeten. Diese Gabe verbindet Vision, Leitung und missionarische Dynamik.",
     "questions": [
       {
-        "id": "ap_1",
+        "id": "apostelamt_1",
         "type": "experience",
-        "text": "Hast du erlebt dass du neue Initiativen oder Dienste gestartet hast?"
-      },
+        "text": "Ich habe den Drang, neue geistliche Werke oder Gruppen zu gründen."
+      }
+    ]
+  },
+  {
+    "id": "apostel",
+    "name": "Apostel",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
       {
-        "id": "ap_2",
+        "id": "apostel_1",
         "type": "experience",
         "text": "Hast du schon geholfen neue Gemeinden oder Gruppen aufzubauen?"
-      },
+      }
+    ]
+  },
+  {
+    "id": "apostel",
+    "name": "Apostel",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
       {
-        "id": "ap_3",
+        "id": "apostel_1",
         "type": "experience",
-        "text": "Hast du Menschen mobilisiert neue geistliche Werke zu beginnen?"
-      },
+        "text": "Hast du erlebt dass du neue Initiativen oder Dienste gestartet hast?"
+      }
+    ]
+  },
+  {
+    "id": "apostel",
+    "name": "Apostel",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
       {
-        "id": "ap_4",
+        "id": "apostel_1",
         "type": "nature",
         "text": "Ich habe eine Vision neue Dinge im Reich Gottes zu starten."
-      },
+      }
+    ]
+  },
+  {
+    "id": "apostel",
+    "name": "Apostel",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
       {
-        "id": "ap_5",
+        "id": "apostel_1",
         "type": "nature",
         "text": "Ich denke gern strategisch über Wachstum der Gemeinde nach."
-      },
+      }
+    ]
+  },
+  {
+    "id": "apostel",
+    "name": "Apostel",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
       {
-        "id": "ap_6",
+        "id": "apostel_1",
         "type": "feedback",
         "text": "Neue Dienste entstehen oft durch meine Initiative."
-      },
+      }
+    ]
+  },
+  {
+    "id": "apostel",
+    "name": "Apostel",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
       {
-        "id": "ap_7",
+        "id": "apostel_1",
         "type": "feedback",
         "text": "Menschen schließen sich Visionen an die ich starte."
+      }
+    ]
+  },
+  {
+    "id": "apostel",
+    "name": "Apostel",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
+      {
+        "id": "apostel_1",
+        "type": "reference",
+        "text": "Ich habe erlebt dass diese Person neue Projekte oder Initiativen startet."
+      }
+    ]
+  },
+  {
+    "id": "apostel",
+    "name": "Apostel",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
+      {
+        "id": "apostel_1",
+        "type": "reference",
+        "text": "Andere schließen sich den Ideen oder Initiativen dieser Person an."
       }
     ]
   },
@@ -809,45 +2249,135 @@
     "description": "Die Gabe des Evangelisten ist die besondere Fähigkeit, Menschen die gute Nachricht von Jesus verständlich und überzeugend zu vermitteln. Das Wort „euangelistes“ bedeutet „Verkündiger der guten Nachricht“. In der Bibel sehen wir diese Gabe z.B. bei Philippus (Apg 21). Evangelisten helfen Menschen, zum Glauben an Christus zu kommen.",
     "questions": [
       {
-        "id": "ev_1",
+        "id": "evangelist_1",
         "type": "experience",
-        "text": "Hast du oft mit Menschen über deinen Glauben gesprochen?"
-      },
-      {
-        "id": "ev_2",
-        "type": "experience",
-        "text": "Hast du erlebt dass Menschen durch dein Zeugnis Interesse an Jesus bekommen?"
-      },
-      {
-        "id": "ev_3",
-        "type": "experience",
-        "text": "Hast du erlebt dass Menschen durch dich zum Glauben gekommen sind?"
-      },
-      {
-        "id": "ev_4",
-        "type": "nature",
-        "text": "Ich rede gern mit Menschen über Jesus."
-      },
-      {
-        "id": "ev_5",
-        "type": "nature",
-        "text": "Ich suche aktiv Möglichkeiten meinen Glauben zu teilen."
-      },
-      {
-        "id": "ev_6",
-        "type": "feedback",
-        "text": "Menschen reagieren offen wenn ich von meinem Glauben erzähle."
-      },
-      {
-        "id": "ev_7",
-        "type": "feedback",
-        "text": "Mein Zeugnis führt andere näher zu Jesus."
+        "text": "Ich spreche gern mit anderen über Jesus."
       }
     ]
   },
   {
-    "id": "hirte_pastor",
-    "name": "Hirte / Pastor",
+    "id": "evangelist",
+    "name": "Evangelist",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
+      {
+        "id": "evangelist_1",
+        "type": "experience",
+        "text": "Hast du erlebt dass Menschen durch dein Zeugnis Interesse an Jesus bekommen?"
+      }
+    ]
+  },
+  {
+    "id": "evangelist",
+    "name": "Evangelist",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
+      {
+        "id": "evangelist_1",
+        "type": "experience",
+        "text": "Hast du erlebt dass Menschen durch dich zum Glauben gekommen sind?"
+      }
+    ]
+  },
+  {
+    "id": "evangelist",
+    "name": "Evangelist",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
+      {
+        "id": "evangelist_1",
+        "type": "nature",
+        "text": "Es brennt mir auf der Seele, dass Menschen ohne Jesus verloren gehen (vgl. Röm 9,2-3)."
+      }
+    ]
+  },
+  {
+    "id": "evangelist",
+    "name": "Evangelist",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
+      {
+        "id": "evangelist_1",
+        "type": "nature",
+        "text": "Ich suche ständig nach neuen Methoden, um das Evangelium zeitgemäß und verständlich zu kommunizieren."
+      }
+    ]
+  },
+  {
+    "id": "evangelist",
+    "name": "Evangelist",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
+      {
+        "id": "evangelist_1",
+        "type": "feedback",
+        "text": "Menschen reagieren offen wenn ich von meinem Glauben erzähle."
+      }
+    ]
+  },
+  {
+    "id": "evangelist",
+    "name": "Evangelist",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
+      {
+        "id": "evangelist_1",
+        "type": "feedback",
+        "text": "Ich motiviere die Gemeinde dazu, ihren Fokus wieder stärker auf die Menschen draußen zu richten."
+      }
+    ]
+  },
+  {
+    "id": "evangelist",
+    "name": "Evangelist",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
+      {
+        "id": "evangelist_1",
+        "type": "reference",
+        "text": "Ich habe erlebt dass diese Person mit anderen über ihren Glauben spricht."
+      }
+    ]
+  },
+  {
+    "id": "evangelist",
+    "name": "Evangelist",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
+      {
+        "id": "evangelist_1",
+        "type": "reference",
+        "text": "Diese Person führt Menschen zu Jesus oder lädt sie zu Veranstaltungen in der Gemeinde ein."
+      }
+    ]
+  },
+  {
+    "id": "hirte",
+    "name": "Hirte",
     "originalWord": "ποιμήν (poimḗn, Gr.)",
     "meaning": "Weiden, Hüten und Versorgen der Gemeinde als Herde",
     "bibleReferences": [
@@ -858,39 +2388,129 @@
     "description": "Die Gabe des Hirten beschreibt die Fähigkeit, Menschen geistlich zu begleiten, zu schützen und zu fördern. Das griechische „poimen“ bedeutet „Hirte“. Jesus selbst wird als der gute Hirte beschrieben (Joh 10). Menschen mit dieser Gabe kümmern sich langfristig um das geistliche Wachstum und das Wohl der Gemeinde.",
     "questions": [
       {
-        "id": "hi_1",
+        "id": "hirte_1",
         "type": "experience",
-        "text": "Hast du Menschen über längere Zeit geistlich begleitet?"
-      },
+        "text": "Ich begleite Menschen über Jahre hinweg in ihrem geistlichen Wachstum und helfe ihnen durch Täler."
+      }
+    ]
+  },
+  {
+    "id": "hirte",
+    "name": "Hirte",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
       {
-        "id": "hi_2",
+        "id": "hirte_1",
         "type": "experience",
-        "text": "Hast du erlebt dass du Verantwortung für das geistliche Wohl anderer trägst?"
-      },
+        "text": "Ich spüre Verantwortung für das geistliche Wohl anderer."
+      }
+    ]
+  },
+  {
+    "id": "hirte",
+    "name": "Hirte",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
       {
-        "id": "hi_3",
+        "id": "hirte_1",
         "type": "experience",
-        "text": "Hast du Menschen geholfen im Glauben zu wachsen?"
-      },
+        "text": "Ich schütze die Gruppe, für die ich verantwortlich bin, aktiv vor negativen Einflüssen oder Spaltung."
+      }
+    ]
+  },
+  {
+    "id": "hirte",
+    "name": "Hirte",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
       {
-        "id": "hi_4",
+        "id": "hirte_1",
         "type": "nature",
-        "text": "Ich kümmere mich gern um Menschen und ihre Entwicklung."
-      },
+        "text": "Ich habe ein tiefes Interesse an der langfristigen Entwicklung und dem Wohlergehen einzelner Personen."
+      }
+    ]
+  },
+  {
+    "id": "hirte",
+    "name": "Hirte",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
       {
-        "id": "hi_5",
+        "id": "hirte_1",
         "type": "nature",
-        "text": "Ich fühle mich verantwortlich für das geistliche Wohl anderer."
-      },
+        "text": "Ich möchte eine Atmosphäre schaffen, in der sich Menschen geistlich sicher und zu Hause fühlen."
+      }
+    ]
+  },
+  {
+    "id": "hirte",
+    "name": "Hirte",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
       {
-        "id": "hi_6",
+        "id": "hirte_1",
         "type": "feedback",
         "text": "Menschen fühlen sich durch mich begleitet und unterstützt."
-      },
+      }
+    ]
+  },
+  {
+    "id": "hirte",
+    "name": "Hirte",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
       {
-        "id": "hi_7",
+        "id": "hirte_1",
         "type": "feedback",
-        "text": "Andere wachsen im Glauben durch meine Begleitung."
+        "text": "Ich sehe, dass meine Fürsorge Menschen stabil wachsen lässt."
+      }
+    ]
+  },
+  {
+    "id": "hirte",
+    "name": "Hirte",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
+      {
+        "id": "hirte_1",
+        "type": "reference",
+        "text": "Ich habe erlebt dass diese Person Menschen über längere Zeit begleitet."
+      }
+    ]
+  },
+  {
+    "id": "hirte",
+    "name": "Hirte",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
+      {
+        "id": "hirte_1",
+        "type": "reference",
+        "text": "Menschen entwickeln sich durch die Unterstützung dieser Person weiter."
       }
     ]
   }

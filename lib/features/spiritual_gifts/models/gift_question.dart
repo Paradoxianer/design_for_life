@@ -3,7 +3,8 @@ import 'package:equatable/equatable.dart';
 enum QuestionType {
   experience, // 'E' in CSV
   nature,     // 'N' in CSV
-  feedback    // 'F' in CSV
+  feedback,   // 'F' in CSV
+  reference   // 'R' in CSV
 }
 
 class GiftQuestion extends Equatable {

@@ -36,7 +36,9 @@ void main() {
 
     if (currentGift != null && parts[6].isNotEmpty) {
       final typeChar = parts[5].trim().toUpperCase();
-      final type = typeChar == 'E' ? 'experience' : (typeChar == 'N' ? 'nature' : 'feedback');
+      final type = typeChar == 'E' ? 'experience' : 
+                   (typeChar == 'N' ? 'nature' : 
+                   (typeChar == 'F' ? 'feedback' : 'reference'));
       
       currentGift['questions'].add({
         'id': '${currentGift['id']}_${currentGift['questions'].length + 1}',
