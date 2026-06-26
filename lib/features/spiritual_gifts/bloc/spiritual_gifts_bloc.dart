@@ -1,6 +1,7 @@
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:equatable/equatable.dart';
 import '../models/spiritual_gift.dart';
+import '../models/gift_question.dart';
 import '../repositories/gifts_repository.dart';
 
 part 'spiritual_gifts_event.dart';
