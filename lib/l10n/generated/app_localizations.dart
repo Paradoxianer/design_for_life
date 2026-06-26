@@ -464,6 +464,18 @@ abstract class AppLocalizations {
   /// **'Digital Life Tree (Graph)'**
   String get lifeTreeShareGraph;
 
+  /// No description provided for @lifeTreeFullscreen.
+  ///
+  /// In en, this message translates to:
+  /// **'Fullscreen Mode'**
+  String get lifeTreeFullscreen;
+
+  /// No description provided for @lifeTreeExitFullscreen.
+  ///
+  /// In en, this message translates to:
+  /// **'Exit Fullscreen'**
+  String get lifeTreeExitFullscreen;
+
   /// No description provided for @lifeTreeShareEvent.
   ///
   /// In en, this message translates to:

@@ -77,6 +77,8 @@
   "lifeTreeSaveNote": "Save",
   "lifeTreeDeleteNote": "Close / Delete",
   "lifeTreeShareGraph": "Digital Life Tree (Graph)",
+  "lifeTreeFullscreen": "Fullscreen Mode",
+  "lifeTreeExitFullscreen": "Exit Fullscreen",
   "lifeTreeShareEvent": "Event: {text}",
   "@lifeTreeShareEvent": {
     "placeholders": {

@@ -208,6 +208,12 @@ class AppLocalizationsEn extends AppLocalizations {
   String get lifeTreeShareGraph => 'Digital Life Tree (Graph)';
 
   @override
+  String get lifeTreeFullscreen => 'Fullscreen Mode';
+
+  @override
+  String get lifeTreeExitFullscreen => 'Exit Fullscreen';
+
+  @override
   String lifeTreeShareEvent(String text) {
     return 'Event: $text';
   }
