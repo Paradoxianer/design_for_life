@@ -66,3 +66,7 @@ lib/l10n/generated/
 
 # Project Specific Exclusions
 pubspec.lock
+
+docs/data
+
+docs/engineering/issues.md
