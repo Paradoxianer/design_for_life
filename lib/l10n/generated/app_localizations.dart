@@ -458,6 +458,90 @@ abstract class AppLocalizations {
   /// **'Close / Delete'**
   String get lifeTreeDeleteNote;
 
+  /// No description provided for @giftsLoading.
+  ///
+  /// In en, this message translates to:
+  /// **'Loading questions...'**
+  String get giftsLoading;
+
+  /// No description provided for @giftsQuestionCounter.
+  ///
+  /// In en, this message translates to:
+  /// **'Question {current} of {total}'**
+  String giftsQuestionCounter(int current, int total);
+
+  /// No description provided for @giftsRating0.
+  ///
+  /// In en, this message translates to:
+  /// **'Not at all'**
+  String get giftsRating0;
+
+  /// No description provided for @giftsRating1.
+  ///
+  /// In en, this message translates to:
+  /// **'Hardly'**
+  String get giftsRating1;
+
+  /// No description provided for @giftsRating2.
+  ///
+  /// In en, this message translates to:
+  /// **'Little'**
+  String get giftsRating2;
+
+  /// No description provided for @giftsRating3.
+  ///
+  /// In en, this message translates to:
+  /// **'Partially'**
+  String get giftsRating3;
+
+  /// No description provided for @giftsRating4.
+  ///
+  /// In en, this message translates to:
+  /// **'Much'**
+  String get giftsRating4;
+
+  /// No description provided for @giftsRating5.
+  ///
+  /// In en, this message translates to:
+  /// **'Very strongly'**
+  String get giftsRating5;
+
+  /// No description provided for @giftsRankingTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Your Spiritual Gifts Ranking'**
+  String get giftsRankingTitle;
+
+  /// No description provided for @giftsRankingGuidance.
+  ///
+  /// In en, this message translates to:
+  /// **'Tap on a gift to see details and Bible references. Your Top 3 will be automatically included.'**
+  String get giftsRankingGuidance;
+
+  /// No description provided for @giftsScorePoints.
+  ///
+  /// In en, this message translates to:
+  /// **'{score} pts.'**
+  String giftsScorePoints(int score);
+
+  /// No description provided for @giftsMeaning.
+  ///
+  /// In en, this message translates to:
+  /// **'Meaning'**
+  String get giftsMeaning;
+
+  /// No description provided for @giftsDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Description'**
+  String get giftsDescription;
+
+  /// No description provided for @giftsBibleReferences.
+  ///
+  /// In en, this message translates to:
+  /// **'Bible References'**
+  String get giftsBibleReferences;
+
   /// No description provided for @lifeTreeShareGraph.
   ///
   /// In en, this message translates to:

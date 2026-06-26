@@ -76,6 +76,31 @@
   "lifeTreeNoteHint": "Your thoughts...",
   "lifeTreeSaveNote": "Save",
   "lifeTreeDeleteNote": "Close / Delete",
+  "giftsLoading": "Loading questions...",
+  "giftsQuestionCounter": "Question {current} of {total}",
+  "@giftsQuestionCounter": {
+    "placeholders": {
+      "current": { "type": "int" },
+      "total": { "type": "int" }
+    }
+  },
+  "giftsRating0": "Not at all",
+  "giftsRating1": "Hardly",
+  "giftsRating2": "Little",
+  "giftsRating3": "Partially",
+  "giftsRating4": "Much",
+  "giftsRating5": "Very strongly",
+  "giftsRankingTitle": "Your Spiritual Gifts Ranking",
+  "giftsRankingGuidance": "Tap on a gift to see details and Bible references. Your Top 3 will be automatically included.",
+  "giftsScorePoints": "{score} pts.",
+  "@giftsScorePoints": {
+    "placeholders": {
+      "score": { "type": "int" }
+    }
+  },
+  "giftsMeaning": "Meaning",
+  "giftsDescription": "Description",
+  "giftsBibleReferences": "Bible References",
   "lifeTreeShareGraph": "Digital Life Tree (Graph)",
   "lifeTreeFullscreen": "Fullscreen Mode",
   "lifeTreeExitFullscreen": "Exit Fullscreen",

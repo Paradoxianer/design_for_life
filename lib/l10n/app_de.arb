@@ -73,6 +73,31 @@
   "lifeTreeNoteHint": "Deine Gedanken...",
   "lifeTreeSaveNote": "Speichern",
   "lifeTreeDeleteNote": "Schließen / Löschen",
+  "giftsLoading": "Lade Fragen...",
+  "giftsQuestionCounter": "Frage {current} von {total}",
+  "@giftsQuestionCounter": {
+    "placeholders": {
+      "current": { "type": "int" },
+      "total": { "type": "int" }
+    }
+  },
+  "giftsRating0": "Gar nicht",
+  "giftsRating1": "Kaum",
+  "giftsRating2": "Wenig",
+  "giftsRating3": "Teilweise",
+  "giftsRating4": "Viel",
+  "giftsRating5": "Sehr stark",
+  "giftsRankingTitle": "Deine Gaben-Rangliste",
+  "giftsRankingGuidance": "Tippe auf eine Gabe, um Details und Bibelstellen zu sehen. Deine Top 3 werden automatisch übernommen.",
+  "giftsScorePoints": "{score} Pkt.",
+  "@giftsScorePoints": {
+    "placeholders": {
+      "score": { "type": "int" }
+    }
+  },
+  "giftsMeaning": "Bedeutung",
+  "giftsDescription": "Beschreibung",
+  "giftsBibleReferences": "Bibelstellen",
   "lifeTreeShareGraph": "Digitaler Lebensbaum (Grafik)",
   "lifeTreeFullscreen": "Vollbildmodus",
   "lifeTreeExitFullscreen": "Vollbild beenden",

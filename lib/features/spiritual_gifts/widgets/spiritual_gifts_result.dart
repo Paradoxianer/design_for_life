@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:design_for_life/l10n/generated/app_localizations.dart';
 import '../bloc/spiritual_gifts_bloc.dart';
 import '../models/spiritual_gift.dart';
 
@@ -22,12 +23,12 @@ class SpiritualGiftsResult extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'Deine Gaben-Rangliste',
+                AppLocalizations.of(context).giftsRankingTitle,
                 style: theme.textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold),
               ),
               const SizedBox(height: 8),
               Text(
-                'Tippe auf eine Gabe, um Details und Bibelstellen zu sehen. Deine Top 3 werden automatisch übernommen.',
+                AppLocalizations.of(context).giftsRankingGuidance,
                 style: theme.textTheme.bodyMedium?.copyWith(color: theme.colorScheme.onSurfaceVariant),
               ),
               const SizedBox(height: 24),
@@ -119,7 +120,7 @@ class _GiftResultCard extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    '$score Pkt.',
+                    AppLocalizations.of(context).giftsScorePoints(score),
                     style: theme.textTheme.bodySmall?.copyWith(fontWeight: FontWeight.bold),
                   ),
                 ],
@@ -217,12 +218,12 @@ class _GiftDetailSheet extends StatelessWidget {
                     ),
                     const SizedBox(height: 16),
                   ],
-                  _Section(title: 'Bedeutung', content: gift.meaning),
+                  _Section(title: AppLocalizations.of(context).giftsMeaning, content: gift.meaning),
                   const SizedBox(height: 24),
-                  _Section(title: 'Beschreibung', content: gift.description),
+                  _Section(title: AppLocalizations.of(context).giftsDescription, content: gift.description),
                   const SizedBox(height: 24),
                   Text(
-                    'Bibelstellen',
+                    AppLocalizations.of(context).giftsBibleReferences,
                     style: theme.textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
                   ),
                   const SizedBox(height: 8),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:design_for_life/l10n/generated/app_localizations.dart';
 import '../bloc/spiritual_gifts_bloc.dart';
 import '../models/gift_question.dart';
 
@@ -75,13 +76,13 @@ class _SpiritualGiftsEditorState extends State<SpiritualGiftsEditor> {
       },
       builder: (context, state) {
         if (!state.isLoaded || state.questionOrder.isEmpty) {
-          return const Center(
+          return Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                CircularProgressIndicator(),
-                SizedBox(height: 16),
-                Text('Lade Fragen...'),
+                const CircularProgressIndicator(),
+                const SizedBox(height: 16),
+                Text(AppLocalizations.of(context).giftsLoading),
               ],
             ),
           );
@@ -101,7 +102,7 @@ class _SpiritualGiftsEditorState extends State<SpiritualGiftsEditor> {
                   ),
                   const SizedBox(height: 4),
                   Text(
-                    'Frage ${state.answers.length} von ${state.questionOrder.length}',
+                    AppLocalizations.of(context).giftsQuestionCounter(state.answers.length, state.questionOrder.length),
                     style: Theme.of(context).textTheme.labelSmall,
                   ),
                 ],
@@ -211,7 +212,7 @@ class _QuestionCard extends StatelessWidget {
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         Text(
-                          _getLabel(index),
+                          _getLabel(context, index),
                           style: TextStyle(
                             color: isSelected ? Colors.white : Colors.black,
                             fontWeight: isSelected ? FontWeight.bold : FontWeight.w600,
@@ -238,14 +239,15 @@ class _QuestionCard extends StatelessWidget {
     );
   }
 
-  String _getLabel(int index) {
+  String _getLabel(BuildContext context, int index) {
+    final l10n = AppLocalizations.of(context);
     switch (index) {
-      case 0: return 'Gar nicht';
-      case 1: return 'Kaum';
-      case 2: return 'Wenig';
-      case 3: return 'Teilweise';
-      case 4: return 'Viel';
-      case 5: return 'Sehr stark';
+      case 0: return l10n.giftsRating0;
+      case 1: return l10n.giftsRating1;
+      case 2: return l10n.giftsRating2;
+      case 3: return l10n.giftsRating3;
+      case 4: return l10n.giftsRating4;
+      case 5: return l10n.giftsRating5;
       default: return '';
     }
   }

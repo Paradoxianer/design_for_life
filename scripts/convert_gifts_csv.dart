@@ -2,9 +2,18 @@ import 'dart:io';
 import 'dart:convert';
 
 void main() {
-  final input = File('docs/data/gift_test.de.csv');
-  final lines = input.readAsLinesSync();
-  
+  _convert('de');
+  _convert('en');
+}
+
+void _convert(String locale) {
+  final inputFile = File('docs/data/gift_test.$locale.csv');
+  if (!inputFile.existsSync()) {
+    print('Warnung: Datei für $locale nicht gefunden: ${inputFile.path}');
+    return;
+  }
+
+  final lines = inputFile.readAsLinesSync();
   if (lines.isEmpty) return;
 
   final List<Map<String, dynamic>> gifts = [];
@@ -23,7 +32,7 @@ void main() {
     if (giftName.isNotEmpty) {
       // Neue Gabe gefunden
       currentGift = {
-        'id': _generateId(giftName),
+        'id': _generateId(giftName, locale),
         'name': giftName,
         'originalWord': parts[1].trim(),
         'meaning': parts[2].trim(),
@@ -48,13 +57,42 @@ void main() {
     }
   }
 
-  final output = File('assets/data/gifts_de.json');
+  final output = File('assets/data/gifts_$locale.json');
   output.writeAsStringSync(const JsonEncoder.withIndent('  ').convert(gifts));
-  print('Erfolgreich ${gifts.length} Gaben konvertiert.');
+  print('Erfolgreich ${gifts.length} Gaben für $locale konvertiert.');
 }
 
-String _generateId(String name) {
-  return name.toLowerCase()
+String _generateId(String name, String locale) {
+  // Wir mappen englische Namen auf die gleichen IDs wie deutsche, 
+  // falls sie in einer Map definiert sind. Ansonsten generieren wir sie.
+  // Für die Konsistenz zwischen den Sprachen wäre eine feste ID-Map ideal.
+  final Map<String, String> translationMap = {
+    'word of wisdom': 'wort_der_weisheit',
+    'word of knowledge': 'wort_der_erkenntnis',
+    'faith': 'glaube',
+    'gifts of healings': 'gaben_der_heilungen',
+    'working of miracles': 'wirkungen_von_wundern',
+    'prophecy': 'prophetie',
+    'discerning of spirits': 'unterscheidung_der_geister',
+    'kinds of tongues': 'arten_von_zungen',
+    'interpretation of tongues': 'auslegung_der_zungen',
+    'service': 'dienst_diakonie',
+    'teaching': 'lehren',
+    'exhortation': 'ermahnung_zuspruch',
+    'giving': 'geben',
+    'leadership': 'leiten_verwalten',
+    'mercy': 'barmherzigkeit',
+    'apostleship': 'apostelamt',
+    'evangelist': 'evangelist',
+    'shepherd': 'hirte_pastor',
+  };
+
+  final lowerName = name.toLowerCase();
+  if (translationMap.containsKey(lowerName)) {
+    return translationMap[lowerName]!;
+  }
+
+  return lowerName
       .replaceAll(' / ', '_')
       .replaceAll(' ', '_')
       .replaceAll('ä', 'ae')

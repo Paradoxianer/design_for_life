@@ -205,6 +205,53 @@ class AppLocalizationsEn extends AppLocalizations {
   String get lifeTreeDeleteNote => 'Close / Delete';
 
   @override
+  String get giftsLoading => 'Loading questions...';
+
+  @override
+  String giftsQuestionCounter(int current, int total) {
+    return 'Question $current of $total';
+  }
+
+  @override
+  String get giftsRating0 => 'Not at all';
+
+  @override
+  String get giftsRating1 => 'Hardly';
+
+  @override
+  String get giftsRating2 => 'Little';
+
+  @override
+  String get giftsRating3 => 'Partially';
+
+  @override
+  String get giftsRating4 => 'Much';
+
+  @override
+  String get giftsRating5 => 'Very strongly';
+
+  @override
+  String get giftsRankingTitle => 'Your Spiritual Gifts Ranking';
+
+  @override
+  String get giftsRankingGuidance =>
+      'Tap on a gift to see details and Bible references. Your Top 3 will be automatically included.';
+
+  @override
+  String giftsScorePoints(int score) {
+    return '$score pts.';
+  }
+
+  @override
+  String get giftsMeaning => 'Meaning';
+
+  @override
+  String get giftsDescription => 'Description';
+
+  @override
+  String get giftsBibleReferences => 'Bible References';
+
+  @override
   String get lifeTreeShareGraph => 'Digital Life Tree (Graph)';
 
   @override

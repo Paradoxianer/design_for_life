@@ -1,0 +1,376 @@
+[
+  {
+    "id": "wort_der_weisheit",
+    "name": "Word of Wisdom",
+    "originalWord": "λόγος σοφίας (lógos sophías, Gr.); חָכְמָה (chokhmáh, Hebr.)",
+    "meaning": "Supernatural word revealing God's plan or solution",
+    "bibleReferences": [
+      "1 Cor 12:8",
+      "Jas 1:5",
+      "1 Kgs 3:5-12",
+      "Ex 31:3",
+      "Prov 2:6"
+    ],
+    "description": "The gift of the word of wisdom describes a word or insight given by the Holy Spirit that reveals God's perspective, plan, or solution for a concrete situation. The Greek 'logos sophias' does not mean general wisdom but a specific, situation-related speaking of God. In the Bible, this gift is seen, for example, with Solomon (1 Kgs 3), with the apostles in difficult decisions (Acts 6; Acts 15), or with Jesus himself, who revealed divine wisdom in conflict situations. This gift brings clarity, orientation, and divine strategy to complex situations and serves the leadership and edification of the church.",
+    "questions": [
+      {
+        "id": "wort_der_weisheit_1",
+        "type": "experience",
+        "text": "Have you experienced that in a difficult situation"
+      }
+    ]
+  },
+  {
+    "id": "wort_der_weisheit",
+    "name": "Word of Wisdom",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
+      {
+        "id": "wort_der_weisheit_1",
+        "type": "experience",
+        "text": "Have people already asked you for advice because they value your spiritual assessment?"
+      }
+    ]
+  },
+  {
+    "id": "wort_der_weisheit",
+    "name": "Word of Wisdom",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
+      {
+        "id": "wort_der_weisheit_1",
+        "type": "experience",
+        "text": "Have there been situations where you recognized God's perspective on a problem?"
+      }
+    ]
+  },
+  {
+    "id": "wort_der_weisheit",
+    "name": "Word of Wisdom",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
+      {
+        "id": "wort_der_weisheit_1",
+        "type": "nature",
+        "text": "I enjoy helping people make good decisions before God."
+      }
+    ]
+  },
+  {
+    "id": "wort_der_weisheit",
+    "name": "Word of Wisdom",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
+      {
+        "id": "wort_der_weisheit_1",
+        "type": "nature",
+        "text": "I like to think about how God's principles can be applied practically."
+      }
+    ]
+  },
+  {
+    "id": "wort_der_weisheit",
+    "name": "Word of Wisdom",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
+      {
+        "id": "wort_der_weisheit_1",
+        "type": "feedback",
+        "text": "Others tell me that my advice has helped them make good decisions."
+      }
+    ]
+  },
+  {
+    "id": "wort_der_weisheit",
+    "name": "Word of Wisdom",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
+      {
+        "id": "wort_der_weisheit_1",
+        "type": "feedback",
+        "text": "My insights often bring clarity to difficult situations."
+      }
+    ]
+  },
+  {
+    "id": "wort_der_weisheit",
+    "name": "Word of Wisdom",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
+      {
+        "id": "wort_der_weisheit_1",
+        "type": "reference",
+        "text": "I have experienced that this person brings in helpful and well-thought-out solutions in difficult situations."
+      }
+    ]
+  },
+  {
+    "id": "wort_der_erkenntnis",
+    "name": "Word of Knowledge",
+    "originalWord": "λόγος γνώσεως (lógos gnóseōs, Gr.)",
+    "meaning": "Supernatural knowledge or insight into God's secrets",
+    "bibleReferences": [
+      "1 Cor 12:8",
+      "1 Cor 13:2"
+    ],
+    "description": "The word of knowledge describes an insight or information given by the Holy Spirit about a person, situation, or spiritual reality that was not gained through natural knowledge. The term 'logos gnoseos' means a concrete revelation of knowledge. In the Bible, this gift is seen, for example, with Peter, who recognizes Ananias' deception (Acts 5), or with Jesus, who knows the thoughts and life situations of people (John 4). This gift serves to bring truth to light, help people, and make God's work visible.",
+    "questions": [
+      {
+        "id": "wort_der_erkenntnis_1",
+        "type": "experience",
+        "text": "Have you experienced that a spiritual connection suddenly became clear to you?"
+      }
+    ]
+  },
+  {
+    "id": "wort_der_erkenntnis",
+    "name": "Word of Knowledge",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
+      {
+        "id": "wort_der_erkenntnis_1",
+        "type": "experience",
+        "text": "Have there been moments when you recognized things about a situation that you could not have known before?"
+      }
+    ]
+  },
+  {
+    "id": "wort_der_erkenntnis",
+    "name": "Word of Knowledge",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
+      {
+        "id": "wort_der_erkenntnis_1",
+        "type": "experience",
+        "text": "Have you experienced that God gave you special insights about people or situations?"
+      }
+    ]
+  },
+  {
+    "id": "wort_der_erkenntnis",
+    "name": "Word of Knowledge",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
+      {
+        "id": "wort_der_erkenntnis_1",
+        "type": "nature",
+        "text": "I enjoy discovering spiritual connections."
+      }
+    ]
+  },
+  {
+    "id": "wort_der_erkenntnis",
+    "name": "Word of Knowledge",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
+      {
+        "id": "wort_der_erkenntnis_1",
+        "type": "nature",
+        "text": "I want to understand God's thoughts and truths more deeply."
+      }
+    ]
+  },
+  {
+    "id": "wort_der_erkenntnis",
+    "name": "Word of Knowledge",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
+      {
+        "id": "wort_der_erkenntnis_1",
+        "type": "feedback",
+        "text": "Others experience new clarity about spiritual topics through my insights."
+      }
+    ]
+  },
+  {
+    "id": "wort_der_erkenntnis",
+    "name": "Word of Knowledge",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
+      {
+        "id": "wort_der_erkenntnis_1",
+        "type": "feedback",
+        "text": "People say that my observations help them understand situations better."
+      }
+    ]
+  },
+  {
+    "id": "wort_der_erkenntnis",
+    "name": "Word of Knowledge",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
+      {
+        "id": "wort_der_erkenntnis_1",
+        "type": "reference",
+        "text": "I have observed that this person often has insights or information that seem to come from a spiritual source."
+      }
+    ]
+  },
+  {
+    "id": "glaube",
+    "name": "Faith",
+    "originalWord": "πίστις (pístis, Gr.)",
+    "meaning": "Special, miracle-working faith that moves mountains",
+    "bibleReferences": [
+      "1 Cor 12:9",
+      "1 Cor 13:2",
+      "Mt 17:20",
+      "Hebr 11"
+    ],
+    "description": "The gift of faith is a special confidence worked by the Holy Spirit that God will act in a certain situation. It goes beyond general saving faith and is a supernatural trust in God's power and promises. The Greek 'pistis' describes here a strong, firm trust in God's action. In the Bible, this gift is seen in people like Abraham (Rom 4) or the apostles, who courageously expect God's work. This gift strengthens others in faith and opens space for God's supernatural intervention.",
+    "questions": [
+      {
+        "id": "glaube_1",
+        "type": "experience",
+        "text": "Have you experienced that you particularly trusted God in seemingly impossible situations?"
+      }
+    ]
+  },
+  {
+    "id": "glaube",
+    "name": "Faith",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
+      {
+        "id": "glaube_1",
+        "type": "experience",
+        "text": "Have there been moments when your trust in God encouraged others?"
+      }
+    ]
+  },
+  {
+    "id": "glaube",
+    "name": "Faith",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
+      {
+        "id": "glaube_1",
+        "type": "experience",
+        "text": "Have you experienced that God acted upon your courageous trust?"
+      }
+    ]
+  },
+  {
+    "id": "glaube",
+    "name": "Faith",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
+      {
+        "id": "glaube_1",
+        "type": "nature",
+        "text": "I trust that God can do great and impossible things."
+      }
+    ]
+  },
+  {
+    "id": "glaube",
+    "name": "Faith",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
+      {
+        "id": "glaube_1",
+        "type": "nature",
+        "text": "I feel motivated to trust God even when others doubt."
+      }
+    ]
+  },
+  {
+    "id": "glaube",
+    "name": "Faith",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
+      {
+        "id": "glaube_1",
+        "type": "feedback",
+        "text": "My trust in God often strengthens the faith of other people."
+      }
+    ]
+  },
+  {
+    "id": "glaube",
+    "name": "Faith",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
+      {
+        "id": "glaube_1",
+        "type": "feedback",
+        "text": "People say that my faith gives them courage."
+      }
+    ]
+  },
+  {
+    "id": "glaube",
+    "name": "Faith",
+    "originalWord": "",
+    "meaning": "",
+    "bibleReferences": [],
+    "description": "",
+    "questions": [
+      {
+        "id": "glaube_1",
+        "type": "reference",
+        "text": "I have noticed that this person's trust in God is exceptionally strong even in difficult times."
+      }
+    ]
+  }
+]
