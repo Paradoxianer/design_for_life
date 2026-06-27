@@ -101,6 +101,16 @@
   "giftsMeaning": "Meaning",
   "giftsDescription": "Description",
   "giftsBibleReferences": "Bible References",
+  "giftsIncompleteTitle": "Test Incomplete",
+  "giftsIncompleteMessage": "You have only answered {answered} out of {total} questions. Do you really want to finish the test?",
+  "@giftsIncompleteMessage": {
+    "placeholders": {
+      "answered": { "type": "int" },
+      "total": { "type": "int" }
+    }
+  },
+  "giftsContinue": "Continue filling out",
+  "giftsFinishAnyway": "Finish anyway",
   "lifeTreeShareGraph": "Digital Life Tree (Graph)",
   "lifeTreeFullscreen": "Fullscreen Mode",
   "lifeTreeExitFullscreen": "Exit Fullscreen",

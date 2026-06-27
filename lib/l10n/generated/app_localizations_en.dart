@@ -252,6 +252,20 @@ class AppLocalizationsEn extends AppLocalizations {
   String get giftsBibleReferences => 'Bible References';
 
   @override
+  String get giftsIncompleteTitle => 'Test Incomplete';
+
+  @override
+  String giftsIncompleteMessage(int answered, int total) {
+    return 'You have only answered $answered out of $total questions. Do you really want to finish the test?';
+  }
+
+  @override
+  String get giftsContinue => 'Continue filling out';
+
+  @override
+  String get giftsFinishAnyway => 'Finish anyway';
+
+  @override
   String get lifeTreeShareGraph => 'Digital Life Tree (Graph)';
 
   @override

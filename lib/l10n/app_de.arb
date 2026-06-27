@@ -98,6 +98,16 @@
   "giftsMeaning": "Bedeutung",
   "giftsDescription": "Beschreibung",
   "giftsBibleReferences": "Bibelstellen",
+  "giftsIncompleteTitle": "Test unvollständig",
+  "giftsIncompleteMessage": "Du hast erst {answered} von {total} Fragen beantwortet. Möchtest du den Test wirklich abschließen?",
+  "@giftsIncompleteMessage": {
+    "placeholders": {
+      "answered": { "type": "int" },
+      "total": { "type": "int" }
+    }
+  },
+  "giftsContinue": "Weiter ausfüllen",
+  "giftsFinishAnyway": "Trotzdem beenden",
   "lifeTreeShareGraph": "Digitaler Lebensbaum (Grafik)",
   "lifeTreeFullscreen": "Vollbildmodus",
   "lifeTreeExitFullscreen": "Vollbild beenden",

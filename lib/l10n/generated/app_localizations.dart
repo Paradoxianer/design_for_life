@@ -542,6 +542,30 @@ abstract class AppLocalizations {
   /// **'Bible References'**
   String get giftsBibleReferences;
 
+  /// No description provided for @giftsIncompleteTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Test Incomplete'**
+  String get giftsIncompleteTitle;
+
+  /// No description provided for @giftsIncompleteMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'You have only answered {answered} out of {total} questions. Do you really want to finish the test?'**
+  String giftsIncompleteMessage(int answered, int total);
+
+  /// No description provided for @giftsContinue.
+  ///
+  /// In en, this message translates to:
+  /// **'Continue filling out'**
+  String get giftsContinue;
+
+  /// No description provided for @giftsFinishAnyway.
+  ///
+  /// In en, this message translates to:
+  /// **'Finish anyway'**
+  String get giftsFinishAnyway;
+
   /// No description provided for @lifeTreeShareGraph.
   ///
   /// In en, this message translates to:

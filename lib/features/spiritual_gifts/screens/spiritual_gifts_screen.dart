@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:design_for_life/l10n/generated/app_localizations.dart';
 import '../../../core/widgets/dfl_module_scaffold.dart';
 import '../../../core/models/shareable_content.dart';
 import '../../../core/services/share_service.dart';
@@ -102,6 +103,7 @@ class _SpiritualGiftsScreenState extends State<SpiritualGiftsScreen> {
   }
 
   Future<bool> _validateCompletion(BuildContext context, SpiritualGiftsState state) async {
+    final l10n = AppLocalizations.of(context);
     final totalQuestions = state.questionOrder.length;
     final answeredQuestions = state.answers.length;
 
@@ -109,19 +111,16 @@ class _SpiritualGiftsScreenState extends State<SpiritualGiftsScreen> {
       final bool? result = await showDialog<bool>(
         context: context,
         builder: (context) => AlertDialog(
-          title: const Text('Test unvollständig'),
-          content: Text(
-            'Du hast erst $answeredQuestions von $totalQuestions Fragen beantwortet. '
-            'Möchtest du den Test wirklich abschließen?',
-          ),
+          title: Text(l10n.giftsIncompleteTitle),
+          content: Text(l10n.giftsIncompleteMessage(answeredQuestions, totalQuestions)),
           actions: [
             TextButton(
               onPressed: () => Navigator.pop(context, false),
-              child: const Text('Weiter ausfüllen'),
+              child: Text(l10n.giftsContinue),
             ),
             ElevatedButton(
               onPressed: () => Navigator.pop(context, true),
-              child: const Text('Trotzdem beenden'),
+              child: Text(l10n.giftsFinishAnyway),
             ),
           ],
         ),

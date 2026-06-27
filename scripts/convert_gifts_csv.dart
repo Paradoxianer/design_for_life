@@ -167,6 +167,100 @@ void _applyDescriptionFallback(List<Map<String, dynamic>> gifts, String locale) 
     },
   };
 
+  // Englisch Fallback (Übersetzt)
+  final Map<String, Map<String, dynamic>> fallbackDataEn = {
+    'G01': {
+      'meaning': 'Supernatural word revealing God\'s plan or solution',
+      'desc': 'The gift of the word of wisdom describes a word or insight given by the Holy Spirit that reveals God\'s perspective, plan, or solution for a concrete situation. The Greek „logos sophias“ does not mean general wisdom, but a specific, situation-related speaking of God. In the Bible, this gift is seen e.g. with Solomon (1 Kings 3), with the apostles in difficult decisions (Acts 6; Acts 15) or with Jesus himself, who revealed divine wisdom in conflict situations. This gift brings clarity, orientation and divine strategy to complex situations and serves the leadership and edification of the church.',
+      'refs': ['1 Cor 12:8', 'Jas 1:5', '1 Kings 3:5-12', 'Ex 31:3', 'Prov 2:6']
+    },
+    'G02': {
+      'meaning': 'Supernatural knowledge or insight into God\'s secrets',
+      'desc': 'The word of knowledge describes an insight or information given by the Holy Spirit about a person, situation or spiritual reality that was not gained through natural knowledge. The term „logos gnoseos“ means a concrete revelation of knowledge. In the Bible, this gift is seen e.g. with Peter, who recognizes Ananias’ deception (Acts 5), or with Jesus, who knows the thoughts and life situations of people (John 4). This gift serves to bring truth to light, to help people and to make God\'s work visible.',
+      'refs': ['1 Cor 12:8', '1 Cor 13:2']
+    },
+    'G03': {
+      'meaning': 'Special, miracle-working faith that moves mountains',
+      'desc': 'The gift of faith is a special confidence worked by the Holy Spirit that God will act in a certain situation. It goes beyond general saving faith and is a supernatural trust in God\'s power and promises. The Greek „pistis“ describes here a strong, firm trust in God\'s action. In the Bible, this gift is seen in people like Abraham (Rom 4) or with the apostles, who courageously expect God\'s work. This gift strengthens others in faith and opens space for God\'s supernatural intervention.',
+      'refs': ['1 Cor 12:9', '1 Cor 13:2', 'Matt 17:20', 'Heb 11']
+    },
+    'G04': {
+      'meaning': 'Ability to heal the sick through God\'s power',
+      'desc': 'The „gifts of healings“ describe various effects of divine healing through the Holy Spirit. The Greek „charismata iamaton“ is plural and indicates that God grants different types of healings – physical, emotional or spiritual. In the Bible, healings through Jesus and the apostles are frequently described (e.g. Acts 3; Mark 16). This gift shows God\'s compassion for suffering people and serves as a sign of his kingdom and to encourage faith.',
+      'refs': ['1 Cor 12:9,28,30', 'Jas 5:14-15', 'Matt 10:8', 'Acts 3:1-10', 'Mark 16:18']
+    },
+    'G05': {
+      'meaning': 'Performing supernatural acts of power through God\'s power',
+      'desc': 'The „workings of miracles“ describe supernatural acts of power by God that go beyond natural possibilities. The expression „energemata dynameon“ literally means „effective deeds of power“. In the Bible, this gift is seen e.g. with Moses, Elijah, Jesus and the apostles. Miracles can be deliverance, provision, nature miracles or other extraordinary interventions of God and confirm God\'s power and the Gospel.',
+      'refs': ['1 Cor 12:10,28,29', 'Acts 5:12', '2 Cor 12:12', 'Mark 16:17-18']
+    },
+    'G06': {
+      'meaning': 'Speaking on behalf of God for edification, exhortation and comfort',
+      'desc': 'Prophecy is speaking inspired by the Holy Spirit on behalf of God for the edification, exhortation and encouragement of the church (1 Cor 14:3). The term „propheteia“ literally means „to speak for someone“. Prophecy can be both revelation and application of God\'s Word to a concrete situation. In the Bible we see prophetic speaking in Old Testament prophets as well as in the New Testament e.g. with Agabus (Acts 11). This gift strengthens faith, corrects wrong developments and directs the church\'s gaze to God\'s will.',
+      'refs': ['Rom 12:6', '1 Cor 12:10', '1 Cor 14:1-5', '1 Thess 5:20', 'Acts 11:27-28']
+    },
+    'G07': {
+      'meaning': 'Distinguishing between divine, demonic and human spirits',
+      'desc': 'The discernment of spirits is the ability to recognize spiritual influences and to distinguish whether they come from God, from the human spirit or from demonic powers. The term „diakrisis pneumaton“ means „discernment or testing of spirits“. In the Bible, this gift is seen e.g. with Peter (Acts 5) or Paul (Acts 16). It protects the church from deception and helps to clearly recognize God\'s work.',
+      'refs': ['1 Cor 12:10', '1 John 4:1', 'Acts 5:3', 'Acts 16:16-18', 'Heb 5:14']
+    },
+    'G08': {
+      'meaning': 'Speaking in other languages or in the prayer language of the Spirit',
+      'desc': 'The gift of speaking in tongues describes speaking inspired by the Holy Spirit in a language that the speaker has not learned. The Greek „gene glosson“ means „various kinds of languages“. In the Bible, this gift first appears at Pentecost (Acts 2) and is explained particularly in 1 Corinthians 12–14. It can serve both as a personal prayer language and as a public sign of God\'s work.',
+      'refs': ['1 Cor 12:10,28,30', '1 Cor 14', 'Acts 2:4-11', 'Acts 19:6', 'Mark 16:17']
+    },
+    'G09': {
+      'meaning': 'Interpreting and translating the speaking in tongues for the edification of the church',
+      'desc': 'The interpretation of tongues is the ability to understand a speaking in tongues and make it understandable for others. The Greek „hermeneia glosson“ means „translation or interpretation of languages“. This gift ensures that a speaking in tongues in the church serves for edification by making its meaning understandable (1 Cor 14).',
+      'refs': ['1 Cor 12:10', '1 Cor 14:13,27-28']
+    },
+    'G10': {
+      'meaning': 'Practical serving and helping in the church',
+      'desc': 'The gift of service describes a special qualification to help others practically and to recognize needs. The Greek „diakonia“ means „service“ or „practical help“. In the Bible, this gift is seen particularly in the service of the first deacons (Acts 6). People with this gift contribute significantly to the practical functioning of the church and to people experiencing concrete help.',
+      'refs': ['Rom 12:7', '1 Cor 12:28', 'Acts 6:1-7', '1 Pet 4:10-11']
+    },
+    'G11': {
+      'meaning': 'Instructing in the truth of God',
+      'desc': 'The gift of teaching is the ability to explain God\'s Word clearly, understandably and faithfully. The term „didaskalia“ refers to both the content and the activity of teaching. In the Bible, this gift is particularly associated with leadership tasks (Eph 4:11). It helps the church to understand God\'s truth and to grow in faith.',
+      'refs': ['Rom 12:7', 'Eph 4:11', '1 Tim 3:2', '2 Tim 2:2']
+    },
+    'G12': {
+      'meaning': 'Encouraging, comforting and exhorting',
+      'desc': 'The gift of encouragement or exhortation („paraklesis“) describes the ability to strengthen, comfort and encourage people in faith through words. The word is related to the term „Paraclete“, which is used for the Holy Spirit as Comforter. This gift helps people to overcome difficult times and to go further in faith.',
+      'refs': ['Rom 12:8', '1 Cor 14:3']
+    },
+    'G13': {
+      'meaning': 'Generous, joyful giving with simplicity',
+      'desc': 'The gift of giving describes a special willingness and joy to share material or financial resources generously. The Greek „metadidonai“ means „to share“ or „to give“. In the Bible we see examples of this in the early church (Acts 4). This gift makes God\'s provision visible and supports the work of God\'s kingdom.',
+      'refs': ['Rom 12:8', 'Acts 4:32-37', '2 Cor 8–9']
+    },
+    'G14': {
+      'meaning': 'Leading and organizing the church (like a steersman)',
+      'desc': 'The gift of leadership describes the ability to lead people, convey vision and organize structures. The Greek word „proistamenos“ means „to stand before“ or „to lead“. In the Bible, this gift is associated with responsibility for the church (1 Thess 5). It helps that services are coordinated and the church moves forward together.',
+      'refs': ['Rom 12:8', '1 Cor 12:28', '1 Thess 5:12', '1 Tim 5:17']
+    },
+    'G15': {
+      'meaning': 'Compassion and practical help for the suffering',
+      'desc': 'The gift of mercy describes a special compassion for people in need and the willingness to help them practically. The Greek „eleos“ means „mercy“ or „compassion“. In the Bible, mercy is described as an expression of God\'s character (Matt 5:7). People with this gift bring God\'s love especially to suffering people.',
+      'refs': ['Rom 12:8', 'Matt 5:7', 'Gal 6:2']
+    },
+    'G16': {
+      'meaning': 'Being sent with authority to found churches',
+      'desc': 'The gift of the apostle describes a special calling to found new works or churches and to initiate spiritual movements. The word „apostolos“ means „sent one“. In the Bible we see this gift in the apostles who spread the Gospel and founded churches. This gift combines vision, leadership and missionary dynamics.',
+      'refs': ['1 Cor 12:28', 'Eph 4:11', 'Acts 1:21-26', 'Acts 14:14']
+    },
+    'G17': {
+      'meaning': 'Proclaiming the good news (Gospel)',
+      'desc': 'The gift of the evangelist is the special ability to communicate the good news of Jesus understandably and convincingly to people. The word „euangelistes“ means „proclaimer of the good news“. In the Bible we see this gift e.g. with Philip (Acts 21). Evangelists help people to come to faith in Christ.',
+      'refs': ['Eph 4:11', 'Acts 21:8', '2 Tim 4:5']
+    },
+    'G18': {
+      'meaning': 'Pasturing, tending and providing for the church as a flock',
+      'desc': 'The gift of the shepherd describes the ability to accompany, protect and promote people spiritually. The Greek „poimen“ means „shepherd“. Jesus himself is described as the good shepherd (John 10). People with this gift take care of the spiritual growth and the welfare of the church in the long term.',
+      'refs': ['Eph 4:11', 'John 10:1-18', '1 Pet 5:1-4']
+    },
+  };
+
   for (var gift in gifts) {
     final id = gift['id'];
     if (locale == 'de' && fallbackDataDe.containsKey(id)) {
@@ -174,10 +268,11 @@ void _applyDescriptionFallback(List<Map<String, dynamic>> gifts, String locale) 
       if ((gift['meaning'] as String).isEmpty) gift['meaning'] = data['meaning'];
       if ((gift['description'] as String).isEmpty) gift['description'] = data['desc'];
       if ((gift['bibleReferences'] as List).isEmpty) gift['bibleReferences'] = data['refs'];
-    } else if (locale == 'en') {
-      // Für Englisch nutzen wir vorerst eine Standard-Meldung, falls leer
-      if ((gift['meaning'] as String).isEmpty) gift['meaning'] = 'Meaning for $id will be added soon.';
-      if ((gift['description'] as String).isEmpty) gift['description'] = 'Description for $id will be added soon.';
+    } else if (locale == 'en' && fallbackDataEn.containsKey(id)) {
+      final data = fallbackDataEn[id]!;
+      if ((gift['meaning'] as String).isEmpty) gift['meaning'] = data['meaning'];
+      if ((gift['description'] as String).isEmpty) gift['description'] = data['desc'];
+      if ((gift['bibleReferences'] as List).isEmpty) gift['bibleReferences'] = data['refs'];
     }
   }
 }
