@@ -8,8 +8,8 @@ class GiftsRepository {
 
   String? get cachedLocale => _cachedLocale;
 
-  Future<List<SpiritualGift>> loadGifts(String locale) async {
-    if (_cachedGifts != null && _cachedLocale == locale) return _cachedGifts!;
+  Future<List<SpiritualGift>> loadGifts(String locale, {bool forceReload = false}) async {
+    if (!forceReload && _cachedGifts != null && _cachedLocale == locale) return _cachedGifts!;
 
     try {
       String response;
