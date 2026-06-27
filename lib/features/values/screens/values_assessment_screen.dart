@@ -32,10 +32,24 @@ class _ValuesAssessmentScreenState extends State<ValuesAssessmentScreen> {
   @override
   void initState() {
     super.initState();
-    // Initialize the global bloc when the screen is first opened
-    final l10n = AppLocalizations.of(context);
-    context.read<ValuesBloc>().add(ValuesStarted(StaticValuesData.getInitialValues(l10n)));
   }
+  bool _initialized = false;
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+
+    if (!_initialized) {
+      final l10n = AppLocalizations.of(context)!;
+
+      context.read<ValuesBloc>().add(
+        ValuesStarted(StaticValuesData.getInitialValues(l10n)),
+      );
+
+      _initialized = true;
+    }
+  }
+
 
   ShareableContent _getShareableContent(BuildContext context, ValuesState state) {
     final l10n = AppLocalizations.of(context);
@@ -138,11 +152,7 @@ class _ValuesAssessmentScreenState extends State<ValuesAssessmentScreen> {
         context: context,
         builder: (context) => AlertDialog(
           title: Text(l10n.valuesSelectionStatus(8)),
-          content: Text(
-            'Du hast aktuell ${state.topEightValues.length} von 8 Werten ausgewählt. '
-            'Für ein optimales Ergebnis sollten es genau 8 sein. '
-            'Möchtest du trotzdem fortfahren?',
-          ),
+          content: Text(l10n.valuesSelectionMissing(state.topEightValues.length)),
           actions: [
             TextButton(
               onPressed: () => Navigator.pop(context, false),

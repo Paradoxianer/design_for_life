@@ -48,6 +48,17 @@
       }
     }
   },
+  "valuesSelectionMissing":   "Du hast aktuell {count} von 8 Werten ausgewählt. Für ein optimales Ergebnis sollten es genau 8 sein. Möchtest du trotzdem fortfahren?",
+  "@valuesSelectionMissing": {
+    "description": "Hinweis, wenn weniger oder mehr als 8 Werte ausgewählt wurden",
+    "placeholders": {
+      "count": {
+        "type": "int",
+        "example": "3"
+      }
+    }
+  },
+
   "valuesPhase2Title": "Persönliche Definition",
   "valuesPhase2Guidance": "Sortiere deine Top-8 Werte per Drag & Drop nach ihrer Priorität für dich. Definiere dann kurz, was dieser Wert für dich ganz persönlich bedeutet. Die ersten 3 Plätze sind deine absoluten Key Takeaways.",
   "valuesDefinitionLabel": "Meine Definition",

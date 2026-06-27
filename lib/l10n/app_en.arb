@@ -51,6 +51,14 @@
       }
     }
   },
+  "valuesSelectionMissing": "You have currently selected {count} out of 8 values. For optimal results, there should be exactly 8. Do you want to continue anyway?",
+  "@valuesSelectionMissing": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "valuesPhase2Title": "Personal Definition",
   "valuesPhase2Guidance": "Sort your top-8 values via drag & drop according to their priority for you. Then briefly define what each value means to you personally. The first 3 slots are your absolute key takeaways.",
   "valuesDefinitionLabel": "My Definition",

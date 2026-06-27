@@ -308,6 +308,12 @@ abstract class AppLocalizations {
   /// **'Select exactly 8 values with \"1\". Current: {count} / 8'**
   String valuesSelectionStatus(int count);
 
+  /// No description provided for @valuesSelectionMissing.
+  ///
+  /// In en, this message translates to:
+  /// **'You have currently selected {count} out of 8 values. For optimal results, there should be exactly 8. Do you want to continue anyway?'**
+  String valuesSelectionMissing(int count);
+
   /// No description provided for @valuesPhase2Title.
   ///
   /// In en, this message translates to:

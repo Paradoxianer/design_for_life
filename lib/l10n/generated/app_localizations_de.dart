@@ -127,6 +127,11 @@ class AppLocalizationsDe extends AppLocalizations {
   }
 
   @override
+  String valuesSelectionMissing(int count) {
+    return 'Du hast aktuell $count von 8 Werten ausgewählt. Für ein optimales Ergebnis sollten es genau 8 sein. Möchtest du trotzdem fortfahren?';
+  }
+
+  @override
   String get valuesPhase2Title => 'Persönliche Definition';
 
   @override
