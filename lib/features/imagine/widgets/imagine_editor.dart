@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../core/widgets/dfl_module_editor.dart';
+import '../../../core/widgets/key_takeaway_field.dart';
 import '../bloc/imagine_bloc.dart';
 import '../models/imagine_visual_option.dart';
 
@@ -12,10 +13,12 @@ class ImagineEditor extends DflModuleEditor {
   final String sessionId;
   final String? selectedPastId;
   final String? selectedFutureId;
+  final List<String> takeaways;
 
   const ImagineEditor({
     super.key,
     required this.sessionId,
+    required this.takeaways,
     this.selectedPastId,
     this.selectedFutureId,
   }) : super(takeaways: const [], onUpdate: _noOp, showTakeaways: false);
@@ -26,6 +29,7 @@ class ImagineEditor extends DflModuleEditor {
       sessionId: sessionId,
       selectedPastId: selectedPastId,
       selectedFutureId: selectedFutureId,
+      takeaways: takeaways,
     );
   }
 }
@@ -34,41 +38,61 @@ class _ImagineEditorBody extends StatelessWidget {
   final String sessionId;
   final String? selectedPastId;
   final String? selectedFutureId;
+  final List<String> takeaways;
 
   const _ImagineEditorBody({
     required this.sessionId,
+    required this.takeaways,
     this.selectedPastId,
     this.selectedFutureId,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        _OptionSection(
-          label: 'Vergangenheit',
-          subtitle: 'Wähle ein abstraktes Bild für deine Vergangenheit',
-          icon: Icons.history_rounded,
-          options: pastImagineOptions,
-          selectedId: selectedPastId,
-          onSelect: (id) => context.read<ImagineBloc>().add(
-                SelectPastImage(sessionId, id),
-              ),
-        ),
-        const SizedBox(height: 24),
-        _OptionSection(
-          label: 'Zukunft',
-          subtitle: 'Wähle ein abstraktes Bild für deine Zukunft',
-          icon: Icons.auto_awesome_rounded,
-          options: futureImagineOptions,
-          selectedId: selectedFutureId,
-          onSelect: (id) => context.read<ImagineBloc>().add(
-                SelectFutureImage(sessionId, id),
-              ),
-        ),
-        const SizedBox(height: 16),
-      ],
+    return FutureBuilder<List<ImagineVisualOption>>(
+      future: loadImagineOptions(),
+      builder: (context, snapshot) {
+        if (snapshot.connectionState != ConnectionState.done) {
+          return const Center(child: CircularProgressIndicator());
+        }
+        final options = snapshot.data ?? [];
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            _OptionSection(
+              label: 'Vergangenheit',
+              subtitle: 'Wähle ein Bild für deine Vergangenheit',
+              icon: Icons.history_rounded,
+              options: options,
+              selectedId: selectedPastId,
+              onSelect: (id) => context.read<ImagineBloc>().add(
+                    SelectPastImage(sessionId, id),
+                  ),
+            ),
+            const SizedBox(height: 24),
+            _OptionSection(
+              label: 'Zukunft',
+              subtitle: 'Wähle ein Bild für deine Zukunft',
+              icon: Icons.auto_awesome_rounded,
+              options: options,
+              selectedId: selectedFutureId,
+              onSelect: (id) => context.read<ImagineBloc>().add(
+                    SelectFutureImage(sessionId, id),
+                  ),
+            ),
+            const SizedBox(height: 32),
+            const Divider(),
+            const SizedBox(height: 16),
+            KeyTakeawayField(
+              takeaways: takeaways,
+              onUpdate: (index, value) => context.read<ImagineBloc>().add(
+                    UpdateImagineTakeaway(sessionId, index, value),
+                  ),
+            ),
+            const SizedBox(height: 16),
+          ],
+        );
+      },
     );
   }
 }
@@ -142,8 +166,8 @@ class _OptionCard extends StatelessWidget {
     final theme = Theme.of(context);
     return AnimatedContainer(
       duration: const Duration(milliseconds: 180),
-      width: 166,
-      padding: const EdgeInsets.all(10),
+      width: 102,
+      padding: const EdgeInsets.all(6),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(12),
         border: Border.all(
@@ -152,38 +176,18 @@ class _OptionCard extends StatelessWidget {
         ),
       ),
       child: ClipRRect(
-        borderRadius: BorderRadius.circular(9),
+        borderRadius: BorderRadius.circular(8),
         child: Stack(
           fit: StackFit.expand,
           children: [
-            DecoratedBox(
-              decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight,
-                  colors: option.colors,
-                ),
-              ),
-            ),
-            Positioned(
-              left: 8,
-              bottom: 8,
-              right: 8,
-              child: Text(
-                option.label,
-                maxLines: 2,
-                overflow: TextOverflow.ellipsis,
-                style: theme.textTheme.labelMedium?.copyWith(
-                  color: Colors.white,
-                  fontWeight: FontWeight.w600,
-                  shadows: const [Shadow(blurRadius: 4, color: Colors.black54)],
-                ),
-              ),
+            Image.asset(
+              option.imagePath,
+              fit: BoxFit.cover,
             ),
             if (selected)
               Positioned(
-                top: 8,
-                right: 8,
+                top: 6,
+                right: 6,
                 child: CircleAvatar(
                   radius: 12,
                   backgroundColor: theme.colorScheme.primary,
@@ -196,3 +200,4 @@ class _OptionCard extends StatelessWidget {
     );
   }
 }
+

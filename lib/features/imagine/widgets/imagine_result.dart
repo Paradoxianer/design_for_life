@@ -1,14 +1,19 @@
 import 'package:flutter/material.dart';
+import '../../../core/widgets/key_takeaway_field.dart';
 import '../models/imagine_visual_option.dart';
 
 class ImagineResult extends StatelessWidget {
   final String? pastImageId;
   final String? futureImageId;
+  final List<String> takeaways;
+  final Function(int, String) onUpdate;
 
   const ImagineResult({
     super.key,
     this.pastImageId,
     this.futureImageId,
+    required this.takeaways,
+    required this.onUpdate,
   });
 
   @override
@@ -29,47 +34,74 @@ class ImagineResult extends StatelessWidget {
       );
     }
 
-    return Padding(
-      padding: const EdgeInsets.all(16),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
+    return FutureBuilder<List<ImagineVisualOption>>(
+      future: loadImagineOptions(),
+      builder: (context, snapshot) {
+        final options = {
+          for (final o in snapshot.data ?? <ImagineVisualOption>[]) o.id: o,
+        };
+        return SingleChildScrollView(
+          padding: const EdgeInsets.all(16),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              if (pastImageId != null)
-                Expanded(
-                  child: _OptionResultCard(
-                    label: 'Vergangenheit',
-                    optionId: pastImageId!,
-                  ),
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  if (pastImageId != null)
+                    Expanded(
+                      child: _ImageResultCard(
+                        label: 'Vergangenheit',
+                        option: options[pastImageId!],
+                        imagePath: pastImageId,
+                      ),
+                    ),
+                  if (pastImageId != null && futureImageId != null)
+                    const SizedBox(width: 12),
+                  if (futureImageId != null)
+                    Expanded(
+                      child: _ImageResultCard(
+                        label: 'Zukunft',
+                        option: options[futureImageId!],
+                        imagePath: futureImageId,
+                      ),
+                    ),
+                ],
+              ),
+              if (takeaways.any((t) => t.isNotEmpty)) ...[
+                const SizedBox(height: 32),
+                const Divider(),
+                const SizedBox(height: 16),
+                KeyTakeawayField(
+                  takeaways: takeaways,
+                  onUpdate: onUpdate,
+                  isReadOnly: true,
                 ),
-              if (pastImageId != null && futureImageId != null)
-                const SizedBox(width: 12),
-              if (futureImageId != null)
-                Expanded(
-                  child: _OptionResultCard(
-                    label: 'Zukunft',
-                    optionId: futureImageId!,
-                  ),
-                ),
+              ],
             ],
           ),
-        ],
-      ),
+        );
+      },
     );
   }
 }
 
-class _OptionResultCard extends StatelessWidget {
+class _ImageResultCard extends StatelessWidget {
   final String label;
-  final String optionId;
+  final ImagineVisualOption? option;
+  final String? imagePath;
 
-  const _OptionResultCard({required this.label, required this.optionId});
+  const _ImageResultCard({
+    required this.label,
+    this.option,
+    this.imagePath,
+  });
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final option = _resolveOption(optionId);
+    final resolvedPath = option?.imagePath ??
+        (imagePath != null ? 'assets/images/imagine/$imagePath' : null);
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -83,32 +115,13 @@ class _OptionResultCard extends StatelessWidget {
         ClipRRect(
           borderRadius: BorderRadius.circular(12),
           child: AspectRatio(
-            aspectRatio: 3 / 4,
-            child: DecoratedBox(
-              decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight,
-                  colors: option.colors,
-                ),
-              ),
-              child: Align(
-                alignment: Alignment.bottomLeft,
-                child: Padding(
-                  padding: const EdgeInsets.all(12),
-                  child: Text(
-                    option.label,
-                    style: theme.textTheme.titleSmall?.copyWith(
-                      color: Colors.white,
-                      fontWeight: FontWeight.w600,
-                      shadows: const [
-                        Shadow(blurRadius: 4, color: Colors.black54),
-                      ],
-                    ),
+            aspectRatio: 2 / 3,
+            child: resolvedPath != null
+                ? Image.asset(resolvedPath, fit: BoxFit.cover)
+                : ColoredBox(
+                    color: theme.colorScheme.surfaceContainerHighest,
+                    child: const SizedBox.expand(),
                   ),
-                ),
-              ),
-            ),
           ),
         ),
       ],
@@ -116,17 +129,3 @@ class _OptionResultCard extends StatelessWidget {
   }
 }
 
-ImagineVisualOption _resolveOption(String optionId) {
-  final option = imagineOptionsById[optionId];
-  if (option != null) {
-    return option;
-  }
-  debugPrint(
-    'ImagineResult: unknown optionId "$optionId". Valid ids: ${imagineOptionsById.keys.join(', ')}',
-  );
-  return const ImagineVisualOption(
-    id: 'fallback',
-    label: 'Auswahl',
-    colors: [Color(0xFF455A64), Color(0xFF90A4AE)],
-  );
-}

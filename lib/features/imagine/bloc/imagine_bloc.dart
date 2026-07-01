@@ -8,6 +8,7 @@ class ImagineBloc extends HydratedBloc<ImagineEvent, ImagineState> {
   ImagineBloc() : super(const ImagineState()) {
     on<SelectPastImage>(_onSelectPastImage);
     on<SelectFutureImage>(_onSelectFutureImage);
+    on<UpdateImagineTakeaway>(_onUpdateTakeaway);
   }
 
   void _onSelectPastImage(SelectPastImage event, Emitter<ImagineState> emit) {
@@ -20,6 +21,19 @@ class ImagineBloc extends HydratedBloc<ImagineEvent, ImagineState> {
     final updated = Map<String, String?>.from(state.futureImageIds);
     updated[event.sessionId] = event.imageId;
     emit(state.copyWith(futureImageIds: updated));
+  }
+
+  void _onUpdateTakeaway(UpdateImagineTakeaway event, Emitter<ImagineState> emit) {
+    final current = List<String>.from(
+      state.takeaways[event.sessionId] ?? ['', '', ''],
+    );
+    while (current.length <= event.index) {
+      current.add('');
+    }
+    current[event.index] = event.text;
+    final updated = Map<String, List<String>>.from(state.takeaways);
+    updated[event.sessionId] = current;
+    emit(state.copyWith(takeaways: updated));
   }
 
   @override

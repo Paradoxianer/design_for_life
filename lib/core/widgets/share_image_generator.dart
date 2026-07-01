@@ -8,7 +8,6 @@ import 'package:path_provider/path_provider.dart';
 import 'package:screenshot/screenshot.dart';
 import 'package:share_plus/share_plus.dart';
 
-import '../../features/imagine/models/imagine_visual_option.dart';
 import '../models/shareable_content.dart';
 
 class ShareImageGenerator {
@@ -61,8 +60,8 @@ class ShareImageGenerator {
     final data = item.data as Map;
     final optionId = data['optionId'] as String?;
     if (optionId == null) return null;
-    final option = imagineOptionsById[optionId];
-    if (option == null) return null;
+    // optionId is the filename, e.g. "img_01.png"
+    final imagePath = 'assets/images/imagine/$optionId';
 
     try {
       final rendered = await _brandingController.captureFromWidget(
@@ -88,30 +87,9 @@ class ShareImageGenerator {
                 const SizedBox(height: 20),
                 ClipRRect(
                   borderRadius: BorderRadius.circular(20),
-                  child: Container(
-                    height: 920,
-                    decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                        begin: Alignment.topLeft,
-                        end: Alignment.bottomRight,
-                        colors: option.colors,
-                      ),
-                    ),
-                    child: Align(
-                      alignment: Alignment.bottomLeft,
-                      child: Padding(
-                        padding: const EdgeInsets.all(24),
-                        child: Text(
-                          option.label,
-                          style: const TextStyle(
-                            color: Colors.white,
-                            fontSize: 34,
-                            fontWeight: FontWeight.w700,
-                            shadows: [Shadow(blurRadius: 5, color: Colors.black54)],
-                          ),
-                        ),
-                      ),
-                    ),
+                  child: AspectRatio(
+                    aspectRatio: 2 / 3,
+                    child: Image.asset(imagePath, fit: BoxFit.cover),
                   ),
                 ),
               ],
@@ -122,7 +100,7 @@ class ShareImageGenerator {
       );
 
       final directory = await getTemporaryDirectory();
-      final path = '${directory.path}/imagine_${option.id}_${DateTime.now().microsecondsSinceEpoch}.png';
+      final path = '${directory.path}/imagine_${optionId}_${DateTime.now().microsecondsSinceEpoch}.png';
       final file = io.File(path);
       await file.writeAsBytes(rendered);
       return XFile(path);
