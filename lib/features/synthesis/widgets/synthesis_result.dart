@@ -4,17 +4,19 @@ import 'package:flutter/material.dart';
 import 'package:design_for_life/l10n/generated/app_localizations.dart';
 import '../bloc/synthesis_bloc.dart';
 
+typedef _SectionDef = ({String key, Color color});
+
 class SynthesisResult extends StatelessWidget {
   final SynthesisState state;
 
   const SynthesisResult({super.key, required this.state});
 
-  static const _sections = [
-    ('lifeTree', Color(0xFF2E7D32)),
-    ('values', Color(0xFF2D5A27)),
-    ('gifts', Color(0xFF6B4C9A)),
-    ('prayer', Color(0xFF1565C0)),
-    ('goals', Color(0xFF8B5E3C)),
+  static const _sections = <_SectionDef>[
+    (key: 'lifeTree', color: Color(0xFF2E7D32)),
+    (key: 'values', color: Color(0xFF2D5A27)),
+    (key: 'gifts', color: Color(0xFF6B4C9A)),
+    (key: 'prayer', color: Color(0xFF1565C0)),
+    (key: 'goals', color: Color(0xFF8B5E3C)),
   ];
 
   static const _tagColors = {
@@ -49,7 +51,7 @@ class SynthesisResult extends StatelessWidget {
 
     // Only show sections that have cards
     final activeSections = _sections
-        .where((s) => (state.columns[s.$1] ?? const []).isNotEmpty)
+        .where((s) => (state.columns[s.key] ?? const []).isNotEmpty)
         .toList();
 
     return SingleChildScrollView(
@@ -85,11 +87,11 @@ class SynthesisResult extends StatelessWidget {
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    for (final (key, color) in activeSections) ...[
+                    for (final section in activeSections) ...[
                       _ResultColumn(
-                        label: _sectionLabel(context, key),
-                        color: color,
-                        cards: state.columns[key] ?? const <SynthesisCard>[],
+                        label: _sectionLabel(context, section.key),
+                        color: section.color,
+                        cards: state.columns[section.key] ?? const <SynthesisCard>[],
                       ),
                       const SizedBox(width: 12),
                     ],

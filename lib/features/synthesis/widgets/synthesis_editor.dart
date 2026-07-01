@@ -38,15 +38,17 @@ class _ConnectionsEditorLayout extends DflModuleEditor {
   Widget buildContent(BuildContext context) => const _ConnectionsBoard();
 }
 
+typedef _ColumnDef = ({String key, Color color, IconData icon});
+
 class _ConnectionsBoard extends StatelessWidget {
   const _ConnectionsBoard();
 
-  static const _columnDefs = [
-    ('lifeTree', Color(0xFF2E7D32), Icons.account_tree_rounded),
-    ('values', Color(0xFF2D5A27), Icons.diamond_outlined),
-    ('gifts', Color(0xFF6B4C9A), Icons.volunteer_activism_rounded),
-    ('prayer', Color(0xFF1565C0), Icons.hearing_rounded),
-    ('goals', Color(0xFF8B5E3C), Icons.flag_rounded),
+  static const _columnDefs = <_ColumnDef>[
+    (key: 'lifeTree', color: Color(0xFF2E7D32), icon: Icons.account_tree_rounded),
+    (key: 'values', color: Color(0xFF2D5A27), icon: Icons.diamond_outlined),
+    (key: 'gifts', color: Color(0xFF6B4C9A), icon: Icons.volunteer_activism_rounded),
+    (key: 'prayer', color: Color(0xFF1565C0), icon: Icons.hearing_rounded),
+    (key: 'goals', color: Color(0xFF8B5E3C), icon: Icons.flag_rounded),
   ];
 
   String _columnLabel(BuildContext context, String key) {
@@ -69,7 +71,7 @@ class _ConnectionsBoard extends StatelessWidget {
       builder: (context, state) {
         // Only show columns that have cards
         final activeColumns = _columnDefs
-            .where((col) => (state.columns[col.$1] ?? const []).isNotEmpty)
+            .where((col) => (state.columns[col.key] ?? const []).isNotEmpty)
             .toList();
 
         if (activeColumns.isEmpty) {
@@ -106,13 +108,13 @@ class _ConnectionsBoard extends StatelessWidget {
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    for (final (key, color, icon) in activeColumns) ...[
+                    for (final col in activeColumns) ...[
                       _ConnectionsColumn(
-                        columnKey: key,
-                        label: _columnLabel(context, key),
-                        color: color,
-                        icon: icon,
-                        cards: state.columns[key] ?? const <SynthesisCard>[],
+                        columnKey: col.key,
+                        label: _columnLabel(context, col.key),
+                        color: col.color,
+                        icon: col.icon,
+                        cards: state.columns[col.key] ?? const <SynthesisCard>[],
                       ),
                       const SizedBox(width: 12),
                     ],
