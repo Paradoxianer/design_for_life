@@ -463,20 +463,19 @@ class AppLocalizationsEn extends AppLocalizations {
   String get session4Desc => 'Present and Identity.';
 
   @override
-  String get session5Title => 'Spiritual Gifts (Evaluation, Exchange)';
+  String get session5Title => 'Spiritual Gifts';
 
   @override
   String get session5Desc => 'Discovery and classification of spiritual gifts.';
 
   @override
-  String get session6Title => 'Values (Complete all workbook tasks + Exchange)';
+  String get session6Title => 'Values';
 
   @override
   String get session6Desc => 'Connections to spiritual gifts + life tree.';
 
   @override
-  String get session7Title =>
-      'Session Four: Pray, Dream, Listen! (Listening Prayer)';
+  String get session7Title => 'Session Four: Pray, Dream, Listen!';
 
   @override
   String get session7Desc =>
@@ -503,6 +502,24 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get session11Title => 'Group Photo';
+
+  @override
+  String get timelineSynthesisTitle => 'Connections';
+
+  @override
+  String get timelineSynthesisDesc =>
+      'Bring together the key insights from life tree, gifts, values, and listening prayer.';
+
+  @override
+  String get timelineImagineTitle => 'Imagine';
+
+  @override
+  String get timelineImagineDesc =>
+      'Shape future images and capture your thoughts for the next life phase.';
+
+  @override
+  String get timelineUnavailable =>
+      'Unable to load the timeline. Please restart the app.';
 
   @override
   String get session12Title => 'Feedback Form';

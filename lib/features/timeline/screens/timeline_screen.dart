@@ -1,16 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:design_for_life/l10n/generated/app_localizations.dart';
-import 'package:design_for_life/features/notes/bloc/notes_bloc.dart';
-import 'package:design_for_life/features/listening_prayer/bloc/listening_prayer_bloc.dart';
-import 'package:design_for_life/features/goals/bloc/goals_bloc.dart';
-import 'package:design_for_life/features/values/bloc/values_bloc.dart';
-import 'package:design_for_life/features/spiritual_gifts/bloc/spiritual_gifts_bloc.dart';
-import 'package:design_for_life/features/feedback/bloc/feedback_bloc.dart';
-import 'package:design_for_life/features/life_tree/bloc/life_tree_bloc.dart';
-import '../models/static_timeline_data.dart';
+
 import '../models/dfl_session.dart';
+import '../services/timeline_config_repository.dart';
+import '../services/timeline_module_registry.dart';
 import '../widgets/timeline_card.dart';
 
 class TimelineScreen extends StatelessWidget {
@@ -18,35 +12,53 @@ class TimelineScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
     final l10n = AppLocalizations.of(context);
-    final sessions = StaticTimelineData.getSessions(l10n);
 
-    return Scaffold(
-      body: CustomScrollView(
-        slivers: [
-          SliverAppBar.large(
-            title: Text(
-              l10n.appTitle,
-              style: theme.textTheme.displayLarge,
-            ),
-            backgroundColor: theme.scaffoldBackgroundColor,
-            surfaceTintColor: Colors.transparent,
-          ),
-          SliverPadding(
-            padding: const EdgeInsets.only(bottom: 24),
-            sliver: SliverList(
-              delegate: SliverChildBuilderDelegate(
-                (context, index) {
-                  final session = sessions[index];
-                  return _TimelineCardWrapper(session: session);
-                },
-                childCount: sessions.length,
+    return FutureBuilder<List<DflSession>>(
+      future: const TimelineConfigRepository().loadSessions(l10n),
+      builder: (context, snapshot) {
+        if (snapshot.hasError) {
+          return Scaffold(
+            body: Center(child: Text(l10n.timelineUnavailable)),
+          );
+        }
+
+        if (!snapshot.hasData) {
+          return const Scaffold(
+            body: Center(child: CircularProgressIndicator()),
+          );
+        }
+
+        final theme = Theme.of(context);
+        final sessions = snapshot.data!;
+
+        return Scaffold(
+          body: CustomScrollView(
+            slivers: [
+              SliverAppBar.large(
+                title: Text(
+                  l10n.appTitle,
+                  style: theme.textTheme.displayLarge,
+                ),
+                backgroundColor: theme.scaffoldBackgroundColor,
+                surfaceTintColor: Colors.transparent,
               ),
-            ),
+              SliverPadding(
+                padding: const EdgeInsets.only(bottom: 24),
+                sliver: SliverList(
+                  delegate: SliverChildBuilderDelegate(
+                    (context, index) {
+                      final session = sessions[index];
+                      return _TimelineCardWrapper(session: session);
+                    },
+                    childCount: sessions.length,
+                  ),
+                ),
+              ),
+            ],
           ),
-        ],
-      ),
+        );
+      },
     );
   }
 }
@@ -56,39 +68,9 @@ class _TimelineCardWrapper extends StatelessWidget {
 
   const _TimelineCardWrapper({required this.session});
 
-  String _parseId(String route) {
-    final parts = route.split('/');
-    if (parts.length > 1) {
-      return parts[1].split('?')[0];
-    }
-    return '';
-  }
-
   @override
   Widget build(BuildContext context) {
-    final route = session.moduleRoute ?? '';
-    bool isCompleted = false;
-
-    if (route.startsWith('notes/')) {
-      final sessionId = _parseId(route);
-      isCompleted = context.watch<NotesBloc>().state.isCompleted(sessionId);
-    } else if (route.startsWith('listening-prayer/')) {
-      final sessionId = _parseId(route);
-      isCompleted = context.watch<ListeningPrayerBloc>().state.isCompleted(sessionId);
-    } else if (route.startsWith('goals/')) {
-      final sessionId = _parseId(route);
-      isCompleted = context.watch<GoalsBloc>().state.isCompleted(sessionId);
-    } else if (route.startsWith('spiritual-gifts/')) {
-      final sessionId = _parseId(route);
-      isCompleted = context.watch<SpiritualGiftsBloc>().state.isSessionCompleted(sessionId);
-    } else if (route.startsWith('life-tree/')) {
-      final sessionId = _parseId(route);
-      isCompleted = context.watch<LifeTreeBloc>().state.isCompleted(sessionId);
-    } else if (route == 'values') {
-      isCompleted = context.watch<ValuesBloc>().state.isCompleted;
-    } else if (route == 'feedback') {
-      isCompleted = context.watch<FeedbackBloc>().state.response.allRatingsFilled;
-    }
+    final isCompleted = TimelineModuleRegistry.isCompleted(context, session);
 
     final updatedSession = DflSession(
       id: session.id,
@@ -100,16 +82,18 @@ class _TimelineCardWrapper extends StatelessWidget {
       room: session.room,
       groupAssignment: session.groupAssignment,
       status: isCompleted ? SessionStatus.done : session.status,
-      moduleRoute: session.moduleRoute,
+      moduleId: session.moduleId,
+      moduleSessionId: session.moduleSessionId,
     );
 
     return TimelineCard(
       session: updatedSession,
       onTap: () {
-        if (session.moduleRoute != null) {
-          final targetRoute = isCompleted 
-            ? '${session.moduleRoute}${session.moduleRoute!.contains('?') ? '&' : '?'}mode=result'
-            : session.moduleRoute!;
+        final targetRoute = TimelineModuleRegistry.buildRoute(
+          session,
+          resultMode: isCompleted,
+        );
+        if (targetRoute != null) {
           context.push('/$targetRoute');
         }
       },

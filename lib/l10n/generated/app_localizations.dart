@@ -929,7 +929,7 @@ abstract class AppLocalizations {
   /// No description provided for @session5Title.
   ///
   /// In en, this message translates to:
-  /// **'Spiritual Gifts (Evaluation, Exchange)'**
+  /// **'Spiritual Gifts'**
   String get session5Title;
 
   /// No description provided for @session5Desc.
@@ -941,7 +941,7 @@ abstract class AppLocalizations {
   /// No description provided for @session6Title.
   ///
   /// In en, this message translates to:
-  /// **'Values (Complete all workbook tasks + Exchange)'**
+  /// **'Values'**
   String get session6Title;
 
   /// No description provided for @session6Desc.
@@ -953,7 +953,7 @@ abstract class AppLocalizations {
   /// No description provided for @session7Title.
   ///
   /// In en, this message translates to:
-  /// **'Session Four: Pray, Dream, Listen! (Listening Prayer)'**
+  /// **'Session Four: Pray, Dream, Listen!'**
   String get session7Title;
 
   /// No description provided for @session7Desc.
@@ -1003,6 +1003,36 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Group Photo'**
   String get session11Title;
+
+  /// No description provided for @timelineSynthesisTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Connections'**
+  String get timelineSynthesisTitle;
+
+  /// No description provided for @timelineSynthesisDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Bring together the key insights from life tree, gifts, values, and listening prayer.'**
+  String get timelineSynthesisDesc;
+
+  /// No description provided for @timelineImagineTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Imagine'**
+  String get timelineImagineTitle;
+
+  /// No description provided for @timelineImagineDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Shape future images and capture your thoughts for the next life phase.'**
+  String get timelineImagineDesc;
+
+  /// No description provided for @timelineUnavailable.
+  ///
+  /// In en, this message translates to:
+  /// **'Unable to load the timeline. Please restart the app.'**
+  String get timelineUnavailable;
 
   /// No description provided for @session12Title.
   ///

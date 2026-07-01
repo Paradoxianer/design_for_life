@@ -469,21 +469,19 @@ class AppLocalizationsDe extends AppLocalizations {
   String get session4Desc => 'Gegenwart und Identität.';
 
   @override
-  String get session5Title => 'Gaben (Auswertung, Austausch)';
+  String get session5Title => 'Gaben';
 
   @override
   String get session5Desc => 'Entdeckung und Einordnung der geistlichen Gaben.';
 
   @override
-  String get session6Title =>
-      'Werte (Alle Aufgaben Im Heft fertig + Austausch)';
+  String get session6Title => 'Werte';
 
   @override
   String get session6Desc => 'Zusammenhänge zu den Gaben + Lebensbaum.';
 
   @override
-  String get session7Title =>
-      'Einheit Vier: Bete, Träume, Höre! (Hörendes Gebet)';
+  String get session7Title => 'Einheit Vier: Bete, Träume, Höre!';
 
   @override
   String get session7Desc =>
@@ -510,6 +508,24 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get session11Title => 'Gruppenfoto';
+
+  @override
+  String get timelineSynthesisTitle => 'Verknüpfungen';
+
+  @override
+  String get timelineSynthesisDesc =>
+      'Verdichte die wichtigsten Erkenntnisse aus Lebensbaum, Gaben, Werten und hörendem Gebet.';
+
+  @override
+  String get timelineImagineTitle => 'Imagine';
+
+  @override
+  String get timelineImagineDesc =>
+      'Gestalte Zukunftsbilder und halte deine Gedanken zur nächsten Lebensphase fest.';
+
+  @override
+  String get timelineUnavailable =>
+      'Timeline konnte nicht geladen werden. Bitte starte die App neu.';
 
   @override
   String get session12Title => 'Feedbackbogen';
