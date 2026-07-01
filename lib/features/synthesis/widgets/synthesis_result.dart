@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 import '../bloc/synthesis_bloc.dart';
@@ -32,16 +33,21 @@ class SynthesisResult extends StatelessWidget {
       grouped.putIfAbsent(card.tag, () => []).add(card);
     }
 
+    // Only show sections that have cards
+    final activeSections = _sections
+        .where((s) => (state.columns[s.$1] ?? const []).isNotEmpty)
+        .toList();
+
     return SingleChildScrollView(
       padding: const EdgeInsets.all(16),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           if (grouped.isNotEmpty) ...[
-            Text('Cluster / rote Linien', style: theme.textTheme.titleMedium),
+            Text('Nach Farben gruppiert', style: theme.textTheme.titleMedium),
             const SizedBox(height: 10),
             for (final entry in grouped.entries) ...[
-              _ClusterCard(
+              _ColorGroupCard(
                 color: _tagColors[entry.key] ?? Colors.grey,
                 cards: entry.value,
               ),
@@ -49,25 +55,35 @@ class SynthesisResult extends StatelessWidget {
             ],
             const SizedBox(height: 16),
           ],
-          Text('Matrix-Ansicht', style: theme.textTheme.titleMedium),
-          const SizedBox(height: 10),
-          SingleChildScrollView(
-            scrollDirection: Axis.horizontal,
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                for (final (key, label, color) in _sections) ...[
-                  _ResultColumn(
-                    label: label,
-                    color: color,
-                    cards: state.columns[key] ?? const <SynthesisCard>[],
-                  ),
-                  const SizedBox(width: 12),
-                ],
-              ],
+          if (activeSections.isNotEmpty) ...[
+            Text('Matrix-Ansicht', style: theme.textTheme.titleMedium),
+            const SizedBox(height: 10),
+            ScrollConfiguration(
+              behavior: ScrollConfiguration.of(context).copyWith(
+                dragDevices: {
+                  PointerDeviceKind.touch,
+                  PointerDeviceKind.mouse,
+                },
+              ),
+              child: SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    for (final (key, label, color) in activeSections) ...[
+                      _ResultColumn(
+                        label: label,
+                        color: color,
+                        cards: state.columns[key] ?? const <SynthesisCard>[],
+                      ),
+                      const SizedBox(width: 12),
+                    ],
+                  ],
+                ),
+              ),
             ),
-          ),
-          const SizedBox(height: 20),
+            const SizedBox(height: 20),
+          ],
           if (state.takeaways.any((t) => t.trim().isNotEmpty)) ...[
             Text('Key Takeaways', style: theme.textTheme.titleMedium),
             const SizedBox(height: 8),
@@ -86,11 +102,11 @@ class SynthesisResult extends StatelessWidget {
   }
 }
 
-class _ClusterCard extends StatelessWidget {
+class _ColorGroupCard extends StatelessWidget {
   final Color color;
   final List<SynthesisCard> cards;
 
-  const _ClusterCard({
+  const _ColorGroupCard({
     required this.color,
     required this.cards,
   });
@@ -119,7 +135,10 @@ class _ClusterCard extends StatelessWidget {
                 ),
               ),
               const SizedBox(width: 8),
-              Text('Cluster (${cards.length})', style: theme.textTheme.titleSmall),
+              Text(
+                'Farbgruppe (${cards.length})',
+                style: theme.textTheme.titleSmall,
+              ),
             ],
           ),
           const SizedBox(height: 8),
@@ -156,6 +175,7 @@ class _ResultColumn extends StatelessWidget {
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisSize: MainAxisSize.min,
         children: [
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
@@ -168,24 +188,14 @@ class _ResultColumn extends StatelessWidget {
               style: theme.textTheme.titleSmall?.copyWith(color: color),
             ),
           ),
-          if (cards.isEmpty)
-            Padding(
-              padding: const EdgeInsets.all(10),
-              child: Text(
-                'Keine Einträge',
-                style: theme.textTheme.bodySmall?.copyWith(
-                  color: theme.colorScheme.onSurfaceVariant,
-                ),
-              ),
-            )
-          else
-            for (final card in cards)
-              ListTile(
-                dense: true,
-                title: Text(card.text, style: theme.textTheme.bodyMedium),
-              ),
+          for (final card in cards)
+            ListTile(
+              dense: true,
+              title: Text(card.text, style: theme.textTheme.bodyMedium),
+            ),
         ],
       ),
     );
   }
 }
+

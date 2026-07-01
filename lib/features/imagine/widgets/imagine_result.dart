@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../core/widgets/image_fullscreen_viewer.dart';
 import '../../../core/widgets/key_takeaway_field.dart';
 import '../models/imagine_visual_option.dart';
 
@@ -112,16 +113,42 @@ class _ImageResultCard extends StatelessWidget {
               ?.copyWith(color: theme.colorScheme.primary),
         ),
         const SizedBox(height: 6),
-        ClipRRect(
-          borderRadius: BorderRadius.circular(12),
-          child: AspectRatio(
-            aspectRatio: 2 / 3,
-            child: resolvedPath != null
-                ? Image.asset(resolvedPath, fit: BoxFit.cover)
-                : ColoredBox(
-                    color: theme.colorScheme.surfaceContainerHighest,
-                    child: const SizedBox.expand(),
-                  ),
+        GestureDetector(
+          onTap: resolvedPath != null
+              ? () => showImageFullscreen(context, resolvedPath)
+              : null,
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(12),
+            child: AspectRatio(
+              aspectRatio: 2 / 3,
+              child: resolvedPath != null
+                  ? Stack(
+                      fit: StackFit.expand,
+                      children: [
+                        Image.asset(resolvedPath, fit: BoxFit.cover),
+                        Positioned(
+                          bottom: 8,
+                          right: 8,
+                          child: Container(
+                            padding: const EdgeInsets.all(4),
+                            decoration: BoxDecoration(
+                              color: Colors.black54,
+                              borderRadius: BorderRadius.circular(6),
+                            ),
+                            child: const Icon(
+                              Icons.fullscreen,
+                              size: 18,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                      ],
+                    )
+                  : ColoredBox(
+                      color: theme.colorScheme.surfaceContainerHighest,
+                      child: const SizedBox.expand(),
+                    ),
+            ),
           ),
         ),
       ],

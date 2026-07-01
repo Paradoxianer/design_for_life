@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../core/widgets/dfl_module_editor.dart';
+import '../../../core/widgets/image_fullscreen_viewer.dart';
 import '../../../core/widgets/key_takeaway_field.dart';
 import '../bloc/imagine_bloc.dart';
 import '../models/imagine_visual_option.dart';
@@ -152,8 +153,14 @@ class _OptionSection extends StatelessWidget {
                 final option = options[index];
                 final isSelected = option.id == selectedId;
                 return GestureDetector(
+                  key: ValueKey(option.id),
                   onTap: () => onSelect(option.id),
-                  child: _OptionCard(option: option, selected: isSelected),
+                  child: _OptionCard(
+                    option: option,
+                    selected: isSelected,
+                    onFullscreen: () =>
+                        showImageFullscreen(context, option.imagePath),
+                  ),
                 );
               },
             ),
@@ -167,8 +174,13 @@ class _OptionSection extends StatelessWidget {
 class _OptionCard extends StatelessWidget {
   final ImagineVisualOption option;
   final bool selected;
+  final VoidCallback onFullscreen;
 
-  const _OptionCard({required this.option, required this.selected});
+  const _OptionCard({
+    required this.option,
+    required this.selected,
+    required this.onFullscreen,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -203,6 +215,25 @@ class _OptionCard extends StatelessWidget {
                   child: const Icon(Icons.check, size: 14, color: Colors.white),
                 ),
               ),
+            Positioned(
+              bottom: 4,
+              right: 4,
+              child: GestureDetector(
+                onTap: onFullscreen,
+                child: Container(
+                  padding: const EdgeInsets.all(3),
+                  decoration: BoxDecoration(
+                    color: Colors.black54,
+                    borderRadius: BorderRadius.circular(4),
+                  ),
+                  child: const Icon(
+                    Icons.fullscreen,
+                    size: 14,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+            ),
           ],
         ),
       ),

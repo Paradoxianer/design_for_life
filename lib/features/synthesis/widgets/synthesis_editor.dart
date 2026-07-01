@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -52,8 +53,12 @@ class _ConnectionsBoard extends StatelessWidget {
     final theme = Theme.of(context);
     return BlocBuilder<SynthesisBloc, SynthesisState>(
       builder: (context, state) {
-        final hasAny = state.columns.values.any((c) => c.isNotEmpty);
-        if (!hasAny) {
+        // Only show columns that have cards
+        final activeColumns = _columns
+            .where((col) => (state.columns[col.$1] ?? const []).isNotEmpty)
+            .toList();
+
+        if (activeColumns.isEmpty) {
           return Padding(
             padding: const EdgeInsets.all(24),
             child: Text(
@@ -70,28 +75,37 @@ class _ConnectionsBoard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Ziehe Karten zwischen den Spalten, um Verbindungen festzuhalten.',
+              'Ordne Karten innerhalb einer Spalte per Drag & Drop. '
+              'Weise jeder Karte eine Farbe zu, um Gemeinsamkeiten zu markieren.',
               style: theme.textTheme.bodySmall?.copyWith(
                 color: theme.colorScheme.onSurfaceVariant,
               ),
             ),
             const SizedBox(height: 12),
-            SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  for (final (key, label, color, icon) in _columns) ...[
-                    _ConnectionsColumn(
-                      columnKey: key,
-                      label: label,
-                      color: color,
-                      icon: icon,
-                      cards: state.columns[key] ?? const <SynthesisCard>[],
-                    ),
-                    const SizedBox(width: 12),
+            ScrollConfiguration(
+              behavior: ScrollConfiguration.of(context).copyWith(
+                dragDevices: {
+                  PointerDeviceKind.touch,
+                  PointerDeviceKind.mouse,
+                },
+              ),
+              child: SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    for (final (key, label, color, icon) in activeColumns) ...[
+                      _ConnectionsColumn(
+                        columnKey: key,
+                        label: label,
+                        color: color,
+                        icon: icon,
+                        cards: state.columns[key] ?? const <SynthesisCard>[],
+                      ),
+                      const SizedBox(width: 12),
+                    ],
                   ],
-                ],
+                ),
               ),
             ),
           ],
@@ -99,18 +113,6 @@ class _ConnectionsBoard extends StatelessWidget {
       },
     );
   }
-}
-
-class _DragData {
-  final String fromColumn;
-  final int fromIndex;
-  final SynthesisCard card;
-
-  const _DragData({
-    required this.fromColumn,
-    required this.fromIndex,
-    required this.card,
-  });
 }
 
 class _ConnectionsColumn extends StatelessWidget {
@@ -128,29 +130,19 @@ class _ConnectionsColumn extends StatelessWidget {
     required this.cards,
   });
 
-  void _moveCard(BuildContext context, _DragData data, int toIndex) {
-    context.read<SynthesisBloc>().add(
-          MoveSynthesisCard(
-            fromColumn: data.fromColumn,
-            fromIndex: data.fromIndex,
-            toColumn: columnKey,
-            toIndex: toIndex,
-          ),
-        );
-  }
-
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     return Container(
       width: 260,
-      constraints: const BoxConstraints(minHeight: 380),
+      constraints: const BoxConstraints(minHeight: 120),
       decoration: BoxDecoration(
         border: Border.all(color: color.withValues(alpha: 0.25)),
         borderRadius: BorderRadius.circular(12),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisSize: MainAxisSize.min,
         children: [
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
@@ -171,75 +163,43 @@ class _ConnectionsColumn extends StatelessWidget {
               ],
             ),
           ),
-          for (int i = 0; i <= cards.length; i++) ...[
-            _DropZone(
-              onAccept: (data) => _moveCard(context, data, i),
-            ),
-            if (i < cards.length)
-              _ConnectionCard(
-                columnKey: columnKey,
-                index: i,
-                card: cards[i],
-                color: color,
-              ),
-          ],
+          ReorderableListView(
+            shrinkWrap: true,
+            physics: const NeverScrollableScrollPhysics(),
+            onReorder: (oldIndex, newIndex) {
+              context.read<SynthesisBloc>().add(
+                    MoveSynthesisCard(
+                      fromColumn: columnKey,
+                      fromIndex: oldIndex,
+                      toColumn: columnKey,
+                      toIndex: newIndex,
+                    ),
+                  );
+            },
+            children: [
+              for (final card in cards)
+                _ConnectionCard(
+                  key: ValueKey(card.id),
+                  columnKey: columnKey,
+                  card: card,
+                  color: color,
+                ),
+            ],
+          ),
         ],
       ),
     );
   }
 }
 
-class _DropZone extends StatefulWidget {
-  final ValueChanged<_DragData> onAccept;
-
-  const _DropZone({required this.onAccept});
-
-  @override
-  State<_DropZone> createState() => _DropZoneState();
-}
-
-class _DropZoneState extends State<_DropZone> {
-  bool _hover = false;
-
-  @override
-  Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    return DragTarget<_DragData>(
-      onWillAcceptWithDetails: (_) {
-        setState(() => _hover = true);
-        return true;
-      },
-      onLeave: (_) => setState(() => _hover = false),
-      onAcceptWithDetails: (details) {
-        setState(() => _hover = false);
-        widget.onAccept(details.data);
-      },
-      builder: (_, __, ___) {
-        return AnimatedContainer(
-          duration: const Duration(milliseconds: 100),
-          margin: const EdgeInsets.symmetric(horizontal: 8),
-          height: 12,
-          decoration: BoxDecoration(
-            color: _hover
-                ? theme.colorScheme.primary.withValues(alpha: 0.25)
-                : Colors.transparent,
-            borderRadius: BorderRadius.circular(8),
-          ),
-        );
-      },
-    );
-  }
-}
-
 class _ConnectionCard extends StatelessWidget {
   final String columnKey;
-  final int index;
   final SynthesisCard card;
   final Color color;
 
   const _ConnectionCard({
+    super.key,
     required this.columnKey,
-    required this.index,
     required this.card,
     required this.color,
   });
@@ -253,7 +213,7 @@ class _ConnectionCard extends StatelessWidget {
   };
 
   static const _tagLabels = {
-    'none': 'Kein Cluster',
+    'none': 'Keine Farbe',
     'red': 'Rot',
     'blue': 'Blau',
     'green': 'Grün',
@@ -265,34 +225,6 @@ class _ConnectionCard extends StatelessWidget {
     final theme = Theme.of(context);
     final tagColor = _tagColors[card.tag] ?? _tagColors['none']!;
 
-    return LongPressDraggable<_DragData>(
-      data: _DragData(fromColumn: columnKey, fromIndex: index, card: card),
-      feedback: Material(
-        color: Colors.transparent,
-        child: Container(
-          width: 220,
-          padding: const EdgeInsets.all(10),
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(10),
-            boxShadow: const [BoxShadow(blurRadius: 8, color: Colors.black26)],
-          ),
-          child: Text(
-            card.text,
-            maxLines: 2,
-            overflow: TextOverflow.ellipsis,
-          ),
-        ),
-      ),
-      childWhenDragging: Opacity(
-        opacity: 0.3,
-        child: _buildCard(context, theme, tagColor),
-      ),
-      child: _buildCard(context, theme, tagColor),
-    );
-  }
-
-  Widget _buildCard(BuildContext context, ThemeData theme, Color tagColor) {
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
       decoration: BoxDecoration(
@@ -311,11 +243,12 @@ class _ConnectionCard extends StatelessWidget {
               decoration: BoxDecoration(color: tagColor, shape: BoxShape.circle),
             ),
             const SizedBox(width: 6),
-            Text(_tagLabels[card.tag] ?? 'Kein Cluster'),
+            Text(_tagLabels[card.tag] ?? 'Keine Farbe'),
           ],
         ),
         trailing: PopupMenuButton<String>(
           icon: const Icon(Icons.palette_outlined),
+          tooltip: 'Farbe zuweisen',
           onSelected: (value) {
             context.read<SynthesisBloc>().add(SetSynthesisCardTag(card.id, value));
           },
@@ -344,3 +277,4 @@ class _ConnectionCard extends StatelessWidget {
     );
   }
 }
+
