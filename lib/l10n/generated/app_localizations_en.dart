@@ -505,9 +505,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get session11Title => 'Group Photo';
 
   @override
-  String get session12Title => 'Feedback Form';
-
-  @override
   String get timelineSynthesisTitle => 'Synthesis (S)';
 
   @override
@@ -524,6 +521,9 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get timelineUnavailable =>
       'Unable to load the timeline. Please restart the app.';
+
+  @override
+  String get session12Title => 'Feedback Form';
 
   @override
   String get valueGenauigkeit => 'Accuracy';

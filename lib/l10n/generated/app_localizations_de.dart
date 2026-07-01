@@ -512,9 +512,6 @@ class AppLocalizationsDe extends AppLocalizations {
   String get session11Title => 'Gruppenfoto';
 
   @override
-  String get session12Title => 'Feedbackbogen';
-
-  @override
   String get timelineSynthesisTitle => 'Synthesis (S)';
 
   @override
@@ -531,6 +528,9 @@ class AppLocalizationsDe extends AppLocalizations {
   @override
   String get timelineUnavailable =>
       'Timeline konnte nicht geladen werden. Bitte starte die App neu.';
+
+  @override
+  String get session12Title => 'Feedbackbogen';
 
   @override
   String get valueGenauigkeit => 'Genauigkeit';

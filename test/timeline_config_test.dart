@@ -73,7 +73,7 @@ void main() {
     test('maps synthesis and imagine modules through module ids', () {
       const synthesis = DflSession(
         id: 'session_synthesis',
-        title: 'Synthesis (S)',
+        title: 'Big Picture',
         type: SessionType.groupWork,
         moduleId: 'module_synthesis',
         moduleSessionId: 'session_synthesis',

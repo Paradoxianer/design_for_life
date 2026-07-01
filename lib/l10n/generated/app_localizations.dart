@@ -1004,12 +1004,6 @@ abstract class AppLocalizations {
   /// **'Group Photo'**
   String get session11Title;
 
-  /// No description provided for @session12Title.
-  ///
-  /// In en, this message translates to:
-  /// **'Feedback Form'**
-  String get session12Title;
-
   /// No description provided for @timelineSynthesisTitle.
   ///
   /// In en, this message translates to:
@@ -1039,6 +1033,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Unable to load the timeline. Please restart the app.'**
   String get timelineUnavailable;
+
+  /// No description provided for @session12Title.
+  ///
+  /// In en, this message translates to:
+  /// **'Feedback Form'**
+  String get session12Title;
 
   /// No description provided for @valueGenauigkeit.
   ///
