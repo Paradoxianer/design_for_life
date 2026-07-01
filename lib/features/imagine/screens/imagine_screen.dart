@@ -4,6 +4,7 @@ import '../../../core/widgets/dfl_module_scaffold.dart';
 import '../../../core/models/shareable_content.dart';
 import '../../../core/services/share_service.dart';
 import '../bloc/imagine_bloc.dart';
+import '../models/imagine_visual_option.dart';
 import '../widgets/imagine_editor.dart';
 import '../widgets/imagine_result.dart';
 
@@ -27,13 +28,17 @@ class ImagineScreen extends StatelessWidget {
           ShareableItem(
             id: 'past_image',
             label: 'Vergangenheit',
-            textValue: state.pastImageUrl(sessionId),
+            textValue:
+                imagineOptionsById[state.pastImageUrl(sessionId)]?.label ??
+                state.pastImageUrl(sessionId),
           ),
         if (state.futureImageUrl(sessionId) != null)
           ShareableItem(
             id: 'future_image',
             label: 'Zukunft',
-            textValue: state.futureImageUrl(sessionId),
+            textValue:
+                imagineOptionsById[state.futureImageUrl(sessionId)]?.label ??
+                state.futureImageUrl(sessionId),
           ),
       ],
     );

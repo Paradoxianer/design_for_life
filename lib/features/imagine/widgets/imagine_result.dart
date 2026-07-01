@@ -121,7 +121,9 @@ _ImagineResultOption _resolveOption(String optionId) {
   if (option != null) {
     return _ImagineResultOption(title: option.label, colors: option.colors);
   }
-  debugPrint('ImagineResult: unknown optionId "$optionId"');
+  debugPrint(
+    'ImagineResult: unknown optionId "$optionId". Valid ids: ${imagineOptionsById.keys.join(', ')}',
+  );
   return const _ImagineResultOption(
     title: 'Auswahl',
     colors: [Color(0xFF455A64), Color(0xFF90A4AE)],
