@@ -68,11 +68,7 @@ class _OptionResultCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final option = _optionById[optionId] ??
-        const _ImagineResultOption(
-          title: 'Auswahl',
-          colors: [Color(0xFF455A64), Color(0xFF90A4AE)],
-        );
+    final option = _resolveOption(optionId);
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -117,6 +113,18 @@ class _OptionResultCard extends StatelessWidget {
       ],
     );
   }
+}
+
+_ImagineResultOption _resolveOption(String optionId) {
+  final option = _optionById[optionId];
+  if (option != null) {
+    return option;
+  }
+  debugPrint('ImagineResult: unknown optionId "$optionId"');
+  return const _ImagineResultOption(
+    title: 'Auswahl',
+    colors: [Color(0xFF455A64), Color(0xFF90A4AE)],
+  );
 }
 
 class _ImagineResultOption {
