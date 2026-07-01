@@ -16,7 +16,10 @@ class SynthesisBloc extends HydratedBloc<SynthesisEvent, SynthesisState> {
     InitializeSynthesis event,
     Emitter<SynthesisState> emit,
   ) {
-    if (state.initialized && !event.force) return;
+    // Skip re-initialization only when the board already has cards the user may
+    // have rearranged.  If initialized but empty (first visit had no data),
+    // always try again so newly filled modules appear.
+    if (state.initialized && state.hasAnyCards && !event.force) return;
 
     final seededColumns = <String, List<SynthesisCard>>{};
     var counter = 0;

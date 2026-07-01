@@ -58,7 +58,7 @@ class _ConnectionsBoard extends StatelessWidget {
             padding: const EdgeInsets.all(24),
             child: Text(
               'Noch keine Key-Takeaways vorhanden. '
-              'Bearbeite zuerst Lebensbaum, Werte, Gaben, Hörendes Gebet und Ziele.',
+              'Bearbeite zuerst mindestens ein Modul (Lebensbaum, Werte, Gaben oder Hörendes Gebet).',
               style: theme.textTheme.bodyMedium?.copyWith(
                 color: theme.colorScheme.onSurfaceVariant,
               ),

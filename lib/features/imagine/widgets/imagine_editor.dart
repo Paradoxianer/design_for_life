@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -136,18 +137,26 @@ class _OptionSection extends StatelessWidget {
         const SizedBox(height: 12),
         SizedBox(
           height: 152,
-          child: ListView.separated(
-            scrollDirection: Axis.horizontal,
-            itemCount: options.length,
-            separatorBuilder: (_, __) => const SizedBox(width: 10),
-            itemBuilder: (context, index) {
-              final option = options[index];
-              final isSelected = option.id == selectedId;
-              return GestureDetector(
-                onTap: () => onSelect(option.id),
-                child: _OptionCard(option: option, selected: isSelected),
-              );
-            },
+          child: ScrollConfiguration(
+            behavior: ScrollConfiguration.of(context).copyWith(
+              dragDevices: {
+                PointerDeviceKind.touch,
+                PointerDeviceKind.mouse,
+              },
+            ),
+            child: ListView.separated(
+              scrollDirection: Axis.horizontal,
+              itemCount: options.length,
+              separatorBuilder: (_, __) => const SizedBox(width: 10),
+              itemBuilder: (context, index) {
+                final option = options[index];
+                final isSelected = option.id == selectedId;
+                return GestureDetector(
+                  onTap: () => onSelect(option.id),
+                  child: _OptionCard(option: option, selected: isSelected),
+                );
+              },
+            ),
           ),
         ),
       ],
