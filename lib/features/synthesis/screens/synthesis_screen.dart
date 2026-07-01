@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import 'package:design_for_life/l10n/generated/app_localizations.dart';
 import '../../../core/models/shareable_content.dart';
 import '../../../core/services/share_service.dart';
 import '../../../core/widgets/dfl_module_scaffold.dart';
@@ -78,14 +79,15 @@ class _SynthesisScreenState extends State<SynthesisScreen> {
     return s.getRankedGifts().take(3).map((g) => g.name).toList();
   }
 
-  ShareableContent _buildShareContent(SynthesisState state) {
+  ShareableContent _buildShareContent(BuildContext context, SynthesisState state) {
+    final l10n = AppLocalizations.of(context);
     final items = <ShareableItem>[];
     final labels = {
-      'gifts': 'Gaben',
-      'values': 'Werte',
-      'prayer': 'Hörendes Gebet',
-      'goals': 'Ziele',
-      'lifeTree': 'Lebensbaum',
+      'gifts': l10n.connectionsColGifts,
+      'values': l10n.connectionsColValues,
+      'prayer': l10n.connectionsColPrayer,
+      'goals': l10n.connectionsColGoals,
+      'lifeTree': l10n.connectionsColLifeTree,
     };
     final tagIcons = {
       'red': '🔴',
@@ -123,7 +125,7 @@ class _SynthesisScreenState extends State<SynthesisScreen> {
     }
 
     return ShareableContent(
-      title: 'Connections',
+      title: widget.title,
       items: items,
     );
   }
@@ -132,7 +134,7 @@ class _SynthesisScreenState extends State<SynthesisScreen> {
   Widget build(BuildContext context) {
     return BlocBuilder<SynthesisBloc, SynthesisState>(
       builder: (context, state) {
-        final shareContent = _buildShareContent(state);
+        final shareContent = _buildShareContent(context, state);
         return DflModuleScaffold(
           title: widget.title,
           initialEditMode: widget.initialEditMode,

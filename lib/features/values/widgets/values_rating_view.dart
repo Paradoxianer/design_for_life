@@ -18,67 +18,61 @@ class ValuesRatingView extends StatelessWidget {
       builder: (context, state) {
         final top8Count = state.topEightValues.length;
         
-        return Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-              child: Text(
-                l10n.valuesPhase1Guidance,
-                style: const TextStyle(fontStyle: FontStyle.italic),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Card(
-                color: top8Count == 8 ? Colors.green.shade50 : Colors.blue.shade50,
-                child: Padding(
-                  padding: const EdgeInsets.all(12.0),
-                  child: Row(
-                    children: [
-                      Icon(
-                        top8Count == 8 ? Icons.check_circle : Icons.info_outline,
-                        color: top8Count == 8 ? Colors.green : Colors.blue,
-                        size: 20,
-                      ),
-                      const SizedBox(width: 12),
-                      Expanded(
-                        child: Text(
-                          l10n.valuesSelectionStatus(top8Count),
-                          style: TextStyle(
-                            fontSize: 13,
-                            fontWeight: FontWeight.bold,
-                            color: top8Count > 8 ? Colors.red : null,
+        return ListView.builder(
+          padding: EdgeInsets.zero,
+          itemCount: state.allValues.length + 2,
+          itemBuilder: (context, index) {
+            if (index == 0) {
+              return Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                child: Text(
+                  l10n.valuesPhase1Guidance,
+                  style: const TextStyle(fontStyle: FontStyle.italic),
+                ),
+              );
+            }
+            if (index == 1) {
+              return Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Card(
+                  color: top8Count == 8 ? Colors.green.shade50 : Colors.blue.shade50,
+                  child: Padding(
+                    padding: const EdgeInsets.all(12.0),
+                    child: Row(
+                      children: [
+                        Icon(
+                          top8Count == 8 ? Icons.check_circle : Icons.info_outline,
+                          color: top8Count == 8 ? Colors.green : Colors.blue,
+                          size: 20,
+                        ),
+                        const SizedBox(width: 12),
+                        Expanded(
+                          child: Text(
+                            l10n.valuesSelectionStatus(top8Count),
+                            style: TextStyle(
+                              fontSize: 13,
+                              fontWeight: FontWeight.bold,
+                              color: top8Count > 8 ? Colors.red : null,
+                            ),
                           ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
-              ),
-            ),
-            Flexible(
-              child: ListView.builder(
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                itemCount: state.allValues.length,
-                itemBuilder: (context, index) {
-                  final value = state.allValues[index];
-                  // #14: Zebra Stripes (alternating background colors)
-                  final isEven = index % 2 == 0;
-                  final backgroundColor = isEven 
-                      ? Colors.transparent 
-                      : theme.colorScheme.surfaceVariant.withOpacity(0.3);
-
-                  return Container(
-                    color: backgroundColor,
-                    child: _ValueRatingTile(value: value),
-                  );
-                },
-              ),
-            ),
-          ],
+              );
+            }
+            final valueIndex = index - 2;
+            final value = state.allValues[valueIndex];
+            final isEven = valueIndex % 2 == 0;
+            final backgroundColor = isEven
+                ? Colors.transparent
+                : theme.colorScheme.surfaceContainerHighest.withValues(alpha: 0.3);
+            return Container(
+              color: backgroundColor,
+              child: _ValueRatingTile(value: value),
+            );
+          },
         );
       },
     );
@@ -92,21 +86,33 @@ class _ValueRatingTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-      dense: true,
-      title: Text(value.name),
-      trailing: SegmentedButton<int>(
-        segments: const [
-          ButtonSegment(value: 1, label: Text('1')),
-          ButtonSegment(value: 2, label: Text('2')),
-          ButtonSegment(value: 3, label: Text('3')),
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 2.0),
+      child: Row(
+        children: [
+          Expanded(
+            child: Text(value.name, style: Theme.of(context).textTheme.bodyMedium),
+          ),
+          const SizedBox(width: 8),
+          SegmentedButton<int>(
+            segments: const [
+              ButtonSegment(value: 1, label: Text('1')),
+              ButtonSegment(value: 2, label: Text('2')),
+              ButtonSegment(value: 3, label: Text('3')),
+            ],
+            selected: {value.rating},
+            showSelectedIcon: false,
+            style: const ButtonStyle(
+              tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+              visualDensity: VisualDensity.compact,
+            ),
+            onSelectionChanged: (Set<int> newSelection) {
+              context.read<ValuesBloc>().add(
+                UpdateRating(value.name, newSelection.first),
+              );
+            },
+          ),
         ],
-        selected: {value.rating},
-        onSelectionChanged: (Set<int> newSelection) {
-          context.read<ValuesBloc>().add(
-            UpdateRating(value.name, newSelection.first),
-          );
-        },
       ),
     );
   }

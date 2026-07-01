@@ -35,11 +35,11 @@ class _ValuesDefinitionsViewState extends State<ValuesDefinitionsView> {
         }
 
         if (_localValues!.isEmpty) {
-          return const Center(
+          return Center(
             child: Padding(
-              padding: EdgeInsets.all(32.0),
+              padding: const EdgeInsets.all(32.0),
               child: Text(
-                'Bitte wähle zuerst 8 Werte in Phase 1 (Bewertung) aus.',
+                l10n.valuesSelectEightFirst,
                 textAlign: TextAlign.center,
               ),
             ),
@@ -48,7 +48,7 @@ class _ValuesDefinitionsViewState extends State<ValuesDefinitionsView> {
 
         const double itemHeight = 180.0;
 
-        return Padding(
+        return SingleChildScrollView(
           padding: const EdgeInsets.symmetric(vertical: 16),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,

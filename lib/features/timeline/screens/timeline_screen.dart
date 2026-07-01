@@ -91,7 +91,7 @@ class _TimelineCardWrapper extends StatelessWidget {
       onTap: () {
         final targetRoute = TimelineModuleRegistry.buildRoute(
           session,
-          resultMode: isCompleted,
+          resultMode: false,
         );
         if (targetRoute != null) {
           context.push('/$targetRoute');

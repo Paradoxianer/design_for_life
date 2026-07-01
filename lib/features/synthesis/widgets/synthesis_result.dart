@@ -1,6 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
+import 'package:design_for_life/l10n/generated/app_localizations.dart';
 import '../bloc/synthesis_bloc.dart';
 
 class SynthesisResult extends StatelessWidget {
@@ -9,11 +10,11 @@ class SynthesisResult extends StatelessWidget {
   const SynthesisResult({super.key, required this.state});
 
   static const _sections = [
-    ('lifeTree', 'Lebensbaum', Color(0xFF2E7D32)),
-    ('values', 'Werte', Color(0xFF2D5A27)),
-    ('gifts', 'Gaben', Color(0xFF6B4C9A)),
-    ('prayer', 'Hörendes Gebet', Color(0xFF1565C0)),
-    ('goals', 'Ziele', Color(0xFF8B5E3C)),
+    ('lifeTree', Color(0xFF2E7D32)),
+    ('values', Color(0xFF2D5A27)),
+    ('gifts', Color(0xFF6B4C9A)),
+    ('prayer', Color(0xFF1565C0)),
+    ('goals', Color(0xFF8B5E3C)),
   ];
 
   static const _tagColors = {
@@ -23,8 +24,21 @@ class SynthesisResult extends StatelessWidget {
     'gold': Color(0xFFF9A825),
   };
 
+  String _sectionLabel(BuildContext context, String key) {
+    final l10n = AppLocalizations.of(context);
+    switch (key) {
+      case 'lifeTree': return l10n.connectionsColLifeTree;
+      case 'values': return l10n.connectionsColValues;
+      case 'gifts': return l10n.connectionsColGifts;
+      case 'prayer': return l10n.connectionsColPrayer;
+      case 'goals': return l10n.connectionsColGoals;
+      default: return key;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
     final theme = Theme.of(context);
     final allCards = state.columns.values.expand((x) => x).toList();
     final grouped = <String, List<SynthesisCard>>{};
@@ -44,19 +58,20 @@ class SynthesisResult extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           if (grouped.isNotEmpty) ...[
-            Text('Nach Farben gruppiert', style: theme.textTheme.titleMedium),
+            Text(l10n.connectionsGroupedByColor, style: theme.textTheme.titleMedium),
             const SizedBox(height: 10),
             for (final entry in grouped.entries) ...[
               _ColorGroupCard(
                 color: _tagColors[entry.key] ?? Colors.grey,
                 cards: entry.value,
+                label: l10n.connectionsColorGroup(entry.value.length),
               ),
               const SizedBox(height: 10),
             ],
             const SizedBox(height: 16),
           ],
           if (activeSections.isNotEmpty) ...[
-            Text('Matrix-Ansicht', style: theme.textTheme.titleMedium),
+            Text(l10n.connectionsMatrixView, style: theme.textTheme.titleMedium),
             const SizedBox(height: 10),
             ScrollConfiguration(
               behavior: ScrollConfiguration.of(context).copyWith(
@@ -70,9 +85,9 @@ class SynthesisResult extends StatelessWidget {
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    for (final (key, label, color) in activeSections) ...[
+                    for (final (key, color) in activeSections) ...[
                       _ResultColumn(
-                        label: label,
+                        label: _sectionLabel(context, key),
                         color: color,
                         cards: state.columns[key] ?? const <SynthesisCard>[],
                       ),
@@ -85,7 +100,7 @@ class SynthesisResult extends StatelessWidget {
             const SizedBox(height: 20),
           ],
           if (state.takeaways.any((t) => t.trim().isNotEmpty)) ...[
-            Text('Key Takeaways', style: theme.textTheme.titleMedium),
+            Text(l10n.keyTakeaways, style: theme.textTheme.titleMedium),
             const SizedBox(height: 8),
             for (final takeaway in state.takeaways)
               if (takeaway.trim().isNotEmpty)
@@ -105,10 +120,12 @@ class SynthesisResult extends StatelessWidget {
 class _ColorGroupCard extends StatelessWidget {
   final Color color;
   final List<SynthesisCard> cards;
+  final String label;
 
   const _ColorGroupCard({
     required this.color,
     required this.cards,
+    required this.label,
   });
 
   @override
@@ -136,7 +153,7 @@ class _ColorGroupCard extends StatelessWidget {
               ),
               const SizedBox(width: 8),
               Text(
-                'Farbgruppe (${cards.length})',
+                label,
                 style: theme.textTheme.titleSmall,
               ),
             ],

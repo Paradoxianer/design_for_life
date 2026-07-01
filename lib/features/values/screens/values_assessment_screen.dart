@@ -93,8 +93,7 @@ class _ValuesAssessmentScreenState extends State<ValuesAssessmentScreen> {
           customFooter: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              SizedBox(
-                width: 100,
+              Flexible(
                 child: _currentStep > 0
                     ? TextButton.icon(
                         onPressed: () => setState(() => _currentStep--),
@@ -114,13 +113,12 @@ class _ValuesAssessmentScreenState extends State<ValuesAssessmentScreen> {
                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
                 ),
               ),
-              SizedBox(
-                width: 100,
+              Flexible(
                 child: _currentStep < 2
                     ? ElevatedButton(
                         onPressed: () => setState(() => _currentStep++),
                         style: ElevatedButton.styleFrom(
-                          padding: const EdgeInsets.symmetric(vertical: 12),
+                          padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 12),
                           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
                         ),
                         child: Row(

@@ -268,5 +268,32 @@
   "valueEffektivitaet": "Effectiveness",
   "valueFriede": "Peace",
   "valueFairness": "Fairness",
-  "valueLoyalitaet": "Loyalty"
+  "valueLoyalitaet": "Loyalty",
+
+  "valuesNoValuesSelected": "No values selected yet.",
+  "valuesSelectEightFirst": "Please select 8 values in Phase 1 (Rating) first.",
+
+  "connectionsColLifeTree": "Life Tree",
+  "connectionsColValues": "Values",
+  "connectionsColGifts": "Gifts",
+  "connectionsColPrayer": "Listening Prayer",
+  "connectionsColGoals": "Goals",
+  "connectionsGroupedByColor": "Grouped by Color",
+  "connectionsMatrixView": "Matrix View",
+  "connectionsColorGroup": "Color Group ({count})",
+  "@connectionsColorGroup": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "connectionsNoContent": "No key takeaways yet. Please edit at least one module (Life Tree, Values, Gifts, or Listening Prayer) first.",
+  "connectionsGuidance": "Sort cards within a column by drag & drop. Assign each card a color to mark commonalities.",
+  "connectionsAssignColor": "Assign Color",
+  "connectionsColorNone": "No Color",
+  "connectionsColorRed": "Red",
+  "connectionsColorBlue": "Blue",
+  "connectionsColorGreen": "Green",
+  "connectionsColorGold": "Yellow"
 }
