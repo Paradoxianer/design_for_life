@@ -510,7 +510,7 @@ class AppLocalizationsDe extends AppLocalizations {
   String get session11Title => 'Gruppenfoto';
 
   @override
-  String get timelineSynthesisTitle => 'Zusammenschau';
+  String get timelineSynthesisTitle => 'Verknüpfungen';
 
   @override
   String get timelineSynthesisDesc =>

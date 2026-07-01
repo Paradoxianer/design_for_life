@@ -1007,7 +1007,7 @@ abstract class AppLocalizations {
   /// No description provided for @timelineSynthesisTitle.
   ///
   /// In en, this message translates to:
-  /// **'Big Picture'**
+  /// **'Connections'**
   String get timelineSynthesisTitle;
 
   /// No description provided for @timelineSynthesisDesc.

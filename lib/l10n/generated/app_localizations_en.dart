@@ -504,7 +504,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get session11Title => 'Group Photo';
 
   @override
-  String get timelineSynthesisTitle => 'Big Picture';
+  String get timelineSynthesisTitle => 'Connections';
 
   @override
   String get timelineSynthesisDesc =>
