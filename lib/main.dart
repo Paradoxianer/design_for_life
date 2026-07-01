@@ -25,6 +25,7 @@ import 'features/imagine/bloc/imagine_bloc.dart';
 import 'features/imagine/screens/imagine_screen.dart';
 import 'features/life_tree/bloc/life_tree_bloc.dart';
 import 'features/life_tree/screens/life_tree_screen.dart';
+import 'features/synthesis/bloc/synthesis_bloc.dart';
 import 'features/synthesis/screens/synthesis_screen.dart';
 
 void main() async {
@@ -51,6 +52,7 @@ void main() async {
         BlocProvider(create: (context) => FeedbackBloc()),
         BlocProvider(create: (context) => ImagineBloc()),
         BlocProvider(create: (context) => LifeTreeBloc()),
+        BlocProvider(create: (context) => SynthesisBloc()),
       ],
       child: const DflApp(),
     ),
@@ -180,8 +182,9 @@ class DflApp extends StatelessWidget {
               giftsSessionId: state.uri.queryParameters['giftsSession'] ?? 'session_5',
               prayerSessionId: state.uri.queryParameters['prayerSession'] ?? 'session_7',
               goalsSessionId: state.uri.queryParameters['goalsSession'] ?? 'session_10',
+              lifeTreeSessionId: state.uri.queryParameters['lifeTreeSession'] ?? 'session_3',
               title: title,
-              initialEditMode: mode == 'edit',
+              initialEditMode: mode != 'result',
             );
           },
         ),

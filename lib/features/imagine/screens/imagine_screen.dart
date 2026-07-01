@@ -31,6 +31,11 @@ class ImagineScreen extends StatelessWidget {
             textValue:
                 imagineOptionsById[state.pastImageId(sessionId)]?.label ??
                 state.pastImageId(sessionId),
+            data: {
+              'type': 'imagine_option',
+              'phase': 'Vergangenheit',
+              'optionId': state.pastImageId(sessionId),
+            },
           ),
         if (state.futureImageId(sessionId) != null)
           ShareableItem(
@@ -39,6 +44,11 @@ class ImagineScreen extends StatelessWidget {
             textValue:
                 imagineOptionsById[state.futureImageId(sessionId)]?.label ??
                 state.futureImageId(sessionId),
+            data: {
+              'type': 'imagine_option',
+              'phase': 'Zukunft',
+              'optionId': state.futureImageId(sessionId),
+            },
           ),
       ],
     );
