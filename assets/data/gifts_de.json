@@ -14,49 +14,49 @@
     "description": "Die Gabe des Wortes der Weisheit beschreibt ein vom Heiligen Geist gegebenes Wort oder eine Einsicht, die Gottes Perspektive, Plan oder Lösung für eine konkrete Situation offenbart. Das griechische „logos sophias“ bezeichnet nicht allgemeine Weisheit, sondern ein spezifisches, situationsbezogenes Reden Gottes. In der Bibel zeigt sich diese Gabe z.B. bei Salomo (1. Kön 3), bei den Aposteln in schwierigen Entscheidungen (Apg 6; Apg 15) oder bei Jesus selbst, der göttliche Weisheit in Konfliktsituationen offenbarte. Diese Gabe bringt Klarheit, Orientierung und göttliche Strategie in komplexe Situationen und dient der Leitung und Erbauung der Gemeinde.",
     "questions": [
       {
-        "id": "G01_F1",
+        "id": "G01_Q1",
         "type": "experience",
-        "text": "In Konflikten wurde mir schon eine Lösung geschenkt, die den Streit sofort beendete (vgl. Salomos Urteil, 1. Kön 3)."
+        "text": "Ich habe erlebt, dass Gott mir überraschend klare Lösungen zeigt."
       },
       {
-        "id": "G01_F2",
+        "id": "G01_Q2",
         "type": "experience",
-        "text": "Ich konnte schon komplexe biblische Prinzipien auf eine sehr praktische Alltagssituation anwenden."
+        "text": "Andere bitten mich oft um Rat in schwierigen Situationen."
       },
       {
-        "id": "G01_F3",
+        "id": "G01_Q3",
         "type": "experience",
-        "text": "In brenzligen Situationen fielen mir Worte ein, denen Gegner nichts entgegenzusetzen hatten (vgl. Lk 21,15)."
+        "text": "Ich spüre innere Klarheit bei komplexen Entscheidungen."
       },
       {
-        "id": "G01_F4",
+        "id": "G01_Q4",
         "type": "nature",
-        "text": "Ich dränge danach, Gottes verborgene Pläne für die Zukunft unserer Gemeinde zu verstehen."
+        "text": "Es macht mir Freude Menschen zu helfen gute Entscheidungen vor Gott zu treffen."
       },
       {
-        "id": "G01_F5",
+        "id": "G01_Q5",
         "type": "nature",
         "text": "Es ist mir wichtig, für festgefahrene Probleme göttliche Strategien statt menschlicher Kompromisse zu finden."
       },
       {
-        "id": "G01_F6",
+        "id": "G01_Q6",
         "type": "feedback",
         "text": "Andere sagen, dass meine Ratschläge ihnen geholfen haben, Gottes Willen in Krisen klar zu sehen."
       },
       {
-        "id": "G01_F7",
+        "id": "G01_Q7",
         "type": "feedback",
-        "text": "Durch meine Beiträge in Sitzungen herrscht oft plötzlich Klarheit und Frieden über den nächsten Schritt."
+        "text": "Ich sehe, dass mein Rat Menschen nachhaltig geholfen hat."
       },
       {
         "id": "G01_Q8",
         "type": "reference",
-        "text": "Bietet die Person in festgefahrenen Situationen Lösungen an, die den Frieden wiederherstellen?"
+        "text": "Ich habe erlebt dass diese Person in schwierigen Situationen hilfreiche und gut durchdachte Lösungen einbringt."
       },
       {
         "id": "G01_Q9",
         "type": "reference",
-        "text": "Hast du erlebt, dass die Ratschläge dieser Person langfristig zu guten Ergebnissen führten?"
+        "text": "Die Beiträge dieser Person helfen anderen häufig gute Entscheidungen zu treffen."
       }
     ]
   },
@@ -72,49 +72,49 @@
     "description": "Das Wort der Erkenntnis beschreibt eine vom Heiligen Geist geschenkte Einsicht oder Information über eine Person, Situation oder geistliche Realität, die nicht durch natürliche Erkenntnis gewonnen wurde. Der Begriff „logos gnoseos“ meint eine konkrete Offenbarung von Wissen. In der Bibel zeigt sich diese Gabe etwa bei Petrus, der Ananias’ Täuschung erkennt (Apg 5), oder bei Jesus, der Gedanken und Lebenssituationen von Menschen kennt (Joh 4). Diese Gabe dient dazu, Wahrheit ans Licht zu bringen, Menschen zu helfen und Gottes Wirken sichtbar zu machen.",
     "questions": [
       {
-        "id": "G02_F1",
-        "type": "experience",
-        "text": "Ich wusste schon Dinge über die Lebensumstände einer Person, die ich auf natürlichem Weg nicht wissen konnte (vgl. Joh 4,17-18)."
-      },
-      {
-        "id": "G02_F2",
+        "id": "G02_Q1",
         "type": "experience",
         "text": "Gott hat mir beim Gebet ein spezifisches Bild oder Wort für die Situation eines anderen gegeben."
       },
       {
-        "id": "G02_F3",
+        "id": "G02_Q2",
         "type": "experience",
-        "text": "Ich habe beim Bibellesen plötzlich einen tiefen Zusammenhang verstanden, der mir vorher völlig verborgen war."
+        "text": "Gab es Momente in denen du Dinge über eine Situation erkannt hast die du vorher nicht wissen konntest?"
       },
       {
-        "id": "G02_F4",
+        "id": "G02_Q3",
+        "type": "experience",
+        "text": "Hast du erlebt dass Gott dir besondere Einsichten über Menschen oder Situationen gegeben hat?"
+      },
+      {
+        "id": "G02_Q4",
         "type": "nature",
-        "text": "Ich habe das Verlangen, dass Gott mir Geheimnisse offenbart, um Menschen gezielter dienen zu können."
+        "text": "Ich habe das Verlangen, dass Gott mir \"Geheimnisse\" offenbart, um Menschen gezielter dienen zu können."
       },
       {
-        "id": "G02_F5",
+        "id": "G02_Q5",
         "type": "nature",
-        "text": "Ich forsche gerne tief in der Schrift, um die Schätze der Erkenntnis zu heben (vgl. Kol 2,3)."
+        "text": "Ich möchte Gottes Gedanken und Wahrheiten tiefer verstehen."
       },
       {
-        "id": "G02_F6",
+        "id": "G02_Q6",
         "type": "feedback",
-        "text": "Menschen sind oft erschüttert oder tief berührt, weil ich Dinge anspreche, die nur Gott wissen konnte."
+        "text": "Andere erleben durch meine Einsichten neue Klarheit über geistliche Themen."
       },
       {
-        "id": "G02_F7",
+        "id": "G02_Q7",
         "type": "feedback",
-        "text": "Meine Einsichten haben dazu geführt, dass verborgene Sünden oder Blockaden ans Licht kamen und Heilung begann."
+        "text": "Ich fühle mich gedrängt, verborgene Dinge ans Licht zu bringen."
       },
       {
         "id": "G02_Q8",
         "type": "reference",
-        "text": "Hat die Person schon Informationen über Umstände geteilt, die sie auf natürlichem Weg nicht wissen konnte?"
+        "text": "Ich habe beobachtet dass diese Person Zusammenhänge erkennt die anderen zunächst nicht auffallen."
       },
       {
         "id": "G02_Q9",
         "type": "reference",
-        "text": "Führen die Einsichten dieser Person dazu, dass verborgene Probleme gelöst oder Wahrheiten klarer werden?"
+        "text": "Die Einsichten dieser Person helfen anderen Situationen besser zu verstehen."
       }
     ]
   },
@@ -132,56 +132,56 @@
     "description": "Die Gabe des Glaubens ist eine besondere, vom Heiligen Geist gewirkte Zuversicht, dass Gott in einer bestimmten Situation handeln wird. Sie geht über den allgemeinen rettenden Glauben hinaus und ist ein übernatürliches Vertrauen auf Gottes Macht und Verheißungen. Das griechische „pistis“ beschreibt hier ein starkes, festes Vertrauen auf Gottes Handeln. In der Bibel zeigt sich diese Gabe bei Personen wie Abraham (Röm 4) oder bei den Aposteln, die mutig Gottes Wirken erwarten. Diese Gabe stärkt andere im Glauben und öffnet Raum für Gottes übernatürliches Eingreifen.",
     "questions": [
       {
-        "id": "G03_F1",
+        "id": "G03_Q1",
         "type": "experience",
-        "text": "Ich bin in Situationen ruhig geblieben, in denen alle anderen verzweifelten, weil ich Gottes Eingreifen sicher wusste."
+        "text": "Hast du erlebt dass du Gott in scheinbar unmöglichen Situationen besonders vertraut hast?"
       },
       {
-        "id": "G03_F2",
+        "id": "G03_Q2",
         "type": "experience",
-        "text": "Ich habe für unmögliche Dinge gebetet und gesehen, wie Gott sie entgegen jeder Logik wahr gemacht hat."
+        "text": "Gab es Momente in denen dein Vertrauen auf Gott andere ermutigt hat?"
       },
       {
-        "id": "G03_F3",
+        "id": "G03_Q3",
         "type": "experience",
-        "text": "Ich habe schon Schritte gewagt (finanziell oder beruflich), die nur auf Vertrauen in Gottes Zusage basierten."
+        "text": "Haben Situationen sich durch deinen Glauben zum Guten verändert?"
       },
       {
-        "id": "G03_F4",
+        "id": "G03_Q4",
         "type": "nature",
-        "text": "Ich möchte Projekte anstoßen, für die momentan noch keine sichtbaren Ressourcen vorhanden sind."
+        "text": "Ich vertraue darauf dass Gott auch große und unmögliche Dinge tun kann."
       },
       {
-        "id": "G03_F5",
+        "id": "G03_Q5",
         "type": "nature",
-        "text": "Mich langweilt Sicherheit; ich möchte sehen, wie Gott durch unser Vertrauen Mauern zum Einsturz bringt."
+        "text": "Ich fühle mich motiviert Gott auch dann zu vertrauen wenn andere zweifeln."
       },
       {
-        "id": "G03_F6",
+        "id": "G03_Q6",
         "type": "feedback",
-        "text": "Mein unerschütterliches Vertrauen hat andere ermutigt, selbst wieder neu an Gottes Wunder zu glauben."
+        "text": "Mein Vertrauen auf Gott stärkt häufig den Glauben anderer Menschen."
       },
       {
-        "id": "G03_F7",
+        "id": "G03_Q7",
         "type": "feedback",
         "text": "Durch mein Festhalten an Gottes Zusage wurden Ziele erreicht, die das Team/die Gemeinde längst aufgegeben hatte."
       },
       {
         "id": "G03_Q8",
         "type": "reference",
-        "text": "Bleibt die Person in Krisen auffallend ruhig und vertraut fest auf Gottes Eingreifen?"
+        "text": "Ich habe erlebt dass diese Person auch in schwierigen Situationen fest darauf vertraut dass Gott handeln kann."
       },
       {
         "id": "G03_Q9",
         "type": "reference",
-        "text": "Ermutigt das Gottvertrauen dieser Person andere dazu, selbst wieder mutiger zu glauben?"
+        "text": "Das Vertrauen dieser Person ermutigt und stärkt andere Menschen sichtbar."
       }
     ]
   },
   {
     "id": "G04",
-    "name": "Heilung",
-    "originalWord": "",
+    "name": "Gaben der Heilungen",
+    "originalWord": "χαρίσματα ἰαμάτων (charísmata iamatōn, Gr.)",
     "meaning": "Fähigkeit, Kranke durch Gottes Kraft zu heilen",
     "bibleReferences": [
       "1. Kor 12,9.28.30",
@@ -193,56 +193,56 @@
     "description": "Die „Gaben der Heilungen“ beschreiben verschiedene Wirkungen göttlicher Heilung durch den Heiligen Geist. Das griechische „charismata iamaton“ steht im Plural und deutet darauf hin, dass Gott unterschiedliche Arten von Heilungen schenkt – körperlich, seelisch oder geistlich. In der Bibel werden Heilungen durch Jesus und die Apostel häufig beschrieben (z.B. Apg 3; Mk 16). Diese Gabe zeigt Gottes Mitgefühl für leidende Menschen und dient als Zeichen seines Reiches sowie zur Ermutigung des Glaubens.",
     "questions": [
       {
-        "id": "G04_F1",
+        "id": "G04_Q1",
         "type": "experience",
-        "text": "Auf mein Gebet hin sind Menschen von diagnostizierten Krankheiten gesund geworden."
+        "text": "Hast du schon erlebt dass jemand nach deinem Gebet körperliche oder seelische Heilung erfahren hat?"
       },
       {
-        "id": "G04_F2",
+        "id": "G04_Q2",
         "type": "experience",
-        "text": "Ich spüre oft ein körperliches Mitempfinden (z. B. Hitze oder Kribbeln), wenn Gott jemanden heilen möchte."
+        "text": "Hast du häufig den Impuls für kranke Menschen zu beten?"
       },
       {
-        "id": "G04_F3",
+        "id": "G04_Q3",
         "type": "experience",
-        "text": "Ich habe erlebt, wie durch Gebet nicht nur körperliche, sondern auch tiefe seelische Wunden geheilt wurden."
+        "text": "Hast du erlebt dass Gott durch Gebet Heilung schenkt?"
       },
       {
-        "id": "G04_F4",
+        "id": "G04_Q4",
         "type": "nature",
-        "text": "Ich verspüre ein starkes Drängen, kranken Menschen im Krankenhaus oder zu Hause die Hände aufzulegen."
+        "text": "Neigst du dazu, für Kranke zu beten und Heilung zu erwarten?"
       },
       {
-        "id": "G04_F5",
+        "id": "G04_Q5",
         "type": "nature",
         "text": "Ich glaube fest daran, dass Jesus heute noch genauso heilt wie zur Zeit der Apostel."
       },
       {
-        "id": "G04_F6",
+        "id": "G04_Q6",
         "type": "feedback",
-        "text": "Kranke berichten mir regelmäßig, dass sie sich nach meinem Gebet deutlich besser fühlen oder schmerzfrei sind."
+        "text": "Menschen berichten dass sie durch mein Gebet Trost oder Heilung erfahren haben."
       },
       {
-        "id": "G04_F7",
+        "id": "G04_Q7",
         "type": "feedback",
-        "text": "Mein Dienst hat dazu geführt, dass Ärzte über die unerwartete Genesung von Patienten staunten."
+        "text": "Andere bitten mich gezielt für ihre Gesundheit zu beten."
       },
       {
         "id": "G04_Q8",
         "type": "reference",
-        "text": "Betet die Person regelmäßig und gezielt für kranke Menschen um Genesung?"
+        "text": "Ich habe erlebt dass diese Person für kranke oder belastete Menschen betet."
       },
       {
         "id": "G04_Q9",
         "type": "reference",
-        "text": "Hast du erlebt, dass Menschen nach dem Gebet dieser Person körperlich oder seelisch gesund wurden?"
+        "text": "Menschen berichten dass sie durch das Gebet dieser Person Hilfe oder Trost erfahren haben."
       }
     ]
   },
   {
     "id": "G05",
-    "name": "Wirkung von Wundern",
-    "originalWord": "",
+    "name": "Wirkungen von Wundern",
+    "originalWord": "ἐνεργήματα δυνάμεων (energémata dynámeōn, Gr.)",
     "meaning": "Vollbringen übernatürlicher Machttaten durch Gottes Kraft",
     "bibleReferences": [
       "1. Kor 12,10.28.29",
@@ -253,56 +253,56 @@
     "description": "Die „Wirkungen von Wundern“ beschreiben übernatürliche Machttaten Gottes, die über natürliche Möglichkeiten hinausgehen. Der Ausdruck „energemata dynameon“ bedeutet wörtlich „wirksame Taten von Macht“. In der Bibel zeigt sich diese Gabe z.B. bei Mose, Elia, Jesus und den Aposteln. Wunder können Befreiung, Versorgung, Naturwunder oder andere außergewöhnliche Eingriffe Gottes sein und bestätigen Gottes Macht und das Evangelium.",
     "questions": [
       {
-        "id": "G05_F1",
+        "id": "G05_Q1",
         "type": "experience",
-        "text": "Ich habe erlebt, wie Naturgesetze durch Gebet außer Kraft gesetzt wurden."
+        "text": "Hast du Situationen erlebt in denen Gott auf übernatürliche Weise eingegriffen hat?"
       },
       {
-        "id": "G05_F2",
+        "id": "G05_Q2",
         "type": "experience",
-        "text": "Gott hat durch mich Zeichen gewirkt, die Außenstehende ehrfürchtig oder staunend werden ließen."
+        "text": "Hast du erlebt dass Gott durch dein Gebet außergewöhnliche Dinge getan hat?"
       },
       {
-        "id": "G05_F3",
+        "id": "G05_Q3",
         "type": "experience",
-        "text": "Ich habe miterlebt, wie durch ein Gebet von mir eine Situation unmittelbar und sichtbar verändert wurde."
+        "text": "Ich erwarte übernatürliche Handlungen Gottes in meinem Umfeld."
       },
       {
-        "id": "G05_F4",
+        "id": "G05_Q4",
         "type": "nature",
         "text": "Ich habe das tiefe Vertrauen, dass Gott auch heute noch sichtbare Zeichen seiner Macht tut, um sein Wort zu bestätigen."
       },
       {
-        "id": "G05_F5",
+        "id": "G05_Q5",
         "type": "nature",
-        "text": "Ich möchte nicht nur über Gott reden, sondern seine Kraft konkret am Wirken sehen."
+        "text": "Ich glaube dass Gott auch heute noch Wunder tun kann."
       },
       {
-        "id": "G05_F6",
+        "id": "G05_Q6",
         "type": "feedback",
         "text": "Menschen in meinem Umfeld haben durch sichtbare Machttaten Gottes zum Glauben gefunden."
       },
       {
-        "id": "G05_F7",
+        "id": "G05_Q7",
         "type": "feedback",
         "text": "Mein Dienst wird oft von außergewöhnlichen Begebenheiten begleitet, die menschlich nicht erklärbar sind."
       },
       {
         "id": "G05_Q8",
         "type": "reference",
-        "text": "Begleiten außergewöhnliche, übernatürliche Ereignisse den Dienst dieser Person?"
+        "text": "Ich habe erlebt dass diese Person für Situationen betet die menschlich schwer lösbar sind."
       },
       {
         "id": "G05_Q9",
         "type": "reference",
-        "text": "Führen diese Ereignisse dazu, dass Außenstehende Gott die Ehre geben oder zum Glauben finden?"
+        "text": "Der Glaube dieser Person ermutigt andere mit außergewöhnlichem Eingreifen Gottes zu rechnen."
       }
     ]
   },
   {
     "id": "G06",
     "name": "Prophetie",
-    "originalWord": "",
+    "originalWord": "προφητεία (propheteía, Gr.); נְבוּאָה (nevūʾáh, Hebr.)",
     "meaning": "Reden im Auftrag Gottes zur Erbauung, Ermahnung und Tröstung",
     "bibleReferences": [
       "Röm 12,6",
@@ -314,56 +314,56 @@
     "description": "Prophetie ist das vom Heiligen Geist inspirierte Reden im Auftrag Gottes zur Erbauung, Ermahnung und Ermutigung der Gemeinde (1. Kor 14,3). Der Begriff „propheteia“ bedeutet wörtlich „für jemanden sprechen“. Prophetie kann sowohl Offenbarung als auch Anwendung von Gottes Wort auf eine konkrete Situation sein. In der Bibel sehen wir prophetisches Reden bei alttestamentlichen Propheten sowie im Neuen Testament z.B. bei Agabus (Apg 11). Diese Gabe stärkt den Glauben, korrigiert Fehlentwicklungen und richtet den Blick der Gemeinde auf Gottes Willen.",
     "questions": [
       {
-        "id": "G06_F1",
+        "id": "G06_Q1",
         "type": "experience",
-        "text": "Ich habe schon Botschaften weitergegeben, die jemandes verborgene Gedanken offenbarten (vgl. 1. Kor 14,24-25)."
+        "text": "Ich habe erlebt dass sich mein Eindruck über eine Situation später als richtig herausgestellt hat."
       },
       {
-        "id": "G06_F2",
+        "id": "G06_Q2",
         "type": "experience",
-        "text": "Gott hat mir schon konkrete Warnungen oder Hinweise für die Zukunft gegeben (vgl. Agabus, Apg 11,28)."
+        "text": "Hast du erlebt dass jemand durch deine Worte Gottes Reden erkannt hat?"
       },
       {
-        "id": "G06_F3",
+        "id": "G06_Q3",
         "type": "experience",
-        "text": "Wenn ich rede, spüre ich oft, dass es nicht meine eigenen Gedanken, sondern ein Impuls von oben ist."
+        "text": "Ich habe Eindrücke oder Worte gehabt, die sich später bestätigten."
       },
       {
-        "id": "G06_F4",
+        "id": "G06_Q4",
         "type": "nature",
-        "text": "Ich brenne darauf, der Gemeinde das zu sagen, was Gott jetzt in diesem Moment wichtig ist."
+        "text": "Ich achte darauf was Gott in einer Situation sagen möchte."
       },
       {
-        "id": "G06_F5",
+        "id": "G06_Q5",
         "type": "nature",
-        "text": "Es ist mir ein Anliegen, Menschen durch göttliche Offenbarung zu erbauen, zu trösten und zu ermahnen (1. Kor 14,3)."
+        "text": "Ich wünsche mir dass Gott durch mich zu anderen Menschen sprechen kann."
       },
       {
-        "id": "G06_F6",
+        "id": "G06_Q6",
         "type": "feedback",
-        "text": "Menschen sagen mir oft: Woher wusstest du das? Genau das hat Gott mir heute Morgen schon gesagt!"
+        "text": "Menschen bestätigen manchmal dass Gott durch meine Worte zu ihnen gesprochen hat."
       },
       {
-        "id": "G06_F7",
+        "id": "G06_Q7",
         "type": "feedback",
-        "text": "Meine prophetischen Worte haben dazu beigetragen, dass Menschen neue Hoffnung schöpften oder umkehrten."
+        "text": "Menschen wurden durch Aussagen von mir auf zukünftige Ereignisse  in ihrem Leben vorbereitet."
       },
       {
         "id": "G06_Q8",
         "type": "reference",
-        "text": "Teilt die Person Impulse oder Eindrücke mit, die genau in die aktuelle Lebenssituation anderer passen?"
+        "text": "Ich habe erlebt dass diese Person Worte von Gott weitergibt die andere als sehr passend oder stärkend empfinden."
       },
       {
         "id": "G06_Q9",
         "type": "reference",
-        "text": "Fühlen sich Menschen nach einer Botschaft dieser Person korrigiert, getröstet oder ermutigt?"
+        "text": "Man spürt dass Gott in bestimmten Situationen diese Person gebraucht um Botschaften weiterzugeben"
       }
     ]
   },
   {
     "id": "G07",
-    "name": "Geisterunterscheidung",
-    "originalWord": "",
+    "name": "Unterscheidung der Geister",
+    "originalWord": "διακρίσεις πνευμάτων (diakríseis pneumátōn, Gr.)",
     "meaning": "Unterscheiden zwischen göttlichen, dämonischen und menschlichen Geistern",
     "bibleReferences": [
       "1. Kor 12,10",
@@ -375,56 +375,56 @@
     "description": "Die Unterscheidung der Geister ist die Fähigkeit, geistliche Einflüsse zu erkennen und zu unterscheiden, ob sie von Gott, vom menschlichen Geist oder von dämonischen Mächten stammen. Der Begriff „diakrisis pneumaton“ bedeutet „Unterscheidung oder Prüfung von Geistern“. In der Bibel zeigt sich diese Gabe z.B. bei Petrus (Apg 5) oder Paulus (Apg 16). Sie schützt die Gemeinde vor Täuschung und hilft, Gottes Wirken klar zu erkennen.",
     "questions": [
       {
-        "id": "G07_F1",
+        "id": "G07_Q1",
         "type": "experience",
-        "text": "Ich konnte schon erkennen, ob eine geistliche Manifestation echt war oder eine Täuschung (vgl. 1. Joh 4,1)."
+        "text": "Ich spüre, ob etwas von Gott, Menschen oder anderen Quellen kommt."
       },
       {
-        "id": "G07_F2",
+        "id": "G07_Q2",
         "type": "experience",
-        "text": "Ich habe schon wahrgenommen, wenn jemand mit falschen Motiven vorgab, im Namen Gottes zu handeln (vgl. Apg 16,16-18)."
+        "text": "Hast du Situationen erlebt in denen du falsche geistliche Einflüsse erkannt hast?"
       },
       {
-        "id": "G07_F3",
+        "id": "G07_Q3",
         "type": "experience",
-        "text": "Ich spüre oft instinktiv, welche Atmosphäre (z.B. Okkultismus, Stolz oder Heiligkeit) eine Versammlung dominiert."
+        "text": "Ich erkenne ungesunde geistliche Einflüsse schnell."
       },
       {
-        "id": "G07_F4",
+        "id": "G07_Q4",
         "type": "nature",
-        "text": "Ich empfinde eine hohe Verantwortung, die Gemeinde vor verführerischen Einflüssen zu schützen."
+        "text": "Ich möchte verstehen welche geistlichen Kräfte in einer Situation wirken."
       },
       {
-        "id": "G07_F5",
+        "id": "G07_Q5",
         "type": "nature",
-        "text": "Ich möchte hinter die Kulissen der sichtbaren Welt schauen, um die geistlichen Ursachen von Problemen zu verstehen."
+        "text": "Ich prüfe geistliche Eindrücke sorgfältig."
       },
       {
-        "id": "G07_F6",
+        "id": "G07_Q6",
         "type": "feedback",
-        "text": "Die Leitung der Gemeinde schätzt mein Urteil, wenn es darum geht, neue Lehren oder Strömungen zu prüfen."
+        "text": "Ich habe erlebt, wie Gott mir Täuschung offenbart hat."
       },
       {
-        "id": "G07_F7",
+        "id": "G07_Q7",
         "type": "feedback",
-        "text": "Durch meine Wachsamkeit wurde die Gemeinde schon vor Spaltung oder Irrwegen bewahrt."
+        "text": "Meine Einschätzung hilft manchmal geistliche Fehlentwicklungen zu erkennen."
       },
       {
         "id": "G07_Q8",
         "type": "reference",
-        "text": "Warnt die Person rechtzeitig vor ungesunden geistlichen Einflüssen oder falschen Motiven?"
+        "text": "Ich habe beobachtet dass diese Person erkennt wenn etwas nicht geistlich nicht stimmt."
       },
       {
         "id": "G07_Q9",
         "type": "reference",
-        "text": "Erweist sich die Einschätzung der Person über die Echtheit einer Situation im Nachhinein als richtig?"
+        "text": "Die Einschätzung dieser Person hilft anderen geistliche Situationen besser einzuordnen."
       }
     ]
   },
   {
     "id": "G08",
-    "name": "Sprachengebet (Zungen)",
-    "originalWord": "",
+    "name": "Zungenrede",
+    "originalWord": "γένη γλωσσῶν (génē glōssōn, Gr.)",
     "meaning": "Reden in anderen Sprachen oder in der Gebetssprache des Geistes",
     "bibleReferences": [
       "1. Kor 12,10.28.30",
@@ -436,56 +436,56 @@
     "description": "Die Gabe der Zungenrede beschreibt das vom Heiligen Geist inspirierte Sprechen in einer Sprache, die der Sprecher nicht gelernt hat. Das griechische „gene glosson“ bedeutet „verschiedene Arten von Sprachen“. In der Bibel erscheint diese Gabe erstmals zu Pfingsten (Apg 2) und wird besonders in 1. Korinther 12–14 erklärt. Sie kann sowohl als persönliche Gebetssprache als auch als öffentliches Zeichen für Gottes Wirken dienen.",
     "questions": [
       {
-        "id": "G08_F1",
+        "id": "G08_Q1",
         "type": "experience",
-        "text": "Ich bete regelmäßig in einer Sprache, die ich nie gelernt habe (vgl. Apg 2,4)."
+        "text": "Ich bete regelmäßig in einer Sprache, die ich nicht gelernt habe."
       },
       {
-        "id": "G08_F2",
+        "id": "G08_Q2",
         "type": "experience",
-        "text": "Wenn ich in Sprachen bete, merke ich, wie mein innerer Mensch gestärkt und erbaut wird (1. Kor 14,4)."
+        "text": "Ich spüre die Gegenwart Gottes im Zungengebet stark."
       },
       {
-        "id": "G08_F3",
+        "id": "G08_Q3",
         "type": "experience",
-        "text": "Ich habe erlebt, wie mein Sprachengebet in einer öffentlichen Versammlung zur Auslegung führte."
+        "text": "Hast du erfahren dass Zungengebet dich im Glauben stärkt?"
       },
       {
-        "id": "G08_F4",
+        "id": "G08_Q4",
         "type": "nature",
         "text": "Ich habe das Verlangen, im Gebet über meinen Verstand hinaus mit Gott zu kommunizieren."
       },
       {
-        "id": "G08_F5",
+        "id": "G08_Q5",
         "type": "nature",
-        "text": "Ich möchte diese Gabe nutzen, um Gottes Geheimnisse im Geist auszusprechen (1. Kor 14,2)."
+        "text": "Ich bin offen für übernatürliche Ausdrucksformen im Gebet."
       },
       {
-        "id": "G08_F6",
+        "id": "G08_Q6",
         "type": "feedback",
-        "text": "Mein Gebetsleben hat durch diese Gabe eine neue Tiefe und Leidenschaft gewonnen."
+        "text": "Ich habe erlebt dass mein Gebet sich manchmal anders ausdrückt als ich erwartet habe."
       },
       {
-        "id": "G08_F7",
+        "id": "G08_Q7",
         "type": "feedback",
-        "text": "Wenn ich öffentlich in Sprachen rede (und ausgelegt wird), empfindet die Gemeinde dies als direkte Botschaft Gottes."
+        "text": "Wenn ich in mir unbekannten Sprachen bete, empfinden andere das als geistlich ermutigend."
       },
       {
         "id": "G08_Q8",
         "type": "reference",
-        "text": "Nutzt die Person die Sprachenrede (Zungenrede) in einer Weise, die zur Erbauung beiträgt?"
+        "text": "Ich habe erlebt dass diese Person in mir unbekannten Sprachen betet."
       },
       {
         "id": "G08_Q9",
         "type": "reference",
-        "text": "Wenn die Person öffentlich in Sprachen redet, spürt man eine geistliche Intensität (bei anschließender Auslegung)?"
+        "text": "Ich verstehe nicht immer alles was die Person betet, aber ich spüre Gottes Gegenwart wenn sie betet"
       }
     ]
   },
   {
     "id": "G09",
-    "name": "Auslegung der Sprachen",
-    "originalWord": "",
+    "name": "Auslegung der Zungenrede",
+    "originalWord": "ἑρμηνεία γλωσσῶν (hermēneía glōssōn, Gr.)",
     "meaning": "Deuten und Übersetzen der Zungenrede zur Erbauung der Gemeinde",
     "bibleReferences": [
       "1. Kor 12,10",
@@ -494,56 +494,56 @@
     "description": "Die Auslegung der Zungen ist die Fähigkeit, eine Zungenrede zu verstehen und für andere verständlich zu machen. Das griechische „hermeneia glosson“ bedeutet „Übersetzung oder Deutung von Sprachen“. Diese Gabe sorgt dafür, dass eine Zungenrede in der Gemeinde zur Erbauung dient, indem ihre Bedeutung verständlich wird (1. Kor 14).",
     "questions": [
       {
-        "id": "G09_F1",
+        "id": "G09_Q1",
         "type": "experience",
         "text": "Wenn jemand in Sprachen betet, verstehe ich oft den Sinngehalt, ohne die Sprache gelernt zu haben."
       },
       {
-        "id": "G09_F2",
+        "id": "G09_Q2",
         "type": "experience",
-        "text": "Ich habe schon erlebt, wie meine Auslegung genau die Antwort auf das Gebet eines anderen war."
+        "text": "Ich habe schon erlebt, wie die Auslegung eines Gebet in fremder Sprache genau die Antwort auf das Gebet eines anderen war."
       },
       {
-        "id": "G09_F3",
+        "id": "G09_Q3",
         "type": "experience",
-        "text": "Ich habe den Mut, in einer Versammlung aufzustehen und die Deutung eines Sprachengebetes laut auszusprechen."
+        "text": "Hast du erlebt dass Gott dir geholfen hat geistliche Botschaften die für andere unverständlich waren zu verstehen?"
       },
       {
-        "id": "G09_F4",
+        "id": "G09_Q4",
         "type": "nature",
-        "text": "Ich bete darum, dass Gott mir die Gabe schenkt, das Unverständliche für die Gemeinde verständlich zu machen."
+        "text": "Ich fühle eine Verantwortung, Zungengebet verständlich zu machen."
       },
       {
-        "id": "G09_F5",
+        "id": "G09_Q5",
         "type": "nature",
-        "text": "Es ist mir wichtig, dass die Gaben der Sprachenrede zur Erbauung aller dienen und nicht verwirren (1. Kor 14,26)."
+        "text": "Fühlst du dich dazu hingezogen, Gebete in anderer Sprache zu deuten bzw. auszulegen?"
       },
       {
-        "id": "G09_F6",
+        "id": "G09_Q6",
         "type": "feedback",
-        "text": "Nach meiner Auslegung herrscht oft eine tiefe Einigkeit oder Anbetungsstimmung in der Gruppe."
+        "text": "Nach meiner Auslegung von Zungenrede herrscht oft eine tiefe Einigkeit oder Anbetungsstimmung in der Gruppe."
       },
       {
-        "id": "G09_F7",
+        "id": "G09_Q7",
         "type": "feedback",
-        "text": "Die Gemeinde wird durch meine Auslegung konkret ermutigt oder in der Wahrheit Gottes korrigiert."
+        "text": "Meine Auslegung von Zungenrede hat ermutig, auf Warheit Gottes hingewiesen  und für liebevolle  Korrektur gesorgt"
       },
       {
         "id": "G09_Q8",
         "type": "reference",
-        "text": "Kann die Person Sprachenreden so deuten, dass der Inhalt für alle verständlich wird?"
+        "text": "Ich habe erlebt, dass die Person Gebet, die ich vorher nicht verstanden habe, auslegen konnte."
       },
       {
         "id": "G09_Q9",
         "type": "reference",
-        "text": "Wird die Gemeinde durch die Auslegungen dieser Person konkret im Glauben gestärkt?"
+        "text": "Die Person war in der Lage, mir Gebete in Sprachen, die ich nicht verstand, zu erklären."
       }
     ]
   },
   {
     "id": "G10",
     "name": "Dienst / Diakonie",
-    "originalWord": "",
+    "originalWord": "διακονία (diakonía, Gr.)",
     "meaning": "Praktisches Dienen und Helfen in der Gemeinde",
     "bibleReferences": [
       "Röm 12,7",
@@ -554,56 +554,56 @@
     "description": "Die Gabe des Dienstes beschreibt eine besondere Befähigung, anderen praktisch zu helfen und Bedürfnisse zu erkennen. Das griechische „diakonia“ bedeutet „Dienst“ oder „praktische Hilfe“. In der Bibel zeigt sich diese Gabe besonders im Dienst der ersten Diakone (Apg 6). Menschen mit dieser Gabe tragen wesentlich dazu bei, dass die Gemeinde praktisch funktioniert und Menschen konkrete Hilfe erfahren.",
     "questions": [
       {
-        "id": "G10_F1",
+        "id": "G10_Q1",
         "type": "experience",
-        "text": "Ich habe schon oft Aufgaben im Hintergrund übernommen, damit andere ihren Dienst besser tun konnten (vgl. Apg 6,1-7)."
+        "text": "Ich unterstütze gern praktisch, ohne im Vordergrund stehen zu müssen."
       },
       {
-        "id": "G10_F2",
+        "id": "G10_Q2",
         "type": "experience",
-        "text": "Ich entdecke praktische Notwendigkeiten (Reparaturen, Vorbereitungen), die andere oft übersehen."
+        "text": "Ich erkenne spontan, wo Hilfe gebraucht wird."
       },
       {
-        "id": "G10_F3",
+        "id": "G10_Q3",
         "type": "experience",
         "text": "Es bereitet mir Freude, Menschen ganz praktisch zu entlasten, ohne dass mein Name genannt wird."
       },
       {
-        "id": "G10_F4",
+        "id": "G10_Q4",
         "type": "nature",
         "text": "Ich helfe lieber tatkräftig mit, als lange theoretische Diskussionen zu führen."
       },
       {
-        "id": "G10_F5",
+        "id": "G10_Q5",
         "type": "nature",
         "text": "Ich möchte, dass alles in der Gemeinde reibungslos abläuft, und packe dafür überall an, wo Not am Mann ist."
       },
       {
-        "id": "G10_F6",
+        "id": "G10_Q6",
         "type": "feedback",
         "text": "Leiter sagen mir oft, dass ich für sie eine unverzichtbare Stütze im Alltag der Gemeinde bin."
       },
       {
-        "id": "G10_F7",
+        "id": "G10_Q7",
         "type": "feedback",
         "text": "Durch mein Zupacken fühlen sich Menschen in der Gemeinde wertgeschätzt und willkommen."
       },
       {
         "id": "G10_Q8",
         "type": "reference",
-        "text": "Übernimmt die Person bereitwillig praktische Aufgaben, die im Hintergrund anfallen?"
+        "text": "Ich habe erlebt dass diese Person praktisch hilft wenn Unterstützung gebraucht wird."
       },
       {
         "id": "G10_Q9",
         "type": "reference",
-        "text": "Würde die praktische Arbeit der Gemeinde spürbar leiden, wenn diese Person ihren Dienst einstellen würde?"
+        "text": "Der Einsatz dieser Person hilft dass Aufgaben gut erledigt werden."
       }
     ]
   },
   {
     "id": "G11",
     "name": "Lehren",
-    "originalWord": "",
+    "originalWord": "διδασκαλία (didaskalía, Gr.)",
     "meaning": "Unterweisen in der Wahrheit Gottes",
     "bibleReferences": [
       "Röm 12,7",
@@ -614,56 +614,56 @@
     "description": "Die Gabe des Lehrens ist die Fähigkeit, Gottes Wort klar, verständlich und treu zu erklären. Der Begriff „didaskalia“ bezeichnet sowohl den Inhalt als auch die Tätigkeit des Lehrens. In der Bibel wird diese Gabe besonders mit Leitungsaufgaben verbunden (Eph 4,11). Sie hilft der Gemeinde, Gottes Wahrheit zu verstehen und im Glauben zu wachsen.",
     "questions": [
       {
-        "id": "G11_F1",
+        "id": "G11_Q1",
         "type": "experience",
-        "text": "Wenn ich die Bibel erkläre, sagen andere, dass sie komplexe Themen plötzlich verstehen (vgl. Apg 18,24-26)."
+        "text": "Wenn ich die Bibel erkläre, sagen andere, dass sie komplexe Themen plötzlich verstehen."
       },
       {
-        "id": "G11_F2",
+        "id": "G11_Q2",
         "type": "experience",
-        "text": "Ich verbringe viel Zeit mit dem Studium der Schrift, um die Wahrheit systematisch weiterzugeben."
+        "text": "Erlebst du es, dass deine Lehre Verständnis und geistliches Wachstum bringt?"
       },
       {
-        "id": "G11_F3",
+        "id": "G11_Q3",
         "type": "experience",
-        "text": "Ich habe erlebt, wie durch meine Unterweisung falsche Lehren in einer Gruppe korrigiert wurden."
+        "text": "Hast du erlebt dass Menschen durch deine Erklärung geistlich gewachsen sind?"
       },
       {
-        "id": "G11_F4",
+        "id": "G11_Q4",
         "type": "nature",
         "text": "Ich habe ein brennendes Verlangen, dass Christen in ihrem Glauben durch fundiertes Wissen wachsen."
       },
       {
-        "id": "G11_F5",
+        "id": "G11_Q5",
         "type": "nature",
-        "text": "Mich begeistert es, biblische Zusammenhänge zu erforschen und sie logisch aufzubereiten."
+        "text": "Ich erkläre anderen gern was ich gelernt habe."
       },
       {
-        "id": "G11_F6",
+        "id": "G11_Q6",
         "type": "feedback",
         "text": "Menschen berichten, dass sie durch meinen Unterricht eine stabilere Grundlage für ihr Leben gefunden haben."
       },
       {
-        "id": "G11_F7",
+        "id": "G11_Q7",
         "type": "feedback",
-        "text": "Die Gruppe, die ich unterrichte, zeigt ein klares Wachstum in geistlicher Reife und Erkenntnis."
+        "text": "Menschen wachsen im Glauben durch meine Erklärungen."
       },
       {
         "id": "G11_Q8",
         "type": "reference",
-        "text": "Kann die Person biblische Inhalte so erklären, dass sie leicht verständlich und logisch nachvollziehbar sind?"
+        "text": "Ich habe erlebt dass diese Person Inhalte so erklärt dass andere sie gut verstehen."
       },
       {
         "id": "G11_Q9",
         "type": "reference",
-        "text": "Beobachtest du, dass Zuhörer nach seinen/ihren Ausführungen ein tieferes Verständnis der Wahrheit haben?"
+        "text": "Menschen lernen und entwickeln sich durch die Erklärungen dieser Person weiter."
       }
     ]
   },
   {
     "id": "G12",
-    "name": "Ermahnung / Zuspruch",
-    "originalWord": "",
+    "name": "Ermahnung",
+    "originalWord": "παράκλησις (paráklēsis, Gr.)",
     "meaning": "Ermutigen, Trösten und Ermahnen",
     "bibleReferences": [
       "Röm 12,8",
@@ -672,56 +672,56 @@
     "description": "Die Gabe der Ermutigung oder Ermahnung („paraklesis“) beschreibt die Fähigkeit, Menschen durch Worte zu stärken, zu trösten und zum Glauben zu ermutigen. Das Wort steht in Verbindung mit dem Begriff „Paraklet“, der für den Heiligen Geist als Tröster verwendet wird. Diese Gabe hilft Menschen, schwierige Zeiten zu überwinden und im Glauben weiterzugehen.",
     "questions": [
       {
-        "id": "G12_F1",
+        "id": "G12_Q1",
         "type": "experience",
-        "text": "Ich habe schon Menschen aus tiefster Mutlosigkeit herausgeholfen (vgl. Barnabas, der Sohn des Trostes, Apg 4,36)."
+        "text": "Ich habe schon Menschen aus tiefster Mutlosigkeit herausgeholfen."
       },
       {
-        "id": "G12_F2",
+        "id": "G12_Q2",
         "type": "experience",
-        "text": "Ich finde oft genau die richtigen Worte, um jemanden zu motivieren, in einer Krise nicht aufzugeben."
+        "text": "Ich erkenne, was jemand braucht, um weiterzugehen."
       },
       {
-        "id": "G12_F3",
+        "id": "G12_Q3",
         "type": "experience",
         "text": "Ich habe Menschen liebevoll, aber direkt auf blinde Flecken hingewiesen, was zu ihrer positiven Veränderung führte."
       },
       {
-        "id": "G12_F4",
+        "id": "G12_Q4",
+        "type": "nature",
+        "text": "Neigst du dazu, anderen Zuspruch, Trost oder Ermahnung zu geben?"
+      },
+      {
+        "id": "G12_Q5",
         "type": "nature",
         "text": "Ich möchte Menschen helfen, ihr volles Potenzial in Gott auszuschöpfen."
       },
       {
-        "id": "G12_F5",
-        "type": "nature",
-        "text": "Ich kann nicht zusehen, wenn Geschwister resignieren; ich muss sie einfach ermutigen."
-      },
-      {
-        "id": "G12_F6",
-        "type": "feedback",
-        "text": "Leute kommen gezielt zu mir, wenn sie eine geistliche Stärkung oder einen Motivationsschub brauchen."
-      },
-      {
-        "id": "G12_F7",
+        "id": "G12_Q6",
         "type": "feedback",
         "text": "Nach Gesprächen mit mir fühlen sich Menschen befähigt, ihre Aufgaben mit neuer Kraft anzugehen."
       },
       {
+        "id": "G12_Q7",
+        "type": "feedback",
+        "text": "Führt deine Ermahnung oft zu Trost, Erneuerung und geistlichem Aufschwung?"
+      },
+      {
         "id": "G12_Q8",
         "type": "reference",
-        "text": "Geht die Person aktiv auf Menschen zu, um sie zu trösten, zu ermutigen oder zu motivieren?"
+        "text": "Ich habe erlebt dass diese Person andere ermahnt aber auch ermutigt hat."
       },
       {
         "id": "G12_Q9",
         "type": "reference",
-        "text": "Fühlen sich Menschen nach einem Gespräch mit dieser Person gestärkt und befähigt, weiterzugehen?"
+        "text": "Menschen wissen nach Gesprächen mit dieser Person, was sie in ihrem Leben ändern sollten."
       }
     ]
   },
   {
     "id": "G13",
     "name": "Geben",
-    "originalWord": "",
+    "originalWord": "μεταδιδόναι (metadidónai, Gr.)",
     "meaning": "Großzügiges, freudiges Geben mit Einfalt",
     "bibleReferences": [
       "Röm 12,8",
@@ -731,56 +731,56 @@
     "description": "Die Gabe des Gebens beschreibt eine besondere Bereitschaft und Freude, materielle oder finanzielle Ressourcen großzügig weiterzugeben. Das griechische „metadidonai“ bedeutet „teilen“ oder „weitergeben“. In der Bibel sehen wir Beispiele dafür in der frühen Gemeinde (Apg 4). Diese Gabe macht Gottes Versorgung sichtbar und unterstützt die Arbeit des Reiches Gottes.",
     "questions": [
       {
-        "id": "G13_F1",
+        "id": "G13_Q1",
         "type": "experience",
-        "text": "Ich habe schon anonym und großzügig Geldbeträge gegeben, um eine Not zu lindern (vgl. Apg 4,34-37)."
+        "text": "Ich gebe gern großzügig, ohne etwas dafür zu erwarten."
       },
       {
-        "id": "G13_F2",
+        "id": "G13_Q2",
         "type": "experience",
-        "text": "Gott hat mir schon unerwartet Ressourcen anvertraut, die ich direkt in das Reich Gottes weiterleiten konnte."
+        "text": "Hast du Situationen erlebt in denen du bewusst auf eigene Dinge verzichtet hast um anderen zu helfen?"
       },
       {
-        "id": "G13_F3",
+        "id": "G13_Q3",
         "type": "experience",
-        "text": "Ich habe erlebt, wie mein finanzielles Opfer eine wichtige missionarische Arbeit erst ermöglichte."
+        "text": "Ich empfinde Freude, wenn ich andere finanziell unterstützen kann."
       },
       {
-        "id": "G13_F4",
+        "id": "G13_Q4",
         "type": "nature",
         "text": "Ich sehe mein Geld und meinen Besitz primär als Werkzeuge für Gottes Reich, nicht für meinen Luxus."
       },
       {
-        "id": "G13_F5",
+        "id": "G13_Q5",
         "type": "nature",
-        "text": "Es macht mir große Freude, großzügige Projekte zu finanzieren, wenn ich von deren Sinn überzeugt bin."
+        "text": "Ich fühle eine Verantwortung, Gottes Werk finanziell zu stärken."
       },
       {
-        "id": "G13_F6",
+        "id": "G13_Q6",
         "type": "feedback",
         "text": "Durch meine Gaben wurden finanzielle Engpässe in der Gemeinde gelöst, oft genau zum richtigen Zeitpunkt."
       },
       {
-        "id": "G13_F7",
+        "id": "G13_Q7",
         "type": "feedback",
-        "text": "Andere fühlen sich durch meine Freigebigkeit ermutigt, selbst vertrauensvoller mit ihren Finanzen umzugehen."
+        "text": "Ich sehe, dass mein Geben sichtbare Frucht bringt."
       },
       {
         "id": "G13_Q8",
         "type": "reference",
-        "text": "Agiert die Person überdurchschnittlich großzügig mit ihrem Besitz oder Geld, um Not zu lindern?"
+        "text": "Ich habe erlebt dass diese Person großzügig gibt."
       },
       {
         "id": "G13_Q9",
         "type": "reference",
-        "text": "Werden durch die finanzielle oder materielle Hilfe dieser Person Engpässe in der Gemeindearbeit gelöst?"
+        "text": "Diese Person legt weniger Wert auf ihren eigenen Wohlstand und unterstützt stattdessen andere von Herzen."
       }
     ]
   },
   {
     "id": "G14",
-    "name": "Leiten / Verwalten",
-    "originalWord": "",
+    "name": "Leiten",
+    "originalWord": "προϊστάμενος (proistámenos, Gr.)",
     "meaning": "Führen und Organisieren der Gemeinde (wie ein Steuermann)",
     "bibleReferences": [
       "Röm 12,8",
@@ -791,115 +791,115 @@
     "description": "Die Gabe der Leitung beschreibt die Fähigkeit, Menschen zu führen, Vision zu vermitteln und Strukturen zu organisieren. Das griechische Wort „proistamenos“ bedeutet „vorstehen“ oder „leiten“. In der Bibel wird diese Gabe mit Verantwortung für die Gemeinde verbunden (1. Thess 5). Sie hilft, dass Dienste koordiniert werden und die Gemeinde gemeinsam vorankommt.",
     "questions": [
       {
-        "id": "G14_F1",
+        "id": "G14_Q1",
         "type": "experience",
-        "text": "Ich habe schon Teams oder Projekte so koordiniert, dass alle ihre Gaben optimal einsetzen konnten (vgl. Tit 1,5)."
+        "text": "Ich habe schon Teams oder Projekte so koordiniert, dass alle ihre Gaben optimal einsetzen konnten."
       },
       {
-        "id": "G14_F2",
+        "id": "G14_Q2",
         "type": "experience",
-        "text": "In unübersichtlichen Situationen behalte ich den Überblick und gebe die Richtung vor (vgl. den Steuermann, 1. Kor 12,28)."
+        "text": "Haben Menschen dir Verantwortung übertragen?"
       },
       {
-        "id": "G14_F3",
+        "id": "G14_Q3",
         "type": "experience",
-        "text": "Ich habe erlebt, wie durch meine Planung Chaos in der Gemeindearbeit beseitigt wurde."
+        "text": "Andere folgen meiner Leitung freiwillig und vertrauensvoll."
       },
       {
-        "id": "G14_F4",
+        "id": "G14_Q4",
         "type": "nature",
-        "text": "Es motiviert mich, Visionen in konkrete, ausführbare Schritte und Strukturen zu übersetzen."
+        "text": "Neigst du dazu, Verantwortung zu übernehmen und zu organisieren?"
       },
       {
-        "id": "G14_F5",
+        "id": "G14_Q5",
         "type": "nature",
         "text": "Ich möchte Verantwortung übernehmen, damit die Gemeinde ihre Ziele effektiv erreicht."
       },
       {
-        "id": "G14_F6",
+        "id": "G14_Q6",
         "type": "feedback",
-        "text": "Menschen folgen gerne meiner Leitung, weil sie sich durch meine Struktur sicher und gut geführt fühlen."
+        "text": "Ich bewahre Überblick auch in komplizierten Situationen."
       },
       {
-        "id": "G14_F7",
+        "id": "G14_Q7",
         "type": "feedback",
         "text": "Unter meiner Verantwortung wachsen Bereiche der Gemeinde qualitativ und organisatorisch."
       },
       {
         "id": "G14_Q8",
         "type": "reference",
-        "text": "Koordiniert die Person Aufgaben und Menschen so, dass Ziele effektiv und geordnet erreicht werden?"
+        "text": "Ich habe erlebt dass diese Person Verantwortung übernimmt und Aufgaben organisiert."
       },
       {
         "id": "G14_Q9",
         "type": "reference",
-        "text": "Vertrauen Menschen der Organisation dieser Person, weil sie Klarheit und Sicherheit vermittelt?"
+        "text": "Unter der Leitung dieser Person werden Ziele gut erreicht."
       }
     ]
   },
   {
-    "id": "G15",
-    "name": "Barmherzigkeit",
-    "originalWord": "",
-    "meaning": "Mitgefühl und praktische Hilfe für Leidende",
-    "bibleReferences": [
-      "Röm 12,8",
-      "Mt 5,7",
-      "Gal 6,2"
-    ],
-    "description": "Die Gabe der Barmherzigkeit beschreibt ein besonderes Mitgefühl für Menschen in Not und die Bereitschaft, ihnen praktisch zu helfen. Das griechische „eleos“ bedeutet „Erbarmen“ oder „Mitgefühl“. In der Bibel wird Barmherzigkeit als Ausdruck von Gottes Charakter beschrieben (Mt 5,7). Menschen mit dieser Gabe bringen Gottes Liebe besonders zu leidenden Menschen.",
-    "questions": [
-      {
-        "id": "G15_F1",
-        "type": "experience",
-        "text": "Ich habe mich schon intensiv um Menschen gekümmert, die von allen anderen gemieden wurden (vgl. Lk 10,33-35)."
-      },
-      {
-        "id": "G15_F2",
-        "type": "experience",
-        "text": "Ich verbringe oft Zeit mit Trauernden oder Kranken, ohne dass es mich emotional erschöpft."
-      },
-      {
-        "id": "G15_F3",
-        "type": "experience",
-        "text": "Ich habe schon ganz praktisch Not gelindert, indem ich einfach nur da war und mitgelitten habe."
-      },
-      {
-        "id": "G15_F4",
-        "type": "nature",
-        "text": "Mein Herz blutet, wenn ich Ungerechtigkeit oder Einsamkeit sehe; ich muss dann handeln."
-      },
-      {
-        "id": "G15_F5",
-        "type": "nature",
-        "text": "Ich möchte die Liebe Jesu besonders denjenigen zeigen, die am Rande der Gesellschaft stehen."
-      },
-      {
-        "id": "G15_F6",
-        "type": "feedback",
-        "text": "Menschen in Krisen sagen mir oft, dass meine Anwesenheit ihnen neuen Lebensmut geschenkt hat."
-      },
-      {
-        "id": "G15_F7",
-        "type": "feedback",
-        "text": "Durch meinen Dienst fühlen sich Menschen in der Gemeinde bedingungslos angenommen und geliebt."
-      },
-      {
-        "id": "G15_Q8",
-        "type": "reference",
-        "text": "Sucht die Person gezielt die Nähe von Leidenden, Armen oder Einsamen?"
-      },
-      {
-        "id": "G15_Q9",
-        "type": "reference",
-        "text": "Erfahren Menschen durch die Zuwendung dieser Person eine tiefe emotionale Heilung und Annahme?"
-      }
-    ]
-  },
+  "id": "G15",
+  "name": "Barmherzigkeit",
+  "originalWord": "ἔλεος (éleos, Gr.)",
+  "meaning": "Mitgefühl und praktische Hilfe für Leidende",
+  "bibleReferences": [
+    "Röm 12,8",
+    "Mt 5,7",
+    "Gal 6,2"
+  ],
+  "description": "Die Gabe der Barmherzigkeit beschreibt ein besonderes Mitgefühl für Menschen in Not und die Bereitschaft, ihnen praktisch zu helfen. Das griechische „eleos“ bedeutet „Erbarmen“ oder „Mitgefühl“. In der Bibel wird Barmherzigkeit als Ausdruck von Gottes Charakter beschrieben (Mt 5,7). Menschen mit dieser Gabe bringen Gottes Liebe besonders zu leidenden Menschen.",
+  "questions": [
+    {
+      "id": "G15_Q1",
+      "type": "experience",
+      "text": "Ich habe mich schon intensiv um Menschen gekümmert, die von allen anderen gemieden wurden."
+    },
+    {
+      "id": "G15_Q2",
+      "type": "experience",
+      "text": "Ich gehe aktiv auf Leidende zu, um ihnen beizustehen."
+    },
+    {
+      "id": "G15_Q3",
+      "type": "experience",
+      "text": "Hast du erlebt dass du dich besonders um Bedürftige kümmerst?"
+    },
+    {
+      "id": "G15_Q4",
+      "type": "nature",
+      "text": "Es bewegt mich wenn Menschen leiden."
+    },
+    {
+      "id": "G15_Q5",
+      "type": "nature",
+      "text": "Ich möchte die Liebe Jesu besonders denjenigen zeigen, die am Rande der Gesellschaft stehen."
+    },
+    {
+      "id": "G15_Q6",
+      "type": "feedback",
+      "text": "Menschen in Krisen sagen mir oft, dass meine Anwesenheit ihnen neuen Lebensmut geschenkt hat."
+    },
+    {
+      "id": "G15_Q7",
+      "type": "feedback",
+      "text": "Durch meinen Dienst fühlen sich Menschen in der Gemeinde bedingungslos angenommen und geliebt."
+    },
+    {
+      "id": "G15_Q8",
+      "type": "reference",
+      "text": "Ich habe erlebt dass diese Person Mitgefühl mit leidenden Menschen zeigt."
+    },
+    {
+      "id": "G15_Q9",
+      "type": "reference",
+      "text": "Benachteiligte Menschen fühlen sich durch diese Person verstanden und unterstützt."
+    }
+  ]
+},
   {
     "id": "G16",
     "name": "Apostelamt",
-    "originalWord": "",
+    "originalWord": "ἀπόστολος (apóstolos, Gr.)",
     "meaning": "Gesandtsein mit Vollmacht zum Gründen von Gemeinden",
     "bibleReferences": [
       "1. Kor 12,28",
@@ -910,56 +910,56 @@
     "description": "Die Gabe des Apostels beschreibt eine besondere Berufung, neue Werke oder Gemeinden zu gründen und geistliche Bewegungen zu initiieren. Das Wort „apostolos“ bedeutet „Gesandter“. In der Bibel sehen wir diese Gabe bei den Aposteln, die das Evangelium verbreiteten und Gemeinden gründeten. Diese Gabe verbindet Vision, Leitung und missionarische Dynamik.",
     "questions": [
       {
-        "id": "G16_F1",
+        "id": "G16_Q1",
         "type": "experience",
-        "text": "Ich habe schon geholfen, eine neue Gruppe oder Gemeinde dort zu gründen, wo es vorher nichts gab (Pionierarbeit)."
+        "text": "Ich habe den Drang, neue geistliche Werke oder Gruppen zu gründen."
       },
       {
-        "id": "G16_F2",
+        "id": "G16_Q1",
         "type": "experience",
-        "text": "Ich habe eine geistliche Autorität erlebt, die es mir ermöglichte, Leiter in anderen Gemeinden zuzurüsten."
+        "text": "Hast du schon geholfen neue Gemeinden oder Gruppen aufzubauen?"
       },
       {
-        "id": "G16_F3",
+        "id": "G16_Q2",
         "type": "experience",
-        "text": "Gott hat mich schon in völlig fremde Kulturen oder Umfelder gesandt, um dort das Fundament des Glaubens zu legen."
+        "text": "Hast du erlebt dass du neue Initiativen oder Dienste gestartet hast?"
       },
       {
-        "id": "G16_F4",
+        "id": "G16_Q3",
         "type": "nature",
-        "text": "Ich spüre den Drang, ständig neue geistliche Terrains zu erschließen, statt nur Bestehendes zu verwalten."
+        "text": "Ich habe eine Vision neue Dinge im Reich Gottes zu starten."
       },
       {
-        "id": "G16_F5",
+        "id": "G16_Q4",
         "type": "nature",
-        "text": "Ich trage eine Last für die weltweite Kirche und das Zusammenwirken verschiedener Gemeinden."
+        "text": "Ich denke gern strategisch über Wachstum der Gemeinde nach."
       },
       {
-        "id": "G16_F6",
+        "id": "G16_Q5",
         "type": "feedback",
-        "text": "Es gibt Gemeinden oder Dienste, die heute existieren, weil ich den mutigen ersten Schritt gewagt habe."
+        "text": "Neue Dienste entstehen oft durch meine Initiative."
       },
       {
-        "id": "G16_F7",
+        "id": "G16_Q6",
         "type": "feedback",
-        "text": "Andere Leiter erkennen meine überregionale Verantwortung und suchen meinen Rat für ihre Werke."
+        "text": "Menschen schließen sich Visionen an die ich starte."
+      },
+      {
+        "id": "G16_Q7",
+        "type": "reference",
+        "text": "Ich habe erlebt dass diese Person neue Projekte oder Initiativen startet."
       },
       {
         "id": "G16_Q8",
         "type": "reference",
-        "text": "Initiiert die Person erfolgreich neue Projekte oder Gründungen (Pioniergeist)?"
-      },
-      {
-        "id": "G16_Q9",
-        "type": "reference",
-        "text": "Besitzt die Person eine anerkannte geistliche Autorität über verschiedene Gruppen oder Gemeinden hinweg?"
+        "text": "Andere schließen sich den Ideen oder Initiativen dieser Person an."
       }
     ]
   },
   {
     "id": "G17",
     "name": "Evangelist",
-    "originalWord": "",
+    "originalWord": "εὐαγγελιστής (euangelistḗs, Gr.)",
     "meaning": "Verkündigen der guten Botschaft (Evangelium)",
     "bibleReferences": [
       "Eph 4,11",
@@ -969,56 +969,56 @@
     "description": "Die Gabe des Evangelisten ist die besondere Fähigkeit, Menschen die gute Nachricht von Jesus verständlich und überzeugend zu vermitteln. Das Wort „euangelistes“ bedeutet „Verkündiger der guten Nachricht“. In der Bibel sehen wir diese Gabe z.B. bei Philippus (Apg 21). Evangelisten helfen Menschen, zum Glauben an Christus zu kommen.",
     "questions": [
       {
-        "id": "G17_F1",
+        "id": "G17_Q1",
         "type": "experience",
-        "text": "Ich habe schon erlebt, wie Menschen nach einem Gespräch mit mir spontan ihr Leben Jesus anvertraut haben."
+        "text": "Ich spreche gern mit anderen über Jesus."
       },
       {
-        "id": "G17_F2",
+        "id": "G17_Q2",
         "type": "experience",
-        "text": "Ich finde immer wieder natürliche Wege, um mit kirchenfernen Menschen über den Glauben ins Gespräch zu kommen."
+        "text": "Hast du erlebt dass Menschen durch dein Zeugnis Interesse an Jesus bekommen?"
       },
       {
-        "id": "G17_F3",
+        "id": "G17_Q3",
         "type": "experience",
-        "text": "Ich habe schon vor Gruppen von Ungläubigen gesprochen und dabei eine besondere Vollmacht gespürt."
+        "text": "Hast du erlebt dass Menschen durch dich zum Glauben gekommen sind?"
       },
       {
-        "id": "G17_F4",
+        "id": "G17_Q4",
         "type": "nature",
-        "text": "Es brennt mir auf der Seele, dass Menschen ohne Jesus verloren gehen (vgl. Röm 9,2-3)."
+        "text": "Es brennt mir auf der Seele, dass Menschen ohne Jesus verloren gehen."
       },
       {
-        "id": "G17_F5",
+        "id": "G17_Q5",
         "type": "nature",
         "text": "Ich suche ständig nach neuen Methoden, um das Evangelium zeitgemäß und verständlich zu kommunizieren."
       },
       {
-        "id": "G17_F6",
+        "id": "G17_Q6",
         "type": "feedback",
-        "text": "In meinem Umfeld kommen regelmäßig Menschen zum Glauben und lassen sich taufen."
+        "text": "Menschen reagieren offen wenn ich von meinem Glauben erzähle."
       },
       {
-        "id": "G17_F7",
+        "id": "G17_Q7",
         "type": "feedback",
-        "text": "Ich motiviere die Gemeinde dazu, ihren Fokus wieder stärker auf die Menschen draußen zu richten."
+        "text": "Ich motiviere die Gemeinde dazu, ihren Fokus wieder stärker auf die Menschen \"draußen\" zu richten."
       },
       {
         "id": "G17_Q8",
         "type": "reference",
-        "text": "Sucht die Person aktiv und furchtlos das Gespräch mit Menschen, die Jesus noch nicht kennen?"
+        "text": "Ich habe erlebt dass diese Person mit anderen über ihren Glauben spricht."
       },
       {
         "id": "G17_Q9",
         "type": "reference",
-        "text": "Hast du miterlebt, dass Menschen durch den Einfluss dieser Person Schritte zum Glauben gemacht haben?"
+        "text": "Diese Person führt Menschen zu Jesus oder lädt sie zu Veranstaltungen in der Gemeinde ein."
       }
     ]
   },
   {
     "id": "G18",
-    "name": "Hirte / Pastor",
-    "originalWord": "",
+    "name": "Hirte",
+    "originalWord": "ποιμήν (poimḗn, Gr.)",
     "meaning": "Weiden, Hüten und Versorgen der Gemeinde als Herde",
     "bibleReferences": [
       "Eph 4,11",
@@ -1028,49 +1028,49 @@
     "description": "Die Gabe des Hirten beschreibt die Fähigkeit, Menschen geistlich zu begleiten, zu schützen und zu fördern. Das griechische „poimen“ bedeutet „Hirte“. Jesus selbst wird als der gute Hirte beschrieben (Joh 10). Menschen mit dieser Gabe kümmern sich langfristig um das geistliche Wachstum und das Wohl der Gemeinde.",
     "questions": [
       {
-        "id": "G18_F1",
+        "id": "G18_Q1",
         "type": "experience",
         "text": "Ich begleite Menschen über Jahre hinweg in ihrem geistlichen Wachstum und helfe ihnen durch Täler."
       },
       {
-        "id": "G18_F2",
+        "id": "G18_Q2",
         "type": "experience",
-        "text": "Ich habe schon verirrte Geschwister gesucht und sie liebevoll in die Gemeinschaft zurückgeführt (vgl. Hes 34,16)."
+        "text": "Ich spüre Verantwortung für das geistliche Wohl anderer."
       },
       {
-        "id": "G18_F3",
+        "id": "G18_Q3",
         "type": "experience",
         "text": "Ich schütze die Gruppe, für die ich verantwortlich bin, aktiv vor negativen Einflüssen oder Spaltung."
       },
       {
-        "id": "G18_F4",
+        "id": "G18_Q4",
         "type": "nature",
         "text": "Ich habe ein tiefes Interesse an der langfristigen Entwicklung und dem Wohlergehen einzelner Personen."
       },
       {
-        "id": "G18_F5",
+        "id": "G18_Q5",
         "type": "nature",
-        "text": "Ich möchte eine Atmosphäre schaffen, in der sich Menschen geistlich sicher und zu Hause fühlen."
+        "text": "Ich möchte eine Atmosphäre schaffen, in der sich Menschen geistlich sicher und \"zu Hause\" fühlen."
       },
       {
-        "id": "G18_F6",
+        "id": "G18_Q6",
         "type": "feedback",
-        "text": "Menschen vertrauen mir ihre tiefsten Nöte an, weil sie wissen, dass ich für sie einstehe."
+        "text": "Menschen fühlen sich durch mich begleitet und unterstützt."
       },
       {
-        "id": "G18_F7",
+        "id": "G18_Q7",
         "type": "feedback",
-        "text": "Die Gruppe, die ich betreue, zeichnet sich durch starken Zusammenhalt und gegenseitige Fürsorge aus."
+        "text": "Ich sehe, dass meine Fürsorge Menschen stabil wachsen lässt."
       },
       {
         "id": "G18_Q8",
         "type": "reference",
-        "text": "Kümmert sich die Person langfristig und verlässlich um das geistliche Wohlergehen einer Gruppe?"
+        "text": "Ich habe erlebt dass diese Person Menschen über längere Zeit begleitet."
       },
       {
         "id": "G18_Q9",
         "type": "reference",
-        "text": "Entwickelt die von dieser Person betreute Gruppe eine starke Gemeinschaft und geistliche Reife?"
+        "text": "Menschen entwickeln sich durch die Unterstützung dieser Person weiter."
       }
     ]
   }
