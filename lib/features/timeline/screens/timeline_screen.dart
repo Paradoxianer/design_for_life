@@ -89,9 +89,11 @@ class _TimelineCardWrapper extends StatelessWidget {
     return TimelineCard(
       session: updatedSession,
       onTap: () {
+        final shouldOpenInResultMode =
+            updatedSession.status == SessionStatus.done;
         final targetRoute = TimelineModuleRegistry.buildRoute(
-          session,
-          resultMode: false,
+          updatedSession,
+          resultMode: shouldOpenInResultMode,
         );
         if (targetRoute != null) {
           context.push('/$targetRoute');
