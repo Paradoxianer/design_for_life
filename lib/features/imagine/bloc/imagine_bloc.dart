@@ -1,8 +1,8 @@
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:equatable/equatable.dart';
 
-part 'summary_event.dart';
-part 'summary_state.dart';
+part 'imagine_event.dart';
+part 'imagine_state.dart';
 
 class ImagineBloc extends HydratedBloc<ImagineEvent, ImagineState> {
   ImagineBloc() : super(const ImagineState()) {
@@ -12,20 +12,27 @@ class ImagineBloc extends HydratedBloc<ImagineEvent, ImagineState> {
   }
 
   void _onSelectPastImage(SelectPastImage event, Emitter<ImagineState> emit) {
-    final updated = Map<String, String?>.from(state.pastImageUrls);
-    updated[event.sessionId] = event.imageUrl;
-    emit(state.copyWith(pastImageUrls: updated));
+    final updated = Map<String, String?>.from(state.pastImageIds);
+    updated[event.sessionId] = event.imageId;
+    emit(state.copyWith(pastImageIds: updated));
   }
 
   void _onSelectFutureImage(SelectFutureImage event, Emitter<ImagineState> emit) {
-    final updated = Map<String, String?>.from(state.futureImageUrls);
-    updated[event.sessionId] = event.imageUrl;
-    emit(state.copyWith(futureImageUrls: updated));
+    final updated = Map<String, String?>.from(state.futureImageIds);
+    updated[event.sessionId] = event.imageId;
+    emit(state.copyWith(futureImageIds: updated));
   }
 
   void _onUpdateTakeaway(UpdateImagineTakeaway event, Emitter<ImagineState> emit) {
-    final updated = Map<String, String>.from(state.takeaways);
-    updated[event.sessionId] = event.text;
+    final current = List<String>.from(
+      state.takeaways[event.sessionId] ?? ['', '', ''],
+    );
+    while (current.length <= event.index) {
+      current.add('');
+    }
+    current[event.index] = event.text;
+    final updated = Map<String, List<String>>.from(state.takeaways);
+    updated[event.sessionId] = current;
     emit(state.copyWith(takeaways: updated));
   }
 

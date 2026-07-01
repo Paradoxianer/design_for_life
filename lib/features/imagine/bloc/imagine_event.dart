@@ -8,24 +8,25 @@ abstract class ImagineEvent extends Equatable {
 
 class SelectPastImage extends ImagineEvent {
   final String sessionId;
-  final String imageUrl;
-  const SelectPastImage(this.sessionId, this.imageUrl);
+  final String imageId;
+  const SelectPastImage(this.sessionId, this.imageId);
   @override
-  List<Object?> get props => [sessionId, imageUrl];
+  List<Object?> get props => [sessionId, imageId];
 }
 
 class SelectFutureImage extends ImagineEvent {
   final String sessionId;
-  final String imageUrl;
-  const SelectFutureImage(this.sessionId, this.imageUrl);
+  final String imageId;
+  const SelectFutureImage(this.sessionId, this.imageId);
   @override
-  List<Object?> get props => [sessionId, imageUrl];
+  List<Object?> get props => [sessionId, imageId];
 }
 
 class UpdateImagineTakeaway extends ImagineEvent {
   final String sessionId;
+  final int index;
   final String text;
-  const UpdateImagineTakeaway(this.sessionId, this.text);
+  const UpdateImagineTakeaway(this.sessionId, this.index, this.text);
   @override
-  List<Object?> get props => [sessionId, text];
+  List<Object?> get props => [sessionId, index, text];
 }

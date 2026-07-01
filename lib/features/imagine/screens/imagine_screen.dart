@@ -4,8 +4,8 @@ import '../../../core/widgets/dfl_module_scaffold.dart';
 import '../../../core/models/shareable_content.dart';
 import '../../../core/services/share_service.dart';
 import '../bloc/imagine_bloc.dart';
-import '../widgets/summary_editor.dart';
-import '../widgets/summary_result.dart';
+import '../widgets/imagine_editor.dart';
+import '../widgets/imagine_result.dart';
 
 class ImagineScreen extends StatelessWidget {
   final String sessionId;
@@ -20,26 +20,39 @@ class ImagineScreen extends StatelessWidget {
   });
 
   ShareableContent _buildShareContent(ImagineState state) {
+    final takeaways = state.sessionTakeaways(sessionId);
+    final takeawayText = takeaways.where((t) => t.isNotEmpty).join(' | ');
     return ShareableContent(
-      title: 'Mein Rückblick & Ausblick',
+      title: 'Imagine',
       items: [
-        if (state.pastImageUrl(sessionId) != null)
+        if (state.pastImageId(sessionId) != null)
           ShareableItem(
             id: 'past_image',
             label: 'Vergangenheit',
-            imagePath: state.pastImageUrl(sessionId),
+            textValue: state.pastImageId(sessionId)!,
+            data: {
+              'type': 'imagine_option',
+              'phase': 'Vergangenheit',
+              'optionId': state.pastImageId(sessionId),
+            },
           ),
-        if (state.futureImageUrl(sessionId) != null)
+        if (state.futureImageId(sessionId) != null)
           ShareableItem(
             id: 'future_image',
             label: 'Zukunft',
-            imagePath: state.futureImageUrl(sessionId),
+            textValue: state.futureImageId(sessionId)!,
+            data: {
+              'type': 'imagine_option',
+              'phase': 'Zukunft',
+              'optionId': state.futureImageId(sessionId),
+            },
           ),
-        if (state.takeaway(sessionId).isNotEmpty)
+        if (takeawayText.isNotEmpty)
           ShareableItem(
-            id: 'takeaway',
-            label: 'Meine Erkenntnis',
-            textValue: state.takeaway(sessionId),
+            id: 'takeaways',
+            label: 'Key Takeaways',
+            textValue: takeawayText,
+            data: {'type': 'takeaways', 'value': takeawayText},
           ),
       ],
     );
@@ -50,6 +63,7 @@ class ImagineScreen extends StatelessWidget {
     return BlocBuilder<ImagineBloc, ImagineState>(
       builder: (context, state) {
         final shareContent = _buildShareContent(state);
+        final takeaways = state.sessionTakeaways(sessionId);
         return DflModuleScaffold(
           title: title,
           initialEditMode: initialEditMode,
@@ -61,17 +75,21 @@ class ImagineScreen extends StatelessWidget {
           ),
           editor: ImagineEditor(
             sessionId: sessionId,
-            selectedPastUrl: state.pastImageUrl(sessionId),
-            selectedFutureUrl: state.futureImageUrl(sessionId),
-            takeaway: state.takeaway(sessionId),
+            selectedPastId: state.pastImageId(sessionId),
+            selectedFutureId: state.futureImageId(sessionId),
+            takeaways: takeaways,
           ),
           result: ImagineResult(
-            pastImageUrl: state.pastImageUrl(sessionId),
-            futureImageUrl: state.futureImageUrl(sessionId),
-            takeaway: state.takeaway(sessionId),
+            pastImageId: state.pastImageId(sessionId),
+            futureImageId: state.futureImageId(sessionId),
+            takeaways: takeaways,
+            onUpdate: (index, value) => context.read<ImagineBloc>().add(
+                  UpdateImagineTakeaway(sessionId, index, value),
+                ),
           ),
         );
       },
     );
   }
 }
+

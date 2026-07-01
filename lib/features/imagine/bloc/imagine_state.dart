@@ -1,54 +1,60 @@
 part of 'imagine_bloc.dart';
 
-/// Holds two selected Pixabay image URLs — one for "past", one for "future" —
-/// plus a single reflection takeaway, all keyed by sessionId.
+/// Holds selected abstract image ids and takeaways for past and future,
+/// keyed by sessionId.
 class ImagineState extends Equatable {
-  final Map<String, String?> pastImageUrls;
-  final Map<String, String?> futureImageUrls;
-  final Map<String, String> takeaways;
+  final Map<String, String?> pastImageIds;
+  final Map<String, String?> futureImageIds;
+  final Map<String, List<String>> takeaways;
 
   const ImagineState({
-    this.pastImageUrls = const {},
-    this.futureImageUrls = const {},
+    this.pastImageIds = const {},
+    this.futureImageIds = const {},
     this.takeaways = const {},
   });
 
-  String? pastImageUrl(String sessionId) => pastImageUrls[sessionId];
-  String? futureImageUrl(String sessionId) => futureImageUrls[sessionId];
-  String takeaway(String sessionId) => takeaways[sessionId] ?? '';
+  String? pastImageId(String sessionId) => pastImageIds[sessionId];
+  String? futureImageId(String sessionId) => futureImageIds[sessionId];
+  List<String> sessionTakeaways(String sessionId) =>
+      takeaways[sessionId] ?? const ['', '', ''];
 
   bool isCompleted(String sessionId) =>
-      pastImageUrls[sessionId] != null && futureImageUrls[sessionId] != null;
+      pastImageIds[sessionId] != null && futureImageIds[sessionId] != null;
 
   @override
-  List<Object?> get props => [pastImageUrls, futureImageUrls, takeaways];
+  List<Object?> get props => [pastImageIds, futureImageIds, takeaways];
 
   ImagineState copyWith({
-    Map<String, String?>? pastImageUrls,
-    Map<String, String?>? futureImageUrls,
-    Map<String, String>? takeaways,
+    Map<String, String?>? pastImageIds,
+    Map<String, String?>? futureImageIds,
+    Map<String, List<String>>? takeaways,
   }) =>
       ImagineState(
-        pastImageUrls: pastImageUrls ?? this.pastImageUrls,
-        futureImageUrls: futureImageUrls ?? this.futureImageUrls,
+        pastImageIds: pastImageIds ?? this.pastImageIds,
+        futureImageIds: futureImageIds ?? this.futureImageIds,
         takeaways: takeaways ?? this.takeaways,
       );
 
   Map<String, dynamic> toJson() => {
-        'pastImageUrls': pastImageUrls,
-        'futureImageUrls': futureImageUrls,
+        // Keep json keys stable for backwards compatibility.
+        'pastImageUrls': pastImageIds,
+        'futureImageUrls': futureImageIds,
         'takeaways': takeaways,
       };
 
   factory ImagineState.fromJson(Map<String, dynamic> json) => ImagineState(
-        pastImageUrls: (json['pastImageUrls'] as Map<String, dynamic>?)
+        pastImageIds: (json['pastImageUrls'] as Map<String, dynamic>?)
                 ?.map((k, v) => MapEntry(k, v as String?)) ??
             {},
-        futureImageUrls: (json['futureImageUrls'] as Map<String, dynamic>?)
+        futureImageIds: (json['futureImageUrls'] as Map<String, dynamic>?)
                 ?.map((k, v) => MapEntry(k, v as String?)) ??
             {},
-        takeaways: (json['takeaways'] as Map<String, dynamic>?)
-                ?.map((k, v) => MapEntry(k, v as String)) ??
+        takeaways: (json['takeaways'] as Map<String, dynamic>?)?.map(
+              (k, v) => MapEntry(
+                k,
+                (v as List<dynamic>).cast<String>(),
+              ),
+            ) ??
             {},
       );
 }

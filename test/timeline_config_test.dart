@@ -89,8 +89,11 @@ void main() {
       final synthesisRoute = TimelineModuleRegistry.buildRoute(synthesis);
       final imagineRoute = TimelineModuleRegistry.buildRoute(imagine, resultMode: true);
 
-      expect(synthesisRoute, startsWith('notes/session_synthesis?title='));
-      expect(imagineRoute, startsWith('notes/session_imagine?title='));
+      expect(synthesisRoute, startsWith('synthesis?title='));
+      expect(synthesisRoute, contains('giftsSession=session_5'));
+      expect(synthesisRoute, contains('prayerSession=session_7'));
+      expect(synthesisRoute, contains('goalsSession=session_10'));
+      expect(imagineRoute, startsWith('imagine/session_imagine?title='));
       expect(imagineRoute, contains('mode=result'));
     });
   });

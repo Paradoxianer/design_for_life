@@ -23,6 +23,9 @@ import 'features/feedback/bloc/feedback_bloc.dart';
 import 'features/feedback/screens/feedback_screen.dart';
 import 'features/imagine/bloc/imagine_bloc.dart';
 import 'features/imagine/screens/imagine_screen.dart';
+import 'features/life_tree/bloc/life_tree_bloc.dart';
+import 'features/life_tree/screens/life_tree_screen.dart';
+import 'features/synthesis/bloc/synthesis_bloc.dart';
 import 'features/synthesis/screens/synthesis_screen.dart';
 
 void main() async {
@@ -48,6 +51,8 @@ void main() async {
         BlocProvider(create: (context) => ValuesBloc()),
         BlocProvider(create: (context) => FeedbackBloc()),
         BlocProvider(create: (context) => ImagineBloc()),
+        BlocProvider(create: (context) => LifeTreeBloc()),
+        BlocProvider(create: (context) => SynthesisBloc()),
       ],
       child: const DflApp(),
     ),
@@ -55,7 +60,9 @@ void main() async {
 }
 
 class DflApp extends StatelessWidget {
-  const DflApp({super.key});
+  final String? forcedLocale;
+
+  const DflApp({super.key, this.forcedLocale});
 
   @override
   Widget build(BuildContext context) {
@@ -154,16 +161,30 @@ class DflApp extends StatelessWidget {
           },
         ),
         GoRoute(
+          path: '/life-tree/:sessionId',
+          builder: (context, state) {
+            final sessionId = state.pathParameters['sessionId']!;
+            final title = state.uri.queryParameters['title'] ?? 'Lebensbaum';
+            final mode = state.uri.queryParameters['mode'];
+            return LifeTreeScreen(
+              sessionId: sessionId,
+              title: title,
+              initialEditMode: mode != 'result',
+            );
+          },
+        ),
+        GoRoute(
           path: '/synthesis',
           builder: (context, state) {
-            final title = state.uri.queryParameters['title'] ?? 'Big Picture';
+            final title = state.uri.queryParameters['title'] ?? 'Connections';
             final mode = state.uri.queryParameters['mode'];
             return SynthesisScreen(
               giftsSessionId: state.uri.queryParameters['giftsSession'] ?? 'session_5',
               prayerSessionId: state.uri.queryParameters['prayerSession'] ?? 'session_7',
               goalsSessionId: state.uri.queryParameters['goalsSession'] ?? 'session_10',
+              lifeTreeSessionId: state.uri.queryParameters['lifeTreeSession'] ?? 'session_3',
               title: title,
-              initialEditMode: mode == 'edit',
+              initialEditMode: mode != 'result',
             );
           },
         ),
@@ -174,6 +195,7 @@ class DflApp extends StatelessWidget {
       title: 'DFL App',
       theme: AppTheme.lightTheme,
       routerConfig: router,
+      locale: forcedLocale == null ? null : Locale(forcedLocale!),
       debugShowCheckedModeBanner: false,
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
