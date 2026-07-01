@@ -121,10 +121,6 @@ _ImagineResultOption _resolveOption(String optionId) {
   if (option != null) {
     return _ImagineResultOption(title: option.label, colors: option.colors);
   }
-  assert(
-    imagineOptionsById.containsKey(optionId),
-    'ImagineResult: unknown optionId "$optionId"',
-  );
   debugPrint('ImagineResult: unknown optionId "$optionId"');
   return const _ImagineResultOption(
     title: 'Auswahl',
