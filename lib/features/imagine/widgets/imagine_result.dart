@@ -97,7 +97,7 @@ class _OptionResultCard extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.all(12),
                   child: Text(
-                    option.title,
+                    option.label,
                     style: theme.textTheme.titleSmall?.copyWith(
                       color: Colors.white,
                       fontWeight: FontWeight.w600,
@@ -116,23 +116,17 @@ class _OptionResultCard extends StatelessWidget {
   }
 }
 
-_ImagineResultOption _resolveOption(String optionId) {
+ImagineVisualOption _resolveOption(String optionId) {
   final option = imagineOptionsById[optionId];
   if (option != null) {
-    return _ImagineResultOption(title: option.label, colors: option.colors);
+    return option;
   }
   debugPrint(
     'ImagineResult: unknown optionId "$optionId". Valid ids: ${imagineOptionsById.keys.join(', ')}',
   );
-  return const _ImagineResultOption(
-    title: 'Auswahl',
+  return const ImagineVisualOption(
+    id: 'fallback',
+    label: 'Auswahl',
     colors: [Color(0xFF455A64), Color(0xFF90A4AE)],
   );
-}
-
-class _ImagineResultOption {
-  final String title;
-  final List<Color> colors;
-
-  const _ImagineResultOption({required this.title, required this.colors});
 }
