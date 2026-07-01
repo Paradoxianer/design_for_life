@@ -529,6 +529,10 @@ class AppLocalizationsDe extends AppLocalizations {
       'Gestalte Zukunftsbilder und halte deine Gedanken zur nächsten Lebensphase fest.';
 
   @override
+  String get timelineUnavailable =>
+      'Timeline konnte nicht geladen werden. Bitte starte die App neu.';
+
+  @override
   String get valueGenauigkeit => 'Genauigkeit';
 
   @override

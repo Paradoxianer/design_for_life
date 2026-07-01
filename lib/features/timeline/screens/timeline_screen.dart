@@ -17,6 +17,12 @@ class TimelineScreen extends StatelessWidget {
     return FutureBuilder<List<DflSession>>(
       future: const TimelineConfigRepository().loadSessions(l10n),
       builder: (context, snapshot) {
+        if (snapshot.hasError) {
+          return Scaffold(
+            body: Center(child: Text(l10n.timelineUnavailable)),
+          );
+        }
+
         if (!snapshot.hasData) {
           return const Scaffold(
             body: Center(child: CircularProgressIndicator()),

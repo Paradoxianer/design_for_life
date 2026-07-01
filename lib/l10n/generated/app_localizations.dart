@@ -1034,6 +1034,12 @@ abstract class AppLocalizations {
   /// **'Shape future images and capture your thoughts for the next life phase.'**
   String get timelineImagineDesc;
 
+  /// No description provided for @timelineUnavailable.
+  ///
+  /// In en, this message translates to:
+  /// **'Unable to load the timeline. Please restart the app.'**
+  String get timelineUnavailable;
+
   /// No description provided for @valueGenauigkeit.
   ///
   /// In en, this message translates to:

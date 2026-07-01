@@ -58,9 +58,9 @@ class TimelineModuleRegistry {
       case 'module_spiritual_gifts':
         return 'spiritual-gifts/$moduleSessionId?title=$titleParam$modeSuffix';
       case 'module_values':
-        return 'values?title=$titleParam${resultMode ? '&mode=result' : ''}';
+        return 'values?title=$titleParam$modeSuffix';
       case 'module_feedback':
-        return 'feedback?title=$titleParam${resultMode ? '&mode=result' : ''}';
+        return 'feedback?title=$titleParam$modeSuffix';
       case 'module_group_photo':
         return 'group-photo';
       default:

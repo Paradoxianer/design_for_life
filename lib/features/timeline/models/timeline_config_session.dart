@@ -63,6 +63,10 @@ class TimelineConfigSession {
   }
 
   static String _localizedValue(AppLocalizations l10n, String key) {
+    // Generated localization classes expose typed getters instead of string lookups,
+    // and Flutter does not provide reflection for these accessors in release builds.
+    // Keeping the mapping explicit preserves type safety for config-driven session labels.
+    // Add any new timeline title/description keys here when extending the config schema.
     switch (key) {
       case 'session1Title':
         return l10n.session1Title;

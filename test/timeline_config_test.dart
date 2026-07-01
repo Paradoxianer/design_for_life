@@ -7,7 +7,7 @@ import 'package:design_for_life/features/timeline/services/timeline_module_regis
 
 void main() {
   group('timeline config', () {
-    test('contains synthesis before imagine and no legacy future idea entry', () {
+    test('has synthesis ordered before imagine and excludes removed session8 title key', () {
       final configFile = File('assets/config/timeline_config.json');
       final decoded = jsonDecode(configFile.readAsStringSync()) as Map<String, dynamic>;
       final sessions = (decoded['sessions'] as List<dynamic>)
@@ -23,6 +23,49 @@ void main() {
       expect(synthesisIndex, lessThan(imagineIndex));
       expect(moduleIds, isNot(contains('module_future_idea')));
       expect(sessions.any((session) => session['titleKey'] == 'session8Title'), isFalse);
+    });
+
+    test('only uses localization keys supported by the timeline resolver', () {
+      final configFile = File('assets/config/timeline_config.json');
+      final decoded = jsonDecode(configFile.readAsStringSync()) as Map<String, dynamic>;
+      final sessions = (decoded['sessions'] as List<dynamic>)
+          .map((item) => Map<String, dynamic>.from(item as Map))
+          .toList();
+
+      const supportedKeys = {
+        'session1Title',
+        'session1Desc',
+        'session2Title',
+        'session2Desc',
+        'session3Title',
+        'session3Desc',
+        'session4Title',
+        'session4Desc',
+        'session5Title',
+        'session5Desc',
+        'session6Title',
+        'session6Desc',
+        'session7Title',
+        'session7Desc',
+        'timelineSynthesisTitle',
+        'timelineSynthesisDesc',
+        'timelineImagineTitle',
+        'timelineImagineDesc',
+        'session9Title',
+        'session9Desc',
+        'session10Title',
+        'session10Desc',
+        'session11Title',
+        'session12Title',
+      };
+
+      for (final session in sessions) {
+        expect(supportedKeys, contains(session['titleKey']));
+        final descriptionKey = session['descriptionKey'];
+        if (descriptionKey != null) {
+          expect(supportedKeys, contains(descriptionKey));
+        }
+      }
     });
   });
 

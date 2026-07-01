@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:design_for_life/l10n/generated/app_localizations.dart';
 
@@ -14,8 +15,7 @@ class TimelineConfigRepository {
 
   Future<List<DflSession>> loadSessions(AppLocalizations l10n) async {
     try {
-      final rawConfig = await rootBundle.loadString(_assetPath);
-      final decoded = jsonDecode(rawConfig);
+      final decoded = jsonDecode(await rootBundle.loadString(_assetPath));
       if (decoded is! Map<String, dynamic>) {
         return StaticTimelineData.getSessions(l10n);
       }
@@ -32,7 +32,15 @@ class TimelineConfigRepository {
         ..sort((a, b) => a.order.compareTo(b.order));
 
       return sessions.map((session) => session.toSession(l10n)).toList();
-    } catch (_) {
+    } catch (error, stackTrace) {
+      FlutterError.reportError(
+        FlutterErrorDetails(
+          exception: error,
+          stack: stackTrace,
+          library: 'timeline',
+          context: ErrorDescription('while loading local timeline config'),
+        ),
+      );
       return StaticTimelineData.getSessions(l10n);
     }
   }
