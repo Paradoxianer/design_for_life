@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../models/imagine_visual_option.dart';
 
 class ImagineResult extends StatelessWidget {
   final String? pastImageUrl;
@@ -116,10 +117,14 @@ class _OptionResultCard extends StatelessWidget {
 }
 
 _ImagineResultOption _resolveOption(String optionId) {
-  final option = _optionById[optionId];
+  final option = imagineOptionsById[optionId];
   if (option != null) {
-    return option;
+    return _ImagineResultOption(title: option.label, colors: option.colors);
   }
+  assert(
+    imagineOptionsById.containsKey(optionId),
+    'ImagineResult: unknown optionId "$optionId"',
+  );
   debugPrint('ImagineResult: unknown optionId "$optionId"');
   return const _ImagineResultOption(
     title: 'Auswahl',
@@ -133,46 +138,3 @@ class _ImagineResultOption {
 
   const _ImagineResultOption({required this.title, required this.colors});
 }
-
-const Map<String, _ImagineResultOption> _optionById = {
-  'past_roots': _ImagineResultOption(
-    title: 'Wurzeln & Herkunft',
-    colors: [Color(0xFF4E342E), Color(0xFF8D6E63), Color(0xFFBCAAA4)],
-  ),
-  'past_stones': _ImagineResultOption(
-    title: 'Erfahrung & Beständigkeit',
-    colors: [Color(0xFF37474F), Color(0xFF607D8B), Color(0xFF90A4AE)],
-  ),
-  'past_valley': _ImagineResultOption(
-    title: 'Lernen in Tiefen',
-    colors: [Color(0xFF1A237E), Color(0xFF3949AB), Color(0xFF7986CB)],
-  ),
-  'past_warm_memory': _ImagineResultOption(
-    title: 'Warme Erinnerungen',
-    colors: [Color(0xFF6D4C41), Color(0xFFA1887F), Color(0xFFD7CCC8)],
-  ),
-  'past_growth': _ImagineResultOption(
-    title: 'Wachstum im Rückblick',
-    colors: [Color(0xFF1B5E20), Color(0xFF43A047), Color(0xFF81C784)],
-  ),
-  'future_horizon': _ImagineResultOption(
-    title: 'Neuer Horizont',
-    colors: [Color(0xFF0D47A1), Color(0xFF1976D2), Color(0xFF64B5F6)],
-  ),
-  'future_light': _ImagineResultOption(
-    title: 'Licht & Klarheit',
-    colors: [Color(0xFFF9A825), Color(0xFFFFCA28), Color(0xFFFFF59D)],
-  ),
-  'future_path': _ImagineResultOption(
-    title: 'Weg & Richtung',
-    colors: [Color(0xFF4A148C), Color(0xFF7B1FA2), Color(0xFFBA68C8)],
-  ),
-  'future_peace': _ImagineResultOption(
-    title: 'Frieden & Weite',
-    colors: [Color(0xFF00695C), Color(0xFF26A69A), Color(0xFF80CBC4)],
-  ),
-  'future_bloom': _ImagineResultOption(
-    title: 'Aufbruch & Entfaltung',
-    colors: [Color(0xFFAD1457), Color(0xFFEC407A), Color(0xFFF48FB1)],
-  ),
-};
