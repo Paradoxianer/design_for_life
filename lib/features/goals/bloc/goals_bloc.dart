@@ -20,7 +20,12 @@ class GoalsBloc extends HydratedBloc<GoalsEvent, GoalsState> {
       sessionGoals[event.index] = sessionGoals[event.index].copyWith(text: event.text);
       final newGoals = Map<String, List<Goal>>.from(state.goals);
       newGoals[event.sessionId] = sessionGoals;
-      emit(state.copyWith(goals: newGoals));
+
+      // Mirror goal texts as takeaways so the share/export layer always has them.
+      final newTakeaways = Map<String, List<String>>.from(state.takeaways);
+      newTakeaways[event.sessionId] = sessionGoals.map((g) => g.text).toList();
+
+      emit(state.copyWith(goals: newGoals, takeaways: newTakeaways));
     }
   }
 

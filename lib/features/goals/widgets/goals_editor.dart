@@ -6,6 +6,9 @@ import '../bloc/goals_bloc.dart';
 import '../models/goal.dart';
 import 'smart_indicator.dart';
 
+// ignore: avoid_positional_boolean_parameters
+void _noOp(int i, String v) {}
+
 class GoalsEditor extends DflModuleEditor {
   final String sessionId;
   final List<Goal> goals;
@@ -14,9 +17,7 @@ class GoalsEditor extends DflModuleEditor {
     super.key,
     required this.sessionId,
     required this.goals,
-    required super.takeaways,
-    required super.onUpdate,
-  }) : super(showTakeaways: false);
+  }) : super(takeaways: const [], onUpdate: _noOp, showTakeaways: false);
 
   @override
   Widget buildContent(BuildContext context) {

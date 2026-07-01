@@ -21,12 +21,11 @@ import 'features/values/bloc/values_bloc.dart';
 import 'features/values/screens/values_assessment_screen.dart';
 import 'features/feedback/bloc/feedback_bloc.dart';
 import 'features/feedback/screens/feedback_screen.dart';
-import 'features/life_tree/bloc/life_tree_bloc.dart';
-import 'features/life_tree/screens/life_tree_screen.dart';
+import 'features/imagine/bloc/imagine_bloc.dart';
+import 'features/imagine/screens/imagine_screen.dart';
+import 'features/synthesis/screens/synthesis_screen.dart';
 
 void main() async {
-  const lang = String.fromEnvironment('LANGUAGE');
-  print("LANGUAGE = $lang");
   WidgetsFlutterBinding.ensureInitialized();
   
   HydratedBloc.storage = await HydratedStorage.build(
@@ -48,20 +47,15 @@ void main() async {
         ),
         BlocProvider(create: (context) => ValuesBloc()),
         BlocProvider(create: (context) => FeedbackBloc()),
-        BlocProvider(create: (context) => LifeTreeBloc()),
+        BlocProvider(create: (context) => ImagineBloc()),
       ],
-      child: DflApp(forcedLocale: lang),
+      child: const DflApp(),
     ),
   );
 }
 
 class DflApp extends StatelessWidget {
-  final String? forcedLocale;
-
-  const DflApp({
-    super.key,
-    this.forcedLocale,
-  });
+  const DflApp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -79,19 +73,6 @@ class DflApp extends StatelessWidget {
             final title = state.uri.queryParameters['title'] ?? 'Notes';
             final mode = state.uri.queryParameters['mode'];
             return NotesScreen(
-              sessionId: sessionId, 
-              title: title,
-              initialEditMode: mode != 'result',
-            );
-          },
-        ),
-        GoRoute(
-          path: '/life-tree/:sessionId',
-          builder: (context, state) {
-            final sessionId = state.pathParameters['sessionId']!;
-            final title = state.uri.queryParameters['title'] ?? 'Lebensbaum';
-            final mode = state.uri.queryParameters['mode'];
-            return LifeTreeScreen(
               sessionId: sessionId, 
               title: title,
               initialEditMode: mode != 'result',
@@ -159,6 +140,33 @@ class DflApp extends StatelessWidget {
             );
           },
         ),
+        GoRoute(
+          path: '/imagine/:sessionId',
+          builder: (context, state) {
+            final sessionId = state.pathParameters['sessionId']!;
+            final title = state.uri.queryParameters['title'] ?? 'Zusammenfassung';
+            final mode = state.uri.queryParameters['mode'];
+            return ImagineScreen(
+              sessionId: sessionId,
+              title: title,
+              initialEditMode: mode != 'result',
+            );
+          },
+        ),
+        GoRoute(
+          path: '/synthesis',
+          builder: (context, state) {
+            final title = state.uri.queryParameters['title'] ?? 'Big Picture';
+            final mode = state.uri.queryParameters['mode'];
+            return SynthesisScreen(
+              giftsSessionId: state.uri.queryParameters['giftsSession'] ?? 'session_5',
+              prayerSessionId: state.uri.queryParameters['prayerSession'] ?? 'session_7',
+              goalsSessionId: state.uri.queryParameters['goalsSession'] ?? 'session_10',
+              title: title,
+              initialEditMode: mode == 'edit',
+            );
+          },
+        ),
       ],
     );
 
@@ -167,9 +175,6 @@ class DflApp extends StatelessWidget {
       theme: AppTheme.lightTheme,
       routerConfig: router,
       debugShowCheckedModeBanner: false,
-      locale: forcedLocale != null && forcedLocale!.isNotEmpty 
-          ? Locale(forcedLocale!) 
-          : null,
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
     );

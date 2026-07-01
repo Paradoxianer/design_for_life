@@ -40,11 +40,7 @@ class GoalsScreen extends StatelessWidget {
     return BlocBuilder<GoalsBloc, GoalsState>(
       builder: (context, state) {
         final goals = state.goals[sessionId] ??
-            const [
-              Goal(),
-              Goal(),
-              Goal(),
-            ];
+            const [Goal(), Goal(), Goal()];
 
         final shareContent = _getShareableContent(goals);
 
@@ -62,8 +58,6 @@ class GoalsScreen extends StatelessWidget {
           editor: GoalsEditor(
             sessionId: sessionId,
             goals: goals,
-            takeaways: const [],
-            onUpdate: (index, value) {},
           ),
           result: GoalsResult(
             goals: goals,
