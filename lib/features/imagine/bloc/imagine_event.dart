@@ -21,11 +21,3 @@ class SelectFutureImage extends ImagineEvent {
   @override
   List<Object?> get props => [sessionId, imageUrl];
 }
-
-class UpdateImagineTakeaway extends ImagineEvent {
-  final String sessionId;
-  final String text;
-  const UpdateImagineTakeaway(this.sessionId, this.text);
-  @override
-  List<Object?> get props => [sessionId, text];
-}

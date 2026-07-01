@@ -21,25 +21,19 @@ class ImagineScreen extends StatelessWidget {
 
   ShareableContent _buildShareContent(ImagineState state) {
     return ShareableContent(
-      title: 'Mein Rückblick & Ausblick',
+      title: 'Imagine',
       items: [
         if (state.pastImageUrl(sessionId) != null)
           ShareableItem(
             id: 'past_image',
             label: 'Vergangenheit',
-            imagePath: state.pastImageUrl(sessionId),
+            textValue: state.pastImageUrl(sessionId),
           ),
         if (state.futureImageUrl(sessionId) != null)
           ShareableItem(
             id: 'future_image',
             label: 'Zukunft',
-            imagePath: state.futureImageUrl(sessionId),
-          ),
-        if (state.takeaway(sessionId).isNotEmpty)
-          ShareableItem(
-            id: 'takeaway',
-            label: 'Meine Erkenntnis',
-            textValue: state.takeaway(sessionId),
+            textValue: state.futureImageUrl(sessionId),
           ),
       ],
     );
@@ -63,12 +57,10 @@ class ImagineScreen extends StatelessWidget {
             sessionId: sessionId,
             selectedPastUrl: state.pastImageUrl(sessionId),
             selectedFutureUrl: state.futureImageUrl(sessionId),
-            takeaway: state.takeaway(sessionId),
           ),
           result: ImagineResult(
             pastImageUrl: state.pastImageUrl(sessionId),
             futureImageUrl: state.futureImageUrl(sessionId),
-            takeaway: state.takeaway(sessionId),
           ),
         );
       },

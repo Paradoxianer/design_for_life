@@ -2,8 +2,8 @@ import 'package:design_for_life/features/spiritual_gifts/repositories/gifts_repo
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:design_for_life/main.dart';
-import 'package:design_for_life/core/blocs/entry_list_bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:design_for_life/features/imagine/bloc/imagine_bloc.dart';
 import 'package:design_for_life/features/notes/bloc/notes_bloc.dart';
 import 'package:design_for_life/features/listening_prayer/bloc/listening_prayer_bloc.dart';
 import 'package:design_for_life/features/goals/bloc/goals_bloc.dart';
@@ -38,6 +38,7 @@ void main() {
         BlocProvider(create: (context) => ValuesBloc()),
         BlocProvider(create: (context) => FeedbackBloc()),
         BlocProvider(create: (context) => LifeTreeBloc()),
+        BlocProvider(create: (context) => ImagineBloc()),
       ],
       child: DflApp(forcedLocale: forcedLocale),
     );

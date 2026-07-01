@@ -55,7 +55,9 @@ void main() async {
 }
 
 class DflApp extends StatelessWidget {
-  const DflApp({super.key});
+  final String? forcedLocale;
+
+  const DflApp({super.key, this.forcedLocale});
 
   @override
   Widget build(BuildContext context) {
@@ -174,6 +176,7 @@ class DflApp extends StatelessWidget {
       title: 'DFL App',
       theme: AppTheme.lightTheme,
       routerConfig: router,
+      locale: forcedLocale == null ? null : Locale(forcedLocale!),
       debugShowCheckedModeBanner: false,
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
