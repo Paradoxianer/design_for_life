@@ -45,5 +45,6 @@ flutter:
   generate: true
   
   assets:
+    - assets/config/
     - assets/data/
     - assets/DFL_Logo.png

@@ -515,6 +515,20 @@ class AppLocalizationsDe extends AppLocalizations {
   String get session12Title => 'Feedbackbogen';
 
   @override
+  String get timelineSynthesisTitle => 'Synthesis (S)';
+
+  @override
+  String get timelineSynthesisDesc =>
+      'Verdichte die wichtigsten Erkenntnisse aus Lebensbaum, Gaben, Werten und hörendem Gebet.';
+
+  @override
+  String get timelineImagineTitle => 'Imagine';
+
+  @override
+  String get timelineImagineDesc =>
+      'Gestalte Zukunftsbilder und halte deine Gedanken zur nächsten Lebensphase fest.';
+
+  @override
   String get valueGenauigkeit => 'Genauigkeit';
 
   @override

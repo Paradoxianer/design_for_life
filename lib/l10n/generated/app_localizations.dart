@@ -1010,6 +1010,30 @@ abstract class AppLocalizations {
   /// **'Feedback Form'**
   String get session12Title;
 
+  /// No description provided for @timelineSynthesisTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Synthesis (S)'**
+  String get timelineSynthesisTitle;
+
+  /// No description provided for @timelineSynthesisDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Bring together the key insights from life tree, gifts, values, and listening prayer.'**
+  String get timelineSynthesisDesc;
+
+  /// No description provided for @timelineImagineTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Imagine'**
+  String get timelineImagineTitle;
+
+  /// No description provided for @timelineImagineDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Shape future images and capture your thoughts for the next life phase.'**
+  String get timelineImagineDesc;
+
   /// No description provided for @valueGenauigkeit.
   ///
   /// In en, this message translates to:

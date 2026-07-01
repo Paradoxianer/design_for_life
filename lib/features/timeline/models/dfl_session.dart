@@ -40,7 +40,8 @@ class DflSession extends Equatable {
   final String? room;
   final String? groupAssignment;
   final SessionStatus status;
-  final String? moduleRoute;
+  final String moduleId;
+  final String? moduleSessionId;
 
   const DflSession({
     required this.id,
@@ -52,7 +53,8 @@ class DflSession extends Equatable {
     this.room,
     this.groupAssignment,
     this.status = SessionStatus.notStarted,
-    this.moduleRoute,
+    required this.moduleId,
+    this.moduleSessionId,
   });
 
   @override
@@ -66,6 +68,7 @@ class DflSession extends Equatable {
         room,
         groupAssignment,
         status,
-        moduleRoute,
+        moduleId,
+        moduleSessionId,
       ];
 }

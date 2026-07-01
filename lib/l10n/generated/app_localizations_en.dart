@@ -508,6 +508,20 @@ class AppLocalizationsEn extends AppLocalizations {
   String get session12Title => 'Feedback Form';
 
   @override
+  String get timelineSynthesisTitle => 'Synthesis (S)';
+
+  @override
+  String get timelineSynthesisDesc =>
+      'Bring together the key insights from life tree, gifts, values, and listening prayer.';
+
+  @override
+  String get timelineImagineTitle => 'Imagine';
+
+  @override
+  String get timelineImagineDesc =>
+      'Shape future images and capture your thoughts for the next life phase.';
+
+  @override
   String get valueGenauigkeit => 'Accuracy';
 
   @override

@@ -1,0 +1,130 @@
+{
+  "version": 1,
+  "sessions": [
+    {
+      "id": "session_1",
+      "moduleId": "module_notes",
+      "moduleSessionId": "session_1",
+      "order": 10,
+      "titleKey": "session1Title",
+      "descriptionKey": "session1Desc",
+      "type": "lecture",
+      "enabled": true
+    },
+    {
+      "id": "session_2",
+      "moduleId": "module_notes",
+      "moduleSessionId": "session_2",
+      "order": 20,
+      "titleKey": "session2Title",
+      "descriptionKey": "session2Desc",
+      "type": "lecture",
+      "enabled": true
+    },
+    {
+      "id": "session_3",
+      "moduleId": "module_life_tree",
+      "moduleSessionId": "session_3",
+      "order": 30,
+      "titleKey": "session3Title",
+      "descriptionKey": "session3Desc",
+      "type": "groupWork",
+      "enabled": true
+    },
+    {
+      "id": "session_4",
+      "moduleId": "module_notes",
+      "moduleSessionId": "session_3",
+      "order": 40,
+      "titleKey": "session4Title",
+      "descriptionKey": "session4Desc",
+      "type": "lecture",
+      "enabled": true
+    },
+    {
+      "id": "session_5",
+      "moduleId": "module_spiritual_gifts",
+      "moduleSessionId": "session_5",
+      "order": 50,
+      "titleKey": "session5Title",
+      "descriptionKey": "session5Desc",
+      "type": "groupWork",
+      "enabled": true
+    },
+    {
+      "id": "session_6",
+      "moduleId": "module_values",
+      "order": 60,
+      "titleKey": "session6Title",
+      "descriptionKey": "session6Desc",
+      "type": "groupWork",
+      "enabled": true
+    },
+    {
+      "id": "session_7",
+      "moduleId": "module_listening_prayer",
+      "moduleSessionId": "session_7",
+      "order": 70,
+      "titleKey": "session7Title",
+      "descriptionKey": "session7Desc",
+      "type": "prayer",
+      "enabled": true
+    },
+    {
+      "id": "session_synthesis",
+      "moduleId": "module_synthesis",
+      "moduleSessionId": "session_synthesis",
+      "order": 80,
+      "titleKey": "timelineSynthesisTitle",
+      "descriptionKey": "timelineSynthesisDesc",
+      "type": "groupWork",
+      "enabled": true
+    },
+    {
+      "id": "session_imagine",
+      "moduleId": "module_imagine",
+      "moduleSessionId": "session_imagine",
+      "order": 90,
+      "titleKey": "timelineImagineTitle",
+      "descriptionKey": "timelineImagineDesc",
+      "type": "groupWork",
+      "enabled": true
+    },
+    {
+      "id": "session_9",
+      "moduleId": "module_notes",
+      "moduleSessionId": "session_5",
+      "order": 100,
+      "titleKey": "session9Title",
+      "descriptionKey": "session9Desc",
+      "type": "lecture",
+      "enabled": true
+    },
+    {
+      "id": "session_10",
+      "moduleId": "module_goals",
+      "moduleSessionId": "session_10",
+      "order": 110,
+      "titleKey": "session10Title",
+      "descriptionKey": "session10Desc",
+      "type": "personalReflection",
+      "enabled": true
+    },
+    {
+      "id": "session_11",
+      "moduleId": "module_group_photo",
+      "order": 120,
+      "titleKey": "session11Title",
+      "type": "other",
+      "enabled": true
+    },
+    {
+      "id": "session_12",
+      "moduleId": "module_feedback",
+      "order": 130,
+      "titleKey": "session12Title",
+      "type": "other",
+      "enabled": true
+    }
+  ]
+}
