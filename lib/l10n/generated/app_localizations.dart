@@ -929,7 +929,7 @@ abstract class AppLocalizations {
   /// No description provided for @session5Title.
   ///
   /// In en, this message translates to:
-  /// **'Spiritual Gifts (Evaluation, Exchange)'**
+  /// **'Spiritual Gifts'**
   String get session5Title;
 
   /// No description provided for @session5Desc.
@@ -941,7 +941,7 @@ abstract class AppLocalizations {
   /// No description provided for @session6Title.
   ///
   /// In en, this message translates to:
-  /// **'Values (Complete all workbook tasks + Exchange)'**
+  /// **'Values'**
   String get session6Title;
 
   /// No description provided for @session6Desc.
@@ -953,7 +953,7 @@ abstract class AppLocalizations {
   /// No description provided for @session7Title.
   ///
   /// In en, this message translates to:
-  /// **'Session Four: Pray, Dream, Listen! (Listening Prayer)'**
+  /// **'Session Four: Pray, Dream, Listen!'**
   String get session7Title;
 
   /// No description provided for @session7Desc.
@@ -1007,7 +1007,7 @@ abstract class AppLocalizations {
   /// No description provided for @timelineSynthesisTitle.
   ///
   /// In en, this message translates to:
-  /// **'Synthesis (S)'**
+  /// **'Big Picture'**
   String get timelineSynthesisTitle;
 
   /// No description provided for @timelineSynthesisDesc.

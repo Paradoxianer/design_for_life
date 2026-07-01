@@ -463,20 +463,19 @@ class AppLocalizationsEn extends AppLocalizations {
   String get session4Desc => 'Present and Identity.';
 
   @override
-  String get session5Title => 'Spiritual Gifts (Evaluation, Exchange)';
+  String get session5Title => 'Spiritual Gifts';
 
   @override
   String get session5Desc => 'Discovery and classification of spiritual gifts.';
 
   @override
-  String get session6Title => 'Values (Complete all workbook tasks + Exchange)';
+  String get session6Title => 'Values';
 
   @override
   String get session6Desc => 'Connections to spiritual gifts + life tree.';
 
   @override
-  String get session7Title =>
-      'Session Four: Pray, Dream, Listen! (Listening Prayer)';
+  String get session7Title => 'Session Four: Pray, Dream, Listen!';
 
   @override
   String get session7Desc =>
@@ -505,7 +504,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get session11Title => 'Group Photo';
 
   @override
-  String get timelineSynthesisTitle => 'Synthesis (S)';
+  String get timelineSynthesisTitle => 'Big Picture';
 
   @override
   String get timelineSynthesisDesc =>

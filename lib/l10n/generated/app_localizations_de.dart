@@ -469,21 +469,19 @@ class AppLocalizationsDe extends AppLocalizations {
   String get session4Desc => 'Gegenwart und Identität.';
 
   @override
-  String get session5Title => 'Gaben (Auswertung, Austausch)';
+  String get session5Title => 'Gaben';
 
   @override
   String get session5Desc => 'Entdeckung und Einordnung der geistlichen Gaben.';
 
   @override
-  String get session6Title =>
-      'Werte (Alle Aufgaben Im Heft fertig + Austausch)';
+  String get session6Title => 'Werte';
 
   @override
   String get session6Desc => 'Zusammenhänge zu den Gaben + Lebensbaum.';
 
   @override
-  String get session7Title =>
-      'Einheit Vier: Bete, Träume, Höre! (Hörendes Gebet)';
+  String get session7Title => 'Einheit Vier: Bete, Träume, Höre!';
 
   @override
   String get session7Desc =>
@@ -512,7 +510,7 @@ class AppLocalizationsDe extends AppLocalizations {
   String get session11Title => 'Gruppenfoto';
 
   @override
-  String get timelineSynthesisTitle => 'Synthesis (S)';
+  String get timelineSynthesisTitle => 'Zusammenschau';
 
   @override
   String get timelineSynthesisDesc =>
