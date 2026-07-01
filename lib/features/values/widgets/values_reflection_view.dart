@@ -16,6 +16,8 @@ class ValuesReflectionView extends StatelessWidget {
       builder: (context, state) {
         return ListView(
           padding: const EdgeInsets.all(16),
+          shrinkWrap: true,
+          physics: const NeverScrollableScrollPhysics(),
           children: [
             Text(
               l10n.valuesPhase3Title,

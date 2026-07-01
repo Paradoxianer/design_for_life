@@ -20,6 +20,8 @@ class ValuesRatingView extends StatelessWidget {
         
         return ListView.builder(
           padding: EdgeInsets.zero,
+          shrinkWrap: true,
+          physics: const NeverScrollableScrollPhysics(),
           itemCount: state.allValues.length + 2,
           itemBuilder: (context, index) {
             if (index == 0) {
