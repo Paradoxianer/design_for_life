@@ -11,15 +11,15 @@ class ImagineBloc extends HydratedBloc<ImagineEvent, ImagineState> {
   }
 
   void _onSelectPastImage(SelectPastImage event, Emitter<ImagineState> emit) {
-    final updated = Map<String, String?>.from(state.pastImageUrls);
+    final updated = Map<String, String?>.from(state.pastImageIds);
     updated[event.sessionId] = event.imageUrl;
-    emit(state.copyWith(pastImageUrls: updated));
+    emit(state.copyWith(pastImageIds: updated));
   }
 
   void _onSelectFutureImage(SelectFutureImage event, Emitter<ImagineState> emit) {
-    final updated = Map<String, String?>.from(state.futureImageUrls);
+    final updated = Map<String, String?>.from(state.futureImageIds);
     updated[event.sessionId] = event.imageUrl;
-    emit(state.copyWith(futureImageUrls: updated));
+    emit(state.copyWith(futureImageIds: updated));
   }
 
   @override

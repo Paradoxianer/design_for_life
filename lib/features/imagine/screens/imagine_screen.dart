@@ -24,21 +24,21 @@ class ImagineScreen extends StatelessWidget {
     return ShareableContent(
       title: 'Imagine',
       items: [
-        if (state.pastImageUrl(sessionId) != null)
+        if (state.pastImageId(sessionId) != null)
           ShareableItem(
             id: 'past_image',
             label: 'Vergangenheit',
             textValue:
-                imagineOptionsById[state.pastImageUrl(sessionId)]?.label ??
-                state.pastImageUrl(sessionId),
+                imagineOptionsById[state.pastImageId(sessionId)]?.label ??
+                state.pastImageId(sessionId),
           ),
-        if (state.futureImageUrl(sessionId) != null)
+        if (state.futureImageId(sessionId) != null)
           ShareableItem(
             id: 'future_image',
             label: 'Zukunft',
             textValue:
-                imagineOptionsById[state.futureImageUrl(sessionId)]?.label ??
-                state.futureImageUrl(sessionId),
+                imagineOptionsById[state.futureImageId(sessionId)]?.label ??
+                state.futureImageId(sessionId),
           ),
       ],
     );
@@ -60,12 +60,12 @@ class ImagineScreen extends StatelessWidget {
           ),
           editor: ImagineEditor(
             sessionId: sessionId,
-            selectedPastUrl: state.pastImageUrl(sessionId),
-            selectedFutureUrl: state.futureImageUrl(sessionId),
+            selectedPastId: state.pastImageId(sessionId),
+            selectedFutureId: state.futureImageId(sessionId),
           ),
           result: ImagineResult(
-            pastImageUrl: state.pastImageUrl(sessionId),
-            futureImageUrl: state.futureImageUrl(sessionId),
+            pastImageId: state.pastImageId(sessionId),
+            futureImageId: state.futureImageId(sessionId),
           ),
         );
       },

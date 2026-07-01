@@ -10,22 +10,22 @@ void _noOp(int i, String v) {}
 
 class ImagineEditor extends DflModuleEditor {
   final String sessionId;
-  final String? selectedPastUrl;
-  final String? selectedFutureUrl;
+  final String? selectedPastId;
+  final String? selectedFutureId;
 
   const ImagineEditor({
     super.key,
     required this.sessionId,
-    this.selectedPastUrl,
-    this.selectedFutureUrl,
+    this.selectedPastId,
+    this.selectedFutureId,
   }) : super(takeaways: const [], onUpdate: _noOp, showTakeaways: false);
 
   @override
   Widget buildContent(BuildContext context) {
     return _ImagineEditorBody(
       sessionId: sessionId,
-      selectedPastId: selectedPastUrl,
-      selectedFutureId: selectedFutureUrl,
+      selectedPastId: selectedPastId,
+      selectedFutureId: selectedFutureId,
     );
   }
 }

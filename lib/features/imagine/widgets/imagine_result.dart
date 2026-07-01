@@ -2,18 +2,18 @@ import 'package:flutter/material.dart';
 import '../models/imagine_visual_option.dart';
 
 class ImagineResult extends StatelessWidget {
-  final String? pastImageUrl;
-  final String? futureImageUrl;
+  final String? pastImageId;
+  final String? futureImageId;
 
   const ImagineResult({
     super.key,
-    this.pastImageUrl,
-    this.futureImageUrl,
+    this.pastImageId,
+    this.futureImageId,
   });
 
   @override
   Widget build(BuildContext context) {
-    final hasImages = pastImageUrl != null || futureImageUrl != null;
+    final hasImages = pastImageId != null || futureImageId != null;
 
     if (!hasImages) {
       final theme = Theme.of(context);
@@ -36,20 +36,20 @@ class ImagineResult extends StatelessWidget {
         children: [
           Row(
             children: [
-              if (pastImageUrl != null)
+              if (pastImageId != null)
                 Expanded(
                   child: _OptionResultCard(
                     label: 'Vergangenheit',
-                    optionId: pastImageUrl!,
+                    optionId: pastImageId!,
                   ),
                 ),
-              if (pastImageUrl != null && futureImageUrl != null)
+              if (pastImageId != null && futureImageId != null)
                 const SizedBox(width: 12),
-              if (futureImageUrl != null)
+              if (futureImageId != null)
                 Expanded(
                   child: _OptionResultCard(
                     label: 'Zukunft',
-                    optionId: futureImageUrl!,
+                    optionId: futureImageId!,
                   ),
                 ),
             ],
