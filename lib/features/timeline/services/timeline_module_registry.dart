@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:design_for_life/features/feedback/bloc/feedback_bloc.dart';
 import 'package:design_for_life/features/goals/bloc/goals_bloc.dart';
+import 'package:design_for_life/features/imagine/bloc/imagine_bloc.dart';
 import 'package:design_for_life/features/life_tree/bloc/life_tree_bloc.dart';
 import 'package:design_for_life/features/listening_prayer/bloc/listening_prayer_bloc.dart';
 import 'package:design_for_life/features/notes/bloc/notes_bloc.dart';
@@ -19,9 +20,11 @@ class TimelineModuleRegistry {
 
     switch (session.moduleId) {
       case 'module_notes':
-      case 'module_synthesis':
-      case 'module_imagine':
         return context.watch<NotesBloc>().state.isCompleted(moduleSessionId);
+      case 'module_synthesis':
+        return context.watch<ValuesBloc>().state.isCompleted;
+      case 'module_imagine':
+        return context.watch<ImagineBloc>().state.isCompleted(moduleSessionId);
       case 'module_listening_prayer':
         return context.watch<ListeningPrayerBloc>().state.isCompleted(moduleSessionId);
       case 'module_goals':
@@ -46,9 +49,15 @@ class TimelineModuleRegistry {
 
     switch (session.moduleId) {
       case 'module_notes':
-      case 'module_synthesis':
-      case 'module_imagine':
         return 'notes/$moduleSessionId?title=$titleParam$modeSuffix';
+      case 'module_synthesis':
+        return 'synthesis?title=$titleParam'
+            '&giftsSession=session_5'
+            '&prayerSession=session_7'
+            '&goalsSession=session_10'
+            '$modeSuffix';
+      case 'module_imagine':
+        return 'imagine/$moduleSessionId?title=$titleParam$modeSuffix';
       case 'module_life_tree':
         return 'life-tree/$moduleSessionId?title=$titleParam$modeSuffix';
       case 'module_listening_prayer':

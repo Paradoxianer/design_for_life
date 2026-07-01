@@ -156,7 +156,7 @@ class DflApp extends StatelessWidget {
         GoRoute(
           path: '/synthesis',
           builder: (context, state) {
-            final title = state.uri.queryParameters['title'] ?? 'Big Picture';
+            final title = state.uri.queryParameters['title'] ?? 'Connections';
             final mode = state.uri.queryParameters['mode'];
             return SynthesisScreen(
               giftsSessionId: state.uri.queryParameters['giftsSession'] ?? 'session_5',

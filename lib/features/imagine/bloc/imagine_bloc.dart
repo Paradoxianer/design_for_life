@@ -1,8 +1,8 @@
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:equatable/equatable.dart';
 
-part 'summary_event.dart';
-part 'summary_state.dart';
+part 'imagine_event.dart';
+part 'imagine_state.dart';
 
 class ImagineBloc extends HydratedBloc<ImagineEvent, ImagineState> {
   ImagineBloc() : super(const ImagineState()) {

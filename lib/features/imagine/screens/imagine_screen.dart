@@ -4,8 +4,8 @@ import '../../../core/widgets/dfl_module_scaffold.dart';
 import '../../../core/models/shareable_content.dart';
 import '../../../core/services/share_service.dart';
 import '../bloc/imagine_bloc.dart';
-import '../widgets/summary_editor.dart';
-import '../widgets/summary_result.dart';
+import '../widgets/imagine_editor.dart';
+import '../widgets/imagine_result.dart';
 
 class ImagineScreen extends StatelessWidget {
   final String sessionId;
