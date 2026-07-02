@@ -706,7 +706,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get connectionsMatrixView => 'Matrix View';
 
   @override
-  String connectionsColorGroup(int count) => 'Color Group ($count)';
+  String connectionsColorGroup(int count) {
+    return 'Color Group ($count)';
+  }
 
   @override
   String get connectionsNoContent =>

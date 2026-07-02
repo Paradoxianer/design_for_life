@@ -1,3 +1,4 @@
+import 'dart:math';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -115,9 +116,29 @@ class _OptionSection extends StatelessWidget {
     this.selectedId,
     required this.onSelect,
   });
+  void _showFullscreenCarousel(
+      BuildContext context, {
+        required List<ImagineVisualOption> options,
+        required int initialIndex,
+        required String? selectedId,
+        required ValueChanged<String> onSelect,
+      }) {
+    showDialog(
+      context: context,
+      barrierColor: Colors.black,
+      builder: (_) => _FullscreenCarouselDialog(
+        options: options,
+        initialIndex: initialIndex,
+        selectedId: selectedId,
+        onSelect: onSelect,
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
+    final shuffledOptions = List<ImagineVisualOption>.from(options)
+      ..shuffle(Random(label.hashCode));
     final theme = Theme.of(context);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -147,10 +168,10 @@ class _OptionSection extends StatelessWidget {
             ),
             child: ListView.separated(
               scrollDirection: Axis.horizontal,
-              itemCount: options.length,
+              itemCount: shuffledOptions.length,
               separatorBuilder: (_, __) => const SizedBox(width: 10),
               itemBuilder: (context, index) {
-                final option = options[index];
+                final option = shuffledOptions[index];
                 final isSelected = option.id == selectedId;
                 return GestureDetector(
                   key: ValueKey(option.id),
@@ -158,8 +179,16 @@ class _OptionSection extends StatelessWidget {
                   child: _OptionCard(
                     option: option,
                     selected: isSelected,
-                    onFullscreen: () =>
-                        showImageFullscreen(context, option.imagePath),
+
+                    onFullscreen: () {
+                      _showFullscreenCarousel(
+                        context,
+                        options: shuffledOptions,
+                        initialIndex: index,
+                        selectedId: selectedId,
+                        onSelect: onSelect,
+                      );
+                    },
                   ),
                 );
               },
@@ -241,3 +270,228 @@ class _OptionCard extends StatelessWidget {
   }
 }
 
+class _FullscreenCarouselDialog extends StatefulWidget {
+  final List<ImagineVisualOption> options;
+  final int initialIndex;
+  final String? selectedId;
+  final ValueChanged<String> onSelect;
+
+  const _FullscreenCarouselDialog({
+    required this.options,
+    required this.initialIndex,
+    required this.selectedId,
+    required this.onSelect,
+  });
+
+  @override
+  State<_FullscreenCarouselDialog> createState() =>
+      _FullscreenCarouselDialogState();
+}
+
+class _FullscreenCarouselDialogState
+    extends State<_FullscreenCarouselDialog> {
+  late final PageController _controller;
+  late int _currentIndex;
+  late String? currentSelectedId;
+
+  @override
+  @override
+  void initState() {
+    super.initState();
+
+    _currentIndex = widget.initialIndex;
+
+    currentSelectedId = widget.selectedId;
+
+    _controller = PageController(
+      initialPage: _currentIndex,
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final option = widget.options[_currentIndex];
+    final selected = option.id == currentSelectedId;
+
+    return Scaffold(
+      backgroundColor: Colors.black,
+      body: Stack(
+        children: [
+          PageView.builder(
+            controller: _controller,
+            itemCount: widget.options.length,
+            onPageChanged: (index) {
+              setState(() {
+                _currentIndex = index;
+              });
+            },
+              itemBuilder: (context, index) {
+                final imageOption = widget.options[index];
+                final selected = imageOption.id == currentSelectedId;
+
+                return Center(
+                  child: Stack(
+                    alignment: Alignment.center,
+                    children: [
+                      InteractiveViewer(
+                        minScale: 1,
+                        maxScale: 4,
+                        child: Image.asset(
+                          imageOption.imagePath,
+                          fit: BoxFit.contain,
+                        ),
+                      ),
+
+                      Positioned(
+                        top: 20,
+                        right: 20,
+                        child: GestureDetector(
+                          onTap: () {
+                            final isAlreadySelected =
+                                currentSelectedId == imageOption.id;
+
+                            if (isAlreadySelected) {
+                              setState(() {
+                                currentSelectedId = null;
+                              });
+
+                              // Falls dein Bloc "keine Auswahl" unterstützt:
+                              // widget.onSelect('');
+                            } else {
+                              widget.onSelect(imageOption.id);
+
+                              setState(() {
+                                currentSelectedId = imageOption.id;
+                              });
+                            }
+                          },
+                          child: Container(
+                            width: 42,
+                            height: 42,
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              color:
+                              selected ? Colors.green : Colors.black87,
+                              border: Border.all(
+                                color: Colors.white,
+                                width: 2,
+                              ),
+                            ),
+                            child: selected
+                                ? const Icon(
+                              Icons.check,
+                              color: Colors.white,
+                            )
+                                : null,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                );
+              }
+          ),
+
+          Positioned(
+            top: 40,
+            right: 16,
+            child: IconButton(
+              icon: const Icon(
+                Icons.close,
+                color: Colors.white,
+                size: 32,
+              ),
+              onPressed: () => Navigator.of(context).pop(),
+            ),
+          ),
+
+          /*Positioned(
+            top: 40,
+            right: 16,
+            child: GestureDetector(
+              onTap: () {
+                widget.onSelect(option.id);
+
+                setState(() {});
+              },
+              child: Container(
+                width: 42,
+                height: 42,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: selected
+                      ? Colors.green
+                      : Colors.black87,
+                  border: Border.all(
+                    color: Colors.white,
+                    width: 2,
+                  ),
+                ),
+                child: selected
+                    ? const Icon(Icons.check, color: Colors.white)
+                    : null,
+              ),
+            ),
+          ),*/
+
+          Positioned(
+            left: 12,
+            top: 0,
+            bottom: 0,
+            child: Center(
+              child: IconButton(
+                iconSize: 42,
+                color: Colors.white,
+                icon: const Icon(Icons.chevron_left),
+                onPressed: () {
+                  if (_currentIndex > 0) {
+                    _controller.previousPage(
+                      duration: const Duration(milliseconds: 250),
+                      curve: Curves.easeOut,
+                    );
+                  }
+                },
+              ),
+            ),
+          ),
+
+          Positioned(
+            right: 12,
+            top: 0,
+            bottom: 0,
+            child: Center(
+              child: IconButton(
+                iconSize: 42,
+                color: Colors.white,
+                icon: const Icon(Icons.chevron_right),
+                onPressed: () {
+                  if (_currentIndex < widget.options.length - 1) {
+                    _controller.nextPage(
+                      duration: const Duration(milliseconds: 250),
+                      curve: Curves.easeOut,
+                    );
+                  }
+                },
+              ),
+            ),
+          ),
+
+          Positioned(
+            bottom: 24,
+            left: 0,
+            right: 0,
+            child: Center(
+              child: Text(
+                '${_currentIndex + 1} / ${widget.options.length}',
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 16,
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
