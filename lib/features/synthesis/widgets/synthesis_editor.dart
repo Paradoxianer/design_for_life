@@ -2,6 +2,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import 'package:design_for_life/l10n/generated/app_localizations.dart';
 import '../../../core/widgets/dfl_module_editor.dart';
 import '../bloc/synthesis_bloc.dart';
 
@@ -37,33 +38,47 @@ class _ConnectionsEditorLayout extends DflModuleEditor {
   Widget buildContent(BuildContext context) => const _ConnectionsBoard();
 }
 
+typedef _ColumnDef = ({String key, Color color, IconData icon});
+
 class _ConnectionsBoard extends StatelessWidget {
   const _ConnectionsBoard();
 
-  static const _columns = [
-    ('lifeTree', 'Lebensbaum', Color(0xFF2E7D32), Icons.account_tree_rounded),
-    ('values', 'Werte', Color(0xFF2D5A27), Icons.diamond_outlined),
-    ('gifts', 'Gaben', Color(0xFF6B4C9A), Icons.volunteer_activism_rounded),
-    ('prayer', 'Hörendes Gebet', Color(0xFF1565C0), Icons.hearing_rounded),
-    ('goals', 'Ziele', Color(0xFF8B5E3C), Icons.flag_rounded),
+  static const _columnDefs = <_ColumnDef>[
+    (key: 'lifeTree', color: Color(0xFF2E7D32), icon: Icons.account_tree_rounded),
+    (key: 'values', color: Color(0xFF2D5A27), icon: Icons.diamond_outlined),
+    (key: 'gifts', color: Color(0xFF6B4C9A), icon: Icons.volunteer_activism_rounded),
+    (key: 'prayer', color: Color(0xFF1565C0), icon: Icons.hearing_rounded),
+    (key: 'goals', color: Color(0xFF8B5E3C), icon: Icons.flag_rounded),
   ];
+
+  String _columnLabel(BuildContext context, String key) {
+    final l10n = AppLocalizations.of(context);
+    switch (key) {
+      case 'lifeTree': return l10n.connectionsColLifeTree;
+      case 'values': return l10n.connectionsColValues;
+      case 'gifts': return l10n.connectionsColGifts;
+      case 'prayer': return l10n.connectionsColPrayer;
+      case 'goals': return l10n.connectionsColGoals;
+      default: return key;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
     final theme = Theme.of(context);
     return BlocBuilder<SynthesisBloc, SynthesisState>(
       builder: (context, state) {
         // Only show columns that have cards
-        final activeColumns = _columns
-            .where((col) => (state.columns[col.$1] ?? const []).isNotEmpty)
+        final activeColumns = _columnDefs
+            .where((col) => (state.columns[col.key] ?? const []).isNotEmpty)
             .toList();
 
         if (activeColumns.isEmpty) {
           return Padding(
             padding: const EdgeInsets.all(24),
             child: Text(
-              'Noch keine Key-Takeaways vorhanden. '
-              'Bearbeite zuerst mindestens ein Modul (Lebensbaum, Werte, Gaben oder Hörendes Gebet).',
+              l10n.connectionsNoContent,
               style: theme.textTheme.bodyMedium?.copyWith(
                 color: theme.colorScheme.onSurfaceVariant,
               ),
@@ -75,8 +90,7 @@ class _ConnectionsBoard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Ordne Karten innerhalb einer Spalte per Drag & Drop. '
-              'Weise jeder Karte eine Farbe zu, um Gemeinsamkeiten zu markieren.',
+              l10n.connectionsGuidance,
               style: theme.textTheme.bodySmall?.copyWith(
                 color: theme.colorScheme.onSurfaceVariant,
               ),
@@ -94,13 +108,13 @@ class _ConnectionsBoard extends StatelessWidget {
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    for (final (key, label, color, icon) in activeColumns) ...[
+                    for (final col in activeColumns) ...[
                       _ConnectionsColumn(
-                        columnKey: key,
-                        label: label,
-                        color: color,
-                        icon: icon,
-                        cards: state.columns[key] ?? const <SynthesisCard>[],
+                        columnKey: col.key,
+                        label: _columnLabel(context, col.key),
+                        color: col.color,
+                        icon: col.icon,
+                        cards: state.columns[col.key] ?? const <SynthesisCard>[],
                       ),
                       const SizedBox(width: 12),
                     ],
@@ -212,16 +226,21 @@ class _ConnectionCard extends StatelessWidget {
     'gold': Color(0xFFF9A825),
   };
 
-  static const _tagLabels = {
-    'none': 'Keine Farbe',
-    'red': 'Rot',
-    'blue': 'Blau',
-    'green': 'Grün',
-    'gold': 'Gelb',
-  };
+  String _tagLabel(BuildContext context, String tag) {
+    final l10n = AppLocalizations.of(context);
+    switch (tag) {
+      case 'none': return l10n.connectionsColorNone;
+      case 'red': return l10n.connectionsColorRed;
+      case 'blue': return l10n.connectionsColorBlue;
+      case 'green': return l10n.connectionsColorGreen;
+      case 'gold': return l10n.connectionsColorGold;
+      default: return tag;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
     final theme = Theme.of(context);
     final tagColor = _tagColors[card.tag] ?? _tagColors['none']!;
 
@@ -243,31 +262,31 @@ class _ConnectionCard extends StatelessWidget {
               decoration: BoxDecoration(color: tagColor, shape: BoxShape.circle),
             ),
             const SizedBox(width: 6),
-            Text(_tagLabels[card.tag] ?? 'Keine Farbe'),
+            Text(_tagLabel(context, card.tag)),
           ],
         ),
         trailing: PopupMenuButton<String>(
           icon: const Icon(Icons.palette_outlined),
-          tooltip: 'Farbe zuweisen',
+          tooltip: l10n.connectionsAssignColor,
           onSelected: (value) {
             context.read<SynthesisBloc>().add(SetSynthesisCardTag(card.id, value));
           },
           itemBuilder: (_) => [
-            for (final entry in _tagLabels.entries)
+            for (final tag in ['none', 'red', 'blue', 'green', 'gold'])
               PopupMenuItem<String>(
-                value: entry.key,
+                value: tag,
                 child: Row(
                   children: [
                     Container(
                       width: 10,
                       height: 10,
                       decoration: BoxDecoration(
-                        color: _tagColors[entry.key],
+                        color: _tagColors[tag],
                         shape: BoxShape.circle,
                       ),
                     ),
                     const SizedBox(width: 8),
-                    Text(entry.value),
+                    Text(_tagLabel(context, tag)),
                   ],
                 ),
               ),

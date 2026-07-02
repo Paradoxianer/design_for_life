@@ -676,4 +676,61 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get valueLoyalitaet => 'Loyalty';
+
+  @override
+  String get valuesNoValuesSelected => 'No values selected yet.';
+
+  @override
+  String get valuesSelectEightFirst =>
+      'Please select 8 values in Phase 1 (Rating) first.';
+
+  @override
+  String get connectionsColLifeTree => 'Life Tree';
+
+  @override
+  String get connectionsColValues => 'Values';
+
+  @override
+  String get connectionsColGifts => 'Gifts';
+
+  @override
+  String get connectionsColPrayer => 'Listening Prayer';
+
+  @override
+  String get connectionsColGoals => 'Goals';
+
+  @override
+  String get connectionsGroupedByColor => 'Grouped by Color';
+
+  @override
+  String get connectionsMatrixView => 'Matrix View';
+
+  @override
+  String connectionsColorGroup(int count) => 'Color Group ($count)';
+
+  @override
+  String get connectionsNoContent =>
+      'No key takeaways yet. Please edit at least one module (Life Tree, Values, Gifts, or Listening Prayer) first.';
+
+  @override
+  String get connectionsGuidance =>
+      'Sort cards within a column by drag & drop. Assign each card a color to mark commonalities.';
+
+  @override
+  String get connectionsAssignColor => 'Assign Color';
+
+  @override
+  String get connectionsColorNone => 'No Color';
+
+  @override
+  String get connectionsColorRed => 'Red';
+
+  @override
+  String get connectionsColorBlue => 'Blue';
+
+  @override
+  String get connectionsColorGreen => 'Green';
+
+  @override
+  String get connectionsColorGold => 'Yellow';
 }

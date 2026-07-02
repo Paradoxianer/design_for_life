@@ -128,7 +128,8 @@ class DflApp extends StatelessWidget {
         GoRoute(
           path: '/values',
           builder: (context, state) {
-            final title = state.uri.queryParameters['title'] ?? 'Werte herausfinden';
+            final l10n = AppLocalizations.of(context);
+            final title = state.uri.queryParameters['title'] ?? l10n.valuesTitle;
             final mode = state.uri.queryParameters['mode'];
             return ValuesAssessmentScreen(
               title: title,
@@ -139,7 +140,8 @@ class DflApp extends StatelessWidget {
         GoRoute(
           path: '/feedback',
           builder: (context, state) {
-            final title = state.uri.queryParameters['title'] ?? 'Feedbackbogen';
+            final l10n = AppLocalizations.of(context);
+            final title = state.uri.queryParameters['title'] ?? l10n.feedbackTitle;
             final mode = state.uri.queryParameters['mode'];
             return FeedbackScreen(
               title: title,
@@ -150,8 +152,9 @@ class DflApp extends StatelessWidget {
         GoRoute(
           path: '/imagine/:sessionId',
           builder: (context, state) {
+            final l10n = AppLocalizations.of(context);
             final sessionId = state.pathParameters['sessionId']!;
-            final title = state.uri.queryParameters['title'] ?? 'Zusammenfassung';
+            final title = state.uri.queryParameters['title'] ?? l10n.timelineImagineTitle;
             final mode = state.uri.queryParameters['mode'];
             return ImagineScreen(
               sessionId: sessionId,
@@ -163,8 +166,9 @@ class DflApp extends StatelessWidget {
         GoRoute(
           path: '/life-tree/:sessionId',
           builder: (context, state) {
+            final l10n = AppLocalizations.of(context);
             final sessionId = state.pathParameters['sessionId']!;
-            final title = state.uri.queryParameters['title'] ?? 'Lebensbaum';
+            final title = state.uri.queryParameters['title'] ?? l10n.lifeTreeTitle;
             final mode = state.uri.queryParameters['mode'];
             return LifeTreeScreen(
               sessionId: sessionId,
@@ -176,7 +180,8 @@ class DflApp extends StatelessWidget {
         GoRoute(
           path: '/synthesis',
           builder: (context, state) {
-            final title = state.uri.queryParameters['title'] ?? 'Connections';
+            final l10n = AppLocalizations.of(context);
+            final title = state.uri.queryParameters['title'] ?? l10n.timelineSynthesisTitle;
             final mode = state.uri.queryParameters['mode'];
             return SynthesisScreen(
               giftsSessionId: state.uri.queryParameters['giftsSession'] ?? 'session_5',

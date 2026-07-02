@@ -1345,6 +1345,114 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Loyalty'**
   String get valueLoyalitaet;
+
+  /// No description provided for @valuesNoValuesSelected.
+  ///
+  /// In en, this message translates to:
+  /// **'No values selected yet.'**
+  String get valuesNoValuesSelected;
+
+  /// No description provided for @valuesSelectEightFirst.
+  ///
+  /// In en, this message translates to:
+  /// **'Please select 8 values in Phase 1 (Rating) first.'**
+  String get valuesSelectEightFirst;
+
+  /// No description provided for @connectionsColLifeTree.
+  ///
+  /// In en, this message translates to:
+  /// **'Life Tree'**
+  String get connectionsColLifeTree;
+
+  /// No description provided for @connectionsColValues.
+  ///
+  /// In en, this message translates to:
+  /// **'Values'**
+  String get connectionsColValues;
+
+  /// No description provided for @connectionsColGifts.
+  ///
+  /// In en, this message translates to:
+  /// **'Gifts'**
+  String get connectionsColGifts;
+
+  /// No description provided for @connectionsColPrayer.
+  ///
+  /// In en, this message translates to:
+  /// **'Listening Prayer'**
+  String get connectionsColPrayer;
+
+  /// No description provided for @connectionsColGoals.
+  ///
+  /// In en, this message translates to:
+  /// **'Goals'**
+  String get connectionsColGoals;
+
+  /// No description provided for @connectionsGroupedByColor.
+  ///
+  /// In en, this message translates to:
+  /// **'Grouped by Color'**
+  String get connectionsGroupedByColor;
+
+  /// No description provided for @connectionsMatrixView.
+  ///
+  /// In en, this message translates to:
+  /// **'Matrix View'**
+  String get connectionsMatrixView;
+
+  /// No description provided for @connectionsColorGroup.
+  ///
+  /// In en, this message translates to:
+  /// **'Color Group ({count})'**
+  String connectionsColorGroup(int count);
+
+  /// No description provided for @connectionsNoContent.
+  ///
+  /// In en, this message translates to:
+  /// **'No key takeaways yet. Please edit at least one module (Life Tree, Values, Gifts, or Listening Prayer) first.'**
+  String get connectionsNoContent;
+
+  /// No description provided for @connectionsGuidance.
+  ///
+  /// In en, this message translates to:
+  /// **'Sort cards within a column by drag & drop. Assign each card a color to mark commonalities.'**
+  String get connectionsGuidance;
+
+  /// No description provided for @connectionsAssignColor.
+  ///
+  /// In en, this message translates to:
+  /// **'Assign Color'**
+  String get connectionsAssignColor;
+
+  /// No description provided for @connectionsColorNone.
+  ///
+  /// In en, this message translates to:
+  /// **'No Color'**
+  String get connectionsColorNone;
+
+  /// No description provided for @connectionsColorRed.
+  ///
+  /// In en, this message translates to:
+  /// **'Red'**
+  String get connectionsColorRed;
+
+  /// No description provided for @connectionsColorBlue.
+  ///
+  /// In en, this message translates to:
+  /// **'Blue'**
+  String get connectionsColorBlue;
+
+  /// No description provided for @connectionsColorGreen.
+  ///
+  /// In en, this message translates to:
+  /// **'Green'**
+  String get connectionsColorGreen;
+
+  /// No description provided for @connectionsColorGold.
+  ///
+  /// In en, this message translates to:
+  /// **'Yellow'**
+  String get connectionsColorGold;
 }
 
 class _AppLocalizationsDelegate

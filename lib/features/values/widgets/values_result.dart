@@ -16,8 +16,8 @@ class ValuesResult extends StatelessWidget {
         final top8 = state.topEightValues;
 
         if (top8.isEmpty) {
-          return const Center(
-            child: Text('Noch keine Werte ausgewählt.'),
+          return Center(
+            child: Text(l10n.valuesNoValuesSelected),
           );
         }
 

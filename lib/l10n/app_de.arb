@@ -268,5 +268,32 @@
   "valueEffektivitaet": "Effektivität",
   "valueFriede": "Friede",
   "valueFairness": "Fairness",
-  "valueLoyalitaet": "Loyalität"
+  "valueLoyalitaet": "Loyalität",
+
+  "valuesNoValuesSelected": "Noch keine Werte ausgewählt.",
+  "valuesSelectEightFirst": "Bitte wähle zuerst 8 Werte in Phase 1 (Bewertung) aus.",
+
+  "connectionsColLifeTree": "Lebensbaum",
+  "connectionsColValues": "Werte",
+  "connectionsColGifts": "Gaben",
+  "connectionsColPrayer": "Hörendes Gebet",
+  "connectionsColGoals": "Ziele",
+  "connectionsGroupedByColor": "Nach Farben gruppiert",
+  "connectionsMatrixView": "Matrix-Ansicht",
+  "connectionsColorGroup": "Farbgruppe ({count})",
+  "@connectionsColorGroup": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "connectionsNoContent": "Noch keine Key-Takeaways vorhanden. Bearbeite zuerst mindestens ein Modul (Lebensbaum, Werte, Gaben oder Hörendes Gebet).",
+  "connectionsGuidance": "Ordne Karten innerhalb einer Spalte per Drag & Drop. Weise jeder Karte eine Farbe zu, um Gemeinsamkeiten zu markieren.",
+  "connectionsAssignColor": "Farbe zuweisen",
+  "connectionsColorNone": "Keine Farbe",
+  "connectionsColorRed": "Rot",
+  "connectionsColorBlue": "Blau",
+  "connectionsColorGreen": "Grün",
+  "connectionsColorGold": "Gelb"
 }

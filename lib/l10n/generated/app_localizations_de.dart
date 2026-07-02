@@ -683,4 +683,61 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get valueLoyalitaet => 'Loyalität';
+
+  @override
+  String get valuesNoValuesSelected => 'Noch keine Werte ausgewählt.';
+
+  @override
+  String get valuesSelectEightFirst =>
+      'Bitte wähle zuerst 8 Werte in Phase 1 (Bewertung) aus.';
+
+  @override
+  String get connectionsColLifeTree => 'Lebensbaum';
+
+  @override
+  String get connectionsColValues => 'Werte';
+
+  @override
+  String get connectionsColGifts => 'Gaben';
+
+  @override
+  String get connectionsColPrayer => 'Hörendes Gebet';
+
+  @override
+  String get connectionsColGoals => 'Ziele';
+
+  @override
+  String get connectionsGroupedByColor => 'Nach Farben gruppiert';
+
+  @override
+  String get connectionsMatrixView => 'Matrix-Ansicht';
+
+  @override
+  String connectionsColorGroup(int count) => 'Farbgruppe ($count)';
+
+  @override
+  String get connectionsNoContent =>
+      'Noch keine Key-Takeaways vorhanden. Bearbeite zuerst mindestens ein Modul (Lebensbaum, Werte, Gaben oder Hörendes Gebet).';
+
+  @override
+  String get connectionsGuidance =>
+      'Ordne Karten innerhalb einer Spalte per Drag & Drop. Weise jeder Karte eine Farbe zu, um Gemeinsamkeiten zu markieren.';
+
+  @override
+  String get connectionsAssignColor => 'Farbe zuweisen';
+
+  @override
+  String get connectionsColorNone => 'Keine Farbe';
+
+  @override
+  String get connectionsColorRed => 'Rot';
+
+  @override
+  String get connectionsColorBlue => 'Blau';
+
+  @override
+  String get connectionsColorGreen => 'Grün';
+
+  @override
+  String get connectionsColorGold => 'Gelb';
 }

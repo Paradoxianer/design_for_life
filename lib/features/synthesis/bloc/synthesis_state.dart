@@ -60,11 +60,7 @@ class SynthesisState extends Equatable {
 
   bool get hasAnyCards => columns.values.any((cards) => cards.isNotEmpty);
 
-  bool get isCompleted {
-    if (!hasAnyCards) return false;
-    final allCards = columns.values.expand((cards) => cards);
-    return allCards.any((c) => c.tag != 'none');
-  }
+  bool get isCompleted => hasAnyCards;
 
   Map<String, List<SynthesisCard>> copyColumns() =>
       columns.map((k, v) => MapEntry(k, List<SynthesisCard>.from(v)));

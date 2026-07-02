@@ -15,8 +15,9 @@ class ValuesReflectionView extends StatelessWidget {
     return BlocBuilder<ValuesBloc, ValuesState>(
       builder: (context, state) {
         return ListView(
-          shrinkWrap: true,
           padding: const EdgeInsets.all(16),
+          shrinkWrap: true,
+          physics: const NeverScrollableScrollPhysics(),
           children: [
             Text(
               l10n.valuesPhase3Title,
