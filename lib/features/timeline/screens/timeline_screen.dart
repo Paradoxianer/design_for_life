@@ -71,6 +71,16 @@ class _TimelineCardWrapper extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isCompleted = TimelineModuleRegistry.isCompleted(context, session);
+    final isStarted = TimelineModuleRegistry.isStarted(context, session);
+
+    SessionStatus effectiveStatus;
+    if (isCompleted) {
+      effectiveStatus = SessionStatus.done;
+    } else if (isStarted) {
+      effectiveStatus = SessionStatus.inProgress;
+    } else {
+      effectiveStatus = session.status;
+    }
 
     final updatedSession = DflSession(
       id: session.id,
@@ -81,7 +91,7 @@ class _TimelineCardWrapper extends StatelessWidget {
       endTime: session.endTime,
       room: session.room,
       groupAssignment: session.groupAssignment,
-      status: isCompleted ? SessionStatus.done : session.status,
+      status: effectiveStatus,
       moduleId: session.moduleId,
       moduleSessionId: session.moduleSessionId,
     );

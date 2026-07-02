@@ -43,6 +43,15 @@ class TimelineModuleRegistry {
     }
   }
 
+  static bool isStarted(BuildContext context, DflSession session) {
+    switch (session.moduleId) {
+      case 'module_values':
+        return context.watch<ValuesBloc>().state.hasStarted;
+      default:
+        return false;
+    }
+  }
+
   static String? buildRoute(DflSession session, {bool resultMode = false}) {
     final moduleSessionId = session.moduleSessionId ?? session.id;
     final titleParam = Uri.encodeQueryComponent(session.title);

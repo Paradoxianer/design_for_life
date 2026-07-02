@@ -146,6 +146,8 @@ class _StatusIcon extends StatelessWidget {
     switch (status) {
       case SessionStatus.done:
         return const Icon(Icons.check_circle_rounded, color: Colors.green, size: 20);
+      case SessionStatus.inProgress:
+        return const Icon(Icons.timelapse_rounded, color: Colors.orange, size: 20);
       case SessionStatus.locked:
         return const Icon(Icons.lock_outline_rounded, color: Colors.grey, size: 20);
       case SessionStatus.override:

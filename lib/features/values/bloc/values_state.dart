@@ -18,6 +18,9 @@ class ValuesState {
 
   bool get isValid => topEightValues.length == 8;
 
+  /// Returns true when the user has selected at least one value.
+  bool get hasStarted => topEightValues.isNotEmpty;
+
   /// A module is considered completed when at least 3 values are selected 
   /// AND the first 3 (Key Takeaways) have a personal definition.
   bool get isCompleted {

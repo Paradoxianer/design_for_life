@@ -18,34 +18,37 @@ class ValuesEditor extends StatelessWidget {
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context);
 
-    return Theme(
-      data: Theme.of(context).copyWith(
-        canvasColor: Colors.transparent,
-      ),
-      child: Stepper(
-        type: StepperType.horizontal,
-        currentStep: currentStep,
-        onStepTapped: onStepTapped,
-        controlsBuilder: (context, details) => const SizedBox.shrink(),
-        steps: [
-          Step(
-            title: Text(l10n.valuesPhase1Title),
-            content: const ValuesRatingView(),
-            isActive: currentStep >= 0,
-            state: currentStep > 0 ? StepState.complete : StepState.indexed,
-          ),
-          Step(
-            title: Text(l10n.valuesPhase2Title),
-            content: const ValuesDefinitionsView(),
-            isActive: currentStep >= 1,
-            state: currentStep > 1 ? StepState.complete : StepState.indexed,
-          ),
-          Step(
-            title: Text(l10n.valuesPhase3Title),
-            content: const ValuesReflectionView(),
-            isActive: currentStep >= 2,
-          ),
-        ],
+    return SingleChildScrollView(
+      child: Theme(
+        data: Theme.of(context).copyWith(
+          canvasColor: Colors.transparent,
+        ),
+        child: Stepper(
+          type: StepperType.horizontal,
+          physics: const NeverScrollableScrollPhysics(),
+          currentStep: currentStep,
+          onStepTapped: onStepTapped,
+          controlsBuilder: (context, details) => const SizedBox.shrink(),
+          steps: [
+            Step(
+              title: Text(l10n.valuesPhase1Title),
+              content: const ValuesRatingView(),
+              isActive: currentStep >= 0,
+              state: currentStep > 0 ? StepState.complete : StepState.indexed,
+            ),
+            Step(
+              title: Text(l10n.valuesPhase2Title),
+              content: const ValuesDefinitionsView(),
+              isActive: currentStep >= 1,
+              state: currentStep > 1 ? StepState.complete : StepState.indexed,
+            ),
+            Step(
+              title: Text(l10n.valuesPhase3Title),
+              content: const ValuesReflectionView(),
+              isActive: currentStep >= 2,
+            ),
+          ],
+        ),
       ),
     );
   }

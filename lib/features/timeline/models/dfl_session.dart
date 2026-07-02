@@ -25,6 +25,7 @@ enum SessionType {
 
 enum SessionStatus {
   notStarted,
+  inProgress,
   done,
   locked,
   override;
