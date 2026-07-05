@@ -22,30 +22,37 @@ class ShareImageGenerator {
     final List<XFile> files = [];
 
     for (var item in selectedItems) {
-      // 1. Digitaler Lebensbaum (nutzt das bereits gecapturte Bild aus der UI)
-      if (item.data is Map && item.data['type'] == 'life_tree_graph') {
-        final Uint8List? capturedBytes = item.data['capturedImage'] as Uint8List?;
+      // Jedes Item wird isoliert verarbeitet: ein Fehler bei einem Share-Typ
+      // (z.B. ein kaputtes Bild oder ein Rendering-Fehler) darf die übrigen
+      // ausgewählten Items nicht blockieren (#24).
+      try {
+        // 1. Digitaler Lebensbaum (nutzt das bereits gecapturte Bild aus der UI)
+        if (item.data is Map && item.data['type'] == 'life_tree_graph') {
+          final Uint8List? capturedBytes = item.data['capturedImage'] as Uint8List?;
 
-        if (capturedBytes != null && capturedBytes.isNotEmpty) {
-          final xFile = await _wrapCapturedImageWithBranding(context, content, capturedBytes);
+          if (capturedBytes != null && capturedBytes.isNotEmpty) {
+            final xFile = await _wrapCapturedImageWithBranding(context, content, capturedBytes);
+            if (xFile != null) files.add(xFile);
+          }
+        }
+        // 2. Imagine-Visualisierung (Gradient-Karte als Bild rendern)
+        else if (item.data is Map && item.data['type'] == 'imagine_option') {
+          final xFile = await _buildImagineOptionImage(
+            context: context,
+            content: content,
+            item: item,
+          );
           if (xFile != null) files.add(xFile);
         }
-      }
-      // 2. Imagine-Visualisierung (Gradient-Karte als Bild rendern)
-      else if (item.data is Map && item.data['type'] == 'imagine_option') {
-        final xFile = await _buildImagineOptionImage(
-          context: context,
-          content: content,
-          item: item,
-        );
-        if (xFile != null) files.add(xFile);
-      }
-      // 3. Analoge Bilder / Notizen
-      else if (item.imagePath != null) {
-        final file = io.File(item.imagePath!);
-        if (await file.exists()) {
-          files.add(XFile(item.imagePath!));
+        // 3. Analoge Bilder / Notizen
+        else if (item.imagePath != null) {
+          final file = io.File(item.imagePath!);
+          if (await file.exists()) {
+            files.add(XFile(item.imagePath!));
+          }
         }
+      } catch (e) {
+        debugPrint('Error generating share image for item "${item.id}": $e');
       }
     }
 
@@ -110,7 +117,11 @@ class ShareImageGenerator {
     }
   }
 
-  /// Nimmt das rohe Bild des Graphen und fügt Header, Footer und Branding hinzu.
+  /// Fügt dem rohen Lebensbaum-Graph Branding als Streifen ober- und
+  /// unterhalb hinzu, ohne das Originalbild in eine starre Karte
+  /// einzupassen oder zu verkleinern. Die Canvas-Breite entspricht exakt
+  /// der tatsächlichen Pixelbreite des Graphen (pixelRatio: 1.0), damit
+  /// nichts nachskaliert wird (#25).
   static Future<XFile?> _wrapCapturedImageWithBranding(
     BuildContext context,
     ShareableContent content,
@@ -120,61 +131,52 @@ class ShareImageGenerator {
     final l10n = AppLocalizations.of(context);
 
     try {
+      final decodedGraph = await decodeImageFromList(graphBytes);
+      final double imageWidth = decodedGraph.width.toDouble();
+
       final Uint8List? finalImage = await _brandingController.captureFromWidget(
         Material(
           color: Colors.white,
           child: Theme(
             data: theme,
             child: Container(
-              width: 1000,
-              padding: const EdgeInsets.all(50),
-              decoration: BoxDecoration(
-                border: Border.all(color: Colors.green.shade50, width: 2),
-              ),
+              width: imageWidth,
+              color: Colors.white,
               child: Column(
                 mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  _buildHeader(content),
-                  const SizedBox(height: 40),
-                  Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(16),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.black.withValues(alpha: 0.1),
-                          blurRadius: 20,
-                          offset: const Offset(0, 10),
-                        )
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 24),
+                    child: _buildHeader(content),
+                  ),
+                  Image.memory(graphBytes, width: imageWidth, fit: BoxFit.fitWidth),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 20),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        const Divider(),
+                        const SizedBox(height: 12),
+                        Text(
+                          l10n.shareFooter,
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontSize: 16,
+                            color: Colors.grey.shade600,
+                            fontStyle: FontStyle.italic,
+                          ),
+                        ),
                       ],
                     ),
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(16),
-                      child: Image.memory(
-                        graphBytes,
-                        fit: BoxFit.contain,
-                      ),
-                    ),
                   ),
-                  const SizedBox(height: 40),
-                  const Divider(),
-                  const SizedBox(height: 24),
-                  Text(
-                    l10n.shareFooter,
-                    style: TextStyle(
-                      fontSize: 16,
-                      color: Colors.grey.shade600,
-                      fontStyle: FontStyle.italic,
-                    ),
-                  ),
-                  const SizedBox(height: 10),
                 ],
               ),
             ),
           ),
         ),
         delay: const Duration(milliseconds: 200),
-        pixelRatio: 2.0,
+        pixelRatio: 1.0,
       );
 
       if (finalImage == null) return null;
