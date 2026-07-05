@@ -68,6 +68,23 @@ class _ShareSelectionDialogState extends State<ShareSelectionDialog> {
       if (data['type'] == 'life_tree_graph') {
         return const Icon(Icons.account_tree_outlined);
       }
+      if (data['type'] == 'imagine_composed') {
+        final pastOptionId = data['pastOptionId'] as String?;
+        if (pastOptionId != null) {
+          return SizedBox(
+            width: 44,
+            height: 44,
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(6),
+              child: buildResolvedImage(
+                'assets/images/imagine/$pastOptionId',
+                width: 44,
+                height: 44,
+              ),
+            ),
+          );
+        }
+      }
     }
     return null;
   }

@@ -44,6 +44,15 @@ class ShareImageGenerator {
           );
           if (xFile != null) files.add(xFile);
         }
+        // 2b. Imagine Vergangenheit+Zukunft als ein komponiertes Bild (#54)
+        else if (item.data is Map && item.data['type'] == 'imagine_composed') {
+          final xFile = await _buildComposedImagineImage(
+            context: context,
+            content: content,
+            item: item,
+          );
+          if (xFile != null) files.add(xFile);
+        }
         // 3. Analoge Bilder / Notizen
         else if (item.imagePath != null) {
           final file = io.File(item.imagePath!);
@@ -113,6 +122,67 @@ class ShareImageGenerator {
       return XFile(path);
     } catch (e) {
       debugPrint('Error rendering imagine share image: $e');
+      return null;
+    }
+  }
+
+  /// Komponiert die Vergangenheit- und Zukunft-Bilder des Imagine-Moduls
+  /// verlustfrei (beide in voller Auflösung, nur nebeneinander gesetzt und
+  /// mit Branding umrahmt) zu einem einzigen teilbaren Bild (#54).
+  static Future<XFile?> _buildComposedImagineImage({
+    required BuildContext context,
+    required ShareableContent content,
+    required ShareableItem item,
+  }) async {
+    final data = item.data as Map;
+    final pastOptionId = data['pastOptionId'] as String?;
+    final futureOptionId = data['futureOptionId'] as String?;
+    if (pastOptionId == null || futureOptionId == null) return null;
+
+    final pastPath = 'assets/images/imagine/$pastOptionId';
+    final futurePath = 'assets/images/imagine/$futureOptionId';
+    final pastLabel = data['pastLabel'] as String? ?? '';
+    final futureLabel = data['futureLabel'] as String? ?? '';
+
+    try {
+      final rendered = await _brandingController.captureFromWidget(
+        Material(
+          color: Colors.white,
+          child: Container(
+            width: 1000,
+            padding: const EdgeInsets.all(50),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                _buildHeader(content),
+                const SizedBox(height: 32),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Expanded(
+                      child: _ComposedImagineHalf(label: pastLabel, imagePath: pastPath),
+                    ),
+                    const SizedBox(width: 24),
+                    Expanded(
+                      child: _ComposedImagineHalf(label: futureLabel, imagePath: futurePath),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        ),
+        pixelRatio: 2.0,
+      );
+
+      final directory = await getTemporaryDirectory();
+      final path = '${directory.path}/imagine_composed_${DateTime.now().microsecondsSinceEpoch}.png';
+      final file = io.File(path);
+      await file.writeAsBytes(rendered);
+      return XFile(path);
+    } catch (e) {
+      debugPrint('Error rendering composed imagine share image: $e');
       return null;
     }
   }
@@ -222,6 +292,35 @@ class ShareImageGenerator {
                 ),
               ),
             ],
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class _ComposedImagineHalf extends StatelessWidget {
+  final String label;
+  final String imagePath;
+
+  const _ComposedImagineHalf({required this.label, required this.imagePath});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        if (label.isNotEmpty)
+          Text(
+            label,
+            textAlign: TextAlign.center,
+            style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w700),
+          ),
+        const SizedBox(height: 12),
+        ClipRRect(
+          borderRadius: BorderRadius.circular(16),
+          child: AspectRatio(
+            aspectRatio: 2 / 3,
+            child: Image.asset(imagePath, fit: BoxFit.cover),
           ),
         ),
       ],

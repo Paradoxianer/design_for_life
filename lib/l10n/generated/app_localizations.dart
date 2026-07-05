@@ -1555,6 +1555,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'No images selected yet.'**
   String get imagineNoImagesSelected;
+
+  /// No description provided for @imagineLabelCombined.
+  ///
+  /// In en, this message translates to:
+  /// **'Past + Future (one image)'**
+  String get imagineLabelCombined;
 }
 
 class _AppLocalizationsDelegate

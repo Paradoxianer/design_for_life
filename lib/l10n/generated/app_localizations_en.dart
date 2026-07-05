@@ -798,4 +798,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get imagineNoImagesSelected => 'No images selected yet.';
+
+  @override
+  String get imagineLabelCombined => 'Past + Future (one image)';
 }

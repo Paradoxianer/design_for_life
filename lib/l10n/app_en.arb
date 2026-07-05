@@ -343,5 +343,6 @@
   "imagineLabelFuture": "Future",
   "imagineSubtitlePast": "Choose an image for your past",
   "imagineSubtitleFuture": "Choose an image for your future",
-  "imagineNoImagesSelected": "No images selected yet."
+  "imagineNoImagesSelected": "No images selected yet.",
+  "imagineLabelCombined": "Past + Future (one image)"
 }

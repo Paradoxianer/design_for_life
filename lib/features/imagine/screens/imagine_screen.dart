@@ -49,6 +49,19 @@ class ImagineScreen extends StatelessWidget {
               'optionId': state.futureImageId(sessionId),
             },
           ),
+        if (state.pastImageId(sessionId) != null && state.futureImageId(sessionId) != null)
+          ShareableItem(
+            id: 'combined_image',
+            label: l10n.imagineLabelCombined,
+            isSelected: false,
+            data: {
+              'type': 'imagine_composed',
+              'pastOptionId': state.pastImageId(sessionId),
+              'futureOptionId': state.futureImageId(sessionId),
+              'pastLabel': l10n.imagineLabelPast,
+              'futureLabel': l10n.imagineLabelFuture,
+            },
+          ),
         if (takeawayText.isNotEmpty)
           ShareableItem(
             id: 'takeaways',
