@@ -1,6 +1,7 @@
 {
   "appTitle": "DFL Wochenende",
   "notes": "Notizen",
+  "notesEmptyState": "Keine Notizen vorhanden.",
   "notesGuidance": "Schreibe auf, was dir in dieser Einheit wichtig geworden ist.",
   "photosAndSlides": "Fotos & Slides",
   "notesHint": "Deine Gedanken hier...",

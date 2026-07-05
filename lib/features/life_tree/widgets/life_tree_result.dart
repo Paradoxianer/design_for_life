@@ -1,11 +1,10 @@
-import 'dart:io';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:graphview/GraphView.dart';
 import 'package:screenshot/screenshot.dart';
 import 'package:design_for_life/l10n/generated/app_localizations.dart';
 import 'package:design_for_life/core/models/dfl_entry.dart';
 import 'package:design_for_life/core/widgets/dfl_module_result.dart';
+import 'package:design_for_life/core/widgets/result_image_thumbnail.dart';
 import '../models/life_tree_node_data.dart';
 
 class LifeTreeResult extends StatefulWidget {
@@ -274,18 +273,11 @@ class _DflEntryReadOnlyWidget extends StatelessWidget {
             const SizedBox(height: 12),
             ClipRRect(
               borderRadius: BorderRadius.circular(12),
-              child: _buildImage(entry.imagePath!),
+              child: ResultImageThumbnail(imagePath: entry.imagePath!),
             ),
           ],
         ],
       ),
     );
-  }
-
-  Widget _buildImage(String path) {
-    if (kIsWeb || path.startsWith('http')) {
-      return Image.network(path, width: double.infinity, height: 200, fit: BoxFit.cover);
-    }
-    return Image.file(File(path), width: double.infinity, height: 200, fit: BoxFit.cover);
   }
 }

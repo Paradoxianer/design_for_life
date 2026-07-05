@@ -110,6 +110,12 @@ abstract class AppLocalizations {
   /// **'Notes'**
   String get notes;
 
+  /// No description provided for @notesEmptyState.
+  ///
+  /// In en, this message translates to:
+  /// **'No notes yet.'**
+  String get notesEmptyState;
+
   /// No description provided for @notesGuidance.
   ///
   /// In en, this message translates to:

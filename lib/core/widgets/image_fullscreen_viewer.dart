@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'resolved_image.dart';
 
 /// Shows [imagePath] as a full-screen overlay.
 /// The user can pinch-to-zoom, pan, and dismiss by tapping the × button or
@@ -19,10 +20,7 @@ void showImageFullscreen(BuildContext context, String imagePath) {
               minScale: 0.5,
               maxScale: 4,
               child: Center(
-                child: Image.asset(
-                  imagePath,
-                  fit: BoxFit.contain,
-                ),
+                child: buildResolvedImage(imagePath, fit: BoxFit.contain),
               ),
             ),
             Positioned(

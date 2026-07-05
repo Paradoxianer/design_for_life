@@ -4,6 +4,7 @@
     "description": "The title of the application"
   },
   "notes": "Notes",
+  "notesEmptyState": "No notes yet.",
   "notesGuidance": "Write down what stands out to you from this session.",
   "photosAndSlides": "Photos & Slides",
   "notesHint": "Type your thoughts here...",

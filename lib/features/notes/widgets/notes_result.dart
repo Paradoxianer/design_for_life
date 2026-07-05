@@ -1,9 +1,8 @@
-import 'dart:io';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:design_for_life/core/models/dfl_entry.dart';
 import 'package:design_for_life/l10n/generated/app_localizations.dart';
 import '../../../core/widgets/key_takeaway_field.dart';
+import '../../../core/widgets/result_image_thumbnail.dart';
 
 class NotesResult extends StatelessWidget {
   final List<DflEntry> entries;
@@ -35,7 +34,7 @@ class NotesResult extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 20),
               child: Text(
-                'Keine Notizen vorhanden.',
+                l10n.notesEmptyState,
                 style: theme.textTheme.bodyMedium?.copyWith(
                   fontStyle: FontStyle.italic,
                   color: theme.colorScheme.onSurfaceVariant,
@@ -79,19 +78,11 @@ class NotesResult extends StatelessWidget {
             const SizedBox(height: 12),
             ClipRRect(
               borderRadius: BorderRadius.circular(8),
-              child: _buildImage(item.imagePath!),
+              child: ResultImageThumbnail(imagePath: item.imagePath!),
             ),
           ],
         ],
       ),
     );
-  }
-
-  Widget _buildImage(String path) {
-    if (kIsWeb) {
-      return Image.network(path, width: double.infinity, height: 200, fit: BoxFit.cover);
-    } else {
-      return Image.file(File(path), width: double.infinity, height: 200, fit: BoxFit.cover);
-    }
   }
 }

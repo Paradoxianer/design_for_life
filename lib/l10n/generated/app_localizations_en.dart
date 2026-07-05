@@ -15,6 +15,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get notes => 'Notes';
 
   @override
+  String get notesEmptyState => 'No notes yet.';
+
+  @override
   String get notesGuidance =>
       'Write down what stands out to you from this session.';
 
