@@ -16,31 +16,109 @@ class SynthesisBloc extends HydratedBloc<SynthesisEvent, SynthesisState> {
     InitializeSynthesis event,
     Emitter<SynthesisState> emit,
   ) {
-    // Skip re-initialization only when the board already has cards the user may
-    // have rearranged.  If initialized but empty (first visit had no data),
-    // always try again so newly filled modules appear.
-    if (state.initialized && state.hasAnyCards && !event.force) return;
+    if (!state.initialized || event.force) {
+      final seededColumns = <String, List<SynthesisCard>>{};
+      final seededSource = <String, List<String>>{};
+      var counter = 0;
+      event.sourceTakeaways.forEach((columnKey, takeaways) {
+        final trimmed = takeaways.map((t) => t.trim()).toList();
+        seededSource[columnKey] = trimmed;
+        seededColumns[columnKey] = trimmed
+            .where((t) => t.isNotEmpty)
+            .map((text) {
+              counter += 1;
+              return SynthesisCard(
+                id: '${columnKey}_${DateTime.now().microsecondsSinceEpoch}_$counter',
+                text: text,
+                sourceModule: columnKey,
+              );
+            })
+            .toList();
+      });
 
-    final seededColumns = <String, List<SynthesisCard>>{};
+      emit(state.copyWith(
+        columns: seededColumns,
+        seededSource: seededSource,
+        initialized: true,
+      ));
+      return;
+    }
+
+    // Reconciliation pass: every subsequent visit re-reads the source modules'
+    // takeaways and merges in anything new or edited, without touching cards
+    // the user already moved, tagged or removed. See #52.
+    final newColumns = state.copyColumns();
+    final newSeededSource = state.seededSource.map(
+      (k, v) => MapEntry(k, List<String>.from(v)),
+    );
     var counter = 0;
+    var changed = false;
+
     event.sourceTakeaways.forEach((columnKey, takeaways) {
-      seededColumns[columnKey] = takeaways
-          .where((t) => t.trim().isNotEmpty)
-          .map((text) {
-            counter += 1;
-            return SynthesisCard(
-              id: '${columnKey}_${DateTime.now().microsecondsSinceEpoch}_$counter',
-              text: text.trim(),
-              sourceModule: columnKey,
-            );
-          })
-          .toList();
+      final trimmed = takeaways.map((t) => t.trim()).toList();
+      final previous = newSeededSource[columnKey] ?? const <String>[];
+
+      for (var i = 0; i < trimmed.length; i++) {
+        final text = trimmed[i];
+        final oldText = i < previous.length ? previous[i] : '';
+        if (text == oldText) continue;
+        changed = true;
+
+        if (oldText.isEmpty) {
+          if (text.isEmpty) continue;
+          final cards = List<SynthesisCard>.from(newColumns[columnKey] ?? const []);
+          counter += 1;
+          cards.add(SynthesisCard(
+            id: '${columnKey}_${DateTime.now().microsecondsSinceEpoch}_$counter',
+            text: text,
+            sourceModule: columnKey,
+          ));
+          newColumns[columnKey] = cards;
+          continue;
+        }
+
+        // The slot previously held a value: find the matching card (it may
+        // have been moved to another column by the user) and update or
+        // remove it in place instead of appending a duplicate.
+        final ownerKey = newColumns.keys.firstWhere(
+          (key) => newColumns[key]!.any((c) => c.text == oldText),
+          orElse: () => '',
+        );
+
+        if (ownerKey.isEmpty) {
+          if (text.isEmpty) continue;
+          final cards = List<SynthesisCard>.from(newColumns[columnKey] ?? const []);
+          counter += 1;
+          cards.add(SynthesisCard(
+            id: '${columnKey}_${DateTime.now().microsecondsSinceEpoch}_$counter',
+            text: text,
+            sourceModule: columnKey,
+          ));
+          newColumns[columnKey] = cards;
+          continue;
+        }
+
+        final cards = List<SynthesisCard>.from(newColumns[ownerKey]!);
+        final idx = cards.indexWhere((c) => c.text == oldText);
+        if (text.isEmpty) {
+          cards.removeAt(idx);
+        } else {
+          cards[idx] = SynthesisCard(
+            id: cards[idx].id,
+            text: text,
+            sourceModule: cards[idx].sourceModule,
+            tag: cards[idx].tag,
+          );
+        }
+        newColumns[ownerKey] = cards;
+      }
+
+      newSeededSource[columnKey] = trimmed;
     });
 
-    emit(state.copyWith(
-      columns: seededColumns,
-      initialized: true,
-    ));
+    if (!changed) return;
+
+    emit(state.copyWith(columns: newColumns, seededSource: newSeededSource));
   }
 
   void _onMoveSynthesisCard(
