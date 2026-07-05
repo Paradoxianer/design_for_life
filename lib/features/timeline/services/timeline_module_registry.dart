@@ -72,8 +72,6 @@ class TimelineModuleRegistry {
         return 'values?title=$titleParam$modeSuffix';
       case 'module_feedback':
         return 'feedback?title=$titleParam$modeSuffix';
-      case 'module_group_photo':
-        return 'group-photo';
       default:
         return null;
     }
