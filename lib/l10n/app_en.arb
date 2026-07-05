@@ -148,7 +148,49 @@
   "cancel": "Cancel",
   "shareSubject": "My results from DFL Weekend",
   "shareFooter": "Created during the DFL Weekend",
+  "shareKeyTakeaways": "Key Takeaways:",
+  "shareDetailsAndNotes": "Details & Notes:",
   "shareIntro": "Check out my results:",
+  "spiritualGiftsTitle": "Spiritual Gifts",
+  "listeningPrayerTitle": "Listening Prayer",
+  "shareGoalItem": "Goal {index}",
+  "@shareGoalItem": {
+    "placeholders": {
+      "index": { "type": "int" }
+    }
+  },
+  "shareInsightItem": "Insight {index}",
+  "@shareInsightItem": {
+    "placeholders": {
+      "index": { "type": "int" }
+    }
+  },
+  "shareNoteOrDrawing": "Note / Drawing",
+  "shareGiftItem": "Gift {index}: {name}",
+  "@shareGiftItem": {
+    "placeholders": {
+      "index": { "type": "int" },
+      "name": { "type": "String" }
+    }
+  },
+  "shareHighlightItem": "Highlight {index}",
+  "@shareHighlightItem": {
+    "placeholders": {
+      "index": { "type": "int" }
+    }
+  },
+  "shareImpressionItem": "Impression {index}",
+  "@shareImpressionItem": {
+    "placeholders": {
+      "index": { "type": "int" }
+    }
+  },
+  "connectionsSummaryItem": "Connection {index}",
+  "@connectionsSummaryItem": {
+    "placeholders": {
+      "index": { "type": "int" }
+    }
+  },
   "feedbackTitle": "Feedback Form",
   "feedbackGuidance": "Please give us your feedback on the seminar so that we can make it even better next time.",
   "feedbackRating1": "Excellent",
@@ -295,5 +337,10 @@
   "connectionsColorRed": "Red",
   "connectionsColorBlue": "Blue",
   "connectionsColorGreen": "Green",
-  "connectionsColorGold": "Yellow"
+  "connectionsColorGold": "Yellow",
+  "imagineLabelPast": "Past",
+  "imagineLabelFuture": "Future",
+  "imagineSubtitlePast": "Choose an image for your past",
+  "imagineSubtitleFuture": "Choose an image for your future",
+  "imagineNoImagesSelected": "No images selected yet."
 }

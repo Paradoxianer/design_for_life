@@ -662,11 +662,77 @@ abstract class AppLocalizations {
   /// **'Created during the DFL Weekend'**
   String get shareFooter;
 
+  /// No description provided for @shareKeyTakeaways.
+  ///
+  /// In en, this message translates to:
+  /// **'Key Takeaways:'**
+  String get shareKeyTakeaways;
+
+  /// No description provided for @shareDetailsAndNotes.
+  ///
+  /// In en, this message translates to:
+  /// **'Details & Notes:'**
+  String get shareDetailsAndNotes;
+
   /// No description provided for @shareIntro.
   ///
   /// In en, this message translates to:
   /// **'Check out my results:'**
   String get shareIntro;
+
+  /// No description provided for @spiritualGiftsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Spiritual Gifts'**
+  String get spiritualGiftsTitle;
+
+  /// No description provided for @listeningPrayerTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Listening Prayer'**
+  String get listeningPrayerTitle;
+
+  /// No description provided for @shareGoalItem.
+  ///
+  /// In en, this message translates to:
+  /// **'Goal {index}'**
+  String shareGoalItem(int index);
+
+  /// No description provided for @shareInsightItem.
+  ///
+  /// In en, this message translates to:
+  /// **'Insight {index}'**
+  String shareInsightItem(int index);
+
+  /// No description provided for @shareNoteOrDrawing.
+  ///
+  /// In en, this message translates to:
+  /// **'Note / Drawing'**
+  String get shareNoteOrDrawing;
+
+  /// No description provided for @shareGiftItem.
+  ///
+  /// In en, this message translates to:
+  /// **'Gift {index}: {name}'**
+  String shareGiftItem(int index, String name);
+
+  /// No description provided for @shareHighlightItem.
+  ///
+  /// In en, this message translates to:
+  /// **'Highlight {index}'**
+  String shareHighlightItem(int index);
+
+  /// No description provided for @shareImpressionItem.
+  ///
+  /// In en, this message translates to:
+  /// **'Impression {index}'**
+  String shareImpressionItem(int index);
+
+  /// No description provided for @connectionsSummaryItem.
+  ///
+  /// In en, this message translates to:
+  /// **'Connection {index}'**
+  String connectionsSummaryItem(int index);
 
   /// No description provided for @feedbackTitle.
   ///
@@ -1453,6 +1519,36 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Yellow'**
   String get connectionsColorGold;
+
+  /// No description provided for @imagineLabelPast.
+  ///
+  /// In en, this message translates to:
+  /// **'Past'**
+  String get imagineLabelPast;
+
+  /// No description provided for @imagineLabelFuture.
+  ///
+  /// In en, this message translates to:
+  /// **'Future'**
+  String get imagineLabelFuture;
+
+  /// No description provided for @imagineSubtitlePast.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose an image for your past'**
+  String get imagineSubtitlePast;
+
+  /// No description provided for @imagineSubtitleFuture.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose an image for your future'**
+  String get imagineSubtitleFuture;
+
+  /// No description provided for @imagineNoImagesSelected.
+  ///
+  /// In en, this message translates to:
+  /// **'No images selected yet.'**
+  String get imagineNoImagesSelected;
 }
 
 class _AppLocalizationsDelegate

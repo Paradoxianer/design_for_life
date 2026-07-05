@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:design_for_life/l10n/generated/app_localizations.dart';
 import '../../../core/widgets/dfl_module_scaffold.dart';
 import '../../../core/models/shareable_content.dart';
 import '../../../core/services/share_service.dart';
@@ -20,15 +21,16 @@ class GoalsScreen extends StatelessWidget {
     this.initialEditMode = true,
   });
 
-  ShareableContent _getShareableContent(List<Goal> goals) {
+  ShareableContent _getShareableContent(BuildContext context, List<Goal> goals) {
+    final l10n = AppLocalizations.of(context);
     return ShareableContent(
-      title: 'Meine SMARTen Ziele',
+      title: l10n.goalsTitle,
       items: goals.asMap().entries.where((e) => e.value.text.isNotEmpty).map((entry) {
         final index = entry.key;
         final goal = entry.value;
         return ShareableItem(
           id: 'goal_$index',
-          label: 'Ziel ${index + 1}',
+          label: l10n.shareGoalItem(index + 1),
           textValue: goal.text,
         );
       }).toList(),
@@ -42,7 +44,7 @@ class GoalsScreen extends StatelessWidget {
         final goals = state.goals[sessionId] ??
             const [Goal(), Goal(), Goal()];
 
-        final shareContent = _getShareableContent(goals);
+        final shareContent = _getShareableContent(context, goals);
 
         return DflModuleScaffold(
           title: title,

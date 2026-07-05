@@ -76,11 +76,12 @@ class DflApp extends StatelessWidget {
         GoRoute(
           path: '/notes/:sessionId',
           builder: (context, state) {
+            final l10n = AppLocalizations.of(context);
             final sessionId = state.pathParameters['sessionId']!;
-            final title = state.uri.queryParameters['title'] ?? 'Notes';
+            final title = state.uri.queryParameters['title'] ?? l10n.notes;
             final mode = state.uri.queryParameters['mode'];
             return NotesScreen(
-              sessionId: sessionId, 
+              sessionId: sessionId,
               title: title,
               initialEditMode: mode != 'result',
             );
@@ -89,11 +90,12 @@ class DflApp extends StatelessWidget {
         GoRoute(
           path: '/listening-prayer/:sessionId',
           builder: (context, state) {
+            final l10n = AppLocalizations.of(context);
             final sessionId = state.pathParameters['sessionId']!;
-            final title = state.uri.queryParameters['title'] ?? 'Listening Prayer';
+            final title = state.uri.queryParameters['title'] ?? l10n.listeningPrayerTitle;
             final mode = state.uri.queryParameters['mode'];
             return ListeningPrayerScreen(
-              sessionId: sessionId, 
+              sessionId: sessionId,
               title: title,
               initialEditMode: mode != 'result',
             );
@@ -102,11 +104,12 @@ class DflApp extends StatelessWidget {
         GoRoute(
           path: '/goals/:sessionId',
           builder: (context, state) {
+            final l10n = AppLocalizations.of(context);
             final sessionId = state.pathParameters['sessionId']!;
-            final title = state.uri.queryParameters['title'] ?? 'Goals';
+            final title = state.uri.queryParameters['title'] ?? l10n.goalsTitle;
             final mode = state.uri.queryParameters['mode'];
             return GoalsScreen(
-              sessionId: sessionId, 
+              sessionId: sessionId,
               title: title,
               initialEditMode: mode != 'result',
             );
@@ -115,8 +118,9 @@ class DflApp extends StatelessWidget {
         GoRoute(
           path: '/spiritual-gifts/:sessionId',
           builder: (context, state) {
+            final l10n = AppLocalizations.of(context);
             final sessionId = state.pathParameters['sessionId']!;
-            final title = state.uri.queryParameters['title'] ?? 'Spiritual Gifts';
+            final title = state.uri.queryParameters['title'] ?? l10n.spiritualGiftsTitle;
             final mode = state.uri.queryParameters['mode'];
             return SpiritualGiftsScreen(
               sessionId: sessionId,

@@ -148,7 +148,49 @@
   "cancel": "Abbrechen",
   "shareSubject": "Meine Ergebnisse vom DFL-Wochenende",
   "shareFooter": "Erstellt während des DFL-Wochenendes",
+  "shareKeyTakeaways": "Wichtigste Erkenntnisse:",
+  "shareDetailsAndNotes": "Details & Notizen:",
   "shareIntro": "Schau dir meine Ergebnisse an:",
+  "spiritualGiftsTitle": "Geistliche Gaben",
+  "listeningPrayerTitle": "Hörendes Gebet",
+  "shareGoalItem": "Ziel {index}",
+  "@shareGoalItem": {
+    "placeholders": {
+      "index": { "type": "int" }
+    }
+  },
+  "shareInsightItem": "Erkenntnis {index}",
+  "@shareInsightItem": {
+    "placeholders": {
+      "index": { "type": "int" }
+    }
+  },
+  "shareNoteOrDrawing": "Notiz / Zeichnung",
+  "shareGiftItem": "Gabe {index}: {name}",
+  "@shareGiftItem": {
+    "placeholders": {
+      "index": { "type": "int" },
+      "name": { "type": "String" }
+    }
+  },
+  "shareHighlightItem": "Highlight {index}",
+  "@shareHighlightItem": {
+    "placeholders": {
+      "index": { "type": "int" }
+    }
+  },
+  "shareImpressionItem": "Eindruck {index}",
+  "@shareImpressionItem": {
+    "placeholders": {
+      "index": { "type": "int" }
+    }
+  },
+  "connectionsSummaryItem": "Connection {index}",
+  "@connectionsSummaryItem": {
+    "placeholders": {
+      "index": { "type": "int" }
+    }
+  },
   "feedbackTitle": "Feedbackbogen",
   "feedbackGuidance": "Bitte gib uns deine Rückmeldung zum Seminar, damit wir beim nächsten Mal es noch besser gestalten können.",
   "feedbackRating1": "Sehr gut",
@@ -295,5 +337,10 @@
   "connectionsColorRed": "Rot",
   "connectionsColorBlue": "Blau",
   "connectionsColorGreen": "Grün",
-  "connectionsColorGold": "Gelb"
+  "connectionsColorGold": "Gelb",
+  "imagineLabelPast": "Vergangenheit",
+  "imagineLabelFuture": "Zukunft",
+  "imagineSubtitlePast": "Wähle ein Bild für deine Vergangenheit",
+  "imagineSubtitleFuture": "Wähle ein Bild für deine Zukunft",
+  "imagineNoImagesSelected": "Noch keine Bilder ausgewählt."
 }

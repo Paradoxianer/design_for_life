@@ -42,7 +42,8 @@ class _SpiritualGiftsScreenState extends State<SpiritualGiftsScreen> {
     });
   }
 
-  ShareableContent _getShareableContent(SpiritualGiftsState state) {
+  ShareableContent _getShareableContent(BuildContext context, SpiritualGiftsState state) {
+    final l10n = AppLocalizations.of(context);
     final rankedGifts = state.getRankedGifts();
     final topThree = rankedGifts.take(3).toList();
     final takeaways = state.takeaways[widget.sessionId] ?? [];
@@ -53,7 +54,7 @@ class _SpiritualGiftsScreenState extends State<SpiritualGiftsScreen> {
     for (int i = 0; i < topThree.length; i++) {
       items.add(ShareableItem(
         id: 'gift_${topThree[i].id}',
-        label: 'Gabe ${i + 1}: ${topThree[i].name}',
+        label: l10n.shareGiftItem(i + 1, topThree[i].name),
         textValue: topThree[i].description,
       ));
     }
@@ -63,14 +64,14 @@ class _SpiritualGiftsScreenState extends State<SpiritualGiftsScreen> {
       if (takeaways[i].trim().isNotEmpty) {
         items.add(ShareableItem(
           id: 'gift_takeaway_$i',
-          label: 'Highlight ${i + 1}',
+          label: l10n.shareHighlightItem(i + 1),
           textValue: takeaways[i],
         ));
       }
     }
 
     return ShareableContent(
-      title: 'Geistliche Gaben',
+      title: l10n.spiritualGiftsTitle,
       items: items,
     );
   }
@@ -79,7 +80,7 @@ class _SpiritualGiftsScreenState extends State<SpiritualGiftsScreen> {
   Widget build(BuildContext context) {
     return BlocBuilder<SpiritualGiftsBloc, SpiritualGiftsState>(
       builder: (context, state) {
-        final shareContent = _getShareableContent(state);
+        final shareContent = _getShareableContent(context, state);
 
         return DflModuleScaffold(
           title: widget.title,

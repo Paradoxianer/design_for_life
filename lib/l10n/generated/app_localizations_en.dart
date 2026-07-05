@@ -320,7 +320,52 @@ class AppLocalizationsEn extends AppLocalizations {
   String get shareFooter => 'Created during the DFL Weekend';
 
   @override
+  String get shareKeyTakeaways => 'Key Takeaways:';
+
+  @override
+  String get shareDetailsAndNotes => 'Details & Notes:';
+
+  @override
   String get shareIntro => 'Check out my results:';
+
+  @override
+  String get spiritualGiftsTitle => 'Spiritual Gifts';
+
+  @override
+  String get listeningPrayerTitle => 'Listening Prayer';
+
+  @override
+  String shareGoalItem(int index) {
+    return 'Goal $index';
+  }
+
+  @override
+  String shareInsightItem(int index) {
+    return 'Insight $index';
+  }
+
+  @override
+  String get shareNoteOrDrawing => 'Note / Drawing';
+
+  @override
+  String shareGiftItem(int index, String name) {
+    return 'Gift $index: $name';
+  }
+
+  @override
+  String shareHighlightItem(int index) {
+    return 'Highlight $index';
+  }
+
+  @override
+  String shareImpressionItem(int index) {
+    return 'Impression $index';
+  }
+
+  @override
+  String connectionsSummaryItem(int index) {
+    return 'Connection $index';
+  }
 
   @override
   String get feedbackTitle => 'Feedback Form';
@@ -735,4 +780,19 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get connectionsColorGold => 'Yellow';
+
+  @override
+  String get imagineLabelPast => 'Past';
+
+  @override
+  String get imagineLabelFuture => 'Future';
+
+  @override
+  String get imagineSubtitlePast => 'Choose an image for your past';
+
+  @override
+  String get imagineSubtitleFuture => 'Choose an image for your future';
+
+  @override
+  String get imagineNoImagesSelected => 'No images selected yet.';
 }

@@ -118,7 +118,7 @@ class _SynthesisScreenState extends State<SynthesisScreen> {
       items.add(
         ShareableItem(
           id: 'takeaway_connection_summary_$i',
-          label: 'Connection ${i + 1}',
+          label: l10n.connectionsSummaryItem(i + 1),
           textValue: text,
         ),
       );

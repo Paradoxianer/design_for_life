@@ -322,7 +322,52 @@ class AppLocalizationsDe extends AppLocalizations {
   String get shareFooter => 'Erstellt während des DFL-Wochenendes';
 
   @override
+  String get shareKeyTakeaways => 'Wichtigste Erkenntnisse:';
+
+  @override
+  String get shareDetailsAndNotes => 'Details & Notizen:';
+
+  @override
   String get shareIntro => 'Schau dir meine Ergebnisse an:';
+
+  @override
+  String get spiritualGiftsTitle => 'Geistliche Gaben';
+
+  @override
+  String get listeningPrayerTitle => 'Hörendes Gebet';
+
+  @override
+  String shareGoalItem(int index) {
+    return 'Ziel $index';
+  }
+
+  @override
+  String shareInsightItem(int index) {
+    return 'Erkenntnis $index';
+  }
+
+  @override
+  String get shareNoteOrDrawing => 'Notiz / Zeichnung';
+
+  @override
+  String shareGiftItem(int index, String name) {
+    return 'Gabe $index: $name';
+  }
+
+  @override
+  String shareHighlightItem(int index) {
+    return 'Highlight $index';
+  }
+
+  @override
+  String shareImpressionItem(int index) {
+    return 'Eindruck $index';
+  }
+
+  @override
+  String connectionsSummaryItem(int index) {
+    return 'Connection $index';
+  }
 
   @override
   String get feedbackTitle => 'Feedbackbogen';
@@ -742,4 +787,19 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get connectionsColorGold => 'Gelb';
+
+  @override
+  String get imagineLabelPast => 'Vergangenheit';
+
+  @override
+  String get imagineLabelFuture => 'Zukunft';
+
+  @override
+  String get imagineSubtitlePast => 'Wähle ein Bild für deine Vergangenheit';
+
+  @override
+  String get imagineSubtitleFuture => 'Wähle ein Bild für deine Zukunft';
+
+  @override
+  String get imagineNoImagesSelected => 'Noch keine Bilder ausgewählt.';
 }

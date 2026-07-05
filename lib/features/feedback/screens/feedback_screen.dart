@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:design_for_life/l10n/generated/app_localizations.dart';
 import '../../../core/widgets/dfl_module_scaffold.dart';
 import '../../../core/models/shareable_content.dart';
 import '../../../core/services/share_service.dart';
@@ -31,10 +32,10 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
     context.read<FeedbackBloc>().add(const FeedbackStarted());
   }
 
-  ShareableContent _getShareableContent(FeedbackState state) {
+  ShareableContent _getShareableContent(BuildContext context, FeedbackState state) {
     return ShareableContent(
-      title: 'Feedback Seminar',
-      items: const [], 
+      title: AppLocalizations.of(context).feedbackTitle,
+      items: const [],
     );
   }
 
@@ -42,7 +43,7 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
   Widget build(BuildContext context) {
     return BlocBuilder<FeedbackBloc, FeedbackState>(
       builder: (context, state) {
-        final shareContent = _getShareableContent(state);
+        final shareContent = _getShareableContent(context, state);
 
         return DflModuleScaffold(
           title: widget.title,

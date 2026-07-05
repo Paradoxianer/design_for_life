@@ -3,6 +3,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import 'package:design_for_life/l10n/generated/app_localizations.dart';
 import '../../../core/widgets/dfl_module_editor.dart';
 import '../../../core/widgets/image_fullscreen_viewer.dart';
 import '../../../core/widgets/key_takeaway_field.dart';
@@ -52,6 +53,7 @@ class _ImagineEditorBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
     return FutureBuilder<List<ImagineVisualOption>>(
       future: loadImagineOptions(),
       builder: (context, snapshot) {
@@ -63,8 +65,8 @@ class _ImagineEditorBody extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             _OptionSection(
-              label: 'Vergangenheit',
-              subtitle: 'Wähle ein Bild für deine Vergangenheit',
+              label: l10n.imagineLabelPast,
+              subtitle: l10n.imagineSubtitlePast,
               icon: Icons.history_rounded,
               options: options,
               selectedId: selectedPastId,
@@ -74,8 +76,8 @@ class _ImagineEditorBody extends StatelessWidget {
             ),
             const SizedBox(height: 24),
             _OptionSection(
-              label: 'Zukunft',
-              subtitle: 'Wähle ein Bild für deine Zukunft',
+              label: l10n.imagineLabelFuture,
+              subtitle: l10n.imagineSubtitleFuture,
               icon: Icons.auto_awesome_rounded,
               options: options,
               selectedId: selectedFutureId,

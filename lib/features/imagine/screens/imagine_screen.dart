@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:design_for_life/l10n/generated/app_localizations.dart';
 import '../../../core/widgets/dfl_module_scaffold.dart';
 import '../../../core/models/shareable_content.dart';
 import '../../../core/services/share_service.dart';
@@ -19,38 +20,39 @@ class ImagineScreen extends StatelessWidget {
     this.initialEditMode = true,
   });
 
-  ShareableContent _buildShareContent(ImagineState state) {
+  ShareableContent _buildShareContent(BuildContext context, ImagineState state) {
+    final l10n = AppLocalizations.of(context);
     final takeaways = state.sessionTakeaways(sessionId);
     final takeawayText = takeaways.where((t) => t.isNotEmpty).join(' | ');
     return ShareableContent(
-      title: 'Imagine',
+      title: l10n.timelineImagineTitle,
       items: [
         if (state.pastImageId(sessionId) != null)
           ShareableItem(
             id: 'past_image',
-            label: 'Vergangenheit',
+            label: l10n.imagineLabelPast,
             textValue: state.pastImageId(sessionId)!,
             data: {
               'type': 'imagine_option',
-              'phase': 'Vergangenheit',
+              'phase': l10n.imagineLabelPast,
               'optionId': state.pastImageId(sessionId),
             },
           ),
         if (state.futureImageId(sessionId) != null)
           ShareableItem(
             id: 'future_image',
-            label: 'Zukunft',
+            label: l10n.imagineLabelFuture,
             textValue: state.futureImageId(sessionId)!,
             data: {
               'type': 'imagine_option',
-              'phase': 'Zukunft',
+              'phase': l10n.imagineLabelFuture,
               'optionId': state.futureImageId(sessionId),
             },
           ),
         if (takeawayText.isNotEmpty)
           ShareableItem(
             id: 'takeaways',
-            label: 'Key Takeaways',
+            label: l10n.keyTakeaways,
             textValue: takeawayText,
             data: {'type': 'takeaways', 'value': takeawayText},
           ),
@@ -62,7 +64,7 @@ class ImagineScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<ImagineBloc, ImagineState>(
       builder: (context, state) {
-        final shareContent = _buildShareContent(state);
+        final shareContent = _buildShareContent(context, state);
         final takeaways = state.sessionTakeaways(sessionId);
         return DflModuleScaffold(
           title: title,
