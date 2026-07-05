@@ -98,19 +98,29 @@ class _ValuesAssessmentScreenState extends State<ValuesAssessmentScreen> {
                     ? TextButton.icon(
                         onPressed: () => setState(() => _currentStep--),
                         icon: const Icon(Icons.chevron_left),
-                        label: Text(l10n.previous),
+                        label: Text(
+                          l10n.previous,
+                          overflow: TextOverflow.ellipsis,
+                          maxLines: 1,
+                        ),
                       )
                     : const SizedBox.shrink(),
               ),
-              ElevatedButton.icon(
-                onPressed: () => _scaffoldKey.currentState?.toggleMode(),
-                icon: const Icon(Icons.check),
-                label: Text(l10n.finish),
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Theme.of(context).colorScheme.primaryContainer,
-                  foregroundColor: Theme.of(context).colorScheme.onPrimaryContainer,
-                  padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+              Flexible(
+                child: ElevatedButton.icon(
+                  onPressed: () => _scaffoldKey.currentState?.toggleMode(),
+                  icon: const Icon(Icons.check),
+                  label: Text(
+                    l10n.finish,
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 1,
+                  ),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Theme.of(context).colorScheme.primaryContainer,
+                    foregroundColor: Theme.of(context).colorScheme.onPrimaryContainer,
+                    padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
+                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                  ),
                 ),
               ),
               Flexible(
@@ -124,7 +134,13 @@ class _ValuesAssessmentScreenState extends State<ValuesAssessmentScreen> {
                         child: Row(
                           mainAxisSize: MainAxisSize.min,
                           children: [
-                            Text(l10n.next),
+                            Flexible(
+                              child: Text(
+                                l10n.next,
+                                overflow: TextOverflow.ellipsis,
+                                maxLines: 1,
+                              ),
+                            ),
                             const Icon(Icons.chevron_right),
                           ],
                         ),
