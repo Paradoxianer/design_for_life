@@ -70,18 +70,26 @@ class TimelineCard extends StatelessWidget {
                     if (session.room != null) ...[
                       const Icon(Icons.location_on_outlined, size: 14, color: Colors.grey),
                       const SizedBox(width: 4),
-                      Text(
-                        session.room!,
-                        style: theme.textTheme.labelSmall,
+                      Flexible(
+                        child: Text(
+                          session.room!,
+                          style: theme.textTheme.labelSmall,
+                          overflow: TextOverflow.ellipsis,
+                          maxLines: 1,
+                        ),
                       ),
                       const SizedBox(width: 16),
                     ],
                     if (session.groupAssignment != null) ...[
                       const Icon(Icons.people_outline, size: 14, color: Colors.grey),
                       const SizedBox(width: 4),
-                      Text(
-                        session.groupAssignment!,
-                        style: theme.textTheme.labelSmall,
+                      Flexible(
+                        child: Text(
+                          session.groupAssignment!,
+                          style: theme.textTheme.labelSmall,
+                          overflow: TextOverflow.ellipsis,
+                          maxLines: 1,
+                        ),
                       ),
                     ],
                   ],

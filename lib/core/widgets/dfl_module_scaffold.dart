@@ -66,7 +66,11 @@ class DflModuleScaffoldState extends State<DflModuleScaffold> {
     
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: Text(
+          widget.title,
+          overflow: TextOverflow.ellipsis,
+          maxLines: 1,
+        ),
         actions: [
           if (!_isEditMode && widget.shareableContent != null)
             IconButton(
