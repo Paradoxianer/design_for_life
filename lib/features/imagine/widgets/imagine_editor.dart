@@ -38,7 +38,7 @@ class ImagineEditor extends DflModuleEditor {
   }
 }
 
-class _ImagineEditorBody extends StatelessWidget {
+class _ImagineEditorBody extends StatefulWidget {
   final String sessionId;
   final String? selectedPastId;
   final String? selectedFutureId;
@@ -52,10 +52,21 @@ class _ImagineEditorBody extends StatelessWidget {
   });
 
   @override
+  State<_ImagineEditorBody> createState() => _ImagineEditorBodyState();
+}
+
+class _ImagineEditorBodyState extends State<_ImagineEditorBody> {
+  // Wird einmalig in initState geladen statt inline in build() - sonst
+  // erzeugt jeder Rebuild (z.B. jeder Tastendruck im Key-Takeaway-Feld) ein
+  // neues Future, FutureBuilder fällt zurück auf "waiting" und reißt den
+  // gesamten Teilbaum (inkl. TextField-Fokus) neu auf (#58).
+  late final Future<List<ImagineVisualOption>> _optionsFuture = loadImagineOptions();
+
+  @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context);
     return FutureBuilder<List<ImagineVisualOption>>(
-      future: loadImagineOptions(),
+      future: _optionsFuture,
       builder: (context, snapshot) {
         if (snapshot.connectionState != ConnectionState.done) {
           return const Center(child: CircularProgressIndicator());
@@ -69,9 +80,9 @@ class _ImagineEditorBody extends StatelessWidget {
               subtitle: l10n.imagineSubtitlePast,
               icon: Icons.history_rounded,
               options: options,
-              selectedId: selectedPastId,
+              selectedId: widget.selectedPastId,
               onSelect: (id) => context.read<ImagineBloc>().add(
-                    SelectPastImage(sessionId, id),
+                    SelectPastImage(widget.sessionId, id),
                   ),
             ),
             const SizedBox(height: 24),
@@ -80,18 +91,18 @@ class _ImagineEditorBody extends StatelessWidget {
               subtitle: l10n.imagineSubtitleFuture,
               icon: Icons.auto_awesome_rounded,
               options: options,
-              selectedId: selectedFutureId,
+              selectedId: widget.selectedFutureId,
               onSelect: (id) => context.read<ImagineBloc>().add(
-                    SelectFutureImage(sessionId, id),
+                    SelectFutureImage(widget.sessionId, id),
                   ),
             ),
             const SizedBox(height: 32),
             const Divider(),
             const SizedBox(height: 16),
             KeyTakeawayField(
-              takeaways: takeaways,
+              takeaways: widget.takeaways,
               onUpdate: (index, value) => context.read<ImagineBloc>().add(
-                    UpdateImagineTakeaway(sessionId, index, value),
+                    UpdateImagineTakeaway(widget.sessionId, index, value),
                   ),
             ),
             const SizedBox(height: 16),

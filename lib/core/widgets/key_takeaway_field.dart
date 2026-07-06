@@ -72,16 +72,78 @@ class KeyTakeawayField extends StatelessWidget {
   }
 
   Widget _buildEditItem(BuildContext context, String text, int index, String hint) {
+    return _TakeawayEditField(
+      key: ValueKey('takeaway_$index'),
+      text: text,
+      index: index,
+      hint: hint,
+      onUpdate: onUpdate,
+    );
+  }
+}
+
+/// Hält einen eigenen [TextEditingController], statt bei jedem Rebuild neu
+/// erzeugt zu werden (wie zuvor in KeyTakeawayField._buildEditItem) - das
+/// sprang den Cursor nach jedem Tastendruck ans Textende und konnte bei
+/// verschachtelten Rebuilds sogar den Fokus verlieren (#58).
+class _TakeawayEditField extends StatefulWidget {
+  final String text;
+  final int index;
+  final String hint;
+  final Function(int, String) onUpdate;
+
+  const _TakeawayEditField({
+    super.key,
+    required this.text,
+    required this.index,
+    required this.hint,
+    required this.onUpdate,
+  });
+
+  @override
+  State<_TakeawayEditField> createState() => _TakeawayEditFieldState();
+}
+
+class _TakeawayEditFieldState extends State<_TakeawayEditField> {
+  late final TextEditingController _controller = TextEditingController(text: widget.text);
+  late final FocusNode _focusNode = FocusNode()..addListener(_onFocusChange);
+
+  void _onFocusChange() {
+    // Nur synchronisieren, wenn das Feld nicht fokussiert ist, damit externe
+    // State-Updates während des Tippens den Cursor nicht verspringen lassen.
+    if (!_focusNode.hasFocus && _controller.text != widget.text) {
+      _controller.text = widget.text;
+    }
+  }
+
+  @override
+  void didUpdateWidget(_TakeawayEditField oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (!_focusNode.hasFocus && widget.text != _controller.text) {
+      _controller.text = widget.text;
+    }
+  }
+
+  @override
+  void dispose() {
+    _focusNode.removeListener(_onFocusChange);
+    _focusNode.dispose();
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return TextField(
-      controller: TextEditingController(text: text)
-        ..selection = TextSelection.fromPosition(TextPosition(offset: text.length)),
+      controller: _controller,
+      focusNode: _focusNode,
       decoration: InputDecoration(
-        hintText: hint,
-        prefixText: '${index + 1}. ',
+        hintText: widget.hint,
+        prefixText: '${widget.index + 1}. ',
         border: InputBorder.none,
       ),
       style: Theme.of(context).textTheme.bodyLarge,
-      onChanged: (value) => onUpdate(index, value),
+      onChanged: (value) => widget.onUpdate(widget.index, value),
     );
   }
 }
