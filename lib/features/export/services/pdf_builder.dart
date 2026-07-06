@@ -1,4 +1,5 @@
 import 'package:flutter/foundation.dart';
+import 'package:flutter/services.dart' show rootBundle;
 import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
 import 'package:printing/printing.dart';
@@ -31,15 +32,31 @@ class PdfBuilder {
           : null,
     );
 
+    pw.ImageProvider? logo;
+    try {
+      final logoBytes = (await rootBundle.load('assets/DFL_Logo.png')).buffer.asUint8List();
+      logo = pw.MemoryImage(logoBytes);
+    } catch (e) {
+      debugPrint('Could not load DFL logo for PDF header: $e');
+    }
+
     for (final section in document.sections) {
       try {
         pdf.addPage(
           pw.MultiPage(
             pageFormat: PdfPageFormat.a4,
             margin: const pw.EdgeInsets.all(32),
-            header: (context) => pw.Text(
-              section.title,
-              style: pw.TextStyle(fontSize: 20, fontWeight: pw.FontWeight.bold),
+            header: (context) => pw.Row(
+              children: [
+                if (logo != null) ...[
+                  pw.Image(logo, height: 32),
+                  pw.SizedBox(width: 12),
+                ],
+                pw.Text(
+                  section.title,
+                  style: pw.TextStyle(fontSize: 20, fontWeight: pw.FontWeight.bold),
+                ),
+              ],
             ),
             build: (context) => [
               pw.SizedBox(height: 12),

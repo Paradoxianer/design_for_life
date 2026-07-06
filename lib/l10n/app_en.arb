@@ -134,6 +134,7 @@
   "exportGenerateButton": "Create & share PDF",
   "exportEmptyState": "No content to export yet. Fill in a few modules first.",
   "exportError": "Something went wrong while creating the PDF. Please try again.",
+  "exportGenerating": "Creating PDF …",
   "lifeTreeShareGraph": "Digital Life Tree (Graph)",
   "lifeTreeFullscreen": "Fullscreen Mode",
   "lifeTreeExitFullscreen": "Exit Fullscreen",

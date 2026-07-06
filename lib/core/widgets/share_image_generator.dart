@@ -10,6 +10,16 @@ import 'package:share_plus/share_plus.dart';
 
 import '../models/shareable_content.dart';
 
+/// Parst einen '#RRGGBB'-String zu einer [Color]. Fällt auf Grau zurück, wenn
+/// [hex] fehlt oder ungültig ist.
+Color _parseColor(String? hex) {
+  if (hex == null) return Colors.grey;
+  final normalized = hex.replaceFirst('#', '');
+  final value = int.tryParse(normalized, radix: 16);
+  if (value == null) return Colors.grey;
+  return Color(0xFF000000 | value);
+}
+
 class ShareImageGenerator {
   static final ScreenshotController _brandingController = ScreenshotController();
 
@@ -258,6 +268,7 @@ class ShareImageGenerator {
                     title: entry['title'] as String? ?? '',
                     body: entry['body'] as String?,
                     chips: (entry['chips'] as List?)?.cast<Map>(),
+                    lines: (entry['lines'] as List?)?.cast<Map>(),
                   ),
                   if (entry != entries.last) const SizedBox(height: 20),
                 ],
@@ -358,7 +369,7 @@ class ShareImageGenerator {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        const Icon(Icons.auto_awesome, color: Colors.green, size: 54),
+        Image.asset('assets/DFL_Logo.png', height: 54),
         const SizedBox(width: 20),
         Flexible(
           child: Column(
@@ -393,8 +404,9 @@ class _TextCardEntry extends StatelessWidget {
   final String title;
   final String? body;
   final List<Map>? chips;
+  final List<Map>? lines;
 
-  const _TextCardEntry({required this.title, this.body, this.chips});
+  const _TextCardEntry({required this.title, this.body, this.chips, this.lines});
 
   @override
   Widget build(BuildContext context) {
@@ -419,13 +431,39 @@ class _TextCardEntry extends StatelessWidget {
                 for (final chip in chips!) ...[
                   _SmartChip(
                     label: chip['label'] as String? ?? '',
-                    title: chip['title'] as String? ?? '',
                     isActive: chip['isActive'] as bool? ?? false,
                   ),
                   if (chip != chips!.last) const SizedBox(width: 8),
                 ],
               ],
             ),
+          ],
+          if (lines != null && lines!.isNotEmpty) ...[
+            const SizedBox(height: 10),
+            for (final line in lines!)
+              Padding(
+                padding: const EdgeInsets.only(bottom: 6),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                      width: 12,
+                      height: 12,
+                      margin: const EdgeInsets.only(top: 4, right: 8),
+                      decoration: BoxDecoration(
+                        color: _parseColor(line['color'] as String?),
+                        shape: BoxShape.circle,
+                      ),
+                    ),
+                    Expanded(
+                      child: Text(
+                        line['text'] as String? ?? '',
+                        style: TextStyle(fontSize: 16, color: Colors.grey.shade800, height: 1.4),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
           ],
           if (body != null && body!.trim().isNotEmpty) ...[
             const SizedBox(height: 8),
@@ -442,27 +480,30 @@ class _TextCardEntry extends StatelessWidget {
 
 /// Kompakte Variante der App-eigenen SmartIndicator-Chips (S/M/A/R/T) für
 /// die Share-Karte - Kreis+Buchstabe, eingefärbt wenn aktiv, sonst grau.
+///
+/// Bewusst ohne Tooltip: Dieser Baum wird off-screen über
+/// captureFromLongWidget zu einem statischen Bild gerendert, ohne
+/// Navigator/Overlay-Vorfahren. Tooltip.build() verlangt aber zwingend einen
+/// Overlay (auch wenn der Popup nie ausgelöst wird) und wirft sonst eine
+/// Exception, die die gesamte Karte (z.B. bei Zielen) zum Verschwinden
+/// brachte, weil sie vom umgebenden try/catch verschluckt wurde.
 class _SmartChip extends StatelessWidget {
   final String label;
-  final String title;
   final bool isActive;
 
-  const _SmartChip({required this.label, required this.title, required this.isActive});
+  const _SmartChip({required this.label, required this.isActive});
 
   @override
   Widget build(BuildContext context) {
     final color = isActive ? Colors.green.shade600 : Colors.grey.shade400;
-    return Tooltip(
-      message: title,
-      child: Container(
-        width: 28,
-        height: 28,
-        alignment: Alignment.center,
-        decoration: BoxDecoration(color: color, shape: BoxShape.circle),
-        child: Text(
-          label,
-          style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 13),
-        ),
+    return Container(
+      width: 28,
+      height: 28,
+      alignment: Alignment.center,
+      decoration: BoxDecoration(color: color, shape: BoxShape.circle),
+      child: Text(
+        label,
+        style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 13),
       ),
     );
   }

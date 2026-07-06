@@ -64,6 +64,16 @@ class ExportService {
       }
     }
 
+    // Falls die Bild-Erzeugung für alle Bild-Items fehlschlägt, geht der
+    // Inhalt sonst komplett verloren - Textzusammenfassung als Fallback.
+    if (images.isEmpty) {
+      for (final item in imageItems) {
+        if (item.textValue != null && item.textValue!.trim().isNotEmpty) {
+          textBlocks.add('${item.label}\n${item.textValue}');
+        }
+      }
+    }
+
     return ExportSection(title: content.title, images: images, textBlocks: textBlocks);
   }
 }

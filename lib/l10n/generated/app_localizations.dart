@@ -662,6 +662,12 @@ abstract class AppLocalizations {
   /// **'Something went wrong while creating the PDF. Please try again.'**
   String get exportError;
 
+  /// No description provided for @exportGenerating.
+  ///
+  /// In en, this message translates to:
+  /// **'Creating PDF …'**
+  String get exportGenerating;
+
   /// No description provided for @lifeTreeShareGraph.
   ///
   /// In en, this message translates to:

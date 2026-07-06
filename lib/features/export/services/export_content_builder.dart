@@ -260,16 +260,29 @@ class ExportContentBuilder {
       'goals': l10n.connectionsColGoals,
       'lifeTree': l10n.connectionsColLifeTree,
     };
-    final tagIcons = {'red': '🔴', 'blue': '🔵', 'green': '🟢', 'gold': '🟡', 'none': '⚪'};
 
-    final boardEntries = <Map<String, String>>[];
+    // Farbe als echte gerenderte Form statt Emoji-Zeichen (🔴 etc.) - je nach
+    // Plattform/Schrift wurden Emojis beim Rendern zu Bildern sonst als
+    // Ersatzzeichen ("Tofu-Box") angezeigt.
+    const tagColors = {
+      'red': '#E53935',
+      'blue': '#1E88E5',
+      'green': '#43A047',
+      'gold': '#FBC02D',
+      'none': '#BDBDBD',
+    };
+
+    final boardEntries = <Map<String, Object>>[];
     for (final columnEntry in state.columns.entries) {
       if (columnEntry.value.isEmpty) continue;
       final section = labels[columnEntry.key] ?? columnEntry.key;
-      final body = columnEntry.value
-          .map((card) => '${tagIcons[card.tag] ?? '⚪'} ${card.text}')
-          .join('\n');
-      boardEntries.add({'title': section, 'body': body});
+      boardEntries.add({
+        'title': section,
+        'lines': [
+          for (final card in columnEntry.value)
+            {'text': card.text, 'color': tagColors[card.tag] ?? tagColors['none']!},
+        ],
+      });
     }
     final summaryText = state.takeaways.where((t) => t.trim().isNotEmpty).join('\n');
     if (summaryText.isNotEmpty) {

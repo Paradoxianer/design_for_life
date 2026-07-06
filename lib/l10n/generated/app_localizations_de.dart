@@ -323,6 +323,9 @@ class AppLocalizationsDe extends AppLocalizations {
       'Beim Erstellen des PDFs ist ein Fehler aufgetreten. Bitte versuche es erneut.';
 
   @override
+  String get exportGenerating => 'PDF wird erstellt …';
+
+  @override
   String get lifeTreeShareGraph => 'Digitaler Lebensbaum (Grafik)';
 
   @override

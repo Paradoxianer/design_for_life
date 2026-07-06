@@ -320,6 +320,9 @@ class AppLocalizationsEn extends AppLocalizations {
       'Something went wrong while creating the PDF. Please try again.';
 
   @override
+  String get exportGenerating => 'Creating PDF …';
+
+  @override
   String get lifeTreeShareGraph => 'Digital Life Tree (Graph)';
 
   @override
