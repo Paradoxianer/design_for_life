@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:design_for_life/l10n/generated/app_localizations.dart';
 import '../../../core/widgets/image_fullscreen_viewer.dart';
 import '../../../core/widgets/key_takeaway_field.dart';
+import '../../../core/widgets/resolved_image.dart';
 import '../models/imagine_visual_option.dart';
 
 class ImagineResult extends StatelessWidget {
@@ -104,7 +105,7 @@ class _ImageResultCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final resolvedPath = option?.imagePath ??
-        (imagePath != null ? 'assets/images/imagine/$imagePath' : null);
+        (imagePath != null ? resolveImagineImagePath(imagePath!) : null);
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -127,7 +128,7 @@ class _ImageResultCard extends StatelessWidget {
                   ? Stack(
                       fit: StackFit.expand,
                       children: [
-                        Image.asset(resolvedPath, fit: BoxFit.cover),
+                        buildResolvedImage(resolvedPath, fit: BoxFit.cover),
                         Positioned(
                           bottom: 8,
                           right: 8,

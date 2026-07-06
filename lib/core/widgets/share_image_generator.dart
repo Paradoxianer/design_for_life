@@ -8,10 +8,12 @@ import 'package:path_provider/path_provider.dart';
 import 'package:screenshot/screenshot.dart';
 import 'package:share_plus/share_plus.dart';
 
+import '../../features/imagine/models/imagine_visual_option.dart';
 import '../../features/life_tree/models/life_tree_node_data.dart';
 import '../../features/life_tree/widgets/life_tree_graph_widget.dart';
 import '../models/shareable_content.dart';
 import '../utils/localized_logo.dart';
+import 'resolved_image.dart';
 
 /// Parst einen '#RRGGBB'-String zu einer [Color]. Fällt auf Grau zurück, wenn
 /// [hex] fehlt oder ungültig ist.
@@ -157,8 +159,9 @@ class ShareImageGenerator {
     final data = item.data as Map;
     final optionId = data['optionId'] as String?;
     if (optionId == null) return null;
-    // optionId is the filename, e.g. "img_01.png"
-    final imagePath = 'assets/images/imagine/$optionId';
+    // optionId is either a bare asset filename (e.g. "img_01.png") or an
+    // absolute file path from a camera capture (#53).
+    final imagePath = resolveImagineImagePath(optionId);
 
     try {
       final rendered = await _brandingController.captureFromLongWidget(
@@ -188,7 +191,7 @@ class ShareImageGenerator {
                   borderRadius: BorderRadius.circular(20),
                   child: AspectRatio(
                     aspectRatio: 2 / 3,
-                    child: Image.asset(imagePath, fit: BoxFit.cover),
+                    child: buildResolvedImage(imagePath, fit: BoxFit.cover),
                   ),
                 ),
               ],
@@ -199,7 +202,10 @@ class ShareImageGenerator {
         pixelRatio: 2.0,
       );
 
-      return await _toXFile(rendered, 'imagine_$optionId.png');
+      // optionId kann bei einem Kamera-Foto ein absoluter Pfad mit
+      // Trennzeichen sein - nicht als Dateiname verwenden (_toXFile hängt nur
+      // einen eindeutigen Zeitstempel-Präfix an, ein fester Name reicht).
+      return await _toXFile(rendered, 'imagine_option.png');
     } catch (e) {
       debugPrint('Error rendering imagine share image: $e');
       return null;
@@ -220,8 +226,8 @@ class ShareImageGenerator {
     final futureOptionId = data['futureOptionId'] as String?;
     if (pastOptionId == null || futureOptionId == null) return null;
 
-    final pastPath = 'assets/images/imagine/$pastOptionId';
-    final futurePath = 'assets/images/imagine/$futureOptionId';
+    final pastPath = resolveImagineImagePath(pastOptionId);
+    final futurePath = resolveImagineImagePath(futureOptionId);
     final pastLabel = data['pastLabel'] as String? ?? '';
     final futureLabel = data['futureLabel'] as String? ?? '';
 
@@ -615,7 +621,7 @@ class _ComposedImagineHalf extends StatelessWidget {
           borderRadius: BorderRadius.circular(16),
           child: AspectRatio(
             aspectRatio: 2 / 3,
-            child: Image.asset(imagePath, fit: BoxFit.cover),
+            child: buildResolvedImage(imagePath, fit: BoxFit.cover),
           ),
         ),
       ],
