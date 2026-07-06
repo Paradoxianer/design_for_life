@@ -422,6 +422,12 @@ abstract class AppLocalizations {
   /// **'My Top 8 Values'**
   String get valuesResultTitle;
 
+  /// No description provided for @valuesShareSectionTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'My Most Important Values'**
+  String get valuesShareSectionTitle;
+
   /// No description provided for @lifeTreeTitle.
   ///
   /// In en, this message translates to:
@@ -793,6 +799,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Goal {index}'**
   String shareGoalItem(int index);
+
+  /// No description provided for @shareNoteItem.
+  ///
+  /// In en, this message translates to:
+  /// **'Note {index}'**
+  String shareNoteItem(int index);
 
   /// No description provided for @shareInsightItem.
   ///

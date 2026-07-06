@@ -47,10 +47,18 @@ class ShareImageGenerator {
   }
 
   /// Generiert die Liste der zu teilenden Bilder.
+  ///
+  /// [includeBranding] steuert, ob Logo+Titel als Kopfzeile in das Bild
+  /// hineingerendert werden. Beim PDF-Export hat jede Seite bereits eine
+  /// eigene native Kopfzeile mit demselben Branding (siehe pdf_builder.dart);
+  /// würden die Bilder das Branding zusätzlich enthalten, erschiene es
+  /// doppelt. Beim normalen Teilen (WhatsApp, Mail, ...) gibt es diese
+  /// PDF-Kopfzeile nicht, dort bleibt es bei `true`.
   static Future<List<XFile>> generateShareImages({
     required BuildContext context,
     required ShareableContent content,
     required List<ShareableItem> selectedItems,
+    bool includeBranding = true,
   }) async {
     final List<XFile> files = [];
 
@@ -64,7 +72,12 @@ class ShareImageGenerator {
           final Uint8List? capturedBytes = item.data['capturedImage'] as Uint8List?;
 
           if (capturedBytes != null && capturedBytes.isNotEmpty) {
-            final xFile = await _wrapCapturedImageWithBranding(context, content, capturedBytes);
+            final xFile = await _wrapCapturedImageWithBranding(
+              context,
+              content,
+              capturedBytes,
+              includeBranding: includeBranding,
+            );
             if (xFile != null) files.add(xFile);
           }
         }
@@ -74,6 +87,7 @@ class ShareImageGenerator {
             context: context,
             content: content,
             item: item,
+            includeBranding: includeBranding,
           );
           if (xFile != null) files.add(xFile);
         }
@@ -83,6 +97,7 @@ class ShareImageGenerator {
             context: context,
             content: content,
             item: item,
+            includeBranding: includeBranding,
           );
           if (xFile != null) files.add(xFile);
         }
@@ -92,6 +107,7 @@ class ShareImageGenerator {
             context: context,
             content: content,
             item: item,
+            includeBranding: includeBranding,
           );
           if (xFile != null) files.add(xFile);
         }
@@ -118,6 +134,7 @@ class ShareImageGenerator {
     required BuildContext context,
     required ShareableContent content,
     required ShareableItem item,
+    bool includeBranding = true,
   }) async {
     final data = item.data as Map;
     final optionId = data['optionId'] as String?;
@@ -136,8 +153,10 @@ class ShareImageGenerator {
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                _buildHeader(context, content),
-                const SizedBox(height: 32),
+                if (includeBranding) ...[
+                  _buildHeader(context, content),
+                  const SizedBox(height: 32),
+                ],
                 Text(
                   data['phase'] as String? ?? item.label,
                   textAlign: TextAlign.center,
@@ -176,6 +195,7 @@ class ShareImageGenerator {
     required BuildContext context,
     required ShareableContent content,
     required ShareableItem item,
+    bool includeBranding = true,
   }) async {
     final data = item.data as Map;
     final pastOptionId = data['pastOptionId'] as String?;
@@ -198,8 +218,10 @@ class ShareImageGenerator {
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                _buildHeader(context, content),
-                const SizedBox(height: 32),
+                if (includeBranding) ...[
+                  _buildHeader(context, content),
+                  const SizedBox(height: 32),
+                ],
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -235,6 +257,7 @@ class ShareImageGenerator {
     required BuildContext context,
     required ShareableContent content,
     required ShareableItem item,
+    bool includeBranding = true,
   }) async {
     final data = item.data as Map;
     final heading = data['heading'] as String?;
@@ -254,8 +277,10 @@ class ShareImageGenerator {
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                _buildHeader(context, content),
-                const SizedBox(height: 32),
+                if (includeBranding) ...[
+                  _buildHeader(context, content),
+                  const SizedBox(height: 32),
+                ],
                 if (heading != null && heading.isNotEmpty) ...[
                   Text(
                     heading,
@@ -296,8 +321,9 @@ class ShareImageGenerator {
   static Future<XFile?> _wrapCapturedImageWithBranding(
     BuildContext context,
     ShareableContent content,
-    Uint8List graphBytes,
-  ) async {
+    Uint8List graphBytes, {
+    bool includeBranding = true,
+  }) async {
     final theme = Theme.of(context);
     final l10n = AppLocalizations.of(context);
 
@@ -317,10 +343,11 @@ class ShareImageGenerator {
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 24),
-                    child: _buildHeader(context, content),
-                  ),
+                  if (includeBranding)
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 24),
+                      child: _buildHeader(context, content),
+                    ),
                   // RawImage statt Image.memory: captureFromLongWidget misst die
                   // Höhe zuerst synchron, bevor Image.memory seine eigene
                   // asynchrone Decodierung abgeschlossen hat (v.a. auf Web spürbar

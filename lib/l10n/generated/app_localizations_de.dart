@@ -193,6 +193,9 @@ class AppLocalizationsDe extends AppLocalizations {
   String get valuesResultTitle => 'Meine Top 8 Werte';
 
   @override
+  String get valuesShareSectionTitle => 'Meine wichtigsten Werte';
+
+  @override
   String get lifeTreeTitle => 'Mein Lebensbaum';
 
   @override
@@ -384,7 +387,7 @@ class AppLocalizationsDe extends AppLocalizations {
   String get shareIntro => 'Schau dir meine Ergebnisse an:';
 
   @override
-  String get spiritualGiftsTitle => 'Geistliche Gaben';
+  String get spiritualGiftsTitle => 'Geistesgaben';
 
   @override
   String get listeningPrayerTitle => 'Hörendes Gebet';
@@ -392,6 +395,11 @@ class AppLocalizationsDe extends AppLocalizations {
   @override
   String shareGoalItem(int index) {
     return 'Ziel $index';
+  }
+
+  @override
+  String shareNoteItem(int index) {
+    return 'Notiz $index';
   }
 
   @override

@@ -141,7 +141,7 @@ class _ExportScreenState extends State<ExportScreen> {
     }
 
     final sectionLabels = {
-      'values': l10n.valuesResultTitle,
+      'values': l10n.valuesShareSectionTitle,
       'gifts': l10n.spiritualGiftsTitle,
       'goals': l10n.goalsTitle,
       'notes': l10n.notes,

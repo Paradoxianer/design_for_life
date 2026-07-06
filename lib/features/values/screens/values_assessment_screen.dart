@@ -56,7 +56,7 @@ class _ValuesAssessmentScreenState extends State<ValuesAssessmentScreen> {
     final topThree = state.topEightValues.take(3).toList();
 
     return ShareableContent(
-      title: l10n.valuesResultTitle,
+      title: l10n.valuesShareSectionTitle,
       items: [
         // Top 3 Werte als eine gebrandete Bild-Karte statt einzelner Text-Zeilen (#24)
         if (topThree.isNotEmpty)

@@ -77,6 +77,7 @@
   "valuesNextPhaseHint": "Zukünftige Phase...",
   "valuesNextPhaseValuesGuidance": "Wähle bis zu 8 Werte aus der Liste, die für diesen neuen Abschnitt besonders wichtig sein werden (klicke in der gewünschten Reihenfolge):",
   "valuesResultTitle": "Meine Top 8 Werte",
+  "valuesShareSectionTitle": "Meine wichtigsten Werte",
   "lifeTreeTitle": "Mein Lebensbaum",
   "lifeTreeDigital": "Digitaler Lebensbaum",
   "lifeTreeAnalog": "Notizen & Zeichnungen",
@@ -167,10 +168,16 @@
   "shareKeyTakeaways": "Wichtigste Erkenntnisse:",
   "shareDetailsAndNotes": "Details & Notizen:",
   "shareIntro": "Schau dir meine Ergebnisse an:",
-  "spiritualGiftsTitle": "Geistliche Gaben",
+  "spiritualGiftsTitle": "Geistesgaben",
   "listeningPrayerTitle": "Hörendes Gebet",
   "shareGoalItem": "Ziel {index}",
   "@shareGoalItem": {
+    "placeholders": {
+      "index": { "type": "int" }
+    }
+  },
+  "shareNoteItem": "Notiz {index}",
+  "@shareNoteItem": {
     "placeholders": {
       "index": { "type": "int" }
     }

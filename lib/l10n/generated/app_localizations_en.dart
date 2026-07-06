@@ -190,6 +190,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get valuesResultTitle => 'My Top 8 Values';
 
   @override
+  String get valuesShareSectionTitle => 'My Most Important Values';
+
+  @override
   String get lifeTreeTitle => 'My Life Tree';
 
   @override
@@ -389,6 +392,11 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String shareGoalItem(int index) {
     return 'Goal $index';
+  }
+
+  @override
+  String shareNoteItem(int index) {
+    return 'Note $index';
   }
 
   @override

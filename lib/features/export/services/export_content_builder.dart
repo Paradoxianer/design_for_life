@@ -21,7 +21,7 @@ class ExportContentBuilder {
     if (topThree.isEmpty) return null;
 
     return ShareableContent(
-      title: l10n.valuesResultTitle,
+      title: l10n.valuesShareSectionTitle,
       items: [
         ShareableItem(
           id: 'export_values_card',
@@ -112,19 +112,30 @@ class ExportContentBuilder {
   }
 
   static ShareableContent? notes(AppLocalizations l10n, EntryListState state) {
+    // Notizen bestehen aus zwei getrennten Dingen: den freien Notiz-Einträgen
+    // (Text/Foto pro Einheit) UND den 3 "Wichtigste Erkenntnisse"-Feldern
+    // (vom generischen KeyTakeawayField in DflModuleEditor). Beide gehören in
+    // den Export, nicht nur die Takeaways.
+    final takeaways = state.takeaways.values.expand((t) => t).where((t) => t.trim().isNotEmpty).toList();
     final entries = state.entries.values
         .expand((e) => e)
         .where((e) => e.text.trim().isNotEmpty || e.imagePath != null)
         .toList();
-    if (entries.isEmpty) return null;
+    if (takeaways.isEmpty && entries.isEmpty) return null;
 
     return ShareableContent(
       title: l10n.notes,
       items: [
+        for (int i = 0; i < takeaways.length; i++)
+          ShareableItem(
+            id: 'export_note_takeaway_$i',
+            label: l10n.shareHighlightItem(i + 1),
+            textValue: takeaways[i],
+          ),
         for (int i = 0; i < entries.length; i++)
           ShareableItem(
             id: 'export_note_$i',
-            label: l10n.shareInsightItem(i + 1),
+            label: l10n.shareNoteItem(i + 1),
             textValue: entries[i].text.isNotEmpty ? entries[i].text : null,
             imagePath: entries[i].imagePath,
           ),
@@ -172,7 +183,7 @@ class ExportContentBuilder {
         for (int i = 0; i < entries.length; i++)
           ShareableItem(
             id: 'export_group_photo_$i',
-            label: l10n.shareInsightItem(i + 1),
+            label: l10n.shareNoteItem(i + 1),
             textValue: entries[i].text.isNotEmpty ? entries[i].text : null,
             imagePath: entries[i].imagePath,
           ),

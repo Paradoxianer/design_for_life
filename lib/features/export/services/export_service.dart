@@ -42,10 +42,14 @@ class ExportService {
     final images = <Uint8List>[];
 
     if (imageItems.isNotEmpty) {
+      // Jede PDF-Seite hat bereits eine eigene native Kopfzeile mit Logo+Titel
+      // (siehe pdf_builder.dart) - die Bilder sollen das nicht zusätzlich
+      // hineinrendern, sonst erscheint das Branding doppelt.
       final files = await ShareImageGenerator.generateShareImages(
         context: context,
         content: content,
         selectedItems: imageItems,
+        includeBranding: false,
       );
       for (final file in files) {
         try {
