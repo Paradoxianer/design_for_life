@@ -8,6 +8,8 @@ import 'package:path_provider/path_provider.dart';
 import 'package:screenshot/screenshot.dart';
 import 'package:share_plus/share_plus.dart';
 
+import '../../features/life_tree/models/life_tree_node_data.dart';
+import '../../features/life_tree/widgets/life_tree_graph_widget.dart';
 import '../models/shareable_content.dart';
 import '../utils/localized_logo.dart';
 
@@ -76,6 +78,22 @@ class ShareImageGenerator {
               context,
               content,
               capturedBytes,
+              includeBranding: includeBranding,
+            );
+            if (xFile != null) files.add(xFile);
+          }
+        }
+        // 1b. Digitaler Lebensbaum ohne live sichtbaren Screen (PDF-Export):
+        // hier existiert kein gemounteter LifeTreeResult zum Screenshotten,
+        // deshalb wird der Graph aus den rohen Knotendaten off-screen
+        // gerendert (analog zu den anderen Kartentypen unten).
+        else if (item.data is Map && item.data['type'] == 'life_tree_graph_data') {
+          final nodes = item.data['nodes'] as List<LifeTreeNodeData>?;
+          if (nodes != null && nodes.isNotEmpty) {
+            final xFile = await _buildLifeTreeGraphImage(
+              context: context,
+              content: content,
+              nodes: nodes,
               includeBranding: includeBranding,
             );
             if (xFile != null) files.add(xFile);
@@ -309,6 +327,37 @@ class ShareImageGenerator {
       return await _toXFile(rendered, 'card.png');
     } catch (e) {
       debugPrint('Error rendering text card share image: $e');
+      return null;
+    }
+  }
+
+  /// Rendert den digitalen Lebensbaum-Graph off-screen direkt aus den
+  /// Knotendaten (statt aus einem live gemounteten Screenshot, der beim
+  /// PDF-Export nicht existiert - es gibt dort keinen sichtbaren Screen zum
+  /// Fotografieren). Keine `constraints` übergeben: der Screenshot-Package-
+  /// Default ist unbeschränkt in beide Richtungen, genau wie der Graph live
+  /// innerhalb des InteractiveViewer(constrained: false) in life_tree_result.dart
+  /// gerendert wird - beide Wege ergeben dieselbe natürliche Graphgröße.
+  static Future<XFile?> _buildLifeTreeGraphImage({
+    required BuildContext context,
+    required ShareableContent content,
+    required List<LifeTreeNodeData> nodes,
+    bool includeBranding = true,
+  }) async {
+    try {
+      final graphBytes = await _brandingController.captureFromLongWidget(
+        LifeTreeGraphWidget(nodes: nodes),
+        pixelRatio: 1.0,
+      );
+
+      return await _wrapCapturedImageWithBranding(
+        context,
+        content,
+        graphBytes,
+        includeBranding: includeBranding,
+      );
+    } catch (e) {
+      debugPrint('Error rendering life tree graph for export: $e');
       return null;
     }
   }

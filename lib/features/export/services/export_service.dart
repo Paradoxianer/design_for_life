@@ -12,7 +12,13 @@ import 'package:design_for_life/core/widgets/share_image_generator.dart';
 class ExportService {
   const ExportService._();
 
-  static const _imageDataTypes = {'life_tree_graph', 'imagine_option', 'imagine_composed', 'text_card'};
+  static const _imageDataTypes = {
+    'life_tree_graph',
+    'life_tree_graph_data',
+    'imagine_option',
+    'imagine_composed',
+    'text_card',
+  };
 
   static bool _hasImage(ShareableItem item) =>
       item.imagePath != null || (item.data is Map && _imageDataTypes.contains(item.data['type']));

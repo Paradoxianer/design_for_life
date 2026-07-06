@@ -191,22 +191,27 @@ class ExportContentBuilder {
     );
   }
 
-  /// Der digitale Lebensbaum-Graph kann hier (noch) nicht mitgerendert werden -
-  /// er wird bisher nur live aus dem sichtbaren Life-Tree-Screen heraus
-  /// gescreenshottet (siehe life_tree_screen.dart onShare). Für den Export
-  /// werden Takeaways und analoge Einträge (Fotos/Notizen) berücksichtigt;
-  /// der Graph selbst ist eine bekannte Folgearbeit.
   static ShareableContent? lifeTree(AppLocalizations l10n, LifeTreeState state) {
     final takeaways = state.takeaways.values.expand((t) => t).where((t) => t.trim().isNotEmpty).toList();
     final entries = state.entries.values
         .expand((e) => e)
         .where((e) => e.text.trim().isNotEmpty || e.imagePath != null)
         .toList();
-    if (takeaways.isEmpty && entries.isEmpty) return null;
+    // Der digitale Baum ist immer genau eine Session (session_3 in
+    // timeline_module_registry.dart) - hier trotzdem robust über alle
+    // Sessions suchen statt den Key hart zu verdrahten.
+    final nodes = state.treeNodes.values.firstWhere((n) => n.isNotEmpty, orElse: () => const []);
+    if (takeaways.isEmpty && entries.isEmpty && nodes.isEmpty) return null;
 
     return ShareableContent(
       title: l10n.lifeTreeTitle,
       items: [
+        if (nodes.isNotEmpty)
+          ShareableItem(
+            id: 'export_lt_graph',
+            label: l10n.lifeTreeShareGraph,
+            data: {'type': 'life_tree_graph_data', 'nodes': nodes},
+          ),
         for (int i = 0; i < takeaways.length; i++)
           ShareableItem(
             id: 'export_lt_takeaway_$i',

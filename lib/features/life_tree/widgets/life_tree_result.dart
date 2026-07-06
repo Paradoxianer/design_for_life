@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:graphview/GraphView.dart';
 import 'package:screenshot/screenshot.dart';
 import 'package:design_for_life/l10n/generated/app_localizations.dart';
 import 'package:design_for_life/core/models/dfl_entry.dart';
 import 'package:design_for_life/core/widgets/dfl_module_result.dart';
 import 'package:design_for_life/core/widgets/result_image_thumbnail.dart';
 import '../models/life_tree_node_data.dart';
+import 'life_tree_graph_widget.dart';
 
 class LifeTreeResult extends StatefulWidget {
   final List<DflEntry> entries;
@@ -30,29 +30,13 @@ class LifeTreeResult extends StatefulWidget {
 }
 
 class _LifeTreeResultState extends State<LifeTreeResult> {
-  final Graph graph = Graph()..isTree = true;
-  late BuchheimWalkerConfiguration builder;
-  late Algorithm algorithm;
-  final Map<String, Node> _nodeCache = {};
   final TransformationController _transformationController = TransformationController();
   bool _showNotes = false;
-
-  // Canvas Offsets (Must be identical to Editor)
-  static const double _canvasPaddingX = 400.0;
-  static const double _canvasPaddingY = 200.0;
 
   @override
   void initState() {
     super.initState();
     _showNotes = widget.showNotesInitially;
-    builder = BuchheimWalkerConfiguration()
-      ..siblingSeparation = (50)
-      ..levelSeparation = (80)
-      ..subtreeSeparation = (50)
-      ..orientation = BuchheimWalkerConfiguration.ORIENTATION_TOP_BOTTOM;
-    
-    algorithm = BuchheimWalkerAlgorithm(builder, TreeEdgeRenderer(builder));
-    _syncGraph();
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (mounted) {
@@ -61,45 +45,6 @@ class _LifeTreeResultState extends State<LifeTreeResult> {
         _transformationController.value = Matrix4.identity()..translate(-235.0, 50.0);
       }
     });
-  }
-
-  @override
-  void didUpdateWidget(LifeTreeResult oldWidget) {
-    super.didUpdateWidget(oldWidget);
-    if (widget.nodes != oldWidget.nodes) {
-      _syncGraph();
-    }
-  }
-
-  void _syncGraph() {
-    final Set<String> targetIds = widget.nodes.map((n) => n.id).toSet();
-    final currentNodes = List<Node>.from(graph.nodes);
-    
-    for (var node in currentNodes) {
-      final id = node.key?.value as String;
-      if (!targetIds.contains(id)) {
-        graph.removeNode(node);
-        _nodeCache.remove(id);
-      }
-    }
-
-    for (var nodeData in widget.nodes) {
-      final node = _nodeCache.putIfAbsent(nodeData.id, () => Node.Id(nodeData.id));
-      if (!graph.nodes.contains(node)) {
-        graph.addNode(node);
-      }
-    }
-
-    graph.edges.clear();
-    for (var nodeData in widget.nodes) {
-      if (nodeData.parentId != null) {
-        final parent = _nodeCache[nodeData.parentId];
-        final child = _nodeCache[nodeData.id];
-        if (parent != null && child != null) {
-          graph.addEdge(parent, child);
-        }
-      }
-    }
   }
 
   @override
@@ -154,23 +99,7 @@ class _LifeTreeResultState extends State<LifeTreeResult> {
                 maxScale: 2.0,
                 child: Screenshot(
                   controller: widget.screenshotController ?? ScreenshotController(),
-                  child: Container(
-                    color: Colors.white,
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: _canvasPaddingX, 
-                      vertical: _canvasPaddingY
-                    ),
-                    child: GraphView(
-                      graph: graph,
-                      algorithm: algorithm,
-                      paint: Paint()..color = Colors.green.shade400..strokeWidth = 1.5..strokeCap = StrokeCap.round..style = PaintingStyle.stroke,
-                      builder: (Node node) {
-                        final nodeId = node.key?.value as String;
-                        final nodeData = widget.nodes.firstWhere((n) => n.id == nodeId, orElse: () => LifeTreeNodeData(id: nodeId, text: ''));
-                        return _ReadOnlyNodeWidget(nodeData: nodeData, showNote: _showNotes);
-                      },
-                    ),
-                  ),
+                  child: LifeTreeGraphWidget(nodes: widget.nodes, showNotes: _showNotes),
                 ),
               ),
             ),
@@ -183,62 +112,6 @@ class _LifeTreeResultState extends State<LifeTreeResult> {
           ),
           const SizedBox(height: 12),
           ...widget.entries.map((entry) => _DflEntryReadOnlyWidget(entry: entry)),
-        ],
-      ),
-    );
-  }
-}
-
-class _ReadOnlyNodeWidget extends StatelessWidget {
-  final LifeTreeNodeData nodeData;
-  final bool showNote;
-  const _ReadOnlyNodeWidget({required this.nodeData, required this.showNote});
-
-  @override
-  Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    final bool hasNote = nodeData.note.isNotEmpty;
-    
-    return Container(
-      width: 170,
-      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(8),
-        border: Border.all(color: Colors.green.shade200, width: 1),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withValues(alpha: 0.05),
-            blurRadius: 4,
-            offset: const Offset(0, 2),
-          ),
-        ],
-      ),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Text(
-            nodeData.text.isEmpty ? '...' : nodeData.text,
-            style: theme.textTheme.bodyMedium?.copyWith(fontWeight: FontWeight.bold),
-            textAlign: TextAlign.center,
-            maxLines: 2,
-            overflow: TextOverflow.ellipsis,
-          ),
-          if (hasNote && showNote) ...[
-            const SizedBox(height: 4),
-            const Divider(height: 8, thickness: 0.5),
-            Text(
-              nodeData.note,
-              style: theme.textTheme.bodySmall?.copyWith(
-                fontStyle: FontStyle.italic,
-                fontSize: 10,
-                color: Colors.grey.shade700,
-              ),
-              textAlign: TextAlign.center,
-              maxLines: 4,
-              overflow: TextOverflow.ellipsis,
-            ),
-          ],
         ],
       ),
     );
