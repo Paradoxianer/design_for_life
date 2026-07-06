@@ -4,7 +4,6 @@ import 'dart:typed_data';
 import 'package:design_for_life/l10n/generated/app_localizations.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:path_provider/path_provider.dart';
 import 'package:screenshot/screenshot.dart';
 import 'package:share_plus/share_plus.dart';
 
@@ -55,8 +54,12 @@ class ShareImageGenerator {
         }
         // 3. Analoge Bilder / Notizen
         else if (item.imagePath != null) {
-          final file = io.File(item.imagePath!);
-          if (await file.exists()) {
+          // dart:io hat auf Web kein echtes Dateisystem (Blob-URLs lassen sich
+          // nicht per File.exists() prüfen) - dort direkt als XFile übergeben,
+          // cross_file liest den Blob beim Teilen selbst aus.
+          if (kIsWeb) {
+            files.add(XFile(item.imagePath!));
+          } else if (await io.File(item.imagePath!).exists()) {
             files.add(XFile(item.imagePath!));
           }
         }
@@ -80,7 +83,7 @@ class ShareImageGenerator {
     final imagePath = 'assets/images/imagine/$optionId';
 
     try {
-      final rendered = await _brandingController.captureFromWidget(
+      final rendered = await _brandingController.captureFromLongWidget(
         Material(
           color: Colors.white,
           child: Container(
@@ -112,14 +115,15 @@ class ShareImageGenerator {
             ),
           ),
         ),
+        constraints: const BoxConstraints(maxWidth: 1000),
         pixelRatio: 2.0,
       );
 
-      final directory = await getTemporaryDirectory();
-      final path = '${directory.path}/imagine_${optionId}_${DateTime.now().microsecondsSinceEpoch}.png';
-      final file = io.File(path);
-      await file.writeAsBytes(rendered);
-      return XFile(path);
+      return XFile.fromData(
+        rendered,
+        name: 'imagine_$optionId.png',
+        mimeType: 'image/png',
+      );
     } catch (e) {
       debugPrint('Error rendering imagine share image: $e');
       return null;
@@ -145,7 +149,7 @@ class ShareImageGenerator {
     final futureLabel = data['futureLabel'] as String? ?? '';
 
     try {
-      final rendered = await _brandingController.captureFromWidget(
+      final rendered = await _brandingController.captureFromLongWidget(
         Material(
           color: Colors.white,
           child: Container(
@@ -173,14 +177,15 @@ class ShareImageGenerator {
             ),
           ),
         ),
+        constraints: const BoxConstraints(maxWidth: 1000),
         pixelRatio: 2.0,
       );
 
-      final directory = await getTemporaryDirectory();
-      final path = '${directory.path}/imagine_composed_${DateTime.now().microsecondsSinceEpoch}.png';
-      final file = io.File(path);
-      await file.writeAsBytes(rendered);
-      return XFile(path);
+      return XFile.fromData(
+        rendered,
+        name: 'imagine_composed.png',
+        mimeType: 'image/png',
+      );
     } catch (e) {
       debugPrint('Error rendering composed imagine share image: $e');
       return null;
@@ -204,7 +209,7 @@ class ShareImageGenerator {
       final decodedGraph = await decodeImageFromList(graphBytes);
       final double imageWidth = decodedGraph.width.toDouble();
 
-      final Uint8List? finalImage = await _brandingController.captureFromWidget(
+      final Uint8List? finalImage = await _brandingController.captureFromLongWidget(
         Material(
           color: Colors.white,
           child: Theme(
@@ -245,19 +250,18 @@ class ShareImageGenerator {
             ),
           ),
         ),
+        constraints: BoxConstraints(maxWidth: imageWidth),
         delay: const Duration(milliseconds: 200),
         pixelRatio: 1.0,
       );
 
       if (finalImage == null) return null;
 
-      final directory = await getTemporaryDirectory();
-      final ts = DateTime.now().microsecondsSinceEpoch;
-      final path = '${directory.path}/lebensbaum_final_$ts.png';
-      final file = io.File(path);
-
-      await file.writeAsBytes(finalImage);
-      return XFile(path);
+      return XFile.fromData(
+        finalImage,
+        name: 'lebensbaum.png',
+        mimeType: 'image/png',
+      );
     } catch (e) {
       debugPrint('Error wrapping graph image: $e');
       return null;
