@@ -27,6 +27,8 @@ import 'features/life_tree/bloc/life_tree_bloc.dart';
 import 'features/life_tree/screens/life_tree_screen.dart';
 import 'features/synthesis/bloc/synthesis_bloc.dart';
 import 'features/synthesis/screens/synthesis_screen.dart';
+import 'features/group_photo/bloc/group_photo_bloc.dart';
+import 'features/group_photo/screens/group_photo_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -53,6 +55,7 @@ void main() async {
         BlocProvider(create: (context) => ImagineBloc()),
         BlocProvider(create: (context) => LifeTreeBloc()),
         BlocProvider(create: (context) => SynthesisBloc()),
+        BlocProvider(create: (context) => GroupPhotoBloc()),
       ],
       child: const DflApp(),
     ),
@@ -176,6 +179,18 @@ class DflApp extends StatelessWidget {
             final mode = state.uri.queryParameters['mode'];
             return LifeTreeScreen(
               sessionId: sessionId,
+              title: title,
+              initialEditMode: mode != 'result',
+            );
+          },
+        ),
+        GoRoute(
+          path: '/group-photo',
+          builder: (context, state) {
+            final l10n = AppLocalizations.of(context);
+            final title = state.uri.queryParameters['title'] ?? l10n.session11Title;
+            final mode = state.uri.queryParameters['mode'];
+            return GroupPhotoScreen(
               title: title,
               initialEditMode: mode != 'result',
             );

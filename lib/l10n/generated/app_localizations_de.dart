@@ -18,6 +18,23 @@ class AppLocalizationsDe extends AppLocalizations {
   String get notesEmptyState => 'Keine Notizen vorhanden.';
 
   @override
+  String get entryTakePhoto => 'Foto aufnehmen';
+
+  @override
+  String get entryChooseFromGallery => 'Aus Galerie wählen';
+
+  @override
+  String get groupPhotoGuidance =>
+      'Halte hier eure gemeinsamen Momente vom Wochenende fest.';
+
+  @override
+  String get groupPhotoHint =>
+      'Wer ist auf dem Bild zu sehen? Was war besonders?';
+
+  @override
+  String get groupPhotoEmptyState => 'Noch kein Gruppenfoto vorhanden.';
+
+  @override
   String get notesGuidance =>
       'Schreibe auf, was dir in dieser Einheit wichtig geworden ist.';
 

@@ -18,6 +18,22 @@ class AppLocalizationsEn extends AppLocalizations {
   String get notesEmptyState => 'No notes yet.';
 
   @override
+  String get entryTakePhoto => 'Take photo';
+
+  @override
+  String get entryChooseFromGallery => 'Choose from gallery';
+
+  @override
+  String get groupPhotoGuidance =>
+      'Capture your shared moments from the weekend here.';
+
+  @override
+  String get groupPhotoHint => 'Who\'s in the photo? What made it special?';
+
+  @override
+  String get groupPhotoEmptyState => 'No group photo yet.';
+
+  @override
   String get notesGuidance =>
       'Write down what stands out to you from this session.';
 

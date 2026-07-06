@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:design_for_life/l10n/generated/app_localizations.dart';
 import '../models/dfl_entry.dart';
 
 class DflEntryWidget extends StatefulWidget {
@@ -104,11 +105,7 @@ class _DflEntryWidgetState extends State<DflEntryWidget> {
                       ),
                     IconButton(
                       icon: const Icon(Icons.add_a_photo_outlined, size: 22),
-                      onPressed: () async {
-                        final picker = ImagePicker();
-                        final image = await picker.pickImage(source: ImageSource.gallery);
-                        if (image != null) widget.onImageChanged(image.path);
-                      },
+                      onPressed: () => _pickImage(context),
                       padding: EdgeInsets.zero,
                       constraints: const BoxConstraints(),
                       visualDensity: VisualDensity.compact,
@@ -144,6 +141,36 @@ class _DflEntryWidgetState extends State<DflEntryWidget> {
         ],
       ),
     );
+  }
+
+  /// Lässt den Nutzer zwischen Kamera und Galerie wählen (#46), statt direkt
+  /// die Galerie zu öffnen.
+  Future<void> _pickImage(BuildContext context) async {
+    final l10n = AppLocalizations.of(context);
+    final source = await showModalBottomSheet<ImageSource>(
+      context: context,
+      builder: (sheetContext) => SafeArea(
+        child: Wrap(
+          children: [
+            ListTile(
+              leading: const Icon(Icons.photo_camera_outlined),
+              title: Text(l10n.entryTakePhoto),
+              onTap: () => Navigator.pop(sheetContext, ImageSource.camera),
+            ),
+            ListTile(
+              leading: const Icon(Icons.photo_library_outlined),
+              title: Text(l10n.entryChooseFromGallery),
+              onTap: () => Navigator.pop(sheetContext, ImageSource.gallery),
+            ),
+          ],
+        ),
+      ),
+    );
+    if (source == null) return;
+
+    final picker = ImagePicker();
+    final image = await picker.pickImage(source: source);
+    if (image != null) widget.onImageChanged(image.path);
   }
 
   Widget _buildImage(String path) {

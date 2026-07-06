@@ -116,6 +116,36 @@ abstract class AppLocalizations {
   /// **'No notes yet.'**
   String get notesEmptyState;
 
+  /// No description provided for @entryTakePhoto.
+  ///
+  /// In en, this message translates to:
+  /// **'Take photo'**
+  String get entryTakePhoto;
+
+  /// No description provided for @entryChooseFromGallery.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose from gallery'**
+  String get entryChooseFromGallery;
+
+  /// No description provided for @groupPhotoGuidance.
+  ///
+  /// In en, this message translates to:
+  /// **'Capture your shared moments from the weekend here.'**
+  String get groupPhotoGuidance;
+
+  /// No description provided for @groupPhotoHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Who\'s in the photo? What made it special?'**
+  String get groupPhotoHint;
+
+  /// No description provided for @groupPhotoEmptyState.
+  ///
+  /// In en, this message translates to:
+  /// **'No group photo yet.'**
+  String get groupPhotoEmptyState;
+
   /// No description provided for @notesGuidance.
   ///
   /// In en, this message translates to:

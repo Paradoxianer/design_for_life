@@ -116,7 +116,7 @@
       "order": 120,
       "titleKey": "session11Title",
       "type": "other",
-      "enabled": false
+      "enabled": true
     },
     {
       "id": "session_12",
