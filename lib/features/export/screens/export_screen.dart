@@ -116,7 +116,8 @@ class _ExportScreenState extends State<ExportScreen> {
     try {
       final contents = _selectedKeys.map((k) => _availableSections[k]!).toList();
       final document = await ExportService.build(context: context, contents: contents);
-      final pdfBytes = await PdfBuilder.build(document);
+      final languageCode = Localizations.localeOf(context).languageCode;
+      final pdfBytes = await PdfBuilder.build(document, languageCode: languageCode);
       if (!mounted) return;
       await Printing.sharePdf(bytes: pdfBytes, filename: 'dfl_abschlussdokument.pdf');
     } catch (e) {

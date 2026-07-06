@@ -53,3 +53,6 @@ flutter:
     - assets/data/
     - assets/images/imagine/
     - assets/DFL_Logo.png
+    - assets/Logo.de.png
+    - assets/Logo.en.png
+    - assets/fonts/

@@ -9,6 +9,7 @@ import 'package:screenshot/screenshot.dart';
 import 'package:share_plus/share_plus.dart';
 
 import '../models/shareable_content.dart';
+import '../utils/localized_logo.dart';
 
 /// Parst einen '#RRGGBB'-String zu einer [Color]. Fällt auf Grau zurück, wenn
 /// [hex] fehlt oder ungültig ist.
@@ -135,7 +136,7 @@ class ShareImageGenerator {
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                _buildHeader(content),
+                _buildHeader(context, content),
                 const SizedBox(height: 32),
                 Text(
                   data['phase'] as String? ?? item.label,
@@ -197,7 +198,7 @@ class ShareImageGenerator {
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                _buildHeader(content),
+                _buildHeader(context, content),
                 const SizedBox(height: 32),
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -253,7 +254,7 @@ class ShareImageGenerator {
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                _buildHeader(content),
+                _buildHeader(context, content),
                 const SizedBox(height: 32),
                 if (heading != null && heading.isNotEmpty) ...[
                   Text(
@@ -318,7 +319,7 @@ class ShareImageGenerator {
                 children: [
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 24),
-                    child: _buildHeader(content),
+                    child: _buildHeader(context, content),
                   ),
                   // RawImage statt Image.memory: captureFromLongWidget misst die
                   // Höhe zuerst synchron, bevor Image.memory seine eigene
@@ -365,11 +366,13 @@ class ShareImageGenerator {
     }
   }
 
-  static Widget _buildHeader(ShareableContent content) {
+  static Widget _buildHeader(BuildContext context, ShareableContent content) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Image.asset('assets/DFL_Logo.png', height: 54),
+        const SizedBox(width: 12),
+        Image.asset(localizedPartnerLogoAsset(context), height: 54),
         const SizedBox(width: 20),
         Flexible(
           child: Column(

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:design_for_life/l10n/generated/app_localizations.dart';
 
+import '../../../core/utils/localized_logo.dart';
 import '../models/dfl_session.dart';
 import '../services/timeline_config_repository.dart';
 import '../services/timeline_module_registry.dart';
@@ -62,10 +63,28 @@ class TimelineScreen extends StatelessWidget {
                   ),
                 ),
               ),
+              SliverToBoxAdapter(child: _BrandingFooter()),
             ],
           ),
         );
       },
+    );
+  }
+}
+
+class _BrandingFooter extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 24),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Image.asset('assets/DFL_Logo.png', height: 36),
+          const SizedBox(width: 16),
+          Image.asset(localizedPartnerLogoAsset(context), height: 36),
+        ],
+      ),
     );
   }
 }
