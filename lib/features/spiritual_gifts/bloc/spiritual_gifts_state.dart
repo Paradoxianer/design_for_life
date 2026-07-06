@@ -22,15 +22,11 @@ class SpiritualGiftsState extends Equatable {
   /// General test completion: All questions answered.
   bool get isCompleted => questionOrder.isNotEmpty && answers.length >= questionOrder.length;
 
-  /// Full module completion for a specific session: Test done AND takeaways set.
-  bool isSessionCompleted(String sessionId) {
-    final allAnswered = isCompleted;
-    final sessionTakeaways = takeaways[sessionId] ?? [];
-    final hasTakeaways = sessionTakeaways.length >= 3 && 
-                         sessionTakeaways.take(3).every((t) => t.trim().isNotEmpty);
-    
-    return allAnswered && hasTakeaways;
-  }
+  /// Full module completion for a specific session: the quiz is done, which
+  /// determines the top gifts - the primary output of this module. Writing
+  /// takeaways/reflections afterwards is a separate, later step and isn't
+  /// required for the timeline checkmark (#57).
+  bool isSessionCompleted(String sessionId) => isCompleted;
 
   double get progress => questionOrder.isEmpty ? 0 : (answers.length / questionOrder.length).clamp(0.0, 1.0);
 

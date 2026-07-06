@@ -50,5 +50,23 @@ void main() {
       );
       expect(state.isCompleted(sessionId), isTrue);
     });
+
+    test('should return true when only a key takeaway is filled (#57)', () {
+      final state = LifeTreeState(
+        takeaways: {
+          sessionId: ['', 'Something meaningful', ''],
+        },
+      );
+      expect(state.isCompleted(sessionId), isTrue);
+    });
+
+    test('should return false when takeaways are all blank', () {
+      final state = LifeTreeState(
+        takeaways: {
+          sessionId: ['', '  ', ''],
+        },
+      );
+      expect(state.isCompleted(sessionId), isFalse);
+    });
   });
 }
