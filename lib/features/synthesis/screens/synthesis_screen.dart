@@ -124,6 +124,29 @@ class _SynthesisScreenState extends State<SynthesisScreen> {
       );
     }
 
+    // Bild-Karte des Verknüpfungs-Boards, gruppiert nach Spalte - bisher wurde
+    // hier gar kein Bild geteilt, nur Text.
+    final boardEntries = <Map<String, String>>[];
+    for (final columnEntry in state.columns.entries) {
+      if (columnEntry.value.isEmpty) continue;
+      final section = labels[columnEntry.key] ?? columnEntry.key;
+      final body = columnEntry.value
+          .map((card) => '${tagIcons[card.tag] ?? '⚪'} ${card.text}')
+          .join('\n');
+      boardEntries.add({'title': section, 'body': body});
+    }
+    final summaryText = state.takeaways.where((t) => t.trim().isNotEmpty).join('\n');
+    if (summaryText.isNotEmpty) {
+      boardEntries.add({'title': l10n.keyTakeaways, 'body': summaryText});
+    }
+    if (boardEntries.isNotEmpty) {
+      items.add(ShareableItem(
+        id: 'connections_card',
+        label: l10n.connectionsShareCardLabel,
+        data: {'type': 'text_card', 'entries': boardEntries},
+      ));
+    }
+
     return ShareableContent(
       title: widget.title,
       items: items,

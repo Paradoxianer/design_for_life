@@ -285,6 +285,9 @@ class AppLocalizationsDe extends AppLocalizations {
   String get goalsShareCardLabel => 'Meine Ziele (Bild)';
 
   @override
+  String get connectionsShareCardLabel => 'Verknüpfungen (Bild)';
+
+  @override
   String get lifeTreeShareGraph => 'Digitaler Lebensbaum (Grafik)';
 
   @override

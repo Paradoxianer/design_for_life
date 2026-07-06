@@ -46,21 +46,31 @@ class _SpiritualGiftsScreenState extends State<SpiritualGiftsScreen> {
     final l10n = AppLocalizations.of(context);
     final rankedGifts = state.getRankedGifts();
     final topThree = rankedGifts.take(3).toList();
+    final scores = state.getScoresPerGift();
     final takeaways = state.takeaways[widget.sessionId] ?? [];
 
     final List<ShareableItem> items = [];
 
-    // Top 3 Gifts als eine gebrandete Bild-Karte statt einzelner Text-Zeilen (#24)
+    // Top 3 Gifts als eine gebrandete Bild-Karte statt einzelner Text-Zeilen (#24).
+    // textValue liefert weiterhin eine Textzusammenfassung für die Nachricht,
+    // die zusammen mit dem Bild geteilt wird.
     if (topThree.isNotEmpty) {
+      final giftTitles = [
+        for (int i = 0; i < topThree.length; i++)
+          '${l10n.shareGiftItem(i + 1, topThree[i].name)} '
+              '(${l10n.giftsScorePoints(scores[topThree[i].id] ?? 0)})',
+      ];
       items.add(ShareableItem(
         id: 'gifts_card',
         label: l10n.giftsShareCardLabel,
+        textValue: giftTitles.join('\n'),
         data: {
           'type': 'text_card',
           'entries': [
             for (int i = 0; i < topThree.length; i++)
               {
-                'title': l10n.shareGiftItem(i + 1, topThree[i].name),
+                'title': '${l10n.shareGiftItem(i + 1, topThree[i].name)} '
+                    '(${l10n.giftsScorePoints(scores[topThree[i].id] ?? 0)})',
                 'body': topThree[i].description,
               },
           ],

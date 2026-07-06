@@ -59,7 +59,6 @@ app.*.map.json
 /windows/flutter/generated_plugins.cmake
 
 # Web related
-lib/generated_plugin_registrant.dart
 
 # L10n
 lib/l10n/generated/

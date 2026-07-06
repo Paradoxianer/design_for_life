@@ -24,53 +24,50 @@ class ImagineScreen extends StatelessWidget {
     final l10n = AppLocalizations.of(context);
     final takeaways = state.sessionTakeaways(sessionId);
     final takeawayText = takeaways.where((t) => t.isNotEmpty).join(' | ');
-    return ShareableContent(
-      title: l10n.timelineImagineTitle,
-      items: [
-        if (state.pastImageId(sessionId) != null)
-          ShareableItem(
-            id: 'past_image',
-            label: l10n.imagineLabelPast,
-            textValue: state.pastImageId(sessionId)!,
-            data: {
-              'type': 'imagine_option',
-              'phase': l10n.imagineLabelPast,
-              'optionId': state.pastImageId(sessionId),
-            },
-          ),
-        if (state.futureImageId(sessionId) != null)
-          ShareableItem(
-            id: 'future_image',
-            label: l10n.imagineLabelFuture,
-            textValue: state.futureImageId(sessionId)!,
-            data: {
-              'type': 'imagine_option',
-              'phase': l10n.imagineLabelFuture,
-              'optionId': state.futureImageId(sessionId),
-            },
-          ),
-        if (state.pastImageId(sessionId) != null && state.futureImageId(sessionId) != null)
-          ShareableItem(
-            id: 'combined_image',
-            label: l10n.imagineLabelCombined,
-            isSelected: false,
-            data: {
-              'type': 'imagine_composed',
-              'pastOptionId': state.pastImageId(sessionId),
-              'futureOptionId': state.futureImageId(sessionId),
-              'pastLabel': l10n.imagineLabelPast,
-              'futureLabel': l10n.imagineLabelFuture,
-            },
-          ),
-        if (takeawayText.isNotEmpty)
-          ShareableItem(
-            id: 'takeaways',
-            label: l10n.keyTakeaways,
-            textValue: takeawayText,
-            data: {'type': 'takeaways', 'value': takeawayText},
-          ),
-      ],
-    );
+    final pastId = state.pastImageId(sessionId);
+    final futureId = state.futureImageId(sessionId);
+
+    final List<ShareableItem> items = [];
+
+    // Sind beide Bilder vorhanden, wird immer nur EIN komponiertes Bild
+    // geteilt (keep it simple) statt einer Auswahl zwischen Einzel- und
+    // Kombi-Bild (#54).
+    if (pastId != null && futureId != null) {
+      items.add(ShareableItem(
+        id: 'combined_image',
+        label: l10n.imagineLabelCombined,
+        data: {
+          'type': 'imagine_composed',
+          'pastOptionId': pastId,
+          'futureOptionId': futureId,
+          'pastLabel': l10n.imagineLabelPast,
+          'futureLabel': l10n.imagineLabelFuture,
+        },
+      ));
+    } else if (pastId != null) {
+      items.add(ShareableItem(
+        id: 'past_image',
+        label: l10n.imagineLabelPast,
+        data: {'type': 'imagine_option', 'phase': l10n.imagineLabelPast, 'optionId': pastId},
+      ));
+    } else if (futureId != null) {
+      items.add(ShareableItem(
+        id: 'future_image',
+        label: l10n.imagineLabelFuture,
+        data: {'type': 'imagine_option', 'phase': l10n.imagineLabelFuture, 'optionId': futureId},
+      ));
+    }
+
+    if (takeawayText.isNotEmpty) {
+      items.add(ShareableItem(
+        id: 'takeaways',
+        label: l10n.keyTakeaways,
+        textValue: takeawayText,
+        data: {'type': 'takeaways', 'value': takeawayText},
+      ));
+    }
+
+    return ShareableContent(title: l10n.timelineImagineTitle, items: items);
   }
 
   @override

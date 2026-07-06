@@ -25,14 +25,27 @@ class GoalsScreen extends StatelessWidget {
     final l10n = AppLocalizations.of(context);
     final filledGoals = goals.where((g) => g.text.isNotEmpty).toList();
 
+    List<Map<String, Object>> smartChips(Goal goal) => [
+          {'label': 'S', 'title': l10n.smartSpecific, 'isActive': goal.isSpecific},
+          {'label': 'M', 'title': l10n.smartMeasurable, 'isActive': goal.isMeasurable},
+          {'label': 'A', 'title': l10n.smartAchievable, 'isActive': goal.isAchievable},
+          {'label': 'R', 'title': l10n.smartRelevant, 'isActive': goal.isRelevant},
+          {'label': 'T', 'title': l10n.smartTimeBound, 'isActive': goal.isTimeBound},
+        ];
+
     return ShareableContent(
       title: l10n.goalsTitle,
       items: [
-        // Ziele als eine gebrandete Bild-Karte statt einzelner Text-Zeilen (#24)
+        // Ziele als eine gebrandete Bild-Karte statt einzelner Text-Zeilen (#24),
+        // inklusive der SMART-Chips wie im Editor/Ergebnis der App.
         if (filledGoals.isNotEmpty)
           ShareableItem(
             id: 'goals_card',
             label: l10n.goalsShareCardLabel,
+            textValue: [
+              for (int i = 0; i < filledGoals.length; i++)
+                '${l10n.shareGoalItem(i + 1)}: ${filledGoals[i].text}',
+            ].join('\n'),
             data: {
               'type': 'text_card',
               'entries': [
@@ -40,6 +53,7 @@ class GoalsScreen extends StatelessWidget {
                   {
                     'title': l10n.shareGoalItem(i + 1),
                     'body': filledGoals[i].text,
+                    'chips': smartChips(filledGoals[i]),
                   },
               ],
             },

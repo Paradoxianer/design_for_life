@@ -63,6 +63,9 @@ class _ValuesAssessmentScreenState extends State<ValuesAssessmentScreen> {
           ShareableItem(
             id: 'values_card',
             label: l10n.valuesShareCardLabel,
+            textValue: [
+              for (int i = 0; i < topThree.length; i++) '${i + 1}. ${topThree[i].name}',
+            ].join('\n'),
             data: {
               'type': 'text_card',
               'entries': [

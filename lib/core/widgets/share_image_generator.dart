@@ -4,6 +4,7 @@ import 'dart:typed_data';
 import 'package:design_for_life/l10n/generated/app_localizations.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:screenshot/screenshot.dart';
 import 'package:share_plus/share_plus.dart';
 
@@ -11,6 +12,28 @@ import '../models/shareable_content.dart';
 
 class ShareImageGenerator {
   static final ScreenshotController _brandingController = ScreenshotController();
+
+  /// Wandelt gerenderte Bild-Bytes in ein teilbares [XFile].
+  ///
+  /// Auf Web gibt es kein Dateisystem, daher bleiben die Bytes im Speicher
+  /// (XFile.fromData). Auf Mobile/Desktop ignoriert cross_file's XFile.fromData
+  /// den `name`-Parameter jedoch komplett (siehe cross_file/src/types/io.dart -
+  /// ohne `path` bekommt die Datei einen leeren Pfad/Namen). Beim Teilen
+  /// mehrerer generierter Bilder in einem Rutsch führte das dazu, dass
+  /// share_plus intern alle Bytes unter demselben (leeren) Namen ablegte -
+  /// nur das zuletzt geschriebene Bild kam beim Empfänger an, der Rest war
+  /// ungültig. Deshalb hier auf Mobile/Desktop einen echten, eindeutig
+  /// benannten Temp-Datei-Pfad schreiben.
+  static Future<XFile> _toXFile(Uint8List bytes, String fileName) async {
+    if (kIsWeb) {
+      return XFile.fromData(bytes, name: fileName, mimeType: 'image/png');
+    }
+    final directory = await getTemporaryDirectory();
+    final uniqueName = '${DateTime.now().microsecondsSinceEpoch}_$fileName';
+    final path = '${directory.path}/$uniqueName';
+    await io.File(path).writeAsBytes(bytes);
+    return XFile(path, mimeType: 'image/png');
+  }
 
   /// Generiert die Liste der zu teilenden Bilder.
   static Future<List<XFile>> generateShareImages({
@@ -128,11 +151,7 @@ class ShareImageGenerator {
         pixelRatio: 2.0,
       );
 
-      return XFile.fromData(
-        rendered,
-        name: 'imagine_$optionId.png',
-        mimeType: 'image/png',
-      );
+      return await _toXFile(rendered, 'imagine_$optionId.png');
     } catch (e) {
       debugPrint('Error rendering imagine share image: $e');
       return null;
@@ -190,11 +209,7 @@ class ShareImageGenerator {
         pixelRatio: 2.0,
       );
 
-      return XFile.fromData(
-        rendered,
-        name: 'imagine_composed.png',
-        mimeType: 'image/png',
-      );
+      return await _toXFile(rendered, 'imagine_composed.png');
     } catch (e) {
       debugPrint('Error rendering composed imagine share image: $e');
       return null;
@@ -242,6 +257,7 @@ class ShareImageGenerator {
                   _TextCardEntry(
                     title: entry['title'] as String? ?? '',
                     body: entry['body'] as String?,
+                    chips: (entry['chips'] as List?)?.cast<Map>(),
                   ),
                   if (entry != entries.last) const SizedBox(height: 20),
                 ],
@@ -253,11 +269,7 @@ class ShareImageGenerator {
         pixelRatio: 2.0,
       );
 
-      return XFile.fromData(
-        rendered,
-        name: 'card.png',
-        mimeType: 'image/png',
-      );
+      return await _toXFile(rendered, 'card.png');
     } catch (e) {
       debugPrint('Error rendering text card share image: $e');
       return null;
@@ -329,11 +341,7 @@ class ShareImageGenerator {
 
       if (finalImage == null) return null;
 
-      return XFile.fromData(
-        finalImage,
-        name: 'lebensbaum.png',
-        mimeType: 'image/png',
-      );
+      return await _toXFile(finalImage, 'lebensbaum.png');
     } catch (e) {
       debugPrint('Error wrapping graph image: $e');
       return null;
@@ -378,8 +386,9 @@ class ShareImageGenerator {
 class _TextCardEntry extends StatelessWidget {
   final String title;
   final String? body;
+  final List<Map>? chips;
 
-  const _TextCardEntry({required this.title, this.body});
+  const _TextCardEntry({required this.title, this.body, this.chips});
 
   @override
   Widget build(BuildContext context) {
@@ -397,6 +406,21 @@ class _TextCardEntry extends StatelessWidget {
             title,
             style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: Colors.black87),
           ),
+          if (chips != null && chips!.isNotEmpty) ...[
+            const SizedBox(height: 10),
+            Row(
+              children: [
+                for (final chip in chips!) ...[
+                  _SmartChip(
+                    label: chip['label'] as String? ?? '',
+                    title: chip['title'] as String? ?? '',
+                    isActive: chip['isActive'] as bool? ?? false,
+                  ),
+                  if (chip != chips!.last) const SizedBox(width: 8),
+                ],
+              ],
+            ),
+          ],
           if (body != null && body!.trim().isNotEmpty) ...[
             const SizedBox(height: 8),
             Text(
@@ -405,6 +429,34 @@ class _TextCardEntry extends StatelessWidget {
             ),
           ],
         ],
+      ),
+    );
+  }
+}
+
+/// Kompakte Variante der App-eigenen SmartIndicator-Chips (S/M/A/R/T) für
+/// die Share-Karte - Kreis+Buchstabe, eingefärbt wenn aktiv, sonst grau.
+class _SmartChip extends StatelessWidget {
+  final String label;
+  final String title;
+  final bool isActive;
+
+  const _SmartChip({required this.label, required this.title, required this.isActive});
+
+  @override
+  Widget build(BuildContext context) {
+    final color = isActive ? Colors.green.shade600 : Colors.grey.shade400;
+    return Tooltip(
+      message: title,
+      child: Container(
+        width: 28,
+        height: 28,
+        alignment: Alignment.center,
+        decoration: BoxDecoration(color: color, shape: BoxShape.circle),
+        child: Text(
+          label,
+          style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 13),
+        ),
       ),
     );
   }

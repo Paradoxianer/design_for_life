@@ -283,6 +283,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get goalsShareCardLabel => 'My Goals (Image)';
 
   @override
+  String get connectionsShareCardLabel => 'Connections (Image)';
+
+  @override
   String get lifeTreeShareGraph => 'Digital Life Tree (Graph)';
 
   @override

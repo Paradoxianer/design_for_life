@@ -596,6 +596,12 @@ abstract class AppLocalizations {
   /// **'My Goals (Image)'**
   String get goalsShareCardLabel;
 
+  /// No description provided for @connectionsShareCardLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Connections (Image)'**
+  String get connectionsShareCardLabel;
+
   /// No description provided for @lifeTreeShareGraph.
   ///
   /// In en, this message translates to:
