@@ -29,6 +29,7 @@ import 'features/synthesis/bloc/synthesis_bloc.dart';
 import 'features/synthesis/screens/synthesis_screen.dart';
 import 'features/group_photo/bloc/group_photo_bloc.dart';
 import 'features/group_photo/screens/group_photo_screen.dart';
+import 'features/export/screens/export_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -183,6 +184,10 @@ class DflApp extends StatelessWidget {
               initialEditMode: mode != 'result',
             );
           },
+        ),
+        GoRoute(
+          path: '/export',
+          builder: (context, state) => const ExportScreen(),
         ),
         GoRoute(
           path: '/group-photo',

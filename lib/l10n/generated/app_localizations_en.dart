@@ -302,6 +302,24 @@ class AppLocalizationsEn extends AppLocalizations {
   String get connectionsShareCardLabel => 'Connections (Image)';
 
   @override
+  String get exportTitle => 'Final Export';
+
+  @override
+  String get exportSelectionGuidance =>
+      'Choose which areas to include in your personal final document.';
+
+  @override
+  String get exportGenerateButton => 'Create & share PDF';
+
+  @override
+  String get exportEmptyState =>
+      'No content to export yet. Fill in a few modules first.';
+
+  @override
+  String get exportError =>
+      'Something went wrong while creating the PDF. Please try again.';
+
+  @override
   String get lifeTreeShareGraph => 'Digital Life Tree (Graph)';
 
   @override

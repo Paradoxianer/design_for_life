@@ -632,6 +632,36 @@ abstract class AppLocalizations {
   /// **'Connections (Image)'**
   String get connectionsShareCardLabel;
 
+  /// No description provided for @exportTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Final Export'**
+  String get exportTitle;
+
+  /// No description provided for @exportSelectionGuidance.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose which areas to include in your personal final document.'**
+  String get exportSelectionGuidance;
+
+  /// No description provided for @exportGenerateButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Create & share PDF'**
+  String get exportGenerateButton;
+
+  /// No description provided for @exportEmptyState.
+  ///
+  /// In en, this message translates to:
+  /// **'No content to export yet. Fill in a few modules first.'**
+  String get exportEmptyState;
+
+  /// No description provided for @exportError.
+  ///
+  /// In en, this message translates to:
+  /// **'Something went wrong while creating the PDF. Please try again.'**
+  String get exportError;
+
   /// No description provided for @lifeTreeShareGraph.
   ///
   /// In en, this message translates to:

@@ -305,6 +305,24 @@ class AppLocalizationsDe extends AppLocalizations {
   String get connectionsShareCardLabel => 'Verknüpfungen (Bild)';
 
   @override
+  String get exportTitle => 'Abschluss-Export';
+
+  @override
+  String get exportSelectionGuidance =>
+      'Wähle aus, welche Bereiche in dein persönliches Abschlussdokument aufgenommen werden sollen.';
+
+  @override
+  String get exportGenerateButton => 'PDF erstellen & teilen';
+
+  @override
+  String get exportEmptyState =>
+      'Noch keine Inhalte zum Exportieren vorhanden. Fülle zuerst ein paar Module aus.';
+
+  @override
+  String get exportError =>
+      'Beim Erstellen des PDFs ist ein Fehler aufgetreten. Bitte versuche es erneut.';
+
+  @override
   String get lifeTreeShareGraph => 'Digitaler Lebensbaum (Grafik)';
 
   @override

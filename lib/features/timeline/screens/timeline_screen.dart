@@ -42,6 +42,13 @@ class TimelineScreen extends StatelessWidget {
                 ),
                 backgroundColor: theme.scaffoldBackgroundColor,
                 surfaceTintColor: Colors.transparent,
+                actions: [
+                  IconButton(
+                    tooltip: l10n.exportTitle,
+                    icon: const Icon(Icons.picture_as_pdf_outlined),
+                    onPressed: () => context.push('/export'),
+                  ),
+                ],
               ),
               SliverPadding(
                 padding: const EdgeInsets.only(bottom: 24),
