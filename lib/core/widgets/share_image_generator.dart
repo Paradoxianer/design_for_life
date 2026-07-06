@@ -309,7 +309,13 @@ class ShareImageGenerator {
                     padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 24),
                     child: _buildHeader(content),
                   ),
-                  Image.memory(graphBytes, width: imageWidth, fit: BoxFit.fitWidth),
+                  // RawImage statt Image.memory: captureFromLongWidget misst die
+                  // Höhe zuerst synchron, bevor Image.memory seine eigene
+                  // asynchrone Decodierung abgeschlossen hat (v.a. auf Web spürbar
+                  // träge) - das ergab eine zu kleine Messung und dadurch einen
+                  // Overflow beim eigentlichen Rendern. decodedGraph ist hier
+                  // bereits fertig decodiert und hat sofort eine bekannte Größe.
+                  RawImage(image: decodedGraph, width: imageWidth, fit: BoxFit.fitWidth),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 20),
                     child: Column(
