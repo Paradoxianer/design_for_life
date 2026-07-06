@@ -12,10 +12,29 @@ class LifeTreeGraphWidget extends StatefulWidget {
   final List<LifeTreeNodeData> nodes;
   final bool showNotes;
 
+  /// GraphView's node-entrance-Animation (Standard: an) startet bei JEDEM
+  /// performLayout() erneut per AnimationController.forward() - während des
+  /// Tickens markiert das den Baum als "dirty". Bei captureFromLongWidget()
+  /// führt das dazu, dass dessen Retry-Schleife während des Delays einen
+  /// zweiten Layout-Durchlauf auslöst; GraphView's interne Kind-Element-
+  /// Wiederverwendung (RenderCustomLayoutBox._isInitialized) überspringt beim
+  /// zweiten Durchlauf das erneute Bauen/Zuordnen der Knoten-Widgets und wirft
+  /// dabei einen Teil der bereits gemounteten Kind-Elemente weg - sichtbar als
+  /// fehlende Wurzel und scheinbar falsch verbundene Zweige im Export-Bild.
+  /// Die einfache Live-Darstellung nutzt stattdessen ScreenshotController's
+  /// einfaches, einmaliges capture() ohne Retry-Schleife und ist davon nicht
+  /// betroffen - dort bleibt die Animation daher an (animated: true, Default).
+  final bool animated;
+
   static const double canvasPaddingX = 400.0;
   static const double canvasPaddingY = 200.0;
 
-  const LifeTreeGraphWidget({super.key, required this.nodes, this.showNotes = false});
+  const LifeTreeGraphWidget({
+    super.key,
+    required this.nodes,
+    this.showNotes = false,
+    this.animated = true,
+  });
 
   @override
   State<LifeTreeGraphWidget> createState() => _LifeTreeGraphWidgetState();
@@ -90,6 +109,7 @@ class _LifeTreeGraphWidgetState extends State<LifeTreeGraphWidget> {
       child: GraphView(
         graph: graph,
         algorithm: algorithm,
+        animated: widget.animated,
         paint: Paint()
           ..color = Colors.green.shade400
           ..strokeWidth = 1.5

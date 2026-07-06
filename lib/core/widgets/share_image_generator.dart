@@ -345,8 +345,14 @@ class ShareImageGenerator {
     bool includeBranding = true,
   }) async {
     try {
+      // animated: false ist entscheidend - siehe Kommentar an
+      // LifeTreeGraphWidget.animated: die Standard-Animation von GraphView
+      // führt in Kombination mit captureFromLongWidgets Retry-Mechanismus zu
+      // einem durcheinandergewürfelten Baum (fehlende/falsch verbundene
+      // Knoten), da während des Delays ein zweiter, korrumpierender
+      // Layout-Durchlauf ausgelöst wird.
       final graphBytes = await _brandingController.captureFromLongWidget(
-        LifeTreeGraphWidget(nodes: nodes),
+        LifeTreeGraphWidget(nodes: nodes, animated: false),
         pixelRatio: 1.0,
       );
 
