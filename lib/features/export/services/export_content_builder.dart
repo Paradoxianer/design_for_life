@@ -3,6 +3,7 @@ import 'package:design_for_life/core/models/shareable_content.dart';
 import 'package:design_for_life/features/goals/bloc/goals_bloc.dart';
 import 'package:design_for_life/features/imagine/bloc/imagine_bloc.dart';
 import 'package:design_for_life/features/life_tree/bloc/life_tree_bloc.dart';
+import 'package:design_for_life/features/life_tree/models/life_tree_node_data.dart';
 import 'package:design_for_life/features/spiritual_gifts/bloc/spiritual_gifts_bloc.dart';
 import 'package:design_for_life/features/synthesis/bloc/synthesis_bloc.dart';
 import 'package:design_for_life/features/values/bloc/values_state.dart';
@@ -197,10 +198,19 @@ class ExportContentBuilder {
         .expand((e) => e)
         .where((e) => e.text.trim().isNotEmpty || e.imagePath != null)
         .toList();
-    // Der digitale Baum ist immer genau eine Session (session_3 in
-    // timeline_module_registry.dart) - hier trotzdem robust über alle
-    // Sessions suchen statt den Key hart zu verdrahten.
-    final nodes = state.treeNodes.values.firstWhere((n) => n.isNotEmpty, orElse: () => const []);
+    // Der digitale Baum ist konzeptionell immer genau eine Session
+    // (session_3), aber auf echten Geräten wurden vereinzelt zusätzliche,
+    // unvollständige Session-Keys persistiert (z.B. durch frühere
+    // Routing-Stände ohne expliziten moduleSessionId-Query-Parameter).
+    // firstWhere() griff dabei nicht-deterministisch nach Map-Reihenfolge
+    // irgendeinen (ggf. unvollständigen) Eintrag heraus, was zu einem
+    // durcheinandergewürfelten Baum im Export führte. Stattdessen die
+    // umfangreichste Liste wählen - das ist praktisch immer der echte,
+    // vollständige Baum, während Karteileichen nur wenige Knoten enthalten.
+    final nodes = state.treeNodes.values.fold<List<LifeTreeNodeData>>(
+      const [],
+      (best, current) => current.length > best.length ? current : best,
+    );
     if (takeaways.isEmpty && entries.isEmpty && nodes.isEmpty) return null;
 
     return ShareableContent(
