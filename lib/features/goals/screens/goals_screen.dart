@@ -23,17 +23,28 @@ class GoalsScreen extends StatelessWidget {
 
   ShareableContent _getShareableContent(BuildContext context, List<Goal> goals) {
     final l10n = AppLocalizations.of(context);
+    final filledGoals = goals.where((g) => g.text.isNotEmpty).toList();
+
     return ShareableContent(
       title: l10n.goalsTitle,
-      items: goals.asMap().entries.where((e) => e.value.text.isNotEmpty).map((entry) {
-        final index = entry.key;
-        final goal = entry.value;
-        return ShareableItem(
-          id: 'goal_$index',
-          label: l10n.shareGoalItem(index + 1),
-          textValue: goal.text,
-        );
-      }).toList(),
+      items: [
+        // Ziele als eine gebrandete Bild-Karte statt einzelner Text-Zeilen (#24)
+        if (filledGoals.isNotEmpty)
+          ShareableItem(
+            id: 'goals_card',
+            label: l10n.goalsShareCardLabel,
+            data: {
+              'type': 'text_card',
+              'entries': [
+                for (int i = 0; i < filledGoals.length; i++)
+                  {
+                    'title': l10n.shareGoalItem(i + 1),
+                    'body': filledGoals[i].text,
+                  },
+              ],
+            },
+          ),
+      ],
     );
   }
 

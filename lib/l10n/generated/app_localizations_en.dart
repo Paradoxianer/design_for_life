@@ -274,6 +274,15 @@ class AppLocalizationsEn extends AppLocalizations {
   String get giftsFinishAnyway => 'Finish anyway';
 
   @override
+  String get giftsShareCardLabel => 'Top 3 Gifts (Image)';
+
+  @override
+  String get valuesShareCardLabel => 'Top Values (Image)';
+
+  @override
+  String get goalsShareCardLabel => 'My Goals (Image)';
+
+  @override
   String get lifeTreeShareGraph => 'Digital Life Tree (Graph)';
 
   @override

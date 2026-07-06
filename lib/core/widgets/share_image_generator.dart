@@ -52,6 +52,15 @@ class ShareImageGenerator {
           );
           if (xFile != null) files.add(xFile);
         }
+        // 2c. Generische Text-Karte (z.B. Top-Gaben/-Werte/-Ziele als Bild statt reinem Text, #24)
+        else if (item.data is Map && item.data['type'] == 'text_card') {
+          final xFile = await _buildTextCardImage(
+            context: context,
+            content: content,
+            item: item,
+          );
+          if (xFile != null) files.add(xFile);
+        }
         // 3. Analoge Bilder / Notizen
         else if (item.imagePath != null) {
           // dart:io hat auf Web kein echtes Dateisystem (Blob-URLs lassen sich
@@ -192,6 +201,69 @@ class ShareImageGenerator {
     }
   }
 
+  /// Rendert reinen Text (z.B. Top-3-Gaben mit Erklärung, Top-Werte mit
+  /// Definition, SMARTe Ziele) als gebrandete Bild-Karte statt als reine
+  /// Text-Checkliste zu teilen - Grundfunktion aus #24: jedes Modul soll ein
+  /// Bild erzeugen können, auch ohne eigenes Foto/Grafik.
+  static Future<XFile?> _buildTextCardImage({
+    required BuildContext context,
+    required ShareableContent content,
+    required ShareableItem item,
+  }) async {
+    final data = item.data as Map;
+    final heading = data['heading'] as String?;
+    final entries = (data['entries'] as List? ?? const [])
+        .cast<Map>()
+        .toList();
+    if (entries.isEmpty) return null;
+
+    try {
+      final rendered = await _brandingController.captureFromLongWidget(
+        Material(
+          color: Colors.white,
+          child: Container(
+            width: 1000,
+            padding: const EdgeInsets.all(50),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                _buildHeader(content),
+                const SizedBox(height: 32),
+                if (heading != null && heading.isNotEmpty) ...[
+                  Text(
+                    heading,
+                    textAlign: TextAlign.center,
+                    style: const TextStyle(fontSize: 24, fontWeight: FontWeight.w700),
+                  ),
+                  const SizedBox(height: 28),
+                ],
+                for (final entry in entries) ...[
+                  _TextCardEntry(
+                    title: entry['title'] as String? ?? '',
+                    body: entry['body'] as String?,
+                  ),
+                  if (entry != entries.last) const SizedBox(height: 20),
+                ],
+              ],
+            ),
+          ),
+        ),
+        constraints: const BoxConstraints(maxWidth: 1000),
+        pixelRatio: 2.0,
+      );
+
+      return XFile.fromData(
+        rendered,
+        name: 'card.png',
+        mimeType: 'image/png',
+      );
+    } catch (e) {
+      debugPrint('Error rendering text card share image: $e');
+      return null;
+    }
+  }
+
   /// Fügt dem rohen Lebensbaum-Graph Branding als Streifen ober- und
   /// unterhalb hinzu, ohne das Originalbild in eine starre Karte
   /// einzupassen oder zu verkleinern. Die Canvas-Breite entspricht exakt
@@ -299,6 +371,41 @@ class ShareImageGenerator {
           ),
         ),
       ],
+    );
+  }
+}
+
+class _TextCardEntry extends StatelessWidget {
+  final String title;
+  final String? body;
+
+  const _TextCardEntry({required this.title, this.body});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.all(20),
+      decoration: BoxDecoration(
+        color: Colors.green.shade50,
+        borderRadius: BorderRadius.circular(16),
+        border: Border.all(color: Colors.green.shade100),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            title,
+            style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: Colors.black87),
+          ),
+          if (body != null && body!.trim().isNotEmpty) ...[
+            const SizedBox(height: 8),
+            Text(
+              body!,
+              style: TextStyle(fontSize: 16, color: Colors.grey.shade800, height: 1.4),
+            ),
+          ],
+        ],
+      ),
     );
   }
 }

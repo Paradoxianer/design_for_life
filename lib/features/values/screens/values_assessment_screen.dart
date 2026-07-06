@@ -53,17 +53,28 @@ class _ValuesAssessmentScreenState extends State<ValuesAssessmentScreen> {
 
   ShareableContent _getShareableContent(BuildContext context, ValuesState state) {
     final l10n = AppLocalizations.of(context);
+    final topThree = state.topEightValues.take(3).toList();
+
     return ShareableContent(
       title: l10n.valuesResultTitle,
-      items: state.topEightValues.asMap().entries.map((entry) {
-        final index = entry.key;
-        final value = entry.value;
-        return ShareableItem(
-          id: 'value_$index',
-          label: '${index + 1}. ${value.name}',
-          textValue: value.definition,
-        );
-      }).toList(),
+      items: [
+        // Top 3 Werte als eine gebrandete Bild-Karte statt einzelner Text-Zeilen (#24)
+        if (topThree.isNotEmpty)
+          ShareableItem(
+            id: 'values_card',
+            label: l10n.valuesShareCardLabel,
+            data: {
+              'type': 'text_card',
+              'entries': [
+                for (int i = 0; i < topThree.length; i++)
+                  {
+                    'title': '${i + 1}. ${topThree[i].name}',
+                    'body': topThree[i].definition,
+                  },
+              ],
+            },
+          ),
+      ],
     );
   }
 

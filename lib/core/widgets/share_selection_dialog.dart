@@ -68,6 +68,9 @@ class _ShareSelectionDialogState extends State<ShareSelectionDialog> {
       if (data['type'] == 'life_tree_graph') {
         return const Icon(Icons.account_tree_outlined);
       }
+      if (data['type'] == 'text_card') {
+        return const Icon(Icons.image_outlined);
+      }
       if (data['type'] == 'imagine_composed') {
         final pastOptionId = data['pastOptionId'] as String?;
         if (pastOptionId != null) {

@@ -578,6 +578,24 @@ abstract class AppLocalizations {
   /// **'Finish anyway'**
   String get giftsFinishAnyway;
 
+  /// No description provided for @giftsShareCardLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Top 3 Gifts (Image)'**
+  String get giftsShareCardLabel;
+
+  /// No description provided for @valuesShareCardLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Top Values (Image)'**
+  String get valuesShareCardLabel;
+
+  /// No description provided for @goalsShareCardLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'My Goals (Image)'**
+  String get goalsShareCardLabel;
+
   /// No description provided for @lifeTreeShareGraph.
   ///
   /// In en, this message translates to:

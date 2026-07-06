@@ -50,12 +50,21 @@ class _SpiritualGiftsScreenState extends State<SpiritualGiftsScreen> {
 
     final List<ShareableItem> items = [];
 
-    // Top 3 Gifts
-    for (int i = 0; i < topThree.length; i++) {
+    // Top 3 Gifts als eine gebrandete Bild-Karte statt einzelner Text-Zeilen (#24)
+    if (topThree.isNotEmpty) {
       items.add(ShareableItem(
-        id: 'gift_${topThree[i].id}',
-        label: l10n.shareGiftItem(i + 1, topThree[i].name),
-        textValue: topThree[i].description,
+        id: 'gifts_card',
+        label: l10n.giftsShareCardLabel,
+        data: {
+          'type': 'text_card',
+          'entries': [
+            for (int i = 0; i < topThree.length; i++)
+              {
+                'title': l10n.shareGiftItem(i + 1, topThree[i].name),
+                'body': topThree[i].description,
+              },
+          ],
+        },
       ));
     }
 
