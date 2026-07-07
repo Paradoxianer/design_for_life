@@ -6,10 +6,18 @@ import '../models/personal_style_result.dart';
 /// Markierung sitzt an der exakten Position auf beiden Achsen
 /// (organisationFraction/energyFraction, je 0.0-1.0), sodass sichtbar ist,
 /// ob jemand eher in der Mitte oder eher am Rand eines Quadranten liegt.
+/// Zusätzlich zeigt je eine kleine Prozent-Markierung genau am Schnittpunkt
+/// mit der jeweiligen Mittellinie die exakte Zahl.
 ///
 /// |              | People | Task |
 /// | Structured   |   ..   |  ..  |
 /// | Unstructured |   ..   |  ..  |
+///
+/// Bewusst KEIN Flutter-Tooltip für die Prozentzahlen: Dieses Widget wird
+/// auch off-screen für Share-/PDF-Export gerendert (captureFromLongWidget),
+/// wo kein Overlay-Vorfahre existiert - Tooltip.build() wirft dort zwingend
+/// eine Exception (siehe _SmartChip in share_image_generator.dart für den
+/// identischen, bereits einmal behobenen Fehler).
 class PersonalStyleMatrix extends StatelessWidget {
   final PersonalStyleQuadrant quadrant;
 
@@ -26,6 +34,14 @@ class PersonalStyleMatrix extends StatelessWidget {
   final String structuredLabel;
   final String unstructuredLabel;
 
+  /// Begrenzt die Darstellung auf eine kompakte, feste Maximalbreite (statt
+  /// die gesamte verfügbare Breite auszufüllen) - auf breiten Bildschirmen
+  /// (z.B. Tablet im Querformat) wirkte ein über die volle Breite gezogenes
+  /// Koordinatensystem unübersichtlich. Im Export-/Share-Bild (feste
+  /// Canvas-Breite) ist die volle Breite dagegen gewünscht, daher hier
+  /// abschaltbar.
+  final bool constrainWidth;
+
   const PersonalStyleMatrix({
     super.key,
     required this.quadrant,
@@ -35,19 +51,24 @@ class PersonalStyleMatrix extends StatelessWidget {
     required this.taskLabel,
     required this.structuredLabel,
     required this.unstructuredLabel,
+    this.constrainWidth = true,
   });
 
   static const double _rowHeaderWidth = 96;
+  static const double _tickStripWidth = 8;
+  static const double _maxWidth = 340;
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final organisationShare = dominantPoleShare(organisationFraction);
+    final energyShare = dominantPoleShare(energyFraction);
 
-    return Column(
+    final content = Column(
       children: [
         Row(
           children: [
-            const SizedBox(width: _rowHeaderWidth),
+            const SizedBox(width: _rowHeaderWidth + _tickStripWidth),
             Expanded(child: _AxisHeader(peopleLabel)),
             const SizedBox(width: 8),
             Expanded(child: _AxisHeader(taskLabel)),
@@ -66,6 +87,22 @@ class PersonalStyleMatrix extends StatelessWidget {
                   children: [
                     _AxisHeader(structuredLabel),
                     _AxisHeader(unstructuredLabel),
+                  ],
+                ),
+              ),
+              // Prozent-Markierung für die Organisation-Achse, auf Höhe der
+              // Positionsmarkierung, direkt am Rand zur Fläche hin - der
+              // "Schnittpunkt" der gedachten waagrechten Linie vom Punkt zum
+              // Rand.
+              SizedBox(
+                width: _tickStripWidth,
+                child: Stack(
+                  clipBehavior: Clip.none,
+                  children: [
+                    Align(
+                      alignment: Alignment(1, organisationFraction * 2 - 1),
+                      child: _PercentTick('${organisationShare.percent}%'),
+                    ),
                   ],
                 ),
               ),
@@ -115,15 +152,48 @@ class PersonalStyleMatrix extends StatelessWidget {
             ],
           ),
         ),
+        const SizedBox(height: 6),
+        // Prozent-Markierung für die Energie-Achse, unterhalb der Fläche,
+        // horizontal auf Höhe der Positionsmarkierung - derselbe
+        // Einrückungs-Offset wie oben, damit sie exakt unter der Fläche
+        // (nicht unter der Zeilenbeschriftung) sitzt.
+        Row(
+          children: [
+            const SizedBox(width: _rowHeaderWidth + _tickStripWidth + 8),
+            Expanded(
+              child: SizedBox(
+                height: 18,
+                child: Stack(
+                  clipBehavior: Clip.none,
+                  children: [
+                    Align(
+                      alignment: Alignment(energyFraction * 2 - 1, 0),
+                      child: _PercentTick('${energyShare.percent}%'),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
       ],
+    );
+
+    if (!constrainWidth) return content;
+    return Center(
+      child: ConstrainedBox(
+        constraints: const BoxConstraints(maxWidth: _maxWidth),
+        child: content,
+      ),
     );
   }
 }
 
-/// Präzise Zahl je Achse (z.B. "62% Unstrukturiert") zusätzlich zur
-/// Positionsmarkierung in der Matrix - wird sowohl in der App-Ansicht als
-/// auch im geteilten Bild genutzt, daher ein eigenes, öffentliches Widget
-/// statt einer privaten Detail-Klasse (analog zu LifeTreeGraphWidget).
+/// Präzise Zahl je Achse (z.B. "62% Unstrukturiert") als Textzusammenfassung
+/// zusätzlich zu den Markierungen direkt im Diagramm - wird sowohl in der
+/// App-Ansicht als auch im geteilten Bild genutzt, daher ein eigenes,
+/// öffentliches Widget statt einer privaten Detail-Klasse (analog zu
+/// LifeTreeGraphWidget).
 class PersonalStyleAxisScoreSummary extends StatelessWidget {
   final double organisationFraction;
   final double energyFraction;
@@ -184,6 +254,31 @@ class _AxisHeader extends StatelessWidget {
       label,
       textAlign: TextAlign.center,
       style: theme.textTheme.labelLarge?.copyWith(fontWeight: FontWeight.bold),
+    );
+  }
+}
+
+/// Kleine Prozent-Plakette, platziert am Schnittpunkt der Positions-
+/// markierung mit der jeweiligen Mittellinie (statt als Tooltip, siehe
+/// Klassenkommentar an [PersonalStyleMatrix]).
+class _PercentTick extends StatelessWidget {
+  final String text;
+
+  const _PercentTick(this.text);
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 1),
+      decoration: BoxDecoration(
+        color: theme.colorScheme.primary,
+        borderRadius: BorderRadius.circular(6),
+      ),
+      child: Text(
+        text,
+        style: const TextStyle(color: Colors.white, fontSize: 9, fontWeight: FontWeight.bold),
+      ),
     );
   }
 }

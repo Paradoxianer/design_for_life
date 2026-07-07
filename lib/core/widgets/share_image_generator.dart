@@ -398,6 +398,10 @@ class ShareImageGenerator {
                   taskLabel: taskLabel,
                   structuredLabel: structuredLabel,
                   unstructuredLabel: unstructuredLabel,
+                  // Im Export-Bild darf die Matrix die volle Canvas-Breite
+                  // nutzen (anders als in der App, wo sie auf breiten
+                  // Bildschirmen sonst unübersichtlich groß würde).
+                  constrainWidth: false,
                 ),
                 const SizedBox(height: 24),
                 PersonalStyleAxisScoreSummary(
