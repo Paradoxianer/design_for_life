@@ -55,7 +55,10 @@ class PersonalStyleMatrix extends StatelessWidget {
   });
 
   static const double _rowHeaderWidth = 120;
-  static const double _tickStripWidth = 8;
+  // Breit genug, damit die Prozent-Plakette komplett hineinpasst, statt über
+  // den Rand hinauszuragen: bei nur 8px wurde sie vom danach gemalten
+  // Diagramm-Rahmen (gleiche Row, später gezeichnet) fast komplett verdeckt.
+  static const double _tickStripWidth = 34;
   static const double _maxWidth = 340;
 
   @override
@@ -237,14 +240,14 @@ class _PercentTick extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 1),
+      padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
       decoration: BoxDecoration(
         color: theme.colorScheme.primary,
         borderRadius: BorderRadius.circular(6),
       ),
       child: Text(
         text,
-        style: const TextStyle(color: Colors.white, fontSize: 9, fontWeight: FontWeight.bold),
+        style: theme.textTheme.labelMedium?.copyWith(color: Colors.white, fontWeight: FontWeight.bold),
       ),
     );
   }
