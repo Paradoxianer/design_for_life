@@ -39,7 +39,7 @@ class TimelineModuleRegistry {
       case 'module_values':
         return context.watch<ValuesBloc>().state.isCompleted;
       case 'module_feedback':
-        return context.watch<FeedbackBloc>().state.response.allRatingsFilled;
+        return context.watch<FeedbackBloc>().state.isCompleted;
       case 'module_group_photo':
         return context.watch<GroupPhotoBloc>().state.isCompleted(groupPhotoSessionId);
       default:

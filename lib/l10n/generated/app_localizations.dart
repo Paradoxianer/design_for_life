@@ -854,197 +854,23 @@ abstract class AppLocalizations {
   /// **'Please give us your feedback on the seminar so that we can make it even better next time.'**
   String get feedbackGuidance;
 
-  /// No description provided for @feedbackRating1.
+  /// No description provided for @feedbackCsvColumnCategory.
   ///
   /// In en, this message translates to:
-  /// **'Excellent'**
-  String get feedbackRating1;
+  /// **'Category'**
+  String get feedbackCsvColumnCategory;
 
-  /// No description provided for @feedbackRating2.
+  /// No description provided for @feedbackCsvColumnQuestion.
   ///
   /// In en, this message translates to:
-  /// **'Good'**
-  String get feedbackRating2;
+  /// **'Question'**
+  String get feedbackCsvColumnQuestion;
 
-  /// No description provided for @feedbackRating3.
+  /// No description provided for @feedbackCsvColumnAnswer.
   ///
   /// In en, this message translates to:
-  /// **'Satisfactory'**
-  String get feedbackRating3;
-
-  /// No description provided for @feedbackRating4.
-  ///
-  /// In en, this message translates to:
-  /// **'Sufficient'**
-  String get feedbackRating4;
-
-  /// No description provided for @feedbackRating5.
-  ///
-  /// In en, this message translates to:
-  /// **'Poor'**
-  String get feedbackRating5;
-
-  /// No description provided for @feedbackRating6.
-  ///
-  /// In en, this message translates to:
-  /// **'Very Poor'**
-  String get feedbackRating6;
-
-  /// No description provided for @feedbackSectionContent.
-  ///
-  /// In en, this message translates to:
-  /// **'Seminar Content'**
-  String get feedbackSectionContent;
-
-  /// No description provided for @feedbackContentExpectations.
-  ///
-  /// In en, this message translates to:
-  /// **'The content met my expectations'**
-  String get feedbackContentExpectations;
-
-  /// No description provided for @feedbackContentPracticalUtility.
-  ///
-  /// In en, this message translates to:
-  /// **'I gained useful suggestions for my daily practice'**
-  String get feedbackContentPracticalUtility;
-
-  /// No description provided for @feedbackContentStructure.
-  ///
-  /// In en, this message translates to:
-  /// **'Structure & clarity of the topic complex'**
-  String get feedbackContentStructure;
-
-  /// No description provided for @feedbackSectionSpeaker.
-  ///
-  /// In en, this message translates to:
-  /// **'Speaker & Execution'**
-  String get feedbackSectionSpeaker;
-
-  /// No description provided for @feedbackSpeakerGodWorking.
-  ///
-  /// In en, this message translates to:
-  /// **'I had the impression that God could work'**
-  String get feedbackSpeakerGodWorking;
-
-  /// No description provided for @feedbackSpeakerFaithProgress.
-  ///
-  /// In en, this message translates to:
-  /// **'The seminar helped me progress in my faith life'**
-  String get feedbackSpeakerFaithProgress;
-
-  /// No description provided for @feedbackSpeakerDidactics.
-  ///
-  /// In en, this message translates to:
-  /// **'Didactic skills'**
-  String get feedbackSpeakerDidactics;
-
-  /// No description provided for @feedbackSpeakerMethods.
-  ///
-  /// In en, this message translates to:
-  /// **'The methods used were effective'**
-  String get feedbackSpeakerMethods;
-
-  /// No description provided for @feedbackSpeakerInvolvement.
-  ///
-  /// In en, this message translates to:
-  /// **'The speaker actively involved the participants'**
-  String get feedbackSpeakerInvolvement;
-
-  /// No description provided for @feedbackSpeakerRespect.
-  ///
-  /// In en, this message translates to:
-  /// **'The speaker was polite and respectful'**
-  String get feedbackSpeakerRespect;
-
-  /// No description provided for @feedbackAtmosphere.
-  ///
-  /// In en, this message translates to:
-  /// **'General course atmosphere and group climate'**
-  String get feedbackAtmosphere;
-
-  /// No description provided for @feedbackSectionDocs.
-  ///
-  /// In en, this message translates to:
-  /// **'Seminar Documents'**
-  String get feedbackSectionDocs;
-
-  /// No description provided for @feedbackDocsStructure.
-  ///
-  /// In en, this message translates to:
-  /// **'Structure and clarity'**
-  String get feedbackDocsStructure;
-
-  /// No description provided for @feedbackDocsUnderstandability.
-  ///
-  /// In en, this message translates to:
-  /// **'Understandability'**
-  String get feedbackDocsUnderstandability;
-
-  /// No description provided for @feedbackDocsDifficulty.
-  ///
-  /// In en, this message translates to:
-  /// **'Level of difficulty'**
-  String get feedbackDocsDifficulty;
-
-  /// No description provided for @feedbackSectionOrg.
-  ///
-  /// In en, this message translates to:
-  /// **'Organization & Infrastructure'**
-  String get feedbackSectionOrg;
-
-  /// No description provided for @feedbackRoomsAppropriateness.
-  ///
-  /// In en, this message translates to:
-  /// **'Appropriateness of the rooms'**
-  String get feedbackRoomsAppropriateness;
-
-  /// No description provided for @feedbackPrepQuality.
-  ///
-  /// In en, this message translates to:
-  /// **'Preparation of the seminar by the organizer'**
-  String get feedbackPrepQuality;
-
-  /// No description provided for @feedbackDuration.
-  ///
-  /// In en, this message translates to:
-  /// **'Duration of the event'**
-  String get feedbackDuration;
-
-  /// No description provided for @feedbackTempo.
-  ///
-  /// In en, this message translates to:
-  /// **'Pace of the event'**
-  String get feedbackTempo;
-
-  /// No description provided for @feedbackCatering.
-  ///
-  /// In en, this message translates to:
-  /// **'Catering'**
-  String get feedbackCatering;
-
-  /// No description provided for @feedbackSectionComments.
-  ///
-  /// In en, this message translates to:
-  /// **'Comments'**
-  String get feedbackSectionComments;
-
-  /// No description provided for @feedbackCommentsMissing.
-  ///
-  /// In en, this message translates to:
-  /// **'What was missing?'**
-  String get feedbackCommentsMissing;
-
-  /// No description provided for @feedbackRecommendation.
-  ///
-  /// In en, this message translates to:
-  /// **'Would you recommend this seminar?'**
-  String get feedbackRecommendation;
-
-  /// No description provided for @feedbackGeneralNotes.
-  ///
-  /// In en, this message translates to:
-  /// **'Additional notes'**
-  String get feedbackGeneralNotes;
+  /// **'Answer'**
+  String get feedbackCsvColumnAnswer;
 
   /// No description provided for @feedbackLabel.
   ///

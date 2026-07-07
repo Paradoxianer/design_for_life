@@ -1,16 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:design_for_life/l10n/generated/app_localizations.dart';
+import '../models/feedback_question.dart';
 import '../models/feedback_response.dart';
 import 'rating_selector.dart';
 
+/// Rendert den Fragebogen dynamisch aus dem geladenen [FeedbackQuestionnaire]
+/// (#7) statt aus hartkodierten Feldern - neue/geänderte Fragen erfordern nur
+/// eine Anpassung der JSON-Datei in assets/data/, keinen Code.
 class FeedbackEditor extends StatelessWidget {
+  final FeedbackQuestionnaire questionnaire;
   final FeedbackResponse response;
-  final ValueChanged<FeedbackResponse> onChanged;
+  final void Function(String questionId, Object value) onAnswerChanged;
 
   const FeedbackEditor({
     super.key,
+    required this.questionnaire,
     required this.response,
-    required this.onChanged,
+    required this.onAnswerChanged,
   });
 
   @override
@@ -18,144 +24,33 @@ class FeedbackEditor extends StatelessWidget {
     final l10n = AppLocalizations.of(context);
     final theme = Theme.of(context);
 
-    final ratingLabels = [
-      l10n.feedbackRating1,
-      l10n.feedbackRating2,
-      l10n.feedbackRating3,
-      l10n.feedbackRating4,
-      l10n.feedbackRating5,
-      l10n.feedbackRating6,
-    ];
+    if (questionnaire.categories.isEmpty) {
+      return const Center(child: CircularProgressIndicator());
+    }
 
     return ListView(
       padding: const EdgeInsets.all(16.0),
       children: [
-        _buildSectionTitle(theme, l10n.feedbackSectionContent),
-        RatingSelector(
-          label: l10n.feedbackContentExpectations,
-          currentRating: response.contentExpectations,
-          ratingLabels: ratingLabels,
-          onRatingChanged: (val) => onChanged(response.copyWith(contentExpectations: val)),
-        ),
-        RatingSelector(
-          label: l10n.feedbackContentPracticalUtility,
-          currentRating: response.contentPracticalUtility,
-          ratingLabels: ratingLabels,
-          onRatingChanged: (val) => onChanged(response.copyWith(contentPracticalUtility: val)),
-        ),
-        RatingSelector(
-          label: l10n.feedbackContentStructure,
-          currentRating: response.contentStructure,
-          ratingLabels: ratingLabels,
-          onRatingChanged: (val) => onChanged(response.copyWith(contentStructure: val)),
-        ),
-
-        const SizedBox(height: 24),
-        _buildSectionTitle(theme, l10n.feedbackSectionSpeaker),
-        RatingSelector(
-          label: l10n.feedbackSpeakerGodWorking,
-          currentRating: response.speakerGodWorking,
-          ratingLabels: ratingLabels,
-          onRatingChanged: (val) => onChanged(response.copyWith(speakerGodWorking: val)),
-        ),
-        RatingSelector(
-          label: l10n.feedbackSpeakerFaithProgress,
-          currentRating: response.speakerFaithProgress,
-          ratingLabels: ratingLabels,
-          onRatingChanged: (val) => onChanged(response.copyWith(speakerFaithProgress: val)),
-        ),
-        RatingSelector(
-          label: l10n.feedbackSpeakerDidactics,
-          currentRating: response.speakerDidactics,
-          ratingLabels: ratingLabels,
-          onRatingChanged: (val) => onChanged(response.copyWith(speakerDidactics: val)),
-        ),
-        RatingSelector(
-          label: l10n.feedbackSpeakerMethods,
-          currentRating: response.speakerMethods,
-          ratingLabels: ratingLabels,
-          onRatingChanged: (val) => onChanged(response.copyWith(speakerMethods: val)),
-        ),
-        RatingSelector(
-          label: l10n.feedbackSpeakerInvolvement,
-          currentRating: response.speakerInvolvement,
-          ratingLabels: ratingLabels,
-          onRatingChanged: (val) => onChanged(response.copyWith(speakerInvolvement: val)),
-        ),
-        RatingSelector(
-          label: l10n.feedbackSpeakerRespect,
-          currentRating: response.speakerRespect,
-          ratingLabels: ratingLabels,
-          onRatingChanged: (val) => onChanged(response.copyWith(speakerRespect: val)),
-        ),
-        RatingSelector(
-          label: l10n.feedbackAtmosphere,
-          currentRating: response.atmosphere,
-          ratingLabels: ratingLabels,
-          onRatingChanged: (val) => onChanged(response.copyWith(atmosphere: val)),
-        ),
-
-        const SizedBox(height: 24),
-        _buildSectionTitle(theme, l10n.feedbackSectionDocs),
-        RatingSelector(
-          label: l10n.feedbackDocsStructure,
-          currentRating: response.docsStructure,
-          ratingLabels: ratingLabels,
-          onRatingChanged: (val) => onChanged(response.copyWith(docsStructure: val)),
-        ),
-        RatingSelector(
-          label: l10n.feedbackDocsUnderstandability,
-          currentRating: response.docsUnderstandability,
-          ratingLabels: ratingLabels,
-          onRatingChanged: (val) => onChanged(response.copyWith(docsUnderstandability: val)),
-        ),
-        RatingSelector(
-          label: l10n.feedbackDocsDifficulty,
-          currentRating: response.docsDifficulty,
-          ratingLabels: ratingLabels,
-          onRatingChanged: (val) => onChanged(response.copyWith(docsDifficulty: val)),
-        ),
-
-        const SizedBox(height: 24),
-        _buildSectionTitle(theme, l10n.feedbackSectionOrg),
-        RatingSelector(
-          label: l10n.feedbackRoomsAppropriateness,
-          currentRating: response.roomsAppropriateness,
-          ratingLabels: ratingLabels,
-          onRatingChanged: (val) => onChanged(response.copyWith(roomsAppropriateness: val)),
-        ),
-        RatingSelector(
-          label: l10n.feedbackPrepQuality,
-          currentRating: response.prepQuality,
-          ratingLabels: ratingLabels,
-          onRatingChanged: (val) => onChanged(response.copyWith(prepQuality: val)),
-        ),
-        RatingSelector(
-          label: l10n.feedbackDuration,
-          currentRating: response.duration,
-          ratingLabels: ratingLabels,
-          onRatingChanged: (val) => onChanged(response.copyWith(duration: val)),
-        ),
-        RatingSelector(
-          label: l10n.feedbackTempo,
-          currentRating: response.tempo,
-          ratingLabels: ratingLabels,
-          onRatingChanged: (val) => onChanged(response.copyWith(tempo: val)),
-        ),
-        RatingSelector(
-          label: l10n.feedbackCatering,
-          currentRating: response.catering,
-          ratingLabels: ratingLabels,
-          onRatingChanged: (val) => onChanged(response.copyWith(catering: val)),
-        ),
-
-        const SizedBox(height: 24),
-        _buildSectionTitle(theme, l10n.feedbackSectionComments),
-        _buildTextField(l10n.feedbackCommentsMissing, response.commentsMissing, (val) => onChanged(response.copyWith(commentsMissing: val))),
-        _buildTextField(l10n.feedbackRecommendation, response.recommendation, (val) => onChanged(response.copyWith(recommendation: val))),
-        _buildTextField(l10n.feedbackGeneralNotes, response.generalNotes, (val) => onChanged(response.copyWith(generalNotes: val))),
-        
-        const SizedBox(height: 40),
+        Text(l10n.feedbackGuidance, style: theme.textTheme.bodyMedium),
+        const SizedBox(height: 16),
+        for (final category in questionnaire.categories) ...[
+          _buildSectionTitle(theme, category.title),
+          for (final question in category.questions)
+            question.type == FeedbackQuestionType.scale
+                ? RatingSelector(
+                    label: question.label,
+                    currentRating: response.scaleAnswer(question.id) ?? 0,
+                    ratingLabels: questionnaire.scaleLabels,
+                    onRatingChanged: (val) => onAnswerChanged(question.id, val),
+                  )
+                : _buildTextField(
+                    question.label,
+                    response.textAnswer(question.id),
+                    (val) => onAnswerChanged(question.id, val),
+                  ),
+          const SizedBox(height: 24),
+        ],
+        const SizedBox(height: 16),
       ],
     );
   }
@@ -182,16 +77,64 @@ class FeedbackEditor extends StatelessWidget {
   Widget _buildTextField(String label, String value, ValueChanged<String> onChanged) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 12.0),
-      child: TextField(
-        decoration: InputDecoration(
-          labelText: label,
-          alignLabelWithHint: true,
-          border: const OutlineInputBorder(),
-        ),
-        maxLines: 3,
-        controller: TextEditingController(text: value)..selection = TextSelection.fromPosition(TextPosition(offset: value.length)),
-        onChanged: onChanged,
+      child: _FeedbackTextField(label: label, value: value, onChanged: onChanged),
+    );
+  }
+}
+
+/// Eigener StatefulWidget statt TextField mit inline erzeugtem
+/// TextEditingController: letzteres wird bei jedem Rebuild neu erstellt und
+/// setzt den Cursor auf Tastendruck ans Textende zurück (bekanntes Muster,
+/// siehe key_takeaway_field.dart).
+class _FeedbackTextField extends StatefulWidget {
+  final String label;
+  final String value;
+  final ValueChanged<String> onChanged;
+
+  const _FeedbackTextField({required this.label, required this.value, required this.onChanged});
+
+  @override
+  State<_FeedbackTextField> createState() => _FeedbackTextFieldState();
+}
+
+class _FeedbackTextFieldState extends State<_FeedbackTextField> {
+  late final TextEditingController _controller = TextEditingController(text: widget.value);
+  late final FocusNode _focusNode = FocusNode()..addListener(_onFocusChange);
+
+  void _onFocusChange() {
+    if (!_focusNode.hasFocus && _controller.text != widget.value) {
+      _controller.text = widget.value;
+    }
+  }
+
+  @override
+  void didUpdateWidget(_FeedbackTextField oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (!_focusNode.hasFocus && widget.value != _controller.text) {
+      _controller.text = widget.value;
+    }
+  }
+
+  @override
+  void dispose() {
+    _focusNode.removeListener(_onFocusChange);
+    _focusNode.dispose();
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return TextField(
+      controller: _controller,
+      focusNode: _focusNode,
+      decoration: InputDecoration(
+        labelText: widget.label,
+        alignLabelWithHint: true,
+        border: const OutlineInputBorder(),
       ),
+      maxLines: 3,
+      onChanged: widget.onChanged,
     );
   }
 }

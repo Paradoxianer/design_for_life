@@ -1,0 +1,56 @@
+{
+  "scaleLabels": ["Excellent", "Good", "Satisfactory", "Sufficient", "Poor", "Very Poor"],
+  "categories": [
+    {
+      "id": "content",
+      "title": "Seminar Content",
+      "questions": [
+        { "id": "contentExpectations", "type": "scale", "label": "The content met my expectations" },
+        { "id": "contentPracticalUtility", "type": "scale", "label": "I gained useful suggestions for my daily practice" },
+        { "id": "contentStructure", "type": "scale", "label": "Structure & clarity of the topic complex" }
+      ]
+    },
+    {
+      "id": "speaker",
+      "title": "Speaker & Execution",
+      "questions": [
+        { "id": "speakerGodWorking", "type": "scale", "label": "I had the impression that God could work" },
+        { "id": "speakerFaithProgress", "type": "scale", "label": "The seminar helped me progress in my faith life" },
+        { "id": "speakerDidactics", "type": "scale", "label": "Didactic skills" },
+        { "id": "speakerMethods", "type": "scale", "label": "The methods used were effective" },
+        { "id": "speakerInvolvement", "type": "scale", "label": "The speaker actively involved the participants" },
+        { "id": "speakerRespect", "type": "scale", "label": "The speaker was polite and respectful" },
+        { "id": "atmosphere", "type": "scale", "label": "General course atmosphere and group climate" }
+      ]
+    },
+    {
+      "id": "docs",
+      "title": "Seminar Documents",
+      "questions": [
+        { "id": "docsStructure", "type": "scale", "label": "Structure and clarity" },
+        { "id": "docsUnderstandability", "type": "scale", "label": "Understandability" },
+        { "id": "docsDifficulty", "type": "scale", "label": "Level of difficulty" }
+      ]
+    },
+    {
+      "id": "org",
+      "title": "Organization & Infrastructure",
+      "questions": [
+        { "id": "roomsAppropriateness", "type": "scale", "label": "Appropriateness of the rooms" },
+        { "id": "prepQuality", "type": "scale", "label": "Preparation of the seminar by the organizer" },
+        { "id": "duration", "type": "scale", "label": "Duration of the event" },
+        { "id": "tempo", "type": "scale", "label": "Pace of the event" },
+        { "id": "catering", "type": "scale", "label": "Catering" }
+      ]
+    },
+    {
+      "id": "comments",
+      "title": "Comments",
+      "questions": [
+        { "id": "commentsMissing", "type": "text", "label": "What was missing?" },
+        { "id": "recommendation", "type": "text", "label": "Would you recommend this seminar?" },
+        { "id": "generalNotes", "type": "text", "label": "Additional notes" }
+      ]
+    }
+  ]
+}

@@ -20,6 +20,7 @@ import 'features/spiritual_gifts/screens/spiritual_gifts_screen.dart';
 import 'features/values/bloc/values_bloc.dart';
 import 'features/values/screens/values_assessment_screen.dart';
 import 'features/feedback/bloc/feedback_bloc.dart';
+import 'features/feedback/repositories/feedback_questions_repository.dart';
 import 'features/feedback/screens/feedback_screen.dart';
 import 'features/imagine/bloc/imagine_bloc.dart';
 import 'features/imagine/screens/imagine_screen.dart';
@@ -41,6 +42,7 @@ void main() async {
   );
 
   final giftsRepository = GiftsRepository();
+  final feedbackQuestionsRepository = FeedbackQuestionsRepository();
 
   runApp(
     MultiBlocProvider(
@@ -52,7 +54,9 @@ void main() async {
           create: (context) => SpiritualGiftsBloc(repository: giftsRepository),
         ),
         BlocProvider(create: (context) => ValuesBloc()),
-        BlocProvider(create: (context) => FeedbackBloc()),
+        BlocProvider(
+          create: (context) => FeedbackBloc(repository: feedbackQuestionsRepository),
+        ),
         BlocProvider(create: (context) => ImagineBloc()),
         BlocProvider(create: (context) => LifeTreeBloc()),
         BlocProvider(create: (context) => SynthesisBloc()),
