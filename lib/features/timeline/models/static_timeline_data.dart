@@ -104,6 +104,14 @@ class StaticTimelineData {
         type: SessionType.other,
         moduleId: 'module_feedback',
       ),
+      DflSession(
+        id: 'session_13',
+        title: l10n.session13Title,
+        description: l10n.session13Desc,
+        type: SessionType.personalReflection,
+        moduleId: 'module_personal_style',
+        moduleSessionId: 'session_13',
+      ),
     ];
   }
 }

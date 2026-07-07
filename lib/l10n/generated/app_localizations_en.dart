@@ -305,6 +305,47 @@ class AppLocalizationsEn extends AppLocalizations {
   String get connectionsShareCardLabel => 'Connections (Image)';
 
   @override
+  String get personalStyleTitle => 'Personal Style Profile';
+
+  @override
+  String get personalStyleGuidance =>
+      'For each statement, choose a value between 1 and 6 depending on which of the two statements fits you better.';
+
+  @override
+  String get personalStyleSectionOrganisation =>
+      'Organisation: Structure vs. Flexibility';
+
+  @override
+  String get personalStyleSectionEnergy => 'Energy: People vs. Task';
+
+  @override
+  String personalStyleQuestionCounter(int answered, int total) {
+    return '$answered of $total answered';
+  }
+
+  @override
+  String get personalStyleAxisPeople => 'People';
+
+  @override
+  String get personalStyleAxisTask => 'Task';
+
+  @override
+  String get personalStyleAxisStructured => 'Structured';
+
+  @override
+  String get personalStyleAxisUnstructured => 'Unstructured';
+
+  @override
+  String get personalStyleResultHeading => 'Your Profile';
+
+  @override
+  String get personalStyleIncomplete =>
+      'Answer all questions in edit mode first to see your profile.';
+
+  @override
+  String get personalStyleShareCardLabel => 'My Profile (Image)';
+
+  @override
   String get exportTitle => 'Final Export';
 
   @override
@@ -534,6 +575,13 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get session12Title => 'Feedback Form';
+
+  @override
+  String get session13Title => 'Personal Style Profile';
+
+  @override
+  String get session13Desc =>
+      'Discover your preferred working and interaction style.';
 
   @override
   String get valueGenauigkeit => 'Accuracy';

@@ -57,6 +57,8 @@ void main() {
         'session10Desc',
         'session11Title',
         'session12Title',
+        'session13Title',
+        'session13Desc',
       };
 
       for (final session in sessions) {

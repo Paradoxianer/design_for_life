@@ -22,6 +22,9 @@ import 'features/values/screens/values_assessment_screen.dart';
 import 'features/feedback/bloc/feedback_bloc.dart';
 import 'features/feedback/repositories/feedback_questions_repository.dart';
 import 'features/feedback/screens/feedback_screen.dart';
+import 'features/personal_style/bloc/personal_style_bloc.dart';
+import 'features/personal_style/repositories/personal_style_repository.dart';
+import 'features/personal_style/screens/personal_style_screen.dart';
 import 'features/imagine/bloc/imagine_bloc.dart';
 import 'features/imagine/screens/imagine_screen.dart';
 import 'features/life_tree/bloc/life_tree_bloc.dart';
@@ -43,6 +46,7 @@ void main() async {
 
   final giftsRepository = GiftsRepository();
   final feedbackQuestionsRepository = FeedbackQuestionsRepository();
+  final personalStyleRepository = PersonalStyleRepository();
 
   runApp(
     MultiBlocProvider(
@@ -56,6 +60,9 @@ void main() async {
         BlocProvider(create: (context) => ValuesBloc()),
         BlocProvider(
           create: (context) => FeedbackBloc(repository: feedbackQuestionsRepository),
+        ),
+        BlocProvider(
+          create: (context) => PersonalStyleBloc(repository: personalStyleRepository),
         ),
         BlocProvider(create: (context) => ImagineBloc()),
         BlocProvider(create: (context) => LifeTreeBloc()),
@@ -183,6 +190,20 @@ class DflApp extends StatelessWidget {
             final title = state.uri.queryParameters['title'] ?? l10n.lifeTreeTitle;
             final mode = state.uri.queryParameters['mode'];
             return LifeTreeScreen(
+              sessionId: sessionId,
+              title: title,
+              initialEditMode: mode != 'result',
+            );
+          },
+        ),
+        GoRoute(
+          path: '/personal-style/:sessionId',
+          builder: (context, state) {
+            final l10n = AppLocalizations.of(context);
+            final sessionId = state.pathParameters['sessionId']!;
+            final title = state.uri.queryParameters['title'] ?? l10n.personalStyleTitle;
+            final mode = state.uri.queryParameters['mode'];
+            return PersonalStyleScreen(
               sessionId: sessionId,
               title: title,
               initialEditMode: mode != 'result',

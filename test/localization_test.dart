@@ -12,12 +12,15 @@ import 'package:design_for_life/features/values/bloc/values_bloc.dart';
 import 'package:design_for_life/features/feedback/bloc/feedback_bloc.dart';
 import 'package:design_for_life/features/feedback/repositories/feedback_questions_repository.dart';
 import 'package:design_for_life/features/life_tree/bloc/life_tree_bloc.dart';
+import 'package:design_for_life/features/personal_style/bloc/personal_style_bloc.dart';
+import 'package:design_for_life/features/personal_style/repositories/personal_style_repository.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:mocktail/mocktail.dart';
 
 class MockStorage extends Mock implements Storage {}
 class MockGiftsRepository extends Mock implements GiftsRepository {}
 class MockFeedbackQuestionsRepository extends Mock implements FeedbackQuestionsRepository {}
+class MockPersonalStyleRepository extends Mock implements PersonalStyleRepository {}
 
 void main() {
   late Storage storage;
@@ -39,6 +42,7 @@ void main() {
         BlocProvider(create: (context) => SpiritualGiftsBloc(repository: MockGiftsRepository())),
         BlocProvider(create: (context) => ValuesBloc()),
         BlocProvider(create: (context) => FeedbackBloc(repository: MockFeedbackQuestionsRepository())),
+        BlocProvider(create: (context) => PersonalStyleBloc(repository: MockPersonalStyleRepository())),
         BlocProvider(create: (context) => LifeTreeBloc()),
         BlocProvider(create: (context) => ImagineBloc()),
       ],

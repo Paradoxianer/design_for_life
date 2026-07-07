@@ -638,6 +638,78 @@ abstract class AppLocalizations {
   /// **'Connections (Image)'**
   String get connectionsShareCardLabel;
 
+  /// No description provided for @personalStyleTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Personal Style Profile'**
+  String get personalStyleTitle;
+
+  /// No description provided for @personalStyleGuidance.
+  ///
+  /// In en, this message translates to:
+  /// **'For each statement, choose a value between 1 and 6 depending on which of the two statements fits you better.'**
+  String get personalStyleGuidance;
+
+  /// No description provided for @personalStyleSectionOrganisation.
+  ///
+  /// In en, this message translates to:
+  /// **'Organisation: Structure vs. Flexibility'**
+  String get personalStyleSectionOrganisation;
+
+  /// No description provided for @personalStyleSectionEnergy.
+  ///
+  /// In en, this message translates to:
+  /// **'Energy: People vs. Task'**
+  String get personalStyleSectionEnergy;
+
+  /// No description provided for @personalStyleQuestionCounter.
+  ///
+  /// In en, this message translates to:
+  /// **'{answered} of {total} answered'**
+  String personalStyleQuestionCounter(int answered, int total);
+
+  /// No description provided for @personalStyleAxisPeople.
+  ///
+  /// In en, this message translates to:
+  /// **'People'**
+  String get personalStyleAxisPeople;
+
+  /// No description provided for @personalStyleAxisTask.
+  ///
+  /// In en, this message translates to:
+  /// **'Task'**
+  String get personalStyleAxisTask;
+
+  /// No description provided for @personalStyleAxisStructured.
+  ///
+  /// In en, this message translates to:
+  /// **'Structured'**
+  String get personalStyleAxisStructured;
+
+  /// No description provided for @personalStyleAxisUnstructured.
+  ///
+  /// In en, this message translates to:
+  /// **'Unstructured'**
+  String get personalStyleAxisUnstructured;
+
+  /// No description provided for @personalStyleResultHeading.
+  ///
+  /// In en, this message translates to:
+  /// **'Your Profile'**
+  String get personalStyleResultHeading;
+
+  /// No description provided for @personalStyleIncomplete.
+  ///
+  /// In en, this message translates to:
+  /// **'Answer all questions in edit mode first to see your profile.'**
+  String get personalStyleIncomplete;
+
+  /// No description provided for @personalStyleShareCardLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'My Profile (Image)'**
+  String get personalStyleShareCardLabel;
+
   /// No description provided for @exportTitle.
   ///
   /// In en, this message translates to:
@@ -1039,6 +1111,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Feedback Form'**
   String get session12Title;
+
+  /// No description provided for @session13Title.
+  ///
+  /// In en, this message translates to:
+  /// **'Personal Style Profile'**
+  String get session13Title;
+
+  /// No description provided for @session13Desc.
+  ///
+  /// In en, this message translates to:
+  /// **'Discover your preferred working and interaction style.'**
+  String get session13Desc;
 
   /// No description provided for @valueGenauigkeit.
   ///

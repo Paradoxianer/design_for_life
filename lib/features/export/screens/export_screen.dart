@@ -10,6 +10,7 @@ import 'package:design_for_life/features/imagine/bloc/imagine_bloc.dart';
 import 'package:design_for_life/features/life_tree/bloc/life_tree_bloc.dart';
 import 'package:design_for_life/features/listening_prayer/bloc/listening_prayer_bloc.dart';
 import 'package:design_for_life/features/notes/bloc/notes_bloc.dart';
+import 'package:design_for_life/features/personal_style/bloc/personal_style_bloc.dart';
 import 'package:design_for_life/features/spiritual_gifts/bloc/spiritual_gifts_bloc.dart';
 import 'package:design_for_life/features/synthesis/bloc/synthesis_bloc.dart';
 import 'package:design_for_life/features/timeline/services/timeline_config_repository.dart';
@@ -32,6 +33,7 @@ const Map<String, String> _moduleIdToSectionKey = {
   'module_imagine': 'imagine',
   'module_synthesis': 'connections',
   'module_group_photo': 'groupPhoto',
+  'module_personal_style': 'personalStyle',
 };
 
 /// Auswahl-Screen vor dem PDF-Export (#29): listet alle Module mit Inhalt
@@ -77,6 +79,10 @@ class _ExportScreenState extends State<ExportScreen> {
       ExportContentBuilder.groupPhoto(l10n, context.read<GroupPhotoBloc>().state, groupPhotoSessionId),
     );
     addIfPresent('connections', ExportContentBuilder.connections(l10n, context.read<SynthesisBloc>().state));
+    addIfPresent(
+      'personalStyle',
+      ExportContentBuilder.personalStyle(l10n, context.read<PersonalStyleBloc>().state),
+    );
 
     // Reihenfolge an die tatsächliche Timeline-Chronologie anpassen (Einheit 1
     // zuerst, Gruppenfoto zuletzt), statt der Reihenfolge oben.
@@ -150,6 +156,7 @@ class _ExportScreenState extends State<ExportScreen> {
       'imagine': l10n.timelineImagineTitle,
       'groupPhoto': l10n.session11Title,
       'connections': l10n.timelineSynthesisTitle,
+      'personalStyle': l10n.personalStyleTitle,
     };
 
     if (_availableSections.isEmpty) {

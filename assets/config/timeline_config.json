@@ -125,6 +125,16 @@
       "titleKey": "session12Title",
       "type": "other",
       "enabled": true
+    },
+    {
+      "id": "session_13",
+      "moduleId": "module_personal_style",
+      "moduleSessionId": "session_13",
+      "order": 140,
+      "titleKey": "session13Title",
+      "descriptionKey": "session13Desc",
+      "type": "personalReflection",
+      "enabled": true
     }
   ]
 }

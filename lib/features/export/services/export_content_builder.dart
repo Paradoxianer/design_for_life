@@ -4,6 +4,7 @@ import 'package:design_for_life/features/goals/bloc/goals_bloc.dart';
 import 'package:design_for_life/features/imagine/bloc/imagine_bloc.dart';
 import 'package:design_for_life/features/life_tree/bloc/life_tree_bloc.dart';
 import 'package:design_for_life/features/life_tree/models/life_tree_node_data.dart';
+import 'package:design_for_life/features/personal_style/bloc/personal_style_state.dart';
 import 'package:design_for_life/features/spiritual_gifts/bloc/spiritual_gifts_bloc.dart';
 import 'package:design_for_life/features/synthesis/bloc/synthesis_bloc.dart';
 import 'package:design_for_life/features/values/bloc/values_state.dart';
@@ -276,6 +277,36 @@ class ExportContentBuilder {
 
     if (items.isEmpty) return null;
     return ShareableContent(title: l10n.timelineImagineTitle, items: items);
+  }
+
+  static ShareableContent? personalStyle(AppLocalizations l10n, PersonalStyleState state) {
+    final profile = state.profile;
+    final takeaways = state.takeaways.values.expand((t) => t).where((t) => t.trim().isNotEmpty).toList();
+    if (profile == null && takeaways.isEmpty) return null;
+
+    return ShareableContent(
+      title: l10n.personalStyleTitle,
+      items: [
+        if (profile != null)
+          ShareableItem(
+            id: 'export_personal_style_card',
+            label: l10n.personalStyleShareCardLabel,
+            textValue: '${profile.title}\n${profile.traits.join('\n')}',
+            data: {
+              'type': 'text_card',
+              'entries': [
+                {'title': profile.title, 'body': profile.traits.join('\n')},
+              ],
+            },
+          ),
+        for (int i = 0; i < takeaways.length; i++)
+          ShareableItem(
+            id: 'export_personal_style_takeaway_$i',
+            label: l10n.shareHighlightItem(i + 1),
+            textValue: takeaways[i],
+          ),
+      ],
+    );
   }
 
   static ShareableContent? connections(AppLocalizations l10n, SynthesisState state) {

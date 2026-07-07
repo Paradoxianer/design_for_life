@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:design_for_life/features/feedback/bloc/feedback_bloc.dart';
+import 'package:design_for_life/features/personal_style/bloc/personal_style_bloc.dart';
 import 'package:design_for_life/features/goals/bloc/goals_bloc.dart';
 import 'package:design_for_life/features/group_photo/bloc/group_photo_bloc.dart';
 import 'package:design_for_life/features/group_photo/screens/group_photo_screen.dart';
@@ -40,6 +41,8 @@ class TimelineModuleRegistry {
         return context.watch<ValuesBloc>().state.isCompleted;
       case 'module_feedback':
         return context.watch<FeedbackBloc>().state.isCompleted;
+      case 'module_personal_style':
+        return context.watch<PersonalStyleBloc>().state.isSessionCompleted(moduleSessionId);
       case 'module_group_photo':
         return context.watch<GroupPhotoBloc>().state.isCompleted(groupPhotoSessionId);
       default:
@@ -76,6 +79,8 @@ class TimelineModuleRegistry {
         return 'values?title=$titleParam$modeSuffix';
       case 'module_feedback':
         return 'feedback?title=$titleParam$modeSuffix';
+      case 'module_personal_style':
+        return 'personal-style/$moduleSessionId?title=$titleParam$modeSuffix';
       case 'module_group_photo':
         return 'group-photo?title=$titleParam$modeSuffix';
       default:

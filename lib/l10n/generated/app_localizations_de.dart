@@ -308,6 +308,47 @@ class AppLocalizationsDe extends AppLocalizations {
   String get connectionsShareCardLabel => 'Verknüpfungen (Bild)';
 
   @override
+  String get personalStyleTitle => 'Persönlichkeitsprofil';
+
+  @override
+  String get personalStyleGuidance =>
+      'Wähle bei jeder Aussage einen Wert zwischen 1 und 6, je nachdem, welche der beiden Aussagen eher auf dich zutrifft.';
+
+  @override
+  String get personalStyleSectionOrganisation =>
+      'Organisation: Struktur vs. Flexibilität';
+
+  @override
+  String get personalStyleSectionEnergy => 'Energie: Mensch vs. Aufgabe';
+
+  @override
+  String personalStyleQuestionCounter(int answered, int total) {
+    return '$answered von $total beantwortet';
+  }
+
+  @override
+  String get personalStyleAxisPeople => 'Mensch';
+
+  @override
+  String get personalStyleAxisTask => 'Aufgabe';
+
+  @override
+  String get personalStyleAxisStructured => 'Strukturiert';
+
+  @override
+  String get personalStyleAxisUnstructured => 'Unstrukturiert';
+
+  @override
+  String get personalStyleResultHeading => 'Dein Profil';
+
+  @override
+  String get personalStyleIncomplete =>
+      'Beantworte im Bearbeitungsmodus zunächst alle Fragen, um dein Profil zu sehen.';
+
+  @override
+  String get personalStyleShareCardLabel => 'Mein Profil (Bild)';
+
+  @override
   String get exportTitle => 'Abschluss-Export';
 
   @override
@@ -537,6 +578,13 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get session12Title => 'Feedbackbogen';
+
+  @override
+  String get session13Title => 'Persönlichkeitsprofil';
+
+  @override
+  String get session13Desc =>
+      'Entdecke deinen bevorzugten Arbeits- und Interaktionsstil.';
 
   @override
   String get valueGenauigkeit => 'Genauigkeit';

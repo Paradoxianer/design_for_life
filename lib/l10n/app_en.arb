@@ -130,6 +130,24 @@
   "valuesShareCardLabel": "Top Values (Image)",
   "goalsShareCardLabel": "My Goals (Image)",
   "connectionsShareCardLabel": "Connections (Image)",
+  "personalStyleTitle": "Personal Style Profile",
+  "personalStyleGuidance": "For each statement, choose a value between 1 and 6 depending on which of the two statements fits you better.",
+  "personalStyleSectionOrganisation": "Organisation: Structure vs. Flexibility",
+  "personalStyleSectionEnergy": "Energy: People vs. Task",
+  "personalStyleQuestionCounter": "{answered} of {total} answered",
+  "@personalStyleQuestionCounter": {
+    "placeholders": {
+      "answered": { "type": "int" },
+      "total": { "type": "int" }
+    }
+  },
+  "personalStyleAxisPeople": "People",
+  "personalStyleAxisTask": "Task",
+  "personalStyleAxisStructured": "Structured",
+  "personalStyleAxisUnstructured": "Unstructured",
+  "personalStyleResultHeading": "Your Profile",
+  "personalStyleIncomplete": "Answer all questions in edit mode first to see your profile.",
+  "personalStyleShareCardLabel": "My Profile (Image)",
   "exportTitle": "Final Export",
   "exportSelectionGuidance": "Choose which areas to include in your personal final document.",
   "exportGenerateButton": "Create & share PDF",
@@ -254,6 +272,8 @@
   "timelineImagineDesc": "Shape future images and capture your thoughts for the next life phase.",
   "timelineUnavailable": "Unable to load the timeline. Please restart the app.",
   "session12Title": "Feedback Form",
+  "session13Title": "Personal Style Profile",
+  "session13Desc": "Discover your preferred working and interaction style.",
   "valueGenauigkeit": "Accuracy",
   "valueFamilie": "Family",
   "valuePersEntwicklung": "Personal Development",
