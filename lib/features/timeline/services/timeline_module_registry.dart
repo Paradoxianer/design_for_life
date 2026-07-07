@@ -64,6 +64,7 @@ class TimelineModuleRegistry {
             '&prayerSession=session_7'
             '&goalsSession=session_10'
             '&lifeTreeSession=session_3'
+            '&personalStyleSession=session_13'
             '$modeSuffix';
       case 'module_imagine':
         return 'imagine/$moduleSessionId?title=$titleParam$modeSuffix';

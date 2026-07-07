@@ -334,6 +334,7 @@
   "connectionsColGifts": "Gaben",
   "connectionsColPrayer": "Hörendes Gebet",
   "connectionsColGoals": "Ziele",
+  "connectionsColPersonalStyle": "Profil",
   "connectionsGroupedByColor": "Nach Farben gruppiert",
   "connectionsMatrixView": "Matrix-Ansicht",
   "connectionsColorGroup": "Farbgruppe ({count})",

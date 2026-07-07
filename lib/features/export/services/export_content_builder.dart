@@ -323,6 +323,7 @@ class ExportContentBuilder {
       'prayer': l10n.connectionsColPrayer,
       'goals': l10n.connectionsColGoals,
       'lifeTree': l10n.connectionsColLifeTree,
+      'personalStyle': l10n.connectionsColPersonalStyle,
     };
 
     // Farbe als echte gerenderte Form statt Emoji-Zeichen (🔴 etc.) - je nach

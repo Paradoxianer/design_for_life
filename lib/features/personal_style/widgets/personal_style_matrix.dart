@@ -58,7 +58,7 @@ class PersonalStyleMatrix extends StatelessWidget {
   // Breit genug, damit die Prozent-Plakette komplett hineinpasst, statt über
   // den Rand hinauszuragen: bei nur 8px wurde sie vom danach gemalten
   // Diagramm-Rahmen (gleiche Row, später gezeichnet) fast komplett verdeckt.
-  static const double _tickStripWidth = 34;
+  static const double _tickStripWidth = 50;
   static const double _maxWidth = 340;
 
   @override

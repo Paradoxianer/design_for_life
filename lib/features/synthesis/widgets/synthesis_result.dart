@@ -17,6 +17,7 @@ class SynthesisResult extends StatelessWidget {
     (key: 'gifts', color: Color(0xFF6B4C9A)),
     (key: 'prayer', color: Color(0xFF1565C0)),
     (key: 'goals', color: Color(0xFF8B5E3C)),
+    (key: 'personalStyle', color: Color(0xFFAD1457)),
   ];
 
   static const _tagColors = {
@@ -34,6 +35,7 @@ class SynthesisResult extends StatelessWidget {
       case 'gifts': return l10n.connectionsColGifts;
       case 'prayer': return l10n.connectionsColPrayer;
       case 'goals': return l10n.connectionsColGoals;
+      case 'personalStyle': return l10n.connectionsColPersonalStyle;
       default: return key;
     }
   }

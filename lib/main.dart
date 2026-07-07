@@ -237,6 +237,7 @@ class DflApp extends StatelessWidget {
               prayerSessionId: state.uri.queryParameters['prayerSession'] ?? 'session_7',
               goalsSessionId: state.uri.queryParameters['goalsSession'] ?? 'session_10',
               lifeTreeSessionId: state.uri.queryParameters['lifeTreeSession'] ?? 'session_3',
+              personalStyleSessionId: state.uri.queryParameters['personalStyleSession'] ?? 'session_13',
               title: title,
               initialEditMode: mode != 'result',
             );

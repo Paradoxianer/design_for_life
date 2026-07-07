@@ -759,6 +759,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get connectionsColGoals => 'Goals';
 
   @override
+  String get connectionsColPersonalStyle => 'Profile';
+
+  @override
   String get connectionsGroupedByColor => 'Grouped by Color';
 
   @override

@@ -1472,6 +1472,12 @@ abstract class AppLocalizations {
   /// **'Goals'**
   String get connectionsColGoals;
 
+  /// No description provided for @connectionsColPersonalStyle.
+  ///
+  /// In en, this message translates to:
+  /// **'Profile'**
+  String get connectionsColPersonalStyle;
+
   /// No description provided for @connectionsGroupedByColor.
   ///
   /// In en, this message translates to:
