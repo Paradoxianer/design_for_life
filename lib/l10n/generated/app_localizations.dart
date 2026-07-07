@@ -578,6 +578,12 @@ abstract class AppLocalizations {
   /// **'These gifts are also strongly present, but not (yet) among your top 3.'**
   String get giftsDormantGuidance;
 
+  /// No description provided for @giftsOtherHeading.
+  ///
+  /// In en, this message translates to:
+  /// **'Other Gifts'**
+  String get giftsOtherHeading;
+
   /// No description provided for @giftsScorePoints.
   ///
   /// In en, this message translates to:

@@ -109,6 +109,7 @@
   "giftsRankingGuidance": "Tap on a gift to see details and Bible references. Your Top 3 will be automatically included.",
   "giftsDormantHeading": "Dormant Gifts",
   "giftsDormantGuidance": "These gifts are also strongly present, but not (yet) among your top 3.",
+  "giftsOtherHeading": "Other Gifts",
   "giftsScorePoints": "{score} pts.",
   "@giftsScorePoints": {
     "placeholders": {

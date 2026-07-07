@@ -272,6 +272,9 @@ class AppLocalizationsEn extends AppLocalizations {
       'These gifts are also strongly present, but not (yet) among your top 3.';
 
   @override
+  String get giftsOtherHeading => 'Other Gifts';
+
+  @override
   String giftsScorePoints(int score) {
     return '$score pts.';
   }

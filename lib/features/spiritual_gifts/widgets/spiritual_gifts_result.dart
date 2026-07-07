@@ -56,6 +56,18 @@ class SpiritualGiftsResult extends StatelessWidget {
                     ),
                     const SizedBox(height: 12),
                   ],
+                  // Es gibt insgesamt deutlich mehr als 6 Gaben (aktuell 18) -
+                  // ohne eigenen Abschluss lief die "Latente Gaben"-Sektion ab
+                  // Rang 7 optisch undifferenziert weiter, kaum vom Ende der
+                  // eigentlich nur 3 latenten Gaben (Rang 4-6) zu unterscheiden.
+                  if (index == 6) ...[
+                    const SizedBox(height: 20),
+                    Text(
+                      AppLocalizations.of(context).giftsOtherHeading,
+                      style: theme.textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
+                    ),
+                    const SizedBox(height: 12),
+                  ],
                   _GiftResultCard(
                     gift: gift,
                     score: score,

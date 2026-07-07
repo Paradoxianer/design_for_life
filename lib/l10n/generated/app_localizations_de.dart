@@ -275,6 +275,9 @@ class AppLocalizationsDe extends AppLocalizations {
       'Diese Gaben sind ebenfalls stark ausgeprägt, aber (noch) nicht unter deinen Top 3.';
 
   @override
+  String get giftsOtherHeading => 'Weitere Gaben';
+
+  @override
   String giftsScorePoints(int score) {
     return '$score Pkt.';
   }
