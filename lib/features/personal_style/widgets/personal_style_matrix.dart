@@ -10,6 +10,13 @@ import '../models/personal_style_result.dart';
 /// Das Feld des Nutzers wird hervorgehoben. Feste, kompakte Zellenhöhen
 /// statt AspectRatio-Quadraten, damit die Matrix auch auf sehr schmalen
 /// Handy-Displays nicht zu klein wird (Akzeptanzkriterium "mobile-friendly").
+///
+/// Wichtig: Die Zeilen-Rows dürfen KEIN `crossAxisAlignment: stretch` nutzen.
+/// Diese Matrix steckt in der Ergebnis-Ansicht immer innerhalb eines
+/// SingleChildScrollView (unbegrenzte Höhe) - `stretch` verlangt dort eine
+/// straffe Höhen-Constraint und erzwingt eine ungültige "unendlich hohe"
+/// Constraint, was zu einem Layout-Crash führt. Da jede Zelle bereits über
+/// [_cellHeight] eine feste Höhe hat, wird `stretch` hier nicht gebraucht.
 class PersonalStyleMatrix extends StatelessWidget {
   final PersonalStyleQuadrant quadrant;
   final String peopleLabel;
@@ -43,7 +50,6 @@ class PersonalStyleMatrix extends StatelessWidget {
         ),
         const SizedBox(height: 8),
         Row(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             SizedBox(width: _rowHeaderWidth, child: _AxisHeader(structuredLabel, height: _cellHeight)),
             const SizedBox(width: 8),
@@ -64,7 +70,6 @@ class PersonalStyleMatrix extends StatelessWidget {
         ),
         const SizedBox(height: 8),
         Row(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             SizedBox(width: _rowHeaderWidth, child: _AxisHeader(unstructuredLabel, height: _cellHeight)),
             const SizedBox(width: 8),

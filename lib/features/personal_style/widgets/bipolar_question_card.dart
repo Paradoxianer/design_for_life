@@ -40,6 +40,12 @@ class BipolarQuestionCard extends StatelessWidget {
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                // "1"/"6"-Badge direkt neben der jeweiligen Aussage, statt sich
+                // darauf zu verlassen, dass die Position (links=1, rechts=6)
+                // gegenüber der Kreis-Reihe darunter implizit klar ist - sonst
+                // ist unklar, welche Zahl zu welcher der beiden Aussagen gehört.
+                const _PoleBadge('1'),
+                const SizedBox(width: 8),
                 Expanded(
                   child: Text(
                     leftLabel,
@@ -55,6 +61,8 @@ class BipolarQuestionCard extends StatelessWidget {
                     style: theme.textTheme.bodySmall?.copyWith(fontWeight: FontWeight.w600),
                   ),
                 ),
+                const SizedBox(width: 8),
+                const _PoleBadge('6'),
               ],
             ),
             const SizedBox(height: 12),
@@ -89,6 +97,33 @@ class BipolarQuestionCard extends StatelessWidget {
             ),
           ],
         ),
+      ),
+    );
+  }
+}
+
+/// Kleine, dezente Zahlen-Markierung ("1" bzw. "6") direkt neben einer der
+/// beiden Aussagen, damit die Zuordnung zur Skala eindeutig ist.
+class _PoleBadge extends StatelessWidget {
+  final String value;
+
+  const _PoleBadge(this.value);
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    return Container(
+      width: 18,
+      height: 18,
+      alignment: Alignment.center,
+      decoration: BoxDecoration(
+        shape: BoxShape.circle,
+        color: theme.colorScheme.surfaceContainerHighest,
+        border: Border.all(color: theme.dividerColor),
+      ),
+      child: Text(
+        value,
+        style: const TextStyle(fontSize: 10, fontWeight: FontWeight.bold),
       ),
     );
   }
