@@ -1,9 +1,8 @@
-import 'dart:io';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:design_for_life/l10n/generated/app_localizations.dart';
 import '../../../core/models/dfl_entry.dart';
 import '../../../core/widgets/key_takeaway_field.dart';
+import '../../../core/widgets/result_image_thumbnail.dart';
 
 class ListeningPrayerResult extends StatelessWidget {
   final Map<String, List<DflEntry>> impressions;
@@ -99,7 +98,7 @@ class ListeningPrayerResult extends StatelessWidget {
             const SizedBox(height: 12),
             ClipRRect(
               borderRadius: BorderRadius.circular(8),
-              child: _buildImage(item.imagePath!),
+              child: ResultImageThumbnail(imagePath: item.imagePath!),
             ),
           ],
           if (item.metadata != null && item.metadata!.isNotEmpty)
@@ -113,13 +112,5 @@ class ListeningPrayerResult extends StatelessWidget {
         ],
       ),
     );
-  }
-
-  Widget _buildImage(String path) {
-    if (kIsWeb) {
-      return Image.network(path, width: double.infinity, height: 200, fit: BoxFit.cover);
-    } else {
-      return Image.file(File(path), width: double.infinity, height: 200, fit: BoxFit.cover);
-    }
   }
 }

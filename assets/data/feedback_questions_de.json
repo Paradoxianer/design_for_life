@@ -1,0 +1,56 @@
+{
+  "scaleLabels": ["Sehr gut", "Gut", "Befriedigend", "Ausreichend", "Mangelhaft", "Ungenügend"],
+  "categories": [
+    {
+      "id": "content",
+      "title": "Inhalt des Seminars",
+      "questions": [
+        { "id": "contentExpectations", "type": "scale", "label": "Die Inhalte entsprachen meinen Erwartungen" },
+        { "id": "contentPracticalUtility", "type": "scale", "label": "Ich habe nützliche Anregungen für meine täglich Praxis gewonnen" },
+        { "id": "contentStructure", "type": "scale", "label": "Gliederung & Verständlichkeit des Themenkomplexes" }
+      ]
+    },
+    {
+      "id": "speaker",
+      "title": "Referent & Durchführung",
+      "questions": [
+        { "id": "speakerGodWorking", "type": "scale", "label": "Ich hatte den Eindruck, dass Gott wirken konnte" },
+        { "id": "speakerFaithProgress", "type": "scale", "label": "Das Seminar hat mich in meinem Glaubensleben weitergebracht" },
+        { "id": "speakerDidactics", "type": "scale", "label": "Didaktische Fähigkeiten" },
+        { "id": "speakerMethods", "type": "scale", "label": "Die eingesetzten Methoden waren zielführend" },
+        { "id": "speakerInvolvement", "type": "scale", "label": "Der Referent hat die Teilnehmer aktiv eingebunden" },
+        { "id": "speakerRespect", "type": "scale", "label": "Der Referent hat sich höflich und respektvoll verhalten" },
+        { "id": "atmosphere", "type": "scale", "label": "Allgemeine Kursatmosphäre und Gruppenklima" }
+      ]
+    },
+    {
+      "id": "docs",
+      "title": "Seminarunterlagen",
+      "questions": [
+        { "id": "docsStructure", "type": "scale", "label": "Struktur und Übersichtlichkeit" },
+        { "id": "docsUnderstandability", "type": "scale", "label": "Verständlichkeit" },
+        { "id": "docsDifficulty", "type": "scale", "label": "Schwierigkeitsgrad" }
+      ]
+    },
+    {
+      "id": "org",
+      "title": "Organisation & Infrastruktur",
+      "questions": [
+        { "id": "roomsAppropriateness", "type": "scale", "label": "Angemessenheit der Räumlichkeiten" },
+        { "id": "prepQuality", "type": "scale", "label": "Vorbereitung des Seminars durch den Veranstalter" },
+        { "id": "duration", "type": "scale", "label": "Dauer der Veranstaltung" },
+        { "id": "tempo", "type": "scale", "label": "Tempo der Veranstaltung" },
+        { "id": "catering", "type": "scale", "label": "Verpflegung" }
+      ]
+    },
+    {
+      "id": "comments",
+      "title": "Kommentare",
+      "questions": [
+        { "id": "commentsMissing", "type": "text", "label": "Was kam zu kurz?" },
+        { "id": "recommendation", "type": "text", "label": "Würden Sie dieses Seminar weiterempfehlen?" },
+        { "id": "generalNotes", "type": "text", "label": "Anmerkungen" }
+      ]
+    }
+  ]
+}

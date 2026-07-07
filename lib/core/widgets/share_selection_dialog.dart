@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:design_for_life/l10n/generated/app_localizations.dart';
 import '../models/shareable_content.dart';
+import 'resolved_image.dart';
 
 class ShareSelectionDialog extends StatefulWidget {
   final ShareableContent content;
@@ -29,6 +30,66 @@ class _ShareSelectionDialogState extends State<ShareSelectionDialog> {
     setState(() {
       _items = _items.map((item) => item.copyWith(isSelected: select)).toList();
     });
+  }
+
+  /// Zeigt eine visuelle Vorschau statt einer reinen Text-Checkliste, wo ein
+  /// Bild bereits bekannt ist (#24). Der Lebensbaum-Graph wird erst beim
+  /// eigentlichen Teilen gerendert, daher nur ein Platzhalter-Icon.
+  Widget? _buildPreview(ShareableItem item) {
+    if (item.imagePath != null) {
+      return SizedBox(
+        width: 44,
+        height: 44,
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(6),
+          child: buildResolvedImage(item.imagePath!, width: 44, height: 44),
+        ),
+      );
+    }
+    if (item.data is Map) {
+      final data = item.data as Map;
+      if (data['type'] == 'imagine_option') {
+        final optionId = data['optionId'] as String?;
+        if (optionId != null) {
+          return SizedBox(
+            width: 44,
+            height: 44,
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(6),
+              child: buildResolvedImage(
+                'assets/images/imagine/$optionId',
+                width: 44,
+                height: 44,
+              ),
+            ),
+          );
+        }
+      }
+      if (data['type'] == 'life_tree_graph') {
+        return const Icon(Icons.account_tree_outlined);
+      }
+      if (data['type'] == 'text_card') {
+        return const Icon(Icons.image_outlined);
+      }
+      if (data['type'] == 'imagine_composed') {
+        final pastOptionId = data['pastOptionId'] as String?;
+        if (pastOptionId != null) {
+          return SizedBox(
+            width: 44,
+            height: 44,
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(6),
+              child: buildResolvedImage(
+                'assets/images/imagine/$pastOptionId',
+                width: 44,
+                height: 44,
+              ),
+            ),
+          );
+        }
+      }
+    }
+    return null;
   }
 
   @override
@@ -61,9 +122,10 @@ class _ShareSelectionDialogState extends State<ShareSelectionDialog> {
                   final item = _items[index];
                   return CheckboxListTile(
                     title: Text(item.label),
-                    subtitle: item.textValue != null 
-                        ? Text(item.textValue!, maxLines: 1, overflow: TextOverflow.ellipsis) 
+                    subtitle: item.textValue != null
+                        ? Text(item.textValue!, maxLines: 1, overflow: TextOverflow.ellipsis)
                         : null,
+                    secondary: _buildPreview(item),
                     value: item.isSelected,
                     onChanged: (val) {
                       setState(() {

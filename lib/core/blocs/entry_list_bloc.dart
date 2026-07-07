@@ -69,10 +69,16 @@ class EntryListState extends Equatable {
     this.takeaways = const {},
   });
 
-  /// A session is considered completed if it has at least one entry with text or an image.
+  /// A session is considered completed if it has at least one entry with text
+  /// or an image, OR at least one filled-in key takeaway - either is a valid
+  /// primary output of the module (#57).
   bool isCompleted(String sessionId) {
     final sessionEntries = entries[sessionId] ?? [];
-    return sessionEntries.any((e) => e.text.trim().isNotEmpty || e.imagePath != null);
+    final hasEntries = sessionEntries.any((e) => e.text.trim().isNotEmpty || e.imagePath != null);
+    if (hasEntries) return true;
+
+    final sessionTakeaways = takeaways[sessionId] ?? const [];
+    return sessionTakeaways.any((t) => t.trim().isNotEmpty);
   }
 
   @override

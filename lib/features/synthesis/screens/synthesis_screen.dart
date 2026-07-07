@@ -8,6 +8,7 @@ import '../../../core/widgets/dfl_module_scaffold.dart';
 import '../../goals/bloc/goals_bloc.dart';
 import '../../life_tree/bloc/life_tree_bloc.dart';
 import '../../listening_prayer/bloc/listening_prayer_bloc.dart';
+import '../../personal_style/bloc/personal_style_bloc.dart';
 import '../../spiritual_gifts/bloc/spiritual_gifts_bloc.dart';
 import '../../values/bloc/values_bloc.dart';
 import '../bloc/synthesis_bloc.dart';
@@ -19,6 +20,7 @@ class SynthesisScreen extends StatefulWidget {
   final String prayerSessionId;
   final String goalsSessionId;
   final String lifeTreeSessionId;
+  final String personalStyleSessionId;
   final String title;
   final bool initialEditMode;
 
@@ -28,6 +30,7 @@ class SynthesisScreen extends StatefulWidget {
     required this.prayerSessionId,
     required this.goalsSessionId,
     required this.lifeTreeSessionId,
+    required this.personalStyleSessionId,
     required this.title,
     this.initialEditMode = true,
   });
@@ -49,6 +52,7 @@ class _SynthesisScreenState extends State<SynthesisScreen> {
     final prayerState = context.read<ListeningPrayerBloc>().state;
     final goalsState = context.read<GoalsBloc>().state;
     final lifeTreeState = context.read<LifeTreeBloc>().state;
+    final personalStyleState = context.read<PersonalStyleBloc>().state;
 
     final source = <String, List<String>>{
       'gifts': _extractGifts(giftsState),
@@ -62,6 +66,12 @@ class _SynthesisScreenState extends State<SynthesisScreen> {
           .take(3)
           .toList(),
       'lifeTree': (lifeTreeState.takeaways[widget.lifeTreeSessionId] ?? const <String>[])
+          .where((x) => x.trim().isNotEmpty)
+          .take(3)
+          .toList(),
+      // Erster Slot enthält bereits automatisch den Profil-Titel (Quadrant),
+      // sobald der Fragebogen abgeschlossen ist (siehe PersonalStyleBloc).
+      'personalStyle': (personalStyleState.takeaways[widget.personalStyleSessionId] ?? const <String>[])
           .where((x) => x.trim().isNotEmpty)
           .take(3)
           .toList(),
@@ -88,6 +98,7 @@ class _SynthesisScreenState extends State<SynthesisScreen> {
       'prayer': l10n.connectionsColPrayer,
       'goals': l10n.connectionsColGoals,
       'lifeTree': l10n.connectionsColLifeTree,
+      'personalStyle': l10n.connectionsColPersonalStyle,
     };
     final tagIcons = {
       'red': '🔴',
@@ -118,10 +129,33 @@ class _SynthesisScreenState extends State<SynthesisScreen> {
       items.add(
         ShareableItem(
           id: 'takeaway_connection_summary_$i',
-          label: 'Connection ${i + 1}',
+          label: l10n.connectionsSummaryItem(i + 1),
           textValue: text,
         ),
       );
+    }
+
+    // Bild-Karte des Verknüpfungs-Boards, gruppiert nach Spalte - bisher wurde
+    // hier gar kein Bild geteilt, nur Text.
+    final boardEntries = <Map<String, String>>[];
+    for (final columnEntry in state.columns.entries) {
+      if (columnEntry.value.isEmpty) continue;
+      final section = labels[columnEntry.key] ?? columnEntry.key;
+      final body = columnEntry.value
+          .map((card) => '${tagIcons[card.tag] ?? '⚪'} ${card.text}')
+          .join('\n');
+      boardEntries.add({'title': section, 'body': body});
+    }
+    final summaryText = state.takeaways.where((t) => t.trim().isNotEmpty).join('\n');
+    if (summaryText.isNotEmpty) {
+      boardEntries.add({'title': l10n.keyTakeaways, 'body': summaryText});
+    }
+    if (boardEntries.isNotEmpty) {
+      items.add(ShareableItem(
+        id: 'connections_card',
+        label: l10n.connectionsShareCardLabel,
+        data: {'type': 'text_card', 'entries': boardEntries},
+      ));
     }
 
     return ShareableContent(

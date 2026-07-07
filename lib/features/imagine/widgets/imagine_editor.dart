@@ -2,10 +2,12 @@ import 'dart:math';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:image_picker/image_picker.dart';
 
+import 'package:design_for_life/l10n/generated/app_localizations.dart';
 import '../../../core/widgets/dfl_module_editor.dart';
-import '../../../core/widgets/image_fullscreen_viewer.dart';
 import '../../../core/widgets/key_takeaway_field.dart';
+import '../../../core/widgets/resolved_image.dart';
 import '../bloc/imagine_bloc.dart';
 import '../models/imagine_visual_option.dart';
 
@@ -37,7 +39,7 @@ class ImagineEditor extends DflModuleEditor {
   }
 }
 
-class _ImagineEditorBody extends StatelessWidget {
+class _ImagineEditorBody extends StatefulWidget {
   final String sessionId;
   final String? selectedPastId;
   final String? selectedFutureId;
@@ -51,9 +53,21 @@ class _ImagineEditorBody extends StatelessWidget {
   });
 
   @override
+  State<_ImagineEditorBody> createState() => _ImagineEditorBodyState();
+}
+
+class _ImagineEditorBodyState extends State<_ImagineEditorBody> {
+  // Wird einmalig in initState geladen statt inline in build() - sonst
+  // erzeugt jeder Rebuild (z.B. jeder Tastendruck im Key-Takeaway-Feld) ein
+  // neues Future, FutureBuilder fällt zurück auf "waiting" und reißt den
+  // gesamten Teilbaum (inkl. TextField-Fokus) neu auf (#58).
+  late final Future<List<ImagineVisualOption>> _optionsFuture = loadImagineOptions();
+
+  @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
     return FutureBuilder<List<ImagineVisualOption>>(
-      future: loadImagineOptions(),
+      future: _optionsFuture,
       builder: (context, snapshot) {
         if (snapshot.connectionState != ConnectionState.done) {
           return const Center(child: CircularProgressIndicator());
@@ -63,33 +77,33 @@ class _ImagineEditorBody extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             _OptionSection(
-              label: 'Vergangenheit',
-              subtitle: 'Wähle ein Bild für deine Vergangenheit',
+              label: l10n.imagineLabelPast,
+              subtitle: l10n.imagineSubtitlePast,
               icon: Icons.history_rounded,
               options: options,
-              selectedId: selectedPastId,
+              selectedId: widget.selectedPastId,
               onSelect: (id) => context.read<ImagineBloc>().add(
-                    SelectPastImage(sessionId, id),
+                    SelectPastImage(widget.sessionId, id),
                   ),
             ),
             const SizedBox(height: 24),
             _OptionSection(
-              label: 'Zukunft',
-              subtitle: 'Wähle ein Bild für deine Zukunft',
+              label: l10n.imagineLabelFuture,
+              subtitle: l10n.imagineSubtitleFuture,
               icon: Icons.auto_awesome_rounded,
               options: options,
-              selectedId: selectedFutureId,
+              selectedId: widget.selectedFutureId,
               onSelect: (id) => context.read<ImagineBloc>().add(
-                    SelectFutureImage(sessionId, id),
+                    SelectFutureImage(widget.sessionId, id),
                   ),
             ),
             const SizedBox(height: 32),
             const Divider(),
             const SizedBox(height: 16),
             KeyTakeawayField(
-              takeaways: takeaways,
+              takeaways: widget.takeaways,
               onUpdate: (index, value) => context.read<ImagineBloc>().add(
-                    UpdateImagineTakeaway(sessionId, index, value),
+                    UpdateImagineTakeaway(widget.sessionId, index, value),
                   ),
             ),
             const SizedBox(height: 16),
@@ -168,10 +182,25 @@ class _OptionSection extends StatelessWidget {
             ),
             child: ListView.separated(
               scrollDirection: Axis.horizontal,
-              itemCount: shuffledOptions.length,
+              // +1 fürs Kamera-Icon am Anfang (#53): erlaubt, ein "offline"
+              // Foto als eigene Vergangenheit-/Zukunft-Option aufzunehmen,
+              // statt nur aus den vorgegebenen Bildern zu wählen.
+              itemCount: shuffledOptions.length + 1,
               separatorBuilder: (_, __) => const SizedBox(width: 10),
               itemBuilder: (context, index) {
-                final option = shuffledOptions[index];
+                if (index == 0) {
+                  // Ist die aktuelle Auswahl kein bekanntes Options-Bild,
+                  // ist es ein zuvor aufgenommenes Kamera-Foto - dessen
+                  // Vorschau ersetzt dann das Kamera-Icon, damit sichtbar
+                  // ist, dass die Aufnahme ausgewählt wurde.
+                  final isCustomSelected =
+                      selectedId != null && !options.any((o) => o.id == selectedId);
+                  return _CameraOptionTile(
+                    onCaptured: onSelect,
+                    selectedCustomPath: isCustomSelected ? selectedId : null,
+                  );
+                }
+                final option = shuffledOptions[index - 1];
                 final isSelected = option.id == selectedId;
                 return GestureDetector(
                   key: ValueKey(option.id),
@@ -184,7 +213,7 @@ class _OptionSection extends StatelessWidget {
                       _showFullscreenCarousel(
                         context,
                         options: shuffledOptions,
-                        initialIndex: index,
+                        initialIndex: index - 1,
                         selectedId: selectedId,
                         onSelect: onSelect,
                       );
@@ -196,6 +225,74 @@ class _OptionSection extends StatelessWidget {
           ),
         ),
       ],
+    );
+  }
+}
+
+/// Kachel am Anfang jedes Karussells, mit der ein "offline" Foto per Kamera
+/// aufgenommen und direkt als Vergangenheit-/Zukunft-Bild ausgewählt werden
+/// kann (#53) - für Nutzung ohne Internetverbindung, wenn die vorgegebenen
+/// Bilder nicht passen. Zeigt eine Vorschau der Aufnahme statt des
+/// Kamera-Icons, sobald sie ausgewählt ist.
+class _CameraOptionTile extends StatelessWidget {
+  final ValueChanged<String> onCaptured;
+  final String? selectedCustomPath;
+
+  const _CameraOptionTile({required this.onCaptured, this.selectedCustomPath});
+
+  Future<void> _capture(BuildContext context) async {
+    final picker = ImagePicker();
+    final photo = await picker.pickImage(source: ImageSource.camera);
+    if (photo != null) onCaptured(photo.path);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final hasPreview = selectedCustomPath != null;
+
+    return GestureDetector(
+      onTap: () => _capture(context),
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 180),
+        width: 102,
+        padding: const EdgeInsets.all(6),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(12),
+          border: Border.all(
+            color: hasPreview ? theme.colorScheme.primary : Colors.transparent,
+            width: 3,
+          ),
+        ),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(8),
+          child: hasPreview
+              ? Stack(
+                  fit: StackFit.expand,
+                  children: [
+                    buildResolvedImage(selectedCustomPath!, fit: BoxFit.cover),
+                    Positioned(
+                      top: 6,
+                      right: 6,
+                      child: CircleAvatar(
+                        radius: 12,
+                        backgroundColor: theme.colorScheme.primary,
+                        child: const Icon(Icons.check, size: 14, color: Colors.white),
+                      ),
+                    ),
+                  ],
+                )
+              : Container(
+                  color: theme.colorScheme.surfaceContainerHighest,
+                  alignment: Alignment.center,
+                  child: Icon(
+                    Icons.photo_camera_outlined,
+                    size: 32,
+                    color: theme.colorScheme.onSurfaceVariant,
+                  ),
+                ),
+        ),
+      ),
     );
   }
 }

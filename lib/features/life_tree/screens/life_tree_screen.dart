@@ -2,6 +2,7 @@ import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:screenshot/screenshot.dart';
+import 'package:design_for_life/l10n/generated/app_localizations.dart';
 import 'package:design_for_life/core/blocs/entry_list_bloc.dart';
 import 'package:design_for_life/core/models/dfl_entry.dart';
 import 'package:design_for_life/core/models/shareable_content.dart';
@@ -32,18 +33,20 @@ class _LifeTreeScreenState extends State<LifeTreeScreen> {
   final ScreenshotController _screenshotController = ScreenshotController();
 
   ShareableContent _getShareableContent(
-    List<DflEntry> entries, 
+    BuildContext context,
+    List<DflEntry> entries,
     List<String> takeaways,
     List<LifeTreeNodeData> nodes,
   ) {
+    final l10n = AppLocalizations.of(context);
     final List<ShareableItem> items = [];
-    
+
     // 1. Key Takeaways (werden im ShareService als Text formatiert)
     for (int i = 0; i < takeaways.length; i++) {
       if (takeaways[i].trim().isNotEmpty) {
         items.add(ShareableItem(
           id: 'takeaway_$i',
-          label: 'Erkenntnis ${i + 1}',
+          label: l10n.shareInsightItem(i + 1),
           textValue: takeaways[i],
         ));
       }
@@ -53,7 +56,7 @@ class _LifeTreeScreenState extends State<LifeTreeScreen> {
     if (nodes.isNotEmpty) {
       items.add(ShareableItem(
         id: 'tree_graph',
-        label: 'Digitaler Lebensbaum (Grafik)',
+        label: l10n.lifeTreeShareGraph,
         isSelected: true,
         data: { 'type': 'life_tree_graph' },
       ));
@@ -64,14 +67,14 @@ class _LifeTreeScreenState extends State<LifeTreeScreen> {
       if (entry.text.trim().isNotEmpty || entry.imagePath != null) {
         items.add(ShareableItem(
           id: 'entry_${entry.id}',
-          label: 'Notiz / Zeichnung',
+          label: l10n.shareNoteOrDrawing,
           textValue: entry.text.isNotEmpty ? entry.text : null,
           imagePath: entry.imagePath,
         ));
       }
     }
 
-    return ShareableContent(title: 'Mein Lebensbaum: ${widget.title}', items: items);
+    return ShareableContent(title: '${l10n.lifeTreeTitle}: ${widget.title}', items: items);
   }
 
   @override
@@ -90,7 +93,7 @@ class _LifeTreeScreenState extends State<LifeTreeScreen> {
         return DflModuleScaffold(
           title: widget.title,
           initialEditMode: widget.initialEditMode,
-          shareableContent: _getShareableContent(entries, takeaways, nodes),
+          shareableContent: _getShareableContent(context, entries, takeaways, nodes),
           onShare: (selectedItems) async {
             Uint8List? capturedImage;
             
@@ -122,8 +125,8 @@ class _LifeTreeScreenState extends State<LifeTreeScreen> {
               }).toList();
 
               ShareService.shareContent(
-                context: context, 
-                content: _getShareableContent(entries, takeaways, nodes),
+                context: context,
+                content: _getShareableContent(context, entries, takeaways, nodes),
                 selectedItems: enrichedItems
               );
             }

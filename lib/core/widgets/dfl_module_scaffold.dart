@@ -13,6 +13,13 @@ class DflModuleScaffold extends StatefulWidget {
   final ShareableContent? shareableContent;
   final Function(List<ShareableItem>)? onShare;
 
+  /// Zeigt den Teilen-Button auch ohne [shareableContent] (z.B. wenn ein
+  /// Modul keine Bild-/Text-Auswahl anbietet, sondern immer denselben festen
+  /// Export erzeugt, wie das CSV-Feedback-Modul, #7). Ohne [shareableContent]
+  /// wird der Auswahl-Dialog übersprungen und [onShare] direkt mit einer
+  /// leeren Liste aufgerufen.
+  final bool showShareButtonWithoutContent;
+
   const DflModuleScaffold({
     super.key,
     required this.title,
@@ -23,6 +30,7 @@ class DflModuleScaffold extends StatefulWidget {
     this.customFooter,
     this.shareableContent,
     this.onShare,
+    this.showShareButtonWithoutContent = false,
   });
 
   @override
@@ -49,7 +57,12 @@ class DflModuleScaffoldState extends State<DflModuleScaffold> {
   }
 
   void _showShareDialog() {
-    if (widget.shareableContent == null || widget.onShare == null) return;
+    if (widget.onShare == null) return;
+
+    if (widget.shareableContent == null) {
+      widget.onShare!(const []);
+      return;
+    }
 
     showDialog(
       context: context,
@@ -66,9 +79,15 @@ class DflModuleScaffoldState extends State<DflModuleScaffold> {
     
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: Text(
+          widget.title,
+          overflow: TextOverflow.ellipsis,
+          maxLines: 1,
+        ),
         actions: [
-          if (!_isEditMode && widget.shareableContent != null)
+          if (!_isEditMode &&
+              (widget.shareableContent != null ||
+                  (widget.onShare != null && widget.showShareButtonWithoutContent)))
             IconButton(
               tooltip: l10n.share,
               icon: const Icon(Icons.share_outlined),

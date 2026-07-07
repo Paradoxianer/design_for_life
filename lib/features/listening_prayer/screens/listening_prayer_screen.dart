@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:design_for_life/l10n/generated/app_localizations.dart';
 import 'package:design_for_life/core/blocs/entry_list_bloc.dart';
 import 'package:design_for_life/core/models/dfl_entry.dart';
 import 'package:design_for_life/core/models/shareable_content.dart';
@@ -21,7 +22,12 @@ class ListeningPrayerScreen extends StatelessWidget {
     this.initialEditMode = true,
   });
 
-  ShareableContent _getShareableContent(List<DflEntry> impressions, List<String> highlights) {
+  ShareableContent _getShareableContent(
+    BuildContext context,
+    List<DflEntry> impressions,
+    List<String> highlights,
+  ) {
+    final l10n = AppLocalizations.of(context);
     final List<ShareableItem> items = [];
 
     // Add Highlights first
@@ -29,7 +35,7 @@ class ListeningPrayerScreen extends StatelessWidget {
       if (highlights[i].trim().isNotEmpty) {
         items.add(ShareableItem(
           id: 'lp_highlight_$i',
-          label: 'Highlight ${i + 1}',
+          label: l10n.shareHighlightItem(i + 1),
           textValue: highlights[i],
         ));
       }
@@ -44,7 +50,7 @@ class ListeningPrayerScreen extends StatelessWidget {
       if (hasText || hasImage) {
         items.add(ShareableItem(
           id: 'lp_impression_${entry.id}',
-          label: 'Eindruck ${i + 1}',
+          label: l10n.shareImpressionItem(i + 1),
           textValue: hasText ? entry.text : null,
           imagePath: hasImage ? entry.imagePath : null,
         ));
@@ -52,7 +58,7 @@ class ListeningPrayerScreen extends StatelessWidget {
     }
 
     return ShareableContent(
-      title: 'Hörendes Gebet',
+      title: l10n.listeningPrayerTitle,
       items: items,
     );
   }
@@ -64,11 +70,11 @@ class ListeningPrayerScreen extends StatelessWidget {
         final impressions = state.entries[sessionId] ?? [];
         final highlights = state.takeaways[sessionId] ?? const ['', '', ''];
 
-        final displayImpressions = impressions.isEmpty 
-            ? [DflEntry(id: 'initial_$sessionId')] 
+        final displayImpressions = impressions.isEmpty
+            ? [DflEntry(id: 'initial_$sessionId')]
             : impressions;
 
-        final shareContent = _getShareableContent(impressions, highlights);
+        final shareContent = _getShareableContent(context, impressions, highlights);
 
         return DflModuleScaffold(
           title: title,

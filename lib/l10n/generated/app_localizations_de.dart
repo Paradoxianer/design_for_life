@@ -15,6 +15,26 @@ class AppLocalizationsDe extends AppLocalizations {
   String get notes => 'Notizen';
 
   @override
+  String get notesEmptyState => 'Keine Notizen vorhanden.';
+
+  @override
+  String get entryTakePhoto => 'Foto aufnehmen';
+
+  @override
+  String get entryChooseFromGallery => 'Aus Galerie wählen';
+
+  @override
+  String get groupPhotoGuidance =>
+      'Halte hier eure gemeinsamen Momente vom Wochenende fest.';
+
+  @override
+  String get groupPhotoHint =>
+      'Wer ist auf dem Bild zu sehen? Was war besonders?';
+
+  @override
+  String get groupPhotoEmptyState => 'Noch kein Gruppenfoto vorhanden.';
+
+  @override
   String get notesGuidance =>
       'Schreibe auf, was dir in dieser Einheit wichtig geworden ist.';
 
@@ -173,6 +193,9 @@ class AppLocalizationsDe extends AppLocalizations {
   String get valuesResultTitle => 'Meine Top 8 Werte';
 
   @override
+  String get valuesShareSectionTitle => 'Meine wichtigsten Werte';
+
+  @override
   String get lifeTreeTitle => 'Mein Lebensbaum';
 
   @override
@@ -273,6 +296,80 @@ class AppLocalizationsDe extends AppLocalizations {
   String get giftsFinishAnyway => 'Trotzdem beenden';
 
   @override
+  String get giftsShareCardLabel => 'Top 3 Gaben (Bild)';
+
+  @override
+  String get valuesShareCardLabel => 'Top Werte (Bild)';
+
+  @override
+  String get goalsShareCardLabel => 'Meine Ziele (Bild)';
+
+  @override
+  String get connectionsShareCardLabel => 'Verknüpfungen (Bild)';
+
+  @override
+  String get personalStyleTitle => 'Persönlichkeitsprofil';
+
+  @override
+  String get personalStyleGuidance =>
+      'Wähle bei jeder Aussage einen Wert zwischen 1 und 6, je nachdem, welche der beiden Aussagen eher auf dich zutrifft.';
+
+  @override
+  String get personalStyleSectionOrganisation =>
+      'Organisation: Struktur vs. Flexibilität';
+
+  @override
+  String get personalStyleSectionEnergy => 'Energie: Mensch vs. Aufgabe';
+
+  @override
+  String personalStyleQuestionCounter(int answered, int total) {
+    return '$answered von $total beantwortet';
+  }
+
+  @override
+  String get personalStyleAxisPeople => 'Mensch';
+
+  @override
+  String get personalStyleAxisTask => 'Aufgabe';
+
+  @override
+  String get personalStyleAxisStructured => 'Strukturiert';
+
+  @override
+  String get personalStyleAxisUnstructured => 'Unstrukturiert';
+
+  @override
+  String get personalStyleResultHeading => 'Dein Profil';
+
+  @override
+  String get personalStyleIncomplete =>
+      'Beantworte im Bearbeitungsmodus zunächst alle Fragen, um dein Profil zu sehen.';
+
+  @override
+  String get personalStyleShareCardLabel => 'Mein Profil (Bild)';
+
+  @override
+  String get exportTitle => 'Abschluss-Export';
+
+  @override
+  String get exportSelectionGuidance =>
+      'Wähle aus, welche Bereiche in dein persönliches Abschlussdokument aufgenommen werden sollen.';
+
+  @override
+  String get exportGenerateButton => 'PDF erstellen & teilen';
+
+  @override
+  String get exportEmptyState =>
+      'Noch keine Inhalte zum Exportieren vorhanden. Fülle zuerst ein paar Module aus.';
+
+  @override
+  String get exportError =>
+      'Beim Erstellen des PDFs ist ein Fehler aufgetreten. Bitte versuche es erneut.';
+
+  @override
+  String get exportGenerating => 'PDF wird erstellt …';
+
+  @override
   String get lifeTreeShareGraph => 'Digitaler Lebensbaum (Grafik)';
 
   @override
@@ -322,7 +419,57 @@ class AppLocalizationsDe extends AppLocalizations {
   String get shareFooter => 'Erstellt während des DFL-Wochenendes';
 
   @override
+  String get shareKeyTakeaways => 'Wichtigste Erkenntnisse:';
+
+  @override
+  String get shareDetailsAndNotes => 'Details & Notizen:';
+
+  @override
   String get shareIntro => 'Schau dir meine Ergebnisse an:';
+
+  @override
+  String get spiritualGiftsTitle => 'Geistesgaben';
+
+  @override
+  String get listeningPrayerTitle => 'Hörendes Gebet';
+
+  @override
+  String shareGoalItem(int index) {
+    return 'Ziel $index';
+  }
+
+  @override
+  String shareNoteItem(int index) {
+    return 'Notiz $index';
+  }
+
+  @override
+  String shareInsightItem(int index) {
+    return 'Erkenntnis $index';
+  }
+
+  @override
+  String get shareNoteOrDrawing => 'Notiz / Zeichnung';
+
+  @override
+  String shareGiftItem(int index, String name) {
+    return 'Gabe $index: $name';
+  }
+
+  @override
+  String shareHighlightItem(int index) {
+    return 'Highlight $index';
+  }
+
+  @override
+  String shareImpressionItem(int index) {
+    return 'Eindruck $index';
+  }
+
+  @override
+  String connectionsSummaryItem(int index) {
+    return 'Connection $index';
+  }
 
   @override
   String get feedbackTitle => 'Feedbackbogen';
@@ -332,111 +479,13 @@ class AppLocalizationsDe extends AppLocalizations {
       'Bitte gib uns deine Rückmeldung zum Seminar, damit wir beim nächsten Mal es noch besser gestalten können.';
 
   @override
-  String get feedbackRating1 => 'Sehr gut';
+  String get feedbackCsvColumnCategory => 'Kategorie';
 
   @override
-  String get feedbackRating2 => 'Gut';
+  String get feedbackCsvColumnQuestion => 'Frage';
 
   @override
-  String get feedbackRating3 => 'Befriedigend';
-
-  @override
-  String get feedbackRating4 => 'Ausreichend';
-
-  @override
-  String get feedbackRating5 => 'Mangelhaft';
-
-  @override
-  String get feedbackRating6 => 'Ungenügend';
-
-  @override
-  String get feedbackSectionContent => 'Inhalt des Seminars';
-
-  @override
-  String get feedbackContentExpectations =>
-      'Die Inhalte entsprachen meinen Erwartungen';
-
-  @override
-  String get feedbackContentPracticalUtility =>
-      'Ich habe nützliche Anregungen für meine täglich Praxis gewonnen';
-
-  @override
-  String get feedbackContentStructure =>
-      'Gliederung & Verständlichkeit des Themenkomplexes';
-
-  @override
-  String get feedbackSectionSpeaker => 'Referent & Durchführung';
-
-  @override
-  String get feedbackSpeakerGodWorking =>
-      'Ich hatte den Eindruck, dass Gott wirken konnte';
-
-  @override
-  String get feedbackSpeakerFaithProgress =>
-      'Das Seminar hat mich in meinem Glaubensleben weitergebracht';
-
-  @override
-  String get feedbackSpeakerDidactics => 'Didaktische Fähigkeiten';
-
-  @override
-  String get feedbackSpeakerMethods =>
-      'Die eingesetzten Methoden waren zielführend';
-
-  @override
-  String get feedbackSpeakerInvolvement =>
-      'Der Referent hat die Teilnehmer aktiv eingebunden';
-
-  @override
-  String get feedbackSpeakerRespect =>
-      'Der Referent hat sich höflich und respektvoll verhalten';
-
-  @override
-  String get feedbackAtmosphere => 'Allgemeine Kursatmosphäre und Gruppenklima';
-
-  @override
-  String get feedbackSectionDocs => 'Seminarunterlagen';
-
-  @override
-  String get feedbackDocsStructure => 'Struktur und Übersichtlichkeit';
-
-  @override
-  String get feedbackDocsUnderstandability => 'Verständlichkeit';
-
-  @override
-  String get feedbackDocsDifficulty => 'Schwierigkeitsgrad';
-
-  @override
-  String get feedbackSectionOrg => 'Organisation & Infrastruktur';
-
-  @override
-  String get feedbackRoomsAppropriateness =>
-      'Angemessenheit der Räumlichkeiten';
-
-  @override
-  String get feedbackPrepQuality =>
-      'Vorbereitung des Seminars durch den Veranstalter';
-
-  @override
-  String get feedbackDuration => 'Dauer der Veranstaltung';
-
-  @override
-  String get feedbackTempo => 'Tempo der Veranstaltung';
-
-  @override
-  String get feedbackCatering => 'Verpflegung';
-
-  @override
-  String get feedbackSectionComments => 'Kommentare';
-
-  @override
-  String get feedbackCommentsMissing => 'Was kam zu kurz?';
-
-  @override
-  String get feedbackRecommendation =>
-      'Würden Sie dieses Seminar weiterempfehlen?';
-
-  @override
-  String get feedbackGeneralNotes => 'Anmerkungen';
+  String get feedbackCsvColumnAnswer => 'Antwort';
 
   @override
   String feedbackLabel(int rating) {
@@ -529,6 +578,13 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get session12Title => 'Feedbackbogen';
+
+  @override
+  String get session13Title => 'Persönlichkeitsprofil';
+
+  @override
+  String get session13Desc =>
+      'Entdecke deinen bevorzugten Arbeits- und Interaktionsstil.';
 
   @override
   String get valueGenauigkeit => 'Genauigkeit';
@@ -707,6 +763,9 @@ class AppLocalizationsDe extends AppLocalizations {
   String get connectionsColGoals => 'Ziele';
 
   @override
+  String get connectionsColPersonalStyle => 'Profil';
+
+  @override
   String get connectionsGroupedByColor => 'Nach Farben gruppiert';
 
   @override
@@ -742,4 +801,22 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get connectionsColorGold => 'Gelb';
+
+  @override
+  String get imagineLabelPast => 'Vergangenheit';
+
+  @override
+  String get imagineLabelFuture => 'Zukunft';
+
+  @override
+  String get imagineSubtitlePast => 'Wähle ein Bild für deine Vergangenheit';
+
+  @override
+  String get imagineSubtitleFuture => 'Wähle ein Bild für deine Zukunft';
+
+  @override
+  String get imagineNoImagesSelected => 'Noch keine Bilder ausgewählt.';
+
+  @override
+  String get imagineLabelCombined => 'Vergangenheit + Zukunft (ein Bild)';
 }

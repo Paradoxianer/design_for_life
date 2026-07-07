@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:design_for_life/l10n/generated/app_localizations.dart';
 import '../../../core/widgets/dfl_module_scaffold.dart';
 import '../../../core/models/shareable_content.dart';
 import '../../../core/services/share_service.dart';
@@ -20,18 +21,44 @@ class GoalsScreen extends StatelessWidget {
     this.initialEditMode = true,
   });
 
-  ShareableContent _getShareableContent(List<Goal> goals) {
+  ShareableContent _getShareableContent(BuildContext context, List<Goal> goals) {
+    final l10n = AppLocalizations.of(context);
+    final filledGoals = goals.where((g) => g.text.isNotEmpty).toList();
+
+    List<Map<String, Object>> smartChips(Goal goal) => [
+          {'label': 'S', 'title': l10n.smartSpecific, 'isActive': goal.isSpecific},
+          {'label': 'M', 'title': l10n.smartMeasurable, 'isActive': goal.isMeasurable},
+          {'label': 'A', 'title': l10n.smartAchievable, 'isActive': goal.isAchievable},
+          {'label': 'R', 'title': l10n.smartRelevant, 'isActive': goal.isRelevant},
+          {'label': 'T', 'title': l10n.smartTimeBound, 'isActive': goal.isTimeBound},
+        ];
+
     return ShareableContent(
-      title: 'Meine SMARTen Ziele',
-      items: goals.asMap().entries.where((e) => e.value.text.isNotEmpty).map((entry) {
-        final index = entry.key;
-        final goal = entry.value;
-        return ShareableItem(
-          id: 'goal_$index',
-          label: 'Ziel ${index + 1}',
-          textValue: goal.text,
-        );
-      }).toList(),
+      title: l10n.goalsTitle,
+      items: [
+        // Ziele als eine gebrandete Bild-Karte statt einzelner Text-Zeilen (#24),
+        // inklusive der SMART-Chips wie im Editor/Ergebnis der App.
+        if (filledGoals.isNotEmpty)
+          ShareableItem(
+            id: 'goals_card',
+            label: l10n.goalsShareCardLabel,
+            textValue: [
+              for (int i = 0; i < filledGoals.length; i++)
+                '${l10n.shareGoalItem(i + 1)}: ${filledGoals[i].text}',
+            ].join('\n'),
+            data: {
+              'type': 'text_card',
+              'entries': [
+                for (int i = 0; i < filledGoals.length; i++)
+                  {
+                    'title': l10n.shareGoalItem(i + 1),
+                    'body': filledGoals[i].text,
+                    'chips': smartChips(filledGoals[i]),
+                  },
+              ],
+            },
+          ),
+      ],
     );
   }
 
@@ -42,7 +69,7 @@ class GoalsScreen extends StatelessWidget {
         final goals = state.goals[sessionId] ??
             const [Goal(), Goal(), Goal()];
 
-        final shareContent = _getShareableContent(goals);
+        final shareContent = _getShareableContent(context, goals);
 
         return DflModuleScaffold(
           title: title,

@@ -4,6 +4,12 @@
     "description": "The title of the application"
   },
   "notes": "Notes",
+  "notesEmptyState": "No notes yet.",
+  "entryTakePhoto": "Take photo",
+  "entryChooseFromGallery": "Choose from gallery",
+  "groupPhotoGuidance": "Capture your shared moments from the weekend here.",
+  "groupPhotoHint": "Who's in the photo? What made it special?",
+  "groupPhotoEmptyState": "No group photo yet.",
   "notesGuidance": "Write down what stands out to you from this session.",
   "photosAndSlides": "Photos & Slides",
   "notesHint": "Type your thoughts here...",
@@ -71,6 +77,7 @@
   "valuesNextPhaseHint": "Future phase...",
   "valuesNextPhaseValuesGuidance": "Select up to 8 values from the list that will be especially important for this new stage (click in the desired order):",
   "valuesResultTitle": "My Top 8 Values",
+  "valuesShareSectionTitle": "My Most Important Values",
   "lifeTreeTitle": "My Life Tree",
   "lifeTreeDigital": "Digital Life Tree",
   "lifeTreeAnalog": "Notes & Drawings",
@@ -119,6 +126,34 @@
   },
   "giftsContinue": "Continue filling out",
   "giftsFinishAnyway": "Finish anyway",
+  "giftsShareCardLabel": "Top 3 Gifts (Image)",
+  "valuesShareCardLabel": "Top Values (Image)",
+  "goalsShareCardLabel": "My Goals (Image)",
+  "connectionsShareCardLabel": "Connections (Image)",
+  "personalStyleTitle": "Personal Style Profile",
+  "personalStyleGuidance": "For each statement, choose a value between 1 and 6 depending on which of the two statements fits you better.",
+  "personalStyleSectionOrganisation": "Organisation: Structure vs. Flexibility",
+  "personalStyleSectionEnergy": "Energy: People vs. Task",
+  "personalStyleQuestionCounter": "{answered} of {total} answered",
+  "@personalStyleQuestionCounter": {
+    "placeholders": {
+      "answered": { "type": "int" },
+      "total": { "type": "int" }
+    }
+  },
+  "personalStyleAxisPeople": "People",
+  "personalStyleAxisTask": "Task",
+  "personalStyleAxisStructured": "Structured",
+  "personalStyleAxisUnstructured": "Unstructured",
+  "personalStyleResultHeading": "Your Profile",
+  "personalStyleIncomplete": "Answer all questions in edit mode first to see your profile.",
+  "personalStyleShareCardLabel": "My Profile (Image)",
+  "exportTitle": "Final Export",
+  "exportSelectionGuidance": "Choose which areas to include in your personal final document.",
+  "exportGenerateButton": "Create & share PDF",
+  "exportEmptyState": "No content to export yet. Fill in a few modules first.",
+  "exportError": "Something went wrong while creating the PDF. Please try again.",
+  "exportGenerating": "Creating PDF …",
   "lifeTreeShareGraph": "Digital Life Tree (Graph)",
   "lifeTreeFullscreen": "Fullscreen Mode",
   "lifeTreeExitFullscreen": "Exit Fullscreen",
@@ -148,41 +183,60 @@
   "cancel": "Cancel",
   "shareSubject": "My results from DFL Weekend",
   "shareFooter": "Created during the DFL Weekend",
+  "shareKeyTakeaways": "Key Takeaways:",
+  "shareDetailsAndNotes": "Details & Notes:",
   "shareIntro": "Check out my results:",
+  "spiritualGiftsTitle": "Spiritual Gifts",
+  "listeningPrayerTitle": "Listening Prayer",
+  "shareGoalItem": "Goal {index}",
+  "@shareGoalItem": {
+    "placeholders": {
+      "index": { "type": "int" }
+    }
+  },
+  "shareNoteItem": "Note {index}",
+  "@shareNoteItem": {
+    "placeholders": {
+      "index": { "type": "int" }
+    }
+  },
+  "shareInsightItem": "Insight {index}",
+  "@shareInsightItem": {
+    "placeholders": {
+      "index": { "type": "int" }
+    }
+  },
+  "shareNoteOrDrawing": "Note / Drawing",
+  "shareGiftItem": "Gift {index}: {name}",
+  "@shareGiftItem": {
+    "placeholders": {
+      "index": { "type": "int" },
+      "name": { "type": "String" }
+    }
+  },
+  "shareHighlightItem": "Highlight {index}",
+  "@shareHighlightItem": {
+    "placeholders": {
+      "index": { "type": "int" }
+    }
+  },
+  "shareImpressionItem": "Impression {index}",
+  "@shareImpressionItem": {
+    "placeholders": {
+      "index": { "type": "int" }
+    }
+  },
+  "connectionsSummaryItem": "Connection {index}",
+  "@connectionsSummaryItem": {
+    "placeholders": {
+      "index": { "type": "int" }
+    }
+  },
   "feedbackTitle": "Feedback Form",
   "feedbackGuidance": "Please give us your feedback on the seminar so that we can make it even better next time.",
-  "feedbackRating1": "Excellent",
-  "feedbackRating2": "Good",
-  "feedbackRating3": "Satisfactory",
-  "feedbackRating4": "Sufficient",
-  "feedbackRating5": "Poor",
-  "feedbackRating6": "Very Poor",
-  "feedbackSectionContent": "Seminar Content",
-  "feedbackContentExpectations": "The content met my expectations",
-  "feedbackContentPracticalUtility": "I gained useful suggestions for my daily practice",
-  "feedbackContentStructure": "Structure & clarity of the topic complex",
-  "feedbackSectionSpeaker": "Speaker & Execution",
-  "feedbackSpeakerGodWorking": "I had the impression that God could work",
-  "feedbackSpeakerFaithProgress": "The seminar helped me progress in my faith life",
-  "feedbackSpeakerDidactics": "Didactic skills",
-  "feedbackSpeakerMethods": "The methods used were effective",
-  "feedbackSpeakerInvolvement": "The speaker actively involved the participants",
-  "feedbackSpeakerRespect": "The speaker was polite and respectful",
-  "feedbackAtmosphere": "General course atmosphere and group climate",
-  "feedbackSectionDocs": "Seminar Documents",
-  "feedbackDocsStructure": "Structure and clarity",
-  "feedbackDocsUnderstandability": "Understandability",
-  "feedbackDocsDifficulty": "Level of difficulty",
-  "feedbackSectionOrg": "Organization & Infrastructure",
-  "feedbackRoomsAppropriateness": "Appropriateness of the rooms",
-  "feedbackPrepQuality": "Preparation of the seminar by the organizer",
-  "feedbackDuration": "Duration of the event",
-  "feedbackTempo": "Pace of the event",
-  "feedbackCatering": "Catering",
-  "feedbackSectionComments": "Comments",
-  "feedbackCommentsMissing": "What was missing?",
-  "feedbackRecommendation": "Would you recommend this seminar?",
-  "feedbackGeneralNotes": "Additional notes",
+  "feedbackCsvColumnCategory": "Category",
+  "feedbackCsvColumnQuestion": "Question",
+  "feedbackCsvColumnAnswer": "Answer",
   "feedbackLabel": "Rating: {rating}",
   "@feedbackLabel": {
     "placeholders": {
@@ -218,6 +272,8 @@
   "timelineImagineDesc": "Shape future images and capture your thoughts for the next life phase.",
   "timelineUnavailable": "Unable to load the timeline. Please restart the app.",
   "session12Title": "Feedback Form",
+  "session13Title": "Personal Style Profile",
+  "session13Desc": "Discover your preferred working and interaction style.",
   "valueGenauigkeit": "Accuracy",
   "valueFamilie": "Family",
   "valuePersEntwicklung": "Personal Development",
@@ -278,6 +334,7 @@
   "connectionsColGifts": "Gifts",
   "connectionsColPrayer": "Listening Prayer",
   "connectionsColGoals": "Goals",
+  "connectionsColPersonalStyle": "Profile",
   "connectionsGroupedByColor": "Grouped by Color",
   "connectionsMatrixView": "Matrix View",
   "connectionsColorGroup": "Color Group ({count})",
@@ -295,5 +352,11 @@
   "connectionsColorRed": "Red",
   "connectionsColorBlue": "Blue",
   "connectionsColorGreen": "Green",
-  "connectionsColorGold": "Yellow"
+  "connectionsColorGold": "Yellow",
+  "imagineLabelPast": "Past",
+  "imagineLabelFuture": "Future",
+  "imagineSubtitlePast": "Choose an image for your past",
+  "imagineSubtitleFuture": "Choose an image for your future",
+  "imagineNoImagesSelected": "No images selected yet.",
+  "imagineLabelCombined": "Past + Future (one image)"
 }

@@ -110,6 +110,42 @@ abstract class AppLocalizations {
   /// **'Notes'**
   String get notes;
 
+  /// No description provided for @notesEmptyState.
+  ///
+  /// In en, this message translates to:
+  /// **'No notes yet.'**
+  String get notesEmptyState;
+
+  /// No description provided for @entryTakePhoto.
+  ///
+  /// In en, this message translates to:
+  /// **'Take photo'**
+  String get entryTakePhoto;
+
+  /// No description provided for @entryChooseFromGallery.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose from gallery'**
+  String get entryChooseFromGallery;
+
+  /// No description provided for @groupPhotoGuidance.
+  ///
+  /// In en, this message translates to:
+  /// **'Capture your shared moments from the weekend here.'**
+  String get groupPhotoGuidance;
+
+  /// No description provided for @groupPhotoHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Who\'s in the photo? What made it special?'**
+  String get groupPhotoHint;
+
+  /// No description provided for @groupPhotoEmptyState.
+  ///
+  /// In en, this message translates to:
+  /// **'No group photo yet.'**
+  String get groupPhotoEmptyState;
+
   /// No description provided for @notesGuidance.
   ///
   /// In en, this message translates to:
@@ -386,6 +422,12 @@ abstract class AppLocalizations {
   /// **'My Top 8 Values'**
   String get valuesResultTitle;
 
+  /// No description provided for @valuesShareSectionTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'My Most Important Values'**
+  String get valuesShareSectionTitle;
+
   /// No description provided for @lifeTreeTitle.
   ///
   /// In en, this message translates to:
@@ -572,6 +614,138 @@ abstract class AppLocalizations {
   /// **'Finish anyway'**
   String get giftsFinishAnyway;
 
+  /// No description provided for @giftsShareCardLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Top 3 Gifts (Image)'**
+  String get giftsShareCardLabel;
+
+  /// No description provided for @valuesShareCardLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Top Values (Image)'**
+  String get valuesShareCardLabel;
+
+  /// No description provided for @goalsShareCardLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'My Goals (Image)'**
+  String get goalsShareCardLabel;
+
+  /// No description provided for @connectionsShareCardLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Connections (Image)'**
+  String get connectionsShareCardLabel;
+
+  /// No description provided for @personalStyleTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Personal Style Profile'**
+  String get personalStyleTitle;
+
+  /// No description provided for @personalStyleGuidance.
+  ///
+  /// In en, this message translates to:
+  /// **'For each statement, choose a value between 1 and 6 depending on which of the two statements fits you better.'**
+  String get personalStyleGuidance;
+
+  /// No description provided for @personalStyleSectionOrganisation.
+  ///
+  /// In en, this message translates to:
+  /// **'Organisation: Structure vs. Flexibility'**
+  String get personalStyleSectionOrganisation;
+
+  /// No description provided for @personalStyleSectionEnergy.
+  ///
+  /// In en, this message translates to:
+  /// **'Energy: People vs. Task'**
+  String get personalStyleSectionEnergy;
+
+  /// No description provided for @personalStyleQuestionCounter.
+  ///
+  /// In en, this message translates to:
+  /// **'{answered} of {total} answered'**
+  String personalStyleQuestionCounter(int answered, int total);
+
+  /// No description provided for @personalStyleAxisPeople.
+  ///
+  /// In en, this message translates to:
+  /// **'People'**
+  String get personalStyleAxisPeople;
+
+  /// No description provided for @personalStyleAxisTask.
+  ///
+  /// In en, this message translates to:
+  /// **'Task'**
+  String get personalStyleAxisTask;
+
+  /// No description provided for @personalStyleAxisStructured.
+  ///
+  /// In en, this message translates to:
+  /// **'Structured'**
+  String get personalStyleAxisStructured;
+
+  /// No description provided for @personalStyleAxisUnstructured.
+  ///
+  /// In en, this message translates to:
+  /// **'Unstructured'**
+  String get personalStyleAxisUnstructured;
+
+  /// No description provided for @personalStyleResultHeading.
+  ///
+  /// In en, this message translates to:
+  /// **'Your Profile'**
+  String get personalStyleResultHeading;
+
+  /// No description provided for @personalStyleIncomplete.
+  ///
+  /// In en, this message translates to:
+  /// **'Answer all questions in edit mode first to see your profile.'**
+  String get personalStyleIncomplete;
+
+  /// No description provided for @personalStyleShareCardLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'My Profile (Image)'**
+  String get personalStyleShareCardLabel;
+
+  /// No description provided for @exportTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Final Export'**
+  String get exportTitle;
+
+  /// No description provided for @exportSelectionGuidance.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose which areas to include in your personal final document.'**
+  String get exportSelectionGuidance;
+
+  /// No description provided for @exportGenerateButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Create & share PDF'**
+  String get exportGenerateButton;
+
+  /// No description provided for @exportEmptyState.
+  ///
+  /// In en, this message translates to:
+  /// **'No content to export yet. Fill in a few modules first.'**
+  String get exportEmptyState;
+
+  /// No description provided for @exportError.
+  ///
+  /// In en, this message translates to:
+  /// **'Something went wrong while creating the PDF. Please try again.'**
+  String get exportError;
+
+  /// No description provided for @exportGenerating.
+  ///
+  /// In en, this message translates to:
+  /// **'Creating PDF …'**
+  String get exportGenerating;
+
   /// No description provided for @lifeTreeShareGraph.
   ///
   /// In en, this message translates to:
@@ -662,11 +836,83 @@ abstract class AppLocalizations {
   /// **'Created during the DFL Weekend'**
   String get shareFooter;
 
+  /// No description provided for @shareKeyTakeaways.
+  ///
+  /// In en, this message translates to:
+  /// **'Key Takeaways:'**
+  String get shareKeyTakeaways;
+
+  /// No description provided for @shareDetailsAndNotes.
+  ///
+  /// In en, this message translates to:
+  /// **'Details & Notes:'**
+  String get shareDetailsAndNotes;
+
   /// No description provided for @shareIntro.
   ///
   /// In en, this message translates to:
   /// **'Check out my results:'**
   String get shareIntro;
+
+  /// No description provided for @spiritualGiftsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Spiritual Gifts'**
+  String get spiritualGiftsTitle;
+
+  /// No description provided for @listeningPrayerTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Listening Prayer'**
+  String get listeningPrayerTitle;
+
+  /// No description provided for @shareGoalItem.
+  ///
+  /// In en, this message translates to:
+  /// **'Goal {index}'**
+  String shareGoalItem(int index);
+
+  /// No description provided for @shareNoteItem.
+  ///
+  /// In en, this message translates to:
+  /// **'Note {index}'**
+  String shareNoteItem(int index);
+
+  /// No description provided for @shareInsightItem.
+  ///
+  /// In en, this message translates to:
+  /// **'Insight {index}'**
+  String shareInsightItem(int index);
+
+  /// No description provided for @shareNoteOrDrawing.
+  ///
+  /// In en, this message translates to:
+  /// **'Note / Drawing'**
+  String get shareNoteOrDrawing;
+
+  /// No description provided for @shareGiftItem.
+  ///
+  /// In en, this message translates to:
+  /// **'Gift {index}: {name}'**
+  String shareGiftItem(int index, String name);
+
+  /// No description provided for @shareHighlightItem.
+  ///
+  /// In en, this message translates to:
+  /// **'Highlight {index}'**
+  String shareHighlightItem(int index);
+
+  /// No description provided for @shareImpressionItem.
+  ///
+  /// In en, this message translates to:
+  /// **'Impression {index}'**
+  String shareImpressionItem(int index);
+
+  /// No description provided for @connectionsSummaryItem.
+  ///
+  /// In en, this message translates to:
+  /// **'Connection {index}'**
+  String connectionsSummaryItem(int index);
 
   /// No description provided for @feedbackTitle.
   ///
@@ -680,197 +926,23 @@ abstract class AppLocalizations {
   /// **'Please give us your feedback on the seminar so that we can make it even better next time.'**
   String get feedbackGuidance;
 
-  /// No description provided for @feedbackRating1.
+  /// No description provided for @feedbackCsvColumnCategory.
   ///
   /// In en, this message translates to:
-  /// **'Excellent'**
-  String get feedbackRating1;
+  /// **'Category'**
+  String get feedbackCsvColumnCategory;
 
-  /// No description provided for @feedbackRating2.
+  /// No description provided for @feedbackCsvColumnQuestion.
   ///
   /// In en, this message translates to:
-  /// **'Good'**
-  String get feedbackRating2;
+  /// **'Question'**
+  String get feedbackCsvColumnQuestion;
 
-  /// No description provided for @feedbackRating3.
+  /// No description provided for @feedbackCsvColumnAnswer.
   ///
   /// In en, this message translates to:
-  /// **'Satisfactory'**
-  String get feedbackRating3;
-
-  /// No description provided for @feedbackRating4.
-  ///
-  /// In en, this message translates to:
-  /// **'Sufficient'**
-  String get feedbackRating4;
-
-  /// No description provided for @feedbackRating5.
-  ///
-  /// In en, this message translates to:
-  /// **'Poor'**
-  String get feedbackRating5;
-
-  /// No description provided for @feedbackRating6.
-  ///
-  /// In en, this message translates to:
-  /// **'Very Poor'**
-  String get feedbackRating6;
-
-  /// No description provided for @feedbackSectionContent.
-  ///
-  /// In en, this message translates to:
-  /// **'Seminar Content'**
-  String get feedbackSectionContent;
-
-  /// No description provided for @feedbackContentExpectations.
-  ///
-  /// In en, this message translates to:
-  /// **'The content met my expectations'**
-  String get feedbackContentExpectations;
-
-  /// No description provided for @feedbackContentPracticalUtility.
-  ///
-  /// In en, this message translates to:
-  /// **'I gained useful suggestions for my daily practice'**
-  String get feedbackContentPracticalUtility;
-
-  /// No description provided for @feedbackContentStructure.
-  ///
-  /// In en, this message translates to:
-  /// **'Structure & clarity of the topic complex'**
-  String get feedbackContentStructure;
-
-  /// No description provided for @feedbackSectionSpeaker.
-  ///
-  /// In en, this message translates to:
-  /// **'Speaker & Execution'**
-  String get feedbackSectionSpeaker;
-
-  /// No description provided for @feedbackSpeakerGodWorking.
-  ///
-  /// In en, this message translates to:
-  /// **'I had the impression that God could work'**
-  String get feedbackSpeakerGodWorking;
-
-  /// No description provided for @feedbackSpeakerFaithProgress.
-  ///
-  /// In en, this message translates to:
-  /// **'The seminar helped me progress in my faith life'**
-  String get feedbackSpeakerFaithProgress;
-
-  /// No description provided for @feedbackSpeakerDidactics.
-  ///
-  /// In en, this message translates to:
-  /// **'Didactic skills'**
-  String get feedbackSpeakerDidactics;
-
-  /// No description provided for @feedbackSpeakerMethods.
-  ///
-  /// In en, this message translates to:
-  /// **'The methods used were effective'**
-  String get feedbackSpeakerMethods;
-
-  /// No description provided for @feedbackSpeakerInvolvement.
-  ///
-  /// In en, this message translates to:
-  /// **'The speaker actively involved the participants'**
-  String get feedbackSpeakerInvolvement;
-
-  /// No description provided for @feedbackSpeakerRespect.
-  ///
-  /// In en, this message translates to:
-  /// **'The speaker was polite and respectful'**
-  String get feedbackSpeakerRespect;
-
-  /// No description provided for @feedbackAtmosphere.
-  ///
-  /// In en, this message translates to:
-  /// **'General course atmosphere and group climate'**
-  String get feedbackAtmosphere;
-
-  /// No description provided for @feedbackSectionDocs.
-  ///
-  /// In en, this message translates to:
-  /// **'Seminar Documents'**
-  String get feedbackSectionDocs;
-
-  /// No description provided for @feedbackDocsStructure.
-  ///
-  /// In en, this message translates to:
-  /// **'Structure and clarity'**
-  String get feedbackDocsStructure;
-
-  /// No description provided for @feedbackDocsUnderstandability.
-  ///
-  /// In en, this message translates to:
-  /// **'Understandability'**
-  String get feedbackDocsUnderstandability;
-
-  /// No description provided for @feedbackDocsDifficulty.
-  ///
-  /// In en, this message translates to:
-  /// **'Level of difficulty'**
-  String get feedbackDocsDifficulty;
-
-  /// No description provided for @feedbackSectionOrg.
-  ///
-  /// In en, this message translates to:
-  /// **'Organization & Infrastructure'**
-  String get feedbackSectionOrg;
-
-  /// No description provided for @feedbackRoomsAppropriateness.
-  ///
-  /// In en, this message translates to:
-  /// **'Appropriateness of the rooms'**
-  String get feedbackRoomsAppropriateness;
-
-  /// No description provided for @feedbackPrepQuality.
-  ///
-  /// In en, this message translates to:
-  /// **'Preparation of the seminar by the organizer'**
-  String get feedbackPrepQuality;
-
-  /// No description provided for @feedbackDuration.
-  ///
-  /// In en, this message translates to:
-  /// **'Duration of the event'**
-  String get feedbackDuration;
-
-  /// No description provided for @feedbackTempo.
-  ///
-  /// In en, this message translates to:
-  /// **'Pace of the event'**
-  String get feedbackTempo;
-
-  /// No description provided for @feedbackCatering.
-  ///
-  /// In en, this message translates to:
-  /// **'Catering'**
-  String get feedbackCatering;
-
-  /// No description provided for @feedbackSectionComments.
-  ///
-  /// In en, this message translates to:
-  /// **'Comments'**
-  String get feedbackSectionComments;
-
-  /// No description provided for @feedbackCommentsMissing.
-  ///
-  /// In en, this message translates to:
-  /// **'What was missing?'**
-  String get feedbackCommentsMissing;
-
-  /// No description provided for @feedbackRecommendation.
-  ///
-  /// In en, this message translates to:
-  /// **'Would you recommend this seminar?'**
-  String get feedbackRecommendation;
-
-  /// No description provided for @feedbackGeneralNotes.
-  ///
-  /// In en, this message translates to:
-  /// **'Additional notes'**
-  String get feedbackGeneralNotes;
+  /// **'Answer'**
+  String get feedbackCsvColumnAnswer;
 
   /// No description provided for @feedbackLabel.
   ///
@@ -1039,6 +1111,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Feedback Form'**
   String get session12Title;
+
+  /// No description provided for @session13Title.
+  ///
+  /// In en, this message translates to:
+  /// **'Personal Style Profile'**
+  String get session13Title;
+
+  /// No description provided for @session13Desc.
+  ///
+  /// In en, this message translates to:
+  /// **'Discover your preferred working and interaction style.'**
+  String get session13Desc;
 
   /// No description provided for @valueGenauigkeit.
   ///
@@ -1388,6 +1472,12 @@ abstract class AppLocalizations {
   /// **'Goals'**
   String get connectionsColGoals;
 
+  /// No description provided for @connectionsColPersonalStyle.
+  ///
+  /// In en, this message translates to:
+  /// **'Profile'**
+  String get connectionsColPersonalStyle;
+
   /// No description provided for @connectionsGroupedByColor.
   ///
   /// In en, this message translates to:
@@ -1453,6 +1543,42 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Yellow'**
   String get connectionsColorGold;
+
+  /// No description provided for @imagineLabelPast.
+  ///
+  /// In en, this message translates to:
+  /// **'Past'**
+  String get imagineLabelPast;
+
+  /// No description provided for @imagineLabelFuture.
+  ///
+  /// In en, this message translates to:
+  /// **'Future'**
+  String get imagineLabelFuture;
+
+  /// No description provided for @imagineSubtitlePast.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose an image for your past'**
+  String get imagineSubtitlePast;
+
+  /// No description provided for @imagineSubtitleFuture.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose an image for your future'**
+  String get imagineSubtitleFuture;
+
+  /// No description provided for @imagineNoImagesSelected.
+  ///
+  /// In en, this message translates to:
+  /// **'No images selected yet.'**
+  String get imagineNoImagesSelected;
+
+  /// No description provided for @imagineLabelCombined.
+  ///
+  /// In en, this message translates to:
+  /// **'Past + Future (one image)'**
+  String get imagineLabelCombined;
 }
 
 class _AppLocalizationsDelegate

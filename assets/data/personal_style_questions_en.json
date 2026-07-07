@@ -1,0 +1,114 @@
+{
+  "questions": [
+    {
+      "id": "org_1",
+      "dimension": "organisation",
+      "leftLabel": "I like to plan my day ahead with a clear schedule.",
+      "rightLabel": "I like to keep my day open and decide spontaneously."
+    },
+    {
+      "id": "org_2",
+      "dimension": "organisation",
+      "leftLabel": "I feel more comfortable when processes are clearly defined.",
+      "rightLabel": "I feel more comfortable when I can react flexibly to situations."
+    },
+    {
+      "id": "org_3",
+      "dimension": "organisation",
+      "leftLabel": "I like clear rules and guidelines.",
+      "rightLabel": "I like to approach things in my own, unconventional way."
+    },
+    {
+      "id": "org_4",
+      "dimension": "organisation",
+      "leftLabel": "I prefer to work within a fixed structure.",
+      "rightLabel": "I prefer to work however things happen to unfold."
+    },
+    {
+      "id": "org_5",
+      "dimension": "organisation",
+      "leftLabel": "Last-minute changes stress me out.",
+      "rightLabel": "I find last-minute changes exciting."
+    },
+    {
+      "id": "org_6",
+      "dimension": "organisation",
+      "leftLabel": "I like to work through tasks step by step from a list.",
+      "rightLabel": "I like to jump between different tasks as they come up."
+    },
+    {
+      "id": "energy_1",
+      "dimension": "energy",
+      "leftLabel": "It matters to me how the people around me are doing.",
+      "rightLabel": "It matters to me that the task gets done."
+    },
+    {
+      "id": "energy_2",
+      "dimension": "energy",
+      "leftLabel": "I gain energy from talking with others.",
+      "rightLabel": "I gain energy from achieving a result."
+    },
+    {
+      "id": "energy_3",
+      "dimension": "energy",
+      "leftLabel": "Relationships matter more to me than the outcome.",
+      "rightLabel": "The outcome matters more to me than the relationship around it."
+    },
+    {
+      "id": "energy_4",
+      "dimension": "energy",
+      "leftLabel": "I like to help out, even if it disrupts my schedule.",
+      "rightLabel": "I like to stay focused on what I set out to do."
+    },
+    {
+      "id": "energy_5",
+      "dimension": "energy",
+      "leftLabel": "I enjoy spending time with people without a concrete goal.",
+      "rightLabel": "I feel most comfortable when pursuing clear goals."
+    },
+    {
+      "id": "energy_6",
+      "dimension": "energy",
+      "leftLabel": "I quickly notice when someone in the group isn't doing well.",
+      "rightLabel": "I quickly notice when a task is stalling."
+    }
+  ],
+  "profiles": {
+    "people_structured": {
+      "title": "People / Structured",
+      "traits": [
+        "Values defined relationships",
+        "Appreciates familiarity and stability",
+        "Enjoys established teams and environments",
+        "Creates a warm and dependable atmosphere"
+      ]
+    },
+    "people_unstructured": {
+      "title": "People / Unstructured",
+      "traits": [
+        "Enjoys spontaneous interactions",
+        "Is conversational and expressive",
+        "Adapts easily to changing situations",
+        "Values flexibility in relationships"
+      ]
+    },
+    "task_structured": {
+      "title": "Task / Structured",
+      "traits": [
+        "Focuses on results",
+        "Appreciates clear direction and planning",
+        "Enjoys working toward defined objectives",
+        "Prefers organized workflows"
+      ]
+    },
+    "task_unstructured": {
+      "title": "Task / Unstructured",
+      "traits": [
+        "Values variety and flexibility",
+        "Enjoys helping wherever needed",
+        "Adapts quickly to new challenges",
+        "Focuses on practical outcomes rather than process"
+      ]
+    }
+  }
+}

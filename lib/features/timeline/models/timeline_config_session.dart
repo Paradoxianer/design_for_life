@@ -116,6 +116,10 @@ class TimelineConfigSession {
         return l10n.session11Title;
       case 'session12Title':
         return l10n.session12Title;
+      case 'session13Title':
+        return l10n.session13Title;
+      case 'session13Desc':
+        return l10n.session13Desc;
       default:
         return key;
     }

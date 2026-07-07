@@ -1,0 +1,114 @@
+{
+  "questions": [
+    {
+      "id": "org_1",
+      "dimension": "organisation",
+      "leftLabel": "Ich plane meinen Tag gerne im Voraus mit einem klaren Zeitplan.",
+      "rightLabel": "Ich lasse meinen Tag gerne offen und entscheide spontan."
+    },
+    {
+      "id": "org_2",
+      "dimension": "organisation",
+      "leftLabel": "Ich fühle mich wohler, wenn Abläufe klar definiert sind.",
+      "rightLabel": "Ich fühle mich wohler, wenn ich flexibel auf Situationen reagieren kann."
+    },
+    {
+      "id": "org_3",
+      "dimension": "organisation",
+      "leftLabel": "Ich mag klare Regeln und Vorgaben.",
+      "rightLabel": "Ich mag es, Dinge auf meine eigene, unkonventionelle Art anzugehen."
+    },
+    {
+      "id": "org_4",
+      "dimension": "organisation",
+      "leftLabel": "Ich arbeite am liebsten nach einer festen Struktur.",
+      "rightLabel": "Ich arbeite am liebsten so, wie es sich gerade ergibt."
+    },
+    {
+      "id": "org_5",
+      "dimension": "organisation",
+      "leftLabel": "Veränderungen im letzten Moment stressen mich.",
+      "rightLabel": "Veränderungen im letzten Moment finde ich spannend."
+    },
+    {
+      "id": "org_6",
+      "dimension": "organisation",
+      "leftLabel": "Ich arbeite Aufgaben gerne Schritt für Schritt von einer Liste ab.",
+      "rightLabel": "Ich springe gerne zwischen verschiedenen Aufgaben hin und her, wie es sich ergibt."
+    },
+    {
+      "id": "energy_1",
+      "dimension": "energy",
+      "leftLabel": "Mir ist wichtig, wie es den Menschen um mich herum geht.",
+      "rightLabel": "Mir ist wichtig, dass die Aufgabe erledigt wird."
+    },
+    {
+      "id": "energy_2",
+      "dimension": "energy",
+      "leftLabel": "Ich tanke Energie im Gespräch mit anderen.",
+      "rightLabel": "Ich tanke Energie, wenn ich ein Ergebnis erreicht habe."
+    },
+    {
+      "id": "energy_3",
+      "dimension": "energy",
+      "leftLabel": "Beziehungen sind mir wichtiger als das Ergebnis.",
+      "rightLabel": "Das Ergebnis ist mir wichtiger als die Beziehung dazu."
+    },
+    {
+      "id": "energy_4",
+      "dimension": "energy",
+      "leftLabel": "Ich helfe gerne, auch wenn es meinen Zeitplan durcheinanderbringt.",
+      "rightLabel": "Ich bleibe gerne fokussiert auf das, was ich mir vorgenommen habe."
+    },
+    {
+      "id": "energy_5",
+      "dimension": "energy",
+      "leftLabel": "Ich genieße es, Zeit mit Menschen zu verbringen, ohne ein konkretes Ziel.",
+      "rightLabel": "Ich fühle mich am wohlsten, wenn ich klare Ziele verfolge."
+    },
+    {
+      "id": "energy_6",
+      "dimension": "energy",
+      "leftLabel": "Ich merke schnell, wenn es jemandem in der Gruppe nicht gut geht.",
+      "rightLabel": "Ich merke schnell, wenn eine Aufgabe ins Stocken gerät."
+    }
+  ],
+  "profiles": {
+    "people_structured": {
+      "title": "Mensch / Strukturiert",
+      "traits": [
+        "Schätzt klar definierte Beziehungen",
+        "Legt Wert auf Vertrautheit und Stabilität",
+        "Genießt eingespielte Teams und Umgebungen",
+        "Schafft eine warme, verlässliche Atmosphäre"
+      ]
+    },
+    "people_unstructured": {
+      "title": "Mensch / Unstrukturiert",
+      "traits": [
+        "Genießt spontane Begegnungen",
+        "Ist gesprächig und ausdrucksstark",
+        "Passt sich leicht an neue Situationen an",
+        "Schätzt Flexibilität in Beziehungen"
+      ]
+    },
+    "task_structured": {
+      "title": "Aufgabe / Strukturiert",
+      "traits": [
+        "Fokussiert auf Ergebnisse",
+        "Schätzt klare Richtung und Planung",
+        "Arbeitet gerne auf definierte Ziele hin",
+        "Bevorzugt organisierte Arbeitsabläufe"
+      ]
+    },
+    "task_unstructured": {
+      "title": "Aufgabe / Unstrukturiert",
+      "traits": [
+        "Schätzt Abwechslung und Flexibilität",
+        "Hilft gerne, wo es gerade gebraucht wird",
+        "Passt sich schnell neuen Herausforderungen an",
+        "Fokussiert auf praktische Ergebnisse statt auf den Prozess"
+      ]
+    }
+  }
+}

@@ -20,13 +20,20 @@ import 'features/spiritual_gifts/screens/spiritual_gifts_screen.dart';
 import 'features/values/bloc/values_bloc.dart';
 import 'features/values/screens/values_assessment_screen.dart';
 import 'features/feedback/bloc/feedback_bloc.dart';
+import 'features/feedback/repositories/feedback_questions_repository.dart';
 import 'features/feedback/screens/feedback_screen.dart';
+import 'features/personal_style/bloc/personal_style_bloc.dart';
+import 'features/personal_style/repositories/personal_style_repository.dart';
+import 'features/personal_style/screens/personal_style_screen.dart';
 import 'features/imagine/bloc/imagine_bloc.dart';
 import 'features/imagine/screens/imagine_screen.dart';
 import 'features/life_tree/bloc/life_tree_bloc.dart';
 import 'features/life_tree/screens/life_tree_screen.dart';
 import 'features/synthesis/bloc/synthesis_bloc.dart';
 import 'features/synthesis/screens/synthesis_screen.dart';
+import 'features/group_photo/bloc/group_photo_bloc.dart';
+import 'features/group_photo/screens/group_photo_screen.dart';
+import 'features/export/screens/export_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -38,6 +45,8 @@ void main() async {
   );
 
   final giftsRepository = GiftsRepository();
+  final feedbackQuestionsRepository = FeedbackQuestionsRepository();
+  final personalStyleRepository = PersonalStyleRepository();
 
   runApp(
     MultiBlocProvider(
@@ -49,10 +58,16 @@ void main() async {
           create: (context) => SpiritualGiftsBloc(repository: giftsRepository),
         ),
         BlocProvider(create: (context) => ValuesBloc()),
-        BlocProvider(create: (context) => FeedbackBloc()),
+        BlocProvider(
+          create: (context) => FeedbackBloc(repository: feedbackQuestionsRepository),
+        ),
+        BlocProvider(
+          create: (context) => PersonalStyleBloc(repository: personalStyleRepository),
+        ),
         BlocProvider(create: (context) => ImagineBloc()),
         BlocProvider(create: (context) => LifeTreeBloc()),
         BlocProvider(create: (context) => SynthesisBloc()),
+        BlocProvider(create: (context) => GroupPhotoBloc()),
       ],
       child: const DflApp(),
     ),
@@ -76,11 +91,12 @@ class DflApp extends StatelessWidget {
         GoRoute(
           path: '/notes/:sessionId',
           builder: (context, state) {
+            final l10n = AppLocalizations.of(context);
             final sessionId = state.pathParameters['sessionId']!;
-            final title = state.uri.queryParameters['title'] ?? 'Notes';
+            final title = state.uri.queryParameters['title'] ?? l10n.notes;
             final mode = state.uri.queryParameters['mode'];
             return NotesScreen(
-              sessionId: sessionId, 
+              sessionId: sessionId,
               title: title,
               initialEditMode: mode != 'result',
             );
@@ -89,11 +105,12 @@ class DflApp extends StatelessWidget {
         GoRoute(
           path: '/listening-prayer/:sessionId',
           builder: (context, state) {
+            final l10n = AppLocalizations.of(context);
             final sessionId = state.pathParameters['sessionId']!;
-            final title = state.uri.queryParameters['title'] ?? 'Listening Prayer';
+            final title = state.uri.queryParameters['title'] ?? l10n.listeningPrayerTitle;
             final mode = state.uri.queryParameters['mode'];
             return ListeningPrayerScreen(
-              sessionId: sessionId, 
+              sessionId: sessionId,
               title: title,
               initialEditMode: mode != 'result',
             );
@@ -102,11 +119,12 @@ class DflApp extends StatelessWidget {
         GoRoute(
           path: '/goals/:sessionId',
           builder: (context, state) {
+            final l10n = AppLocalizations.of(context);
             final sessionId = state.pathParameters['sessionId']!;
-            final title = state.uri.queryParameters['title'] ?? 'Goals';
+            final title = state.uri.queryParameters['title'] ?? l10n.goalsTitle;
             final mode = state.uri.queryParameters['mode'];
             return GoalsScreen(
-              sessionId: sessionId, 
+              sessionId: sessionId,
               title: title,
               initialEditMode: mode != 'result',
             );
@@ -115,8 +133,9 @@ class DflApp extends StatelessWidget {
         GoRoute(
           path: '/spiritual-gifts/:sessionId',
           builder: (context, state) {
+            final l10n = AppLocalizations.of(context);
             final sessionId = state.pathParameters['sessionId']!;
-            final title = state.uri.queryParameters['title'] ?? 'Spiritual Gifts';
+            final title = state.uri.queryParameters['title'] ?? l10n.spiritualGiftsTitle;
             final mode = state.uri.queryParameters['mode'];
             return SpiritualGiftsScreen(
               sessionId: sessionId,
@@ -178,6 +197,36 @@ class DflApp extends StatelessWidget {
           },
         ),
         GoRoute(
+          path: '/personal-style/:sessionId',
+          builder: (context, state) {
+            final l10n = AppLocalizations.of(context);
+            final sessionId = state.pathParameters['sessionId']!;
+            final title = state.uri.queryParameters['title'] ?? l10n.personalStyleTitle;
+            final mode = state.uri.queryParameters['mode'];
+            return PersonalStyleScreen(
+              sessionId: sessionId,
+              title: title,
+              initialEditMode: mode != 'result',
+            );
+          },
+        ),
+        GoRoute(
+          path: '/export',
+          builder: (context, state) => const ExportScreen(),
+        ),
+        GoRoute(
+          path: '/group-photo',
+          builder: (context, state) {
+            final l10n = AppLocalizations.of(context);
+            final title = state.uri.queryParameters['title'] ?? l10n.session11Title;
+            final mode = state.uri.queryParameters['mode'];
+            return GroupPhotoScreen(
+              title: title,
+              initialEditMode: mode != 'result',
+            );
+          },
+        ),
+        GoRoute(
           path: '/synthesis',
           builder: (context, state) {
             final l10n = AppLocalizations.of(context);
@@ -188,6 +237,7 @@ class DflApp extends StatelessWidget {
               prayerSessionId: state.uri.queryParameters['prayerSession'] ?? 'session_7',
               goalsSessionId: state.uri.queryParameters['goalsSession'] ?? 'session_10',
               lifeTreeSessionId: state.uri.queryParameters['lifeTreeSession'] ?? 'session_3',
+              personalStyleSessionId: state.uri.queryParameters['personalStyleSession'] ?? 'session_13',
               title: title,
               initialEditMode: mode != 'result',
             );

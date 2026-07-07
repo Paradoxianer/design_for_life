@@ -52,10 +52,17 @@ class SynthesisState extends Equatable {
   final List<String> takeaways;
   final bool initialized;
 
+  /// Snapshot of the source takeaways (by column, in slot order) as of the
+  /// last reconciliation. Used to detect additions/edits in other modules
+  /// on subsequent visits without disturbing cards the user already moved
+  /// or tagged. See #52.
+  final Map<String, List<String>> seededSource;
+
   const SynthesisState({
     this.columns = const {},
     this.takeaways = const ['', '', ''],
     this.initialized = false,
+    this.seededSource = const {},
   });
 
   bool get hasAnyCards => columns.values.any((cards) => cards.isNotEmpty);
@@ -69,11 +76,13 @@ class SynthesisState extends Equatable {
     Map<String, List<SynthesisCard>>? columns,
     List<String>? takeaways,
     bool? initialized,
+    Map<String, List<String>>? seededSource,
   }) {
     return SynthesisState(
       columns: columns ?? this.columns,
       takeaways: takeaways ?? this.takeaways,
       initialized: initialized ?? this.initialized,
+      seededSource: seededSource ?? this.seededSource,
     );
   }
 
@@ -87,6 +96,7 @@ class SynthesisState extends Equatable {
       ),
       'takeaways': takeaways,
       'initialized': initialized,
+      'seededSource': seededSource,
     };
   }
 
@@ -107,9 +117,13 @@ class SynthesisState extends Equatable {
           const {},
       takeaways: takeaways.take(3).toList(),
       initialized: json['initialized'] as bool? ?? false,
+      seededSource: (json['seededSource'] as Map<String, dynamic>?)?.map(
+            (k, v) => MapEntry(k, List<String>.from(v as List)),
+          ) ??
+          const {},
     );
   }
 
   @override
-  List<Object?> get props => [columns, takeaways, initialized];
+  List<Object?> get props => [columns, takeaways, initialized, seededSource];
 }

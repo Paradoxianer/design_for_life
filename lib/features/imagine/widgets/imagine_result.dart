@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:design_for_life/l10n/generated/app_localizations.dart';
 import '../../../core/widgets/image_fullscreen_viewer.dart';
 import '../../../core/widgets/key_takeaway_field.dart';
+import '../../../core/widgets/resolved_image.dart';
 import '../models/imagine_visual_option.dart';
 
 class ImagineResult extends StatelessWidget {
@@ -27,7 +29,7 @@ class ImagineResult extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(40),
           child: Text(
-            'Noch keine Bilder ausgewählt.',
+            AppLocalizations.of(context).imagineNoImagesSelected,
             style: theme.textTheme.bodyLarge
                 ?.copyWith(color: theme.colorScheme.onSurfaceVariant),
           ),
@@ -38,6 +40,7 @@ class ImagineResult extends StatelessWidget {
     return FutureBuilder<List<ImagineVisualOption>>(
       future: loadImagineOptions(),
       builder: (context, snapshot) {
+        final l10n = AppLocalizations.of(context);
         final options = {
           for (final o in snapshot.data ?? <ImagineVisualOption>[]) o.id: o,
         };
@@ -52,7 +55,7 @@ class ImagineResult extends StatelessWidget {
                   if (pastImageId != null)
                     Expanded(
                       child: _ImageResultCard(
-                        label: 'Vergangenheit',
+                        label: l10n.imagineLabelPast,
                         option: options[pastImageId!],
                         imagePath: pastImageId,
                       ),
@@ -62,7 +65,7 @@ class ImagineResult extends StatelessWidget {
                   if (futureImageId != null)
                     Expanded(
                       child: _ImageResultCard(
-                        label: 'Zukunft',
+                        label: l10n.imagineLabelFuture,
                         option: options[futureImageId!],
                         imagePath: futureImageId,
                       ),
@@ -102,7 +105,7 @@ class _ImageResultCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final resolvedPath = option?.imagePath ??
-        (imagePath != null ? 'assets/images/imagine/$imagePath' : null);
+        (imagePath != null ? resolveImagineImagePath(imagePath!) : null);
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -125,7 +128,7 @@ class _ImageResultCard extends StatelessWidget {
                   ? Stack(
                       fit: StackFit.expand,
                       children: [
-                        Image.asset(resolvedPath, fit: BoxFit.cover),
+                        buildResolvedImage(resolvedPath, fit: BoxFit.cover),
                         Positioned(
                           bottom: 8,
                           right: 8,

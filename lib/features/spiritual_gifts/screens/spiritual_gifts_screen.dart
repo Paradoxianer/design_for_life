@@ -42,19 +42,39 @@ class _SpiritualGiftsScreenState extends State<SpiritualGiftsScreen> {
     });
   }
 
-  ShareableContent _getShareableContent(SpiritualGiftsState state) {
+  ShareableContent _getShareableContent(BuildContext context, SpiritualGiftsState state) {
+    final l10n = AppLocalizations.of(context);
     final rankedGifts = state.getRankedGifts();
     final topThree = rankedGifts.take(3).toList();
+    final scores = state.getScoresPerGift();
     final takeaways = state.takeaways[widget.sessionId] ?? [];
 
     final List<ShareableItem> items = [];
 
-    // Top 3 Gifts
-    for (int i = 0; i < topThree.length; i++) {
+    // Top 3 Gifts als eine gebrandete Bild-Karte statt einzelner Text-Zeilen (#24).
+    // textValue liefert weiterhin eine Textzusammenfassung für die Nachricht,
+    // die zusammen mit dem Bild geteilt wird.
+    if (topThree.isNotEmpty) {
+      final giftTitles = [
+        for (int i = 0; i < topThree.length; i++)
+          '${l10n.shareGiftItem(i + 1, topThree[i].name)} '
+              '(${l10n.giftsScorePoints(scores[topThree[i].id] ?? 0)})',
+      ];
       items.add(ShareableItem(
-        id: 'gift_${topThree[i].id}',
-        label: 'Gabe ${i + 1}: ${topThree[i].name}',
-        textValue: topThree[i].description,
+        id: 'gifts_card',
+        label: l10n.giftsShareCardLabel,
+        textValue: giftTitles.join('\n'),
+        data: {
+          'type': 'text_card',
+          'entries': [
+            for (int i = 0; i < topThree.length; i++)
+              {
+                'title': '${l10n.shareGiftItem(i + 1, topThree[i].name)} '
+                    '(${l10n.giftsScorePoints(scores[topThree[i].id] ?? 0)})',
+                'body': topThree[i].description,
+              },
+          ],
+        },
       ));
     }
 
@@ -63,14 +83,14 @@ class _SpiritualGiftsScreenState extends State<SpiritualGiftsScreen> {
       if (takeaways[i].trim().isNotEmpty) {
         items.add(ShareableItem(
           id: 'gift_takeaway_$i',
-          label: 'Highlight ${i + 1}',
+          label: l10n.shareHighlightItem(i + 1),
           textValue: takeaways[i],
         ));
       }
     }
 
     return ShareableContent(
-      title: 'Geistliche Gaben',
+      title: l10n.spiritualGiftsTitle,
       items: items,
     );
   }
@@ -79,7 +99,7 @@ class _SpiritualGiftsScreenState extends State<SpiritualGiftsScreen> {
   Widget build(BuildContext context) {
     return BlocBuilder<SpiritualGiftsBloc, SpiritualGiftsState>(
       builder: (context, state) {
-        final shareContent = _getShareableContent(state);
+        final shareContent = _getShareableContent(context, state);
 
         return DflModuleScaffold(
           title: widget.title,

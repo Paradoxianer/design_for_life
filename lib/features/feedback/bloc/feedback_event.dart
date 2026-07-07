@@ -1,5 +1,4 @@
 import 'package:equatable/equatable.dart';
-import '../models/feedback_response.dart';
 
 abstract class FeedbackEvent extends Equatable {
   const FeedbackEvent();
@@ -8,15 +7,24 @@ abstract class FeedbackEvent extends Equatable {
   List<Object?> get props => [];
 }
 
-class FeedbackStarted extends FeedbackEvent {
-  const FeedbackStarted();
-}
+/// Lädt den Fragebogen für die aktuelle App-Sprache (#7). forceReload sorgt
+/// wie bei den Geistesgaben dafür, dass geänderte JSON-Inhalte auch bei
+/// bereits persistiertem State übernommen werden.
+class LoadFeedbackQuestionnaire extends FeedbackEvent {
+  final String locale;
 
-class UpdateFeedback extends FeedbackEvent {
-  final FeedbackResponse response;
-
-  const UpdateFeedback(this.response);
+  const LoadFeedbackQuestionnaire({required this.locale});
 
   @override
-  List<Object?> get props => [response];
+  List<Object?> get props => [locale];
+}
+
+class UpdateFeedbackAnswer extends FeedbackEvent {
+  final String questionId;
+  final Object value;
+
+  const UpdateFeedbackAnswer(this.questionId, this.value);
+
+  @override
+  List<Object?> get props => [questionId, value];
 }

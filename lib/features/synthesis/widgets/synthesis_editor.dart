@@ -49,6 +49,7 @@ class _ConnectionsBoard extends StatelessWidget {
     (key: 'gifts', color: Color(0xFF6B4C9A), icon: Icons.volunteer_activism_rounded),
     (key: 'prayer', color: Color(0xFF1565C0), icon: Icons.hearing_rounded),
     (key: 'goals', color: Color(0xFF8B5E3C), icon: Icons.flag_rounded),
+    (key: 'personalStyle', color: Color(0xFFAD1457), icon: Icons.grid_view_rounded),
   ];
 
   String _columnLabel(BuildContext context, String key) {
@@ -59,6 +60,7 @@ class _ConnectionsBoard extends StatelessWidget {
       case 'gifts': return l10n.connectionsColGifts;
       case 'prayer': return l10n.connectionsColPrayer;
       case 'goals': return l10n.connectionsColGoals;
+      case 'personalStyle': return l10n.connectionsColPersonalStyle;
       default: return key;
     }
   }

@@ -46,6 +46,14 @@ class StaticTimelineData {
         moduleSessionId: 'session_5',
       ),
       DflSession(
+        id: 'session_13',
+        title: l10n.session13Title,
+        description: l10n.session13Desc,
+        type: SessionType.personalReflection,
+        moduleId: 'module_personal_style',
+        moduleSessionId: 'session_13',
+      ),
+      DflSession(
         id: 'session_6',
         title: l10n.session6Title,
         description: l10n.session6Desc,

@@ -28,7 +28,7 @@ class ShareService {
     for (var item in selectedItems) {
       if (item.id.startsWith('takeaway') && item.textValue != null && item.textValue!.isNotEmpty) {
         if (!hasTakeaways) {
-          buffer.writeln('Key Takeaways:');
+          buffer.writeln(l10n.shareKeyTakeaways);
           hasTakeaways = true;
         }
         buffer.writeln('• ${item.textValue}');
@@ -45,7 +45,7 @@ class ShareService {
 
       if (item.textValue != null && item.textValue!.trim().isNotEmpty) {
         if (!hasNotes) {
-          buffer.writeln('Details & Notizen:');
+          buffer.writeln(l10n.shareDetailsAndNotes);
           hasNotes = true;
         }
         buffer.writeln('${item.label}:');

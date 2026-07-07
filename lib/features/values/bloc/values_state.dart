@@ -18,21 +18,11 @@ class ValuesState {
 
   bool get isValid => topEightValues.length == 8;
 
-  /// A module is considered completed when at least 3 values are selected 
-  /// AND the first 3 (Key Takeaways) have a personal definition.
-  bool get isCompleted {
-    final top8 = topEightValues;
-    if (top8.length < 3) return false;
-    
-    // Check if the first 3 (Key Takeaways) have a definition
-    for (int i = 0; i < 3; i++) {
-      final definition = top8[i].definition;
-      if (definition == null || definition.trim().isEmpty) {
-        return false;
-      }
-    }
-    return true;
-  }
+  /// A module is considered completed once the top 8 values (with the top 3
+  /// as key values) have been selected - the primary output of this module.
+  /// Writing a personal definition/reflection is a separate, later step and
+  /// isn't required for the timeline checkmark (#57).
+  bool get isCompleted => isValid;
 
   ValuesState copyWith({
     List<ValueItem>? allValues,
