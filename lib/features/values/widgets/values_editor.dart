@@ -7,7 +7,7 @@ import 'values_rating_view.dart';
 import 'values_definitions_view.dart';
 import 'values_reflection_view.dart';
 
-class ValuesEditor extends StatelessWidget {
+class ValuesEditor extends StatefulWidget {
   final int currentStep;
   final ValueChanged<int> onStepTapped;
 
@@ -18,49 +18,80 @@ class ValuesEditor extends StatelessWidget {
   });
 
   @override
+  State<ValuesEditor> createState() => _ValuesEditorState();
+}
+
+// Flutter's Stepper (horizontal) rendert Kopfzeile (Nummern-Kreise) und
+// Step-Inhalt als EINEN gemeinsamen, intern scrollenden Block - es gibt
+// keine Möglichkeit, zwischen beiden eigenen fixen Inhalt einzufügen. Das
+// Fortschritts-Widget muss aber sowohl unter der Kopfzeile sitzen als auch
+// beim Scrollen sichtbar bleiben (#56). Lösung: als Positioned-Overlay direkt
+// unter der Kopfzeile rendern (deren Höhe bei diesem Stepper ohne
+// stepIconHeight/Step.label immer exakt 72px beträgt, siehe
+// flutter/material/stepper.dart) und dessen eigene, gemessene Höhe der
+// Werteliste als Top-Padding mitgeben, damit der Erklärtext nicht darunter
+// verschwindet.
+class _ValuesEditorState extends State<ValuesEditor> {
+  static const double _stepperHeaderHeight = 72;
+  final GlobalKey _bannerKey = GlobalKey();
+  double _bannerHeight = 0;
+
+  void _measureBanner() {
+    final renderBox = _bannerKey.currentContext?.findRenderObject() as RenderBox?;
+    final height = renderBox?.size.height ?? 0;
+    if (height > 0 && height != _bannerHeight) {
+      setState(() => _bannerHeight = height);
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context);
+    if (widget.currentStep == 0) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        if (mounted) _measureBanner();
+      });
+    }
 
-    return Column(
+    return Stack(
       children: [
-        // Fix oberhalb des Steppers statt Teil von Step 1s Inhalt (#56):
-        // Flutter's horizontales Stepper-Widget legt den Inhalt jedes Steps in
-        // eine eigene scrollbare ListView (nur die Nummern-Köpfe bleiben
-        // fix). Als Teil von ValuesRatingView scrollte der Fortschritt daher
-        // mit der Werteliste weg.
-        if (currentStep == 0) const _RatingProgressBanner(),
-        Expanded(
-          child: Theme(
-            data: Theme.of(context).copyWith(
-              canvasColor: Colors.transparent,
-            ),
-            child: Stepper(
-              type: StepperType.horizontal,
-              currentStep: currentStep,
-              onStepTapped: onStepTapped,
-              controlsBuilder: (context, details) => const SizedBox.shrink(),
-              steps: [
-                Step(
-                  title: _StepTitle(number: 1, fullLabel: l10n.valuesPhase1Title),
-                  content: const ValuesRatingView(),
-                  isActive: currentStep >= 0,
-                  state: currentStep > 0 ? StepState.complete : StepState.indexed,
-                ),
-                Step(
-                  title: _StepTitle(number: 2, fullLabel: l10n.valuesPhase2Title),
-                  content: const ValuesDefinitionsView(),
-                  isActive: currentStep >= 1,
-                  state: currentStep > 1 ? StepState.complete : StepState.indexed,
-                ),
-                Step(
-                  title: _StepTitle(number: 3, fullLabel: l10n.valuesPhase3Title),
-                  content: const ValuesReflectionView(),
-                  isActive: currentStep >= 2,
-                ),
-              ],
-            ),
+        Theme(
+          data: Theme.of(context).copyWith(
+            canvasColor: Colors.transparent,
+          ),
+          child: Stepper(
+            type: StepperType.horizontal,
+            currentStep: widget.currentStep,
+            onStepTapped: widget.onStepTapped,
+            controlsBuilder: (context, details) => const SizedBox.shrink(),
+            steps: [
+              Step(
+                title: _StepTitle(number: 1, fullLabel: l10n.valuesPhase1Title),
+                content: ValuesRatingView(topPadding: widget.currentStep == 0 ? _bannerHeight : 0),
+                isActive: widget.currentStep >= 0,
+                state: widget.currentStep > 0 ? StepState.complete : StepState.indexed,
+              ),
+              Step(
+                title: _StepTitle(number: 2, fullLabel: l10n.valuesPhase2Title),
+                content: const ValuesDefinitionsView(),
+                isActive: widget.currentStep >= 1,
+                state: widget.currentStep > 1 ? StepState.complete : StepState.indexed,
+              ),
+              Step(
+                title: _StepTitle(number: 3, fullLabel: l10n.valuesPhase3Title),
+                content: const ValuesReflectionView(),
+                isActive: widget.currentStep >= 2,
+              ),
+            ],
           ),
         ),
+        if (widget.currentStep == 0)
+          Positioned(
+            top: _stepperHeaderHeight,
+            left: 0,
+            right: 0,
+            child: _RatingProgressBanner(key: _bannerKey),
+          ),
       ],
     );
   }
@@ -69,7 +100,7 @@ class ValuesEditor extends StatelessWidget {
 /// Zeigt "X von 8 Werten bewertet" fix oberhalb der Werteliste, unabhängig
 /// vom Scroll-Zustand darin (#56).
 class _RatingProgressBanner extends StatelessWidget {
-  const _RatingProgressBanner();
+  const _RatingProgressBanner({super.key});
 
   @override
   Widget build(BuildContext context) {

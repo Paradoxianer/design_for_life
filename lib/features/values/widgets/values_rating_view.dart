@@ -7,13 +7,18 @@ import '../bloc/values_state.dart';
 import '../models/value_item.dart';
 
 class ValuesRatingView extends StatelessWidget {
-  const ValuesRatingView({super.key});
+  // Reservierter Platz oben, damit der fix als Overlay über dieser Liste
+  // schwebende Fortschritts-Banner den Erklärtext nicht verdeckt (#56) -
+  // wird von ValuesEditor mit dessen tatsächlich gemessener Höhe befüllt.
+  final double topPadding;
+
+  const ValuesRatingView({super.key, this.topPadding = 0});
 
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context);
     final theme = Theme.of(context);
-    
+
     return BlocBuilder<ValuesBloc, ValuesState>(
       builder: (context, state) {
         // Das "X von 8 bewertet"-Fortschritts-Widget wird bewusst nicht mehr
@@ -27,7 +32,7 @@ class ValuesRatingView extends StatelessWidget {
           itemBuilder: (context, index) {
             if (index == 0) {
               return Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                padding: EdgeInsets.fromLTRB(16, topPadding + 8, 16, 8),
                 child: Text(
                   l10n.valuesPhase1Guidance,
                   style: const TextStyle(fontStyle: FontStyle.italic),

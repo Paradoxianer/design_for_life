@@ -375,6 +375,14 @@ class _LifeTreeGraphViewOnlyState extends State<_LifeTreeGraphViewOnly> with Tic
               graph: graph,
               algorithm: algorithm,
               controller: _graphController,
+              // Die eingebaute Fade-/Positions-Animation von graphview
+              // interpoliert bei jedem Neu-Layout (z.B. nach Hinzufügen eines
+              // Knotens) zwischen alter und neuer Position; bei frisch
+              // hinzugekommenen Knoten ohne vorherige Position führte das zu
+              // NaN-Werten und einem kompletten Render-Absturz (Geburtsknoten
+              // verschwand). Collapse/Expand funktioniert auch ohne
+              // Animation einwandfrei, daher hier deaktiviert.
+              animated: false,
               paint: Paint()..color = Colors.green.shade400..strokeWidth = 1.5..style = PaintingStyle.stroke,
               builder: (Node node) {
                 final nodeId = node.key?.value as String;
@@ -387,7 +395,7 @@ class _LifeTreeGraphViewOnlyState extends State<_LifeTreeGraphViewOnly> with Tic
                   autofocus: nodeId == _lastAddedNodeId,
                   hasChildren: hasChildren,
                   isCollapsed: hasChildren && _graphController.isNodeCollapsed(node),
-                  onToggleCollapse: () => _graphController.toggleNodeExpanded(graph, node, animate: true),
+                  onToggleCollapse: () => _graphController.toggleNodeExpanded(graph, node),
                   onChanged: (text) => widget.onUpdateText(nodeId, text),
                   onNoteChanged: (note) => widget.onUpdateNote(nodeId, note),
                   onAddChild: () => widget.onAddNode(nodeId, ''),
