@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 
 /// Frage-Karte für eine Skala zwischen zwei gegensätzlichen Aussagen (#50):
-/// [leftLabel] entspricht Wert 1, [rightLabel] entspricht Wert 6. Die Labels
-/// stehen oben, die Auswahl darunter als eine Reihe von 6 Kreisen - bewusst
-/// anders als RatingSelector (Label pro Zahl), da hier die Bedeutung an den
-/// beiden Enden der Skala liegt, nicht bei jeder einzelnen Zahl.
+/// [leftLabel] entspricht Wert 1, [rightLabel] entspricht Wert 6. Die
+/// Auswahl-Kreise zeigen statt reiner Zahlen einen Daumen-Verlauf (voll
+/// nach oben bis voll nach unten), damit auf einen Blick klar ist, in
+/// welche Richtung jede Position zeigt - Zahlen allein ließen offen, welche
+/// der beiden Aussagen mit "1" bzw. "6" gemeint war.
 class BipolarQuestionCard extends StatelessWidget {
   final String leftLabel;
   final String rightLabel;
@@ -83,13 +84,10 @@ class BipolarQuestionCard extends StatelessWidget {
                       shape: BoxShape.circle,
                       color: isSelected ? theme.colorScheme.primary : theme.colorScheme.surfaceContainerHighest,
                     ),
-                    child: Text(
-                      '$value',
-                      style: TextStyle(
-                        color: isSelected ? Colors.white : Colors.black87,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 13,
-                      ),
+                    child: Icon(
+                      _iconForValue(value),
+                      size: 18,
+                      color: isSelected ? Colors.white : Colors.black87,
                     ),
                   ),
                 );
@@ -99,6 +97,23 @@ class BipolarQuestionCard extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  /// Daumen-Verlauf von voll zustimmend zu [leftLabel] (1) über neutral
+  /// (3/4) zu voll zustimmend zu [rightLabel] (6).
+  IconData _iconForValue(int value) {
+    switch (value) {
+      case 1:
+        return Icons.thumb_up;
+      case 2:
+        return Icons.thumb_up_outlined;
+      case 5:
+        return Icons.thumb_down_outlined;
+      case 6:
+        return Icons.thumb_down;
+      default:
+        return Icons.thumbs_up_down_outlined;
+    }
   }
 }
 

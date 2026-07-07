@@ -148,6 +148,7 @@
   "personalStyleResultHeading": "Dein Profil",
   "personalStyleIncomplete": "Beantworte im Bearbeitungsmodus zunächst alle Fragen, um dein Profil zu sehen.",
   "personalStyleShareCardLabel": "Mein Profil (Bild)",
+  "personalStyleMatrixShareCardLabel": "Meine Verortung in der Matrix (Bild)",
   "exportTitle": "Abschluss-Export",
   "exportSelectionGuidance": "Wähle aus, welche Bereiche in dein persönliches Abschlussdokument aufgenommen werden sollen.",
   "exportGenerateButton": "PDF erstellen & teilen",

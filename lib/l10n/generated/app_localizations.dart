@@ -710,6 +710,12 @@ abstract class AppLocalizations {
   /// **'My Profile (Image)'**
   String get personalStyleShareCardLabel;
 
+  /// No description provided for @personalStyleMatrixShareCardLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'My Position in the Matrix (Image)'**
+  String get personalStyleMatrixShareCardLabel;
+
   /// No description provided for @exportTitle.
   ///
   /// In en, this message translates to:

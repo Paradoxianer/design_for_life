@@ -47,6 +47,8 @@ class PersonalStyleResult extends StatelessWidget {
                     const SizedBox(height: 16),
                     PersonalStyleMatrix(
                       quadrant: quadrant,
+                      organisationFraction: state.organisationFraction,
+                      energyFraction: state.energyFraction,
                       peopleLabel: l10n.personalStyleAxisPeople,
                       taskLabel: l10n.personalStyleAxisTask,
                       structuredLabel: l10n.personalStyleAxisStructured,

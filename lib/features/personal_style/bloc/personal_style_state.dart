@@ -31,6 +31,24 @@ class PersonalStyleState extends Equatable {
 
   int get energyScore => questionnaire.energyQuestions.fold(0, (sum, q) => sum + (answers[q.id] ?? 0));
 
+  /// Position auf der Organisation-Achse als Anteil zwischen 0.0
+  /// (vollständig strukturiert) und 1.0 (vollständig unstrukturiert) - für
+  /// die präzise Verortung in der 2x2-Matrix statt nur der groben
+  /// Quadranten-Zuordnung.
+  double get organisationFraction {
+    final count = questionnaire.organisationQuestions.length;
+    if (count == 0) return 0.5;
+    return ((organisationScore - count) / (count * 5)).clamp(0.0, 1.0);
+  }
+
+  /// Position auf der Energie-Achse: 0.0 = vollständig Mensch-orientiert,
+  /// 1.0 = vollständig aufgabenorientiert.
+  double get energyFraction {
+    final count = questionnaire.energyQuestions.length;
+    if (count == 0) return 0.5;
+    return ((energyScore - count) / (count * 5)).clamp(0.0, 1.0);
+  }
+
   /// null, solange der Bogen nicht vollständig beantwortet ist.
   PersonalStyleQuadrant? get quadrant {
     if (!isCompleted) return null;

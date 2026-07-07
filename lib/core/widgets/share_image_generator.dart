@@ -11,6 +11,8 @@ import 'package:share_plus/share_plus.dart';
 import '../../features/imagine/models/imagine_visual_option.dart';
 import '../../features/life_tree/models/life_tree_node_data.dart';
 import '../../features/life_tree/widgets/life_tree_graph_widget.dart';
+import '../../features/personal_style/models/personal_style_result.dart';
+import '../../features/personal_style/widgets/personal_style_matrix.dart';
 import '../models/shareable_content.dart';
 import '../utils/localized_logo.dart';
 import 'resolved_image.dart';
@@ -124,6 +126,16 @@ class ShareImageGenerator {
         // 2c. Generische Text-Karte (z.B. Top-Gaben/-Werte/-Ziele als Bild statt reinem Text, #24)
         else if (item.data is Map && item.data['type'] == 'text_card') {
           final xFile = await _buildTextCardImage(
+            context: context,
+            content: content,
+            item: item,
+            includeBranding: includeBranding,
+          );
+          if (xFile != null) files.add(xFile);
+        }
+        // 2d. Personal-Style-Quadrantenmatrix als Bild (#50)
+        else if (item.data is Map && item.data['type'] == 'personal_style_matrix') {
+          final xFile = await _buildPersonalStyleMatrixImage(
             context: context,
             content: content,
             item: item,
@@ -333,6 +345,58 @@ class ShareImageGenerator {
       return await _toXFile(rendered, 'card.png');
     } catch (e) {
       debugPrint('Error rendering text card share image: $e');
+      return null;
+    }
+  }
+
+  /// Rendert die Personal-Style-Quadrantenmatrix (inkl. präziser
+  /// Positionsmarkierung) als eigenes teilbares Bild (#50), statt das
+  /// Ergebnis nur als Text zu teilen.
+  static Future<XFile?> _buildPersonalStyleMatrixImage({
+    required BuildContext context,
+    required ShareableContent content,
+    required ShareableItem item,
+    bool includeBranding = true,
+  }) async {
+    final data = item.data as Map;
+    final quadrant = data['quadrant'] as PersonalStyleQuadrant?;
+    if (quadrant == null) return null;
+
+    try {
+      final rendered = await _brandingController.captureFromLongWidget(
+        Material(
+          color: Colors.white,
+          child: Container(
+            width: 1000,
+            padding: const EdgeInsets.all(50),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                if (includeBranding) ...[
+                  _buildHeader(context, content),
+                  const SizedBox(height: 32),
+                ],
+                PersonalStyleMatrix(
+                  quadrant: quadrant,
+                  organisationFraction: data['organisationFraction'] as double? ?? 0.5,
+                  energyFraction: data['energyFraction'] as double? ?? 0.5,
+                  peopleLabel: data['peopleLabel'] as String? ?? '',
+                  taskLabel: data['taskLabel'] as String? ?? '',
+                  structuredLabel: data['structuredLabel'] as String? ?? '',
+                  unstructuredLabel: data['unstructuredLabel'] as String? ?? '',
+                ),
+              ],
+            ),
+          ),
+        ),
+        constraints: const BoxConstraints(maxWidth: 1000),
+        pixelRatio: 2.0,
+      );
+
+      return await _toXFile(rendered, 'personal_style_matrix.png');
+    } catch (e) {
+      debugPrint('Error rendering personal style matrix share image: $e');
       return null;
     }
   }

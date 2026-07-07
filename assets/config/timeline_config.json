@@ -52,6 +52,16 @@
       "enabled": true
     },
     {
+      "id": "session_13",
+      "moduleId": "module_personal_style",
+      "moduleSessionId": "session_13",
+      "order": 55,
+      "titleKey": "session13Title",
+      "descriptionKey": "session13Desc",
+      "type": "personalReflection",
+      "enabled": true
+    },
+    {
       "id": "session_6",
       "moduleId": "module_values",
       "order": 60,
@@ -124,16 +134,6 @@
       "order": 130,
       "titleKey": "session12Title",
       "type": "other",
-      "enabled": true
-    },
-    {
-      "id": "session_13",
-      "moduleId": "module_personal_style",
-      "moduleSessionId": "session_13",
-      "order": 140,
-      "titleKey": "session13Title",
-      "descriptionKey": "session13Desc",
-      "type": "personalReflection",
       "enabled": true
     }
   ]

@@ -281,12 +281,28 @@ class ExportContentBuilder {
 
   static ShareableContent? personalStyle(AppLocalizations l10n, PersonalStyleState state) {
     final profile = state.profile;
+    final quadrant = state.quadrant;
     final takeaways = state.takeaways.values.expand((t) => t).where((t) => t.trim().isNotEmpty).toList();
-    if (profile == null && takeaways.isEmpty) return null;
+    if (profile == null && quadrant == null && takeaways.isEmpty) return null;
 
     return ShareableContent(
       title: l10n.personalStyleTitle,
       items: [
+        if (quadrant != null)
+          ShareableItem(
+            id: 'export_personal_style_matrix',
+            label: l10n.personalStyleMatrixShareCardLabel,
+            data: {
+              'type': 'personal_style_matrix',
+              'quadrant': quadrant,
+              'organisationFraction': state.organisationFraction,
+              'energyFraction': state.energyFraction,
+              'peopleLabel': l10n.personalStyleAxisPeople,
+              'taskLabel': l10n.personalStyleAxisTask,
+              'structuredLabel': l10n.personalStyleAxisStructured,
+              'unstructuredLabel': l10n.personalStyleAxisUnstructured,
+            },
+          ),
         if (profile != null)
           ShareableItem(
             id: 'export_personal_style_card',

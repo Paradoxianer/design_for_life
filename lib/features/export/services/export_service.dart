@@ -18,6 +18,7 @@ class ExportService {
     'imagine_option',
     'imagine_composed',
     'text_card',
+    'personal_style_matrix',
   };
 
   static bool _hasImage(ShareableItem item) =>

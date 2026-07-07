@@ -346,6 +346,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get personalStyleShareCardLabel => 'My Profile (Image)';
 
   @override
+  String get personalStyleMatrixShareCardLabel =>
+      'My Position in the Matrix (Image)';
+
+  @override
   String get exportTitle => 'Final Export';
 
   @override

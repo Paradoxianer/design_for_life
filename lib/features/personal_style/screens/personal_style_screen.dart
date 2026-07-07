@@ -29,9 +29,30 @@ class _PersonalStyleScreenState extends State<PersonalStyleScreen> {
   ShareableContent _getShareableContent(BuildContext context, PersonalStyleState state) {
     final l10n = AppLocalizations.of(context);
     final profile = state.profile;
+    final quadrant = state.quadrant;
     final takeaways = state.takeaways[widget.sessionId] ?? const [];
 
     final List<ShareableItem> items = [];
+
+    // Quadrantenmatrix mit präziser Positionsmarkierung als eigenes Bild,
+    // damit beim Teilen nicht nur der Profiltext, sondern auch die
+    // Verortung selbst sichtbar ist.
+    if (quadrant != null) {
+      items.add(ShareableItem(
+        id: 'personal_style_matrix',
+        label: l10n.personalStyleMatrixShareCardLabel,
+        data: {
+          'type': 'personal_style_matrix',
+          'quadrant': quadrant,
+          'organisationFraction': state.organisationFraction,
+          'energyFraction': state.energyFraction,
+          'peopleLabel': l10n.personalStyleAxisPeople,
+          'taskLabel': l10n.personalStyleAxisTask,
+          'structuredLabel': l10n.personalStyleAxisStructured,
+          'unstructuredLabel': l10n.personalStyleAxisUnstructured,
+        },
+      ));
+    }
 
     // Profil als eine gebrandete Bild-Karte statt reinem Text (#24-Konvention),
     // analog zu den Top-3-Gaben.

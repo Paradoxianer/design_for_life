@@ -148,6 +148,7 @@
   "personalStyleResultHeading": "Your Profile",
   "personalStyleIncomplete": "Answer all questions in edit mode first to see your profile.",
   "personalStyleShareCardLabel": "My Profile (Image)",
+  "personalStyleMatrixShareCardLabel": "My Position in the Matrix (Image)",
   "exportTitle": "Final Export",
   "exportSelectionGuidance": "Choose which areas to include in your personal final document.",
   "exportGenerateButton": "Create & share PDF",
