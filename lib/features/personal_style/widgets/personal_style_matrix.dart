@@ -120,6 +120,58 @@ class PersonalStyleMatrix extends StatelessWidget {
   }
 }
 
+/// Präzise Zahl je Achse (z.B. "62% Unstrukturiert") zusätzlich zur
+/// Positionsmarkierung in der Matrix - wird sowohl in der App-Ansicht als
+/// auch im geteilten Bild genutzt, daher ein eigenes, öffentliches Widget
+/// statt einer privaten Detail-Klasse (analog zu LifeTreeGraphWidget).
+class PersonalStyleAxisScoreSummary extends StatelessWidget {
+  final double organisationFraction;
+  final double energyFraction;
+  final String organisationAxisLabel;
+  final String energyAxisLabel;
+  final String structuredLabel;
+  final String unstructuredLabel;
+  final String peopleLabel;
+  final String taskLabel;
+
+  const PersonalStyleAxisScoreSummary({
+    super.key,
+    required this.organisationFraction,
+    required this.energyFraction,
+    required this.organisationAxisLabel,
+    required this.energyAxisLabel,
+    required this.structuredLabel,
+    required this.unstructuredLabel,
+    required this.peopleLabel,
+    required this.taskLabel,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final organisationShare = dominantPoleShare(organisationFraction);
+    final energyShare = dominantPoleShare(energyFraction);
+    final style = theme.textTheme.bodyMedium?.copyWith(fontWeight: FontWeight.w600);
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          '$organisationAxisLabel: ${organisationShare.percent}% '
+          '${organisationShare.towardHighPole ? unstructuredLabel : structuredLabel}',
+          style: style,
+        ),
+        const SizedBox(height: 4),
+        Text(
+          '$energyAxisLabel: ${energyShare.percent}% '
+          '${energyShare.towardHighPole ? taskLabel : peopleLabel}',
+          style: style,
+        ),
+      ],
+    );
+  }
+}
+
 class _AxisHeader extends StatelessWidget {
   final String label;
 

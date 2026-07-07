@@ -46,3 +46,14 @@ PersonalStyleQuadrant determinePersonalStyleQuadrant({
   if (!isPeople && isStructured) return PersonalStyleQuadrant.taskStructured;
   return PersonalStyleQuadrant.taskUnstructured;
 }
+
+/// Übersetzt eine Achsen-Position (0.0-1.0) in einen Prozentwert Richtung des
+/// jeweils dominanten Pols - eine zusätzliche, präzise Zahl neben der
+/// Positionsmarkierung in der Matrix (z.B. "62% Unstrukturiert" statt nur
+/// "Feld Unstrukturiert").
+({int percent, bool towardHighPole}) dominantPoleShare(double fraction) {
+  if (fraction <= 0.5) {
+    return (percent: ((1 - fraction) * 100).round(), towardHighPole: false);
+  }
+  return (percent: (fraction * 100).round(), towardHighPole: true);
+}

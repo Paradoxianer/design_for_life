@@ -692,6 +692,18 @@ abstract class AppLocalizations {
   /// **'Unstructured'**
   String get personalStyleAxisUnstructured;
 
+  /// No description provided for @personalStyleScoreOrganisation.
+  ///
+  /// In en, this message translates to:
+  /// **'Organisation'**
+  String get personalStyleScoreOrganisation;
+
+  /// No description provided for @personalStyleScoreEnergy.
+  ///
+  /// In en, this message translates to:
+  /// **'Energy'**
+  String get personalStyleScoreEnergy;
+
   /// No description provided for @personalStyleResultHeading.
   ///
   /// In en, this message translates to:
@@ -709,12 +721,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'My Profile (Image)'**
   String get personalStyleShareCardLabel;
-
-  /// No description provided for @personalStyleMatrixShareCardLabel.
-  ///
-  /// In en, this message translates to:
-  /// **'My Position in the Matrix (Image)'**
-  String get personalStyleMatrixShareCardLabel;
 
   /// No description provided for @exportTitle.
   ///

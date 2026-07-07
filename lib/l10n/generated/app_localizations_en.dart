@@ -336,6 +336,12 @@ class AppLocalizationsEn extends AppLocalizations {
   String get personalStyleAxisUnstructured => 'Unstructured';
 
   @override
+  String get personalStyleScoreOrganisation => 'Organisation';
+
+  @override
+  String get personalStyleScoreEnergy => 'Energy';
+
+  @override
   String get personalStyleResultHeading => 'Your Profile';
 
   @override
@@ -344,10 +350,6 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get personalStyleShareCardLabel => 'My Profile (Image)';
-
-  @override
-  String get personalStyleMatrixShareCardLabel =>
-      'My Position in the Matrix (Image)';
 
   @override
   String get exportTitle => 'Final Export';

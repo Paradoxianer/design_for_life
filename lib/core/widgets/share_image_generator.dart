@@ -349,9 +349,11 @@ class ShareImageGenerator {
     }
   }
 
-  /// Rendert die Personal-Style-Quadrantenmatrix (inkl. präziser
-  /// Positionsmarkierung) als eigenes teilbares Bild (#50), statt das
-  /// Ergebnis nur als Text zu teilen.
+  /// Rendert die Personal-Style-Quadrantenmatrix inkl. präziser
+  /// Positionsmarkierung, den O-/E-Prozentwerten UND der Profil-Erklärung
+  /// (Titel+Eigenschaften) als EIN gemeinsames teilbares Bild (#50) - beide
+  /// Inhalte getrennt zu teilen hätte dazu führen können, dass die Erklärung
+  /// versehentlich abgewählt/vergessen wird.
   static Future<XFile?> _buildPersonalStyleMatrixImage({
     required BuildContext context,
     required ShareableContent content,
@@ -361,6 +363,17 @@ class ShareImageGenerator {
     final data = item.data as Map;
     final quadrant = data['quadrant'] as PersonalStyleQuadrant?;
     if (quadrant == null) return null;
+
+    final organisationFraction = data['organisationFraction'] as double? ?? 0.5;
+    final energyFraction = data['energyFraction'] as double? ?? 0.5;
+    final peopleLabel = data['peopleLabel'] as String? ?? '';
+    final taskLabel = data['taskLabel'] as String? ?? '';
+    final structuredLabel = data['structuredLabel'] as String? ?? '';
+    final unstructuredLabel = data['unstructuredLabel'] as String? ?? '';
+    final organisationAxisLabel = data['organisationAxisLabel'] as String? ?? '';
+    final energyAxisLabel = data['energyAxisLabel'] as String? ?? '';
+    final profileTitle = data['profileTitle'] as String?;
+    final profileTraits = (data['profileTraits'] as List?)?.cast<String>();
 
     try {
       final rendered = await _brandingController.captureFromLongWidget(
@@ -379,13 +392,28 @@ class ShareImageGenerator {
                 ],
                 PersonalStyleMatrix(
                   quadrant: quadrant,
-                  organisationFraction: data['organisationFraction'] as double? ?? 0.5,
-                  energyFraction: data['energyFraction'] as double? ?? 0.5,
-                  peopleLabel: data['peopleLabel'] as String? ?? '',
-                  taskLabel: data['taskLabel'] as String? ?? '',
-                  structuredLabel: data['structuredLabel'] as String? ?? '',
-                  unstructuredLabel: data['unstructuredLabel'] as String? ?? '',
+                  organisationFraction: organisationFraction,
+                  energyFraction: energyFraction,
+                  peopleLabel: peopleLabel,
+                  taskLabel: taskLabel,
+                  structuredLabel: structuredLabel,
+                  unstructuredLabel: unstructuredLabel,
                 ),
+                const SizedBox(height: 24),
+                PersonalStyleAxisScoreSummary(
+                  organisationFraction: organisationFraction,
+                  energyFraction: energyFraction,
+                  organisationAxisLabel: organisationAxisLabel,
+                  energyAxisLabel: energyAxisLabel,
+                  structuredLabel: structuredLabel,
+                  unstructuredLabel: unstructuredLabel,
+                  peopleLabel: peopleLabel,
+                  taskLabel: taskLabel,
+                ),
+                if (profileTitle != null && profileTraits != null) ...[
+                  const SizedBox(height: 24),
+                  _TextCardEntry(title: profileTitle, body: profileTraits.join('\n')),
+                ],
               ],
             ),
           ),

@@ -34,13 +34,14 @@ class _PersonalStyleScreenState extends State<PersonalStyleScreen> {
 
     final List<ShareableItem> items = [];
 
-    // Quadrantenmatrix mit präziser Positionsmarkierung als eigenes Bild,
-    // damit beim Teilen nicht nur der Profiltext, sondern auch die
-    // Verortung selbst sichtbar ist.
+    // Matrix (mit präziser Positionsmarkierung + O-/E-Prozentwerten) UND
+    // Profil-Erklärung als EIN gemeinsames Bild, damit die Erklärung beim
+    // Teilen nicht separat abgewählt werden/verloren gehen kann.
     if (quadrant != null) {
       items.add(ShareableItem(
         id: 'personal_style_matrix',
-        label: l10n.personalStyleMatrixShareCardLabel,
+        label: l10n.personalStyleShareCardLabel,
+        textValue: profile != null ? '${profile.title}\n${profile.traits.join('\n')}' : null,
         data: {
           'type': 'personal_style_matrix',
           'quadrant': quadrant,
@@ -50,25 +51,10 @@ class _PersonalStyleScreenState extends State<PersonalStyleScreen> {
           'taskLabel': l10n.personalStyleAxisTask,
           'structuredLabel': l10n.personalStyleAxisStructured,
           'unstructuredLabel': l10n.personalStyleAxisUnstructured,
-        },
-      ));
-    }
-
-    // Profil als eine gebrandete Bild-Karte statt reinem Text (#24-Konvention),
-    // analog zu den Top-3-Gaben.
-    if (profile != null) {
-      items.add(ShareableItem(
-        id: 'personal_style_card',
-        label: l10n.personalStyleShareCardLabel,
-        textValue: '${profile.title}\n${profile.traits.join('\n')}',
-        data: {
-          'type': 'text_card',
-          'entries': [
-            {
-              'title': profile.title,
-              'body': profile.traits.join('\n'),
-            },
-          ],
+          'organisationAxisLabel': l10n.personalStyleScoreOrganisation,
+          'energyAxisLabel': l10n.personalStyleScoreEnergy,
+          if (profile != null) 'profileTitle': profile.title,
+          if (profile != null) 'profileTraits': profile.traits,
         },
       ));
     }

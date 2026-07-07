@@ -291,7 +291,8 @@ class ExportContentBuilder {
         if (quadrant != null)
           ShareableItem(
             id: 'export_personal_style_matrix',
-            label: l10n.personalStyleMatrixShareCardLabel,
+            label: l10n.personalStyleShareCardLabel,
+            textValue: profile != null ? '${profile.title}\n${profile.traits.join('\n')}' : null,
             data: {
               'type': 'personal_style_matrix',
               'quadrant': quadrant,
@@ -301,18 +302,10 @@ class ExportContentBuilder {
               'taskLabel': l10n.personalStyleAxisTask,
               'structuredLabel': l10n.personalStyleAxisStructured,
               'unstructuredLabel': l10n.personalStyleAxisUnstructured,
-            },
-          ),
-        if (profile != null)
-          ShareableItem(
-            id: 'export_personal_style_card',
-            label: l10n.personalStyleShareCardLabel,
-            textValue: '${profile.title}\n${profile.traits.join('\n')}',
-            data: {
-              'type': 'text_card',
-              'entries': [
-                {'title': profile.title, 'body': profile.traits.join('\n')},
-              ],
+              'organisationAxisLabel': l10n.personalStyleScoreOrganisation,
+              'energyAxisLabel': l10n.personalStyleScoreEnergy,
+              if (profile != null) 'profileTitle': profile.title,
+              if (profile != null) 'profileTraits': profile.traits,
             },
           ),
         for (int i = 0; i < takeaways.length; i++)
