@@ -16,13 +16,14 @@ class ValuesRatingView extends StatelessWidget {
     
     return BlocBuilder<ValuesBloc, ValuesState>(
       builder: (context, state) {
-        final top8Count = state.topEightValues.length;
-        
+        // Das "X von 8 bewertet"-Fortschritts-Widget wird bewusst nicht mehr
+        // hier gerendert, sondern fix oberhalb dieser Liste in ValuesEditor
+        // platziert, damit es beim Scrollen sichtbar bleibt (#56).
         return ListView.builder(
           padding: EdgeInsets.zero,
           shrinkWrap: true,
           physics: const NeverScrollableScrollPhysics(),
-          itemCount: state.allValues.length + 2,
+          itemCount: state.allValues.length + 1,
           itemBuilder: (context, index) {
             if (index == 0) {
               return Padding(
@@ -33,38 +34,7 @@ class ValuesRatingView extends StatelessWidget {
                 ),
               );
             }
-            if (index == 1) {
-              return Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Card(
-                  color: top8Count == 8 ? Colors.green.shade50 : Colors.blue.shade50,
-                  child: Padding(
-                    padding: const EdgeInsets.all(12.0),
-                    child: Row(
-                      children: [
-                        Icon(
-                          top8Count == 8 ? Icons.check_circle : Icons.info_outline,
-                          color: top8Count == 8 ? Colors.green : Colors.blue,
-                          size: 20,
-                        ),
-                        const SizedBox(width: 12),
-                        Expanded(
-                          child: Text(
-                            l10n.valuesSelectionStatus(top8Count),
-                            style: TextStyle(
-                              fontSize: 13,
-                              fontWeight: FontWeight.bold,
-                              color: top8Count > 8 ? Colors.red : null,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              );
-            }
-            final valueIndex = index - 2;
+            final valueIndex = index - 1;
             final value = state.allValues[valueIndex];
             final isEven = valueIndex % 2 == 0;
             final backgroundColor = isEven
