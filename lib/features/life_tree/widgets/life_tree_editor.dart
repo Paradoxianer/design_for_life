@@ -203,6 +203,13 @@ class _LifeTreeGraphViewOnlyState extends State<_LifeTreeGraphViewOnly> with Tic
   late BuchheimWalkerConfiguration builder;
   late Algorithm algorithm;
   final Map<String, Node> _nodeCache = {};
+  // Ein-/Ausklappen von Teilbäumen (#55) - bewusst eine eigene, einfache
+  // Sichtbarkeits-Filterung statt graphviews eingebautem GraphViewController:
+  // dieser verursachte in einem früheren Anlauf zwei verschiedene
+  // Render-Abstürze (NaN beim Zeichnen, dann unendliche Größe beim Layout).
+  // Hier werden eingeklappte Teilbäume stattdessen einfach nie an den Graph
+  // übergeben, die einfache/stabile GraphView()-Variante bleibt unverändert.
+  final Set<String> _collapsedNodeIds = {};
   late TransformationController _transformationController;
   late AnimationController _animationController;
   Animation<Matrix4>? _animation;
@@ -298,9 +305,31 @@ class _LifeTreeGraphViewOnlyState extends State<_LifeTreeGraphViewOnly> with Tic
     }
   }
 
+  /// Knoten, deren Elternkette (irgendwo weiter oben) einen eingeklappten
+  /// Knoten enthält, werden komplett aus dem Graph herausgefiltert - sie
+  /// werden nie an graphview übergeben, statt sie (fehleranfällig) über
+  /// dessen eigene Sichtbarkeits-/Animationslogik zu verbergen.
+  List<LifeTreeNodeData> _computeVisibleNodes() {
+    if (_collapsedNodeIds.isEmpty) return widget.nodes;
+    final byId = {for (final n in widget.nodes) n.id: n};
+    bool isHidden(LifeTreeNodeData node) {
+      var current = node;
+      while (current.parentId != null) {
+        if (_collapsedNodeIds.contains(current.parentId)) return true;
+        final parent = byId[current.parentId];
+        if (parent == null) break;
+        current = parent;
+      }
+      return false;
+    }
+
+    return widget.nodes.where((n) => !isHidden(n)).toList();
+  }
+
   void _syncGraph() {
-    final Set<String> targetIds = widget.nodes.map((n) => n.id).toSet();
-    
+    final visibleNodes = _computeVisibleNodes();
+    final Set<String> targetIds = visibleNodes.map((n) => n.id).toSet();
+
     final currentNodes = List<Node>.from(graph.nodes);
     for (var node in currentNodes) {
       final id = node.key?.value as String;
@@ -310,7 +339,7 @@ class _LifeTreeGraphViewOnlyState extends State<_LifeTreeGraphViewOnly> with Tic
       }
     }
 
-    for (var nodeData in widget.nodes) {
+    for (var nodeData in visibleNodes) {
       final node = _nodeCache.putIfAbsent(nodeData.id, () => Node.Id(nodeData.id));
       if (!graph.nodes.contains(node)) {
         graph.addNode(node);
@@ -318,7 +347,7 @@ class _LifeTreeGraphViewOnlyState extends State<_LifeTreeGraphViewOnly> with Tic
     }
 
     graph.edges.clear();
-    for (var nodeData in widget.nodes) {
+    for (var nodeData in visibleNodes) {
       if (nodeData.parentId != null) {
         final parent = _nodeCache[nodeData.parentId];
         final child = _nodeCache[nodeData.id];
@@ -327,6 +356,15 @@ class _LifeTreeGraphViewOnlyState extends State<_LifeTreeGraphViewOnly> with Tic
         }
       }
     }
+  }
+
+  void _toggleCollapse(String nodeId) {
+    setState(() {
+      if (!_collapsedNodeIds.remove(nodeId)) {
+        _collapsedNodeIds.add(nodeId);
+      }
+      _syncGraph();
+    });
   }
 
   @override
@@ -372,11 +410,15 @@ class _LifeTreeGraphViewOnlyState extends State<_LifeTreeGraphViewOnly> with Tic
               builder: (Node node) {
                 final nodeId = node.key?.value as String;
                 final nodeData = widget.nodes.firstWhere((n) => n.id == nodeId, orElse: () => LifeTreeNodeData(id: nodeId, text: '...'));
+                final hasChildren = widget.nodes.any((n) => n.parentId == nodeId);
 
                 return _TreeNodeWidget(
                   key: ValueKey('node_wid_$nodeId'),
                   nodeData: nodeData,
                   autofocus: nodeId == _lastAddedNodeId,
+                  hasChildren: hasChildren,
+                  isCollapsed: hasChildren && _collapsedNodeIds.contains(nodeId),
+                  onToggleCollapse: () => _toggleCollapse(nodeId),
                   onChanged: (text) => widget.onUpdateText(nodeId, text),
                   onNoteChanged: (note) => widget.onUpdateNote(nodeId, note),
                   onAddChild: () => widget.onAddNode(nodeId, ''),
@@ -477,6 +519,9 @@ class _FullscreenGraphViewerState extends State<_FullscreenGraphViewer> {
 class _TreeNodeWidget extends StatefulWidget {
   final LifeTreeNodeData nodeData;
   final bool autofocus;
+  final bool hasChildren;
+  final bool isCollapsed;
+  final VoidCallback onToggleCollapse;
   final ValueChanged<String> onChanged;
   final ValueChanged<String> onNoteChanged;
   final VoidCallback onAddChild;
@@ -487,6 +532,9 @@ class _TreeNodeWidget extends StatefulWidget {
     super.key,
     required this.nodeData,
     this.autofocus = false,
+    this.hasChildren = false,
+    this.isCollapsed = false,
+    required this.onToggleCollapse,
     required this.onChanged,
     required this.onNoteChanged,
     required this.onAddChild,
@@ -758,6 +806,19 @@ class _TreeNodeWidgetState extends State<_TreeNodeWidget> {
                     onTap: widget.onDelete,
                   ),
                 ),
+
+              // Ein-/Ausklappen von Teilbäumen (#55): bewusst immer sichtbar
+              // (nicht nur bei Hover wie die übrigen Buttons), damit erkennbar
+              // bleibt, dass hier weitere Knoten verborgen sind, auch ohne
+              // dass man gerade über den Knoten fährt.
+              if (widget.hasChildren)
+                Positioned(
+                  bottom: -12,
+                  child: _CollapseToggleButton(
+                    isCollapsed: widget.isCollapsed,
+                    onTap: widget.onToggleCollapse,
+                  ),
+                ),
             ],
           ),
         ),
@@ -786,6 +847,38 @@ class _GhostNodeButton extends StatelessWidget {
         child: Text(
           label,
           style: TextStyle(fontSize: 10, color: Colors.grey.shade700, fontWeight: FontWeight.bold),
+        ),
+      ),
+    );
+  }
+}
+
+/// Ein-/Ausklappen von Teilbäumen (#55): kleiner runder Button unterhalb
+/// eines Knotens mit Kindern, zeigt je nach Zustand + oder -.
+class _CollapseToggleButton extends StatelessWidget {
+  final bool isCollapsed;
+  final VoidCallback onTap;
+
+  const _CollapseToggleButton({required this.isCollapsed, required this.onTap});
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    return Material(
+      color: Colors.white,
+      shape: CircleBorder(side: BorderSide(color: theme.primaryColor.withValues(alpha: 0.5))),
+      elevation: 1,
+      child: InkWell(
+        customBorder: const CircleBorder(),
+        onTap: onTap,
+        child: SizedBox(
+          width: 24,
+          height: 24,
+          child: Icon(
+            isCollapsed ? Icons.add : Icons.remove,
+            size: 16,
+            color: theme.primaryColor,
+          ),
         ),
       ),
     );
