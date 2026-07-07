@@ -119,6 +119,12 @@
   "giftsMeaning": "Bedeutung",
   "giftsDescription": "Beschreibung",
   "giftsBibleReferences": "Bibelstellen",
+  "bibleReferenceOpenFailed": "Konnte \"{reference}\" nicht öffnen",
+  "@bibleReferenceOpenFailed": {
+    "placeholders": {
+      "reference": { "type": "String" }
+    }
+  },
   "giftsIncompleteTitle": "Test unvollständig",
   "giftsIncompleteMessage": "Du hast erst {answered} von {total} Fragen beantwortet. Möchtest du den Test wirklich abschließen?",
   "@giftsIncompleteMessage": {

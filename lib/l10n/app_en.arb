@@ -119,6 +119,12 @@
   "giftsMeaning": "Meaning",
   "giftsDescription": "Description",
   "giftsBibleReferences": "Bible References",
+  "bibleReferenceOpenFailed": "Could not open \"{reference}\"",
+  "@bibleReferenceOpenFailed": {
+    "placeholders": {
+      "reference": { "type": "String" }
+    }
+  },
   "giftsIncompleteTitle": "Test Incomplete",
   "giftsIncompleteMessage": "You have only answered {answered} out of {total} questions. Do you really want to finish the test?",
   "@giftsIncompleteMessage": {

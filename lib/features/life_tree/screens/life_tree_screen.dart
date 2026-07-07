@@ -85,6 +85,14 @@ class _LifeTreeScreenState extends State<LifeTreeScreen> {
         final entries = lifeTreeState.entries[widget.sessionId] ?? [];
         final takeaways = lifeTreeState.takeaways[widget.sessionId] ?? const ['', '', ''];
         final nodes = lifeTreeState.treeNodes[widget.sessionId] ?? [];
+        // In der Ergebnisansicht/beim Teilen bleiben eingeklappte Teilbäume
+        // verborgen (#55) - z.B. um persönliche Äste vor anderen zu
+        // verbergen. Der Editor selbst filtert unabhängig davon nochmal
+        // selbst, da dort auch das Auf-/Zuklappen bedient wird.
+        final visibleNodes = visibleLifeTreeNodes(
+          nodes,
+          lifeTreeState.collapsedNodeIds[widget.sessionId] ?? const {},
+        );
 
         final displayEntries = entries.isEmpty 
             ? [DflEntry(id: 'initial_${widget.sessionId}')] 
@@ -93,7 +101,7 @@ class _LifeTreeScreenState extends State<LifeTreeScreen> {
         return DflModuleScaffold(
           title: widget.title,
           initialEditMode: widget.initialEditMode,
-          shareableContent: _getShareableContent(context, entries, takeaways, nodes),
+          shareableContent: _getShareableContent(context, entries, takeaways, visibleNodes),
           onShare: (selectedItems) async {
             Uint8List? capturedImage;
             
@@ -126,7 +134,7 @@ class _LifeTreeScreenState extends State<LifeTreeScreen> {
 
               ShareService.shareContent(
                 context: context,
-                content: _getShareableContent(context, entries, takeaways, nodes),
+                content: _getShareableContent(context, entries, takeaways, visibleNodes),
                 selectedItems: enrichedItems
               );
             }
@@ -142,7 +150,7 @@ class _LifeTreeScreenState extends State<LifeTreeScreen> {
           result: LifeTreeResult(
             entries: entries,
             takeaways: takeaways,
-            nodes: nodes,
+            nodes: visibleNodes,
             screenshotController: _screenshotController,
             onUpdate: (index, value) => context.read<LifeTreeBloc>().add(UpdateTakeaway(widget.sessionId, index, value)),
           ),

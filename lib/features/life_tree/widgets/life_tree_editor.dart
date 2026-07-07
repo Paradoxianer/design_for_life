@@ -36,10 +36,12 @@ class LifeTreeEditor extends DflModuleEditor {
           key: ValueKey('graph_section_$sessionId'),
           sessionId: sessionId,
           nodes: nodes,
+          collapsedNodeIds: lifeTreeBloc.state.collapsedNodeIds[sessionId] ?? const {},
           onAddNode: (parentId, text) => lifeTreeBloc.add(AddTreeNode(sessionId, parentId: parentId, text: text)),
           onUpdateText: (nodeId, text) => lifeTreeBloc.add(UpdateTreeNodeText(sessionId, nodeId, text)),
           onUpdateNote: (nodeId, note) => lifeTreeBloc.add(UpdateTreeNodeNote(sessionId, nodeId, note)),
           onDeleteNode: (nodeId) => lifeTreeBloc.add(DeleteTreeNode(sessionId, nodeId)),
+          onToggleCollapse: (nodeId) => lifeTreeBloc.add(ToggleTreeNodeCollapsed(sessionId, nodeId)),
         ),
         const SizedBox(height: 32),
         const Divider(),
@@ -70,19 +72,23 @@ class LifeTreeEditor extends DflModuleEditor {
 class _LifeTreeGraphSection extends StatefulWidget {
   final String sessionId;
   final List<LifeTreeNodeData> nodes;
+  final Set<String> collapsedNodeIds;
   final Function(String?, String) onAddNode;
   final Function(String, String) onUpdateText;
   final Function(String, String) onUpdateNote;
   final Function(String) onDeleteNode;
+  final Function(String) onToggleCollapse;
 
   const _LifeTreeGraphSection({
     super.key,
     required this.sessionId,
     required this.nodes,
+    required this.collapsedNodeIds,
     required this.onAddNode,
     required this.onUpdateText,
     required this.onUpdateNote,
     required this.onDeleteNode,
+    required this.onToggleCollapse,
   });
 
   @override
@@ -153,10 +159,12 @@ class _LifeTreeGraphSectionState extends State<_LifeTreeGraphSection> {
                 ),
                 child: _LifeTreeGraphViewOnly(
                   nodes: widget.nodes,
+                  collapsedNodeIds: widget.collapsedNodeIds,
                   onAddNode: widget.onAddNode,
                   onUpdateText: widget.onUpdateText,
                   onUpdateNote: widget.onUpdateNote,
                   onDeleteNode: widget.onDeleteNode,
+                  onToggleCollapse: widget.onToggleCollapse,
                   transformationController: _transformationController,
                 ),
               ),
@@ -179,18 +187,22 @@ class _LifeTreeGraphSectionState extends State<_LifeTreeGraphSection> {
 
 class _LifeTreeGraphViewOnly extends StatefulWidget {
   final List<LifeTreeNodeData> nodes;
+  final Set<String> collapsedNodeIds;
   final Function(String?, String) onAddNode;
   final Function(String, String) onUpdateText;
   final Function(String, String) onUpdateNote;
   final Function(String) onDeleteNode;
+  final Function(String) onToggleCollapse;
   final TransformationController? transformationController;
 
   const _LifeTreeGraphViewOnly({
     required this.nodes,
+    this.collapsedNodeIds = const {},
     required this.onAddNode,
     required this.onUpdateText,
     required this.onUpdateNote,
     required this.onDeleteNode,
+    required this.onToggleCollapse,
     this.transformationController,
   });
 
@@ -246,11 +258,13 @@ class _LifeTreeGraphViewOnlyState extends State<_LifeTreeGraphViewOnly> with Tic
           orElse: () => widget.nodes.last,
         );
         _lastAddedNodeId = newNode.id;
-        
+
         WidgetsBinding.instance.addPostFrameCallback((_) {
           _scrollToNode(newNode.id);
         });
       }
+      _syncGraph();
+    } else if (widget.collapsedNodeIds != oldWidget.collapsedNodeIds) {
       _syncGraph();
     }
   }
@@ -299,8 +313,9 @@ class _LifeTreeGraphViewOnlyState extends State<_LifeTreeGraphViewOnly> with Tic
   }
 
   void _syncGraph() {
-    final Set<String> targetIds = widget.nodes.map((n) => n.id).toSet();
-    
+    final visibleNodes = visibleLifeTreeNodes(widget.nodes, widget.collapsedNodeIds);
+    final Set<String> targetIds = visibleNodes.map((n) => n.id).toSet();
+
     final currentNodes = List<Node>.from(graph.nodes);
     for (var node in currentNodes) {
       final id = node.key?.value as String;
@@ -310,7 +325,7 @@ class _LifeTreeGraphViewOnlyState extends State<_LifeTreeGraphViewOnly> with Tic
       }
     }
 
-    for (var nodeData in widget.nodes) {
+    for (var nodeData in visibleNodes) {
       final node = _nodeCache.putIfAbsent(nodeData.id, () => Node.Id(nodeData.id));
       if (!graph.nodes.contains(node)) {
         graph.addNode(node);
@@ -318,7 +333,7 @@ class _LifeTreeGraphViewOnlyState extends State<_LifeTreeGraphViewOnly> with Tic
     }
 
     graph.edges.clear();
-    for (var nodeData in widget.nodes) {
+    for (var nodeData in visibleNodes) {
       if (nodeData.parentId != null) {
         final parent = _nodeCache[nodeData.parentId];
         final child = _nodeCache[nodeData.id];
@@ -372,11 +387,15 @@ class _LifeTreeGraphViewOnlyState extends State<_LifeTreeGraphViewOnly> with Tic
               builder: (Node node) {
                 final nodeId = node.key?.value as String;
                 final nodeData = widget.nodes.firstWhere((n) => n.id == nodeId, orElse: () => LifeTreeNodeData(id: nodeId, text: '...'));
+                final hasChildren = widget.nodes.any((n) => n.parentId == nodeId);
 
                 return _TreeNodeWidget(
                   key: ValueKey('node_wid_$nodeId'),
                   nodeData: nodeData,
                   autofocus: nodeId == _lastAddedNodeId,
+                  hasChildren: hasChildren,
+                  isCollapsed: hasChildren && widget.collapsedNodeIds.contains(nodeId),
+                  onToggleCollapse: () => widget.onToggleCollapse(nodeId),
                   onChanged: (text) => widget.onUpdateText(nodeId, text),
                   onNoteChanged: (note) => widget.onUpdateNote(nodeId, note),
                   onAddChild: () => widget.onAddNode(nodeId, ''),
@@ -458,13 +477,18 @@ class _FullscreenGraphViewerState extends State<_FullscreenGraphViewer> {
         // neu (#61).
         child: BlocBuilder<LifeTreeBloc, EntryListState>(
           builder: (context, state) {
-            final nodes = (state as LifeTreeState).treeNodes[widget.sessionId] ?? const [];
+            final lifeTreeState = state as LifeTreeState;
+            final nodes = lifeTreeState.treeNodes[widget.sessionId] ?? const [];
+            final collapsedNodeIds = lifeTreeState.collapsedNodeIds[widget.sessionId] ?? const {};
             return _LifeTreeGraphViewOnly(
               nodes: nodes,
+              collapsedNodeIds: collapsedNodeIds,
               onAddNode: widget.onAddNode,
               onUpdateText: widget.onUpdateText,
               onUpdateNote: widget.onUpdateNote,
               onDeleteNode: widget.onDeleteNode,
+              onToggleCollapse: (nodeId) =>
+                  context.read<LifeTreeBloc>().add(ToggleTreeNodeCollapsed(widget.sessionId, nodeId)),
               transformationController: _transformationController,
             );
           },
@@ -477,6 +501,9 @@ class _FullscreenGraphViewerState extends State<_FullscreenGraphViewer> {
 class _TreeNodeWidget extends StatefulWidget {
   final LifeTreeNodeData nodeData;
   final bool autofocus;
+  final bool hasChildren;
+  final bool isCollapsed;
+  final VoidCallback onToggleCollapse;
   final ValueChanged<String> onChanged;
   final ValueChanged<String> onNoteChanged;
   final VoidCallback onAddChild;
@@ -487,6 +514,9 @@ class _TreeNodeWidget extends StatefulWidget {
     super.key,
     required this.nodeData,
     this.autofocus = false,
+    this.hasChildren = false,
+    this.isCollapsed = false,
+    required this.onToggleCollapse,
     required this.onChanged,
     required this.onNoteChanged,
     required this.onAddChild,
@@ -590,73 +620,106 @@ class _TreeNodeWidgetState extends State<_TreeNodeWidget> {
               Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Container(
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(8),
-                      border: Border.all(
-                        color: _textFocusNode.hasFocus ? theme.primaryColor : Colors.grey.shade300,
-                        width: _textFocusNode.hasFocus ? 2 : 1,
-                      ),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.black.withValues(alpha: 0.05), 
-                          blurRadius: 4, 
-                          offset: const Offset(0, 2)
-                        ),
-                      ],
-                    ),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Row(
-                          children: [
-                            Expanded(
-                              child: TextField(
-                                controller: _textController,
-                                focusNode: _textFocusNode,
-                                decoration: InputDecoration(
-                                  isDense: true, 
-                                  border: InputBorder.none, 
-                                  contentPadding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
-                                  hintText: l10n.lifeTreeNodeHint,
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      // Ein-/Ausklappen von Teilbäumen (#55): bewusst immer
+                      // sichtbar (nicht nur bei Hover wie die übrigen
+                      // Buttons), damit erkennbar bleibt, dass hier weitere
+                      // Knoten verborgen sind. Als echtes Layout-Element (statt
+                      // per Positioned mit negativem Offset außerhalb der
+                      // Karte) reserviert, weil ein per Positioned nach links
+                      // über den Rand der Karte hinausragender Bereich zwar
+                      // gezeichnet, aber laut Flutters Hit-Test-Logik nur
+                      // innerhalb der eigenen (Karten-)Größe antippbar ist -
+                      // die linke Hälfte des Kreises reagierte dadurch nicht
+                      // auf Taps. Immer reservierte, gleich breite Spalte
+                      // (auch ohne Kinder), damit alle Karten links bündig
+                      // bleiben. Während der Notiz-Editor offen ist, wird der
+                      // Button ausgeblendet, damit er das Notiz-Popup nicht
+                      // verdeckt.
+                      SizedBox(
+                        width: 28,
+                        child: (widget.hasChildren && !_showNoteOverlay)
+                            ? Center(
+                                child: _CollapseToggleButton(
+                                  isCollapsed: widget.isCollapsed,
+                                  onTap: widget.onToggleCollapse,
                                 ),
-                                style: theme.textTheme.bodyMedium,
-                                onSubmitted: (val) => widget.onChanged(val),
+                              )
+                            : null,
+                      ),
+                      Expanded(
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(8),
+                            border: Border.all(
+                              color: _textFocusNode.hasFocus ? theme.primaryColor : Colors.grey.shade300,
+                              width: _textFocusNode.hasFocus ? 2 : 1,
+                            ),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.black.withValues(alpha: 0.05),
+                                blurRadius: 4,
+                                offset: const Offset(0, 2)
                               ),
-                            ),
-                            Visibility(
-                              visible: showButtons,
-                              maintainSize: true,
-                              maintainAnimation: true,
-                              maintainState: true,
-                              child: IconButton(
-                                icon: Icon(Icons.speaker_notes, size: 16, color: theme.primaryColor.withValues(alpha: 0.6)),
-                                onPressed: () {
-                                  setState(() => _showNoteOverlay = !_showNoteOverlay);
-                                  if (_showNoteOverlay) {
-                                    _noteFocusNode.requestFocus();
-                                  }
-                                },
-                                constraints: const BoxConstraints(),
-                                padding: const EdgeInsets.only(right: 8),
-                                tooltip: l10n.lifeTreeEditNote,
-                              ),
-                            ),
-                          ],
-                        ),
-                        if (!_showNoteOverlay && widget.nodeData.note.isNotEmpty)
-                          Padding(
-                            padding: const EdgeInsets.only(left: 10, right: 10, bottom: 6),
-                            child: Text(
-                              widget.nodeData.note,
-                              maxLines: 1,
-                              overflow: TextOverflow.ellipsis,
-                              style: const TextStyle(fontSize: 10, fontStyle: FontStyle.italic, color: Colors.grey),
-                            ),
+                            ],
                           ),
-                      ],
-                    ),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Row(
+                                children: [
+                                  Expanded(
+                                    child: TextField(
+                                      controller: _textController,
+                                      focusNode: _textFocusNode,
+                                      decoration: InputDecoration(
+                                        isDense: true,
+                                        border: InputBorder.none,
+                                        contentPadding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
+                                        hintText: l10n.lifeTreeNodeHint,
+                                      ),
+                                      style: theme.textTheme.bodyMedium,
+                                      onSubmitted: (val) => widget.onChanged(val),
+                                    ),
+                                  ),
+                                  Visibility(
+                                    visible: showButtons,
+                                    maintainSize: true,
+                                    maintainAnimation: true,
+                                    maintainState: true,
+                                    child: IconButton(
+                                      icon: Icon(Icons.speaker_notes, size: 16, color: theme.primaryColor.withValues(alpha: 0.6)),
+                                      onPressed: () {
+                                        setState(() => _showNoteOverlay = !_showNoteOverlay);
+                                        if (_showNoteOverlay) {
+                                          _noteFocusNode.requestFocus();
+                                        }
+                                      },
+                                      constraints: const BoxConstraints(),
+                                      padding: const EdgeInsets.only(right: 8),
+                                      tooltip: l10n.lifeTreeEditNote,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              if (!_showNoteOverlay && widget.nodeData.note.isNotEmpty)
+                                Padding(
+                                  padding: const EdgeInsets.only(left: 10, right: 10, bottom: 6),
+                                  child: Text(
+                                    widget.nodeData.note,
+                                    maxLines: 1,
+                                    overflow: TextOverflow.ellipsis,
+                                    style: const TextStyle(fontSize: 10, fontStyle: FontStyle.italic, color: Colors.grey),
+                                  ),
+                                ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                   const SizedBox(height: 4),
                   Visibility(
@@ -750,9 +813,14 @@ class _TreeNodeWidgetState extends State<_TreeNodeWidget> {
                 ),
 
               if (showButtons && widget.nodeData.parentId != null)
+                // Um 8px verschoben, um die zusätzliche (unsichtbare)
+                // Tap-Fläche von _GhostNodeButton auszugleichen - die
+                // sichtbare "x"-Chip landet dadurch an derselben Stelle wie
+                // zuvor, nur mit einem größeren, zuverlässiger tippbaren
+                // Bereich drumherum (Android-Tap-Zuverlässigkeit).
                 Positioned(
-                  top: -8,
-                  right: -8,
+                  top: -16,
+                  right: -16,
                   child: _GhostNodeButton(
                     label: 'x',
                     onTap: widget.onDelete,
@@ -776,16 +844,56 @@ class _GhostNodeButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: onTap,
-      child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-        decoration: BoxDecoration(
-          color: Colors.grey.shade100,
-          borderRadius: BorderRadius.circular(4),
-          border: Border.all(color: Colors.grey.shade300),
+      borderRadius: BorderRadius.circular(4),
+      // Die sichtbare Chip-Fläche allein war auf Android unzuverlässig
+      // tippbar (v.a. bei der einzeln stehenden "x"-Löschen-Chip); 8px
+      // unsichtbares Padding rundherum vergrößert den Tap-Bereich, ohne den
+      // sichtbaren Chip selbst zu verändern.
+      child: Padding(
+        padding: const EdgeInsets.all(8),
+        child: Container(
+          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+          decoration: BoxDecoration(
+            color: Colors.grey.shade100,
+            borderRadius: BorderRadius.circular(4),
+            border: Border.all(color: Colors.grey.shade300),
+          ),
+          child: Text(
+            label,
+            style: TextStyle(fontSize: 10, color: Colors.grey.shade700, fontWeight: FontWeight.bold),
+          ),
         ),
-        child: Text(
-          label,
-          style: TextStyle(fontSize: 10, color: Colors.grey.shade700, fontWeight: FontWeight.bold),
+      ),
+    );
+  }
+}
+
+/// Ein-/Ausklappen von Teilbäumen (#55): kleiner runder Button unterhalb
+/// eines Knotens mit Kindern, zeigt je nach Zustand + oder -.
+class _CollapseToggleButton extends StatelessWidget {
+  final bool isCollapsed;
+  final VoidCallback onTap;
+
+  const _CollapseToggleButton({required this.isCollapsed, required this.onTap});
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    return Material(
+      color: Colors.white,
+      shape: CircleBorder(side: BorderSide(color: theme.primaryColor.withValues(alpha: 0.5))),
+      elevation: 1,
+      child: InkWell(
+        customBorder: const CircleBorder(),
+        onTap: onTap,
+        child: SizedBox(
+          width: 24,
+          height: 24,
+          child: Icon(
+            isCollapsed ? Icons.add : Icons.remove,
+            size: 16,
+            color: theme.primaryColor,
+          ),
         ),
       ),
     );
