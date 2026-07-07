@@ -7,64 +7,39 @@ import '../bloc/values_state.dart';
 import '../models/value_item.dart';
 
 class ValuesRatingView extends StatelessWidget {
-  const ValuesRatingView({super.key});
+  // Reservierter Platz oben, damit der fix als Overlay über dieser Liste
+  // schwebende Fortschritts-Banner den Erklärtext nicht verdeckt (#56) -
+  // wird von ValuesEditor mit dessen tatsächlich gemessener Höhe befüllt.
+  final double topPadding;
+
+  const ValuesRatingView({super.key, this.topPadding = 0});
 
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context);
     final theme = Theme.of(context);
-    
+
     return BlocBuilder<ValuesBloc, ValuesState>(
       builder: (context, state) {
-        final top8Count = state.topEightValues.length;
-        
+        // Das "X von 8 bewertet"-Fortschritts-Widget wird bewusst nicht mehr
+        // hier gerendert, sondern fix oberhalb dieser Liste in ValuesEditor
+        // platziert, damit es beim Scrollen sichtbar bleibt (#56).
         return ListView.builder(
           padding: EdgeInsets.zero,
           shrinkWrap: true,
           physics: const NeverScrollableScrollPhysics(),
-          itemCount: state.allValues.length + 2,
+          itemCount: state.allValues.length + 1,
           itemBuilder: (context, index) {
             if (index == 0) {
               return Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                padding: EdgeInsets.fromLTRB(16, topPadding + 8, 16, 8),
                 child: Text(
                   l10n.valuesPhase1Guidance,
                   style: const TextStyle(fontStyle: FontStyle.italic),
                 ),
               );
             }
-            if (index == 1) {
-              return Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Card(
-                  color: top8Count == 8 ? Colors.green.shade50 : Colors.blue.shade50,
-                  child: Padding(
-                    padding: const EdgeInsets.all(12.0),
-                    child: Row(
-                      children: [
-                        Icon(
-                          top8Count == 8 ? Icons.check_circle : Icons.info_outline,
-                          color: top8Count == 8 ? Colors.green : Colors.blue,
-                          size: 20,
-                        ),
-                        const SizedBox(width: 12),
-                        Expanded(
-                          child: Text(
-                            l10n.valuesSelectionStatus(top8Count),
-                            style: TextStyle(
-                              fontSize: 13,
-                              fontWeight: FontWeight.bold,
-                              color: top8Count > 8 ? Colors.red : null,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              );
-            }
-            final valueIndex = index - 2;
+            final valueIndex = index - 1;
             final value = state.allValues[valueIndex];
             final isEven = valueIndex % 2 == 0;
             final backgroundColor = isEven

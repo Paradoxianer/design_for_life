@@ -566,6 +566,24 @@ abstract class AppLocalizations {
   /// **'Tap on a gift to see details and Bible references. Your Top 3 will be automatically included.'**
   String get giftsRankingGuidance;
 
+  /// No description provided for @giftsDormantHeading.
+  ///
+  /// In en, this message translates to:
+  /// **'Dormant Gifts'**
+  String get giftsDormantHeading;
+
+  /// No description provided for @giftsDormantGuidance.
+  ///
+  /// In en, this message translates to:
+  /// **'These gifts are also strongly present, but not (yet) among your top 3.'**
+  String get giftsDormantGuidance;
+
+  /// No description provided for @giftsOtherHeading.
+  ///
+  /// In en, this message translates to:
+  /// **'Other Gifts'**
+  String get giftsOtherHeading;
+
   /// No description provided for @giftsScorePoints.
   ///
   /// In en, this message translates to:

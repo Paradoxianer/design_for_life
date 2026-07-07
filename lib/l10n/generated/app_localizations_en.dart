@@ -265,6 +265,16 @@ class AppLocalizationsEn extends AppLocalizations {
       'Tap on a gift to see details and Bible references. Your Top 3 will be automatically included.';
 
   @override
+  String get giftsDormantHeading => 'Dormant Gifts';
+
+  @override
+  String get giftsDormantGuidance =>
+      'These gifts are also strongly present, but not (yet) among your top 3.';
+
+  @override
+  String get giftsOtherHeading => 'Other Gifts';
+
+  @override
   String giftsScorePoints(int score) {
     return '$score pts.';
   }

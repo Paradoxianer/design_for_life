@@ -33,19 +33,49 @@ class SpiritualGiftsResult extends StatelessWidget {
               ),
               const SizedBox(height: 24),
               
-              ...rankedGifts.asMap().entries.map((entry) {
+              ...rankedGifts.asMap().entries.expand((entry) {
                 final index = entry.key;
                 final gift = entry.value;
                 final score = scores[gift.id] ?? 0;
                 final isTop3 = index < 3;
 
-                return _GiftResultCard(
-                  gift: gift,
-                  score: score,
-                  rank: index + 1,
-                  isTop3: isTop3,
-                  maxScore: maxPossibleScore,
-                );
+                return [
+                  // Kurzer Abstand + eigene Überschrift zwischen den drei
+                  // Hauptgaben und den "latenten" Gaben (Rang 4-6), damit die
+                  // beiden Gruppen klar unterscheidbar sind (#59).
+                  if (index == 3) ...[
+                    const SizedBox(height: 20),
+                    Text(
+                      AppLocalizations.of(context).giftsDormantHeading,
+                      style: theme.textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
+                    ),
+                    const SizedBox(height: 4),
+                    Text(
+                      AppLocalizations.of(context).giftsDormantGuidance,
+                      style: theme.textTheme.bodySmall?.copyWith(color: theme.colorScheme.onSurfaceVariant),
+                    ),
+                    const SizedBox(height: 12),
+                  ],
+                  // Es gibt insgesamt deutlich mehr als 6 Gaben (aktuell 18) -
+                  // ohne eigenen Abschluss lief die "Latente Gaben"-Sektion ab
+                  // Rang 7 optisch undifferenziert weiter, kaum vom Ende der
+                  // eigentlich nur 3 latenten Gaben (Rang 4-6) zu unterscheiden.
+                  if (index == 6) ...[
+                    const SizedBox(height: 20),
+                    Text(
+                      AppLocalizations.of(context).giftsOtherHeading,
+                      style: theme.textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
+                    ),
+                    const SizedBox(height: 12),
+                  ],
+                  _GiftResultCard(
+                    gift: gift,
+                    score: score,
+                    rank: index + 1,
+                    isTop3: isTop3,
+                    maxScore: maxPossibleScore,
+                  ),
+                ];
               }),
               const SizedBox(height: 40),
             ],
@@ -133,6 +163,18 @@ class _GiftResultCard extends StatelessWidget {
                 minHeight: 6,
                 borderRadius: BorderRadius.circular(3),
               ),
+              // Kurzbeschreibung direkt sichtbar nur für die drei Hauptgaben
+              // (#59) - für die restlichen bleibt es beim Antippen für Details.
+              if (isTop3 && gift.description.isNotEmpty) ...[
+                const SizedBox(height: 8),
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    gift.description,
+                    style: theme.textTheme.bodySmall?.copyWith(color: theme.colorScheme.onSurfaceVariant),
+                  ),
+                ),
+              ],
             ],
           ),
         ),

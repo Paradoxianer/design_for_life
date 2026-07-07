@@ -268,6 +268,16 @@ class AppLocalizationsDe extends AppLocalizations {
       'Tippe auf eine Gabe, um Details und Bibelstellen zu sehen. Deine Top 3 werden automatisch übernommen.';
 
   @override
+  String get giftsDormantHeading => 'Latente Gaben';
+
+  @override
+  String get giftsDormantGuidance =>
+      'Diese Gaben sind ebenfalls stark ausgeprägt, aber (noch) nicht unter deinen Top 3.';
+
+  @override
+  String get giftsOtherHeading => 'Weitere Gaben';
+
+  @override
   String giftsScorePoints(int score) {
     return '$score Pkt.';
   }

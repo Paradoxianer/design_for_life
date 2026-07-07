@@ -96,7 +96,7 @@ class _LifeTreeGraphSectionState extends State<_LifeTreeGraphSection> {
     Navigator.of(context).push(
       MaterialPageRoute(
         builder: (context) => _FullscreenGraphViewer(
-          nodes: widget.nodes,
+          sessionId: widget.sessionId,
           onAddNode: widget.onAddNode,
           onUpdateText: widget.onUpdateText,
           onUpdateNote: widget.onUpdateNote,
@@ -372,7 +372,7 @@ class _LifeTreeGraphViewOnlyState extends State<_LifeTreeGraphViewOnly> with Tic
               builder: (Node node) {
                 final nodeId = node.key?.value as String;
                 final nodeData = widget.nodes.firstWhere((n) => n.id == nodeId, orElse: () => LifeTreeNodeData(id: nodeId, text: '...'));
-                
+
                 return _TreeNodeWidget(
                   key: ValueKey('node_wid_$nodeId'),
                   nodeData: nodeData,
@@ -393,7 +393,7 @@ class _LifeTreeGraphViewOnlyState extends State<_LifeTreeGraphViewOnly> with Tic
 }
 
 class _FullscreenGraphViewer extends StatefulWidget {
-  final List<LifeTreeNodeData> nodes;
+  final String sessionId;
   final Function(String?, String) onAddNode;
   final Function(String, String) onUpdateText;
   final Function(String, String) onUpdateNote;
@@ -401,7 +401,7 @@ class _FullscreenGraphViewer extends StatefulWidget {
   final Matrix4 initialMatrix;
 
   const _FullscreenGraphViewer({
-    required this.nodes,
+    required this.sessionId,
     required this.onAddNode,
     required this.onUpdateText,
     required this.onUpdateNote,
@@ -449,13 +449,25 @@ class _FullscreenGraphViewerState extends State<_FullscreenGraphViewer> {
       ),
       body: Container(
         color: Colors.white,
-        child: _LifeTreeGraphViewOnly(
-          nodes: widget.nodes,
-          onAddNode: widget.onAddNode,
-          onUpdateText: widget.onUpdateText,
-          onUpdateNote: widget.onUpdateNote,
-          onDeleteNode: widget.onDeleteNode,
-          transformationController: _transformationController,
+        // Wichtig: dieser Screen wird per Navigator.push in einer eigenen
+        // Route gebaut, die außerhalb des BlocBuilder-Baums des normalen
+        // Editors liegt. Ohne einen eigenen BlocBuilder hier blieb die
+        // Knotenliste auf dem Stand beim Öffnen des Vollbildmodus eingefroren
+        // - Kind/Geschwister hinzufügen speicherte zwar korrekt (sichtbar
+        // erst nach Verlassen), aber die Vollbild-Ansicht selbst rendert nie
+        // neu (#61).
+        child: BlocBuilder<LifeTreeBloc, EntryListState>(
+          builder: (context, state) {
+            final nodes = (state as LifeTreeState).treeNodes[widget.sessionId] ?? const [];
+            return _LifeTreeGraphViewOnly(
+              nodes: nodes,
+              onAddNode: widget.onAddNode,
+              onUpdateText: widget.onUpdateText,
+              onUpdateNote: widget.onUpdateNote,
+              onDeleteNode: widget.onDeleteNode,
+              transformationController: _transformationController,
+            );
+          },
         ),
       ),
     );
@@ -742,7 +754,7 @@ class _TreeNodeWidgetState extends State<_TreeNodeWidget> {
                   top: -8,
                   right: -8,
                   child: _GhostNodeButton(
-                    label: 'x', 
+                    label: 'x',
                     onTap: widget.onDelete,
                   ),
                 ),
@@ -779,3 +791,4 @@ class _GhostNodeButton extends StatelessWidget {
     );
   }
 }
+
