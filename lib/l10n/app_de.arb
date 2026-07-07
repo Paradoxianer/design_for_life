@@ -107,6 +107,8 @@
   "giftsRating5": "Sehr stark",
   "giftsRankingTitle": "Deine Gaben-Rangliste",
   "giftsRankingGuidance": "Tippe auf eine Gabe, um Details und Bibelstellen zu sehen. Deine Top 3 werden automatisch übernommen.",
+  "giftsDormantHeading": "Latente Gaben",
+  "giftsDormantGuidance": "Diese Gaben sind ebenfalls stark ausgeprägt, aber (noch) nicht unter deinen Top 3.",
   "giftsScorePoints": "{score} Pkt.",
   "@giftsScorePoints": {
     "placeholders": {

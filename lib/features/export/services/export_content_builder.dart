@@ -44,8 +44,10 @@ class ExportContentBuilder {
   }
 
   static ShareableContent? spiritualGifts(AppLocalizations l10n, SpiritualGiftsState state) {
-    final topThree = state.getRankedGifts().take(3).toList();
+    final rankedGifts = state.getRankedGifts();
+    final topThree = rankedGifts.take(3).toList();
     if (topThree.isEmpty) return null;
+    final dormant = rankedGifts.skip(3).take(3).toList();
     final scores = state.getScoresPerGift();
 
     return ShareableContent(
@@ -68,6 +70,14 @@ class ExportContentBuilder {
                       '(${l10n.giftsScorePoints(scores[topThree[i].id] ?? 0)})',
                   'body': topThree[i].description,
                 },
+              if (dormant.isNotEmpty) ...[
+                {'title': l10n.giftsDormantHeading, 'body': l10n.giftsDormantGuidance},
+                for (final gift in dormant)
+                  {
+                    'title': '${gift.name} (${l10n.giftsScorePoints(scores[gift.id] ?? 0)})',
+                    'body': gift.description,
+                  },
+              ],
             ],
           },
         ),

@@ -46,6 +46,7 @@ class _SpiritualGiftsScreenState extends State<SpiritualGiftsScreen> {
     final l10n = AppLocalizations.of(context);
     final rankedGifts = state.getRankedGifts();
     final topThree = rankedGifts.take(3).toList();
+    final dormant = rankedGifts.skip(3).take(3).toList();
     final scores = state.getScoresPerGift();
     final takeaways = state.takeaways[widget.sessionId] ?? [];
 
@@ -53,7 +54,8 @@ class _SpiritualGiftsScreenState extends State<SpiritualGiftsScreen> {
 
     // Top 3 Gifts als eine gebrandete Bild-Karte statt einzelner Text-Zeilen (#24).
     // textValue liefert weiterhin eine Textzusammenfassung für die Nachricht,
-    // die zusammen mit dem Bild geteilt wird.
+    // die zusammen mit dem Bild geteilt wird. Latente Gaben (Rang 4-6) werden
+    // als eigener, klar abgesetzter Abschnitt in derselben Karte mitgeteilt (#59).
     if (topThree.isNotEmpty) {
       final giftTitles = [
         for (int i = 0; i < topThree.length; i++)
@@ -73,6 +75,14 @@ class _SpiritualGiftsScreenState extends State<SpiritualGiftsScreen> {
                     '(${l10n.giftsScorePoints(scores[topThree[i].id] ?? 0)})',
                 'body': topThree[i].description,
               },
+            if (dormant.isNotEmpty) ...[
+              {'title': l10n.giftsDormantHeading, 'body': l10n.giftsDormantGuidance},
+              for (final gift in dormant)
+                {
+                  'title': '${gift.name} (${l10n.giftsScorePoints(scores[gift.id] ?? 0)})',
+                  'body': gift.description,
+                },
+            ],
           ],
         },
       ));
