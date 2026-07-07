@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:design_for_life/l10n/generated/app_localizations.dart';
+import '../../../core/services/bible_reference_service.dart';
 import '../bloc/spiritual_gifts_bloc.dart';
 import '../models/spiritual_gift.dart';
 
@@ -274,9 +275,7 @@ class _GiftDetailSheet extends StatelessWidget {
                     runSpacing: 8,
                     children: gift.bibleReferences.map((ref) => ActionChip(
                       label: Text(ref, style: const TextStyle(fontSize: 12)),
-                      onPressed: () {
-                        // Logic for external link
-                      },
+                      onPressed: () => BibleReferenceService.open(context, ref),
                       avatar: const Icon(Icons.menu_book, size: 14),
                       backgroundColor: theme.colorScheme.surfaceContainerHighest,
                     )).toList(),

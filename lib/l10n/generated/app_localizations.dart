@@ -608,6 +608,12 @@ abstract class AppLocalizations {
   /// **'Bible References'**
   String get giftsBibleReferences;
 
+  /// No description provided for @bibleReferenceOpenFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Could not open \"{reference}\"'**
+  String bibleReferenceOpenFailed(String reference);
+
   /// No description provided for @giftsIncompleteTitle.
   ///
   /// In en, this message translates to:

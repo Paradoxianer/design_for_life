@@ -289,6 +289,11 @@ class AppLocalizationsEn extends AppLocalizations {
   String get giftsBibleReferences => 'Bible References';
 
   @override
+  String bibleReferenceOpenFailed(String reference) {
+    return 'Could not open \"$reference\"';
+  }
+
+  @override
   String get giftsIncompleteTitle => 'Test Incomplete';
 
   @override
