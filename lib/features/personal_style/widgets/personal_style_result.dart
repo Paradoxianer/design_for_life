@@ -54,17 +54,6 @@ class PersonalStyleResult extends StatelessWidget {
                       structuredLabel: l10n.personalStyleAxisStructured,
                       unstructuredLabel: l10n.personalStyleAxisUnstructured,
                     ),
-                    const SizedBox(height: 16),
-                    PersonalStyleAxisScoreSummary(
-                      organisationFraction: state.organisationFraction,
-                      energyFraction: state.energyFraction,
-                      organisationAxisLabel: l10n.personalStyleScoreOrganisation,
-                      energyAxisLabel: l10n.personalStyleScoreEnergy,
-                      structuredLabel: l10n.personalStyleAxisStructured,
-                      unstructuredLabel: l10n.personalStyleAxisUnstructured,
-                      peopleLabel: l10n.personalStyleAxisPeople,
-                      taskLabel: l10n.personalStyleAxisTask,
-                    ),
                     if (profile != null) ...[
                       const SizedBox(height: 24),
                       _ProfileCard(profile: profile),

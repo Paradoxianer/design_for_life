@@ -339,12 +339,6 @@ class AppLocalizationsDe extends AppLocalizations {
   String get personalStyleAxisUnstructured => 'Unstrukturiert';
 
   @override
-  String get personalStyleScoreOrganisation => 'Organisation';
-
-  @override
-  String get personalStyleScoreEnergy => 'Energie';
-
-  @override
   String get personalStyleResultHeading => 'Dein Profil';
 
   @override

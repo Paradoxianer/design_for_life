@@ -145,8 +145,6 @@
   "personalStyleAxisTask": "Task",
   "personalStyleAxisStructured": "Structured",
   "personalStyleAxisUnstructured": "Unstructured",
-  "personalStyleScoreOrganisation": "Organisation",
-  "personalStyleScoreEnergy": "Energy",
   "personalStyleResultHeading": "Your Profile",
   "personalStyleIncomplete": "Answer all questions in edit mode first to see your profile.",
   "personalStyleShareCardLabel": "My Profile (Image)",

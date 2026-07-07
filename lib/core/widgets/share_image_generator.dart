@@ -370,8 +370,6 @@ class ShareImageGenerator {
     final taskLabel = data['taskLabel'] as String? ?? '';
     final structuredLabel = data['structuredLabel'] as String? ?? '';
     final unstructuredLabel = data['unstructuredLabel'] as String? ?? '';
-    final organisationAxisLabel = data['organisationAxisLabel'] as String? ?? '';
-    final energyAxisLabel = data['energyAxisLabel'] as String? ?? '';
     final profileTitle = data['profileTitle'] as String?;
     final profileTraits = (data['profileTraits'] as List?)?.cast<String>();
 
@@ -402,17 +400,6 @@ class ShareImageGenerator {
                   // nutzen (anders als in der App, wo sie auf breiten
                   // Bildschirmen sonst unübersichtlich groß würde).
                   constrainWidth: false,
-                ),
-                const SizedBox(height: 24),
-                PersonalStyleAxisScoreSummary(
-                  organisationFraction: organisationFraction,
-                  energyFraction: energyFraction,
-                  organisationAxisLabel: organisationAxisLabel,
-                  energyAxisLabel: energyAxisLabel,
-                  structuredLabel: structuredLabel,
-                  unstructuredLabel: unstructuredLabel,
-                  peopleLabel: peopleLabel,
-                  taskLabel: taskLabel,
                 ),
                 if (profileTitle != null && profileTraits != null) ...[
                   const SizedBox(height: 24),

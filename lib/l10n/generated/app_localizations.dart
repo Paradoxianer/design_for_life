@@ -692,18 +692,6 @@ abstract class AppLocalizations {
   /// **'Unstructured'**
   String get personalStyleAxisUnstructured;
 
-  /// No description provided for @personalStyleScoreOrganisation.
-  ///
-  /// In en, this message translates to:
-  /// **'Organisation'**
-  String get personalStyleScoreOrganisation;
-
-  /// No description provided for @personalStyleScoreEnergy.
-  ///
-  /// In en, this message translates to:
-  /// **'Energy'**
-  String get personalStyleScoreEnergy;
-
   /// No description provided for @personalStyleResultHeading.
   ///
   /// In en, this message translates to:

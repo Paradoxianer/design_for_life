@@ -51,8 +51,6 @@ class _PersonalStyleScreenState extends State<PersonalStyleScreen> {
           'taskLabel': l10n.personalStyleAxisTask,
           'structuredLabel': l10n.personalStyleAxisStructured,
           'unstructuredLabel': l10n.personalStyleAxisUnstructured,
-          'organisationAxisLabel': l10n.personalStyleScoreOrganisation,
-          'energyAxisLabel': l10n.personalStyleScoreEnergy,
           if (profile != null) 'profileTitle': profile.title,
           if (profile != null) 'profileTraits': profile.traits,
         },

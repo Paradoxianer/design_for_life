@@ -54,7 +54,7 @@ class PersonalStyleMatrix extends StatelessWidget {
     this.constrainWidth = true,
   });
 
-  static const double _rowHeaderWidth = 96;
+  static const double _rowHeaderWidth = 120;
   static const double _tickStripWidth = 8;
   static const double _maxWidth = 340;
 
@@ -85,8 +85,8 @@ class PersonalStyleMatrix extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
-                    _AxisHeader(structuredLabel),
-                    _AxisHeader(unstructuredLabel),
+                    _RowAxisHeader(structuredLabel),
+                    _RowAxisHeader(unstructuredLabel),
                   ],
                 ),
               ),
@@ -189,59 +189,6 @@ class PersonalStyleMatrix extends StatelessWidget {
   }
 }
 
-/// Präzise Zahl je Achse (z.B. "62% Unstrukturiert") als Textzusammenfassung
-/// zusätzlich zu den Markierungen direkt im Diagramm - wird sowohl in der
-/// App-Ansicht als auch im geteilten Bild genutzt, daher ein eigenes,
-/// öffentliches Widget statt einer privaten Detail-Klasse (analog zu
-/// LifeTreeGraphWidget).
-class PersonalStyleAxisScoreSummary extends StatelessWidget {
-  final double organisationFraction;
-  final double energyFraction;
-  final String organisationAxisLabel;
-  final String energyAxisLabel;
-  final String structuredLabel;
-  final String unstructuredLabel;
-  final String peopleLabel;
-  final String taskLabel;
-
-  const PersonalStyleAxisScoreSummary({
-    super.key,
-    required this.organisationFraction,
-    required this.energyFraction,
-    required this.organisationAxisLabel,
-    required this.energyAxisLabel,
-    required this.structuredLabel,
-    required this.unstructuredLabel,
-    required this.peopleLabel,
-    required this.taskLabel,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    final organisationShare = dominantPoleShare(organisationFraction);
-    final energyShare = dominantPoleShare(energyFraction);
-    final style = theme.textTheme.bodyMedium?.copyWith(fontWeight: FontWeight.w600);
-
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          '$organisationAxisLabel: ${organisationShare.percent}% '
-          '${organisationShare.towardHighPole ? unstructuredLabel : structuredLabel}',
-          style: style,
-        ),
-        const SizedBox(height: 4),
-        Text(
-          '$energyAxisLabel: ${energyShare.percent}% '
-          '${energyShare.towardHighPole ? taskLabel : peopleLabel}',
-          style: style,
-        ),
-      ],
-    );
-  }
-}
-
 class _AxisHeader extends StatelessWidget {
   final String label;
 
@@ -254,6 +201,26 @@ class _AxisHeader extends StatelessWidget {
       label,
       textAlign: TextAlign.center,
       style: theme.textTheme.labelLarge?.copyWith(fontWeight: FontWeight.bold),
+    );
+  }
+}
+
+/// Variante für die schmalere seitliche Zeilenbeschriftung (Strukturiert/
+/// Unstrukturiert): kleinere Schrift und rechtsbündig statt zentriert, damit
+/// auch längere Wörter im begrenzten Platz sauber (ggf. zweizeilig) umbrechen
+/// statt abgeschnitten oder gequetscht zu wirken.
+class _RowAxisHeader extends StatelessWidget {
+  final String label;
+
+  const _RowAxisHeader(this.label);
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    return Text(
+      label,
+      textAlign: TextAlign.right,
+      style: theme.textTheme.labelMedium?.copyWith(fontWeight: FontWeight.bold),
     );
   }
 }
