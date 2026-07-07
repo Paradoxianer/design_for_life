@@ -125,7 +125,7 @@ class _ValuesDefinitionsViewState extends State<ValuesDefinitionsView> {
                                         index: index,
                                         child: const Padding(
                                           padding: EdgeInsets.only(right: 8),
-                                          child: Icon(Icons.drag_handle, color: Colors.grey, size: 24),
+                                          child: Icon(Icons.drag_indicator, color: Colors.grey, size: 24),
                                         ),
                                       ),
                                       Expanded(

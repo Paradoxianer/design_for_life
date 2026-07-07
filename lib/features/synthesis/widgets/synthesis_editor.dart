@@ -182,6 +182,11 @@ class _ConnectionsColumn extends StatelessWidget {
           ReorderableListView(
             shrinkWrap: true,
             physics: const NeverScrollableScrollPhysics(),
+            // Ohne dieses Flag hängt Flutter zusätzlich zum eigenen, bereits
+            // vorhandenen Handle vorne (Icons.drag_indicator) automatisch
+            // noch ein zweites Drag-Handle hinten an - App-weit einheitlich
+            // nur ein Handle vorne (#60).
+            buildDefaultDragHandles: false,
             onReorder: (oldIndex, newIndex) {
               context.read<SynthesisBloc>().add(
                     MoveSynthesisCard(
@@ -193,11 +198,12 @@ class _ConnectionsColumn extends StatelessWidget {
                   );
             },
             children: [
-              for (final card in cards)
+              for (int i = 0; i < cards.length; i++)
                 _ConnectionCard(
-                  key: ValueKey(card.id),
+                  key: ValueKey(cards[i].id),
+                  index: i,
                   columnKey: columnKey,
-                  card: card,
+                  card: cards[i],
                   color: color,
                 ),
             ],
@@ -209,12 +215,14 @@ class _ConnectionsColumn extends StatelessWidget {
 }
 
 class _ConnectionCard extends StatelessWidget {
+  final int index;
   final String columnKey;
   final SynthesisCard card;
   final Color color;
 
   const _ConnectionCard({
     super.key,
+    required this.index,
     required this.columnKey,
     required this.card,
     required this.color,
@@ -254,7 +262,10 @@ class _ConnectionCard extends StatelessWidget {
       ),
       child: ListTile(
         dense: true,
-        leading: Icon(Icons.drag_indicator, color: theme.colorScheme.outline),
+        leading: ReorderableDragStartListener(
+          index: index,
+          child: Icon(Icons.drag_indicator, color: theme.colorScheme.outline),
+        ),
         title: Text(card.text, style: theme.textTheme.bodyMedium),
         subtitle: Row(
           children: [
