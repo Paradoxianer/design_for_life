@@ -218,9 +218,22 @@ class ExportContentBuilder {
     // durcheinandergewürfelten Baum im Export führte. Stattdessen die
     // umfangreichste Liste wählen - das ist praktisch immer der echte,
     // vollständige Baum, während Karteileichen nur wenige Knoten enthalten.
-    final nodes = state.treeNodes.values.fold<List<LifeTreeNodeData>>(
+    String? bestSessionId;
+    final rawNodes = state.treeNodes.entries.fold<List<LifeTreeNodeData>>(
       const [],
-      (best, current) => current.length > best.length ? current : best,
+      (best, entry) {
+        if (entry.value.length > best.length) {
+          bestSessionId = entry.key;
+          return entry.value;
+        }
+        return best;
+      },
+    );
+    // Eingeklappte Teilbäume bleiben auch im Export verborgen (#55), z.B. um
+    // persönliche Äste nicht in ein geteiltes PDF gelangen zu lassen.
+    final nodes = visibleLifeTreeNodes(
+      rawNodes,
+      state.collapsedNodeIds[bestSessionId] ?? const {},
     );
     if (takeaways.isEmpty && entries.isEmpty && nodes.isEmpty) return null;
 

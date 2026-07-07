@@ -5,11 +5,17 @@ import '../models/life_tree_node_data.dart';
 
 class LifeTreeState extends EntryListState {
   final Map<String, List<LifeTreeNodeData>> treeNodes;
+  // Eingeklappte Teilbäume pro Session (#55) - bewusst im (hydrated)
+  // Bloc-State statt nur lokal im Editor-Widget, damit derselbe Zustand auch
+  // in der Ergebnisansicht und beim Teilen/Export gilt (z.B. um persönliche
+  // Äste dort zu verbergen) und über App-Neustarts hinweg erhalten bleibt.
+  final Map<String, Set<String>> collapsedNodeIds;
 
   const LifeTreeState({
     super.entries = const {},
     super.takeaways = const {},
     this.treeNodes = const {},
+    this.collapsedNodeIds = const {},
   });
 
   @override
@@ -26,11 +32,13 @@ class LifeTreeState extends EntryListState {
     Map<String, List<DflEntry>>? entries,
     Map<String, List<String>>? takeaways,
     Map<String, List<LifeTreeNodeData>>? treeNodes,
+    Map<String, Set<String>>? collapsedNodeIds,
   }) {
     return LifeTreeState(
       entries: entries ?? this.entries,
       takeaways: takeaways ?? this.takeaways,
       treeNodes: treeNodes ?? this.treeNodes,
+      collapsedNodeIds: collapsedNodeIds ?? this.collapsedNodeIds,
     );
   }
 
@@ -38,6 +46,7 @@ class LifeTreeState extends EntryListState {
   Map<String, dynamic> toJson() {
     final json = super.toJson();
     json['treeNodes'] = treeNodes.map((k, v) => MapEntry(k, v.map((e) => e.toJson()).toList()));
+    json['collapsedNodeIds'] = collapsedNodeIds.map((k, v) => MapEntry(k, v.toList()));
     return json;
   }
 
@@ -46,16 +55,20 @@ class LifeTreeState extends EntryListState {
     final treeNodes = (json['treeNodes'] as Map<String, dynamic>?)?.map(
           (k, v) => MapEntry(k, (v as List).map((e) => LifeTreeNodeData.fromJson(e)).toList()),
         ) ?? {};
-    
+    final collapsedNodeIds = (json['collapsedNodeIds'] as Map<String, dynamic>?)?.map(
+          (k, v) => MapEntry(k, (v as List).cast<String>().toSet()),
+        ) ?? {};
+
     return LifeTreeState(
       entries: base.entries,
       takeaways: base.takeaways,
       treeNodes: treeNodes,
+      collapsedNodeIds: collapsedNodeIds,
     );
   }
 
   @override
-  List<Object?> get props => [...super.props, treeNodes];
+  List<Object?> get props => [...super.props, treeNodes, collapsedNodeIds];
 }
 
 abstract class LifeTreeEvent extends EntryListEvent {
@@ -97,12 +110,21 @@ class DeleteTreeNode extends LifeTreeEvent {
   List<Object?> get props => [sessionId, nodeId];
 }
 
+class ToggleTreeNodeCollapsed extends LifeTreeEvent {
+  final String sessionId;
+  final String nodeId;
+  const ToggleTreeNodeCollapsed(this.sessionId, this.nodeId);
+  @override
+  List<Object?> get props => [sessionId, nodeId];
+}
+
 class LifeTreeBloc extends EntryListBloc {
   LifeTreeBloc() : super(const LifeTreeState()) {
     on<AddTreeNode>(_onAddTreeNode);
     on<UpdateTreeNodeText>(_onUpdateTreeNodeText);
     on<UpdateTreeNodeNote>(_onUpdateTreeNodeNote);
     on<DeleteTreeNode>(_onDeleteTreeNode);
+    on<ToggleTreeNodeCollapsed>(_onToggleTreeNodeCollapsed);
   }
 
   @override
@@ -151,6 +173,16 @@ class LifeTreeBloc extends EntryListBloc {
     final newMap = Map<String, List<LifeTreeNodeData>>.from(state.treeNodes);
     newMap[event.sessionId] = nodes;
     emit(state.copyWith(treeNodes: newMap));
+  }
+
+  void _onToggleTreeNodeCollapsed(ToggleTreeNodeCollapsed event, Emitter<EntryListState> emit) {
+    final collapsed = Set<String>.from(state.collapsedNodeIds[event.sessionId] ?? const {});
+    if (!collapsed.remove(event.nodeId)) {
+      collapsed.add(event.nodeId);
+    }
+    final newMap = Map<String, Set<String>>.from(state.collapsedNodeIds);
+    newMap[event.sessionId] = collapsed;
+    emit(state.copyWith(collapsedNodeIds: newMap));
   }
 
   @override

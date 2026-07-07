@@ -95,19 +95,27 @@ class _DflEntryWidgetState extends State<DflEntryWidget> {
                 Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
+                    // constraints/padding waren zuvor auf BoxConstraints()
+                    // (praktisch nur die 20px große Icon-Fläche selbst)
+                    // reduziert - auf Android-Geräten führte das zu
+                    // unzuverlässigem Tippen, da der Tap-Bereich weit unter
+                    // der empfohlenen Mindestgröße lag. 40x40 ist ein
+                    // Kompromiss: deutlich zuverlässiger, ohne die Zeilenhöhe
+                    // (durch IntrinsicHeight an das Textfeld gekoppelt) zu
+                    // stark aufzublähen.
                     if (widget.onDelete != null)
                       IconButton(
                         icon: const Icon(Icons.close, size: 20, color: Colors.black54),
                         onPressed: widget.onDelete,
                         padding: EdgeInsets.zero,
-                        constraints: const BoxConstraints(),
+                        constraints: const BoxConstraints(minWidth: 40, minHeight: 40),
                         visualDensity: VisualDensity.compact,
                       ),
                     IconButton(
                       icon: const Icon(Icons.add_a_photo_outlined, size: 22),
                       onPressed: () => _pickImage(context),
                       padding: EdgeInsets.zero,
-                      constraints: const BoxConstraints(),
+                      constraints: const BoxConstraints(minWidth: 40, minHeight: 40),
                       visualDensity: VisualDensity.compact,
                     ),
                   ],
@@ -127,8 +135,12 @@ class _DflEntryWidgetState extends State<DflEntryWidget> {
                     top: 8,
                     child: GestureDetector(
                       onTap: () => widget.onImageChanged(null),
+                      // Frei über dem Bild positioniert (kein Einfluss auf
+                      // Zeilenhöhen o.ä.), daher hier ohne Kompromiss auf einen
+                      // zuverlässig tippbaren Bereich vergrößert (#Android-
+                      // Tap-Zuverlässigkeit).
                       child: Container(
-                        padding: const EdgeInsets.all(4),
+                        padding: const EdgeInsets.all(10),
                         decoration: const BoxDecoration(color: Colors.black54, shape: BoxShape.circle),
                         child: const Icon(Icons.close, color: Colors.white, size: 16),
                       ),

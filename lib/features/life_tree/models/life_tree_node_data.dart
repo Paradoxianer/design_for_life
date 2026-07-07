@@ -47,3 +47,28 @@ class LifeTreeNodeData extends Equatable {
   @override
   List<Object?> get props => [id, text, note, parentId];
 }
+
+/// Filtert Knoten heraus, deren Elternkette (irgendwo weiter oben) einen
+/// eingeklappten Knoten enthält (#55). Gemeinsam genutzt vom Editor, der
+/// Ergebnisansicht und dem PDF-Export, damit ein eingeklappter Teilbaum
+/// überall gleichermaßen verborgen bleibt (z.B. um persönliche Äste vor dem
+/// Teilen zu verbergen), statt nur lokal im Editor sichtbar zu sein.
+List<LifeTreeNodeData> visibleLifeTreeNodes(
+  List<LifeTreeNodeData> nodes,
+  Set<String> collapsedNodeIds,
+) {
+  if (collapsedNodeIds.isEmpty) return nodes;
+  final byId = {for (final n in nodes) n.id: n};
+  bool isHidden(LifeTreeNodeData node) {
+    var current = node;
+    while (current.parentId != null) {
+      if (collapsedNodeIds.contains(current.parentId)) return true;
+      final parent = byId[current.parentId];
+      if (parent == null) break;
+      current = parent;
+    }
+    return false;
+  }
+
+  return nodes.where((n) => !isHidden(n)).toList();
+}
