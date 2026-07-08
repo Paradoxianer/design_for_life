@@ -26,6 +26,22 @@
 	<string>$(FLUTTER_BUILD_NUMBER)</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<!-- Deep-link entry point (#49): dfl://open?modules=...
+	     No Associated Domains entitlement (Universal Links) yet - that needs
+	     a real bundle id + Apple Team ID first (currently the
+	     com.example.designForLife placeholder), see #37. The custom scheme
+	     below needs no entitlement/verification and works immediately. -->
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLName</key>
+			<string>de.dfl.deeplink</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>dfl</string>
+			</array>
+		</dict>
+	</array>
 	<key>NSCameraUsageDescription</key>
 	<string>Diese App benötigt Zugriff auf die Kamera, um Fotos für deine Einträge aufzunehmen.</string>
 	<key>NSPhotoLibraryUsageDescription</key>

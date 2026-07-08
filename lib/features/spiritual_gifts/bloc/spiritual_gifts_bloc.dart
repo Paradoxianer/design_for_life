@@ -70,6 +70,21 @@ class SpiritualGiftsBloc extends HydratedBloc<SpiritualGiftsEvent, SpiritualGift
       emit(state.copyWith(takeaways: newTakeaways));
     });
 
+    on<SubmitReferenceAssessment>((event, emit) {
+      final newReferenceAnswers = Map<String, Map<String, int>>.from(state.referenceAnswers);
+      newReferenceAnswers[event.assessmentId] = event.answers;
+
+      final newReferenceLabels = Map<String, String>.from(state.referenceLabels);
+      if (event.label != null && event.label!.isNotEmpty) {
+        newReferenceLabels[event.assessmentId] = event.label!;
+      }
+
+      emit(state.copyWith(
+        referenceAnswers: newReferenceAnswers,
+        referenceLabels: newReferenceLabels,
+      ));
+    });
+
     on<ResetTest>((event, emit) {
       final allQuestionIds = state.gifts
           .expand((gift) => gift.questions.map((q) => q.id))

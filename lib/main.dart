@@ -6,7 +6,9 @@ import 'package:path_provider/path_provider.dart';
 import 'package:go_router/go_router.dart';
 import 'package:design_for_life/l10n/generated/app_localizations.dart';
 
+import 'core/services/deep_link_service.dart';
 import 'core/theme/app_theme.dart';
+import 'features/timeline/bloc/timeline_module_filter_bloc.dart';
 import 'features/timeline/screens/timeline_screen.dart';
 import 'features/notes/screens/notes_screen.dart';
 import 'features/notes/bloc/notes_bloc.dart';
@@ -14,9 +16,12 @@ import 'features/listening_prayer/bloc/listening_prayer_bloc.dart';
 import 'features/listening_prayer/screens/listening_prayer_screen.dart';
 import 'features/goals/bloc/goals_bloc.dart';
 import 'features/goals/screens/goals_screen.dart';
+import 'features/spiritual_gifts/bloc/gift_reference_answer_bloc.dart';
 import 'features/spiritual_gifts/bloc/spiritual_gifts_bloc.dart';
 import 'features/spiritual_gifts/repositories/gifts_repository.dart';
+import 'features/spiritual_gifts/screens/gift_reference_screen.dart';
 import 'features/spiritual_gifts/screens/spiritual_gifts_screen.dart';
+import 'features/spiritual_gifts/services/gift_reference_link_service.dart';
 import 'features/values/bloc/values_bloc.dart';
 import 'features/values/screens/values_assessment_screen.dart';
 import 'features/feedback/bloc/feedback_bloc.dart';
@@ -57,6 +62,7 @@ void main() async {
         BlocProvider(
           create: (context) => SpiritualGiftsBloc(repository: giftsRepository),
         ),
+        BlocProvider(create: (context) => GiftReferenceAnswerBloc()),
         BlocProvider(create: (context) => ValuesBloc()),
         BlocProvider(
           create: (context) => FeedbackBloc(repository: feedbackQuestionsRepository),
@@ -68,20 +74,27 @@ void main() async {
         BlocProvider(create: (context) => LifeTreeBloc()),
         BlocProvider(create: (context) => SynthesisBloc()),
         BlocProvider(create: (context) => GroupPhotoBloc()),
+        BlocProvider(create: (context) => TimelineModuleFilterBloc()),
       ],
       child: const DflApp(),
     ),
   );
 }
 
-class DflApp extends StatelessWidget {
+class DflApp extends StatefulWidget {
   final String? forcedLocale;
 
   const DflApp({super.key, this.forcedLocale});
 
   @override
-  Widget build(BuildContext context) {
-    final GoRouter router = GoRouter(
+  State<DflApp> createState() => _DflAppState();
+}
+
+class _DflAppState extends State<DflApp> {
+  // Built once (not per build()) so the deep-link listener below can push
+  // navigations into the same router instance a link arrives while the app
+  // is already running (#49).
+  late final GoRouter _router = GoRouter(
       initialLocation: '/',
       routes: [
         GoRoute(
@@ -128,6 +141,13 @@ class DflApp extends StatelessWidget {
               title: title,
               initialEditMode: mode != 'result',
             );
+          },
+        ),
+        GoRoute(
+          path: '/gift-reference/:assessmentId',
+          builder: (context, state) {
+            final assessmentId = state.pathParameters['assessmentId']!;
+            return GiftReferenceScreen(assessmentId: assessmentId);
           },
         ),
         GoRoute(
@@ -246,11 +266,67 @@ class DflApp extends StatelessWidget {
       ],
     );
 
+  DeepLinkService? _deepLinkService;
+
+  @override
+  void initState() {
+    super.initState();
+    _initDeepLinks();
+  }
+
+  Future<void> _initDeepLinks() async {
+    final service = DeepLinkService();
+    _deepLinkService = service;
+
+    final initialAction = await service.getInitialAction();
+    if (!mounted) return;
+    if (initialAction != null) _handleDeepLinkAction(initialAction);
+
+    service.listen(_handleDeepLinkAction);
+  }
+
+  void _handleDeepLinkAction(DeepLinkAction action) {
+    switch (action) {
+      case ShowOnlyModulesAction(:final sessionIds, :final eventDate, :final eventLocation):
+        context.read<TimelineModuleFilterBloc>().add(
+              SetAllowedModules(sessionIds, eventDate: eventDate, eventLocation: eventLocation),
+            );
+        _router.go('/');
+      case GiftReferenceInviteAction(:final assessmentId):
+        _router.go('/gift-reference/$assessmentId');
+      case GiftReferenceResultAction(:final assessmentId, :final answersPayload, :final label):
+        _importGiftReferenceResult(assessmentId, answersPayload, label);
+    }
+  }
+
+  // Question IDs are stable across locales (see assets/data/gifts_*.json),
+  // so which locale we load here doesn't affect decoding correctness - 'de'
+  // is always available as GiftsRepository's own fallback anyway.
+  Future<void> _importGiftReferenceResult(String assessmentId, String answersPayload, String? label) async {
+    final gifts = await GiftsRepository().loadGifts('de');
+    final questionOrder = SpiritualGiftsState(gifts: gifts).getReferenceQuestionOrder();
+    final answers = GiftReferenceLinkService.decodeAnswers(answersPayload, questionOrder);
+    if (!mounted || answers == null) return;
+
+    context.read<SpiritualGiftsBloc>().add(
+          SubmitReferenceAssessment(assessmentId: assessmentId, answers: answers, label: label),
+        );
+    _router.go('/spiritual-gifts/session_5?mode=result');
+  }
+
+  @override
+  void dispose() {
+    _deepLinkService?.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return MaterialApp.router(
       title: 'DFL App',
       theme: AppTheme.lightTheme,
-      routerConfig: router,
-      locale: forcedLocale == null ? null : Locale(forcedLocale!),
+      routerConfig: _router,
+      locale: widget.forcedLocale == null ? null : Locale(widget.forcedLocale!),
       debugShowCheckedModeBanner: false,
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,

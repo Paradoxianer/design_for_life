@@ -1,20 +1,81 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:share_plus/share_plus.dart';
 import 'package:design_for_life/l10n/generated/app_localizations.dart';
 import '../../../core/services/bible_reference_service.dart';
+import '../../../core/services/share_service.dart';
 import '../bloc/spiritual_gifts_bloc.dart';
 import '../models/spiritual_gift.dart';
+import '../services/gift_reference_link_service.dart';
 
-class SpiritualGiftsResult extends StatelessWidget {
+class SpiritualGiftsResult extends StatefulWidget {
   const SpiritualGiftsResult({super.key});
+
+  @override
+  State<SpiritualGiftsResult> createState() => _SpiritualGiftsResultState();
+}
+
+class _SpiritualGiftsResultState extends State<SpiritualGiftsResult> {
+  // Nur relevant, sobald mind. eine Referenz importiert wurde (#42) - vorher
+  // ist Gesamt==Eigene und die Auswahl wäre wirkungslos.
+  GiftScoreMetric _sortMetric = GiftScoreMetric.blended;
+
+  void _inviteReference(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
+    final assessmentId = 'ref_${DateTime.now().microsecondsSinceEpoch}';
+    final link = GiftReferenceLinkService.buildInviteLink(assessmentId);
+    final shareText = l10n.giftsReferenceInviteShareText(link);
+
+    // Als Dialog statt direkt Share.share(...), damit der Link auch sichtbar
+    // ist, wenn kein natives Share-Sheet zur Verfügung steht (z.B. beim
+    // Testen via "flutter run -d chrome") - Kopieren funktioniert überall.
+    showDialog<void>(
+      context: context,
+      builder: (dialogContext) => AlertDialog(
+        title: Text(l10n.giftsReferenceInviteButton),
+        content: Container(
+          padding: const EdgeInsets.all(12),
+          decoration: BoxDecoration(
+            color: Theme.of(dialogContext).colorScheme.surfaceContainerHighest,
+            borderRadius: BorderRadius.circular(8),
+          ),
+          child: SelectableText(link, style: Theme.of(dialogContext).textTheme.bodySmall),
+        ),
+        actions: [
+          TextButton.icon(
+            onPressed: () async {
+              await ShareService.copyToClipboard(shareText);
+              if (!dialogContext.mounted) return;
+              ScaffoldMessenger.of(
+                dialogContext,
+              ).showSnackBar(SnackBar(content: Text(l10n.giftsReferenceLinkCopied)));
+            },
+            icon: const Icon(Icons.copy_outlined, size: 18),
+            label: Text(l10n.giftsReferenceCopyLink),
+          ),
+          TextButton.icon(
+            onPressed: () => Share.share(shareText),
+            icon: const Icon(Icons.share_outlined, size: 18),
+            label: Text(l10n.share),
+          ),
+          TextButton(
+            onPressed: () => Navigator.of(dialogContext).pop(),
+            child: Text(l10n.finish),
+          ),
+        ],
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final l10n = AppLocalizations.of(context);
 
     return BlocBuilder<SpiritualGiftsBloc, SpiritualGiftsState>(
       builder: (context, state) {
-        final rankedGifts = state.getRankedGifts();
+        final hasReferences = state.hasReferences;
+        final rankedGifts = hasReferences ? state.getRankedGiftsByMetric(_sortMetric) : state.getRankedGifts();
         final scores = state.getScoresPerGift();
         final maxPossibleScore = 35; // 7 Fragen * 5 Punkte
 
@@ -24,16 +85,48 @@ class SpiritualGiftsResult extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                AppLocalizations.of(context).giftsRankingTitle,
+                l10n.giftsRankingTitle,
                 style: theme.textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold),
               ),
               const SizedBox(height: 8),
               Text(
-                AppLocalizations.of(context).giftsRankingGuidance,
+                l10n.giftsRankingGuidance,
                 style: theme.textTheme.bodyMedium?.copyWith(color: theme.colorScheme.onSurfaceVariant),
               ),
+              const SizedBox(height: 12),
+              // Bewusst in der bereits etablierten "Highlight"-Akzentfarbe
+              // (tertiary/sunlightGold, sonst z.B. für Rang 1 verwendet)
+              // statt einem schlichten Outline-Button - diese Aktion soll
+              // auffallen, nicht wie eine Nebensache wirken.
+              FilledButton.icon(
+                onPressed: () => _inviteReference(context),
+                style: FilledButton.styleFrom(
+                  backgroundColor: theme.colorScheme.tertiary,
+                  foregroundColor: Colors.black87,
+                  padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 14),
+                ),
+                icon: const Icon(Icons.person_add_alt_1, size: 20),
+                label: Text(
+                  l10n.giftsReferenceInviteButton,
+                  style: const TextStyle(fontWeight: FontWeight.bold),
+                ),
+              ),
+              if (hasReferences) ...[
+                const SizedBox(height: 16),
+                Text(l10n.giftsSortBy, style: theme.textTheme.labelMedium),
+                const SizedBox(height: 4),
+                SegmentedButton<GiftScoreMetric>(
+                  segments: [
+                    ButtonSegment(value: GiftScoreMetric.blended, label: Text(l10n.giftsColumnTotal)),
+                    ButtonSegment(value: GiftScoreMetric.self, label: Text(l10n.giftsColumnSelf)),
+                    ButtonSegment(value: GiftScoreMetric.reference, label: Text(l10n.giftsColumnReference)),
+                  ],
+                  selected: {_sortMetric},
+                  onSelectionChanged: (selection) => setState(() => _sortMetric = selection.first),
+                ),
+              ],
               const SizedBox(height: 24),
-              
+
               ...rankedGifts.asMap().entries.expand((entry) {
                 final index = entry.key;
                 final gift = entry.value;
@@ -47,12 +140,12 @@ class SpiritualGiftsResult extends StatelessWidget {
                   if (index == 3) ...[
                     const SizedBox(height: 20),
                     Text(
-                      AppLocalizations.of(context).giftsDormantHeading,
+                      l10n.giftsDormantHeading,
                       style: theme.textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
                     ),
                     const SizedBox(height: 4),
                     Text(
-                      AppLocalizations.of(context).giftsDormantGuidance,
+                      l10n.giftsDormantGuidance,
                       style: theme.textTheme.bodySmall?.copyWith(color: theme.colorScheme.onSurfaceVariant),
                     ),
                     const SizedBox(height: 12),
@@ -64,7 +157,7 @@ class SpiritualGiftsResult extends StatelessWidget {
                   if (index == 6) ...[
                     const SizedBox(height: 20),
                     Text(
-                      AppLocalizations.of(context).giftsOtherHeading,
+                      l10n.giftsOtherHeading,
                       style: theme.textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
                     ),
                     const SizedBox(height: 12),
@@ -75,6 +168,10 @@ class SpiritualGiftsResult extends StatelessWidget {
                     rank: index + 1,
                     isTop3: isTop3,
                     maxScore: maxPossibleScore,
+                    hasReferences: hasReferences,
+                    selfPercent: state.getSelfScorePercent(gift),
+                    referencePercent: state.getReferenceMeanPercent(gift),
+                    blendedPercent: state.getBlendedScorePercent(gift),
                   ),
                 ];
               }),
@@ -93,6 +190,10 @@ class _GiftResultCard extends StatelessWidget {
   final int rank;
   final bool isTop3;
   final int maxScore;
+  final bool hasReferences;
+  final double selfPercent;
+  final double? referencePercent;
+  final double blendedPercent;
 
   const _GiftResultCard({
     required this.gift,
@@ -100,12 +201,17 @@ class _GiftResultCard extends StatelessWidget {
     required this.rank,
     required this.isTop3,
     required this.maxScore,
+    required this.hasReferences,
+    required this.selfPercent,
+    required this.referencePercent,
+    required this.blendedPercent,
   });
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final color = isTop3 
+    final l10n = AppLocalizations.of(context);
+    final color = isTop3
         ? (rank == 1 ? const Color(0xFFFFD700) : (rank == 2 ? const Color(0xFFC0C0C0) : const Color(0xFFCD7F32)))
         : theme.colorScheme.primary.withValues(alpha: 0.1);
 
@@ -151,19 +257,39 @@ class _GiftResultCard extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    AppLocalizations.of(context).giftsScorePoints(score),
+                    hasReferences ? '${blendedPercent.round()}%' : l10n.giftsScorePoints(score),
                     style: theme.textTheme.bodySmall?.copyWith(fontWeight: FontWeight.bold),
                   ),
                 ],
               ),
               const SizedBox(height: 8),
               LinearProgressIndicator(
-                value: (score / maxScore).clamp(0.0, 1.0),
+                value: hasReferences ? (blendedPercent / 100).clamp(0.0, 1.0) : (score / maxScore).clamp(0.0, 1.0),
                 backgroundColor: theme.colorScheme.surfaceContainerHighest,
                 color: isTop3 ? color : theme.colorScheme.primary,
                 minHeight: 6,
                 borderRadius: BorderRadius.circular(3),
               ),
+              // Eigene/Fremd-Aufschlüsselung nur sobald mind. eine Referenz
+              // importiert wurde (#42) - vorher wäre sie redundant, da
+              // Gesamt==Eigene ist.
+              if (hasReferences) ...[
+                const SizedBox(height: 6),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Text(
+                      '${l10n.giftsColumnSelf}: ${selfPercent.round()}%',
+                      style: theme.textTheme.labelSmall?.copyWith(color: theme.colorScheme.onSurfaceVariant),
+                    ),
+                    const SizedBox(width: 10),
+                    Text(
+                      '${l10n.giftsColumnReference}: ${(referencePercent ?? 0).round()}%',
+                      style: theme.textTheme.labelSmall?.copyWith(color: theme.colorScheme.onSurfaceVariant),
+                    ),
+                  ],
+                ),
+              ],
               // Kurzbeschreibung direkt sichtbar nur für die drei Hauptgaben
               // (#59) - für die restlichen bleibt es beim Antippen für Details.
               if (isTop3 && gift.description.isNotEmpty) ...[

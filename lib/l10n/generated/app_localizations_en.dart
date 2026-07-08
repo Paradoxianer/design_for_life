@@ -308,6 +308,71 @@ class AppLocalizationsEn extends AppLocalizations {
   String get giftsFinishAnyway => 'Finish anyway';
 
   @override
+  String get giftsReferenceInviteButton => 'Invite a reference';
+
+  @override
+  String giftsReferenceInviteShareText(String link) {
+    return 'I\'d love it if you could assess me for my spiritual gifts reflection: $link';
+  }
+
+  @override
+  String get giftsReferenceScreenTitle => 'Reference Assessment';
+
+  @override
+  String get giftsReferenceIntro =>
+      'You\'ve been asked to assess someone for a spiritual gifts reflection. Please answer the following questions as honestly as possible - this is about your impression of that person, not about yourself.';
+
+  @override
+  String get giftsReferenceNameLabel => 'What should we call you? (optional)';
+
+  @override
+  String get giftsReferenceNameHint => 'Your name';
+
+  @override
+  String get giftsReferenceSubmitButton => 'Send result back';
+
+  @override
+  String giftsReferenceShareText(String link) {
+    return 'Here\'s my feedback: $link';
+  }
+
+  @override
+  String get giftsReferenceDoneTitle => 'Thank you!';
+
+  @override
+  String get giftsReferenceDoneMessage =>
+      'Send your result back to the person who invited you using the button below.';
+
+  @override
+  String get giftsReferenceCopyLink => 'Copy link';
+
+  @override
+  String get giftsReferenceLinkCopied => 'Link copied to clipboard';
+
+  @override
+  String get giftsReferenceInvalidLink =>
+      'This link is invalid or no longer up to date.';
+
+  @override
+  String get giftsReferenceLoadFailed => 'The questions could not be loaded.';
+
+  @override
+  String get giftsReferenceImportedMessage =>
+      'New reference assessment imported!';
+
+  @override
+  String get giftsColumnSelf => 'Self';
+
+  @override
+  String get giftsColumnReference => 'Reference';
+
+  @override
+  String get giftsColumnTotal => 'Total';
+
+  @override
+  String get giftsSortBy => 'Sort by';
+
+  @override
   String get giftsShareCardLabel => 'Top 3 Gifts (Image)';
 
   @override
