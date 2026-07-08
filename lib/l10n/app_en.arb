@@ -135,6 +135,33 @@
   },
   "giftsContinue": "Continue filling out",
   "giftsFinishAnyway": "Finish anyway",
+  "giftsReferenceInviteButton": "Invite a reference",
+  "giftsReferenceInviteShareText": "I'd love it if you could assess me for my spiritual gifts reflection: {link}",
+  "@giftsReferenceInviteShareText": {
+    "placeholders": {
+      "link": { "type": "String" }
+    }
+  },
+  "giftsReferenceScreenTitle": "Reference Assessment",
+  "giftsReferenceIntro": "You've been asked to assess someone for a spiritual gifts reflection. Please answer the following questions as honestly as possible - this is about your impression of that person, not about yourself.",
+  "giftsReferenceNameLabel": "What should we call you? (optional)",
+  "giftsReferenceNameHint": "Your name",
+  "giftsReferenceSubmitButton": "Send result back",
+  "giftsReferenceShareText": "Here's my feedback: {link}",
+  "@giftsReferenceShareText": {
+    "placeholders": {
+      "link": { "type": "String" }
+    }
+  },
+  "giftsReferenceDoneTitle": "Thank you!",
+  "giftsReferenceDoneMessage": "Send your result back to the person who invited you using the button below.",
+  "giftsReferenceInvalidLink": "This link is invalid or no longer up to date.",
+  "giftsReferenceLoadFailed": "The questions could not be loaded.",
+  "giftsReferenceImportedMessage": "New reference assessment imported!",
+  "giftsColumnSelf": "Self",
+  "giftsColumnReference": "Reference",
+  "giftsColumnTotal": "Total",
+  "giftsSortBy": "Sort by",
   "giftsShareCardLabel": "Top 3 Gifts (Image)",
   "valuesShareCardLabel": "Top Values (Image)",
   "goalsShareCardLabel": "My Goals (Image)",

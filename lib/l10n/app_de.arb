@@ -135,6 +135,33 @@
   },
   "giftsContinue": "Weiter ausfüllen",
   "giftsFinishAnyway": "Trotzdem beenden",
+  "giftsReferenceInviteButton": "Referenz einladen",
+  "giftsReferenceInviteShareText": "Ich würde mich freuen, wenn du mich bei meiner Stärken-Reflexion (Spiritual Gifts) einschätzt: {link}",
+  "@giftsReferenceInviteShareText": {
+    "placeholders": {
+      "link": { "type": "String" }
+    }
+  },
+  "giftsReferenceScreenTitle": "Referenz-Einschätzung",
+  "giftsReferenceIntro": "Du wurdest gebeten, jemanden bei einer Stärken-Reflexion einzuschätzen. Bitte beantworte die folgenden Fragen so ehrlich wie möglich - es geht um deinen Eindruck von dieser Person, nicht um dich selbst.",
+  "giftsReferenceNameLabel": "Wie sollen wir dich nennen? (optional)",
+  "giftsReferenceNameHint": "Dein Name",
+  "giftsReferenceSubmitButton": "Ergebnis zurücksenden",
+  "giftsReferenceShareText": "Hier ist meine Rückmeldung: {link}",
+  "@giftsReferenceShareText": {
+    "placeholders": {
+      "link": { "type": "String" }
+    }
+  },
+  "giftsReferenceDoneTitle": "Danke!",
+  "giftsReferenceDoneMessage": "Sende dein Ergebnis über den Button unten an die Person zurück, die dich eingeladen hat.",
+  "giftsReferenceInvalidLink": "Dieser Link ist ungültig oder nicht mehr aktuell.",
+  "giftsReferenceLoadFailed": "Die Fragen konnten nicht geladen werden.",
+  "giftsReferenceImportedMessage": "Neue Referenz-Einschätzung importiert!",
+  "giftsColumnSelf": "Eigene",
+  "giftsColumnReference": "Fremd",
+  "giftsColumnTotal": "Gesamt",
+  "giftsSortBy": "Sortieren nach",
   "giftsShareCardLabel": "Top 3 Gaben (Bild)",
   "valuesShareCardLabel": "Top Werte (Bild)",
   "goalsShareCardLabel": "Meine Ziele (Bild)",

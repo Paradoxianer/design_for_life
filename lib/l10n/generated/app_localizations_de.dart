@@ -311,6 +311,67 @@ class AppLocalizationsDe extends AppLocalizations {
   String get giftsFinishAnyway => 'Trotzdem beenden';
 
   @override
+  String get giftsReferenceInviteButton => 'Referenz einladen';
+
+  @override
+  String giftsReferenceInviteShareText(String link) {
+    return 'Ich würde mich freuen, wenn du mich bei meiner Stärken-Reflexion (Spiritual Gifts) einschätzt: $link';
+  }
+
+  @override
+  String get giftsReferenceScreenTitle => 'Referenz-Einschätzung';
+
+  @override
+  String get giftsReferenceIntro =>
+      'Du wurdest gebeten, jemanden bei einer Stärken-Reflexion einzuschätzen. Bitte beantworte die folgenden Fragen so ehrlich wie möglich - es geht um deinen Eindruck von dieser Person, nicht um dich selbst.';
+
+  @override
+  String get giftsReferenceNameLabel =>
+      'Wie sollen wir dich nennen? (optional)';
+
+  @override
+  String get giftsReferenceNameHint => 'Dein Name';
+
+  @override
+  String get giftsReferenceSubmitButton => 'Ergebnis zurücksenden';
+
+  @override
+  String giftsReferenceShareText(String link) {
+    return 'Hier ist meine Rückmeldung: $link';
+  }
+
+  @override
+  String get giftsReferenceDoneTitle => 'Danke!';
+
+  @override
+  String get giftsReferenceDoneMessage =>
+      'Sende dein Ergebnis über den Button unten an die Person zurück, die dich eingeladen hat.';
+
+  @override
+  String get giftsReferenceInvalidLink =>
+      'Dieser Link ist ungültig oder nicht mehr aktuell.';
+
+  @override
+  String get giftsReferenceLoadFailed =>
+      'Die Fragen konnten nicht geladen werden.';
+
+  @override
+  String get giftsReferenceImportedMessage =>
+      'Neue Referenz-Einschätzung importiert!';
+
+  @override
+  String get giftsColumnSelf => 'Eigene';
+
+  @override
+  String get giftsColumnReference => 'Fremd';
+
+  @override
+  String get giftsColumnTotal => 'Gesamt';
+
+  @override
+  String get giftsSortBy => 'Sortieren nach';
+
+  @override
   String get giftsShareCardLabel => 'Top 3 Gaben (Bild)';
 
   @override

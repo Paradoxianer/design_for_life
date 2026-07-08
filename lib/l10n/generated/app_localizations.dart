@@ -638,6 +638,108 @@ abstract class AppLocalizations {
   /// **'Finish anyway'**
   String get giftsFinishAnyway;
 
+  /// No description provided for @giftsReferenceInviteButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Invite a reference'**
+  String get giftsReferenceInviteButton;
+
+  /// No description provided for @giftsReferenceInviteShareText.
+  ///
+  /// In en, this message translates to:
+  /// **'I\'d love it if you could assess me for my spiritual gifts reflection: {link}'**
+  String giftsReferenceInviteShareText(String link);
+
+  /// No description provided for @giftsReferenceScreenTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Reference Assessment'**
+  String get giftsReferenceScreenTitle;
+
+  /// No description provided for @giftsReferenceIntro.
+  ///
+  /// In en, this message translates to:
+  /// **'You\'ve been asked to assess someone for a spiritual gifts reflection. Please answer the following questions as honestly as possible - this is about your impression of that person, not about yourself.'**
+  String get giftsReferenceIntro;
+
+  /// No description provided for @giftsReferenceNameLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'What should we call you? (optional)'**
+  String get giftsReferenceNameLabel;
+
+  /// No description provided for @giftsReferenceNameHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Your name'**
+  String get giftsReferenceNameHint;
+
+  /// No description provided for @giftsReferenceSubmitButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Send result back'**
+  String get giftsReferenceSubmitButton;
+
+  /// No description provided for @giftsReferenceShareText.
+  ///
+  /// In en, this message translates to:
+  /// **'Here\'s my feedback: {link}'**
+  String giftsReferenceShareText(String link);
+
+  /// No description provided for @giftsReferenceDoneTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Thank you!'**
+  String get giftsReferenceDoneTitle;
+
+  /// No description provided for @giftsReferenceDoneMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Send your result back to the person who invited you using the button below.'**
+  String get giftsReferenceDoneMessage;
+
+  /// No description provided for @giftsReferenceInvalidLink.
+  ///
+  /// In en, this message translates to:
+  /// **'This link is invalid or no longer up to date.'**
+  String get giftsReferenceInvalidLink;
+
+  /// No description provided for @giftsReferenceLoadFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'The questions could not be loaded.'**
+  String get giftsReferenceLoadFailed;
+
+  /// No description provided for @giftsReferenceImportedMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'New reference assessment imported!'**
+  String get giftsReferenceImportedMessage;
+
+  /// No description provided for @giftsColumnSelf.
+  ///
+  /// In en, this message translates to:
+  /// **'Self'**
+  String get giftsColumnSelf;
+
+  /// No description provided for @giftsColumnReference.
+  ///
+  /// In en, this message translates to:
+  /// **'Reference'**
+  String get giftsColumnReference;
+
+  /// No description provided for @giftsColumnTotal.
+  ///
+  /// In en, this message translates to:
+  /// **'Total'**
+  String get giftsColumnTotal;
+
+  /// No description provided for @giftsSortBy.
+  ///
+  /// In en, this message translates to:
+  /// **'Sort by'**
+  String get giftsSortBy;
+
   /// No description provided for @giftsShareCardLabel.
   ///
   /// In en, this message translates to:

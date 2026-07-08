@@ -16,9 +16,12 @@ import 'features/listening_prayer/bloc/listening_prayer_bloc.dart';
 import 'features/listening_prayer/screens/listening_prayer_screen.dart';
 import 'features/goals/bloc/goals_bloc.dart';
 import 'features/goals/screens/goals_screen.dart';
+import 'features/spiritual_gifts/bloc/gift_reference_answer_bloc.dart';
 import 'features/spiritual_gifts/bloc/spiritual_gifts_bloc.dart';
 import 'features/spiritual_gifts/repositories/gifts_repository.dart';
+import 'features/spiritual_gifts/screens/gift_reference_screen.dart';
 import 'features/spiritual_gifts/screens/spiritual_gifts_screen.dart';
+import 'features/spiritual_gifts/services/gift_reference_link_service.dart';
 import 'features/values/bloc/values_bloc.dart';
 import 'features/values/screens/values_assessment_screen.dart';
 import 'features/feedback/bloc/feedback_bloc.dart';
@@ -59,6 +62,7 @@ void main() async {
         BlocProvider(
           create: (context) => SpiritualGiftsBloc(repository: giftsRepository),
         ),
+        BlocProvider(create: (context) => GiftReferenceAnswerBloc()),
         BlocProvider(create: (context) => ValuesBloc()),
         BlocProvider(
           create: (context) => FeedbackBloc(repository: feedbackQuestionsRepository),
@@ -137,6 +141,13 @@ class _DflAppState extends State<DflApp> {
               title: title,
               initialEditMode: mode != 'result',
             );
+          },
+        ),
+        GoRoute(
+          path: '/gift-reference/:assessmentId',
+          builder: (context, state) {
+            final assessmentId = state.pathParameters['assessmentId']!;
+            return GiftReferenceScreen(assessmentId: assessmentId);
           },
         ),
         GoRoute(
@@ -281,7 +292,26 @@ class _DflAppState extends State<DflApp> {
               UnlockTimelineSessions(sessionIds, eventDate: eventDate, eventLocation: eventLocation),
             );
         _router.go('/');
+      case GiftReferenceInviteAction(:final assessmentId):
+        _router.go('/gift-reference/$assessmentId');
+      case GiftReferenceResultAction(:final assessmentId, :final answersPayload, :final label):
+        _importGiftReferenceResult(assessmentId, answersPayload, label);
     }
+  }
+
+  // Question IDs are stable across locales (see assets/data/gifts_*.json),
+  // so which locale we load here doesn't affect decoding correctness - 'de'
+  // is always available as GiftsRepository's own fallback anyway.
+  Future<void> _importGiftReferenceResult(String assessmentId, String answersPayload, String? label) async {
+    final gifts = await GiftsRepository().loadGifts('de');
+    final questionOrder = SpiritualGiftsState(gifts: gifts).getReferenceQuestionOrder();
+    final answers = GiftReferenceLinkService.decodeAnswers(answersPayload, questionOrder);
+    if (!mounted || answers == null) return;
+
+    context.read<SpiritualGiftsBloc>().add(
+          SubmitReferenceAssessment(assessmentId: assessmentId, answers: answers, label: label),
+        );
+    _router.go('/spiritual-gifts/session_5?mode=result');
   }
 
   @override

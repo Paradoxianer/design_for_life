@@ -58,4 +58,66 @@ void main() {
   test('ignores dfl:// links with an empty modules parameter', () {
     expect(DeepLinkService.parse(Uri.parse('dfl://open?modules=')), isNull);
   });
+
+  test('parses a gift-reference invite link', () {
+    final action = DeepLinkService.parse(
+      Uri.parse('dfl://open?flow=gift-reference&assessmentId=ref_123'),
+    );
+
+    expect(action, isA<GiftReferenceInviteAction>());
+    expect((action as GiftReferenceInviteAction).assessmentId, 'ref_123');
+  });
+
+  test('ignores a gift-reference invite link without an assessmentId', () {
+    expect(
+      DeepLinkService.parse(Uri.parse('dfl://open?flow=gift-reference')),
+      isNull,
+    );
+  });
+
+  test(
+    'parses a gift-reference-result link with its raw answers payload and optional label',
+    () {
+      final action = DeepLinkService.parse(
+        Uri.parse(
+          'dfl://open?flow=gift-reference-result&assessmentId=ref_123&answers=3:503&label=Anna',
+        ),
+      );
+
+      expect(action, isA<GiftReferenceResultAction>());
+      final result = action as GiftReferenceResultAction;
+      expect(result.assessmentId, 'ref_123');
+      expect(result.answersPayload, '3:503');
+      expect(result.label, 'Anna');
+    },
+  );
+
+  test('gift-reference-result label is optional', () {
+    final action = DeepLinkService.parse(
+      Uri.parse(
+        'dfl://open?flow=gift-reference-result&assessmentId=ref_123&answers=3:503',
+      ),
+    );
+    expect((action as GiftReferenceResultAction).label, isNull);
+  });
+
+  test(
+    'ignores a gift-reference-result link missing assessmentId or answers',
+    () {
+      expect(
+        DeepLinkService.parse(
+          Uri.parse('dfl://open?flow=gift-reference-result&answers=3:503'),
+        ),
+        isNull,
+      );
+      expect(
+        DeepLinkService.parse(
+          Uri.parse(
+            'dfl://open?flow=gift-reference-result&assessmentId=ref_123',
+          ),
+        ),
+        isNull,
+      );
+    },
+  );
 }

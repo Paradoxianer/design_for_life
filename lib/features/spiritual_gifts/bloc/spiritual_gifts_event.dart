@@ -39,3 +39,22 @@ class UpdateTakeaways extends SpiritualGiftsEvent {
   @override
   List<Object?> get props => [sessionId, takeaways];
 }
+
+/// Stores one external "Referenz" (R) assessment (#42) - either freshly
+/// answered on this device or imported from a gift-reference-result deep
+/// link. Keyed by assessmentId so multiple references don't overwrite each
+/// other and can each be weighted into the blended score.
+class SubmitReferenceAssessment extends SpiritualGiftsEvent {
+  final String assessmentId;
+  final Map<String, int> answers;
+  final String? label;
+
+  const SubmitReferenceAssessment({
+    required this.assessmentId,
+    required this.answers,
+    this.label,
+  });
+
+  @override
+  List<Object?> get props => [assessmentId, answers, label];
+}

@@ -2,10 +2,9 @@ import 'dart:async';
 
 import 'package:app_links/app_links.dart';
 
-/// Parsed representation of a supported deep link (#49). Kept intentionally
-/// extensible - the planned #42 "Gaben-Referenz" invite/import flow will add
-/// further subtypes here without reworking the listening/dispatch plumbing
-/// in [DeepLinkService].
+/// Parsed representation of a supported deep link (#49): either unlocking
+/// timeline modules, or one of the two "Gaben-Referenz" invite/import
+/// actions (#42).
 sealed class DeepLinkAction {
   const DeepLinkAction();
 }
@@ -23,6 +22,27 @@ class UnlockModulesAction extends DeepLinkAction {
     this.eventDate,
     this.eventLocation,
   });
+}
+
+/// `dfl://open?flow=gift-reference&assessmentId=...` (#42) - opens the
+/// external "Referenz" mini-flow for the given assessment.
+class GiftReferenceInviteAction extends DeepLinkAction {
+  final String assessmentId;
+
+  const GiftReferenceInviteAction(this.assessmentId);
+}
+
+/// `dfl://open?flow=gift-reference-result&assessmentId=...&answers=...`
+/// (#42) - carries a reviewer's raw, still-encoded answers payload back to
+/// the inviter. Decoding needs the current gifts data (for the question
+/// order), which this gift-agnostic service doesn't own, so that happens
+/// where the action is handled (see GiftReferenceLinkService.decodeAnswers).
+class GiftReferenceResultAction extends DeepLinkAction {
+  final String assessmentId;
+  final String answersPayload;
+  final String? label;
+
+  const GiftReferenceResultAction(this.assessmentId, this.answersPayload, {this.label});
 }
 
 /// Listens for incoming `dfl://` links and turns them into [DeepLinkAction]s.
@@ -62,6 +82,23 @@ class DeepLinkService {
     if (uri.scheme != 'dfl') return null;
 
     final params = uri.queryParameters;
+    final flow = params['flow'];
+
+    if (flow == 'gift-reference') {
+      final assessmentId = params['assessmentId'];
+      if (assessmentId == null || assessmentId.isEmpty) return null;
+      return GiftReferenceInviteAction(assessmentId);
+    }
+
+    if (flow == 'gift-reference-result') {
+      final assessmentId = params['assessmentId'];
+      final answers = params['answers'];
+      if (assessmentId == null || assessmentId.isEmpty || answers == null || answers.isEmpty) {
+        return null;
+      }
+      return GiftReferenceResultAction(assessmentId, answers, label: params['label']);
+    }
+
     final modulesParam = params['modules'];
     if (modulesParam == null || modulesParam.isEmpty) return null;
 
