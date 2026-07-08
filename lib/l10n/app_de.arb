@@ -155,6 +155,8 @@
   },
   "giftsReferenceDoneTitle": "Danke!",
   "giftsReferenceDoneMessage": "Sende dein Ergebnis über den Button unten an die Person zurück, die dich eingeladen hat.",
+  "giftsReferenceCopyLink": "Link kopieren",
+  "giftsReferenceLinkCopied": "Link in die Zwischenablage kopiert",
   "giftsReferenceInvalidLink": "Dieser Link ist ungültig oder nicht mehr aktuell.",
   "giftsReferenceLoadFailed": "Die Fragen konnten nicht geladen werden.",
   "giftsReferenceImportedMessage": "Neue Referenz-Einschätzung importiert!",

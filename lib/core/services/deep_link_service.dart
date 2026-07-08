@@ -2,22 +2,25 @@ import 'dart:async';
 
 import 'package:app_links/app_links.dart';
 
-/// Parsed representation of a supported deep link (#49): either unlocking
-/// timeline modules, or one of the two "Gaben-Referenz" invite/import
-/// actions (#42).
+/// Parsed representation of a supported deep link (#49): either restricting
+/// the visible timeline modules, or one of the two "Gaben-Referenz"
+/// invite/import actions (#42).
 sealed class DeepLinkAction {
   const DeepLinkAction();
 }
 
-/// `dfl://open?modules=session_1,session_3&date=2026-08-01&location=...`
-/// Unlocks the given timeline session IDs and optionally carries event
-/// metadata to show in the timeline header.
-class UnlockModulesAction extends DeepLinkAction {
+/// `?modules=session_1,session_3&date=2026-08-01&location=...` - restricts
+/// the timeline to only the given session IDs (a stripped-down DFL for a
+/// shortened format), replacing any previous restriction. Not a "locking"
+/// mechanism: sessions outside the list aren't shown at all, not shown as
+/// locked placeholders - people shouldn't need to know what else exists.
+/// Also optionally carries event metadata to show in the timeline header.
+class ShowOnlyModulesAction extends DeepLinkAction {
   final List<String> sessionIds;
   final String? eventDate;
   final String? eventLocation;
 
-  const UnlockModulesAction(
+  const ShowOnlyModulesAction(
     this.sessionIds, {
     this.eventDate,
     this.eventLocation,
@@ -47,12 +50,15 @@ class GiftReferenceResultAction extends DeepLinkAction {
 
 /// Listens for incoming `dfl://` links and turns them into [DeepLinkAction]s.
 ///
-/// Only the custom URI scheme is wired up so far. A `https://paradoxianer
-/// .github.io/design_for_life/...` mirror (real Universal/App Links) needs a
-/// real Android applicationId + release-keystore SHA256 fingerprint and a
-/// real iOS bundle id + Apple Team ID first (both are still Flutter
-/// template placeholders, see #37) - once those exist, the same query
-/// format can be verified and parsed here too.
+/// `http`/`https` are also accepted (same query format): on Flutter Web,
+/// app_links reports the page's own URL (there is no OS-level dispatch to
+/// intercept, see app_links_web), so this is what makes the whole flow
+/// testable in a browser - just append e.g. `?modules=...` to the app's dev
+/// URL and reload. On Android/iOS this branch is currently unreachable in
+/// practice, since no `https://` intent-filter/associated domain is
+/// registered yet - that needs a real Android applicationId + release-
+/// keystore SHA256 fingerprint and a real iOS bundle id + Apple Team ID
+/// first (both are still Flutter template placeholders, see #37).
 class DeepLinkService {
   final AppLinks _appLinks;
   StreamSubscription<Uri>? _subscription;
@@ -78,8 +84,10 @@ class DeepLinkService {
     _subscription?.cancel();
   }
 
+  static const _supportedSchemes = {'dfl', 'http', 'https'};
+
   static DeepLinkAction? parse(Uri uri) {
-    if (uri.scheme != 'dfl') return null;
+    if (!_supportedSchemes.contains(uri.scheme)) return null;
 
     final params = uri.queryParameters;
     final flow = params['flow'];
@@ -109,10 +117,22 @@ class DeepLinkService {
         .toList();
     if (sessionIds.isEmpty) return null;
 
-    return UnlockModulesAction(
+    return ShowOnlyModulesAction(
       sessionIds,
       eventDate: params['date'],
       eventLocation: params['location'],
     );
+  }
+
+  /// Standard link base while there's no native app-store presence yet
+  /// (#37): the GitHub Pages web build (auto-deployed on every push to
+  /// `main` via .github/workflows/deploy.yml) works everywhere - a browser,
+  /// no OS-level install or Universal Link verification needed. Swap this
+  /// for a `dfl://` (or a verified `https://`) base once native
+  /// distribution exists.
+  static const String webLinkBase = 'https://paradoxianer.github.io/design_for_life/';
+
+  static Uri buildWebLink(Map<String, String> queryParameters) {
+    return Uri.parse(webLinkBase).replace(queryParameters: queryParameters);
   }
 }

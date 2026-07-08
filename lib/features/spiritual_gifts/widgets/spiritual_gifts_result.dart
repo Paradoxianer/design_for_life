@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:design_for_life/l10n/generated/app_localizations.dart';
 import '../../../core/services/bible_reference_service.dart';
+import '../../../core/services/share_service.dart';
 import '../bloc/spiritual_gifts_bloc.dart';
 import '../models/spiritual_gift.dart';
 import '../services/gift_reference_link_service.dart';
@@ -23,7 +24,47 @@ class _SpiritualGiftsResultState extends State<SpiritualGiftsResult> {
     final l10n = AppLocalizations.of(context);
     final assessmentId = 'ref_${DateTime.now().microsecondsSinceEpoch}';
     final link = GiftReferenceLinkService.buildInviteLink(assessmentId);
-    Share.share(l10n.giftsReferenceInviteShareText(link));
+    final shareText = l10n.giftsReferenceInviteShareText(link);
+
+    // Als Dialog statt direkt Share.share(...), damit der Link auch sichtbar
+    // ist, wenn kein natives Share-Sheet zur Verfügung steht (z.B. beim
+    // Testen via "flutter run -d chrome") - Kopieren funktioniert überall.
+    showDialog<void>(
+      context: context,
+      builder: (dialogContext) => AlertDialog(
+        title: Text(l10n.giftsReferenceInviteButton),
+        content: Container(
+          padding: const EdgeInsets.all(12),
+          decoration: BoxDecoration(
+            color: Theme.of(dialogContext).colorScheme.surfaceContainerHighest,
+            borderRadius: BorderRadius.circular(8),
+          ),
+          child: SelectableText(link, style: Theme.of(dialogContext).textTheme.bodySmall),
+        ),
+        actions: [
+          TextButton.icon(
+            onPressed: () async {
+              await ShareService.copyToClipboard(shareText);
+              if (!dialogContext.mounted) return;
+              ScaffoldMessenger.of(
+                dialogContext,
+              ).showSnackBar(SnackBar(content: Text(l10n.giftsReferenceLinkCopied)));
+            },
+            icon: const Icon(Icons.copy_outlined, size: 18),
+            label: Text(l10n.giftsReferenceCopyLink),
+          ),
+          TextButton.icon(
+            onPressed: () => Share.share(shareText),
+            icon: const Icon(Icons.share_outlined, size: 18),
+            label: Text(l10n.share),
+          ),
+          TextButton(
+            onPressed: () => Navigator.of(dialogContext).pop(),
+            child: Text(l10n.finish),
+          ),
+        ],
+      ),
+    );
   }
 
   @override
@@ -53,10 +94,22 @@ class _SpiritualGiftsResultState extends State<SpiritualGiftsResult> {
                 style: theme.textTheme.bodyMedium?.copyWith(color: theme.colorScheme.onSurfaceVariant),
               ),
               const SizedBox(height: 12),
-              OutlinedButton.icon(
+              // Bewusst in der bereits etablierten "Highlight"-Akzentfarbe
+              // (tertiary/sunlightGold, sonst z.B. für Rang 1 verwendet)
+              // statt einem schlichten Outline-Button - diese Aktion soll
+              // auffallen, nicht wie eine Nebensache wirken.
+              FilledButton.icon(
                 onPressed: () => _inviteReference(context),
-                icon: const Icon(Icons.person_add_alt_1_outlined, size: 18),
-                label: Text(l10n.giftsReferenceInviteButton),
+                style: FilledButton.styleFrom(
+                  backgroundColor: theme.colorScheme.tertiary,
+                  foregroundColor: Colors.black87,
+                  padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 14),
+                ),
+                icon: const Icon(Icons.person_add_alt_1, size: 20),
+                label: Text(
+                  l10n.giftsReferenceInviteButton,
+                  style: const TextStyle(fontWeight: FontWeight.bold),
+                ),
               ),
               if (hasReferences) ...[
                 const SizedBox(height: 16),

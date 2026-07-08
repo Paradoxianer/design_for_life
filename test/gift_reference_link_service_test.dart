@@ -39,10 +39,11 @@ void main() {
     expect(GiftReferenceLinkService.decodeAnswers('3:5x', questions), isNull);
   });
 
-  test('builds invite and result links as valid dfl:// URIs', () {
+  test('builds invite and result links on the GitHub Pages web base', () {
     final invite = GiftReferenceLinkService.buildInviteLink('ref_123');
     final inviteUri = Uri.parse(invite);
-    expect(inviteUri.scheme, 'dfl');
+    expect(inviteUri.scheme, 'https');
+    expect(inviteUri.host, 'paradoxianer.github.io');
     expect(inviteUri.queryParameters['flow'], 'gift-reference');
     expect(inviteUri.queryParameters['assessmentId'], 'ref_123');
 

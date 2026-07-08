@@ -8,7 +8,7 @@ import 'package:design_for_life/l10n/generated/app_localizations.dart';
 
 import 'core/services/deep_link_service.dart';
 import 'core/theme/app_theme.dart';
-import 'features/timeline/bloc/timeline_unlock_bloc.dart';
+import 'features/timeline/bloc/timeline_module_filter_bloc.dart';
 import 'features/timeline/screens/timeline_screen.dart';
 import 'features/notes/screens/notes_screen.dart';
 import 'features/notes/bloc/notes_bloc.dart';
@@ -74,7 +74,7 @@ void main() async {
         BlocProvider(create: (context) => LifeTreeBloc()),
         BlocProvider(create: (context) => SynthesisBloc()),
         BlocProvider(create: (context) => GroupPhotoBloc()),
-        BlocProvider(create: (context) => TimelineUnlockBloc()),
+        BlocProvider(create: (context) => TimelineModuleFilterBloc()),
       ],
       child: const DflApp(),
     ),
@@ -287,9 +287,9 @@ class _DflAppState extends State<DflApp> {
 
   void _handleDeepLinkAction(DeepLinkAction action) {
     switch (action) {
-      case UnlockModulesAction(:final sessionIds, :final eventDate, :final eventLocation):
-        context.read<TimelineUnlockBloc>().add(
-              UnlockTimelineSessions(sessionIds, eventDate: eventDate, eventLocation: eventLocation),
+      case ShowOnlyModulesAction(:final sessionIds, :final eventDate, :final eventLocation):
+        context.read<TimelineModuleFilterBloc>().add(
+              SetAllowedModules(sessionIds, eventDate: eventDate, eventLocation: eventLocation),
             );
         _router.go('/');
       case GiftReferenceInviteAction(:final assessmentId):

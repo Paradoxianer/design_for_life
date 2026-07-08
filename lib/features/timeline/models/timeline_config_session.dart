@@ -11,7 +11,6 @@ class TimelineConfigSession {
   final String? descriptionKey;
   final SessionType type;
   final bool enabled;
-  final bool locked;
 
   const TimelineConfigSession({
     required this.id,
@@ -22,7 +21,6 @@ class TimelineConfigSession {
     this.descriptionKey,
     required this.type,
     this.enabled = true,
-    this.locked = false,
   });
 
   factory TimelineConfigSession.fromJson(Map<String, dynamic> json) {
@@ -35,7 +33,6 @@ class TimelineConfigSession {
       descriptionKey: json['descriptionKey'] as String?,
       type: _sessionTypeFromString(json['type'] as String? ?? 'other'),
       enabled: json['enabled'] as bool? ?? true,
-      locked: json['locked'] as bool? ?? false,
     );
   }
 
@@ -47,7 +44,6 @@ class TimelineConfigSession {
       type: type,
       moduleId: moduleId,
       moduleSessionId: moduleSessionId,
-      locked: locked,
     );
   }
 

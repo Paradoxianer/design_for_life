@@ -698,6 +698,18 @@ abstract class AppLocalizations {
   /// **'Send your result back to the person who invited you using the button below.'**
   String get giftsReferenceDoneMessage;
 
+  /// No description provided for @giftsReferenceCopyLink.
+  ///
+  /// In en, this message translates to:
+  /// **'Copy link'**
+  String get giftsReferenceCopyLink;
+
+  /// No description provided for @giftsReferenceLinkCopied.
+  ///
+  /// In en, this message translates to:
+  /// **'Link copied to clipboard'**
+  String get giftsReferenceLinkCopied;
+
   /// No description provided for @giftsReferenceInvalidLink.
   ///
   /// In en, this message translates to:

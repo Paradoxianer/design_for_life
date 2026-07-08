@@ -9,8 +9,8 @@ void main() {
       ),
     );
 
-    expect(action, isA<UnlockModulesAction>());
-    final unlock = action as UnlockModulesAction;
+    expect(action, isA<ShowOnlyModulesAction>());
+    final unlock = action as ShowOnlyModulesAction;
     expect(unlock.sessionIds, ['session_1', 'session_3']);
     expect(unlock.eventDate, '2026-08-01');
     expect(unlock.eventLocation, 'Tagungshaus');
@@ -21,8 +21,8 @@ void main() {
       Uri.parse('dfl://open?modules=session_1,%20,%20session_2'),
     );
 
-    expect(action, isA<UnlockModulesAction>());
-    expect((action as UnlockModulesAction).sessionIds, [
+    expect(action, isA<ShowOnlyModulesAction>());
+    expect((action as ShowOnlyModulesAction).sessionIds, [
       'session_1',
       'session_2',
     ]);
@@ -33,16 +33,24 @@ void main() {
       Uri.parse('dfl://open?modules=session_1'),
     );
 
-    expect(action, isA<UnlockModulesAction>());
-    final unlock = action as UnlockModulesAction;
+    expect(action, isA<ShowOnlyModulesAction>());
+    final unlock = action as ShowOnlyModulesAction;
     expect(unlock.eventDate, isNull);
     expect(unlock.eventLocation, isNull);
   });
 
-  test('ignores links with a different scheme', () {
+  test('also accepts http/https - needed for Flutter Web dev testing (app_links_web reports the page URL)', () {
+    final action = DeepLinkService.parse(
+      Uri.parse('https://example.com/open?modules=session_1'),
+    );
+    expect(action, isA<ShowOnlyModulesAction>());
+    expect((action as ShowOnlyModulesAction).sessionIds, ['session_1']);
+  });
+
+  test('ignores links with an unsupported scheme', () {
     expect(
       DeepLinkService.parse(
-        Uri.parse('https://example.com/open?modules=session_1'),
+        Uri.parse('mailto:someone@example.com?modules=session_1'),
       ),
       isNull,
     );

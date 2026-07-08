@@ -1,11 +1,16 @@
+import '../../../core/services/deep_link_service.dart';
 import '../models/gift_question.dart';
 
 /// Builds and parses the two deep links that make up the external
 /// "Referenz" (R) assessment flow (#42):
 ///
-/// - Invite: `dfl://open?flow=gift-reference&assessmentId=...`
-/// - Result: `dfl://open?flow=gift-reference-result&assessmentId=...
+/// - Invite: `?flow=gift-reference&assessmentId=...`
+/// - Result: `?flow=gift-reference-result&assessmentId=...
 ///   &answers=count:digits&label=...`
+///
+/// Both are currently built on DeepLinkService.webLinkBase (the GitHub
+/// Pages web build) rather than a `dfl://` link, since there's no native
+/// app-store presence yet - see that constant's doc comment.
 ///
 /// There is no backend (see #49's design notes), so the reviewer's answers
 /// have to travel entirely inside the result link itself. Answers are
@@ -19,11 +24,10 @@ class GiftReferenceLinkService {
   const GiftReferenceLinkService._();
 
   static String buildInviteLink(String assessmentId) {
-    return Uri(
-      scheme: 'dfl',
-      host: 'open',
-      queryParameters: {'flow': 'gift-reference', 'assessmentId': assessmentId},
-    ).toString();
+    return DeepLinkService.buildWebLink({
+      'flow': 'gift-reference',
+      'assessmentId': assessmentId,
+    }).toString();
   }
 
   static String buildResultLink({
@@ -32,16 +36,12 @@ class GiftReferenceLinkService {
     required Map<String, int> answers,
     String? label,
   }) {
-    return Uri(
-      scheme: 'dfl',
-      host: 'open',
-      queryParameters: {
-        'flow': 'gift-reference-result',
-        'assessmentId': assessmentId,
-        'answers': encodeAnswers(questionOrder, answers),
-        if (label != null && label.isNotEmpty) 'label': label,
-      },
-    ).toString();
+    return DeepLinkService.buildWebLink({
+      'flow': 'gift-reference-result',
+      'assessmentId': assessmentId,
+      'answers': encodeAnswers(questionOrder, answers),
+      if (label != null && label.isNotEmpty) 'label': label,
+    }).toString();
   }
 
   static String encodeAnswers(

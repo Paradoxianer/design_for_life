@@ -348,6 +348,12 @@ class AppLocalizationsDe extends AppLocalizations {
       'Sende dein Ergebnis über den Button unten an die Person zurück, die dich eingeladen hat.';
 
   @override
+  String get giftsReferenceCopyLink => 'Link kopieren';
+
+  @override
+  String get giftsReferenceLinkCopied => 'Link in die Zwischenablage kopiert';
+
+  @override
   String get giftsReferenceInvalidLink =>
       'Dieser Link ist ungültig oder nicht mehr aktuell.';
 

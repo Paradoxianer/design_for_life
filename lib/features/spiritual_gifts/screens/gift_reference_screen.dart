@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:design_for_life/l10n/generated/app_localizations.dart';
 
+import '../../../core/services/share_service.dart';
 import '../bloc/gift_reference_answer_bloc.dart';
 import '../bloc/spiritual_gifts_bloc.dart';
 import '../models/gift_question.dart';
@@ -31,6 +32,11 @@ class _GiftReferenceScreenState extends State<GiftReferenceScreen> {
   final TextEditingController _nameController = TextEditingController();
   List<GiftQuestion>? _questionOrder;
   bool _loadFailed = false;
+  // Gesetzt sobald abgeschickt (#42) - zeigt den fertigen Link zum
+  // Kopieren/Teilen an statt sofort wegzunavigieren, da native Share-Sheets
+  // auf Desktop/Web keinen zuverlässigen Weg bieten, den Link tatsächlich zu
+  // sehen (z.B. beim Testen via "flutter run -d chrome").
+  String? _resultLink;
 
   @override
   void initState() {
@@ -62,7 +68,6 @@ class _GiftReferenceScreenState extends State<GiftReferenceScreen> {
     List<GiftQuestion> questionOrder,
     Map<String, int> answers,
   ) {
-    final l10n = AppLocalizations.of(context);
     final link = GiftReferenceLinkService.buildResultLink(
       assessmentId: widget.assessmentId,
       questionOrder: questionOrder,
@@ -70,21 +75,32 @@ class _GiftReferenceScreenState extends State<GiftReferenceScreen> {
       label: _nameController.text.trim(),
     );
 
-    Share.share(l10n.giftsReferenceShareText(link));
     context.read<GiftReferenceAnswerBloc>().add(
       ClearReferenceAssessment(widget.assessmentId),
     );
-    context.go('/');
+    setState(() => _resultLink = link);
+  }
+
+  Future<void> _copyResultLink(BuildContext context, String link) async {
+    final l10n = AppLocalizations.of(context);
+    await ShareService.copyToClipboard(l10n.giftsReferenceShareText(link));
+    if (!context.mounted) return;
+    ScaffoldMessenger.of(
+      context,
+    ).showSnackBar(SnackBar(content: Text(l10n.giftsReferenceLinkCopied)));
   }
 
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context);
     final questionOrder = _questionOrder;
+    final resultLink = _resultLink;
 
     return Scaffold(
       appBar: AppBar(title: Text(l10n.giftsReferenceScreenTitle)),
-      body: questionOrder == null
+      body: resultLink != null
+          ? _buildDoneView(context, resultLink)
+          : questionOrder == null
           ? const Center(child: CircularProgressIndicator())
           : _loadFailed
           ? Center(child: Text(l10n.giftsReferenceLoadFailed))
@@ -173,6 +189,64 @@ class _GiftReferenceScreenState extends State<GiftReferenceScreen> {
                 );
               },
             ),
+    );
+  }
+
+  Widget _buildDoneView(BuildContext context, String link) {
+    final l10n = AppLocalizations.of(context);
+    final shareText = l10n.giftsReferenceShareText(link);
+
+    return Center(
+      child: Padding(
+        padding: const EdgeInsets.all(24),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Text(
+              l10n.giftsReferenceDoneTitle,
+              style: Theme.of(context).textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.bold),
+              textAlign: TextAlign.center,
+            ),
+            const SizedBox(height: 8),
+            Text(
+              l10n.giftsReferenceDoneMessage,
+              style: Theme.of(context).textTheme.bodyMedium,
+              textAlign: TextAlign.center,
+            ),
+            const SizedBox(height: 16),
+            Container(
+              padding: const EdgeInsets.all(12),
+              decoration: BoxDecoration(
+                color: Theme.of(context).colorScheme.surfaceContainerHighest,
+                borderRadius: BorderRadius.circular(8),
+              ),
+              child: SelectableText(link, style: Theme.of(context).textTheme.bodySmall),
+            ),
+            const SizedBox(height: 16),
+            Wrap(
+              spacing: 12,
+              alignment: WrapAlignment.center,
+              children: [
+                OutlinedButton.icon(
+                  onPressed: () => _copyResultLink(context, link),
+                  icon: const Icon(Icons.copy_outlined, size: 18),
+                  label: Text(l10n.giftsReferenceCopyLink),
+                ),
+                OutlinedButton.icon(
+                  onPressed: () => Share.share(shareText),
+                  icon: const Icon(Icons.share_outlined, size: 18),
+                  label: Text(l10n.giftsReferenceSubmitButton),
+                ),
+              ],
+            ),
+            const SizedBox(height: 16),
+            ElevatedButton(
+              onPressed: () => context.go('/'),
+              child: Text(l10n.finish),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

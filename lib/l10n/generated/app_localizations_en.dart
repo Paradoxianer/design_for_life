@@ -344,6 +344,12 @@ class AppLocalizationsEn extends AppLocalizations {
       'Send your result back to the person who invited you using the button below.';
 
   @override
+  String get giftsReferenceCopyLink => 'Copy link';
+
+  @override
+  String get giftsReferenceLinkCopied => 'Link copied to clipboard';
+
+  @override
   String get giftsReferenceInvalidLink =>
       'This link is invalid or no longer up to date.';
 
