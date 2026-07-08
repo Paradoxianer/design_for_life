@@ -43,6 +43,11 @@ class DflSession extends Equatable {
   final String moduleId;
   final String? moduleSessionId;
 
+  /// Whether this session requires an explicit unlock (e.g. via deep link,
+  /// see TimelineUnlockBloc) before it can be opened. Defaults to false so
+  /// existing/config-driven sessions are unaffected unless opted in.
+  final bool locked;
+
   const DflSession({
     required this.id,
     required this.title,
@@ -55,6 +60,7 @@ class DflSession extends Equatable {
     this.status = SessionStatus.notStarted,
     required this.moduleId,
     this.moduleSessionId,
+    this.locked = false,
   });
 
   @override
@@ -70,5 +76,6 @@ class DflSession extends Equatable {
         status,
         moduleId,
         moduleSessionId,
+        locked,
       ];
 }

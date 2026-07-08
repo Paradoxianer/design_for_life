@@ -6,7 +6,9 @@ import 'package:path_provider/path_provider.dart';
 import 'package:go_router/go_router.dart';
 import 'package:design_for_life/l10n/generated/app_localizations.dart';
 
+import 'core/services/deep_link_service.dart';
 import 'core/theme/app_theme.dart';
+import 'features/timeline/bloc/timeline_unlock_bloc.dart';
 import 'features/timeline/screens/timeline_screen.dart';
 import 'features/notes/screens/notes_screen.dart';
 import 'features/notes/bloc/notes_bloc.dart';
@@ -68,20 +70,27 @@ void main() async {
         BlocProvider(create: (context) => LifeTreeBloc()),
         BlocProvider(create: (context) => SynthesisBloc()),
         BlocProvider(create: (context) => GroupPhotoBloc()),
+        BlocProvider(create: (context) => TimelineUnlockBloc()),
       ],
       child: const DflApp(),
     ),
   );
 }
 
-class DflApp extends StatelessWidget {
+class DflApp extends StatefulWidget {
   final String? forcedLocale;
 
   const DflApp({super.key, this.forcedLocale});
 
   @override
-  Widget build(BuildContext context) {
-    final GoRouter router = GoRouter(
+  State<DflApp> createState() => _DflAppState();
+}
+
+class _DflAppState extends State<DflApp> {
+  // Built once (not per build()) so the deep-link listener below can push
+  // navigations into the same router instance a link arrives while the app
+  // is already running (#49).
+  late final GoRouter _router = GoRouter(
       initialLocation: '/',
       routes: [
         GoRoute(
@@ -246,11 +255,48 @@ class DflApp extends StatelessWidget {
       ],
     );
 
+  DeepLinkService? _deepLinkService;
+
+  @override
+  void initState() {
+    super.initState();
+    _initDeepLinks();
+  }
+
+  Future<void> _initDeepLinks() async {
+    final service = DeepLinkService();
+    _deepLinkService = service;
+
+    final initialAction = await service.getInitialAction();
+    if (!mounted) return;
+    if (initialAction != null) _handleDeepLinkAction(initialAction);
+
+    service.listen(_handleDeepLinkAction);
+  }
+
+  void _handleDeepLinkAction(DeepLinkAction action) {
+    switch (action) {
+      case UnlockModulesAction(:final sessionIds, :final eventDate, :final eventLocation):
+        context.read<TimelineUnlockBloc>().add(
+              UnlockTimelineSessions(sessionIds, eventDate: eventDate, eventLocation: eventLocation),
+            );
+        _router.go('/');
+    }
+  }
+
+  @override
+  void dispose() {
+    _deepLinkService?.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return MaterialApp.router(
       title: 'DFL App',
       theme: AppTheme.lightTheme,
-      routerConfig: router,
-      locale: forcedLocale == null ? null : Locale(forcedLocale!),
+      routerConfig: _router,
+      locale: widget.forcedLocale == null ? null : Locale(widget.forcedLocale!),
       debugShowCheckedModeBanner: false,
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
