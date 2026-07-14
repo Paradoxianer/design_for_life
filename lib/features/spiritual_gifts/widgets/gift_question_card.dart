@@ -48,7 +48,7 @@ class GiftQuestionCard extends StatelessWidget {
                 fontSize: 13,
               ),
               textAlign: TextAlign.center,
-              maxLines: 2,
+              maxLines: 3,
               overflow: TextOverflow.ellipsis,
             ),
             const SizedBox(height: 10),
