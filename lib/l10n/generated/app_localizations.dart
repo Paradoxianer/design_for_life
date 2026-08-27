@@ -653,7 +653,7 @@ abstract class AppLocalizations {
   /// No description provided for @giftsReferenceInviteShareText.
   ///
   /// In en, this message translates to:
-  /// **'I\'d love it if you could assess me for my spiritual gifts reflection: {link}'**
+  /// **'I\'d love it if you could help assess my Spiritual Gifts: {link}'**
   String giftsReferenceInviteShareText(String link);
 
   /// No description provided for @giftsReferenceScreenTitle.
@@ -665,7 +665,7 @@ abstract class AppLocalizations {
   /// No description provided for @giftsReferenceIntro.
   ///
   /// In en, this message translates to:
-  /// **'You\'ve been asked to assess someone for a spiritual gifts reflection. Please answer the following questions as honestly as possible - this is about your impression of that person, not about yourself.'**
+  /// **'You\'ve been asked to assess someone for their Spiritual Gifts. Please answer the following questions as honestly as possible - this is about your impression of that person, not about yourself.'**
   String get giftsReferenceIntro;
 
   /// No description provided for @giftsReferenceNameLabel.
@@ -1127,7 +1127,7 @@ abstract class AppLocalizations {
   /// No description provided for @session3Title.
   ///
   /// In en, this message translates to:
-  /// **'Group Work – Drawing the Life Tree + Evaluation'**
+  /// **'Life Tree – create your personal life tree'**
   String get session3Title;
 
   /// No description provided for @session3Desc.
@@ -1235,7 +1235,7 @@ abstract class AppLocalizations {
   /// No description provided for @timelineSynthesisDesc.
   ///
   /// In en, this message translates to:
-  /// **'Bring together the key insights from life tree, gifts, values, and listening prayer.'**
+  /// **'Discover connections'**
   String get timelineSynthesisDesc;
 
   /// No description provided for @timelineImagineTitle.
