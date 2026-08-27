@@ -37,7 +37,10 @@ class AdaptiveNavigationShell extends StatelessWidget {
       children: [
         SizedBox(
           width: _navWidth,
-          child: TimelineScreen(selectedPath: isRoot ? null : currentPath),
+          child: TimelineScreen(
+            selectedPath: isRoot ? null : currentPath,
+            useReplaceNavigation: true,
+          ),
         ),
         const VerticalDivider(width: 1),
         Expanded(child: isRoot ? const _SplitViewPlaceholder() : child),

@@ -17,7 +17,23 @@ class TimelineScreen extends StatelessWidget {
   /// full-screen usage, where nothing needs to be highlighted.
   final String? selectedPath;
 
-  const TimelineScreen({super.key, this.selectedPath});
+  /// True when this list is the persistent rail in AdaptiveNavigationShell's
+  /// split view (#40). Selecting a session there uses `context.go` (replace)
+  /// instead of `context.push`: pushing a sibling route under the same
+  /// ShellRoute mounts a whole separate shell page rather than updating this
+  /// one in place (go_router builds the new ShellRoute instance from the
+  /// pushed ImperativeRouteMatch, leaving this persistent instance's
+  /// `GoRouterState` stale) - so the detail pane never updated, and pushes
+  /// kept accumulating on the stack (needing repeated back-taps once the
+  /// window narrowed again). `go` avoids that entirely by replacing the
+  /// single current location instead of stacking a new one.
+  final bool useReplaceNavigation;
+
+  const TimelineScreen({
+    super.key,
+    this.selectedPath,
+    this.useReplaceNavigation = false,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -112,6 +128,7 @@ class TimelineScreen extends StatelessWidget {
                     return _TimelineCardWrapper(
                       session: session,
                       selectedPath: selectedPath,
+                      useReplaceNavigation: useReplaceNavigation,
                     );
                   }, childCount: sessions.length),
                 ),
@@ -159,8 +176,13 @@ String? _eventSubtitle(TimelineModuleFilterState filterState) {
 class _TimelineCardWrapper extends StatelessWidget {
   final DflSession session;
   final String? selectedPath;
+  final bool useReplaceNavigation;
 
-  const _TimelineCardWrapper({required this.session, this.selectedPath});
+  const _TimelineCardWrapper({
+    required this.session,
+    this.selectedPath,
+    this.useReplaceNavigation = false,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -196,7 +218,10 @@ class _TimelineCardWrapper extends StatelessWidget {
           updatedSession,
           resultMode: shouldOpenInResultMode,
         );
-        if (targetRoute != null) {
+        if (targetRoute == null) return;
+        if (useReplaceNavigation) {
+          context.go('/$targetRoute');
+        } else {
           context.push('/$targetRoute');
         }
       },
