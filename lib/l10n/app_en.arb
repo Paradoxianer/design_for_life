@@ -137,14 +137,14 @@
   "giftsContinue": "Continue filling out",
   "giftsFinishAnyway": "Finish anyway",
   "giftsReferenceInviteButton": "Invite a reference",
-  "giftsReferenceInviteShareText": "I'd love it if you could assess me for my spiritual gifts reflection: {link}",
+  "giftsReferenceInviteShareText": "I'd love it if you could help assess my Spiritual Gifts: {link}",
   "@giftsReferenceInviteShareText": {
     "placeholders": {
       "link": { "type": "String" }
     }
   },
   "giftsReferenceScreenTitle": "Reference Assessment",
-  "giftsReferenceIntro": "You've been asked to assess someone for a spiritual gifts reflection. Please answer the following questions as honestly as possible - this is about your impression of that person, not about yourself.",
+  "giftsReferenceIntro": "You've been asked to assess someone for their Spiritual Gifts. Please answer the following questions as honestly as possible - this is about your impression of that person, not about yourself.",
   "giftsReferenceNameLabel": "What should we call you? (optional)",
   "giftsReferenceNameHint": "Your name",
   "giftsReferenceSubmitButton": "Send result back",
@@ -289,7 +289,7 @@
   "session1Desc": "Welcome and introduction to the DFL weekend.",
   "session2Title": "Session Two: Back to the Future",
   "session2Desc": "Reflection on one's own history.",
-  "session3Title": "Group Work – Drawing the Life Tree + Evaluation",
+  "session3Title": "Life Tree – create your personal life tree",
   "session3Desc": "Creating your personal life tree in a group setting.",
   "session4Title": "Session Three: The Here and Now",
   "session4Desc": "Present and Identity.",
@@ -307,7 +307,7 @@
   "session10Desc": "Personal goal setting in individual sessions.",
   "session11Title": "Group Photo",
   "timelineSynthesisTitle": "Connections",
-  "timelineSynthesisDesc": "Bring together the key insights from life tree, gifts, values, and listening prayer.",
+  "timelineSynthesisDesc": "Discover connections",
   "timelineImagineTitle": "Imagine",
   "timelineImagineDesc": "Shape future images and capture your thoughts for the next life phase.",
   "timelineUnavailable": "Unable to load the timeline. Please restart the app.",

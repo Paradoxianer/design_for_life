@@ -316,7 +316,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String giftsReferenceInviteShareText(String link) {
-    return 'I\'d love it if you could assess me for my spiritual gifts reflection: $link';
+    return 'I\'d love it if you could help assess my Spiritual Gifts: $link';
   }
 
   @override
@@ -324,7 +324,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get giftsReferenceIntro =>
-      'You\'ve been asked to assess someone for a spiritual gifts reflection. Please answer the following questions as honestly as possible - this is about your impression of that person, not about yourself.';
+      'You\'ve been asked to assess someone for their Spiritual Gifts. Please answer the following questions as honestly as possible - this is about your impression of that person, not about yourself.';
 
   @override
   String get giftsReferenceNameLabel => 'What should we call you? (optional)';
@@ -590,7 +590,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get session2Desc => 'Reflection on one\'s own history.';
 
   @override
-  String get session3Title => 'Group Work – Drawing the Life Tree + Evaluation';
+  String get session3Title => 'Life Tree – create your personal life tree';
 
   @override
   String get session3Desc =>
@@ -647,8 +647,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get timelineSynthesisTitle => 'Connections';
 
   @override
-  String get timelineSynthesisDesc =>
-      'Bring together the key insights from life tree, gifts, values, and listening prayer.';
+  String get timelineSynthesisDesc => 'Discover connections';
 
   @override
   String get timelineImagineTitle => 'Imagine';
