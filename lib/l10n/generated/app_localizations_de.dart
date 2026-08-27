@@ -12,6 +12,10 @@ class AppLocalizationsDe extends AppLocalizations {
   String get appTitle => 'DFL Wochenende';
 
   @override
+  String get splitViewSelectModule =>
+      'Wähle links ein Modul aus, um es hier zu öffnen.';
+
+  @override
   String get notes => 'Notizen';
 
   @override
@@ -315,7 +319,7 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String giftsReferenceInviteShareText(String link) {
-    return 'Ich würde mich freuen, wenn du mich bei meiner Stärken-Reflexion (Spiritual Gifts) einschätzt: $link';
+    return 'Ich würde mich freuen, wenn du mich bei meinem Geistesgabentest einschätzt: $link';
   }
 
   @override
@@ -323,7 +327,7 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get giftsReferenceIntro =>
-      'Du wurdest gebeten, jemanden bei einer Stärken-Reflexion einzuschätzen. Bitte beantworte die folgenden Fragen so ehrlich wie möglich - es geht um deinen Eindruck von dieser Person, nicht um dich selbst.';
+      'Du wurdest gebeten, jemanden bei einem Geistesgabentest einzuschätzen. Bitte beantworte die folgenden Fragen so ehrlich wie möglich - es geht um deinen Eindruck von dieser Person, nicht um dich selbst.';
 
   @override
   String get giftsReferenceNameLabel =>
@@ -352,6 +356,10 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get giftsReferenceLinkCopied => 'Link in die Zwischenablage kopiert';
+
+  @override
+  String get giftsReferenceImportRejected =>
+      'Dieser Referenz-Link gehört zu keiner Einladung, die du von diesem Gerät aus verschickt hast, und wurde deshalb nicht übernommen.';
 
   @override
   String get giftsReferenceInvalidLink =>
@@ -587,7 +595,8 @@ class AppLocalizationsDe extends AppLocalizations {
   String get session2Desc => 'Reflektion über die eigene Geschichte.';
 
   @override
-  String get session3Title => 'Gruppenarbeit – Lebensbaum zeichnen + Auswerten';
+  String get session3Title =>
+      'Lebensbaum – erstelle deinen persönlichen Lebensbaum';
 
   @override
   String get session3Desc =>
@@ -644,8 +653,7 @@ class AppLocalizationsDe extends AppLocalizations {
   String get timelineSynthesisTitle => 'Verknüpfungen';
 
   @override
-  String get timelineSynthesisDesc =>
-      'Verdichte die wichtigsten Erkenntnisse aus Lebensbaum, Gaben, Werten und hörendem Gebet.';
+  String get timelineSynthesisDesc => 'Entdecke Zusammenhänge';
 
   @override
   String get timelineImagineTitle => 'Imagine';

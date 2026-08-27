@@ -12,6 +12,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get appTitle => 'DFL Weekend';
 
   @override
+  String get splitViewSelectModule =>
+      'Select a module on the left to open it here.';
+
+  @override
   String get notes => 'Notes';
 
   @override
@@ -348,6 +352,10 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get giftsReferenceLinkCopied => 'Link copied to clipboard';
+
+  @override
+  String get giftsReferenceImportRejected =>
+      'This reference link doesn\'t belong to an invite sent from this device, so it wasn\'t imported.';
 
   @override
   String get giftsReferenceInvalidLink =>

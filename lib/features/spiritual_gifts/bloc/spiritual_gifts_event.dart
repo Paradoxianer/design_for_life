@@ -58,3 +58,17 @@ class SubmitReferenceAssessment extends SpiritualGiftsEvent {
   @override
   List<Object?> get props => [assessmentId, answers, label];
 }
+
+/// Records that this device issued a "Referenz" invite for [assessmentId]
+/// (#70) - the only assessmentIds a gift-reference-result import is trusted
+/// for. Without this, opening any `flow=gift-reference-result` link (e.g.
+/// mixing up which of two exchanged links was whose) would silently merge
+/// unrelated answers into this device's own referenceAnswers.
+class IssueReferenceInvite extends SpiritualGiftsEvent {
+  final String assessmentId;
+
+  const IssueReferenceInvite(this.assessmentId);
+
+  @override
+  List<Object?> get props => [assessmentId];
+}

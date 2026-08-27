@@ -104,6 +104,12 @@ abstract class AppLocalizations {
   /// **'DFL Weekend'**
   String get appTitle;
 
+  /// No description provided for @splitViewSelectModule.
+  ///
+  /// In en, this message translates to:
+  /// **'Select a module on the left to open it here.'**
+  String get splitViewSelectModule;
+
   /// No description provided for @notes.
   ///
   /// In en, this message translates to:
@@ -709,6 +715,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Link copied to clipboard'**
   String get giftsReferenceLinkCopied;
+
+  /// No description provided for @giftsReferenceImportRejected.
+  ///
+  /// In en, this message translates to:
+  /// **'This reference link doesn\'t belong to an invite sent from this device, so it wasn\'t imported.'**
+  String get giftsReferenceImportRejected;
 
   /// No description provided for @giftsReferenceInvalidLink.
   ///

@@ -11,7 +11,13 @@ import '../services/timeline_module_registry.dart';
 import '../widgets/timeline_card.dart';
 
 class TimelineScreen extends StatelessWidget {
-  const TimelineScreen({super.key});
+  /// Path (without query, e.g. `/spiritual-gifts/session_5`) of the session
+  /// currently shown in the detail pane, when embedded as the persistent
+  /// list in AdaptiveNavigationShell's split view (#40). Null in the normal
+  /// full-screen usage, where nothing needs to be highlighted.
+  final String? selectedPath;
+
+  const TimelineScreen({super.key, this.selectedPath});
 
   @override
   Widget build(BuildContext context) {
@@ -21,9 +27,7 @@ class TimelineScreen extends StatelessWidget {
       future: const TimelineConfigRepository().loadSessions(l10n),
       builder: (context, snapshot) {
         if (snapshot.hasError) {
-          return Scaffold(
-            body: Center(child: Text(l10n.timelineUnavailable)),
-          );
+          return Scaffold(body: Center(child: Text(l10n.timelineUnavailable)));
         }
 
         if (!snapshot.hasData) {
@@ -40,19 +44,21 @@ class TimelineScreen extends StatelessWidget {
         // DFL für ein verkürztes Format, ohne dass sichtbar wird, was es
         // sonst noch gäbe). Ohne Deep-Link (allowedSessionIds == null)
         // bleibt die volle Timeline wie gehabt.
-        final allowedSessionIds = context.watch<TimelineModuleFilterBloc>().state.allowedSessionIds;
+        final allowedSessionIds = context
+            .watch<TimelineModuleFilterBloc>()
+            .state
+            .allowedSessionIds;
         final sessions = allowedSessionIds == null
             ? allSessions
-            : allSessions.where((s) => allowedSessionIds.contains(s.id)).toList();
+            : allSessions
+                  .where((s) => allowedSessionIds.contains(s.id))
+                  .toList();
 
         return Scaffold(
           body: CustomScrollView(
             slivers: [
               SliverAppBar.large(
-                title: Text(
-                  l10n.appTitle,
-                  style: theme.textTheme.displayLarge,
-                ),
+                title: Text(l10n.appTitle, style: theme.textTheme.displayLarge),
                 backgroundColor: theme.scaffoldBackgroundColor,
                 surfaceTintColor: Colors.transparent,
                 actions: [
@@ -68,36 +74,46 @@ class TimelineScreen extends StatelessWidget {
               // hat eine feste expandedHeight und würde bei einer zweiten
               // Zeile riskieren zu überlaufen.
               SliverToBoxAdapter(
-                child: BlocBuilder<TimelineModuleFilterBloc, TimelineModuleFilterState>(
-                  builder: (context, filterState) {
-                    final subtitle = _eventSubtitle(filterState);
-                    if (subtitle == null) return const SizedBox.shrink();
-                    return Padding(
-                      padding: const EdgeInsets.fromLTRB(16, 0, 16, 12),
-                      child: Row(
-                        children: [
-                          Icon(Icons.event_outlined, size: 16, color: theme.colorScheme.onSurfaceVariant),
-                          const SizedBox(width: 6),
-                          Text(
-                            subtitle,
-                            style: theme.textTheme.bodyMedium?.copyWith(color: theme.colorScheme.onSurfaceVariant),
+                child:
+                    BlocBuilder<
+                      TimelineModuleFilterBloc,
+                      TimelineModuleFilterState
+                    >(
+                      builder: (context, filterState) {
+                        final subtitle = _eventSubtitle(filterState);
+                        if (subtitle == null) return const SizedBox.shrink();
+                        return Padding(
+                          padding: const EdgeInsets.fromLTRB(16, 0, 16, 12),
+                          child: Row(
+                            children: [
+                              Icon(
+                                Icons.event_outlined,
+                                size: 16,
+                                color: theme.colorScheme.onSurfaceVariant,
+                              ),
+                              const SizedBox(width: 6),
+                              Text(
+                                subtitle,
+                                style: theme.textTheme.bodyMedium?.copyWith(
+                                  color: theme.colorScheme.onSurfaceVariant,
+                                ),
+                              ),
+                            ],
                           ),
-                        ],
-                      ),
-                    );
-                  },
-                ),
+                        );
+                      },
+                    ),
               ),
               SliverPadding(
                 padding: const EdgeInsets.only(bottom: 24),
                 sliver: SliverList(
-                  delegate: SliverChildBuilderDelegate(
-                    (context, index) {
-                      final session = sessions[index];
-                      return _TimelineCardWrapper(session: session);
-                    },
-                    childCount: sessions.length,
-                  ),
+                  delegate: SliverChildBuilderDelegate((context, index) {
+                    final session = sessions[index];
+                    return _TimelineCardWrapper(
+                      session: session,
+                      selectedPath: selectedPath,
+                    );
+                  }, childCount: sessions.length),
                 ),
               ),
               SliverToBoxAdapter(child: _BrandingFooter()),
@@ -130,8 +146,11 @@ class _BrandingFooter extends StatelessWidget {
 /// as a small subtitle under the timeline header.
 String? _eventSubtitle(TimelineModuleFilterState filterState) {
   final parts = [
-    if (filterState.eventDate != null && filterState.eventDate!.isNotEmpty) filterState.eventDate!,
-    if (filterState.eventLocation != null && filterState.eventLocation!.isNotEmpty) filterState.eventLocation!,
+    if (filterState.eventDate != null && filterState.eventDate!.isNotEmpty)
+      filterState.eventDate!,
+    if (filterState.eventLocation != null &&
+        filterState.eventLocation!.isNotEmpty)
+      filterState.eventLocation!,
   ];
   if (parts.isEmpty) return null;
   return parts.join(' · ');
@@ -139,12 +158,19 @@ String? _eventSubtitle(TimelineModuleFilterState filterState) {
 
 class _TimelineCardWrapper extends StatelessWidget {
   final DflSession session;
+  final String? selectedPath;
 
-  const _TimelineCardWrapper({required this.session});
+  const _TimelineCardWrapper({required this.session, this.selectedPath});
 
   @override
   Widget build(BuildContext context) {
     final isCompleted = TimelineModuleRegistry.isCompleted(context, session);
+
+    final route = TimelineModuleRegistry.buildRoute(session);
+    final isSelected =
+        selectedPath != null &&
+        route != null &&
+        '/${route.split('?').first}' == selectedPath;
 
     final updatedSession = DflSession(
       id: session.id,
@@ -162,6 +188,7 @@ class _TimelineCardWrapper extends StatelessWidget {
 
     return TimelineCard(
       session: updatedSession,
+      isSelected: isSelected,
       onTap: () {
         final shouldOpenInResultMode =
             updatedSession.status == SessionStatus.done;

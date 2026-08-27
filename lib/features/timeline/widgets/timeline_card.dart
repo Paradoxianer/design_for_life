@@ -1,22 +1,39 @@
 import 'package:flutter/material.dart';
+
 import '../models/dfl_session.dart';
 
 class TimelineCard extends StatelessWidget {
   final DflSession session;
   final VoidCallback? onTap;
 
+  /// Highlights this card as the one currently open in the detail pane of
+  /// AdaptiveNavigationShell's split view (#40, acceptance criterion:
+  /// current selection must be clearly recognizable). Unused/false outside
+  /// that split-view context.
+  final bool isSelected;
+
   const TimelineCard({
     super.key,
     required this.session,
     this.onTap,
+    this.isSelected = false,
   });
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    
+
     return Card(
       margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+      color: isSelected
+          ? theme.colorScheme.primaryContainer.withValues(alpha: 0.5)
+          : null,
+      shape: isSelected
+          ? RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(12),
+              side: BorderSide(color: theme.colorScheme.primary, width: 1.5),
+            )
+          : null,
       child: InkWell(
         onTap: onTap,
         borderRadius: BorderRadius.circular(12),
@@ -42,10 +59,7 @@ class TimelineCard extends StatelessWidget {
                               fontWeight: FontWeight.bold,
                             ),
                           ),
-                        Text(
-                          session.title,
-                          style: theme.textTheme.titleMedium,
-                        ),
+                        Text(session.title, style: theme.textTheme.titleMedium),
                         if (session.description != null) ...[
                           const SizedBox(height: 4),
                           Text(
@@ -68,7 +82,11 @@ class TimelineCard extends StatelessWidget {
                 Row(
                   children: [
                     if (session.room != null) ...[
-                      const Icon(Icons.location_on_outlined, size: 14, color: Colors.grey),
+                      const Icon(
+                        Icons.location_on_outlined,
+                        size: 14,
+                        color: Colors.grey,
+                      ),
                       const SizedBox(width: 4),
                       Flexible(
                         child: Text(
@@ -81,7 +99,11 @@ class TimelineCard extends StatelessWidget {
                       const SizedBox(width: 16),
                     ],
                     if (session.groupAssignment != null) ...[
-                      const Icon(Icons.people_outline, size: 14, color: Colors.grey),
+                      const Icon(
+                        Icons.people_outline,
+                        size: 14,
+                        color: Colors.grey,
+                      ),
                       const SizedBox(width: 4),
                       Flexible(
                         child: Text(
@@ -153,13 +175,29 @@ class _StatusIcon extends StatelessWidget {
   Widget build(BuildContext context) {
     switch (status) {
       case SessionStatus.done:
-        return const Icon(Icons.check_circle_rounded, color: Colors.green, size: 20);
+        return const Icon(
+          Icons.check_circle_rounded,
+          color: Colors.green,
+          size: 20,
+        );
       case SessionStatus.locked:
-        return const Icon(Icons.lock_outline_rounded, color: Colors.grey, size: 20);
+        return const Icon(
+          Icons.lock_outline_rounded,
+          color: Colors.grey,
+          size: 20,
+        );
       case SessionStatus.override:
-        return const Icon(Icons.lock_open_rounded, color: Color(0xFFF4D03F), size: 20);
+        return const Icon(
+          Icons.lock_open_rounded,
+          color: Color(0xFFF4D03F),
+          size: 20,
+        );
       case SessionStatus.notStarted:
-        return const Icon(Icons.radio_button_unchecked_rounded, color: Colors.grey, size: 20);
+        return const Icon(
+          Icons.radio_button_unchecked_rounded,
+          color: Colors.grey,
+          size: 20,
+        );
     }
   }
 }

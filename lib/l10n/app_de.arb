@@ -1,5 +1,6 @@
 {
   "appTitle": "DFL Wochenende",
+  "splitViewSelectModule": "Wähle links ein Modul aus, um es hier zu öffnen.",
   "notes": "Notizen",
   "notesEmptyState": "Keine Notizen vorhanden.",
   "entryTakePhoto": "Foto aufnehmen",
@@ -136,14 +137,14 @@
   "giftsContinue": "Weiter ausfüllen",
   "giftsFinishAnyway": "Trotzdem beenden",
   "giftsReferenceInviteButton": "Referenz einladen",
-  "giftsReferenceInviteShareText": "Ich würde mich freuen, wenn du mich bei meiner Stärken-Reflexion (Spiritual Gifts) einschätzt: {link}",
+  "giftsReferenceInviteShareText": "Ich würde mich freuen, wenn du mich bei meinem Geistesgabentest einschätzt: {link}",
   "@giftsReferenceInviteShareText": {
     "placeholders": {
       "link": { "type": "String" }
     }
   },
   "giftsReferenceScreenTitle": "Referenz-Einschätzung",
-  "giftsReferenceIntro": "Du wurdest gebeten, jemanden bei einer Stärken-Reflexion einzuschätzen. Bitte beantworte die folgenden Fragen so ehrlich wie möglich - es geht um deinen Eindruck von dieser Person, nicht um dich selbst.",
+  "giftsReferenceIntro": "Du wurdest gebeten, jemanden bei einem Geistesgabentest einzuschätzen. Bitte beantworte die folgenden Fragen so ehrlich wie möglich - es geht um deinen Eindruck von dieser Person, nicht um dich selbst.",
   "giftsReferenceNameLabel": "Wie sollen wir dich nennen? (optional)",
   "giftsReferenceNameHint": "Dein Name",
   "giftsReferenceSubmitButton": "Ergebnis zurücksenden",
@@ -157,6 +158,7 @@
   "giftsReferenceDoneMessage": "Sende dein Ergebnis über den Button unten an die Person zurück, die dich eingeladen hat.",
   "giftsReferenceCopyLink": "Link kopieren",
   "giftsReferenceLinkCopied": "Link in die Zwischenablage kopiert",
+  "giftsReferenceImportRejected": "Dieser Referenz-Link gehört zu keiner Einladung, die du von diesem Gerät aus verschickt hast, und wurde deshalb nicht übernommen.",
   "giftsReferenceInvalidLink": "Dieser Link ist ungültig oder nicht mehr aktuell.",
   "giftsReferenceLoadFailed": "Die Fragen konnten nicht geladen werden.",
   "giftsReferenceImportedMessage": "Neue Referenz-Einschätzung importiert!",
@@ -287,7 +289,7 @@
   "session1Desc": "Begrüßung und Einführung in das DFL Wochenende.",
   "session2Title": "Einheit Zwei: Zurück in die Zukunft",
   "session2Desc": "Reflektion über die eigene Geschichte.",
-  "session3Title": "Gruppenarbeit – Lebensbaum zeichnen + Auswerten",
+  "session3Title": "Lebensbaum – erstelle deinen persönlichen Lebensbaum",
   "session3Desc": "Erstellung des persönlichen Lebensbaums in der Gruppe.",
   "session4Title": "Einheit Drei: Das Hier und Jetzt",
   "session4Desc": "Gegenwart und Identität.",
@@ -305,7 +307,7 @@
   "session10Desc": "Persönliche Zielsetzung in Einzelgesprächen.",
   "session11Title": "Gruppenfoto",
   "timelineSynthesisTitle": "Verknüpfungen",
-  "timelineSynthesisDesc": "Verdichte die wichtigsten Erkenntnisse aus Lebensbaum, Gaben, Werten und hörendem Gebet.",
+  "timelineSynthesisDesc": "Entdecke Zusammenhänge",
   "timelineImagineTitle": "Imagine",
   "timelineImagineDesc": "Gestalte Zukunftsbilder und halte deine Gedanken zur nächsten Lebensphase fest.",
   "timelineUnavailable": "Timeline konnte nicht geladen werden. Bitte starte die App neu.",

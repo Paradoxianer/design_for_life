@@ -22,6 +22,13 @@ class SpiritualGiftsState extends Equatable {
   /// entered), purely local - never shared back out.
   final Map<String, String> referenceLabels;
 
+  /// assessmentIds this device has issued a "Referenz" invite for (#70) -
+  /// the allowlist a gift-reference-result import is checked against, so an
+  /// accidentally-opened result link that was never invited by this device
+  /// (e.g. one of two people's exchanged links being mixed up) is rejected
+  /// instead of silently merged in.
+  final Set<String> issuedReferenceInviteIds;
+
   const SpiritualGiftsState({
     this.gifts = const [],
     this.answers = const {},
@@ -31,12 +38,14 @@ class SpiritualGiftsState extends Equatable {
     this.takeaways = const {},
     this.referenceAnswers = const {},
     this.referenceLabels = const {},
+    this.issuedReferenceInviteIds = const {},
   });
 
   bool get isLoaded => gifts.isNotEmpty;
-  
+
   /// General test completion: All questions answered.
-  bool get isCompleted => questionOrder.isNotEmpty && answers.length >= questionOrder.length;
+  bool get isCompleted =>
+      questionOrder.isNotEmpty && answers.length >= questionOrder.length;
 
   /// Full module completion for a specific session: the quiz is done, which
   /// determines the top gifts - the primary output of this module. Writing
@@ -44,7 +53,9 @@ class SpiritualGiftsState extends Equatable {
   /// required for the timeline checkmark (#57).
   bool isSessionCompleted(String sessionId) => isCompleted;
 
-  double get progress => questionOrder.isEmpty ? 0 : (answers.length / questionOrder.length).clamp(0.0, 1.0);
+  double get progress => questionOrder.isEmpty
+      ? 0
+      : (answers.length / questionOrder.length).clamp(0.0, 1.0);
 
   int get firstUnansweredIndex {
     for (int i = 0; i < questionOrder.length; i++) {
@@ -62,6 +73,7 @@ class SpiritualGiftsState extends Equatable {
     Map<String, List<String>>? takeaways,
     Map<String, Map<String, int>>? referenceAnswers,
     Map<String, String>? referenceLabels,
+    Set<String>? issuedReferenceInviteIds,
   }) {
     return SpiritualGiftsState(
       gifts: gifts ?? this.gifts,
@@ -72,6 +84,8 @@ class SpiritualGiftsState extends Equatable {
       takeaways: takeaways ?? this.takeaways,
       referenceAnswers: referenceAnswers ?? this.referenceAnswers,
       referenceLabels: referenceLabels ?? this.referenceLabels,
+      issuedReferenceInviteIds:
+          issuedReferenceInviteIds ?? this.issuedReferenceInviteIds,
     );
   }
 
@@ -110,14 +124,23 @@ class SpiritualGiftsState extends Equatable {
   /// both for the external mini-flow and as the index basis for the compact
   /// answers= encoding on the gift-reference-result deep link.
   List<GiftQuestion> getReferenceQuestionOrder() {
-    return gifts.expand((gift) => gift.questions.where((q) => q.type == QuestionType.reference)).toList();
+    return gifts
+        .expand(
+          (gift) =>
+              gift.questions.where((q) => q.type == QuestionType.reference),
+        )
+        .toList();
   }
 
   int _maxScore(SpiritualGift gift, bool Function(QuestionType) matches) {
     return gift.questions.where((q) => matches(q.type)).length * 5;
   }
 
-  double? _percentFor(SpiritualGift gift, Map<String, int> answerSource, bool Function(QuestionType) matches) {
+  double? _percentFor(
+    SpiritualGift gift,
+    Map<String, int> answerSource,
+    bool Function(QuestionType) matches,
+  ) {
     final maxScore = _maxScore(gift, matches);
     if (maxScore == 0) return null;
     final raw = gift.questions
@@ -136,7 +159,13 @@ class SpiritualGiftsState extends Equatable {
   double? getReferenceMeanPercent(SpiritualGift gift) {
     if (referenceAnswers.isEmpty) return null;
     final percents = referenceAnswers.values
-        .map((oneReference) => _percentFor(gift, oneReference, (t) => t == QuestionType.reference))
+        .map(
+          (oneReference) => _percentFor(
+            gift,
+            oneReference,
+            (t) => t == QuestionType.reference,
+          ),
+        )
         .whereType<double>()
         .toList();
     if (percents.isEmpty) return null;
@@ -188,40 +217,50 @@ class SpiritualGiftsState extends Equatable {
       'takeaways': takeaways,
       'referenceAnswers': referenceAnswers,
       'referenceLabels': referenceLabels,
+      'issuedReferenceInviteIds': issuedReferenceInviteIds.toList(),
     };
   }
 
   factory SpiritualGiftsState.fromJson(Map<String, dynamic> json) {
     return SpiritualGiftsState(
-      gifts: (json['gifts'] as List? ?? []).map((g) => SpiritualGift.fromJson(g as Map<String, dynamic>)).toList(),
+      gifts: (json['gifts'] as List? ?? [])
+          .map((g) => SpiritualGift.fromJson(g as Map<String, dynamic>))
+          .toList(),
       answers: Map<String, int>.from(json['answers'] ?? {}),
       questionOrder: List<String>.from(json['questionOrder'] ?? []),
       currentQuestionIndex: json['currentQuestionIndex'] ?? 0,
       currentSessionId: json['currentSessionId'] as String?,
-      takeaways: (json['takeaways'] as Map<String, dynamic>?)?.map(
+      takeaways:
+          (json['takeaways'] as Map<String, dynamic>?)?.map(
             (k, v) => MapEntry(k, List<String>.from(v as List)),
           ) ??
           const {},
-      referenceAnswers: (json['referenceAnswers'] as Map<String, dynamic>?)?.map(
+      referenceAnswers:
+          (json['referenceAnswers'] as Map<String, dynamic>?)?.map(
             (k, v) => MapEntry(k, Map<String, int>.from(v as Map)),
           ) ??
           const {},
-      referenceLabels: (json['referenceLabels'] as Map<String, dynamic>?)?.map(
+      referenceLabels:
+          (json['referenceLabels'] as Map<String, dynamic>?)?.map(
             (k, v) => MapEntry(k, v as String),
           ) ??
           const {},
+      issuedReferenceInviteIds: Set<String>.from(
+        json['issuedReferenceInviteIds'] ?? const [],
+      ),
     );
   }
 
   @override
   List<Object?> get props => [
-        gifts,
-        answers,
-        questionOrder,
-        currentQuestionIndex,
-        currentSessionId,
-        takeaways,
-        referenceAnswers,
-        referenceLabels,
-      ];
+    gifts,
+    answers,
+    questionOrder,
+    currentQuestionIndex,
+    currentSessionId,
+    takeaways,
+    referenceAnswers,
+    referenceLabels,
+    issuedReferenceInviteIds,
+  ];
 }

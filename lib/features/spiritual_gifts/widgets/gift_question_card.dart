@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:design_for_life/l10n/generated/app_localizations.dart';
+
 import '../models/gift_question.dart';
 
 /// The 0-5 rating card used both for the main self-assessment (#5) and the
@@ -48,8 +49,6 @@ class GiftQuestionCard extends StatelessWidget {
                 fontSize: 13,
               ),
               textAlign: TextAlign.center,
-              maxLines: 3,
-              overflow: TextOverflow.ellipsis,
             ),
             const SizedBox(height: 10),
             Wrap(

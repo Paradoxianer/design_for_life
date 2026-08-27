@@ -1,5 +1,6 @@
 {
   "appTitle": "DFL Weekend",
+  "splitViewSelectModule": "Select a module on the left to open it here.",
   "@appTitle": {
     "description": "The title of the application"
   },
@@ -157,6 +158,7 @@
   "giftsReferenceDoneMessage": "Send your result back to the person who invited you using the button below.",
   "giftsReferenceCopyLink": "Copy link",
   "giftsReferenceLinkCopied": "Link copied to clipboard",
+  "giftsReferenceImportRejected": "This reference link doesn't belong to an invite sent from this device, so it wasn't imported.",
   "giftsReferenceInvalidLink": "This link is invalid or no longer up to date.",
   "giftsReferenceLoadFailed": "The questions could not be loaded.",
   "giftsReferenceImportedMessage": "New reference assessment imported!",

@@ -8,6 +8,7 @@ import 'package:design_for_life/l10n/generated/app_localizations.dart';
 
 import 'core/services/deep_link_service.dart';
 import 'core/theme/app_theme.dart';
+import 'core/widgets/adaptive_navigation_shell.dart';
 import 'features/timeline/bloc/timeline_module_filter_bloc.dart';
 import 'features/timeline/screens/timeline_screen.dart';
 import 'features/notes/screens/notes_screen.dart';
@@ -42,7 +43,7 @@ import 'features/export/screens/export_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  
+
   HydratedBloc.storage = await HydratedStorage.build(
     storageDirectory: kIsWeb
         ? HydratedStorage.webStorageDirectory
@@ -65,10 +66,12 @@ void main() async {
         BlocProvider(create: (context) => GiftReferenceAnswerBloc()),
         BlocProvider(create: (context) => ValuesBloc()),
         BlocProvider(
-          create: (context) => FeedbackBloc(repository: feedbackQuestionsRepository),
+          create: (context) =>
+              FeedbackBloc(repository: feedbackQuestionsRepository),
         ),
         BlocProvider(
-          create: (context) => PersonalStyleBloc(repository: personalStyleRepository),
+          create: (context) =>
+              PersonalStyleBloc(repository: personalStyleRepository),
         ),
         BlocProvider(create: (context) => ImagineBloc()),
         BlocProvider(create: (context) => LifeTreeBloc()),
@@ -95,176 +98,207 @@ class _DflAppState extends State<DflApp> {
   // navigations into the same router instance a link arrives while the app
   // is already running (#49).
   late final GoRouter _router = GoRouter(
-      initialLocation: '/',
-      routes: [
-        GoRoute(
-          path: '/',
-          builder: (context, state) => const TimelineScreen(),
-        ),
-        GoRoute(
-          path: '/notes/:sessionId',
-          builder: (context, state) {
-            final l10n = AppLocalizations.of(context);
-            final sessionId = state.pathParameters['sessionId']!;
-            final title = state.uri.queryParameters['title'] ?? l10n.notes;
-            final mode = state.uri.queryParameters['mode'];
-            return NotesScreen(
-              sessionId: sessionId,
-              title: title,
-              initialEditMode: mode != 'result',
-            );
-          },
-        ),
-        GoRoute(
-          path: '/listening-prayer/:sessionId',
-          builder: (context, state) {
-            final l10n = AppLocalizations.of(context);
-            final sessionId = state.pathParameters['sessionId']!;
-            final title = state.uri.queryParameters['title'] ?? l10n.listeningPrayerTitle;
-            final mode = state.uri.queryParameters['mode'];
-            return ListeningPrayerScreen(
-              sessionId: sessionId,
-              title: title,
-              initialEditMode: mode != 'result',
-            );
-          },
-        ),
-        GoRoute(
-          path: '/goals/:sessionId',
-          builder: (context, state) {
-            final l10n = AppLocalizations.of(context);
-            final sessionId = state.pathParameters['sessionId']!;
-            final title = state.uri.queryParameters['title'] ?? l10n.goalsTitle;
-            final mode = state.uri.queryParameters['mode'];
-            return GoalsScreen(
-              sessionId: sessionId,
-              title: title,
-              initialEditMode: mode != 'result',
-            );
-          },
-        ),
-        GoRoute(
-          path: '/gift-reference/:assessmentId',
-          builder: (context, state) {
-            final assessmentId = state.pathParameters['assessmentId']!;
-            return GiftReferenceScreen(assessmentId: assessmentId);
-          },
-        ),
-        GoRoute(
-          path: '/spiritual-gifts/:sessionId',
-          builder: (context, state) {
-            final l10n = AppLocalizations.of(context);
-            final sessionId = state.pathParameters['sessionId']!;
-            final title = state.uri.queryParameters['title'] ?? l10n.spiritualGiftsTitle;
-            final mode = state.uri.queryParameters['mode'];
-            return SpiritualGiftsScreen(
-              sessionId: sessionId,
-              title: title,
-              initialEditMode: mode != 'result',
-            );
-          },
-        ),
-        GoRoute(
-          path: '/values',
-          builder: (context, state) {
-            final l10n = AppLocalizations.of(context);
-            final title = state.uri.queryParameters['title'] ?? l10n.valuesTitle;
-            final mode = state.uri.queryParameters['mode'];
-            return ValuesAssessmentScreen(
-              title: title,
-              initialEditMode: mode != 'result',
-            );
-          },
-        ),
-        GoRoute(
-          path: '/feedback',
-          builder: (context, state) {
-            final l10n = AppLocalizations.of(context);
-            final title = state.uri.queryParameters['title'] ?? l10n.feedbackTitle;
-            final mode = state.uri.queryParameters['mode'];
-            return FeedbackScreen(
-              title: title,
-              initialEditMode: mode != 'result',
-            );
-          },
-        ),
-        GoRoute(
-          path: '/imagine/:sessionId',
-          builder: (context, state) {
-            final l10n = AppLocalizations.of(context);
-            final sessionId = state.pathParameters['sessionId']!;
-            final title = state.uri.queryParameters['title'] ?? l10n.timelineImagineTitle;
-            final mode = state.uri.queryParameters['mode'];
-            return ImagineScreen(
-              sessionId: sessionId,
-              title: title,
-              initialEditMode: mode != 'result',
-            );
-          },
-        ),
-        GoRoute(
-          path: '/life-tree/:sessionId',
-          builder: (context, state) {
-            final l10n = AppLocalizations.of(context);
-            final sessionId = state.pathParameters['sessionId']!;
-            final title = state.uri.queryParameters['title'] ?? l10n.lifeTreeTitle;
-            final mode = state.uri.queryParameters['mode'];
-            return LifeTreeScreen(
-              sessionId: sessionId,
-              title: title,
-              initialEditMode: mode != 'result',
-            );
-          },
-        ),
-        GoRoute(
-          path: '/personal-style/:sessionId',
-          builder: (context, state) {
-            final l10n = AppLocalizations.of(context);
-            final sessionId = state.pathParameters['sessionId']!;
-            final title = state.uri.queryParameters['title'] ?? l10n.personalStyleTitle;
-            final mode = state.uri.queryParameters['mode'];
-            return PersonalStyleScreen(
-              sessionId: sessionId,
-              title: title,
-              initialEditMode: mode != 'result',
-            );
-          },
-        ),
-        GoRoute(
-          path: '/export',
-          builder: (context, state) => const ExportScreen(),
-        ),
-        GoRoute(
-          path: '/group-photo',
-          builder: (context, state) {
-            final l10n = AppLocalizations.of(context);
-            final title = state.uri.queryParameters['title'] ?? l10n.session11Title;
-            final mode = state.uri.queryParameters['mode'];
-            return GroupPhotoScreen(
-              title: title,
-              initialEditMode: mode != 'result',
-            );
-          },
-        ),
-        GoRoute(
-          path: '/synthesis',
-          builder: (context, state) {
-            final l10n = AppLocalizations.of(context);
-            final title = state.uri.queryParameters['title'] ?? l10n.timelineSynthesisTitle;
-            final mode = state.uri.queryParameters['mode'];
-            return SynthesisScreen(
-              giftsSessionId: state.uri.queryParameters['giftsSession'] ?? 'session_5',
-              prayerSessionId: state.uri.queryParameters['prayerSession'] ?? 'session_7',
-              goalsSessionId: state.uri.queryParameters['goalsSession'] ?? 'session_10',
-              lifeTreeSessionId: state.uri.queryParameters['lifeTreeSession'] ?? 'session_3',
-              personalStyleSessionId: state.uri.queryParameters['personalStyleSession'] ?? 'session_13',
-              title: title,
-              initialEditMode: mode != 'result',
-            );
-          },
-        ),
-      ],
-    );
+    initialLocation: '/',
+    routes: [
+      // Wraps every route in AdaptiveNavigationShell (#40): on large
+      // landscape screens it shows a persistent module list alongside the
+      // routed screen instead of replacing it, so switching modules never
+      // requires returning to the timeline. On narrow screens it just
+      // returns `child` unchanged - identical to the pre-#40 behavior.
+      ShellRoute(
+        builder: (context, state, child) =>
+            AdaptiveNavigationShell(routerState: state, child: child),
+        routes: [
+          GoRoute(
+            path: '/',
+            builder: (context, state) => const TimelineScreen(),
+          ),
+          GoRoute(
+            path: '/notes/:sessionId',
+            builder: (context, state) {
+              final l10n = AppLocalizations.of(context);
+              final sessionId = state.pathParameters['sessionId']!;
+              final title = state.uri.queryParameters['title'] ?? l10n.notes;
+              final mode = state.uri.queryParameters['mode'];
+              return NotesScreen(
+                sessionId: sessionId,
+                title: title,
+                initialEditMode: mode != 'result',
+              );
+            },
+          ),
+          GoRoute(
+            path: '/listening-prayer/:sessionId',
+            builder: (context, state) {
+              final l10n = AppLocalizations.of(context);
+              final sessionId = state.pathParameters['sessionId']!;
+              final title =
+                  state.uri.queryParameters['title'] ??
+                  l10n.listeningPrayerTitle;
+              final mode = state.uri.queryParameters['mode'];
+              return ListeningPrayerScreen(
+                sessionId: sessionId,
+                title: title,
+                initialEditMode: mode != 'result',
+              );
+            },
+          ),
+          GoRoute(
+            path: '/goals/:sessionId',
+            builder: (context, state) {
+              final l10n = AppLocalizations.of(context);
+              final sessionId = state.pathParameters['sessionId']!;
+              final title =
+                  state.uri.queryParameters['title'] ?? l10n.goalsTitle;
+              final mode = state.uri.queryParameters['mode'];
+              return GoalsScreen(
+                sessionId: sessionId,
+                title: title,
+                initialEditMode: mode != 'result',
+              );
+            },
+          ),
+          GoRoute(
+            path: '/gift-reference/:assessmentId',
+            builder: (context, state) {
+              final assessmentId = state.pathParameters['assessmentId']!;
+              return GiftReferenceScreen(assessmentId: assessmentId);
+            },
+          ),
+          GoRoute(
+            path: '/spiritual-gifts/:sessionId',
+            builder: (context, state) {
+              final l10n = AppLocalizations.of(context);
+              final sessionId = state.pathParameters['sessionId']!;
+              final title =
+                  state.uri.queryParameters['title'] ??
+                  l10n.spiritualGiftsTitle;
+              final mode = state.uri.queryParameters['mode'];
+              return SpiritualGiftsScreen(
+                sessionId: sessionId,
+                title: title,
+                initialEditMode: mode != 'result',
+              );
+            },
+          ),
+          GoRoute(
+            path: '/values',
+            builder: (context, state) {
+              final l10n = AppLocalizations.of(context);
+              final title =
+                  state.uri.queryParameters['title'] ?? l10n.valuesTitle;
+              final mode = state.uri.queryParameters['mode'];
+              return ValuesAssessmentScreen(
+                title: title,
+                initialEditMode: mode != 'result',
+              );
+            },
+          ),
+          GoRoute(
+            path: '/feedback',
+            builder: (context, state) {
+              final l10n = AppLocalizations.of(context);
+              final title =
+                  state.uri.queryParameters['title'] ?? l10n.feedbackTitle;
+              final mode = state.uri.queryParameters['mode'];
+              return FeedbackScreen(
+                title: title,
+                initialEditMode: mode != 'result',
+              );
+            },
+          ),
+          GoRoute(
+            path: '/imagine/:sessionId',
+            builder: (context, state) {
+              final l10n = AppLocalizations.of(context);
+              final sessionId = state.pathParameters['sessionId']!;
+              final title =
+                  state.uri.queryParameters['title'] ??
+                  l10n.timelineImagineTitle;
+              final mode = state.uri.queryParameters['mode'];
+              return ImagineScreen(
+                sessionId: sessionId,
+                title: title,
+                initialEditMode: mode != 'result',
+              );
+            },
+          ),
+          GoRoute(
+            path: '/life-tree/:sessionId',
+            builder: (context, state) {
+              final l10n = AppLocalizations.of(context);
+              final sessionId = state.pathParameters['sessionId']!;
+              final title =
+                  state.uri.queryParameters['title'] ?? l10n.lifeTreeTitle;
+              final mode = state.uri.queryParameters['mode'];
+              return LifeTreeScreen(
+                sessionId: sessionId,
+                title: title,
+                initialEditMode: mode != 'result',
+              );
+            },
+          ),
+          GoRoute(
+            path: '/personal-style/:sessionId',
+            builder: (context, state) {
+              final l10n = AppLocalizations.of(context);
+              final sessionId = state.pathParameters['sessionId']!;
+              final title =
+                  state.uri.queryParameters['title'] ?? l10n.personalStyleTitle;
+              final mode = state.uri.queryParameters['mode'];
+              return PersonalStyleScreen(
+                sessionId: sessionId,
+                title: title,
+                initialEditMode: mode != 'result',
+              );
+            },
+          ),
+          GoRoute(
+            path: '/export',
+            builder: (context, state) => const ExportScreen(),
+          ),
+          GoRoute(
+            path: '/group-photo',
+            builder: (context, state) {
+              final l10n = AppLocalizations.of(context);
+              final title =
+                  state.uri.queryParameters['title'] ?? l10n.session11Title;
+              final mode = state.uri.queryParameters['mode'];
+              return GroupPhotoScreen(
+                title: title,
+                initialEditMode: mode != 'result',
+              );
+            },
+          ),
+          GoRoute(
+            path: '/synthesis',
+            builder: (context, state) {
+              final l10n = AppLocalizations.of(context);
+              final title =
+                  state.uri.queryParameters['title'] ??
+                  l10n.timelineSynthesisTitle;
+              final mode = state.uri.queryParameters['mode'];
+              return SynthesisScreen(
+                giftsSessionId:
+                    state.uri.queryParameters['giftsSession'] ?? 'session_5',
+                prayerSessionId:
+                    state.uri.queryParameters['prayerSession'] ?? 'session_7',
+                goalsSessionId:
+                    state.uri.queryParameters['goalsSession'] ?? 'session_10',
+                lifeTreeSessionId:
+                    state.uri.queryParameters['lifeTreeSession'] ?? 'session_3',
+                personalStyleSessionId:
+                    state.uri.queryParameters['personalStyleSession'] ??
+                    'session_13',
+                title: title,
+                initialEditMode: mode != 'result',
+              );
+            },
+          ),
+        ],
+      ),
+    ],
+  );
 
   DeepLinkService? _deepLinkService;
 
@@ -287,14 +321,26 @@ class _DflAppState extends State<DflApp> {
 
   void _handleDeepLinkAction(DeepLinkAction action) {
     switch (action) {
-      case ShowOnlyModulesAction(:final sessionIds, :final eventDate, :final eventLocation):
+      case ShowOnlyModulesAction(
+        :final sessionIds,
+        :final eventDate,
+        :final eventLocation,
+      ):
         context.read<TimelineModuleFilterBloc>().add(
-              SetAllowedModules(sessionIds, eventDate: eventDate, eventLocation: eventLocation),
-            );
+          SetAllowedModules(
+            sessionIds,
+            eventDate: eventDate,
+            eventLocation: eventLocation,
+          ),
+        );
         _router.go('/');
       case GiftReferenceInviteAction(:final assessmentId):
         _router.go('/gift-reference/$assessmentId');
-      case GiftReferenceResultAction(:final assessmentId, :final answersPayload, :final label):
+      case GiftReferenceResultAction(
+        :final assessmentId,
+        :final answersPayload,
+        :final label,
+      ):
         _importGiftReferenceResult(assessmentId, answersPayload, label);
     }
   }
@@ -302,15 +348,51 @@ class _DflAppState extends State<DflApp> {
   // Question IDs are stable across locales (see assets/data/gifts_*.json),
   // so which locale we load here doesn't affect decoding correctness - 'de'
   // is always available as GiftsRepository's own fallback anyway.
-  Future<void> _importGiftReferenceResult(String assessmentId, String answersPayload, String? label) async {
+  Future<void> _importGiftReferenceResult(
+    String assessmentId,
+    String answersPayload,
+    String? label,
+  ) async {
+    // Only accept results for assessmentIds this device itself invited (#70)
+    // - otherwise accidentally opening the wrong one of two reciprocally
+    // exchanged links would silently merge unrelated answers into this
+    // device's own referenceAnswers.
+    if (!context
+        .read<SpiritualGiftsBloc>()
+        .state
+        .issuedReferenceInviteIds
+        .contains(assessmentId)) {
+      final navigatorContext =
+          _router.routerDelegate.navigatorKey.currentContext;
+      if (navigatorContext != null && navigatorContext.mounted) {
+        ScaffoldMessenger.of(navigatorContext).showSnackBar(
+          SnackBar(
+            content: Text(
+              AppLocalizations.of(navigatorContext)
+                  .giftsReferenceImportRejected,
+            ),
+          ),
+        );
+      }
+      return;
+    }
+
     final gifts = await GiftsRepository().loadGifts('de');
-    final questionOrder = SpiritualGiftsState(gifts: gifts).getReferenceQuestionOrder();
-    final answers = GiftReferenceLinkService.decodeAnswers(answersPayload, questionOrder);
+    final questionOrder = SpiritualGiftsState(gifts: gifts)
+        .getReferenceQuestionOrder();
+    final answers = GiftReferenceLinkService.decodeAnswers(
+      answersPayload,
+      questionOrder,
+    );
     if (!mounted || answers == null) return;
 
     context.read<SpiritualGiftsBloc>().add(
-          SubmitReferenceAssessment(assessmentId: assessmentId, answers: answers, label: label),
-        );
+      SubmitReferenceAssessment(
+        assessmentId: assessmentId,
+        answers: answers,
+        label: label,
+      ),
+    );
     _router.go('/spiritual-gifts/session_5?mode=result');
   }
 

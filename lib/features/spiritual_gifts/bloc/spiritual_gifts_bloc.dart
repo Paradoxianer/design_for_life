@@ -1,5 +1,6 @@
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:equatable/equatable.dart';
+
 import '../models/spiritual_gift.dart';
 import '../models/gift_question.dart';
 import '../repositories/gifts_repository.dart';
@@ -7,14 +8,16 @@ import '../repositories/gifts_repository.dart';
 part 'spiritual_gifts_event.dart';
 part 'spiritual_gifts_state.dart';
 
-class SpiritualGiftsBloc extends HydratedBloc<SpiritualGiftsEvent, SpiritualGiftsState> {
+class SpiritualGiftsBloc
+    extends HydratedBloc<SpiritualGiftsEvent, SpiritualGiftsState> {
   final GiftsRepository repository;
 
-  SpiritualGiftsBloc({required this.repository}) : super(const SpiritualGiftsState()) {
+  SpiritualGiftsBloc({required this.repository})
+    : super(const SpiritualGiftsState()) {
     on<InitTest>((event, emit) async {
       // We always force reload to ensure metadata (descriptions, meanings) are up to date
       final gifts = await repository.loadGifts(event.locale, forceReload: true);
-      
+
       // Clear question order if gifts were reloaded to ensure sync
       // We ONLY include non-reference questions in the main test
       List<String> questionOrder = gifts
@@ -22,40 +25,49 @@ class SpiritualGiftsBloc extends HydratedBloc<SpiritualGiftsEvent, SpiritualGift
           .where((q) => q.type != QuestionType.reference)
           .map((q) => q.id)
           .toList();
-          
+
       if (state.questionOrder.length != questionOrder.length) {
         questionOrder.shuffle();
       } else {
         questionOrder = state.questionOrder;
       }
-      
-      emit(state.copyWith(
-        gifts: gifts,
-        questionOrder: questionOrder,
-        currentSessionId: event.sessionId,
-        currentQuestionIndex: state.answers.length >= questionOrder.length ? 0 : state.firstUnansweredIndex,
-      ));
+
+      emit(
+        state.copyWith(
+          gifts: gifts,
+          questionOrder: questionOrder,
+          currentSessionId: event.sessionId,
+          currentQuestionIndex: state.answers.length >= questionOrder.length
+              ? 0
+              : state.firstUnansweredIndex,
+        ),
+      );
     });
 
     on<AnswerQuestion>((event, emit) {
       final newAnswers = Map<String, int>.from(state.answers);
       newAnswers[event.questionId] = event.score;
-      
-      var newState = state.copyWith(
-        answers: newAnswers,
-      );
+
+      var newState = state.copyWith(answers: newAnswers);
 
       // We set the index to the next unanswered question unless the test is complete
       if (!newState.isCompleted) {
-        newState = newState.copyWith(currentQuestionIndex: newState.firstUnansweredIndex);
+        newState = newState.copyWith(
+          currentQuestionIndex: newState.firstUnansweredIndex,
+        );
       }
 
       // Automatic takeaways generation when test is completed
       if (newState.isCompleted) {
-        final top3 = newState.getRankedGifts().take(3).map((g) => g.name).toList();
+        final top3 = newState
+            .getRankedGifts()
+            .take(3)
+            .map((g) => g.name)
+            .toList();
         final newTakeaways = Map<String, List<String>>.from(state.takeaways);
         final sessionId = newState.currentSessionId ?? 'default';
-        if (newTakeaways[sessionId] == null || newTakeaways[sessionId]!.isEmpty) {
+        if (newTakeaways[sessionId] == null ||
+            newTakeaways[sessionId]!.isEmpty) {
           newTakeaways[sessionId] = top3;
         }
         newState = newState.copyWith(takeaways: newTakeaways);
@@ -71,32 +83,50 @@ class SpiritualGiftsBloc extends HydratedBloc<SpiritualGiftsEvent, SpiritualGift
     });
 
     on<SubmitReferenceAssessment>((event, emit) {
-      final newReferenceAnswers = Map<String, Map<String, int>>.from(state.referenceAnswers);
+      final newReferenceAnswers = Map<String, Map<String, int>>.from(
+        state.referenceAnswers,
+      );
       newReferenceAnswers[event.assessmentId] = event.answers;
 
-      final newReferenceLabels = Map<String, String>.from(state.referenceLabels);
+      final newReferenceLabels = Map<String, String>.from(
+        state.referenceLabels,
+      );
       if (event.label != null && event.label!.isNotEmpty) {
         newReferenceLabels[event.assessmentId] = event.label!;
       }
 
-      emit(state.copyWith(
-        referenceAnswers: newReferenceAnswers,
-        referenceLabels: newReferenceLabels,
-      ));
+      emit(
+        state.copyWith(
+          referenceAnswers: newReferenceAnswers,
+          referenceLabels: newReferenceLabels,
+        ),
+      );
+    });
+
+    on<IssueReferenceInvite>((event, emit) {
+      emit(
+        state.copyWith(
+          issuedReferenceInviteIds: {
+            ...state.issuedReferenceInviteIds,
+            event.assessmentId,
+          },
+        ),
+      );
     });
 
     on<ResetTest>((event, emit) {
-      final allQuestionIds = state.gifts
-          .expand((gift) => gift.questions.map((q) => q.id))
-          .toList()
-        ..shuffle();
-        
-      emit(const SpiritualGiftsState().copyWith(
-        gifts: state.gifts,
-        questionOrder: allQuestionIds,
-        currentQuestionIndex: 0,
-        answers: {},
-      ));
+      final allQuestionIds =
+          state.gifts.expand((gift) => gift.questions.map((q) => q.id)).toList()
+            ..shuffle();
+
+      emit(
+        const SpiritualGiftsState().copyWith(
+          gifts: state.gifts,
+          questionOrder: allQuestionIds,
+          currentQuestionIndex: 0,
+          answers: {},
+        ),
+      );
     });
   }
 

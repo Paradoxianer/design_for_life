@@ -1,16 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:design_for_life/l10n/generated/app_localizations.dart';
+
 import '../bloc/spiritual_gifts_bloc.dart';
 import 'gift_question_card.dart';
 
 class SpiritualGiftsEditor extends StatefulWidget {
   final String sessionId;
 
-  const SpiritualGiftsEditor({
-    super.key,
-    required this.sessionId,
-  });
+  const SpiritualGiftsEditor({super.key, required this.sessionId});
 
   @override
   State<SpiritualGiftsEditor> createState() => _SpiritualGiftsEditorState();
@@ -32,13 +30,13 @@ class _SpiritualGiftsEditorState extends State<SpiritualGiftsEditor> {
             sessionId: widget.sessionId,
           ),
         );
-        
+
         Future.delayed(const Duration(milliseconds: 500), () {
           if (mounted) {
             final state = context.read<SpiritualGiftsBloc>().state;
             if (state.questionOrder.isNotEmpty) {
-              final target = (state.currentQuestionIndex > 0) 
-                  ? state.currentQuestionIndex - 1 
+              final target = (state.currentQuestionIndex > 0)
+                  ? state.currentQuestionIndex - 1
                   : 0;
               _carouselController.animateToItem(
                 target,
@@ -61,13 +59,13 @@ class _SpiritualGiftsEditorState extends State<SpiritualGiftsEditor> {
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<SpiritualGiftsBloc, SpiritualGiftsState>(
-      listenWhen: (previous, current) => 
+      listenWhen: (previous, current) =>
           previous.currentQuestionIndex != current.currentQuestionIndex,
       listener: (context, state) {
-        final scrollTarget = (state.currentQuestionIndex > 0) 
-            ? state.currentQuestionIndex - 1 
+        final scrollTarget = (state.currentQuestionIndex > 0)
+            ? state.currentQuestionIndex - 1
             : 0;
-            
+
         _carouselController.animateToItem(
           scrollTarget,
           duration: const Duration(milliseconds: 600),
@@ -102,7 +100,10 @@ class _SpiritualGiftsEditorState extends State<SpiritualGiftsEditor> {
                   ),
                   const SizedBox(height: 4),
                   Text(
-                    AppLocalizations.of(context).giftsQuestionCounter(state.answers.length, state.questionOrder.length),
+                    AppLocalizations.of(context).giftsQuestionCounter(
+                      state.answers.length,
+                      state.questionOrder.length,
+                    ),
                     style: Theme.of(context).textTheme.labelSmall,
                   ),
                 ],
@@ -112,10 +113,13 @@ class _SpiritualGiftsEditorState extends State<SpiritualGiftsEditor> {
               child: CarouselView(
                 controller: _carouselController,
                 scrollDirection: Axis.vertical,
-                itemExtent: 150,
-                shrinkExtent: 120,
+                itemExtent: 200,
+                shrinkExtent: 160,
                 enableSplash: false,
-                padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 16),
+                padding: const EdgeInsets.symmetric(
+                  vertical: 4,
+                  horizontal: 16,
+                ),
                 children: List.generate(state.questionOrder.length, (index) {
                   final questionId = state.questionOrder[index];
                   final gift = state.gifts.firstWhere(
