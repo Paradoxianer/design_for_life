@@ -30,7 +30,8 @@ class LifeTreeResult extends StatefulWidget {
 }
 
 class _LifeTreeResultState extends State<LifeTreeResult> {
-  final TransformationController _transformationController = TransformationController();
+  final TransformationController _transformationController =
+      TransformationController();
   bool _showNotes = false;
 
   @override
@@ -42,7 +43,8 @@ class _LifeTreeResultState extends State<LifeTreeResult> {
       if (mounted) {
         // Initial centering of the root node
         // Target: Center of view (250) minus (RootX=0 + Padding=400) minus HalfNodeWidth=85
-        _transformationController.value = Matrix4.identity()..translate(-235.0, 50.0);
+        _transformationController.value = Matrix4.identity()
+          ..translateByDouble(-235.0, 50.0, 0.0, 1.0);
       }
     });
   }
@@ -65,11 +67,16 @@ class _LifeTreeResultState extends State<LifeTreeResult> {
               children: [
                 Text(
                   l10n.lifeTreeDigital,
-                  style: theme.textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
+                  style: theme.textTheme.titleMedium?.copyWith(
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
                 Row(
                   children: [
-                    Text(l10n.lifeTreeShowNotes, style: theme.textTheme.bodySmall),
+                    Text(
+                      l10n.lifeTreeShowNotes,
+                      style: theme.textTheme.bodySmall,
+                    ),
                     Transform.scale(
                       scale: 0.8,
                       child: Switch(
@@ -87,7 +94,9 @@ class _LifeTreeResultState extends State<LifeTreeResult> {
               width: double.infinity,
               clipBehavior: Clip.antiAlias,
               decoration: BoxDecoration(
-                border: Border.all(color: theme.dividerColor.withValues(alpha: 0.1)),
+                border: Border.all(
+                  color: theme.dividerColor.withValues(alpha: 0.1),
+                ),
                 borderRadius: BorderRadius.circular(12),
                 color: Colors.white,
               ),
@@ -98,20 +107,28 @@ class _LifeTreeResultState extends State<LifeTreeResult> {
                 minScale: 0.1,
                 maxScale: 2.0,
                 child: Screenshot(
-                  controller: widget.screenshotController ?? ScreenshotController(),
-                  child: LifeTreeGraphWidget(nodes: widget.nodes, showNotes: _showNotes),
+                  controller:
+                      widget.screenshotController ?? ScreenshotController(),
+                  child: LifeTreeGraphWidget(
+                    nodes: widget.nodes,
+                    showNotes: _showNotes,
+                  ),
                 ),
               ),
             ),
             const SizedBox(height: 32),
           ],
-          
+
           Text(
             l10n.lifeTreeAnalog,
-            style: theme.textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
+            style: theme.textTheme.titleMedium?.copyWith(
+              fontWeight: FontWeight.bold,
+            ),
           ),
           const SizedBox(height: 12),
-          ...widget.entries.map((entry) => _DflEntryReadOnlyWidget(entry: entry)),
+          ...widget.entries.map(
+            (entry) => _DflEntryReadOnlyWidget(entry: entry),
+          ),
         ],
       ),
     );

@@ -64,17 +64,16 @@ class EntryListState extends Equatable {
   final Map<String, List<DflEntry>> entries;
   final Map<String, List<String>> takeaways;
 
-  const EntryListState({
-    this.entries = const {},
-    this.takeaways = const {},
-  });
+  const EntryListState({this.entries = const {}, this.takeaways = const {}});
 
   /// A session is considered completed if it has at least one entry with text
   /// or an image, OR at least one filled-in key takeaway - either is a valid
   /// primary output of the module (#57).
   bool isCompleted(String sessionId) {
     final sessionEntries = entries[sessionId] ?? [];
-    final hasEntries = sessionEntries.any((e) => e.text.trim().isNotEmpty || e.imagePath != null);
+    final hasEntries = sessionEntries.any(
+      (e) => e.text.trim().isNotEmpty || e.imagePath != null,
+    );
     if (hasEntries) return true;
 
     final sessionTakeaways = takeaways[sessionId] ?? const [];
@@ -96,26 +95,36 @@ class EntryListState extends Equatable {
 
   Map<String, dynamic> toJson() {
     return {
-      'entries': entries.map((k, v) => MapEntry(k, v.map((e) => e.toJson()).toList())),
+      'entries': entries.map(
+        (k, v) => MapEntry(k, v.map((e) => e.toJson()).toList()),
+      ),
       'takeaways': takeaways,
     };
   }
 
   factory EntryListState.fromJson(Map<String, dynamic> json) {
     return EntryListState(
-      entries: (json['entries'] as Map<String, dynamic>?)?.map(
-            (k, v) => MapEntry(k, (v as List).map((e) => DflEntry.fromJson(e)).toList()),
-          ) ?? {},
-      takeaways: (json['takeaways'] as Map<String, dynamic>?)?.map(
+      entries:
+          (json['entries'] as Map<String, dynamic>?)?.map(
+            (k, v) => MapEntry(
+              k,
+              (v as List).map((e) => DflEntry.fromJson(e)).toList(),
+            ),
+          ) ??
+          {},
+      takeaways:
+          (json['takeaways'] as Map<String, dynamic>?)?.map(
             (k, v) => MapEntry(k, List<String>.from(v)),
-          ) ?? {},
+          ) ??
+          {},
     );
   }
 }
 
 // Generic Bloc Implementation
-abstract class EntryListBloc extends HydratedBloc<EntryListEvent, EntryListState> {
-  EntryListBloc([EntryListState initialState = const EntryListState()]) : super(initialState) {
+abstract class EntryListBloc
+    extends HydratedBloc<EntryListEvent, EntryListState> {
+  EntryListBloc([super.initialState = const EntryListState()]) {
     on<AddEntry>(_onAddEntry);
     on<UpdateEntryText>(_onUpdateEntryText);
     on<ToggleEntryCompletion>(_onToggleEntryCompletion);
@@ -133,7 +142,7 @@ abstract class EntryListBloc extends HydratedBloc<EntryListEvent, EntryListState
   void _onAddEntry(AddEntry event, Emitter<EntryListState> emit) {
     final sessionEntries = _getEntries(event.sessionId);
     sessionEntries.add(DflEntry(id: _generateId()));
-    
+
     final newMap = Map<String, List<DflEntry>>.from(state.entries);
     newMap[event.sessionId] = sessionEntries;
     emit(state.copyWith(entries: newMap));
@@ -142,15 +151,15 @@ abstract class EntryListBloc extends HydratedBloc<EntryListEvent, EntryListState
   void _onUpdateEntryText(UpdateEntryText event, Emitter<EntryListState> emit) {
     final sessionEntries = _getEntries(event.sessionId);
     final index = sessionEntries.indexWhere((i) => i.id == event.entryId);
-    
+
     if (index != -1) {
       sessionEntries[index] = sessionEntries[index].copyWith(text: event.text);
     } else {
       sessionEntries.add(DflEntry(id: event.entryId, text: event.text));
     }
 
-    if (sessionEntries.isNotEmpty && 
-        sessionEntries.last.id == event.entryId && 
+    if (sessionEntries.isNotEmpty &&
+        sessionEntries.last.id == event.entryId &&
         (event.text.isNotEmpty || sessionEntries.last.imagePath != null)) {
       sessionEntries.add(DflEntry(id: _generateId()));
     }
@@ -160,10 +169,13 @@ abstract class EntryListBloc extends HydratedBloc<EntryListEvent, EntryListState
     emit(state.copyWith(entries: newMap));
   }
 
-  void _onToggleEntryCompletion(ToggleEntryCompletion event, Emitter<EntryListState> emit) {
+  void _onToggleEntryCompletion(
+    ToggleEntryCompletion event,
+    Emitter<EntryListState> emit,
+  ) {
     final sessionEntries = _getEntries(event.sessionId);
     int index = sessionEntries.indexWhere((i) => i.id == event.entryId);
-    
+
     if (index == -1 && event.entryId.startsWith('initial_')) {
       sessionEntries.add(DflEntry(id: event.entryId, isCompleted: true));
       index = sessionEntries.length - 1;
@@ -171,8 +183,10 @@ abstract class EntryListBloc extends HydratedBloc<EntryListEvent, EntryListState
 
     if (index != -1) {
       final wasCompleted = sessionEntries[index].isCompleted;
-      sessionEntries[index] = sessionEntries[index].copyWith(isCompleted: !wasCompleted);
-      
+      sessionEntries[index] = sessionEntries[index].copyWith(
+        isCompleted: !wasCompleted,
+      );
+
       if (!wasCompleted) {
         final hasActive = sessionEntries.any((i) => !i.isCompleted);
         if (!hasActive) {
@@ -186,23 +200,33 @@ abstract class EntryListBloc extends HydratedBloc<EntryListEvent, EntryListState
     }
   }
 
-  void _onUpdateEntryImage(UpdateEntryImage event, Emitter<EntryListState> emit) {
+  void _onUpdateEntryImage(
+    UpdateEntryImage event,
+    Emitter<EntryListState> emit,
+  ) {
     final sessionEntries = _getEntries(event.sessionId);
     final index = sessionEntries.indexWhere((i) => i.id == event.entryId);
-    
+
     if (index != -1) {
       if (event.imagePath == null) {
-        sessionEntries[index] = sessionEntries[index].copyWith(clearImagePath: true);
+        sessionEntries[index] = sessionEntries[index].copyWith(
+          clearImagePath: true,
+        );
       } else {
-        sessionEntries[index] = sessionEntries[index].copyWith(imagePath: event.imagePath);
+        sessionEntries[index] = sessionEntries[index].copyWith(
+          imagePath: event.imagePath,
+        );
       }
     } else if (event.imagePath != null) {
-      sessionEntries.add(DflEntry(id: event.entryId, imagePath: event.imagePath));
+      sessionEntries.add(
+        DflEntry(id: event.entryId, imagePath: event.imagePath),
+      );
     }
 
-    if (sessionEntries.isNotEmpty && 
-        sessionEntries.last.id == event.entryId && 
-        (sessionEntries.last.imagePath != null || sessionEntries.last.text.isNotEmpty)) {
+    if (sessionEntries.isNotEmpty &&
+        sessionEntries.last.id == event.entryId &&
+        (sessionEntries.last.imagePath != null ||
+            sessionEntries.last.text.isNotEmpty)) {
       sessionEntries.add(DflEntry(id: _generateId()));
     }
 
@@ -221,7 +245,9 @@ abstract class EntryListBloc extends HydratedBloc<EntryListEvent, EntryListState
   }
 
   void _onUpdateTakeaway(UpdateTakeaway event, Emitter<EntryListState> emit) {
-    final sessionTakeaways = List<String>.from(state.takeaways[event.sessionId] ?? ['', '', '']);
+    final sessionTakeaways = List<String>.from(
+      state.takeaways[event.sessionId] ?? ['', '', ''],
+    );
     if (event.index < sessionTakeaways.length) {
       sessionTakeaways[event.index] = event.text;
       final newMap = Map<String, List<String>>.from(state.takeaways);
@@ -231,7 +257,8 @@ abstract class EntryListBloc extends HydratedBloc<EntryListEvent, EntryListState
   }
 
   @override
-  EntryListState? fromJson(Map<String, dynamic> json) => EntryListState.fromJson(json);
+  EntryListState? fromJson(Map<String, dynamic> json) =>
+      EntryListState.fromJson(json);
 
   @override
   Map<String, dynamic>? toJson(EntryListState state) => state.toJson();

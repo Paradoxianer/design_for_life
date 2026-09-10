@@ -36,19 +36,28 @@ class LifeTreeEditor extends DflModuleEditor {
           key: ValueKey('graph_section_$sessionId'),
           sessionId: sessionId,
           nodes: nodes,
-          collapsedNodeIds: lifeTreeBloc.state.collapsedNodeIds[sessionId] ?? const {},
-          onAddNode: (parentId, text) => lifeTreeBloc.add(AddTreeNode(sessionId, parentId: parentId, text: text)),
-          onUpdateText: (nodeId, text) => lifeTreeBloc.add(UpdateTreeNodeText(sessionId, nodeId, text)),
-          onUpdateNote: (nodeId, note) => lifeTreeBloc.add(UpdateTreeNodeNote(sessionId, nodeId, note)),
-          onDeleteNode: (nodeId) => lifeTreeBloc.add(DeleteTreeNode(sessionId, nodeId)),
-          onToggleCollapse: (nodeId) => lifeTreeBloc.add(ToggleTreeNodeCollapsed(sessionId, nodeId)),
+          collapsedNodeIds:
+              lifeTreeBloc.state.collapsedNodeIds[sessionId] ?? const {},
+          onAddNode: (parentId, text) => lifeTreeBloc.add(
+            AddTreeNode(sessionId, parentId: parentId, text: text),
+          ),
+          onUpdateText: (nodeId, text) =>
+              lifeTreeBloc.add(UpdateTreeNodeText(sessionId, nodeId, text)),
+          onUpdateNote: (nodeId, note) =>
+              lifeTreeBloc.add(UpdateTreeNodeNote(sessionId, nodeId, note)),
+          onDeleteNode: (nodeId) =>
+              lifeTreeBloc.add(DeleteTreeNode(sessionId, nodeId)),
+          onToggleCollapse: (nodeId) =>
+              lifeTreeBloc.add(ToggleTreeNodeCollapsed(sessionId, nodeId)),
         ),
         const SizedBox(height: 32),
         const Divider(),
         const SizedBox(height: 24),
         Text(
           l10n.lifeTreeAnalog,
-          style: Theme.of(context).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
+          style: Theme.of(
+            context,
+          ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
         ),
         const SizedBox(height: 12),
         ...List.generate(entries.length, (index) {
@@ -59,9 +68,13 @@ class LifeTreeEditor extends DflModuleEditor {
             key: ValueKey(entry.id),
             entry: entry,
             hintText: l10n.notesHint,
-            onTextChanged: (text) => lifeTreeBloc.add(UpdateEntryText(sessionId, entry.id, text)),
-            onImageChanged: (path) => lifeTreeBloc.add(UpdateEntryImage(sessionId, entry.id, path)),
-            onDelete: isLast ? null : () => lifeTreeBloc.add(DeleteEntry(sessionId, entry.id)),
+            onTextChanged: (text) =>
+                lifeTreeBloc.add(UpdateEntryText(sessionId, entry.id, text)),
+            onImageChanged: (path) =>
+                lifeTreeBloc.add(UpdateEntryImage(sessionId, entry.id, path)),
+            onDelete: isLast
+                ? null
+                : () => lifeTreeBloc.add(DeleteEntry(sessionId, entry.id)),
           );
         }),
       ],
@@ -96,25 +109,28 @@ class _LifeTreeGraphSection extends StatefulWidget {
 }
 
 class _LifeTreeGraphSectionState extends State<_LifeTreeGraphSection> {
-  final TransformationController _transformationController = TransformationController();
+  final TransformationController _transformationController =
+      TransformationController();
 
   void _enterFullscreen() {
-    Navigator.of(context).push(
-      MaterialPageRoute(
-        builder: (context) => _FullscreenGraphViewer(
-          sessionId: widget.sessionId,
-          onAddNode: widget.onAddNode,
-          onUpdateText: widget.onUpdateText,
-          onUpdateNote: widget.onUpdateNote,
-          onDeleteNode: widget.onDeleteNode,
-          initialMatrix: _transformationController.value,
-        ),
-      ),
-    ).then((resultMatrix) {
-      if (resultMatrix is Matrix4) {
-        _transformationController.value = resultMatrix;
-      }
-    });
+    Navigator.of(context)
+        .push(
+          MaterialPageRoute(
+            builder: (context) => _FullscreenGraphViewer(
+              sessionId: widget.sessionId,
+              onAddNode: widget.onAddNode,
+              onUpdateText: widget.onUpdateText,
+              onUpdateNote: widget.onUpdateNote,
+              onDeleteNode: widget.onDeleteNode,
+              initialMatrix: _transformationController.value,
+            ),
+          ),
+        )
+        .then((resultMatrix) {
+          if (resultMatrix is Matrix4) {
+            _transformationController.value = resultMatrix;
+          }
+        });
   }
 
   @override
@@ -142,14 +158,19 @@ class _LifeTreeGraphSectionState extends State<_LifeTreeGraphSection> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(l10n.lifeTreeDigital, style: Theme.of(context).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold)),
+        Text(
+          l10n.lifeTreeDigital,
+          style: Theme.of(
+            context,
+          ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
+        ),
         const SizedBox(height: 16),
         Stack(
           children: [
             GestureDetector(
               onDoubleTap: _enterFullscreen,
               child: Container(
-                height: 500, 
+                height: 500,
                 width: double.infinity,
                 clipBehavior: Clip.antiAlias,
                 decoration: BoxDecoration(
@@ -210,7 +231,8 @@ class _LifeTreeGraphViewOnly extends StatefulWidget {
   State<_LifeTreeGraphViewOnly> createState() => _LifeTreeGraphViewOnlyState();
 }
 
-class _LifeTreeGraphViewOnlyState extends State<_LifeTreeGraphViewOnly> with TickerProviderStateMixin {
+class _LifeTreeGraphViewOnlyState extends State<_LifeTreeGraphViewOnly>
+    with TickerProviderStateMixin {
   late Graph graph;
   late BuchheimWalkerConfiguration builder;
   late Algorithm algorithm;
@@ -226,25 +248,27 @@ class _LifeTreeGraphViewOnlyState extends State<_LifeTreeGraphViewOnly> with Tic
   void initState() {
     super.initState();
     graph = Graph()..isTree = true;
-    _transformationController = widget.transformationController ?? TransformationController();
-    
-    _animationController = AnimationController(
-      vsync: this,
-      duration: const Duration(milliseconds: 500),
-    )..addListener(() {
-      if (_animation != null) {
-        _transformationController.value = _animation!.value;
-      }
-    });
+    _transformationController =
+        widget.transformationController ?? TransformationController();
+
+    _animationController =
+        AnimationController(
+          vsync: this,
+          duration: const Duration(milliseconds: 500),
+        )..addListener(() {
+          if (_animation != null) {
+            _transformationController.value = _animation!.value;
+          }
+        });
 
     builder = BuchheimWalkerConfiguration()
       ..siblingSeparation = (50)
       ..levelSeparation = (50)
       ..subtreeSeparation = (50)
       ..orientation = BuchheimWalkerConfiguration.ORIENTATION_TOP_BOTTOM;
-    
+
     algorithm = BuchheimWalkerAlgorithm(builder, TreeEdgeRenderer(builder));
-    
+
     _syncGraph();
   }
 
@@ -271,49 +295,58 @@ class _LifeTreeGraphViewOnlyState extends State<_LifeTreeGraphViewOnly> with Tic
 
   void _scrollToNode(String nodeId, {bool immediate = false}) {
     if (!mounted || _lastConstraints == null) return;
-    
+
     final node = _nodeCache[nodeId];
     if (node != null) {
       final width = _lastConstraints!.maxWidth;
-      final height = _lastConstraints!.maxHeight == double.infinity ? 500.0 : _lastConstraints!.maxHeight;
+      final height = _lastConstraints!.maxHeight == double.infinity
+          ? 500.0
+          : _lastConstraints!.maxHeight;
 
       final x = node.x;
       final y = node.y;
-      
+
       // Node center (relative to graph origin)
       // Node width is 180, height is 120
       final nodeCenterX = x + 90;
       final nodeCenterY = y + 60;
-      
+
       final viewportCenterX = width / 2;
       final viewportCenterY = height / 2;
-      
+
       const paddingX = 200.0;
       const paddingY = 50.0;
 
       final targetX = viewportCenterX - (nodeCenterX + paddingX);
       final targetY = viewportCenterY - (nodeCenterY + paddingY);
-      
-      final targetMatrix = Matrix4.identity()..translate(targetX, targetY);
+
+      final targetMatrix = Matrix4.identity()
+        ..translateByDouble(targetX, targetY, 0.0, 1.0);
 
       if (immediate) {
         _transformationController.value = targetMatrix;
       } else {
-        _animation = Matrix4Tween(
-          begin: _transformationController.value,
-          end: targetMatrix,
-        ).animate(CurvedAnimation(
-          parent: _animationController,
-          curve: Curves.easeInOutCubic,
-        ));
-        
+        _animation =
+            Matrix4Tween(
+              begin: _transformationController.value,
+              end: targetMatrix,
+            ).animate(
+              CurvedAnimation(
+                parent: _animationController,
+                curve: Curves.easeInOutCubic,
+              ),
+            );
+
         _animationController.forward(from: 0);
       }
     }
   }
 
   void _syncGraph() {
-    final visibleNodes = visibleLifeTreeNodes(widget.nodes, widget.collapsedNodeIds);
+    final visibleNodes = visibleLifeTreeNodes(
+      widget.nodes,
+      widget.collapsedNodeIds,
+    );
     final Set<String> targetIds = visibleNodes.map((n) => n.id).toSet();
 
     final currentNodes = List<Node>.from(graph.nodes);
@@ -326,7 +359,10 @@ class _LifeTreeGraphViewOnlyState extends State<_LifeTreeGraphViewOnly> with Tic
     }
 
     for (var nodeData in visibleNodes) {
-      final node = _nodeCache.putIfAbsent(nodeData.id, () => Node.Id(nodeData.id));
+      final node = _nodeCache.putIfAbsent(
+        nodeData.id,
+        () => Node.Id(nodeData.id),
+      );
       if (!graph.nodes.contains(node)) {
         graph.addNode(node);
       }
@@ -360,7 +396,10 @@ class _LifeTreeGraphViewOnlyState extends State<_LifeTreeGraphViewOnly> with Tic
         _lastConstraints = constraints;
         if (!_initialScrollDone && widget.nodes.isNotEmpty) {
           _initialScrollDone = true;
-          final rootNode = widget.nodes.firstWhere((n) => n.parentId == null, orElse: () => widget.nodes.first);
+          final rootNode = widget.nodes.firstWhere(
+            (n) => n.parentId == null,
+            orElse: () => widget.nodes.first,
+          );
           WidgetsBinding.instance.addPostFrameCallback((_) {
             _scrollToNode(rootNode.id, immediate: true);
           });
@@ -368,7 +407,7 @@ class _LifeTreeGraphViewOnlyState extends State<_LifeTreeGraphViewOnly> with Tic
 
         return InteractiveViewer(
           transformationController: _transformationController,
-          constrained: false, 
+          constrained: false,
           boundaryMargin: const EdgeInsets.all(1000),
           minScale: 0.1,
           maxScale: 2.0,
@@ -383,18 +422,27 @@ class _LifeTreeGraphViewOnlyState extends State<_LifeTreeGraphViewOnly> with Tic
             child: GraphView(
               graph: graph,
               algorithm: algorithm,
-              paint: Paint()..color = Colors.green.shade400..strokeWidth = 1.5..style = PaintingStyle.stroke,
+              paint: Paint()
+                ..color = Colors.green.shade400
+                ..strokeWidth = 1.5
+                ..style = PaintingStyle.stroke,
               builder: (Node node) {
                 final nodeId = node.key?.value as String;
-                final nodeData = widget.nodes.firstWhere((n) => n.id == nodeId, orElse: () => LifeTreeNodeData(id: nodeId, text: '...'));
-                final hasChildren = widget.nodes.any((n) => n.parentId == nodeId);
+                final nodeData = widget.nodes.firstWhere(
+                  (n) => n.id == nodeId,
+                  orElse: () => LifeTreeNodeData(id: nodeId, text: '...'),
+                );
+                final hasChildren = widget.nodes.any(
+                  (n) => n.parentId == nodeId,
+                );
 
                 return _TreeNodeWidget(
                   key: ValueKey('node_wid_$nodeId'),
                   nodeData: nodeData,
                   autofocus: nodeId == _lastAddedNodeId,
                   hasChildren: hasChildren,
-                  isCollapsed: hasChildren && widget.collapsedNodeIds.contains(nodeId),
+                  isCollapsed:
+                      hasChildren && widget.collapsedNodeIds.contains(nodeId),
                   onToggleCollapse: () => widget.onToggleCollapse(nodeId),
                   onChanged: (text) => widget.onUpdateText(nodeId, text),
                   onNoteChanged: (note) => widget.onUpdateNote(nodeId, note),
@@ -456,12 +504,14 @@ class _FullscreenGraphViewerState extends State<_FullscreenGraphViewer> {
         title: Text(l10n.lifeTreeDigital),
         leading: IconButton(
           icon: const Icon(Icons.close),
-          onPressed: () => Navigator.of(context).pop(_transformationController.value),
+          onPressed: () =>
+              Navigator.of(context).pop(_transformationController.value),
         ),
         actions: [
           IconButton(
             icon: const Icon(Icons.fullscreen_exit),
-            onPressed: () => Navigator.of(context).pop(_transformationController.value),
+            onPressed: () =>
+                Navigator.of(context).pop(_transformationController.value),
             tooltip: l10n.lifeTreeExitFullscreen,
           ),
         ],
@@ -479,7 +529,8 @@ class _FullscreenGraphViewerState extends State<_FullscreenGraphViewer> {
           builder: (context, state) {
             final lifeTreeState = state as LifeTreeState;
             final nodes = lifeTreeState.treeNodes[widget.sessionId] ?? const [];
-            final collapsedNodeIds = lifeTreeState.collapsedNodeIds[widget.sessionId] ?? const {};
+            final collapsedNodeIds =
+                lifeTreeState.collapsedNodeIds[widget.sessionId] ?? const {};
             return _LifeTreeGraphViewOnly(
               nodes: nodes,
               collapsedNodeIds: collapsedNodeIds,
@@ -487,8 +538,9 @@ class _FullscreenGraphViewerState extends State<_FullscreenGraphViewer> {
               onUpdateText: widget.onUpdateText,
               onUpdateNote: widget.onUpdateNote,
               onDeleteNode: widget.onDeleteNode,
-              onToggleCollapse: (nodeId) =>
-                  context.read<LifeTreeBloc>().add(ToggleTreeNodeCollapsed(widget.sessionId, nodeId)),
+              onToggleCollapse: (nodeId) => context.read<LifeTreeBloc>().add(
+                ToggleTreeNodeCollapsed(widget.sessionId, nodeId),
+              ),
               transformationController: _transformationController,
             );
           },
@@ -541,7 +593,7 @@ class _TreeNodeWidgetState extends State<_TreeNodeWidget> {
     super.initState();
     _textController = TextEditingController(text: widget.nodeData.text);
     _noteController = TextEditingController(text: widget.nodeData.note);
-    
+
     _textFocusNode.addListener(() {
       if (!_textFocusNode.hasFocus && mounted) {
         if (_textController.text != widget.nodeData.text) {
@@ -570,10 +622,12 @@ class _TreeNodeWidgetState extends State<_TreeNodeWidget> {
   @override
   void didUpdateWidget(_TreeNodeWidget oldWidget) {
     super.didUpdateWidget(oldWidget);
-    if (widget.nodeData.text != _textController.text && !_textFocusNode.hasFocus) {
+    if (widget.nodeData.text != _textController.text &&
+        !_textFocusNode.hasFocus) {
       _textController.text = widget.nodeData.text;
     }
-    if (widget.nodeData.note != _noteController.text && !_noteFocusNode.hasFocus) {
+    if (widget.nodeData.note != _noteController.text &&
+        !_noteFocusNode.hasFocus) {
       _noteController.text = widget.nodeData.note;
     }
   }
@@ -608,11 +662,11 @@ class _TreeNodeWidgetState extends State<_TreeNodeWidget> {
     return MouseRegion(
       onEnter: (_) => setState(() => _isHovered = true),
       onExit: (_) => setState(() => _isHovered = false),
-      child: Material( 
+      child: Material(
         color: Colors.transparent,
         child: SizedBox(
-          width: 180, 
-          height: 120, 
+          width: 180,
+          height: 120,
           child: Stack(
             clipBehavior: Clip.none,
             alignment: Alignment.topCenter,
@@ -655,14 +709,16 @@ class _TreeNodeWidgetState extends State<_TreeNodeWidget> {
                             color: Colors.white,
                             borderRadius: BorderRadius.circular(8),
                             border: Border.all(
-                              color: _textFocusNode.hasFocus ? theme.primaryColor : Colors.grey.shade300,
+                              color: _textFocusNode.hasFocus
+                                  ? theme.primaryColor
+                                  : Colors.grey.shade300,
                               width: _textFocusNode.hasFocus ? 2 : 1,
                             ),
                             boxShadow: [
                               BoxShadow(
                                 color: Colors.black.withValues(alpha: 0.05),
                                 blurRadius: 4,
-                                offset: const Offset(0, 2)
+                                offset: const Offset(0, 2),
                               ),
                             ],
                           ),
@@ -678,11 +734,16 @@ class _TreeNodeWidgetState extends State<_TreeNodeWidget> {
                                       decoration: InputDecoration(
                                         isDense: true,
                                         border: InputBorder.none,
-                                        contentPadding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
+                                        contentPadding:
+                                            const EdgeInsets.symmetric(
+                                              horizontal: 10,
+                                              vertical: 8,
+                                            ),
                                         hintText: l10n.lifeTreeNodeHint,
                                       ),
                                       style: theme.textTheme.bodyMedium,
-                                      onSubmitted: (val) => widget.onChanged(val),
+                                      onSubmitted: (val) =>
+                                          widget.onChanged(val),
                                     ),
                                   ),
                                   Visibility(
@@ -691,9 +752,18 @@ class _TreeNodeWidgetState extends State<_TreeNodeWidget> {
                                     maintainAnimation: true,
                                     maintainState: true,
                                     child: IconButton(
-                                      icon: Icon(Icons.speaker_notes, size: 16, color: theme.primaryColor.withValues(alpha: 0.6)),
+                                      icon: Icon(
+                                        Icons.speaker_notes,
+                                        size: 16,
+                                        color: theme.primaryColor.withValues(
+                                          alpha: 0.6,
+                                        ),
+                                      ),
                                       onPressed: () {
-                                        setState(() => _showNoteOverlay = !_showNoteOverlay);
+                                        setState(
+                                          () => _showNoteOverlay =
+                                              !_showNoteOverlay,
+                                        );
                                         if (_showNoteOverlay) {
                                           _noteFocusNode.requestFocus();
                                         }
@@ -705,14 +775,23 @@ class _TreeNodeWidgetState extends State<_TreeNodeWidget> {
                                   ),
                                 ],
                               ),
-                              if (!_showNoteOverlay && widget.nodeData.note.isNotEmpty)
+                              if (!_showNoteOverlay &&
+                                  widget.nodeData.note.isNotEmpty)
                                 Padding(
-                                  padding: const EdgeInsets.only(left: 10, right: 10, bottom: 6),
+                                  padding: const EdgeInsets.only(
+                                    left: 10,
+                                    right: 10,
+                                    bottom: 6,
+                                  ),
                                   child: Text(
                                     widget.nodeData.note,
                                     maxLines: 1,
                                     overflow: TextOverflow.ellipsis,
-                                    style: const TextStyle(fontSize: 10, fontStyle: FontStyle.italic, color: Colors.grey),
+                                    style: const TextStyle(
+                                      fontSize: 10,
+                                      fontStyle: FontStyle.italic,
+                                      color: Colors.grey,
+                                    ),
                                   ),
                                 ),
                             ],
@@ -724,35 +803,47 @@ class _TreeNodeWidgetState extends State<_TreeNodeWidget> {
                   const SizedBox(height: 4),
                   Visibility(
                     visible: showButtons,
-                    maintainSize: true, 
+                    maintainSize: true,
                     maintainAnimation: true,
                     maintainState: true,
                     child: Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        _GhostNodeButton(label: l10n.lifeTreeAddChild, onTap: widget.onAddChild),
+                        _GhostNodeButton(
+                          label: l10n.lifeTreeAddChild,
+                          onTap: widget.onAddChild,
+                        ),
                         const SizedBox(width: 8),
                         if (widget.nodeData.parentId != null)
-                          _GhostNodeButton(label: l10n.lifeTreeAddSibling, onTap: widget.onAddSibling),
+                          _GhostNodeButton(
+                            label: l10n.lifeTreeAddSibling,
+                            onTap: widget.onAddSibling,
+                          ),
                       ],
                     ),
                   ),
                 ],
               ),
-              
+
               if (_showNoteOverlay)
                 Positioned(
-                  top: -10, 
+                  top: -10,
                   child: Container(
-                    width: 260, 
+                    width: 260,
                     padding: const EdgeInsets.all(12),
                     decoration: BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(12),
                       boxShadow: [
-                        BoxShadow(color: Colors.black26, blurRadius: 10, offset: const Offset(0, 4))
+                        BoxShadow(
+                          color: Colors.black26,
+                          blurRadius: 10,
+                          offset: const Offset(0, 4),
+                        ),
                       ],
-                      border: Border.all(color: theme.primaryColor.withValues(alpha: 0.3)),
+                      border: Border.all(
+                        color: theme.primaryColor.withValues(alpha: 0.3),
+                      ),
                     ),
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
@@ -761,14 +852,24 @@ class _TreeNodeWidgetState extends State<_TreeNodeWidget> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text(l10n.lifeTreeEditNote, style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 13)),
+                            Text(
+                              l10n.lifeTreeEditNote,
+                              style: const TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 13,
+                              ),
+                            ),
                             Row(
                               children: [
                                 Material(
                                   color: Colors.green.shade50,
                                   borderRadius: BorderRadius.circular(20),
                                   child: IconButton(
-                                    icon: const Icon(Icons.check, color: Colors.green, size: 20),
+                                    icon: const Icon(
+                                      Icons.check,
+                                      color: Colors.green,
+                                      size: 20,
+                                    ),
                                     onPressed: _saveNote,
                                     padding: const EdgeInsets.all(6),
                                     constraints: const BoxConstraints(),
@@ -781,7 +882,11 @@ class _TreeNodeWidgetState extends State<_TreeNodeWidget> {
                                   color: Colors.grey.shade100,
                                   borderRadius: BorderRadius.circular(20),
                                   child: IconButton(
-                                    icon: const Icon(Icons.close, color: Colors.redAccent, size: 20),
+                                    icon: const Icon(
+                                      Icons.close,
+                                      color: Colors.redAccent,
+                                      size: 20,
+                                    ),
                                     onPressed: _deleteNoteAndClose,
                                     padding: const EdgeInsets.all(6),
                                     constraints: const BoxConstraints(),
@@ -797,7 +902,7 @@ class _TreeNodeWidgetState extends State<_TreeNodeWidget> {
                         TextField(
                           controller: _noteController,
                           focusNode: _noteFocusNode,
-                          maxLines: 3, 
+                          maxLines: 3,
                           autofocus: true,
                           decoration: InputDecoration(
                             hintText: l10n.lifeTreeNoteHint,
@@ -821,10 +926,7 @@ class _TreeNodeWidgetState extends State<_TreeNodeWidget> {
                 Positioned(
                   top: -16,
                   right: -16,
-                  child: _GhostNodeButton(
-                    label: 'x',
-                    onTap: widget.onDelete,
-                  ),
+                  child: _GhostNodeButton(label: 'x', onTap: widget.onDelete),
                 ),
             ],
           ),
@@ -860,7 +962,11 @@ class _GhostNodeButton extends StatelessWidget {
           ),
           child: Text(
             label,
-            style: TextStyle(fontSize: 10, color: Colors.grey.shade700, fontWeight: FontWeight.bold),
+            style: TextStyle(
+              fontSize: 10,
+              color: Colors.grey.shade700,
+              fontWeight: FontWeight.bold,
+            ),
           ),
         ),
       ),
@@ -881,7 +987,9 @@ class _CollapseToggleButton extends StatelessWidget {
     final theme = Theme.of(context);
     return Material(
       color: Colors.white,
-      shape: CircleBorder(side: BorderSide(color: theme.primaryColor.withValues(alpha: 0.5))),
+      shape: CircleBorder(
+        side: BorderSide(color: theme.primaryColor.withValues(alpha: 0.5)),
+      ),
       elevation: 1,
       child: InkWell(
         customBorder: const CircleBorder(),
@@ -899,4 +1007,3 @@ class _CollapseToggleButton extends StatelessWidget {
     );
   }
 }
-

@@ -19,12 +19,12 @@ class _ValuesDefinitionsViewState extends State<ValuesDefinitionsView> {
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context);
-    
+
     return BlocBuilder<ValuesBloc, ValuesState>(
       builder: (context, state) {
         final top8 = state.topEightValues;
-        
-        if (_localValues == null || 
+
+        if (_localValues == null ||
             _localValues!.length != top8.length ||
             !_localValues!.every((v) => top8.any((t) => t.name == v.name))) {
           _localValues = List.from(top8);
@@ -54,7 +54,10 @@ class _ValuesDefinitionsViewState extends State<ValuesDefinitionsView> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 16.0,
+                  vertical: 8.0,
+                ),
                 child: Text(
                   l10n.valuesPhase2Guidance,
                   style: const TextStyle(fontStyle: FontStyle.italic),
@@ -73,11 +76,14 @@ class _ValuesDefinitionsViewState extends State<ValuesDefinitionsView> {
                         padding: const EdgeInsets.only(top: 24, left: 8),
                         child: Text(
                           '${index + 1}.',
-                          style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                            fontWeight: FontWeight.bold,
-                            color: isKeySlot ? Theme.of(context).colorScheme.primary : Colors.grey,
-                            fontSize: isKeySlot ? 18 : 16,
-                          ),
+                          style: Theme.of(context).textTheme.titleMedium
+                              ?.copyWith(
+                                fontWeight: FontWeight.bold,
+                                color: isKeySlot
+                                    ? Theme.of(context).colorScheme.primary
+                                    : Colors.grey,
+                                fontSize: isKeySlot ? 18 : 16,
+                              ),
                         ),
                       );
                     }),
@@ -88,14 +94,14 @@ class _ValuesDefinitionsViewState extends State<ValuesDefinitionsView> {
                       physics: const NeverScrollableScrollPhysics(),
                       buildDefaultDragHandles: false,
                       itemCount: _localValues!.length,
-                      onReorder: (oldIndex, newIndex) {
+                      onReorderItem: (oldIndex, newIndex) {
                         setState(() {
                           final item = _localValues!.removeAt(oldIndex);
-                          int insertIndex = newIndex;
-                          if (insertIndex > oldIndex) insertIndex--;
-                          _localValues!.insert(insertIndex, item);
+                          _localValues!.insert(newIndex, item);
                         });
-                        context.read<ValuesBloc>().add(ReorderTopValues(oldIndex, newIndex));
+                        context.read<ValuesBloc>().add(
+                          ReorderTopValues(oldIndex, newIndex),
+                        );
                       },
                       itemBuilder: (context, index) {
                         final value = _localValues![index];
@@ -111,8 +117,16 @@ class _ValuesDefinitionsViewState extends State<ValuesDefinitionsView> {
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(12),
                               side: isKeyTakeaway
-                                  ? BorderSide(color: Theme.of(context).colorScheme.primary, width: 1.5)
-                                  : BorderSide(color: Colors.grey.shade300, width: 0.5),
+                                  ? BorderSide(
+                                      color: Theme.of(
+                                        context,
+                                      ).colorScheme.primary,
+                                      width: 1.5,
+                                    )
+                                  : BorderSide(
+                                      color: Colors.grey.shade300,
+                                      width: 0.5,
+                                    ),
                             ),
                             child: Padding(
                               padding: const EdgeInsets.all(12.0),
@@ -125,20 +139,33 @@ class _ValuesDefinitionsViewState extends State<ValuesDefinitionsView> {
                                         index: index,
                                         child: const Padding(
                                           padding: EdgeInsets.only(right: 8),
-                                          child: Icon(Icons.drag_indicator, color: Colors.grey, size: 24),
+                                          child: Icon(
+                                            Icons.drag_indicator,
+                                            color: Colors.grey,
+                                            size: 24,
+                                          ),
                                         ),
                                       ),
                                       Expanded(
                                         child: Text(
                                           value.name,
-                                          style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                                            fontWeight: FontWeight.bold,
-                                          ),
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .titleMedium
+                                              ?.copyWith(
+                                                fontWeight: FontWeight.bold,
+                                              ),
                                           overflow: TextOverflow.ellipsis,
                                         ),
                                       ),
                                       if (isKeyTakeaway)
-                                        Icon(Icons.auto_awesome, color: Theme.of(context).colorScheme.primary, size: 18),
+                                        Icon(
+                                          Icons.auto_awesome,
+                                          color: Theme.of(
+                                            context,
+                                          ).colorScheme.primary,
+                                          size: 18,
+                                        ),
                                     ],
                                   ),
                                   const SizedBox(height: 8),
@@ -224,7 +251,10 @@ class _DefinitionFieldState extends State<_DefinitionField> {
         labelText: l10n.valuesDefinitionLabel,
         border: const OutlineInputBorder(),
         isDense: true,
-        contentPadding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+        contentPadding: const EdgeInsets.symmetric(
+          horizontal: 10,
+          vertical: 10,
+        ),
         hintText: l10n.valuesDefinitionHint,
       ),
       maxLines: 2,

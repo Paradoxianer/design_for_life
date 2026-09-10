@@ -18,6 +18,8 @@ class ImagineEditor extends DflModuleEditor {
   final String sessionId;
   final String? selectedPastId;
   final String? selectedFutureId;
+
+  @override
   final List<String> takeaways;
 
   const ImagineEditor({
@@ -61,7 +63,8 @@ class _ImagineEditorBodyState extends State<_ImagineEditorBody> {
   // erzeugt jeder Rebuild (z.B. jeder Tastendruck im Key-Takeaway-Feld) ein
   // neues Future, FutureBuilder fällt zurück auf "waiting" und reißt den
   // gesamten Teilbaum (inkl. TextField-Fokus) neu auf (#58).
-  late final Future<List<ImagineVisualOption>> _optionsFuture = loadImagineOptions();
+  late final Future<List<ImagineVisualOption>> _optionsFuture =
+      loadImagineOptions();
 
   @override
   Widget build(BuildContext context) {
@@ -83,8 +86,8 @@ class _ImagineEditorBodyState extends State<_ImagineEditorBody> {
               options: options,
               selectedId: widget.selectedPastId,
               onSelect: (id) => context.read<ImagineBloc>().add(
-                    SelectPastImage(widget.sessionId, id),
-                  ),
+                SelectPastImage(widget.sessionId, id),
+              ),
             ),
             const SizedBox(height: 24),
             _OptionSection(
@@ -94,8 +97,8 @@ class _ImagineEditorBodyState extends State<_ImagineEditorBody> {
               options: options,
               selectedId: widget.selectedFutureId,
               onSelect: (id) => context.read<ImagineBloc>().add(
-                    SelectFutureImage(widget.sessionId, id),
-                  ),
+                SelectFutureImage(widget.sessionId, id),
+              ),
             ),
             const SizedBox(height: 32),
             const Divider(),
@@ -103,8 +106,8 @@ class _ImagineEditorBodyState extends State<_ImagineEditorBody> {
             KeyTakeawayField(
               takeaways: widget.takeaways,
               onUpdate: (index, value) => context.read<ImagineBloc>().add(
-                    UpdateImagineTakeaway(widget.sessionId, index, value),
-                  ),
+                UpdateImagineTakeaway(widget.sessionId, index, value),
+              ),
             ),
             const SizedBox(height: 16),
           ],
@@ -131,12 +134,12 @@ class _OptionSection extends StatelessWidget {
     required this.onSelect,
   });
   void _showFullscreenCarousel(
-      BuildContext context, {
-        required List<ImagineVisualOption> options,
-        required int initialIndex,
-        required String? selectedId,
-        required ValueChanged<String> onSelect,
-      }) {
+    BuildContext context, {
+    required List<ImagineVisualOption> options,
+    required int initialIndex,
+    required String? selectedId,
+    required ValueChanged<String> onSelect,
+  }) {
     showDialog(
       context: context,
       barrierColor: Colors.black,
@@ -167,18 +170,16 @@ class _OptionSection extends StatelessWidget {
         const SizedBox(height: 4),
         Text(
           subtitle,
-          style: theme.textTheme.bodySmall
-              ?.copyWith(color: theme.colorScheme.onSurfaceVariant),
+          style: theme.textTheme.bodySmall?.copyWith(
+            color: theme.colorScheme.onSurfaceVariant,
+          ),
         ),
         const SizedBox(height: 12),
         SizedBox(
           height: 152,
           child: ScrollConfiguration(
             behavior: ScrollConfiguration.of(context).copyWith(
-              dragDevices: {
-                PointerDeviceKind.touch,
-                PointerDeviceKind.mouse,
-              },
+              dragDevices: {PointerDeviceKind.touch, PointerDeviceKind.mouse},
             ),
             child: ListView.separated(
               scrollDirection: Axis.horizontal,
@@ -186,7 +187,7 @@ class _OptionSection extends StatelessWidget {
               // Foto als eigene Vergangenheit-/Zukunft-Option aufzunehmen,
               // statt nur aus den vorgegebenen Bildern zu wählen.
               itemCount: shuffledOptions.length + 1,
-              separatorBuilder: (_, __) => const SizedBox(width: 10),
+              separatorBuilder: (_, _) => const SizedBox(width: 10),
               itemBuilder: (context, index) {
                 if (index == 0) {
                   // Ist die aktuelle Auswahl kein bekanntes Options-Bild,
@@ -194,7 +195,8 @@ class _OptionSection extends StatelessWidget {
                   // Vorschau ersetzt dann das Kamera-Icon, damit sichtbar
                   // ist, dass die Aufnahme ausgewählt wurde.
                   final isCustomSelected =
-                      selectedId != null && !options.any((o) => o.id == selectedId);
+                      selectedId != null &&
+                      !options.any((o) => o.id == selectedId);
                   return _CameraOptionTile(
                     onCaptured: onSelect,
                     selectedCustomPath: isCustomSelected ? selectedId : null,
@@ -277,7 +279,11 @@ class _CameraOptionTile extends StatelessWidget {
                       child: CircleAvatar(
                         radius: 12,
                         backgroundColor: theme.colorScheme.primary,
-                        child: const Icon(Icons.check, size: 14, color: Colors.white),
+                        child: const Icon(
+                          Icons.check,
+                          size: 14,
+                          color: Colors.white,
+                        ),
                       ),
                     ),
                   ],
@@ -327,10 +333,7 @@ class _OptionCard extends StatelessWidget {
         child: Stack(
           fit: StackFit.expand,
           children: [
-            Image.asset(
-              option.imagePath,
-              fit: BoxFit.cover,
-            ),
+            Image.asset(option.imagePath, fit: BoxFit.cover),
             if (selected)
               Positioned(
                 top: 6,
@@ -385,8 +388,7 @@ class _FullscreenCarouselDialog extends StatefulWidget {
       _FullscreenCarouselDialogState();
 }
 
-class _FullscreenCarouselDialogState
-    extends State<_FullscreenCarouselDialog> {
+class _FullscreenCarouselDialogState extends State<_FullscreenCarouselDialog> {
   late final PageController _controller;
   late int _currentIndex;
   late String? currentSelectedId;
@@ -400,16 +402,11 @@ class _FullscreenCarouselDialogState
 
     currentSelectedId = widget.selectedId;
 
-    _controller = PageController(
-      initialPage: _currentIndex,
-    );
+    _controller = PageController(initialPage: _currentIndex);
   }
 
   @override
   Widget build(BuildContext context) {
-    final option = widget.options[_currentIndex];
-    final selected = option.id == currentSelectedId;
-
     return Scaffold(
       backgroundColor: Colors.black,
       body: Stack(
@@ -422,114 +419,74 @@ class _FullscreenCarouselDialogState
                 _currentIndex = index;
               });
             },
-              itemBuilder: (context, index) {
-                final imageOption = widget.options[index];
-                final selected = imageOption.id == currentSelectedId;
+            itemBuilder: (context, index) {
+              final imageOption = widget.options[index];
+              final selected = imageOption.id == currentSelectedId;
 
-                return Center(
-                  child: Stack(
-                    alignment: Alignment.center,
-                    children: [
-                      InteractiveViewer(
-                        minScale: 1,
-                        maxScale: 4,
-                        child: Image.asset(
-                          imageOption.imagePath,
-                          fit: BoxFit.contain,
-                        ),
+              return Center(
+                child: Stack(
+                  alignment: Alignment.center,
+                  children: [
+                    InteractiveViewer(
+                      minScale: 1,
+                      maxScale: 4,
+                      child: Image.asset(
+                        imageOption.imagePath,
+                        fit: BoxFit.contain,
                       ),
+                    ),
 
-                      Positioned(
-                        top: 20,
-                        right: 20,
-                        child: GestureDetector(
-                          onTap: () {
-                            final isAlreadySelected =
-                                currentSelectedId == imageOption.id;
+                    Positioned(
+                      top: 20,
+                      right: 20,
+                      child: GestureDetector(
+                        onTap: () {
+                          final isAlreadySelected =
+                              currentSelectedId == imageOption.id;
 
-                            if (isAlreadySelected) {
-                              setState(() {
-                                currentSelectedId = null;
-                              });
+                          if (isAlreadySelected) {
+                            setState(() {
+                              currentSelectedId = null;
+                            });
 
-                              // Falls dein Bloc "keine Auswahl" unterstützt:
-                              // widget.onSelect('');
-                            } else {
-                              widget.onSelect(imageOption.id);
+                            // Falls dein Bloc "keine Auswahl" unterstützt:
+                            // widget.onSelect('');
+                          } else {
+                            widget.onSelect(imageOption.id);
 
-                              setState(() {
-                                currentSelectedId = imageOption.id;
-                              });
-                            }
-                          },
-                          child: Container(
-                            width: 42,
-                            height: 42,
-                            decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              color:
-                              selected ? Colors.green : Colors.black87,
-                              border: Border.all(
-                                color: Colors.white,
-                                width: 2,
-                              ),
-                            ),
-                            child: selected
-                                ? const Icon(
-                              Icons.check,
-                              color: Colors.white,
-                            )
-                                : null,
+                            setState(() {
+                              currentSelectedId = imageOption.id;
+                            });
+                          }
+                        },
+                        child: Container(
+                          width: 42,
+                          height: 42,
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: selected ? Colors.green : Colors.black87,
+                            border: Border.all(color: Colors.white, width: 2),
                           ),
+                          child: selected
+                              ? const Icon(Icons.check, color: Colors.white)
+                              : null,
                         ),
                       ),
-                    ],
-                  ),
-                );
-              }
+                    ),
+                  ],
+                ),
+              );
+            },
           ),
 
           Positioned(
             top: 40,
             right: 16,
             child: IconButton(
-              icon: const Icon(
-                Icons.close,
-                color: Colors.white,
-                size: 32,
-              ),
+              icon: const Icon(Icons.close, color: Colors.white, size: 32),
               onPressed: () => Navigator.of(context).pop(),
             ),
           ),
-
-          /*Positioned(
-            top: 40,
-            right: 16,
-            child: GestureDetector(
-              onTap: () {
-                widget.onSelect(option.id);
-
-                setState(() {});
-              },
-              child: Container(
-                width: 42,
-                height: 42,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: selected
-                      ? Colors.green
-                      : Colors.black87,
-                  border: Border.all(
-                    color: Colors.white,
-                    width: 2,
-                  ),
-                ),
-                child: selected
-                    ? const Icon(Icons.check, color: Colors.white)
-                    : null,
-              ),
-            ),
-          ),*/
 
           Positioned(
             left: 12,
@@ -580,10 +537,7 @@ class _FullscreenCarouselDialogState
             child: Center(
               child: Text(
                 '${_currentIndex + 1} / ${widget.options.length}',
-                style: const TextStyle(
-                  color: Colors.white,
-                  fontSize: 16,
-                ),
+                style: const TextStyle(color: Colors.white, fontSize: 16),
               ),
             ),
           ),

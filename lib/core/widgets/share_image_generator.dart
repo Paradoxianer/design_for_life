@@ -1,5 +1,4 @@
 import 'dart:io' as io;
-import 'dart:typed_data';
 
 import 'package:design_for_life/l10n/generated/app_localizations.dart';
 import 'package:flutter/foundation.dart';
@@ -8,6 +7,7 @@ import 'package:path_provider/path_provider.dart';
 import 'package:screenshot/screenshot.dart';
 import 'package:share_plus/share_plus.dart';
 
+import '../utils/app_logger.dart';
 import '../../features/imagine/models/imagine_visual_option.dart';
 import '../../features/life_tree/models/life_tree_node_data.dart';
 import '../../features/life_tree/widgets/life_tree_graph_widget.dart';
@@ -28,7 +28,8 @@ Color _parseColor(String? hex) {
 }
 
 class ShareImageGenerator {
-  static final ScreenshotController _brandingController = ScreenshotController();
+  static final ScreenshotController _brandingController =
+      ScreenshotController();
 
   /// Wandelt gerenderte Bild-Bytes in ein teilbares [XFile].
   ///
@@ -75,7 +76,8 @@ class ShareImageGenerator {
       try {
         // 1. Digitaler Lebensbaum (nutzt das bereits gecapturte Bild aus der UI)
         if (item.data is Map && item.data['type'] == 'life_tree_graph') {
-          final Uint8List? capturedBytes = item.data['capturedImage'] as Uint8List?;
+          final Uint8List? capturedBytes =
+              item.data['capturedImage'] as Uint8List?;
 
           if (capturedBytes != null && capturedBytes.isNotEmpty) {
             final xFile = await _wrapCapturedImageWithBranding(
@@ -91,7 +93,8 @@ class ShareImageGenerator {
         // hier existiert kein gemounteter LifeTreeResult zum Screenshotten,
         // deshalb wird der Graph aus den rohen Knotendaten off-screen
         // gerendert (analog zu den anderen Kartentypen unten).
-        else if (item.data is Map && item.data['type'] == 'life_tree_graph_data') {
+        else if (item.data is Map &&
+            item.data['type'] == 'life_tree_graph_data') {
           final nodes = item.data['nodes'] as List<LifeTreeNodeData>?;
           if (nodes != null && nodes.isNotEmpty) {
             final xFile = await _buildLifeTreeGraphImage(
@@ -134,7 +137,8 @@ class ShareImageGenerator {
           if (xFile != null) files.add(xFile);
         }
         // 2d. Personal-Style-Quadrantenmatrix als Bild (#50)
-        else if (item.data is Map && item.data['type'] == 'personal_style_matrix') {
+        else if (item.data is Map &&
+            item.data['type'] == 'personal_style_matrix') {
           final xFile = await _buildPersonalStyleMatrixImage(
             context: context,
             content: content,
@@ -155,7 +159,7 @@ class ShareImageGenerator {
           }
         }
       } catch (e) {
-        debugPrint('Error generating share image for item "${item.id}": $e');
+        logError('Error generating share image for item "${item.id}": $e');
       }
     }
 
@@ -219,7 +223,7 @@ class ShareImageGenerator {
       // einen eindeutigen Zeitstempel-Präfix an, ein fester Name reicht).
       return await _toXFile(rendered, 'imagine_option.png');
     } catch (e) {
-      debugPrint('Error rendering imagine share image: $e');
+      logError('Error rendering imagine share image: $e');
       return null;
     }
   }
@@ -262,11 +266,17 @@ class ShareImageGenerator {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Expanded(
-                      child: _ComposedImagineHalf(label: pastLabel, imagePath: pastPath),
+                      child: _ComposedImagineHalf(
+                        label: pastLabel,
+                        imagePath: pastPath,
+                      ),
                     ),
                     const SizedBox(width: 24),
                     Expanded(
-                      child: _ComposedImagineHalf(label: futureLabel, imagePath: futurePath),
+                      child: _ComposedImagineHalf(
+                        label: futureLabel,
+                        imagePath: futurePath,
+                      ),
                     ),
                   ],
                 ),
@@ -280,7 +290,7 @@ class ShareImageGenerator {
 
       return await _toXFile(rendered, 'imagine_composed.png');
     } catch (e) {
-      debugPrint('Error rendering composed imagine share image: $e');
+      logError('Error rendering composed imagine share image: $e');
       return null;
     }
   }
@@ -297,9 +307,7 @@ class ShareImageGenerator {
   }) async {
     final data = item.data as Map;
     final heading = data['heading'] as String?;
-    final entries = (data['entries'] as List? ?? const [])
-        .cast<Map>()
-        .toList();
+    final entries = (data['entries'] as List? ?? const []).cast<Map>().toList();
     if (entries.isEmpty) return null;
 
     try {
@@ -321,7 +329,10 @@ class ShareImageGenerator {
                   Text(
                     heading,
                     textAlign: TextAlign.center,
-                    style: const TextStyle(fontSize: 24, fontWeight: FontWeight.w700),
+                    style: const TextStyle(
+                      fontSize: 24,
+                      fontWeight: FontWeight.w700,
+                    ),
                   ),
                   const SizedBox(height: 28),
                 ],
@@ -344,7 +355,7 @@ class ShareImageGenerator {
 
       return await _toXFile(rendered, 'card.png');
     } catch (e) {
-      debugPrint('Error rendering text card share image: $e');
+      logError('Error rendering text card share image: $e');
       return null;
     }
   }
@@ -403,7 +414,10 @@ class ShareImageGenerator {
                 ),
                 if (profileTitle != null && profileTraits != null) ...[
                   const SizedBox(height: 24),
-                  _TextCardEntry(title: profileTitle, body: profileTraits.join('\n')),
+                  _TextCardEntry(
+                    title: profileTitle,
+                    body: profileTraits.join('\n'),
+                  ),
                 ],
               ],
             ),
@@ -415,7 +429,7 @@ class ShareImageGenerator {
 
       return await _toXFile(rendered, 'personal_style_matrix.png');
     } catch (e) {
-      debugPrint('Error rendering personal style matrix share image: $e');
+      logError('Error rendering personal style matrix share image: $e');
       return null;
     }
   }
@@ -444,6 +458,7 @@ class ShareImageGenerator {
         LifeTreeGraphWidget(nodes: nodes, animated: false),
         pixelRatio: 1.0,
       );
+      if (!context.mounted) return null;
 
       return await _wrapCapturedImageWithBranding(
         context,
@@ -452,7 +467,7 @@ class ShareImageGenerator {
         includeBranding: includeBranding,
       );
     } catch (e) {
-      debugPrint('Error rendering life tree graph for export: $e');
+      logError('Error rendering life tree graph for export: $e');
       return null;
     }
   }
@@ -473,9 +488,11 @@ class ShareImageGenerator {
 
     try {
       final decodedGraph = await decodeImageFromList(graphBytes);
+      if (!context.mounted) return null;
       final double imageWidth = decodedGraph.width.toDouble();
 
-      final Uint8List? finalImage = await _brandingController.captureFromLongWidget(
+      final Uint8List
+      finalImage = await _brandingController.captureFromLongWidget(
         Material(
           color: Colors.white,
           child: Theme(
@@ -489,7 +506,10 @@ class ShareImageGenerator {
                 children: [
                   if (includeBranding)
                     Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 24),
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 32,
+                        vertical: 24,
+                      ),
                       child: _buildHeader(context, content),
                     ),
                   // RawImage statt Image.memory: captureFromLongWidget misst die
@@ -498,9 +518,16 @@ class ShareImageGenerator {
                   // träge) - das ergab eine zu kleine Messung und dadurch einen
                   // Overflow beim eigentlichen Rendern. decodedGraph ist hier
                   // bereits fertig decodiert und hat sofort eine bekannte Größe.
-                  RawImage(image: decodedGraph, width: imageWidth, fit: BoxFit.fitWidth),
+                  RawImage(
+                    image: decodedGraph,
+                    width: imageWidth,
+                    fit: BoxFit.fitWidth,
+                  ),
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 20),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 32,
+                      vertical: 20,
+                    ),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
@@ -528,11 +555,9 @@ class ShareImageGenerator {
         pixelRatio: 1.0,
       );
 
-      if (finalImage == null) return null;
-
       return await _toXFile(finalImage, 'lebensbaum.png');
     } catch (e) {
-      debugPrint('Error wrapping graph image: $e');
+      logError('Error wrapping graph image: $e');
       return null;
     }
   }
@@ -580,7 +605,12 @@ class _TextCardEntry extends StatelessWidget {
   final List<Map>? chips;
   final List<Map>? lines;
 
-  const _TextCardEntry({required this.title, this.body, this.chips, this.lines});
+  const _TextCardEntry({
+    required this.title,
+    this.body,
+    this.chips,
+    this.lines,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -596,7 +626,11 @@ class _TextCardEntry extends StatelessWidget {
         children: [
           Text(
             title,
-            style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: Colors.black87),
+            style: const TextStyle(
+              fontSize: 22,
+              fontWeight: FontWeight.bold,
+              color: Colors.black87,
+            ),
           ),
           if (chips != null && chips!.isNotEmpty) ...[
             const SizedBox(height: 10),
@@ -632,7 +666,11 @@ class _TextCardEntry extends StatelessWidget {
                     Expanded(
                       child: Text(
                         line['text'] as String? ?? '',
-                        style: TextStyle(fontSize: 16, color: Colors.grey.shade800, height: 1.4),
+                        style: TextStyle(
+                          fontSize: 16,
+                          color: Colors.grey.shade800,
+                          height: 1.4,
+                        ),
                       ),
                     ),
                   ],
@@ -643,7 +681,11 @@ class _TextCardEntry extends StatelessWidget {
             const SizedBox(height: 8),
             Text(
               body!,
-              style: TextStyle(fontSize: 16, color: Colors.grey.shade800, height: 1.4),
+              style: TextStyle(
+                fontSize: 16,
+                color: Colors.grey.shade800,
+                height: 1.4,
+              ),
             ),
           ],
         ],
@@ -677,7 +719,11 @@ class _SmartChip extends StatelessWidget {
       decoration: BoxDecoration(color: color, shape: BoxShape.circle),
       child: Text(
         label,
-        style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 13),
+        style: const TextStyle(
+          color: Colors.white,
+          fontWeight: FontWeight.bold,
+          fontSize: 13,
+        ),
       ),
     );
   }

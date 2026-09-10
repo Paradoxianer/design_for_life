@@ -1,7 +1,6 @@
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'values_event.dart';
 import 'values_state.dart';
-import '../models/static_values_data.dart';
 import '../models/value_item.dart';
 
 class ValuesBloc extends HydratedBloc<ValuesEvent, ValuesState> {
@@ -55,12 +54,7 @@ class ValuesBloc extends HydratedBloc<ValuesEvent, ValuesState> {
       if (top8.isEmpty) return;
 
       final item = top8.removeAt(event.oldIndex);
-      int newIdx = event.newIndex;
-      if (newIdx > event.oldIndex) newIdx--;
-      top8.insert(newIdx, item);
-
-      // Create a map for quick access to the new order
-      final nameToOrder = {for (int i = 0; i < top8.length; i++) top8[i].name: i};
+      top8.insert(event.newIndex, item);
 
       // Create a list of all other values (rating != 1)
       final otherValues = state.allValues.where((v) => v.rating != 1).toList();
@@ -73,7 +67,8 @@ class ValuesBloc extends HydratedBloc<ValuesEvent, ValuesState> {
   }
 
   @override
-  ValuesState? fromJson(Map<String, dynamic> json) => ValuesState.fromJson(json);
+  ValuesState? fromJson(Map<String, dynamic> json) =>
+      ValuesState.fromJson(json);
 
   @override
   Map<String, dynamic>? toJson(ValuesState state) => state.toJson();

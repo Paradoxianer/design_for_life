@@ -26,13 +26,15 @@ class ValuesAssessmentScreen extends StatefulWidget {
 }
 
 class _ValuesAssessmentScreenState extends State<ValuesAssessmentScreen> {
-  final GlobalKey<DflModuleScaffoldState> _scaffoldKey = GlobalKey<DflModuleScaffoldState>();
+  final GlobalKey<DflModuleScaffoldState> _scaffoldKey =
+      GlobalKey<DflModuleScaffoldState>();
   int _currentStep = 0;
 
   @override
   void initState() {
     super.initState();
   }
+
   bool _initialized = false;
 
   @override
@@ -40,7 +42,7 @@ class _ValuesAssessmentScreenState extends State<ValuesAssessmentScreen> {
     super.didChangeDependencies();
 
     if (!_initialized) {
-      final l10n = AppLocalizations.of(context)!;
+      final l10n = AppLocalizations.of(context);
 
       context.read<ValuesBloc>().add(
         ValuesStarted(StaticValuesData.getInitialValues(l10n)),
@@ -50,8 +52,10 @@ class _ValuesAssessmentScreenState extends State<ValuesAssessmentScreen> {
     }
   }
 
-
-  ShareableContent _getShareableContent(BuildContext context, ValuesState state) {
+  ShareableContent _getShareableContent(
+    BuildContext context,
+    ValuesState state,
+  ) {
     final l10n = AppLocalizations.of(context);
     final topThree = state.topEightValues.take(3).toList();
 
@@ -64,7 +68,8 @@ class _ValuesAssessmentScreenState extends State<ValuesAssessmentScreen> {
             id: 'values_card',
             label: l10n.valuesShareCardLabel,
             textValue: [
-              for (int i = 0; i < topThree.length; i++) '${i + 1}. ${topThree[i].name}',
+              for (int i = 0; i < topThree.length; i++)
+                '${i + 1}. ${topThree[i].name}',
             ].join('\n'),
             data: {
               'type': 'text_card',
@@ -88,7 +93,7 @@ class _ValuesAssessmentScreenState extends State<ValuesAssessmentScreen> {
     return BlocBuilder<ValuesBloc, ValuesState>(
       builder: (context, state) {
         final shareContent = _getShareableContent(context, state);
-        
+
         return DflModuleScaffold(
           key: _scaffoldKey,
           title: widget.title,
@@ -130,10 +135,19 @@ class _ValuesAssessmentScreenState extends State<ValuesAssessmentScreen> {
                     maxLines: 1,
                   ),
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Theme.of(context).colorScheme.primaryContainer,
-                    foregroundColor: Theme.of(context).colorScheme.onPrimaryContainer,
-                    padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                    backgroundColor: Theme.of(
+                      context,
+                    ).colorScheme.primaryContainer,
+                    foregroundColor: Theme.of(
+                      context,
+                    ).colorScheme.onPrimaryContainer,
+                    padding: const EdgeInsets.symmetric(
+                      vertical: 12,
+                      horizontal: 16,
+                    ),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
                   ),
                 ),
               ),
@@ -142,8 +156,13 @@ class _ValuesAssessmentScreenState extends State<ValuesAssessmentScreen> {
                     ? ElevatedButton(
                         onPressed: () => setState(() => _currentStep++),
                         style: ElevatedButton.styleFrom(
-                          padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 12),
-                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                          padding: const EdgeInsets.symmetric(
+                            vertical: 12,
+                            horizontal: 12,
+                          ),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(12),
+                          ),
                         ),
                         child: Row(
                           mainAxisSize: MainAxisSize.min,
@@ -173,14 +192,19 @@ class _ValuesAssessmentScreenState extends State<ValuesAssessmentScreen> {
     );
   }
 
-  Future<bool> _validateCompletion(BuildContext context, ValuesState state) async {
+  Future<bool> _validateCompletion(
+    BuildContext context,
+    ValuesState state,
+  ) async {
     final l10n = AppLocalizations.of(context);
     if (state.topEightValues.length != 8) {
       final bool? result = await showDialog<bool>(
         context: context,
         builder: (context) => AlertDialog(
           title: Text(l10n.valuesSelectionStatus(8)),
-          content: Text(l10n.valuesSelectionMissing(state.topEightValues.length)),
+          content: Text(
+            l10n.valuesSelectionMissing(state.topEightValues.length),
+          ),
           actions: [
             TextButton(
               onPressed: () => Navigator.pop(context, false),

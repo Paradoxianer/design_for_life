@@ -16,7 +16,9 @@ class SynthesisEditor extends StatelessWidget {
         return _ConnectionsEditorLayout(
           takeaways: state.takeaways,
           onUpdate: (index, value) {
-            context.read<SynthesisBloc>().add(UpdateSynthesisTakeaway(index, value));
+            context.read<SynthesisBloc>().add(
+              UpdateSynthesisTakeaway(index, value),
+            );
           },
           showTakeaways: true,
           isReadOnly: false,
@@ -44,24 +46,43 @@ class _ConnectionsBoard extends StatelessWidget {
   const _ConnectionsBoard();
 
   static const _columnDefs = <_ColumnDef>[
-    (key: 'lifeTree', color: Color(0xFF2E7D32), icon: Icons.account_tree_rounded),
+    (
+      key: 'lifeTree',
+      color: Color(0xFF2E7D32),
+      icon: Icons.account_tree_rounded,
+    ),
     (key: 'values', color: Color(0xFF2D5A27), icon: Icons.diamond_outlined),
-    (key: 'gifts', color: Color(0xFF6B4C9A), icon: Icons.volunteer_activism_rounded),
+    (
+      key: 'gifts',
+      color: Color(0xFF6B4C9A),
+      icon: Icons.volunteer_activism_rounded,
+    ),
     (key: 'prayer', color: Color(0xFF1565C0), icon: Icons.hearing_rounded),
     (key: 'goals', color: Color(0xFF8B5E3C), icon: Icons.flag_rounded),
-    (key: 'personalStyle', color: Color(0xFFAD1457), icon: Icons.grid_view_rounded),
+    (
+      key: 'personalStyle',
+      color: Color(0xFFAD1457),
+      icon: Icons.grid_view_rounded,
+    ),
   ];
 
   String _columnLabel(BuildContext context, String key) {
     final l10n = AppLocalizations.of(context);
     switch (key) {
-      case 'lifeTree': return l10n.connectionsColLifeTree;
-      case 'values': return l10n.connectionsColValues;
-      case 'gifts': return l10n.connectionsColGifts;
-      case 'prayer': return l10n.connectionsColPrayer;
-      case 'goals': return l10n.connectionsColGoals;
-      case 'personalStyle': return l10n.connectionsColPersonalStyle;
-      default: return key;
+      case 'lifeTree':
+        return l10n.connectionsColLifeTree;
+      case 'values':
+        return l10n.connectionsColValues;
+      case 'gifts':
+        return l10n.connectionsColGifts;
+      case 'prayer':
+        return l10n.connectionsColPrayer;
+      case 'goals':
+        return l10n.connectionsColGoals;
+      case 'personalStyle':
+        return l10n.connectionsColPersonalStyle;
+      default:
+        return key;
     }
   }
 
@@ -100,10 +121,7 @@ class _ConnectionsBoard extends StatelessWidget {
             const SizedBox(height: 12),
             ScrollConfiguration(
               behavior: ScrollConfiguration.of(context).copyWith(
-                dragDevices: {
-                  PointerDeviceKind.touch,
-                  PointerDeviceKind.mouse,
-                },
+                dragDevices: {PointerDeviceKind.touch, PointerDeviceKind.mouse},
               ),
               child: SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
@@ -116,7 +134,8 @@ class _ConnectionsBoard extends StatelessWidget {
                         label: _columnLabel(context, col.key),
                         color: col.color,
                         icon: col.icon,
-                        cards: state.columns[col.key] ?? const <SynthesisCard>[],
+                        cards:
+                            state.columns[col.key] ?? const <SynthesisCard>[],
                       ),
                       const SizedBox(width: 12),
                     ],
@@ -164,7 +183,9 @@ class _ConnectionsColumn extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
             decoration: BoxDecoration(
               color: color.withValues(alpha: 0.1),
-              borderRadius: const BorderRadius.vertical(top: Radius.circular(11)),
+              borderRadius: const BorderRadius.vertical(
+                top: Radius.circular(11),
+              ),
             ),
             child: Row(
               children: [
@@ -187,15 +208,15 @@ class _ConnectionsColumn extends StatelessWidget {
             // noch ein zweites Drag-Handle hinten an - App-weit einheitlich
             // nur ein Handle vorne (#60).
             buildDefaultDragHandles: false,
-            onReorder: (oldIndex, newIndex) {
+            onReorderItem: (oldIndex, newIndex) {
               context.read<SynthesisBloc>().add(
-                    MoveSynthesisCard(
-                      fromColumn: columnKey,
-                      fromIndex: oldIndex,
-                      toColumn: columnKey,
-                      toIndex: newIndex,
-                    ),
-                  );
+                MoveSynthesisCard(
+                  fromColumn: columnKey,
+                  fromIndex: oldIndex,
+                  toColumn: columnKey,
+                  toIndex: newIndex,
+                ),
+              );
             },
             children: [
               for (int i = 0; i < cards.length; i++)
@@ -239,12 +260,18 @@ class _ConnectionCard extends StatelessWidget {
   String _tagLabel(BuildContext context, String tag) {
     final l10n = AppLocalizations.of(context);
     switch (tag) {
-      case 'none': return l10n.connectionsColorNone;
-      case 'red': return l10n.connectionsColorRed;
-      case 'blue': return l10n.connectionsColorBlue;
-      case 'green': return l10n.connectionsColorGreen;
-      case 'gold': return l10n.connectionsColorGold;
-      default: return tag;
+      case 'none':
+        return l10n.connectionsColorNone;
+      case 'red':
+        return l10n.connectionsColorRed;
+      case 'blue':
+        return l10n.connectionsColorBlue;
+      case 'green':
+        return l10n.connectionsColorGreen;
+      case 'gold':
+        return l10n.connectionsColorGold;
+      default:
+        return tag;
     }
   }
 
@@ -272,7 +299,10 @@ class _ConnectionCard extends StatelessWidget {
             Container(
               width: 10,
               height: 10,
-              decoration: BoxDecoration(color: tagColor, shape: BoxShape.circle),
+              decoration: BoxDecoration(
+                color: tagColor,
+                shape: BoxShape.circle,
+              ),
             ),
             const SizedBox(width: 6),
             Text(_tagLabel(context, card.tag)),
@@ -282,7 +312,9 @@ class _ConnectionCard extends StatelessWidget {
           icon: const Icon(Icons.palette_outlined),
           tooltip: l10n.connectionsAssignColor,
           onSelected: (value) {
-            context.read<SynthesisBloc>().add(SetSynthesisCardTag(card.id, value));
+            context.read<SynthesisBloc>().add(
+              SetSynthesisCardTag(card.id, value),
+            );
           },
           itemBuilder: (_) => [
             for (final tag in ['none', 'red', 'blue', 'green', 'gold'])
@@ -309,4 +341,3 @@ class _ConnectionCard extends StatelessWidget {
     );
   }
 }
-

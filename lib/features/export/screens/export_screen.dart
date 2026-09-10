@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:printing/printing.dart';
 
 import 'package:design_for_life/core/models/shareable_content.dart';
+import 'package:design_for_life/core/utils/app_logger.dart';
 import 'package:design_for_life/features/goals/bloc/goals_bloc.dart';
 import 'package:design_for_life/features/group_photo/bloc/group_photo_bloc.dart';
 import 'package:design_for_life/features/group_photo/screens/group_photo_screen.dart';
@@ -65,34 +66,76 @@ class _ExportScreenState extends State<ExportScreen> {
       if (content != null) unordered[key] = content;
     }
 
-    addIfPresent('values', ExportContentBuilder.values(l10n, context.read<ValuesBloc>().state));
     addIfPresent(
-        'gifts', ExportContentBuilder.spiritualGifts(l10n, context.read<SpiritualGiftsBloc>().state));
-    addIfPresent('goals', ExportContentBuilder.goals(l10n, context.read<GoalsBloc>().state));
-    addIfPresent('notes', ExportContentBuilder.notes(l10n, context.read<NotesBloc>().state));
-    addIfPresent('listeningPrayer',
-        ExportContentBuilder.listeningPrayer(l10n, context.read<ListeningPrayerBloc>().state));
-    addIfPresent('lifeTree', ExportContentBuilder.lifeTree(l10n, context.read<LifeTreeBloc>().state));
-    addIfPresent('imagine', ExportContentBuilder.imagine(l10n, context.read<ImagineBloc>().state));
+      'values',
+      ExportContentBuilder.values(l10n, context.read<ValuesBloc>().state),
+    );
+    addIfPresent(
+      'gifts',
+      ExportContentBuilder.spiritualGifts(
+        l10n,
+        context.read<SpiritualGiftsBloc>().state,
+      ),
+    );
+    addIfPresent(
+      'goals',
+      ExportContentBuilder.goals(l10n, context.read<GoalsBloc>().state),
+    );
+    addIfPresent(
+      'notes',
+      ExportContentBuilder.notes(l10n, context.read<NotesBloc>().state),
+    );
+    addIfPresent(
+      'listeningPrayer',
+      ExportContentBuilder.listeningPrayer(
+        l10n,
+        context.read<ListeningPrayerBloc>().state,
+      ),
+    );
+    addIfPresent(
+      'lifeTree',
+      ExportContentBuilder.lifeTree(l10n, context.read<LifeTreeBloc>().state),
+    );
+    addIfPresent(
+      'imagine',
+      ExportContentBuilder.imagine(l10n, context.read<ImagineBloc>().state),
+    );
     addIfPresent(
       'groupPhoto',
-      ExportContentBuilder.groupPhoto(l10n, context.read<GroupPhotoBloc>().state, groupPhotoSessionId),
+      ExportContentBuilder.groupPhoto(
+        l10n,
+        context.read<GroupPhotoBloc>().state,
+        groupPhotoSessionId,
+      ),
     );
-    addIfPresent('connections', ExportContentBuilder.connections(l10n, context.read<SynthesisBloc>().state));
+    addIfPresent(
+      'connections',
+      ExportContentBuilder.connections(
+        l10n,
+        context.read<SynthesisBloc>().state,
+      ),
+    );
     addIfPresent(
       'personalStyle',
-      ExportContentBuilder.personalStyle(l10n, context.read<PersonalStyleBloc>().state),
+      ExportContentBuilder.personalStyle(
+        l10n,
+        context.read<PersonalStyleBloc>().state,
+      ),
     );
 
     // Reihenfolge an die tatsächliche Timeline-Chronologie anpassen (Einheit 1
     // zuerst, Gruppenfoto zuletzt), statt der Reihenfolge oben.
     var orderedKeys = unordered.keys.toList();
     try {
-      final sessions = await const TimelineConfigRepository().loadSessions(l10n);
+      final sessions = await const TimelineConfigRepository().loadSessions(
+        l10n,
+      );
       final chronological = <String>[];
       for (final session in sessions) {
         final key = _moduleIdToSectionKey[session.moduleId];
-        if (key != null && unordered.containsKey(key) && !chronological.contains(key)) {
+        if (key != null &&
+            unordered.containsKey(key) &&
+            !chronological.contains(key)) {
           chronological.add(key);
         }
       }
@@ -103,7 +146,7 @@ class _ExportScreenState extends State<ExportScreen> {
       }
       orderedKeys = chronological;
     } catch (e) {
-      debugPrint('Could not load timeline order for export sections: $e');
+      logError('Could not load timeline order for export sections: $e');
     }
 
     final ordered = {for (final key in orderedKeys) key: unordered[key]!};
@@ -120,15 +163,29 @@ class _ExportScreenState extends State<ExportScreen> {
     final l10n = AppLocalizations.of(context);
     setState(() => _isGenerating = true);
     try {
-      final contents = _selectedKeys.map((k) => _availableSections[k]!).toList();
-      final document = await ExportService.build(context: context, contents: contents);
-      final languageCode = Localizations.localeOf(context).languageCode;
-      final pdfBytes = await PdfBuilder.build(document, languageCode: languageCode);
+      final contents = _selectedKeys
+          .map((k) => _availableSections[k]!)
+          .toList();
+      final document = await ExportService.build(
+        context: context,
+        contents: contents,
+      );
       if (!mounted) return;
-      await Printing.sharePdf(bytes: pdfBytes, filename: 'dfl_abschlussdokument.pdf');
+      final languageCode = Localizations.localeOf(context).languageCode;
+      final pdfBytes = await PdfBuilder.build(
+        document,
+        languageCode: languageCode,
+      );
+      if (!mounted) return;
+      await Printing.sharePdf(
+        bytes: pdfBytes,
+        filename: 'dfl_abschlussdokument.pdf',
+      );
     } catch (e) {
       if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(l10n.exportError)));
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(SnackBar(content: Text(l10n.exportError)));
       }
     } finally {
       if (mounted) setState(() => _isGenerating = false);
@@ -231,7 +288,9 @@ class _ExportScreenState extends State<ExportScreen> {
         child: Padding(
           padding: const EdgeInsets.all(16),
           child: ElevatedButton.icon(
-            onPressed: _isGenerating || _selectedKeys.isEmpty ? null : _generate,
+            onPressed: _isGenerating || _selectedKeys.isEmpty
+                ? null
+                : _generate,
             icon: _isGenerating
                 ? const SizedBox(
                     width: 18,

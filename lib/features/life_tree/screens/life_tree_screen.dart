@@ -7,6 +7,7 @@ import 'package:design_for_life/core/blocs/entry_list_bloc.dart';
 import 'package:design_for_life/core/models/dfl_entry.dart';
 import 'package:design_for_life/core/models/shareable_content.dart';
 import 'package:design_for_life/core/services/share_service.dart';
+import 'package:design_for_life/core/utils/app_logger.dart';
 import '../../../core/widgets/dfl_module_scaffold.dart';
 import '../bloc/life_tree_bloc.dart';
 import '../models/life_tree_node_data.dart';
@@ -44,37 +45,46 @@ class _LifeTreeScreenState extends State<LifeTreeScreen> {
     // 1. Key Takeaways (werden im ShareService als Text formatiert)
     for (int i = 0; i < takeaways.length; i++) {
       if (takeaways[i].trim().isNotEmpty) {
-        items.add(ShareableItem(
-          id: 'takeaway_$i',
-          label: l10n.shareInsightItem(i + 1),
-          textValue: takeaways[i],
-        ));
+        items.add(
+          ShareableItem(
+            id: 'takeaway_$i',
+            label: l10n.shareInsightItem(i + 1),
+            textValue: takeaways[i],
+          ),
+        );
       }
     }
 
     // 2. Digitaler Baum (Grafik)
     if (nodes.isNotEmpty) {
-      items.add(ShareableItem(
-        id: 'tree_graph',
-        label: l10n.lifeTreeShareGraph,
-        isSelected: true,
-        data: { 'type': 'life_tree_graph' },
-      ));
+      items.add(
+        ShareableItem(
+          id: 'tree_graph',
+          label: l10n.lifeTreeShareGraph,
+          isSelected: true,
+          data: {'type': 'life_tree_graph'},
+        ),
+      );
     }
 
     // 3. Einträge (Analog/Notizen/Zeichnungen)
     for (var entry in entries) {
       if (entry.text.trim().isNotEmpty || entry.imagePath != null) {
-        items.add(ShareableItem(
-          id: 'entry_${entry.id}',
-          label: l10n.shareNoteOrDrawing,
-          textValue: entry.text.isNotEmpty ? entry.text : null,
-          imagePath: entry.imagePath,
-        ));
+        items.add(
+          ShareableItem(
+            id: 'entry_${entry.id}',
+            label: l10n.shareNoteOrDrawing,
+            textValue: entry.text.isNotEmpty ? entry.text : null,
+            imagePath: entry.imagePath,
+          ),
+        );
       }
     }
 
-    return ShareableContent(title: '${l10n.lifeTreeTitle}: ${widget.title}', items: items);
+    return ShareableContent(
+      title: '${l10n.lifeTreeTitle}: ${widget.title}',
+      items: items,
+    );
   }
 
   @override
@@ -83,7 +93,8 @@ class _LifeTreeScreenState extends State<LifeTreeScreen> {
       builder: (context, state) {
         final lifeTreeState = state as LifeTreeState;
         final entries = lifeTreeState.entries[widget.sessionId] ?? [];
-        final takeaways = lifeTreeState.takeaways[widget.sessionId] ?? const ['', '', ''];
+        final takeaways =
+            lifeTreeState.takeaways[widget.sessionId] ?? const ['', '', ''];
         final nodes = lifeTreeState.treeNodes[widget.sessionId] ?? [];
         // In der Ergebnisansicht/beim Teilen bleiben eingeklappte Teilbäume
         // verborgen (#55) - z.B. um persönliche Äste vor anderen zu
@@ -94,17 +105,22 @@ class _LifeTreeScreenState extends State<LifeTreeScreen> {
           lifeTreeState.collapsedNodeIds[widget.sessionId] ?? const {},
         );
 
-        final displayEntries = entries.isEmpty 
-            ? [DflEntry(id: 'initial_${widget.sessionId}')] 
+        final displayEntries = entries.isEmpty
+            ? [DflEntry(id: 'initial_${widget.sessionId}')]
             : entries;
 
         return DflModuleScaffold(
           title: widget.title,
           initialEditMode: widget.initialEditMode,
-          shareableContent: _getShareableContent(context, entries, takeaways, visibleNodes),
+          shareableContent: _getShareableContent(
+            context,
+            entries,
+            takeaways,
+            visibleNodes,
+          ),
           onShare: (selectedItems) async {
             Uint8List? capturedImage;
-            
+
             // Wenn die Grafik ausgewählt wurde, machen wir JETZT den Screenshot
             if (selectedItems.any((i) => i.id == 'tree_graph')) {
               try {
@@ -112,30 +128,34 @@ class _LifeTreeScreenState extends State<LifeTreeScreen> {
                 await Future.delayed(const Duration(milliseconds: 150));
                 capturedImage = await _screenshotController.capture();
                 if (capturedImage == null) {
-                   debugPrint('Screenshot returned null - retrying once...');
-                   capturedImage = await _screenshotController.capture();
+                  logError('Screenshot returned null - retrying once...');
+                  capturedImage = await _screenshotController.capture();
                 }
               } catch (e) {
-                debugPrint('Error during screenshot capture: $e');
+                logError('Error during screenshot capture: $e');
               }
             }
 
-            if (mounted) {
+            if (context.mounted) {
               // Wir übergeben das Bild in den Daten des entsprechenden Items
               final enrichedItems = selectedItems.map((si) {
                 if (si.id == 'tree_graph' && capturedImage != null) {
-                  return si.copyWith(data: {
-                    ...si.data,
-                    'capturedImage': capturedImage,
-                  });
+                  return si.copyWith(
+                    data: {...si.data, 'capturedImage': capturedImage},
+                  );
                 }
                 return si;
               }).toList();
 
               ShareService.shareContent(
                 context: context,
-                content: _getShareableContent(context, entries, takeaways, visibleNodes),
-                selectedItems: enrichedItems
+                content: _getShareableContent(
+                  context,
+                  entries,
+                  takeaways,
+                  visibleNodes,
+                ),
+                selectedItems: enrichedItems,
               );
             }
           },
@@ -145,14 +165,18 @@ class _LifeTreeScreenState extends State<LifeTreeScreen> {
             entries: displayEntries,
             takeaways: takeaways,
             nodes: nodes,
-            onUpdate: (index, value) => context.read<LifeTreeBloc>().add(UpdateTakeaway(widget.sessionId, index, value)),
+            onUpdate: (index, value) => context.read<LifeTreeBloc>().add(
+              UpdateTakeaway(widget.sessionId, index, value),
+            ),
           ),
           result: LifeTreeResult(
             entries: entries,
             takeaways: takeaways,
             nodes: visibleNodes,
             screenshotController: _screenshotController,
-            onUpdate: (index, value) => context.read<LifeTreeBloc>().add(UpdateTakeaway(widget.sessionId, index, value)),
+            onUpdate: (index, value) => context.read<LifeTreeBloc>().add(
+              UpdateTakeaway(widget.sessionId, index, value),
+            ),
           ),
         );
       },

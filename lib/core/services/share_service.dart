@@ -1,9 +1,9 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:design_for_life/l10n/generated/app_localizations.dart';
 import '../models/shareable_content.dart';
+import '../utils/app_logger.dart';
 import '../widgets/share_image_generator.dart';
 
 class ShareService {
@@ -20,13 +20,15 @@ class ShareService {
     buffer.writeln('🌟 ${content.title} 🌟');
     buffer.writeln('=' * (content.title.length + 4));
     buffer.writeln();
-    
+
     bool hasTakeaways = false;
     bool hasNotes = false;
 
     // Zuerst Takeaways (Erkenntnisse)
     for (var item in selectedItems) {
-      if (item.id.startsWith('takeaway') && item.textValue != null && item.textValue!.isNotEmpty) {
+      if (item.id.startsWith('takeaway') &&
+          item.textValue != null &&
+          item.textValue!.isNotEmpty) {
         if (!hasTakeaways) {
           buffer.writeln(l10n.shareKeyTakeaways);
           hasTakeaways = true;
@@ -53,7 +55,7 @@ class ShareService {
         buffer.writeln();
       }
     }
-    
+
     buffer.writeln('---');
     buffer.writeln(l10n.shareFooter);
     if (extraText != null) buffer.writeln('\n$extraText');
@@ -70,19 +72,12 @@ class ShareService {
     // 3. Teilen
     try {
       if (files.isNotEmpty) {
-        await Share.shareXFiles(
-          files,
-          text: text,
-          subject: content.title,
-        );
+        await Share.shareXFiles(files, text: text, subject: content.title);
       } else {
-        await Share.share(
-          text,
-          subject: content.title,
-        );
+        await Share.share(text, subject: content.title);
       }
     } catch (e) {
-      debugPrint('Share failed: $e');
+      logError('Share failed: $e');
       await Share.share(text, subject: content.title);
     }
   }

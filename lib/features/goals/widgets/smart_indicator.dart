@@ -21,13 +21,15 @@ class SmartIndicator extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    
+
     final primaryColor = theme.colorScheme.primary;
     // Dezenter Hintergrund: Wenn aktiv, ganz leichte Färbung, sonst fast transparent
-    final surfaceColor = isActive 
-        ? primaryColor.withValues(alpha: 0.1) 
-        : theme.colorScheme.surfaceVariant.withValues(alpha: 0.2);
-    final textColor = isActive ? theme.colorScheme.onSurface : theme.colorScheme.onSurfaceVariant;
+    final surfaceColor = isActive
+        ? primaryColor.withValues(alpha: 0.1)
+        : theme.colorScheme.surfaceContainerHighest.withValues(alpha: 0.2);
+    final textColor = isActive
+        ? theme.colorScheme.onSurface
+        : theme.colorScheme.onSurfaceVariant;
 
     return Tooltip(
       message: description,
@@ -42,7 +44,9 @@ class SmartIndicator extends StatelessWidget {
             borderRadius: BorderRadius.circular(20),
             // Dezenter Rahmen wie bei einer Textbox
             border: Border.all(
-              color: isActive ? primaryColor.withValues(alpha: 0.5) : theme.dividerColor.withValues(alpha: 0.5),
+              color: isActive
+                  ? primaryColor.withValues(alpha: 0.5)
+                  : theme.dividerColor.withValues(alpha: 0.5),
               width: 1,
             ),
           ),
@@ -54,14 +58,18 @@ class SmartIndicator extends StatelessWidget {
                 width: 28,
                 height: 28,
                 decoration: BoxDecoration(
-                  color: isActive ? primaryColor : theme.colorScheme.outlineVariant,
+                  color: isActive
+                      ? primaryColor
+                      : theme.colorScheme.outlineVariant,
                   shape: BoxShape.circle,
                 ),
                 alignment: Alignment.center,
                 child: Text(
                   label,
                   style: TextStyle(
-                    color: isActive ? theme.colorScheme.onPrimary : theme.colorScheme.onSurfaceVariant,
+                    color: isActive
+                        ? theme.colorScheme.onPrimary
+                        : theme.colorScheme.onSurfaceVariant,
                     fontWeight: FontWeight.bold,
                     fontSize: 14,
                   ),
@@ -83,7 +91,11 @@ class SmartIndicator extends StatelessWidget {
               if (isActive && !compact)
                 Padding(
                   padding: const EdgeInsets.only(right: 4.0),
-                  child: Icon(Icons.check_circle, size: 14, color: primaryColor),
+                  child: Icon(
+                    Icons.check_circle,
+                    size: 14,
+                    color: primaryColor,
+                  ),
                 ),
             ],
           ),

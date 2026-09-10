@@ -1,10 +1,12 @@
-import 'package:flutter/foundation.dart';
+import 'dart:typed_data';
+
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
 import 'package:printing/printing.dart';
 
 import 'package:design_for_life/core/models/export_document.dart';
+import 'package:design_for_life/core/utils/app_logger.dart';
 import 'package:design_for_life/core/utils/localized_logo.dart';
 
 /// Rendert ein [ExportDocument] als PDF (#27). Bilder werden proportional
@@ -14,7 +16,10 @@ import 'package:design_for_life/core/utils/localized_logo.dart';
 class PdfBuilder {
   const PdfBuilder._();
 
-  static Future<Uint8List> build(ExportDocument document, {String languageCode = 'de'}) async {
+  static Future<Uint8List> build(
+    ExportDocument document, {
+    String languageCode = 'de',
+  }) async {
     // Die Standard-PDF-Schrift (Helvetica) kann keine Umlaute/ß darstellen.
     // Zuerst die gebündelte Noto-Sans-Datei versuchen (funktioniert
     // garantiert offline), erst danach PdfGoogleFonts als Online-Fallback,
@@ -22,17 +27,23 @@ class PdfBuilder {
     pw.Font? regularFont;
     pw.Font? boldFont;
     try {
-      final regularBytes = await rootBundle.load('assets/fonts/NotoSans-Regular.ttf');
+      final regularBytes = await rootBundle.load(
+        'assets/fonts/NotoSans-Regular.ttf',
+      );
       final boldBytes = await rootBundle.load('assets/fonts/NotoSans-Bold.ttf');
       regularFont = pw.Font.ttf(regularBytes);
       boldFont = pw.Font.ttf(boldBytes);
     } catch (e) {
-      debugPrint('Bundled Unicode PDF font not found, trying online fallback: $e');
+      logError(
+        'Bundled Unicode PDF font not found, trying online fallback: $e',
+      );
       try {
         regularFont = await PdfGoogleFonts.notoSansRegular();
         boldFont = await PdfGoogleFonts.notoSansBold();
       } catch (e) {
-        debugPrint('Could not load Unicode PDF font, falling back to default: $e');
+        logError(
+          'Could not load Unicode PDF font, falling back to default: $e',
+        );
       }
     }
 
@@ -45,17 +56,20 @@ class PdfBuilder {
     pw.ImageProvider? dflLogo;
     pw.ImageProvider? partnerLogo;
     try {
-      final logoBytes = (await rootBundle.load('assets/DFL_Logo.png')).buffer.asUint8List();
+      final logoBytes = (await rootBundle.load(
+        'assets/DFL_Logo.png',
+      )).buffer.asUint8List();
       dflLogo = pw.MemoryImage(logoBytes);
     } catch (e) {
-      debugPrint('Could not load DFL logo for PDF header: $e');
+      logError('Could not load DFL logo for PDF header: $e');
     }
     try {
-      final partnerLogoBytes =
-          (await rootBundle.load(localizedPartnerLogoAssetForLanguage(languageCode))).buffer.asUint8List();
+      final partnerLogoBytes = (await rootBundle.load(
+        localizedPartnerLogoAssetForLanguage(languageCode),
+      )).buffer.asUint8List();
       partnerLogo = pw.MemoryImage(partnerLogoBytes);
     } catch (e) {
-      debugPrint('Could not load partner logo for PDF header: $e');
+      logError('Could not load partner logo for PDF header: $e');
     }
 
     for (final section in document.sections) {
@@ -76,14 +90,20 @@ class PdfBuilder {
                 ],
                 pw.Text(
                   section.title,
-                  style: pw.TextStyle(fontSize: 20, fontWeight: pw.FontWeight.bold),
+                  style: pw.TextStyle(
+                    fontSize: 20,
+                    fontWeight: pw.FontWeight.bold,
+                  ),
                 ),
               ],
             ),
             build: (context) => [
               pw.SizedBox(height: 12),
               for (final text in section.textBlocks) ...[
-                pw.Paragraph(text: text, style: const pw.TextStyle(fontSize: 12)),
+                pw.Paragraph(
+                  text: text,
+                  style: const pw.TextStyle(fontSize: 12),
+                ),
               ],
               for (final imageBytes in section.images) ...[
                 pw.SizedBox(height: 12),
@@ -93,7 +113,7 @@ class PdfBuilder {
           ),
         );
       } catch (e) {
-        debugPrint('Error adding export PDF section "${section.title}": $e');
+        logError('Error adding export PDF section "${section.title}": $e');
       }
     }
 

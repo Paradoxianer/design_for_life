@@ -23,24 +23,25 @@ class SynthesisBloc extends HydratedBloc<SynthesisEvent, SynthesisState> {
       event.sourceTakeaways.forEach((columnKey, takeaways) {
         final trimmed = takeaways.map((t) => t.trim()).toList();
         seededSource[columnKey] = trimmed;
-        seededColumns[columnKey] = trimmed
-            .where((t) => t.isNotEmpty)
-            .map((text) {
-              counter += 1;
-              return SynthesisCard(
-                id: '${columnKey}_${DateTime.now().microsecondsSinceEpoch}_$counter',
-                text: text,
-                sourceModule: columnKey,
-              );
-            })
-            .toList();
+        seededColumns[columnKey] = trimmed.where((t) => t.isNotEmpty).map((
+          text,
+        ) {
+          counter += 1;
+          return SynthesisCard(
+            id: '${columnKey}_${DateTime.now().microsecondsSinceEpoch}_$counter',
+            text: text,
+            sourceModule: columnKey,
+          );
+        }).toList();
       });
 
-      emit(state.copyWith(
-        columns: seededColumns,
-        seededSource: seededSource,
-        initialized: true,
-      ));
+      emit(
+        state.copyWith(
+          columns: seededColumns,
+          seededSource: seededSource,
+          initialized: true,
+        ),
+      );
       return;
     }
 
@@ -66,13 +67,17 @@ class SynthesisBloc extends HydratedBloc<SynthesisEvent, SynthesisState> {
 
         if (oldText.isEmpty) {
           if (text.isEmpty) continue;
-          final cards = List<SynthesisCard>.from(newColumns[columnKey] ?? const []);
+          final cards = List<SynthesisCard>.from(
+            newColumns[columnKey] ?? const [],
+          );
           counter += 1;
-          cards.add(SynthesisCard(
-            id: '${columnKey}_${DateTime.now().microsecondsSinceEpoch}_$counter',
-            text: text,
-            sourceModule: columnKey,
-          ));
+          cards.add(
+            SynthesisCard(
+              id: '${columnKey}_${DateTime.now().microsecondsSinceEpoch}_$counter',
+              text: text,
+              sourceModule: columnKey,
+            ),
+          );
           newColumns[columnKey] = cards;
           continue;
         }
@@ -87,13 +92,17 @@ class SynthesisBloc extends HydratedBloc<SynthesisEvent, SynthesisState> {
 
         if (ownerKey.isEmpty) {
           if (text.isEmpty) continue;
-          final cards = List<SynthesisCard>.from(newColumns[columnKey] ?? const []);
+          final cards = List<SynthesisCard>.from(
+            newColumns[columnKey] ?? const [],
+          );
           counter += 1;
-          cards.add(SynthesisCard(
-            id: '${columnKey}_${DateTime.now().microsecondsSinceEpoch}_$counter',
-            text: text,
-            sourceModule: columnKey,
-          ));
+          cards.add(
+            SynthesisCard(
+              id: '${columnKey}_${DateTime.now().microsecondsSinceEpoch}_$counter',
+              text: text,
+              sourceModule: columnKey,
+            ),
+          );
           newColumns[columnKey] = cards;
           continue;
         }
@@ -126,24 +135,23 @@ class SynthesisBloc extends HydratedBloc<SynthesisEvent, SynthesisState> {
     Emitter<SynthesisState> emit,
   ) {
     final newColumns = state.copyColumns();
-    final fromCards = List<SynthesisCard>.from(newColumns[event.fromColumn] ?? const []);
+    final fromCards = List<SynthesisCard>.from(
+      newColumns[event.fromColumn] ?? const [],
+    );
     if (event.fromIndex < 0 || event.fromIndex >= fromCards.length) return;
 
     final card = fromCards.removeAt(event.fromIndex);
     newColumns[event.fromColumn] = fromCards;
 
-    final toCards = List<SynthesisCard>.from(newColumns[event.toColumn] ?? const []);
-    var targetIndex = event.toIndex;
-
-    if (event.fromColumn == event.toColumn && event.fromIndex < targetIndex) {
-      targetIndex -= 1;
-    }
-    targetIndex = targetIndex.clamp(0, toCards.length);
-
-    toCards.insert(
-      targetIndex,
-      card.copyWith(sourceModule: event.toColumn),
+    final toCards = List<SynthesisCard>.from(
+      newColumns[event.toColumn] ?? const [],
     );
+    // event.toIndex already accounts for the removed card when fromColumn ==
+    // toColumn - the only case reachable today, since the sole caller is a
+    // single-column ReorderableListView's onReorderItem (#39).
+    final targetIndex = event.toIndex.clamp(0, toCards.length);
+
+    toCards.insert(targetIndex, card.copyWith(sourceModule: event.toColumn));
     newColumns[event.toColumn] = toCards;
 
     emit(state.copyWith(columns: newColumns));
@@ -177,7 +185,8 @@ class SynthesisBloc extends HydratedBloc<SynthesisEvent, SynthesisState> {
   }
 
   @override
-  SynthesisState? fromJson(Map<String, dynamic> json) => SynthesisState.fromJson(json);
+  SynthesisState? fromJson(Map<String, dynamic> json) =>
+      SynthesisState.fromJson(json);
 
   @override
   Map<String, dynamic>? toJson(SynthesisState state) => state.toJson();
