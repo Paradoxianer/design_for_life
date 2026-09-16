@@ -866,6 +866,90 @@ abstract class AppLocalizations {
   /// **'Final Export'**
   String get exportTitle;
 
+  /// No description provided for @backupTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Backup'**
+  String get backupTitle;
+
+  /// No description provided for @backupGuidance.
+  ///
+  /// In en, this message translates to:
+  /// **'All your entries are stored only on this device. Create a backup regularly so nothing is lost if you reinstall the app, switch devices, or browser data gets cleared.'**
+  String get backupGuidance;
+
+  /// No description provided for @backupExportTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Create backup'**
+  String get backupExportTitle;
+
+  /// No description provided for @backupExportGuidance.
+  ///
+  /// In en, this message translates to:
+  /// **'Saves all your entries from every module into a file you can, for example, email to yourself or store in the cloud.'**
+  String get backupExportGuidance;
+
+  /// No description provided for @backupExportButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Export backup'**
+  String get backupExportButton;
+
+  /// No description provided for @backupExportError.
+  ///
+  /// In en, this message translates to:
+  /// **'The backup could not be created.'**
+  String get backupExportError;
+
+  /// No description provided for @backupImportTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Restore backup'**
+  String get backupImportTitle;
+
+  /// No description provided for @backupImportGuidance.
+  ///
+  /// In en, this message translates to:
+  /// **'Restores your entries from a previously exported backup file. Existing entries on this device will be overwritten.'**
+  String get backupImportGuidance;
+
+  /// No description provided for @backupImportButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Import backup'**
+  String get backupImportButton;
+
+  /// No description provided for @backupImportConfirmTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Restore backup?'**
+  String get backupImportConfirmTitle;
+
+  /// No description provided for @backupImportConfirmMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'All current entries on this device will be replaced with the data from the backup file. This cannot be undone.'**
+  String get backupImportConfirmMessage;
+
+  /// No description provided for @backupImportConfirmAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Overwrite and restore'**
+  String get backupImportConfirmAction;
+
+  /// No description provided for @backupImportInvalidFile.
+  ///
+  /// In en, this message translates to:
+  /// **'This file isn\'t a valid DFL backup.'**
+  String get backupImportInvalidFile;
+
+  /// No description provided for @backupImportError.
+  ///
+  /// In en, this message translates to:
+  /// **'The backup could not be restored.'**
+  String get backupImportError;
+
   /// No description provided for @exportSelectionGuidance.
   ///
   /// In en, this message translates to:

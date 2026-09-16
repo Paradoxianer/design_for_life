@@ -437,6 +437,52 @@ class AppLocalizationsEn extends AppLocalizations {
   String get exportTitle => 'Final Export';
 
   @override
+  String get backupTitle => 'Backup';
+
+  @override
+  String get backupGuidance =>
+      'All your entries are stored only on this device. Create a backup regularly so nothing is lost if you reinstall the app, switch devices, or browser data gets cleared.';
+
+  @override
+  String get backupExportTitle => 'Create backup';
+
+  @override
+  String get backupExportGuidance =>
+      'Saves all your entries from every module into a file you can, for example, email to yourself or store in the cloud.';
+
+  @override
+  String get backupExportButton => 'Export backup';
+
+  @override
+  String get backupExportError => 'The backup could not be created.';
+
+  @override
+  String get backupImportTitle => 'Restore backup';
+
+  @override
+  String get backupImportGuidance =>
+      'Restores your entries from a previously exported backup file. Existing entries on this device will be overwritten.';
+
+  @override
+  String get backupImportButton => 'Import backup';
+
+  @override
+  String get backupImportConfirmTitle => 'Restore backup?';
+
+  @override
+  String get backupImportConfirmMessage =>
+      'All current entries on this device will be replaced with the data from the backup file. This cannot be undone.';
+
+  @override
+  String get backupImportConfirmAction => 'Overwrite and restore';
+
+  @override
+  String get backupImportInvalidFile => 'This file isn\'t a valid DFL backup.';
+
+  @override
+  String get backupImportError => 'The backup could not be restored.';
+
+  @override
   String get exportSelectionGuidance =>
       'Choose which areas to include in your personal final document.';
 

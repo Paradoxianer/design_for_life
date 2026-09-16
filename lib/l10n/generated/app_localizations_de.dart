@@ -442,6 +442,54 @@ class AppLocalizationsDe extends AppLocalizations {
   String get exportTitle => 'Abschluss-Export';
 
   @override
+  String get backupTitle => 'Sicherung';
+
+  @override
+  String get backupGuidance =>
+      'Alle deine Eingaben bleiben nur auf diesem Gerät gespeichert. Erstelle regelmäßig eine Sicherung, damit nichts verloren geht, falls du die App neu installierst, das Gerät wechselst oder Browserdaten gelöscht werden.';
+
+  @override
+  String get backupExportTitle => 'Sicherung erstellen';
+
+  @override
+  String get backupExportGuidance =>
+      'Speichert alle deine Eingaben aus allen Modulen in einer Datei, die du z.B. per Mail an dich selbst schicken oder in der Cloud ablegen kannst.';
+
+  @override
+  String get backupExportButton => 'Sicherung exportieren';
+
+  @override
+  String get backupExportError => 'Die Sicherung konnte nicht erstellt werden.';
+
+  @override
+  String get backupImportTitle => 'Sicherung wiederherstellen';
+
+  @override
+  String get backupImportGuidance =>
+      'Stellt deine Eingaben aus einer zuvor exportierten Sicherungsdatei wieder her. Bereits vorhandene Eingaben auf diesem Gerät werden dabei überschrieben.';
+
+  @override
+  String get backupImportButton => 'Sicherung importieren';
+
+  @override
+  String get backupImportConfirmTitle => 'Sicherung wiederherstellen?';
+
+  @override
+  String get backupImportConfirmMessage =>
+      'Alle aktuellen Eingaben auf diesem Gerät werden durch die Daten aus der Sicherungsdatei ersetzt. Das kann nicht rückgängig gemacht werden.';
+
+  @override
+  String get backupImportConfirmAction => 'Überschreiben und wiederherstellen';
+
+  @override
+  String get backupImportInvalidFile =>
+      'Diese Datei ist keine gültige DFL-Sicherung.';
+
+  @override
+  String get backupImportError =>
+      'Die Sicherung konnte nicht wiederhergestellt werden.';
+
+  @override
   String get exportSelectionGuidance =>
       'Wähle aus, welche Bereiche in dein persönliches Abschlussdokument aufgenommen werden sollen.';
 

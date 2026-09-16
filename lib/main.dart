@@ -9,6 +9,7 @@ import 'package:design_for_life/l10n/generated/app_localizations.dart';
 import 'core/services/deep_link_service.dart';
 import 'core/theme/app_theme.dart';
 import 'core/widgets/adaptive_navigation_shell.dart';
+import 'core/widgets/restart_widget.dart';
 import 'features/timeline/bloc/timeline_module_filter_bloc.dart';
 import 'features/timeline/screens/timeline_screen.dart';
 import 'features/notes/screens/notes_screen.dart';
@@ -40,6 +41,7 @@ import 'features/synthesis/screens/synthesis_screen.dart';
 import 'features/group_photo/bloc/group_photo_bloc.dart';
 import 'features/group_photo/screens/group_photo_screen.dart';
 import 'features/export/screens/export_screen.dart';
+import 'features/backup/screens/backup_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -55,31 +57,38 @@ void main() async {
   final personalStyleRepository = PersonalStyleRepository();
 
   runApp(
-    MultiBlocProvider(
-      providers: [
-        BlocProvider(create: (context) => NotesBloc()),
-        BlocProvider(create: (context) => ListeningPrayerBloc()),
-        BlocProvider(create: (context) => GoalsBloc()),
-        BlocProvider(
-          create: (context) => SpiritualGiftsBloc(repository: giftsRepository),
-        ),
-        BlocProvider(create: (context) => GiftReferenceAnswerBloc()),
-        BlocProvider(create: (context) => ValuesBloc()),
-        BlocProvider(
-          create: (context) =>
-              FeedbackBloc(repository: feedbackQuestionsRepository),
-        ),
-        BlocProvider(
-          create: (context) =>
-              PersonalStyleBloc(repository: personalStyleRepository),
-        ),
-        BlocProvider(create: (context) => ImagineBloc()),
-        BlocProvider(create: (context) => LifeTreeBloc()),
-        BlocProvider(create: (context) => SynthesisBloc()),
-        BlocProvider(create: (context) => GroupPhotoBloc()),
-        BlocProvider(create: (context) => TimelineModuleFilterBloc()),
-      ],
-      child: const DflApp(),
+    RestartWidget(
+      // A backup import (#84) writes fresh HydratedBloc storage and then
+      // triggers RestartWidget.restartApp() to rebuild everything below -
+      // that only picks up the new data if the BlocProviders themselves
+      // (not just DflApp) are inside the restarted subtree.
+      child: MultiBlocProvider(
+        providers: [
+          BlocProvider(create: (context) => NotesBloc()),
+          BlocProvider(create: (context) => ListeningPrayerBloc()),
+          BlocProvider(create: (context) => GoalsBloc()),
+          BlocProvider(
+            create: (context) =>
+                SpiritualGiftsBloc(repository: giftsRepository),
+          ),
+          BlocProvider(create: (context) => GiftReferenceAnswerBloc()),
+          BlocProvider(create: (context) => ValuesBloc()),
+          BlocProvider(
+            create: (context) =>
+                FeedbackBloc(repository: feedbackQuestionsRepository),
+          ),
+          BlocProvider(
+            create: (context) =>
+                PersonalStyleBloc(repository: personalStyleRepository),
+          ),
+          BlocProvider(create: (context) => ImagineBloc()),
+          BlocProvider(create: (context) => LifeTreeBloc()),
+          BlocProvider(create: (context) => SynthesisBloc()),
+          BlocProvider(create: (context) => GroupPhotoBloc()),
+          BlocProvider(create: (context) => TimelineModuleFilterBloc()),
+        ],
+        child: const DflApp(),
+      ),
     ),
   );
 }
@@ -258,6 +267,10 @@ class _DflAppState extends State<DflApp> {
             builder: (context, state) => const ExportScreen(),
           ),
           GoRoute(
+            path: '/backup',
+            builder: (context, state) => const BackupScreen(),
+          ),
+          GoRoute(
             path: '/group-photo',
             builder: (context, state) {
               final l10n = AppLocalizations.of(context);
@@ -368,8 +381,9 @@ class _DflAppState extends State<DflApp> {
         ScaffoldMessenger.of(navigatorContext).showSnackBar(
           SnackBar(
             content: Text(
-              AppLocalizations.of(navigatorContext)
-                  .giftsReferenceImportRejected,
+              AppLocalizations.of(
+                navigatorContext,
+              ).giftsReferenceImportRejected,
             ),
           ),
         );
@@ -378,8 +392,9 @@ class _DflAppState extends State<DflApp> {
     }
 
     final gifts = await GiftsRepository().loadGifts('de');
-    final questionOrder = SpiritualGiftsState(gifts: gifts)
-        .getReferenceQuestionOrder();
+    final questionOrder = SpiritualGiftsState(
+      gifts: gifts,
+    ).getReferenceQuestionOrder();
     final answers = GiftReferenceLinkService.decodeAnswers(
       answersPayload,
       questionOrder,

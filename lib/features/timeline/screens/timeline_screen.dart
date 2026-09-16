@@ -79,6 +79,11 @@ class TimelineScreen extends StatelessWidget {
                 surfaceTintColor: Colors.transparent,
                 actions: [
                   IconButton(
+                    tooltip: l10n.backupTitle,
+                    icon: const Icon(Icons.settings_backup_restore_outlined),
+                    onPressed: () => context.push('/backup'),
+                  ),
+                  IconButton(
                     tooltip: l10n.exportTitle,
                     icon: const Icon(Icons.picture_as_pdf_outlined),
                     onPressed: () => context.push('/export'),
