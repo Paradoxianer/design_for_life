@@ -23,6 +23,15 @@ class GiftQuestionCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    // Fixed pixel sizes read noticeably smaller on desktop/web than on a
+    // phone (higher-density displays, more physical viewing distance) - so
+    // above a tablet-ish width, scale the question and answer text up.
+    // Kept as a size step here rather than a smooth scale so it stays in
+    // sync with spiritual_gifts_editor.dart's matching itemExtent step.
+    final isWide = MediaQuery.sizeOf(context).width >= 700;
+    final questionFontSize = isWide ? 17.0 : 13.0;
+    final answerLabelFontSize = isWide ? 13.0 : 10.0;
+    final answerNumberFontSize = isWide ? 12.0 : 9.0;
 
     return Card(
       margin: const EdgeInsets.symmetric(vertical: 2),
@@ -46,7 +55,7 @@ class GiftQuestionCard extends StatelessWidget {
               question.text,
               style: theme.textTheme.titleSmall?.copyWith(
                 fontWeight: FontWeight.bold,
-                fontSize: 13,
+                fontSize: questionFontSize,
               ),
               textAlign: TextAlign.center,
             ),
@@ -82,14 +91,14 @@ class GiftQuestionCard extends StatelessWidget {
                             fontWeight: isSelected
                                 ? FontWeight.bold
                                 : FontWeight.w600,
-                            fontSize: 10,
+                            fontSize: answerLabelFontSize,
                           ),
                         ),
                         Text(
                           '$index',
                           style: TextStyle(
                             color: isSelected ? Colors.white70 : Colors.black87,
-                            fontSize: 9,
+                            fontSize: answerNumberFontSize,
                             fontWeight: FontWeight.bold,
                           ),
                         ),

@@ -113,8 +113,11 @@ class _SpiritualGiftsEditorState extends State<SpiritualGiftsEditor> {
               child: CarouselView(
                 controller: _carouselController,
                 scrollDirection: Axis.vertical,
-                itemExtent: 200,
-                shrinkExtent: 160,
+                // Matches GiftQuestionCard's own width-based size step (#40
+                // desktop/web font-size feedback) - the larger text on wide
+                // screens needs more vertical room to avoid overflow.
+                itemExtent: MediaQuery.sizeOf(context).width >= 700 ? 240 : 200,
+                shrinkExtent: MediaQuery.sizeOf(context).width >= 700 ? 190 : 160,
                 enableSplash: false,
                 padding: const EdgeInsets.symmetric(
                   vertical: 4,

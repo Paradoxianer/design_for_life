@@ -21,7 +21,11 @@ class RatingSelector extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    
+    // Same width-based size step as GiftQuestionCard (#40 desktop/web
+    // font-size feedback) - fixed pixel sizes read too small on wide/high-
+    // density screens.
+    final isWide = MediaQuery.sizeOf(context).width >= 700;
+
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 12.0),
       child: Column(
@@ -31,7 +35,7 @@ class RatingSelector extends StatelessWidget {
             label,
             style: theme.textTheme.titleSmall?.copyWith(
               fontWeight: FontWeight.bold,
-              fontSize: 13,
+              fontSize: isWide ? 17 : 13,
             ),
           ),
           const SizedBox(height: 10),
@@ -49,7 +53,7 @@ class RatingSelector extends StatelessWidget {
                 child: AnimatedContainer(
                   duration: const Duration(milliseconds: 200),
                   padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 6),
-                  width: 62, // Optimized width for labels and numbers
+                  width: isWide ? 76 : 62, // Optimized width for labels and numbers
                   decoration: BoxDecoration(
                     color: isSelected ? theme.colorScheme.primary : theme.colorScheme.surfaceContainerHighest,
                     borderRadius: BorderRadius.circular(8),
@@ -67,7 +71,7 @@ class RatingSelector extends StatelessWidget {
                           style: TextStyle(
                             color: isSelected ? Colors.white : Colors.black,
                             fontWeight: isSelected ? FontWeight.bold : FontWeight.w600,
-                            fontSize: 9,
+                            fontSize: isWide ? 12 : 9,
                           ),
                           textAlign: TextAlign.center,
                           maxLines: 1,
@@ -77,7 +81,7 @@ class RatingSelector extends StatelessWidget {
                         '$rating',
                         style: TextStyle(
                           color: isSelected ? Colors.white70 : Colors.black87,
-                          fontSize: 10,
+                          fontSize: isWide ? 13 : 10,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
