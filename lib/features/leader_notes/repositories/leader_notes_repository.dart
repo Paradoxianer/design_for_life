@@ -38,12 +38,16 @@ class LeaderNotesRepository {
       }
 
       final Map<String, dynamic> data = json.decode(response);
-      _cached = data.map(
-        (sessionId, value) => MapEntry(
-          sessionId,
-          LeaderNoteSession.fromJson(value as Map<String, dynamic>),
-        ),
-      );
+      final sessions = <String, LeaderNoteSession>{};
+      data.forEach((sessionId, value) {
+        // Keys starting with "_" are file-level metadata (e.g. a translation
+        // note), not a session - JSON has no native comment syntax.
+        if (sessionId.startsWith('_')) return;
+        sessions[sessionId] = LeaderNoteSession.fromJson(
+          value as Map<String, dynamic>,
+        );
+      });
+      _cached = sessions;
       return _cached!;
     } catch (_) {
       return {};

@@ -58,15 +58,35 @@ void main() {
     }
   });
 
-  test(
-    'falls back to German for a locale with no leader notes file yet',
-    () async {
-      final sessions = await LeaderNotesRepository().loadSessions('en');
+  test('loads the real English translation, not the German fallback', () async {
+    final sessions = await LeaderNotesRepository().loadSessions('en');
 
-      // 'en' has no leader_notes_en.json yet - same fallback rule as
-      // GiftsRepository, so this must still return the German content rather
-      // than an empty map.
+    expect(sessions.keys.toSet(), {
+      'session_1',
+      'session_2',
+      'session_3',
+      'session_4',
+      'session_5',
+      'session_6',
+      'session_7',
+      'session_9',
+      'session_10',
+    });
+    expect(sessions['session_1']!.sessionTitle, contains('Session One'));
+    // A file-level metadata key (translation caveat, no native JSON comment
+    // syntax) must not be mistaken for a session.
+    expect(sessions.keys, isNot(contains('_note')));
+  });
+
+  test(
+    'falls back to German for a locale with no leader notes file at all',
+    () async {
+      final sessions = await LeaderNotesRepository().loadSessions('fr');
+
+      // Same fallback rule as GiftsRepository: an unknown locale still
+      // returns usable (German) content rather than an empty map.
       expect(sessions, contains('session_1'));
+      expect(sessions['session_1']!.sessionTitle, contains('Einheit Eins'));
     },
   );
 }
