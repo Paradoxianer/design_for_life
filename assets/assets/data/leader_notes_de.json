@@ -1,0 +1,156 @@
+{
+  "session_1": {
+    "sessionTitle": "Einheit Eins: Hallo, guten Abend und willkommen!",
+    "sections": [
+      {
+        "heading": "Einführung in den Kurs / grundlegende Infos",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "Herzlich willkommen, schön, dass ihr da seid. An diesem Wochenende werden wir uns gemeinsam anschauen, wie euer Leben bisher verlaufen ist, wo ihr heute steht und wo Gott will, dass es hingeht. Wir werden in der Bibel studieren und einiges darüber erfahren, wie Gott uns und unsere Gaben gebrauchen möchte. Wir werden auch lernen, auf Gott und seinen Willen zu hören, und wir werden uns dazu Zeit nehmen. Das alles könnte dazu führen, dass ihr eine neue Perspektive für euer Leben bekommt. Auf jeden Fall wird es euch aber helfen, euer Leben mehr auf Gottes Plan auszurichten."
+          },
+          {
+            "type": "paragraph",
+            "text": "Ihr bekommt jetzt eure Teilnehmerhefte und Stifte. Im Teilnehmerheft könnt ihr euch jederzeit Notizen machen und es mit nach Hause nehmen. Bitte schreibt euren Namen vorne hinein, damit wir die Hefte nicht verwechseln. In den Heften findet ihr den Ablauf für dieses Wochenende."
+          },
+          {
+            "type": "paragraph",
+            "text": "Es kann aber durchaus kleine Verschiebungen/Veränderungen geben, wenn wir Leiter merken, dass ihr z. B. für den Gabentest mehr Zeit braucht."
+          }
+        ]
+      },
+      {
+        "heading": "Erwartungen",
+        "blocks": [
+          { "type": "paragraph", "text": "Wir möchten die Erwartungen der Teilnehmer sammeln." },
+          {
+            "type": "paragraph",
+            "text": "Jeder Teilnehmer soll drei Punkte nennen, die ihm für den Kurs wichtig sind. Die Begriffe werden auf der Flipchart mitgeschrieben, sodass sie am Ende des Kurses noch einmal angeschaut werden können."
+          },
+          {
+            "type": "bulletList",
+            "items": [
+              "Es ist wichtig, diese Erwartungen vor Gott zu bringen.",
+              "Anschließend gibt es eine gemeinsame Lobpreis- und Gebetszeit, in der wir das tun können."
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "Trete in den Riss",
+        "blocks": [
+          { "type": "subheading", "text": "Du könntest berufen sein, das Leben eines Fremden zu verändern" },
+          {
+            "type": "paragraph",
+            "text": "Wir schauen uns die Karriere eines der größten Propheten der Welt an: Elia war ein wettergegerbter, rauer Geselle aus Tischbe. Er wurde Gottes Werkzeug der Konfrontation. Ganz genau der Mann, der nötig war, als die Sünde überhandnahm. Als es im Land keine geistliche Leitung gab, sondern eine große Kluft zwischen Gott und seinem Volk bestand. Als eine tiefe dämonische Dunkelheit herrschte."
+          },
+          { "type": "question", "text": "Kann jemand 1. Könige 16,29-33 vorlesen?" },
+          {
+            "type": "quote",
+            "text": "Die Herrschaft Ahabs, des Sohnes Omris, über Israel begann im 38. Jahr der Regierungszeit König Asas von Juda. Er regierte 22 Jahre in Samaria über Israel. Doch Ahab tat, was dem Herrn missfiel, mehr als alle einige vor ihm. Und als genügte es noch nicht, ein Leben wie Jerobeam, der Sohn Nebats, zu führen, nahm er auch noch Isebel, die Tochter von Etbaal, dem König von Sidon, zur Frau und begann, den Baal anzubeten. Zuerst baute er dem Baal in Samaria einen Tempel und darin einen Altar. Dann ließ er ein Ascherabild aufstellen. Er tat mehr, was den Zorn des Herrn, des Gottes Israels, erregte, als alle Könige Israels vor ihm.",
+            "reference": "1. Könige 16,29-33"
+          },
+          { "type": "paragraph", "text": "Hast du gehört, wie Gottes Herz brach? Spürst du seinen tiefen Schmerz?" },
+          {
+            "type": "paragraph",
+            "text": "Wir sollten ganz klar verstehen, was Ahab getan hat: Er hatte eine Ausländerin geheiratet, die Baal anbetete. Er selbst wurde auch zum Anbeter Baals. Und nicht nur das: Er baute diesem Götzen auch noch ein Haus mit einem Altar für Baal und einer Ascherastatue."
+          },
+          { "type": "paragraph", "text": "Schauen wir uns 1. Könige 17,1 an." },
+          {
+            "type": "quote",
+            "text": "Und Elia aus Tischbe in Gilead sagte zu Ahab: „So wahr der Herr, der Gott Israels, lebt – dem ich diene: Die nächsten Jahre wird weder Tau noch Regen fallen, es sei denn, ich ordne es an!“",
+            "reference": "1. Könige 17,1"
+          },
+          { "type": "paragraph", "text": "Elia betritt die Bühne. Gottes vom Himmel beauftragter Prophet." },
+          { "type": "paragraph", "text": "In dem Vers erfahren wir drei Dinge über Elia:" },
+          { "type": "bulletList", "items": ["Seinen Namen", "Sein Land", "Seinen Charakter und seine Taktik"] },
+          { "type": "subheading", "text": "Sein Name" },
+          {
+            "type": "paragraph",
+            "text": "Das hebräische Wort für Gott im Alten Testament ist Elohim – kurz El. Jah ist die Kurzform von Gottes Namen Jahwe. Der kleine Buchstabe i verweist im Hebräischen auf das Personalpronomen „mein“. Alles zusammen heißt das „Mein Gott ist Jahwe“ oder „Der Herr ist mein Gott“."
+          },
+          {
+            "type": "paragraph",
+            "text": "Ahab und Isebel herrschten über das gesamte Land. Baal war der Götze, der verehrt wurde. Und nun kommt Elia, und schon sein Name sagt: „Ich habe einen Gott! Sein Name ist Jahwe. Nur ihm diene ich.“"
+          },
+          { "type": "subheading", "text": "Sein Land" },
+          { "type": "paragraph", "text": "„Elia aus Tischbe“, „Elia der Tischbiter“." },
+          {
+            "type": "paragraph",
+            "text": "Wir wissen nicht viel über Tischbe – noch nicht einmal genau, wo es lag. Aber wir wissen: Es lag in Gilead, also östlich des Jordans zwischen dem Fluss Jarmuk im Norden an der Grenze zu Damaskus und dem Fluss Jabbok im Süden an der Grenze zu Ammon. Dort gab es nur Einöde und ein hartes Leben in der Natur. Die Menschen dort waren sehr wahrscheinlich rau, wettergegerbt und muskulös. Ein hartes Land, nicht gerade der Ort für hochkultivierte Diplomaten. Elia war wahrscheinlich rau, wettergegerbt und nicht besonders diplomatisch."
+          },
+          { "type": "subheading", "text": "Sein Charakter – seine Taktik" },
+          {
+            "type": "paragraph",
+            "text": "Elia zeigte wirklich den Charakter eines Propheten: „Right in your face“ – „Ich sag's dir ins Gesicht!“ – Konfrontation. Ohne Zögern und ohne erkennbare Furcht. Er stand vor Ahab, dem König, und kam direkt zum Punkt: „Kein einziger Tropfen Wasser für dieses Land, bis ich es sage!“"
+          },
+          {
+            "type": "paragraph",
+            "text": "Okay, lasst uns mal kurz darüber nachdenken: Das Königreich Israel war bekannt dafür, dass dort seit 60 Jahren Unglaube herrschte, dass Mordanschläge verübt wurden, dass Götzendienst betrieben wurde, dass Gottlosigkeit Sitte war und dass Halsabschneider regierten. Und Ahab und Isebel waren die schlimmsten von allen."
+          },
+          {
+            "type": "paragraph",
+            "text": "Ein Prophet, der aus dem Nirgendwo auftaucht, keinem Hofprotokoll folgt, keine Unterordnung zeigt in der Gegenwart des Königs. Er zeigt kein hochkultiviertes Verhalten, er ist nicht politisch korrekt und hat keine höfischen Etikette gelernt. Er kommt einfach und überbringt die schlechte Nachricht. Elia ist ein Mann mit einem Auftrag, ein Diener des Herrn, des Gottes Israels. Wie Ethan Hunt in Mission Impossible – nichts kann ihn stoppen. Auch wenn um ihn herum die Beweise für die Anbetung Baals allgegenwärtig sind."
+          },
+          {
+            "type": "paragraph",
+            "text": "Ohne seine Zuhörer darauf vorzubereiten, schüttelt Elia seine Faust direkt vor dem Gesicht des Teufels. Er macht unmissverständlich klar: Kein Regen, danach kein Tau, dann stirbt das Vieh und dann die Menschen – und dann ist Ende im Gelände. Elia macht sein Ding. Er ist der Botschafter, der in die Bresche springen muss. Wirklich einmalig, gesalbt und von Gott gebraucht. Er reist allein, schlägt Alarm und versucht eine abgestumpfte, ja sogar feindselige Nation aufzurütteln."
+          },
+          { "type": "paragraph", "text": "Es gibt immer noch solche Leute, die in den Riss treten, die sich bemühen, uns aufzurütteln." },
+          {
+            "type": "question",
+            "text": "Wisst ihr einige Beispiele? Schreibt fünf bis zehn Beispiele von solchen modernen Elias auf, die Gott gebraucht, um eine lebensverändernde Nachricht weiterzugeben. Von tapferen Männern und Frauen, die heute noch bereit sind, aufzustehen und die Botschaft weiterzugeben. Echten Helden."
+          },
+          { "type": "paragraph", "text": "Ein anderer Prophet schrieb:" },
+          {
+            "type": "quote",
+            "text": "Ich hielt Ausschau nach einem unter ihnen, der die Mauer schließt und vor mir für das Land in die Bresche springt, damit ich es nicht zerstöre, aber ich fand niemanden.",
+            "reference": "Hesekiel 22,30"
+          },
+          {
+            "type": "paragraph",
+            "text": "Christen trauen sich eben, nicht nur mittelmäßig zu sein. Sie haben den Mut, nicht nur im Hintergrund zu verschwinden und sich unserer Welt anzupassen."
+          },
+          {
+            "type": "paragraph",
+            "text": "Bei DFL geht es darum, sich wirklich ganz genau anzuschauen und zu fragen: Bin ich so jemand? Es geht darum, aufmerksam auf Gottes Stimme zu hören und zu fragen: Was möchte er, dass ich tue? Bin ich bereit zu folgen, egal worum Gott mich bittet? Habe ich den Mut, alleine für Gott einzustehen?"
+          },
+          { "type": "paragraph", "text": "Elias Leben lehrt uns, wen Gott braucht:" },
+          {
+            "type": "paragraph",
+            "text": "Spezielle Menschen für schwierige Zeiten. Gott brauchte einen ganz besonderen Mann, um als Licht in die Dunkelheit zu leuchten. Keinen Mann aus dem Palast. Keinen Mann mit einem Abschluss von einer Eliteschule. Aber einen Mann, der in die Bresche sprang. Einen, der eben nicht höflich und aalglatt, sondern aus hartem Holz geschnitzt war. Einen, der das Rückgrat hatte, alleine aufzustehen und zu sagen: „Das ist falsch!“ Jemanden, der Auge in Auge mit einem Götzenanbeter dastehen und laut verkünden konnte: „Gott ist Gott!“"
+          },
+          {
+            "type": "paragraph",
+            "text": "In unserer Kultur – in dieser Armee – brauchen wir Männer und Frauen Gottes, junge Menschen Gottes. Wir brauchen Profis, Athleten, Hausfrauen, Lehrer, Persönlichkeiten des öffentlichen Lebens, Privatleute, die für Gottes Sache einstehen. Die Gottes Wort verteidigen. Die auch allein standhaft bleiben, die sicher und stark stehen."
+          },
+          {
+            "type": "question",
+            "text": "Was machst du für eine Figur? Wie sieht es mit deiner Integrität aus? Hast du gegen deine Prinzipien verstoßen, nur um im Geschäft zu bleiben? Nur um nicht ausgeschlossen zu werden? Um gut dazustehen? ... Hast du unangemessene Sprache/Worte gebraucht? Oder bist du einen moralischen Kompromiss eingegangen, damit die anderen dich nicht für prüde halten?"
+          },
+          { "type": "subheading", "text": "„Wer sich im Königshof Ahabs wohlfühlt, wird es niemals über sich bringen, mit Elia in die Bresche zu springen.“" },
+          {
+            "type": "numberedList",
+            "items": [
+              "Gottes Methoden sind oft überraschend. Gott stellte keine Armee auf, um Ahab und Isebel zu vernichten. Er sandte keinen hohen Prinzen, um den Fall auszudiskutieren oder die königliche Familie zu beeindrucken. Gott tat das Unvorstellbare – er wählte jemanden – tja, jemanden wie dich. Bist du der Ansicht, andere wären qualifizierter als du? Meinst du, andere wären begabter als du? Dann verpasst du vielleicht eine Gelegenheit, Gott zu dienen, die genau vor deiner Nase ist. Gottes Wege sind oft überraschend, manchmal kommen sie uns sogar völlig unlogisch vor. Oft ergeben sie für unseren begrenzten Verstand überhaupt keinen Sinn. Davids Brüder lachten, als David auch nur überlegte, gegen den Riesen Goliath anzutreten. Josua und die Posaunen, ein sprechender Esel, Auferstehung von den Toten – das ist alles unglaubliches, verrücktes „Zeug“.",
+              "Wir stehen vor Gott! Vergiss niemals: Wenn wir allein in den Riss treten, dann stehen wir vor Gott. Wird Gott uns bereit finden, für ihn einzutreten und standzuhalten, wenn er uns dazu auffordert? Wird er in uns Herzen finden, die wirklich voll und ganz ihm gehören?"
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "Wenn das Christsein nicht diese Art von Stahl in deine Knochen gepflanzt hat, dann stimmt da etwas ganz gewaltig nicht – entweder mit der Botschaft/der Verkündigung, die du hörst, oder mit deinem Herzen. Gott sucht Menschen, die nicht mit der Allgemeinheit verschmelzen."
+          },
+          {
+            "type": "paragraph",
+            "text": "Egal, welche Rolle du in deinem Leben einnimmst, du bist keinesfalls unwichtig, wenn es darum geht, für die Wahrheit einzustehen. Welchen Platz hat Gott dir gegeben? Egal, welcher es ist, Gott sagt dir: „Du stehst vor mir und ich möchte dich gebrauchen. Ich möchte dich hier und jetzt und auch in Zukunft als meinen einzigartigen Zeugen gebrauchen.“ Schau dich um: Die Not ist immer noch unglaublich groß und Gott sucht immer noch."
+          },
+          {
+            "type": "video",
+            "label": "Geistliches Video (z.B. Transformation, Fireproof o.Ä.)",
+            "url": null
+          }
+        ]
+      }
+    ]
+  }
+}
