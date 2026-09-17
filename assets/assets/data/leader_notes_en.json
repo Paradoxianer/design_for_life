@@ -1,0 +1,700 @@
+{
+  "_note": "Draft English translation of leader_notes_de.json (#83), produced by Claude. Bible quotes here are original English renderings of the same passages the German paraphrases, not copied from any specific published English translation - deliberately, since the German source itself appears to quote a licensed modern paraphrase (not a public-domain wording), and this file is a first pass pending native-speaker/ministry review (see #33). Swap these quotes for the ministry's own preferred licensed English Bible translation before real-world release. This key is metadata only and is ignored by LeaderNotesRepository, which only reads session ids.",
+  "session_1": {
+    "sessionTitle": "Session One: Hello, Good Evening and Welcome!",
+    "sections": [
+      {
+        "heading": "Introduction to the Course / Basic Information",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "Welcome, we're so glad you're here. This weekend we'll look together at how your life has unfolded so far, where you stand today, and where God wants it to go. We'll study the Bible and learn more about how God wants to use us and our gifts. We'll also learn to listen for God and His will, and we'll take real time to do that. All of this could give you a new perspective on your life. Either way, it will help you shape your life more around God's plan."
+          },
+          {
+            "type": "paragraph",
+            "text": "You'll now get your participant booklets and pens. You can jot down notes in your booklet any time and take it home with you afterward. Please write your name on the front so the booklets don't get mixed up. The booklets contain the schedule for this weekend."
+          },
+          {
+            "type": "paragraph",
+            "text": "There may be small shifts or changes if we, as leaders, notice that you need more time for something - for example, the gifts test."
+          }
+        ]
+      },
+      {
+        "heading": "Expectations",
+        "blocks": [
+          { "type": "paragraph", "text": "We'd like to gather everyone's expectations for this course." },
+          {
+            "type": "paragraph",
+            "text": "Each participant names three things that matter to them for the course. We'll write these on the flipchart so we can look back at them at the end of the course."
+          },
+          {
+            "type": "bulletList",
+            "items": [
+              "It's important to bring these expectations before God.",
+              "Afterward there's a shared time of worship and prayer where we can do exactly that."
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "Step into the Gap",
+        "blocks": [
+          { "type": "subheading", "text": "You could be called to change the life of a stranger" },
+          {
+            "type": "paragraph",
+            "text": "Let's look at the career of one of the greatest prophets in history: Elijah, a rough, weather-worn man from Tishbe. He became God's tool of confrontation - exactly the man needed once sin had taken over, once there was no spiritual leadership left in the land, once a wide gulf had opened between God and His people, once a deep, demonic darkness had settled in."
+          },
+          { "type": "question", "text": "Could someone read 1 Kings 16:29-33 out loud?" },
+          {
+            "type": "quote",
+            "text": "Ahab son of Omri became king over Israel in the thirty-eighth year of King Asa of Judah, and he ruled in Samaria for twenty-two years. But Ahab did more evil in the Lord's sight than any king before him. As if it were not enough to follow the sins of Jeroboam son of Nebat, he went further still: he married Jezebel, daughter of King Ethbaal of the Sidonians, and began serving and worshiping Baal. First he built Baal a temple in Samaria, with an altar inside it. Then he set up an Asherah pole. Ahab did more to provoke the anger of the Lord, the God of Israel, than any king of Israel before him.",
+            "reference": "1 Kings 16:29-33"
+          },
+          { "type": "paragraph", "text": "Did you hear how God's heart broke there? Can you feel His deep pain?" },
+          {
+            "type": "paragraph",
+            "text": "We should be very clear about what Ahab did: he married a foreign woman who worshiped Baal. He himself became a worshiper of Baal too. And not only that - he built this idol a whole house, complete with an altar for Baal and a statue of Asherah."
+          },
+          { "type": "paragraph", "text": "Let's look at 1 Kings 17:1." },
+          {
+            "type": "quote",
+            "text": "Elijah, from Tishbe in Gilead, said to Ahab: \"As surely as the Lord, the God of Israel, lives - the God I serve - there will be no dew or rain these next years unless I say so.\"",
+            "reference": "1 Kings 17:1"
+          },
+          { "type": "paragraph", "text": "Elijah steps onto the stage - God's own prophet, sent from heaven." },
+          { "type": "paragraph", "text": "In this verse we learn three things about Elijah:" },
+          { "type": "bulletList", "items": ["His name", "His homeland", "His character and his approach"] },
+          { "type": "subheading", "text": "His Name" },
+          {
+            "type": "paragraph",
+            "text": "The Hebrew word for God in the Old Testament is Elohim - shortened to El. Jah is short for God's own name, Yahweh. The small \"i\" in Hebrew points back to the personal pronoun \"my.\" Put together, it means \"My God is Yahweh\" or \"The Lord is my God.\""
+          },
+          {
+            "type": "paragraph",
+            "text": "Ahab and Jezebel ruled the whole land. Baal was the idol everyone worshiped. And now Elijah walks in, and his very name already says it: \"I have a God! His name is Yahweh. Him alone I serve.\""
+          },
+          { "type": "subheading", "text": "His Homeland" },
+          { "type": "paragraph", "text": "\"Elijah of Tishbe,\" \"Elijah the Tishbite.\"" },
+          {
+            "type": "paragraph",
+            "text": "We don't know much about Tishbe - we're not even completely sure where it was. But we do know it was in Gilead: east of the Jordan, between the Jarmuk River to the north near the border with Damascus, and the Jabbok River to the south near the border with Ammon. It was mostly wilderness, a hard place to survive. The people there were likely rough, weathered, and tough - not exactly a place that produced polished diplomats. Elijah himself was probably rough, weathered, and not particularly diplomatic."
+          },
+          { "type": "subheading", "text": "His Character - His Approach" },
+          {
+            "type": "paragraph",
+            "text": "Elijah really lived up to the character of a prophet: \"Right in your face\" - no dancing around it. Confrontation, without hesitation, without any visible fear. He stood before Ahab the king and got straight to the point: \"Not one drop of water for this land until I say so.\""
+          },
+          {
+            "type": "paragraph",
+            "text": "Let's pause on that for a second: the kingdom of Israel was known for sixty years of unbelief, assassinations, idol worship, lawlessness as the norm, and ruthless people in charge. And Ahab and Jezebel were the worst of them all."
+          },
+          {
+            "type": "paragraph",
+            "text": "A prophet appears out of nowhere, follows no court protocol, shows no deference in the king's presence. He shows none of the expected polish, isn't politically correct, and never learned royal etiquette. He simply shows up and delivers the bad news. Elijah is a man with a mission, a servant of the Lord, the God of Israel. Like Ethan Hunt in Mission Impossible - nothing can stop him, even surrounded on every side by evidence of Baal worship."
+          },
+          {
+            "type": "paragraph",
+            "text": "Without warming up his audience at all, Elijah shakes his fist right in the devil's face. He makes it brutally clear: no rain, then no dew, then the livestock die, then the people - and that's the end of the road. Elijah does his thing. He's the messenger who has to step into the gap. Truly one of a kind, anointed and used by God. He travels alone, sounds the alarm, and tries to wake up a numb, even hostile nation."
+          },
+          { "type": "paragraph", "text": "There are still people like that today - people who step into the gap, who work hard to wake us up." },
+          {
+            "type": "question",
+            "text": "Can you think of some examples? Write down five to ten examples of modern-day Elijahs - people God has used to carry a life-changing message. Brave men and women who are still willing today to stand up and pass on that message. True heroes."
+          },
+          { "type": "paragraph", "text": "Another prophet wrote:" },
+          {
+            "type": "quote",
+            "text": "I looked for someone among them who would build up the wall and stand in the gap before me on behalf of the land, so I would not have to destroy it - but I found no one.",
+            "reference": "Ezekiel 22:30"
+          },
+          {
+            "type": "paragraph",
+            "text": "Christians dare not just be mediocre. They have the courage not to fade quietly into the background and simply blend into our world."
+          },
+          {
+            "type": "paragraph",
+            "text": "At DFL, this is exactly what it's about: taking a hard, honest look at yourself and asking - am I someone like that? It's about paying attention to God's voice and asking what He wants you to do. Are you willing to follow, no matter what God asks of you? Do you have the courage to stand alone for God?"
+          },
+          { "type": "paragraph", "text": "Elijah's life shows us the kind of person God needs:" },
+          {
+            "type": "paragraph",
+            "text": "Special people for difficult times. God needed a very particular man to shine like a light into the darkness. Not a man from the palace. Not a man with a degree from an elite school. But a man willing to step into the gap - someone not polished and smooth, but carved from hard wood. Someone with the backbone to stand alone and say, \"That's wrong!\" Someone who could stand eye to eye with an idol-worshiper and declare, loudly: \"God is God!\""
+          },
+          {
+            "type": "paragraph",
+            "text": "In our culture - in this Army - we need men and women of God, young people of God. We need professionals, athletes, homemakers, teachers, public figures, ordinary people who stand up for God's cause. People who defend God's word. People who stay standing firm even alone - steady, secure, strong."
+          },
+          {
+            "type": "question",
+            "text": "What kind of person are you? What about your integrity? Have you ever crossed one of your own principles just to keep a deal alive? Just to avoid being left out? Just to look good? ... Have you used language you shouldn't have? Or made a moral compromise so others wouldn't see you as uptight?"
+          },
+          { "type": "subheading", "text": "\"Whoever feels at home in Ahab's court will never be able to step into the gap alongside Elijah.\"" },
+          {
+            "type": "numberedList",
+            "items": [
+              "God's methods are often surprising. God didn't raise an army to wipe out Ahab and Jezebel. He didn't send some high-ranking prince to argue the case or impress the royal family. God did the unthinkable - He chose someone - well, someone like you. Do you assume others are more qualified than you? More gifted than you? Then you might be missing an opportunity to serve God that's sitting right in front of you. God's ways are often surprising, sometimes they seem completely illogical to us, sometimes they make no sense at all to our limited understanding. David's brothers laughed when David even considered taking on the giant Goliath. Joshua and the trumpets, a donkey that talks, people raised from the dead - it's all wild, unbelievable \"stuff.\"",
+              "We stand before God! Never forget: when we step alone into the gap, we're standing before God. Will He find us ready to step up and hold our ground when He calls on us? Will He find hearts in us that truly, fully belong to Him?"
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "If being a Christian hasn't put that kind of steel in your bones, then something is seriously off - either with the message you're hearing, or with your heart. God is looking for people who refuse to just blend into the crowd."
+          },
+          {
+            "type": "paragraph",
+            "text": "Whatever role you play in your life, you are never unimportant when it comes to standing up for the truth. What place has God given you? Whatever it is, God says to you: \"You stand before me, and I want to use you. I want to use you here and now, and in the future too, as my unique witness.\" Look around: the need is still enormous, and God is still looking."
+          },
+          { "type": "video", "label": "A faith-based film (e.g. Transformation, Fireproof, or similar)", "url": null }
+        ]
+      }
+    ]
+  },
+  "session_2": {
+    "sessionTitle": "Session Two: Back to the Future",
+    "sections": [
+      {
+        "heading": "Introduction",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "At DFL, you won't get handed an envelope this weekend with God's instructions for your life. We'll try instead to recognize God's calling. It matters to pay attention to God's calling - otherwise things go sideways in our lives, like with the Minions. We want to look together at how Jesus used John to confirm his calling."
+          },
+          { "type": "paragraph", "text": "Everyone reads Matthew 3:1-17 quietly, on their own." },
+          { "type": "subheading", "text": "Street Signs" },
+          {
+            "type": "paragraph",
+            "text": "Find a few examples online of street signs from around the world and show them to everyone on the screen."
+          }
+        ]
+      },
+      {
+        "heading": "John - Preparing the Way for Jesus",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "When you see a sign or an image, it has to be interpreted - and correctly. Some are easy to read, others are hard. The same is true for your calling."
+          },
+          {
+            "type": "paragraph",
+            "text": "We're going to spend time on the topic of calling. You've probably heard the phrase \"called by God\" before - maybe often. It might make you a little uneasy, if you think of calling as one single, huge event. But we're going to think about it differently:"
+          },
+          { "type": "paragraph", "text": "Which path is God calling me toward?\nWhat does He want me to become?" },
+          {
+            "type": "paragraph",
+            "text": "A bus driver and a pastor arrive at heaven's gate at the same time. Peter lets the bus driver in and leaves the pastor waiting outside. The pastor asks: why does the bus driver get in and not me? Peter explains: when you preached, people fell asleep - but when the bus driver was behind the wheel, people prayed."
+          },
+          { "type": "paragraph", "text": "When you live out your calling, it will affect other people too." },
+          {
+            "type": "paragraph",
+            "text": "Now let's look at a few general principles. First, there's something deeper than our personal calling - a foundational calling. These are things we're called to regardless of our background, our country of origin, or our talents."
+          },
+          { "type": "paragraph", "text": "Three things were true of Jesus, and they're true for us today too." },
+          {
+            "type": "quote",
+            "text": "Around that time John the Baptist began preaching in the wilderness of Judea: \"Turn back to God, because the kingdom of heaven is near.\" Isaiah had already pointed ahead to John when he said: \"He is a voice shouting in the wilderness, 'Clear the way for the Lord's coming! Make the road straight for him!'\" John's clothes were made of coarse camel hair, and he wore a leather belt around his waist. For food he ate locusts and wild honey. People came from Jerusalem, from every part of Judea, and from the whole Jordan valley to go out into the wilderness and hear him preach. And when they confessed their sins, he baptized them in the Jordan. But when he saw many Pharisees and Sadducees coming to be baptized too, he turned on them: \"You brood of snakes! Who warned you to flee the coming judgment of God? Prove by the way you live that you have really turned from your sins and turned to God. Don't just say, 'We're safe, we're descendants of Abraham.' That proves nothing. God could turn these very stones into children of Abraham if he wanted to. Even now the ax of judgment is poised, ready to cut down every tree that doesn't produce good fruit. Yes, I baptize with water everyone who turns from sin. But someone is coming soon who is far greater than I am - so much greater that I'm not even worthy to carry his sandals. He will baptize you with the Holy Spirit and with fire. He is ready to separate the chaff from the wheat with his winnowing fork. Then he will clean up the threshing area, gathering the wheat into his barn but burning the chaff with never-ending fire.\"",
+            "reference": "Matthew 3:1-12"
+          },
+          {
+            "type": "paragraph",
+            "text": "Jesus had a particular calling: to live, to die, and to rise again. But some of the deeper connections only became clear looking back."
+          },
+          {
+            "type": "paragraph",
+            "text": "John the Baptist had received a special assignment from God: to prepare the world for Jesus' coming, so people would be ready to hear and understand what Jesus had to say."
+          },
+          { "type": "paragraph", "text": "John was a fairly striking character:" },
+          {
+            "type": "bulletList",
+            "items": [
+              "He wore clothing made of camel hair",
+              "he lived on nothing but honey and locusts,",
+              "he lived out in the wilderness in brutal heat,",
+              "and for the people who came to hear him,",
+              "his message was the uncomfortable news that they were sinners.",
+              "Not exactly an inviting message."
+            ]
+          },
+          { "type": "paragraph", "text": "This is really not the guy you'd want to sit next to on the bus!" },
+          {
+            "type": "paragraph",
+            "text": "And yet, unbelievably, thousands of people came to see him, and they listened. They responded to his words by being baptized and admitting they were sinners who needed to get their lives in order."
+          },
+          {
+            "type": "paragraph",
+            "text": "John baptized people. And Jesus - the Lamb of God, God himself - came and said, \"John, baptize me.\" \"You? Why? You don't need to repent of anything.\" He did what Jesus asked, because Jesus wanted to stand with people, to be counted among them. It was Jesus' own preparation for his ministry. He wanted to show: \"I'm on your side.\""
+          },
+          { "type": "quote", "text": "\"The Word became human and made his home among us.\"", "reference": "John 1:14a" },
+          { "type": "subheading", "text": "He became like us - and that's crucial for our faith." },
+          {
+            "type": "paragraph",
+            "text": "He became a Jew living in first-century Palestine, ate the same food, lived under the same Roman occupation as everyone else. He didn't float two feet above the crowd. Scripture says he was truly one of them, and when he spoke, people listened. They saw him as one of their own when he explained, for instance, how to respond to a Roman soldier who forces you to carry his pack for a mile. Everyone knew Jesus understood exactly how that felt. He talked about the everyday situations everyone around him actually faced."
+          },
+          {
+            "type": "paragraph",
+            "text": "He was perfectly prepared - for the people of his time, and for us today - through the very circumstances he lived in."
+          },
+          { "type": "subheading", "text": "He calls us to identify with others and meet them personally." },
+          {
+            "type": "paragraph",
+            "text": "Whatever assignment God has for you, you will need to identify with a group of people - even if right now you have no idea what part of the world that might lead you to. You have to identify with them. \"Rejoice with those who rejoice, weep with those who weep.\""
+          },
+          { "type": "paragraph", "text": "What is God telling you to do right now?\nDo you feel like you're able to do it?" },
+          {
+            "type": "paragraph",
+            "text": "Charles Price was the head of a theological college. He made a habit of meeting each student individually and asking two questions before they graduated:"
+          },
+          { "type": "numberedList", "items": ["What work do you intend to do?", "Do you feel equal to that task?"] },
+          { "type": "paragraph", "text": "There were always two kinds of answers:" },
+          {
+            "type": "numberedList",
+            "items": [
+              "Most students said that, thanks to the excellent training at the college and all the books they'd read, they felt well-equipped and secure about their next step. Mr. Price wished them well and sent them on their way.",
+              "A few, though, said that even after this excellent training and all those good books, they still felt unsure whether they had what it took. Charles Price would smile at that and say, \"That's wonderful.\" He'd explain that there's always a gap between what God has called us to and what we're able to do in our own strength - and that only the Holy Spirit can fill that gap."
+            ]
+          },
+          { "type": "subheading", "text": "We cannot carry out God's purposes without His power." },
+          {
+            "type": "paragraph",
+            "text": "Experience and skill aren't enough. Jesus told his disciples, \"Apart from me you can do nothing.\" When Jesus was baptized, a voice from heaven said, \"This is my Son, and I am pleased with him.\" At that point Jesus hadn't actually done much at all. We know he'd left his parents in Jerusalem and became a carpenter. But right there, before he'd really done anything - maybe built a few tables and chairs - God said He was pleased with him. \"This is my beloved Son, in whom I delight.\" God was satisfied with him, not with what he had accomplished. We always want to see something first, to feel satisfied."
+          },
+          {
+            "type": "paragraph",
+            "text": "God's approval leads to action.\nWe're able to do things because He loves us. We can't fail, because He loved us first. That's what carries us, and it should give us courage. The Father loves me. That was the well Jesus drew from."
+          },
+          {
+            "type": "paragraph",
+            "text": "Paul - shipwrecked, beaten, rejected - why did he keep going? Was he afraid of a righteous God? No, he says:"
+          },
+          { "type": "quote", "text": "\"Whatever we do, it is because Christ's love controls us.\"", "reference": "2 Corinthians 5:14a" },
+          {
+            "type": "paragraph",
+            "text": "Paul spared himself burnout and discouragement.\nWe have to learn that we can't earn God's love - not even through a certain amount of activity. His love has nothing to do with how much we've accomplished."
+          },
+          { "type": "subheading", "text": "His love convinces us, so that we can do what He calls us to." },
+          {
+            "type": "paragraph",
+            "text": "Jesus was called to identify with others, to receive power through the Holy Spirit, and to hold onto a deep relationship with the Father, so the Father's love could carry him through."
+          },
+          { "type": "paragraph", "text": "God has already called you, and He has already prepared you for His work." },
+          { "type": "subheading", "text": "Prayer" },
+          { "type": "video", "label": "Video clip - Minions: The Bicycle", "url": null },
+          {
+            "type": "paragraph",
+            "text": "Just like the Minions get Agnes's bike ready so she can win the toy, God has already prepared you and your life for the goal He has for you."
+          },
+          {
+            "type": "paragraph",
+            "text": "Now let's look back at what God has already prepared. I'll show you, on a life tree of my own, what that can look like (see appendix)."
+          },
+          { "type": "subheading", "text": "Show the Sample Life Tree" },
+          {
+            "type": "paragraph",
+            "text": "The Life Tree is about looking at everything that has shaped and influenced you since your birth."
+          },
+          {
+            "type": "paragraph",
+            "text": "In the sample, this person was strongly shaped by their mother. From her, they learned to value other people - but they also picked up her impatience."
+          },
+          {
+            "type": "paragraph",
+            "text": "Your task will be to look all the way back to your birth and ask: who or what has influenced me, and how has that shaped me?"
+          }
+        ]
+      }
+    ]
+  },
+  "session_3": {
+    "sessionTitle": "Life Tree – create your personal life tree",
+    "sections": [
+      {
+        "heading": "Group Work – Drawing the Life Tree",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "Everyone gets time to draw their own life tree. Afterward, the group shares, asks questions, and reflects together on each life tree."
+          },
+          { "type": "paragraph", "text": "Make sure participants pace themselves well with their time." },
+          {
+            "type": "paragraph",
+            "text": "Go around to individual participants and watch for anyone who seems stuck or blocked.\nSupport them one-on-one, or with guiding questions such as:"
+          },
+          {
+            "type": "bulletList",
+            "items": [
+              "Which person has influenced or impressed you the most?",
+              "What did you learn or take away from that?",
+              "What events in your life have had an impact on you?",
+              "What did you learn or take away from that?",
+              "Which books, films, songs, or stories have shaped you deeply?",
+              "Were there illnesses or other experiences that influenced you?"
+            ]
+          },
+          { "type": "paragraph", "text": "Discuss as a group what stood out to each person - everyone can briefly present their life tree." },
+          {
+            "type": "bulletList",
+            "items": [
+              "Make sure everyone can actually see the life tree being shown.",
+              "A short summary",
+              "Is there a central theme you can spot?",
+              "What did you learn?",
+              "What was God trying to show or teach you through your past?"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "session_4": {
+    "sessionTitle": "Session Three: The Here and Now",
+    "sections": [
+      {
+        "heading": "\"Me? No Way!\"",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "God wants to build a team with you, to work alongside you as a team, so you can reach the goal He has given you."
+          },
+          {
+            "type": "paragraph",
+            "text": "God always puts together a team to carry out an assignment for Him. Three scenes from the Old Testament give us a clue about how He chooses His team. In each passage, we'll look at the moment right after God has tapped someone on the shoulder and called them to a specific task."
+          },
+          {
+            "type": "quote",
+            "text": "\"Who am I to go to Pharaoh and lead the Israelites out of Egypt?\" Moses asked. God answered: \"I will be with you. And this will be the proof that I am the one who sent you: when you have brought the people out of Egypt, you will worship God on this mountain.\"",
+            "reference": "Exodus 3:11-12"
+          },
+          {
+            "type": "quote",
+            "text": "\"Please, my lord,\" Gideon replied, \"how can I save Israel? My clan is the weakest in the whole tribe of Manasseh, and I am the least in my entire family!\" The Lord said to him: \"I will be with you. You will strike down all the Midianites as if they were only one man.\"",
+            "reference": "Judges 6:15-16"
+          },
+          {
+            "type": "quote",
+            "text": "\"O Sovereign Lord,\" I said, \"I can't speak for you! I'm far too young!\" \"Don't say, 'I'm too young,'\" the Lord replied. \"You must go wherever I send you and say whatever I tell you. And don't be afraid of the people, for I will be with you and will protect you. I, the Lord, have spoken!\"",
+            "reference": "Jeremiah 1:6-8"
+          },
+          {
+            "type": "paragraph",
+            "text": "Do you notice a pattern running through these passages? Every single person instinctively answered God: \"Me? Never! I'm not capable of that.\" And God's response to each of them, every time: \"Of course you. And by the way - I will be with you.\""
+          },
+          {
+            "type": "paragraph",
+            "text": "Each of these men was actually well-suited for the task ahead of him. That's exactly why God never accepted inadequacy as an excuse. God knew exactly how these men were equipped, and He knew they had what it would take."
+          },
+          {
+            "type": "paragraph",
+            "text": "Isn't it a relief that we don't have to come up with a plan for God to follow - instead, God has already made a plan for us? Good works were prepared for us long before we ever showed up."
+          },
+          {
+            "type": "quote",
+            "text": "For we are God's masterpiece. He has created us anew in Christ Jesus, so we can do the good things he planned for us long ago.",
+            "reference": "Ephesians 2:10"
+          },
+          {
+            "type": "paragraph",
+            "text": "How do we discover these prepared \"good works\"? Use every opportunity to search out God's word. Learn what it looks like to live a life of listening, by turning every opportunity into fuel for real Bible study and powerful prayer, and by finding yourself a personal mentor."
+          },
+          {
+            "type": "paragraph",
+            "text": "Experiment with your gifts. Discover your gifts by taking on leadership tasks and spiritual roles. Notice how God's hand is at work in you as you do. Make yourself available to do God's work in the world. Show up when the gospel changes lives and people accomplish things that are only possible with God's help."
+          },
+          {
+            "type": "paragraph",
+            "text": "\"Yes, you. And I will be with you.\" Accepting God's leading can be hard, especially if your life so far hasn't required you to put your faith into action. That's really the point: discovering your gifts - and actually using them. If you act trusting that God will be with you, that's not always easy, but it helps you see clearly which area matters most to you: the area you're willing to give your time to."
+          }
+        ]
+      },
+      {
+        "heading": "Group Work (Closing Session Three)",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "Write down what you've learned from the Life Tree and from the questionnaires. Feel free to note your findings so far on page 10 of your participant booklet, in the table.\nEncourage participants to turn their impressions into a drawing or a collage."
+          },
+          { "type": "paragraph", "text": "The guiding question:" },
+          { "type": "bulletList", "items": ["In which activities would everything (your story, your gifts, your values) come together?"] },
+          { "type": "paragraph", "text": "Participants can present their pictures to each other; these questions may help:" },
+          {
+            "type": "bulletList",
+            "items": [
+              "What conclusions can you draw from your questionnaires and your Life Tree?",
+              "What \"big picture\" (what larger design) can you make out in it?",
+              "Is there anything that surprised you?"
+            ]
+          },
+          { "type": "subheading", "text": "Shared Prayer" }
+        ]
+      }
+    ]
+  },
+  "session_5": {
+    "sessionTitle": "Spiritual Gifts",
+    "sections": [
+      {
+        "heading": "Gifts",
+        "blocks": [
+          { "type": "paragraph", "text": "You've also received a few gifts from the Holy Spirit." },
+          { "type": "paragraph", "text": "What do we actually know about spiritual gifts? 1 Corinthians 12 has a lot to say about this." },
+          {
+            "type": "bulletList",
+            "items": [
+              "They're given to us by God (v. 4).",
+              "They're powered by the Holy Spirit (v. 4).",
+              "Everyone has been given at least one (v. 7).",
+              "God decides, by His grace, who receives which gift (v. 11).",
+              "They're necessary for the whole body of Christ (v. 18).",
+              "No gift is more important than another (v. 22)."
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "If everyone in the church used the gifts God gave them, and if those gifts were alive with God's Spirit, the church would function exactly the way God intends. People would be saved, encouraged, and would grow."
+          }
+        ]
+      },
+      {
+        "heading": "Group Work – Gifts",
+        "blocks": [
+          { "type": "paragraph", "text": "Share with your group:" },
+          {
+            "type": "bulletList",
+            "items": [
+              "What are your three most important gifts?",
+              "Was there anything that surprised you?",
+              "Have you already put them to use?",
+              "Where could you use your gifts?"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "session_6": {
+    "sessionTitle": "Values",
+    "sections": [
+      {
+        "heading": "Values",
+        "blocks": [
+          { "type": "paragraph", "text": "(Ten minutes to answer questions about your values)" },
+          { "type": "paragraph", "text": "List your eight most important values and give a personal explanation for each." },
+          { "type": "paragraph", "text": "Your values can change over time.\nIn my next season of life, the following eight values will matter to me." },
+          { "type": "paragraph", "text": "That's exactly where you'll be able to contribute." },
+          { "type": "video", "label": "Video clip - One Man Band", "url": null },
+          { "type": "paragraph", "text": "So when it all comes together - your values and your gifts - that's when you're at your most productive." }
+        ]
+      }
+    ]
+  },
+  "session_7": {
+    "sessionTitle": "Session Four: Pray, Dream, Listen!",
+    "sections": [
+      {
+        "heading": "Preparation",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "The room should be well decorated and prepared. Have paper and pens ready so participants can write down impressions. Every participant should have a Bible, or be given one. If you'd like, you can also make other Christian books and songbooks available. Aim for an atmosphere of safety and calm, where nothing distracts from God. It may help to make a sign-up list for who comes for personal listening prayer, and when."
+          }
+        ]
+      },
+      {
+        "heading": "Input",
+        "blocks": [
+          { "type": "paragraph", "text": "God wants to speak to you - through everything you hear, and through everything you've experienced in life so far. He can also speak to you directly (John 10:3)." },
+          { "type": "paragraph", "text": "We want to try to respond to what we've already learned, but also to actually listen - to hear what He wants to tell us." },
+          { "type": "paragraph", "text": "We want to do this in a few steps:" },
+          {
+            "type": "numberedList",
+            "items": [
+              "Confess our sins, so we have a clear, cleansed relationship with God.",
+              "Choose not to let Satan influence us (Matthew 16:23).",
+              "Choose not to listen to our own thoughts alone (1 Peter 4:1-2).",
+              "Let God speak - through Bible verses, images, songs, or anything that comes to mind.",
+              "Test every \"answer\" against the Bible."
+            ]
+          },
+          { "type": "subheading", "text": "A few examples of answered prayer / God speaking in your own life" },
+          { "type": "paragraph", "text": "Worship and prayer time (about 30 min.)" }
+        ]
+      },
+      {
+        "heading": "Listening Prayer - How to Run It",
+        "blocks": [
+          { "type": "paragraph", "text": "Listening prayer is an essential part of DFL. This is where we, as leaders, deliberately step back and place the participants directly in God's hands." },
+          {
+            "type": "paragraph",
+            "text": "Play quiet Christian music in the background, ideally instrumental. Ask participants to be considerate of other people praying and to act on what they sense.\nIf someone feels they're done, let them stay quiet, or give them the option to leave quietly (an open ending).\nParticipants should get the chance to try listening prayer on their own. In parallel, leaders can also offer a personal \"listening\" time for each individual. It helps to make a schedule for this - plan around 20 minutes per person, with 5 minutes to switch. Have a Bible, pens, and paper ready. It's helpful to have each person write their name and the date on their sheet."
+          },
+          {
+            "type": "paragraph",
+            "text": "Listening prayer is absolutely central here. Create a relaxed, undisturbed atmosphere (no phones, no distracting noise). Encourage participants not just to bring their own requests and thanks to God, but also to give Him time to answer, and to take time to actually listen."
+          },
+          { "type": "subheading", "text": "Pass on what you receive - don't interpret it or comment on it." },
+          {
+            "type": "paragraph",
+            "text": "In the large group: either you're available as a point of contact in the big group. A lot can happen in that time - or nothing at all. Be ready for God to move! Be prepared for things from someone's past to surface (crying is normal and part of this).\nTry to sense whether the person needs time alone with God, or needs prayer / pastoral support."
+          },
+          { "type": "subheading", "text": "In a Small Group (Listening for One Person)" },
+          { "type": "paragraph", "text": "Two or more team members listen together on behalf of one person." },
+          { "type": "paragraph", "text": "Explain the process once more:" },
+          {
+            "type": "numberedList",
+            "items": ["Confess sins,", "Satan has no power here,", "set aside your own thoughts,", "Listen,", "Share what you heard,", "Test every \"answer\" against the Bible"]
+          },
+          { "type": "paragraph", "text": "Explain that it's also completely fine if \"nothing\" is heard." },
+          { "type": "paragraph", "text": "Everyone listening gets a sheet of paper. Again, it helps to write the name and date on it.\nThe leader opens with a short prayer." }
+        ]
+      },
+      {
+        "heading": "Key Bible References for Listening Prayer",
+        "blocks": [
+          { "type": "paragraph", "text": "A set of Bible references, organized by the different ways God can speak to us - useful for showing participants different ways into listening prayer." },
+          { "type": "subheading", "text": "Seeing" },
+          { "type": "quote", "text": "Look around you! The fields are already ripe for harvest.", "reference": "John 4:35b" },
+          { "type": "subheading", "text": "Smell" },
+          { "type": "quote", "text": "The offering pleased the Lord, and he said to himself, \"Never again will I curse the ground because of the human race, even though everything they think and do is bent toward evil from childhood. I will never again destroy all living things as I have just done.\"", "reference": "Genesis 8:21" },
+          { "type": "subheading", "text": "Hearing" },
+          { "type": "quote", "text": "Morning by morning he opens my ear to listen, as one being taught.", "reference": "Isaiah 50:4-5b" },
+          { "type": "subheading", "text": "Taste" },
+          { "type": "quote", "text": "Taste and see that the Lord is good. Blessed is the one who takes refuge in him.", "reference": "Psalm 34:8" },
+          { "type": "subheading", "text": "Touch / Feeling" },
+          { "type": "quote", "text": "After the earthquake came a fire, but the Lord was not in the fire. And after the fire came a gentle whisper.", "reference": "1 Kings 19:12" },
+          { "type": "subheading", "text": "Meditating" },
+          { "type": "quote", "text": "Blessed is the one who does not walk in step with the wicked, or stand in the way of sinners, or sit in the company of mockers, but whose delight is in the law of the Lord, and who meditates on his law day and night. That person is like a tree planted by streams of water, which yields its fruit in season, whose leaf does not wither - whatever they do prospers.", "reference": "Psalm 1:1-3" },
+          { "type": "subheading", "text": "Speaking It Out Loud" },
+          { "type": "quote", "text": "Lord my God, I will praise you forever.", "reference": "Psalm 30:12b" },
+          { "type": "subheading", "text": "Writing" },
+          { "type": "quote", "text": "Then the Lord told Moses, \"Write this down as a permanent reminder ...\"", "reference": "Exodus 17:14a" },
+          { "type": "subheading", "text": "Remembering" },
+          { "type": "quote", "text": "Speak to the Israelites and tell them: throughout the generations to come, make tassels on the corners of your garments, with a blue cord on each tassel. When you see these tassels, you will remember all the commands of the Lord, so you don't chase after your own hearts and eyes and end up unfaithful to me.", "reference": "Numbers 15:38-39" },
+          { "type": "subheading", "text": "Making / Shaping Something" },
+          { "type": "quote", "text": "Make a plate of pure gold and engrave on it, as on a seal: HOLY TO THE LORD.", "reference": "Exodus 28:36" },
+          { "type": "subheading", "text": "Dance" },
+          { "type": "quote", "text": "Then Miriam the prophet, Aaron's sister, took a timbrel in her hand, and all the women followed her, with timbrels and dancing. Miriam sang to them: \"Sing to the Lord, for he is highly exalted. Both horse and driver he has hurled into the sea.\"", "reference": "Exodus 15:20-21" },
+          { "type": "subheading", "text": "Songs" },
+          { "type": "quote", "text": "He put a new song in my mouth, a hymn of praise to our God. Many will see and fear the Lord and will put their trust in him.", "reference": "Psalm 40:3" },
+          { "type": "subheading", "text": "Dreams, Images (Visions)" },
+          { "type": "quote", "text": "For God speaks again and again, though people do not recognize it. He speaks in dreams, in visions of the night, when deep sleep falls on people as they lie in their beds. He whispers in their ears and terrifies them with warnings, to turn them from wrongdoing and keep them from pride, to preserve them from the pit, their lives from perishing by the sword.", "reference": "Job 33:14-18" }
+        ]
+      }
+    ]
+  },
+  "session_9": {
+    "sessionTitle": "Session Five: Do you know the way to San Jose",
+    "sections": [
+      {
+        "heading": "Your Calling - Your Response",
+        "blocks": [
+          { "type": "video", "label": "Clip - Minions: Banana", "url": null },
+          {
+            "type": "paragraph",
+            "text": "When God calls us, we should respond the way the Minions do - they have a goal.\nGod has given every one of us a goal too.\nThere's one that applies to everyone, which we find again and again in the Bible - for example, Mark 16:15ff.\nBut He also has a specific goal for each individual."
+          },
+          {
+            "type": "quote",
+            "text": "For I know the plans I have for you, says the Lord. They are plans for good and not for disaster, to give you a future and a hope.",
+            "reference": "Jeremiah 29:11"
+          },
+          { "type": "paragraph", "text": "So God wants to give you a goal like that too.\nThis morning we want to look at what God is telling us to do next." },
+          {
+            "type": "paragraph",
+            "text": "Yesterday we looked at the foundation of the calling God gives us. In doing that, we recognized that a relationship with the Father, and dependence on the Holy Spirit, are what give us the strength we need."
+          },
+          { "type": "paragraph", "text": "Everyone has a calling, and every calling requires a response." },
+          {
+            "type": "paragraph",
+            "text": "There's a story about a new pastor who arrived at a church. He figured the fastest way to get to know the congregation was to visit everyone on the membership list. He went to one house and knocked. There was a car parked outside, so he was sure someone was home - but no one came to the door. Eventually he found a note in his pocket and wrote on it: \"Look, I stand at the door and knock. If anyone hears my voice and opens the door, I will come in and share a meal with them, and they with me\" (Revelation 3:20). The following Sunday, he took the offering back to his office and found that same note inside it. On the back, someone had written the verse from Genesis 3:10: \"I heard you in the garden, and I was afraid because I was naked; so I hid.\""
+          },
+          {
+            "type": "paragraph",
+            "text": "Every call God gives requires a response. Let's look at three people in the Bible who were called to a specific task and were obedient. All three heard the call - but each responded differently."
+          }
+        ]
+      },
+      {
+        "heading": "Mary (Luke 1:26-38)",
+        "blocks": [
+          { "type": "quote", "text": "In the sixth month of Elizabeth's pregnancy, God sent the angel Gabriel to Nazareth, a town in Galilee, to a virgin engaged to a man named Joseph, a descendant of David. The virgin's name was Mary. Gabriel appeared to her and said, \"Greetings, favored woman! The Lord is with you!\"", "reference": "Luke 1:26-28" },
+          { "type": "paragraph", "text": "Mary learned that she had been chosen to bring into the world the child - the Messiah - Israel had waited on for centuries. And when she was told, she responded with obedience: \"I am willing to do whatever God wants. I am his servant.\" What was she supposed to do next? Nothing. Anything she tried to do on her own would have ruined this calling." },
+          { "type": "paragraph", "text": "We find a similar story with Abraham and Sarah. They too were told they would have a child. And - without being indiscreet - we all know they still had something to do for that promise to come true." },
+          { "type": "paragraph", "text": "Mary only had to wait, and really do nothing at all." },
+          { "type": "paragraph", "text": "It's unlikely that any of us will receive the exact same kind of unique calling Mary did. (Jesus will come again, but we can be sure it won't look like his first coming!)" },
+          { "type": "paragraph", "text": "But sometimes God doesn't reveal everything right away. And you have to wait." }
+        ]
+      },
+      {
+        "heading": "Samuel (1 Samuel 16)",
+        "blocks": [
+          { "type": "quote", "text": "Jesse presented seven of his sons to Samuel. But Samuel said to him, \"The Lord has not chosen any of these.\" Then he asked, \"Are these all the sons you have?\" \"There is still the youngest,\" Jesse replied. \"He's out in the fields watching the sheep and goats.\" \"Send for him at once,\" Samuel said. \"We will not sit down to eat until he arrives.\" So Jesse sent for him. He was ruddy and handsome, with pleasant eyes. And the Lord said, \"This is the one; anoint him.\"", "reference": "1 Samuel 16:10-12" },
+          { "type": "paragraph", "text": "Israel is ruled by its first king. Saul had been chosen by God, but after a while he stopped listening to God. So God tells Samuel that He has rejected Saul, and that Samuel needs to anoint someone else as king. God is very specific about where to find him: in Jesse's family. Samuel goes first to the tallest, oldest son, assuming this must be the one. No. The second. No. The third. No. The fourth. No. The fifth. No. The sixth. No. And the seventh. No. None of the sons is the right one. What would you do? Try to get out of the situation as fast as possible?" },
+          { "type": "paragraph", "text": "But Samuel was used to listening for God. Remember, when he was young, living with Eli at the temple, God spoke to Samuel and Eli had to help him understand what was happening. So now, having seen all seven sons - and it seemed like Jesse had shown him all of them - Samuel asks what almost sounds like a ridiculous question: is there another son?" },
+          { "type": "paragraph", "text": "And they said yes, there's still the youngest, out in the field watching the sheep. Young David was brought in and Samuel anointed him. But even though this happened in 1 Samuel 16, it would still be a long time before he actually became king, in 2 Samuel 4." },
+          { "type": "paragraph", "text": "Some of you already know what you'll be doing later. But God says: \"Not yet. Watch and learn from people who are living a life that pleases me. Get ready, even if your time hasn't come yet, so you'll be prepared when it does.\"" }
+        ]
+      },
+      {
+        "heading": "Paul (Acts 9)",
+        "blocks": [
+          { "type": "quote", "text": "As he neared Damascus on his journey, suddenly a light from heaven flashed around him. He fell to the ground and heard a voice say to him, \"Saul, Saul, why do you persecute me?\" \"Who are you, Lord?\" Saul asked. The voice replied, \"I am Jesus, whom you are persecuting.\"", "reference": "Acts 9:3-5" },
+          { "type": "paragraph", "text": "Paul, a respected Jewish scholar who fiercely fought against the Christian faith and even persecuted Christians, is struck by a blinding light on his way to Damascus. A voice calls him to radically change his life. He has to set new priorities, find a new perspective, and unlearn old patterns. He has to let go of his entire past. He has to take the very people he used to hate and welcome them into his heart." },
+          { "type": "paragraph", "text": "It would be a bit like Osama bin Laden becoming the pastor of a church in America. Paul, the religious terrorist who persecuted Christians, becomes a man of God, and everything changes." },
+          { "type": "paragraph", "text": "And maybe some of you already sense that after this weekend, nothing will feel quite the same as before. The change in your life might be huge. When you get home, you'll have to tell others what you experienced - and some of you may end up leaving your job, your home, or your church." },
+          { "type": "paragraph", "text": "God expects a response to His call, and you need to find out from Him what His will actually is." }
+        ]
+      },
+      {
+        "heading": "Group Work",
+        "blocks": [
+          { "type": "paragraph", "text": "The images and texts that came up during last night's prayer time are explained and discussed in the group. It's especially helpful to look for connections to the Bible, and to your gifts, values, and passions - and to question or highlight them." }
+        ]
+      }
+    ]
+  },
+  "session_10": {
+    "sessionTitle": "Session Six: The Day After Tomorrow",
+    "sections": [
+      {
+        "heading": "Preparation",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "After lunch, you'll have time on your own to reflect on everything. You'll get a chance to talk with your group leader one-on-one, to plan concrete next steps, or maybe you'd rather talk and pray with someone else. Later we'll all come together for a shared closing."
+          },
+          {
+            "type": "paragraph",
+            "text": "Make a sign-up sheet with clear time slots, so everyone knows when it's their turn. Fifteen minutes is the minimum. If your group is smaller, give people more time. Remember that switching between conversation partners takes a bit of time too - plan for about five minutes for that. If possible, the best option is a quiet walk somewhere nearby. It's no accident that Jesus often had his most important conversations while walking."
+          },
+          {
+            "type": "paragraph",
+            "text": "Make sure the locations are \"public\" enough that you're never completely alone with a participant, unobserved."
+          }
+        ]
+      },
+      {
+        "heading": "One-on-One Conversations",
+        "blocks": [
+          { "type": "paragraph", "text": "Length: 15 minutes, plus 5 minutes to switch conversation partners" },
+          { "type": "paragraph", "text": "Questions for one-on-one conversations:" },
+          {
+            "type": "bulletList",
+            "items": [
+              "What goals do you want to set for yourself?",
+              "What plans do you have?",
+              "What should change in the coming weeks?",
+              "Can you give me your contact details?",
+              "May I check in with you about your goals in a week?",
+              "May I check in with you about your progress in a month?"
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "Shared Prayer and Worship",
+        "blocks": [
+          { "type": "paragraph", "text": "A shared close to the weekend, in prayer and worship." }
+        ]
+      }
+    ]
+  }
+}
