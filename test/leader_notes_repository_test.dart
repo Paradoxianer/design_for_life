@@ -34,9 +34,9 @@ void main() {
 
     // Matches assets/config/timeline_config.json's session ids - every
     // "Einheit" from the Leiterheft plus the modules it interleaves with
-    // (Lebensbaum, Gaben, Werte). Sessions without printed leader notes
-    // (Gruppenfoto, Feedback, Persönlichkeitsprofil, Imagine, Verknüpfungen)
-    // are intentionally absent rather than present-but-empty.
+    // (Lebensbaum, Gaben, Werte, Checkliste). Sessions without printed
+    // leader notes (Gruppenfoto, Feedback, Persönlichkeitsprofil, Imagine,
+    // Verknüpfungen) are intentionally absent rather than present-but-empty.
     expect(sessions.keys.toSet(), {
       'session_1',
       'session_2',
@@ -47,6 +47,7 @@ void main() {
       'session_7',
       'session_9',
       'session_10',
+      'session_checklist',
     });
 
     for (final entry in sessions.entries) {
@@ -71,6 +72,7 @@ void main() {
       'session_7',
       'session_9',
       'session_10',
+      'session_checklist',
     });
     expect(sessions['session_1']!.sessionTitle, contains('Session One'));
     // A file-level metadata key (translation caveat, no native JSON comment

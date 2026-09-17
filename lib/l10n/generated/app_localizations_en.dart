@@ -460,6 +460,38 @@ class AppLocalizationsEn extends AppLocalizations {
   String get leaderModeLockButton => 'Turn off leader mode';
 
   @override
+  String get checklistTitle => 'Checklist';
+
+  @override
+  String get checklistGuidance =>
+      'Check off what you\'ve already packed or taken care of. Add your own items below.';
+
+  @override
+  String get checklistItemPersonalItems => 'Personal items';
+
+  @override
+  String get checklistItemBible => 'Bible';
+
+  @override
+  String get checklistItemWritingUtensils => 'Writing utensils';
+
+  @override
+  String get checklistItemCasualClothes => 'Casual clothes';
+
+  @override
+  String get checklistItemGiftsValuesTest =>
+      'Completed spiritual gifts / values assessment';
+
+  @override
+  String get checklistAddItemHint => 'Add your own item';
+
+  @override
+  String get checklistAddItemButton => 'Add';
+
+  @override
+  String get checklistRemoveItem => 'Remove item';
+
+  @override
   String get backupTitle => 'Backup';
 
   @override
@@ -738,6 +770,12 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get session13Desc =>
       'Discover your preferred working and interaction style.';
+
+  @override
+  String get session14Title => 'Checklist';
+
+  @override
+  String get session14Desc => 'What to bring and how to prepare.';
 
   @override
   String get valueGenauigkeit => 'Accuracy';

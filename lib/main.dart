@@ -43,6 +43,8 @@ import 'features/group_photo/screens/group_photo_screen.dart';
 import 'features/export/screens/export_screen.dart';
 import 'features/backup/screens/backup_screen.dart';
 import 'features/leader_notes/bloc/leader_mode_bloc.dart';
+import 'features/checklist/bloc/checklist_bloc.dart';
+import 'features/checklist/screens/checklist_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -88,6 +90,7 @@ void main() async {
           BlocProvider(create: (context) => GroupPhotoBloc()),
           BlocProvider(create: (context) => TimelineModuleFilterBloc()),
           BlocProvider(create: (context) => LeaderModeBloc()),
+          BlocProvider(create: (context) => ChecklistBloc()),
         ],
         child: const DflApp(),
       ),
@@ -200,6 +203,19 @@ class _DflAppState extends State<DflApp> {
                   state.uri.queryParameters['title'] ?? l10n.valuesTitle;
               final mode = state.uri.queryParameters['mode'];
               return ValuesAssessmentScreen(
+                title: title,
+                initialEditMode: mode != 'result',
+              );
+            },
+          ),
+          GoRoute(
+            path: '/checklist',
+            builder: (context, state) {
+              final l10n = AppLocalizations.of(context);
+              final title =
+                  state.uri.queryParameters['title'] ?? l10n.checklistTitle;
+              final mode = state.uri.queryParameters['mode'];
+              return ChecklistScreen(
                 title: title,
                 initialEditMode: mode != 'result',
               );

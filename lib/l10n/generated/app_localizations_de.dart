@@ -465,6 +465,38 @@ class AppLocalizationsDe extends AppLocalizations {
   String get leaderModeLockButton => 'Leiter-Modus deaktivieren';
 
   @override
+  String get checklistTitle => 'Checkliste';
+
+  @override
+  String get checklistGuidance =>
+      'Hake ab, was du bereits eingepackt bzw. erledigt hast. Du kannst unten eigene Punkte ergänzen.';
+
+  @override
+  String get checklistItemPersonalItems => 'Persönliche Sachen';
+
+  @override
+  String get checklistItemBible => 'Bibel';
+
+  @override
+  String get checklistItemWritingUtensils => 'Schreibzeug';
+
+  @override
+  String get checklistItemCasualClothes => 'Freizeitkleidung';
+
+  @override
+  String get checklistItemGiftsValuesTest =>
+      'Ausgefüllter Gabentest / Wertefragebogen';
+
+  @override
+  String get checklistAddItemHint => 'Eigenen Punkt hinzufügen';
+
+  @override
+  String get checklistAddItemButton => 'Hinzufügen';
+
+  @override
+  String get checklistRemoveItem => 'Punkt entfernen';
+
+  @override
   String get backupTitle => 'Sicherung';
 
   @override
@@ -746,6 +778,13 @@ class AppLocalizationsDe extends AppLocalizations {
   @override
   String get session13Desc =>
       'Entdecke deinen bevorzugten Arbeits- und Interaktionsstil.';
+
+  @override
+  String get session14Title => 'Checkliste';
+
+  @override
+  String get session14Desc =>
+      'Was du mitbringen musst und wie du dich vorbereitest.';
 
   @override
   String get valueGenauigkeit => 'Genauigkeit';

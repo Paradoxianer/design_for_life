@@ -908,6 +908,66 @@ abstract class AppLocalizations {
   /// **'Turn off leader mode'**
   String get leaderModeLockButton;
 
+  /// No description provided for @checklistTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Checklist'**
+  String get checklistTitle;
+
+  /// No description provided for @checklistGuidance.
+  ///
+  /// In en, this message translates to:
+  /// **'Check off what you\'ve already packed or taken care of. Add your own items below.'**
+  String get checklistGuidance;
+
+  /// No description provided for @checklistItemPersonalItems.
+  ///
+  /// In en, this message translates to:
+  /// **'Personal items'**
+  String get checklistItemPersonalItems;
+
+  /// No description provided for @checklistItemBible.
+  ///
+  /// In en, this message translates to:
+  /// **'Bible'**
+  String get checklistItemBible;
+
+  /// No description provided for @checklistItemWritingUtensils.
+  ///
+  /// In en, this message translates to:
+  /// **'Writing utensils'**
+  String get checklistItemWritingUtensils;
+
+  /// No description provided for @checklistItemCasualClothes.
+  ///
+  /// In en, this message translates to:
+  /// **'Casual clothes'**
+  String get checklistItemCasualClothes;
+
+  /// No description provided for @checklistItemGiftsValuesTest.
+  ///
+  /// In en, this message translates to:
+  /// **'Completed spiritual gifts / values assessment'**
+  String get checklistItemGiftsValuesTest;
+
+  /// No description provided for @checklistAddItemHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Add your own item'**
+  String get checklistAddItemHint;
+
+  /// No description provided for @checklistAddItemButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Add'**
+  String get checklistAddItemButton;
+
+  /// No description provided for @checklistRemoveItem.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove item'**
+  String get checklistRemoveItem;
+
   /// No description provided for @backupTitle.
   ///
   /// In en, this message translates to:
@@ -1399,6 +1459,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Discover your preferred working and interaction style.'**
   String get session13Desc;
+
+  /// No description provided for @session14Title.
+  ///
+  /// In en, this message translates to:
+  /// **'Checklist'**
+  String get session14Title;
+
+  /// No description provided for @session14Desc.
+  ///
+  /// In en, this message translates to:
+  /// **'What to bring and how to prepare.'**
+  String get session14Desc;
 
   /// No description provided for @valueGenauigkeit.
   ///

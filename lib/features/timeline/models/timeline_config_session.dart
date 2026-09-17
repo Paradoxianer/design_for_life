@@ -40,7 +40,9 @@ class TimelineConfigSession {
     return DflSession(
       id: id,
       title: _localizedValue(l10n, titleKey),
-      description: descriptionKey == null ? null : _localizedValue(l10n, descriptionKey!),
+      description: descriptionKey == null
+          ? null
+          : _localizedValue(l10n, descriptionKey!),
       type: type,
       moduleId: moduleId,
       moduleSessionId: moduleSessionId,
@@ -120,6 +122,10 @@ class TimelineConfigSession {
         return l10n.session13Title;
       case 'session13Desc':
         return l10n.session13Desc;
+      case 'session14Title':
+        return l10n.session14Title;
+      case 'session14Desc':
+        return l10n.session14Desc;
       default:
         return key;
     }

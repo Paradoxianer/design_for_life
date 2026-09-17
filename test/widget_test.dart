@@ -20,6 +20,7 @@ import 'package:design_for_life/features/imagine/bloc/imagine_bloc.dart';
 import 'package:design_for_life/features/life_tree/bloc/life_tree_bloc.dart';
 import 'package:design_for_life/features/synthesis/bloc/synthesis_bloc.dart';
 import 'package:design_for_life/features/group_photo/bloc/group_photo_bloc.dart';
+import 'package:design_for_life/features/checklist/bloc/checklist_bloc.dart';
 
 class _MockStorage extends Mock implements Storage {}
 
@@ -71,6 +72,7 @@ void main() {
           BlocProvider(create: (context) => LifeTreeBloc()),
           BlocProvider(create: (context) => SynthesisBloc()),
           BlocProvider(create: (context) => GroupPhotoBloc()),
+          BlocProvider(create: (context) => ChecklistBloc()),
           BlocProvider(create: (context) => TimelineModuleFilterBloc()),
         ],
         child: const DflApp(),

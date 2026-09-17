@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:design_for_life/features/feedback/bloc/feedback_bloc.dart';
 import 'package:design_for_life/features/personal_style/bloc/personal_style_bloc.dart';
+import 'package:design_for_life/features/checklist/bloc/checklist_bloc.dart';
 import 'package:design_for_life/features/goals/bloc/goals_bloc.dart';
 import 'package:design_for_life/features/group_photo/bloc/group_photo_bloc.dart';
 import 'package:design_for_life/features/group_photo/screens/group_photo_screen.dart';
@@ -30,11 +31,15 @@ class TimelineModuleRegistry {
       case 'module_imagine':
         return context.watch<ImagineBloc>().state.isCompleted(moduleSessionId);
       case 'module_listening_prayer':
-        return context.watch<ListeningPrayerBloc>().state.isCompleted(moduleSessionId);
+        return context.watch<ListeningPrayerBloc>().state.isCompleted(
+          moduleSessionId,
+        );
       case 'module_goals':
         return context.watch<GoalsBloc>().state.isCompleted(moduleSessionId);
       case 'module_spiritual_gifts':
-        return context.watch<SpiritualGiftsBloc>().state.isSessionCompleted(moduleSessionId);
+        return context.watch<SpiritualGiftsBloc>().state.isSessionCompleted(
+          moduleSessionId,
+        );
       case 'module_life_tree':
         return context.watch<LifeTreeBloc>().state.isCompleted(moduleSessionId);
       case 'module_values':
@@ -42,9 +47,15 @@ class TimelineModuleRegistry {
       case 'module_feedback':
         return context.watch<FeedbackBloc>().state.isCompleted;
       case 'module_personal_style':
-        return context.watch<PersonalStyleBloc>().state.isSessionCompleted(moduleSessionId);
+        return context.watch<PersonalStyleBloc>().state.isSessionCompleted(
+          moduleSessionId,
+        );
       case 'module_group_photo':
-        return context.watch<GroupPhotoBloc>().state.isCompleted(groupPhotoSessionId);
+        return context.watch<GroupPhotoBloc>().state.isCompleted(
+          groupPhotoSessionId,
+        );
+      case 'module_checklist':
+        return context.watch<ChecklistBloc>().state.isCompleted;
       default:
         return false;
     }
@@ -84,6 +95,8 @@ class TimelineModuleRegistry {
         return 'personal-style/$moduleSessionId?title=$titleParam$modeSuffix';
       case 'module_group_photo':
         return 'group-photo?title=$titleParam$modeSuffix';
+      case 'module_checklist':
+        return 'checklist?title=$titleParam$modeSuffix';
       default:
         return null;
     }

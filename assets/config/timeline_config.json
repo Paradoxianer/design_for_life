@@ -2,6 +2,15 @@
   "version": 1,
   "sessions": [
     {
+      "id": "session_checklist",
+      "moduleId": "module_checklist",
+      "order": 5,
+      "titleKey": "session14Title",
+      "descriptionKey": "session14Desc",
+      "type": "other",
+      "enabled": true
+    },
+    {
       "id": "session_1",
       "moduleId": "module_notes",
       "moduleSessionId": "session_1",

@@ -42,6 +42,7 @@ class AppBackupService {
     'GroupPhotoBloc',
     'TimelineModuleFilterBloc',
     'LeaderModeBloc',
+    'ChecklistBloc',
   ];
 
   static String exportJson() {

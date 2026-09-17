@@ -7,27 +7,37 @@ import 'package:design_for_life/features/timeline/services/timeline_module_regis
 
 void main() {
   group('timeline config', () {
-    test('has synthesis ordered before imagine and excludes removed session8 title key', () {
-      final configFile = File('assets/config/timeline_config.json');
-      final decoded = jsonDecode(configFile.readAsStringSync()) as Map<String, dynamic>;
-      final sessions = (decoded['sessions'] as List<dynamic>)
-          .map((item) => Map<String, dynamic>.from(item as Map))
-          .toList();
+    test(
+      'has synthesis ordered before imagine and excludes removed session8 title key',
+      () {
+        final configFile = File('assets/config/timeline_config.json');
+        final decoded =
+            jsonDecode(configFile.readAsStringSync()) as Map<String, dynamic>;
+        final sessions = (decoded['sessions'] as List<dynamic>)
+            .map((item) => Map<String, dynamic>.from(item as Map))
+            .toList();
 
-      final moduleIds = sessions.map((session) => session['moduleId'] as String).toList();
-      final synthesisIndex = moduleIds.indexOf('module_synthesis');
-      final imagineIndex = moduleIds.indexOf('module_imagine');
+        final moduleIds = sessions
+            .map((session) => session['moduleId'] as String)
+            .toList();
+        final synthesisIndex = moduleIds.indexOf('module_synthesis');
+        final imagineIndex = moduleIds.indexOf('module_imagine');
 
-      expect(synthesisIndex, greaterThanOrEqualTo(0));
-      expect(imagineIndex, greaterThanOrEqualTo(0));
-      expect(synthesisIndex, lessThan(imagineIndex));
-      expect(moduleIds, isNot(contains('module_future_idea')));
-      expect(sessions.any((session) => session['titleKey'] == 'session8Title'), isFalse);
-    });
+        expect(synthesisIndex, greaterThanOrEqualTo(0));
+        expect(imagineIndex, greaterThanOrEqualTo(0));
+        expect(synthesisIndex, lessThan(imagineIndex));
+        expect(moduleIds, isNot(contains('module_future_idea')));
+        expect(
+          sessions.any((session) => session['titleKey'] == 'session8Title'),
+          isFalse,
+        );
+      },
+    );
 
     test('only uses localization keys supported by the timeline resolver', () {
       final configFile = File('assets/config/timeline_config.json');
-      final decoded = jsonDecode(configFile.readAsStringSync()) as Map<String, dynamic>;
+      final decoded =
+          jsonDecode(configFile.readAsStringSync()) as Map<String, dynamic>;
       final sessions = (decoded['sessions'] as List<dynamic>)
           .map((item) => Map<String, dynamic>.from(item as Map))
           .toList();
@@ -59,6 +69,8 @@ void main() {
         'session12Title',
         'session13Title',
         'session13Desc',
+        'session14Title',
+        'session14Desc',
       };
 
       for (final session in sessions) {
@@ -89,7 +101,10 @@ void main() {
       );
 
       final synthesisRoute = TimelineModuleRegistry.buildRoute(synthesis);
-      final imagineRoute = TimelineModuleRegistry.buildRoute(imagine, resultMode: true);
+      final imagineRoute = TimelineModuleRegistry.buildRoute(
+        imagine,
+        resultMode: true,
+      );
 
       expect(synthesisRoute, startsWith('synthesis?title='));
       expect(synthesisRoute, contains('giftsSession=session_5'));
