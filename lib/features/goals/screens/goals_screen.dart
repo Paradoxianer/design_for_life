@@ -21,17 +21,32 @@ class GoalsScreen extends StatelessWidget {
     this.initialEditMode = true,
   });
 
-  ShareableContent _getShareableContent(BuildContext context, List<Goal> goals) {
+  ShareableContent _getShareableContent(
+    BuildContext context,
+    List<Goal> goals,
+  ) {
     final l10n = AppLocalizations.of(context);
     final filledGoals = goals.where((g) => g.text.isNotEmpty).toList();
 
     List<Map<String, Object>> smartChips(Goal goal) => [
-          {'label': 'S', 'title': l10n.smartSpecific, 'isActive': goal.isSpecific},
-          {'label': 'M', 'title': l10n.smartMeasurable, 'isActive': goal.isMeasurable},
-          {'label': 'A', 'title': l10n.smartAchievable, 'isActive': goal.isAchievable},
-          {'label': 'R', 'title': l10n.smartRelevant, 'isActive': goal.isRelevant},
-          {'label': 'T', 'title': l10n.smartTimeBound, 'isActive': goal.isTimeBound},
-        ];
+      {'label': 'S', 'title': l10n.smartSpecific, 'isActive': goal.isSpecific},
+      {
+        'label': 'M',
+        'title': l10n.smartMeasurable,
+        'isActive': goal.isMeasurable,
+      },
+      {
+        'label': 'A',
+        'title': l10n.smartAchievable,
+        'isActive': goal.isAchievable,
+      },
+      {'label': 'R', 'title': l10n.smartRelevant, 'isActive': goal.isRelevant},
+      {
+        'label': 'T',
+        'title': l10n.smartTimeBound,
+        'isActive': goal.isTimeBound,
+      },
+    ];
 
     return ShareableContent(
       title: l10n.goalsTitle,
@@ -66,14 +81,14 @@ class GoalsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<GoalsBloc, GoalsState>(
       builder: (context, state) {
-        final goals = state.goals[sessionId] ??
-            const [Goal(), Goal(), Goal()];
+        final goals = state.goals[sessionId] ?? const [Goal(), Goal(), Goal()];
 
         final shareContent = _getShareableContent(context, goals);
 
         return DflModuleScaffold(
           title: title,
           initialEditMode: initialEditMode,
+          leaderNoteSessionId: sessionId,
           shareableContent: shareContent.items.isNotEmpty ? shareContent : null,
           onShare: (selectedItems) {
             ShareService.shareContent(
@@ -82,13 +97,8 @@ class GoalsScreen extends StatelessWidget {
               selectedItems: selectedItems,
             );
           },
-          editor: GoalsEditor(
-            sessionId: sessionId,
-            goals: goals,
-          ),
-          result: GoalsResult(
-            goals: goals,
-          ),
+          editor: GoalsEditor(sessionId: sessionId, goals: goals),
+          result: GoalsResult(goals: goals),
         );
       },
     );

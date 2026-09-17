@@ -866,6 +866,48 @@ abstract class AppLocalizations {
   /// **'Final Export'**
   String get exportTitle;
 
+  /// No description provided for @leaderInfoButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Leader info'**
+  String get leaderInfoButton;
+
+  /// No description provided for @leaderInfoTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Leader info'**
+  String get leaderInfoTitle;
+
+  /// No description provided for @leaderModeUnlocked.
+  ///
+  /// In en, this message translates to:
+  /// **'Leader mode enabled.'**
+  String get leaderModeUnlocked;
+
+  /// No description provided for @leaderModeWrongKey.
+  ///
+  /// In en, this message translates to:
+  /// **'This link doesn\'t contain a valid leader key.'**
+  String get leaderModeWrongKey;
+
+  /// No description provided for @leaderModeSectionTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Leader Mode'**
+  String get leaderModeSectionTitle;
+
+  /// No description provided for @leaderModeSectionGuidance.
+  ///
+  /// In en, this message translates to:
+  /// **'Leader mode is active on this device - modules show an extra leader-info button with the speaker notes. Turn it off before handing this device to a participant.'**
+  String get leaderModeSectionGuidance;
+
+  /// No description provided for @leaderModeLockButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Turn off leader mode'**
+  String get leaderModeLockButton;
+
   /// No description provided for @backupTitle.
   ///
   /// In en, this message translates to:

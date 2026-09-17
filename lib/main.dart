@@ -42,6 +42,7 @@ import 'features/group_photo/bloc/group_photo_bloc.dart';
 import 'features/group_photo/screens/group_photo_screen.dart';
 import 'features/export/screens/export_screen.dart';
 import 'features/backup/screens/backup_screen.dart';
+import 'features/leader_notes/bloc/leader_mode_bloc.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -86,6 +87,7 @@ void main() async {
           BlocProvider(create: (context) => SynthesisBloc()),
           BlocProvider(create: (context) => GroupPhotoBloc()),
           BlocProvider(create: (context) => TimelineModuleFilterBloc()),
+          BlocProvider(create: (context) => LeaderModeBloc()),
         ],
         child: const DflApp(),
       ),
@@ -355,7 +357,35 @@ class _DflAppState extends State<DflApp> {
         :final label,
       ):
         _importGiftReferenceResult(assessmentId, answersPayload, label);
+      case LeaderKeyAction(:final key):
+        _handleLeaderKey(key);
     }
+  }
+
+  void _handleLeaderKey(String key) {
+    context.read<LeaderModeBloc>().add(UnlockLeaderMode(key));
+    _router.go('/');
+
+    // Fire after the event above is processed so the shown message matches
+    // whether the key actually matched, not the pre-unlock state.
+    Future.microtask(() {
+      final navigatorContext =
+          _router.routerDelegate.navigatorKey.currentContext;
+      if (navigatorContext == null || !navigatorContext.mounted) return;
+      final isUnlocked = navigatorContext
+          .read<LeaderModeBloc>()
+          .state
+          .isUnlocked;
+      ScaffoldMessenger.of(navigatorContext).showSnackBar(
+        SnackBar(
+          content: Text(
+            isUnlocked
+                ? AppLocalizations.of(navigatorContext).leaderModeUnlocked
+                : AppLocalizations.of(navigatorContext).leaderModeWrongKey,
+          ),
+        ),
+      );
+    });
   }
 
   // Question IDs are stable across locales (see assets/data/gifts_*.json),

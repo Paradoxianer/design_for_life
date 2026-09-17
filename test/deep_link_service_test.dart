@@ -39,13 +39,16 @@ void main() {
     expect(unlock.eventLocation, isNull);
   });
 
-  test('also accepts http/https - needed for Flutter Web dev testing (app_links_web reports the page URL)', () {
-    final action = DeepLinkService.parse(
-      Uri.parse('https://example.com/open?modules=session_1'),
-    );
-    expect(action, isA<ShowOnlyModulesAction>());
-    expect((action as ShowOnlyModulesAction).sessionIds, ['session_1']);
-  });
+  test(
+    'also accepts http/https - needed for Flutter Web dev testing (app_links_web reports the page URL)',
+    () {
+      final action = DeepLinkService.parse(
+        Uri.parse('https://example.com/open?modules=session_1'),
+      );
+      expect(action, isA<ShowOnlyModulesAction>());
+      expect((action as ShowOnlyModulesAction).sessionIds, ['session_1']);
+    },
+  );
 
   test('ignores links with an unsupported scheme', () {
     expect(
@@ -126,6 +129,33 @@ void main() {
         ),
         isNull,
       );
+    },
+  );
+
+  test(
+    'parses the raw leaderKey - LeaderModeBloc checks it, not this service',
+    () {
+      final action = DeepLinkService.parse(
+        Uri.parse('dfl://open?leaderKey=some-value'),
+      );
+
+      expect(action, isA<LeaderKeyAction>());
+      expect((action as LeaderKeyAction).key, 'some-value');
+    },
+  );
+
+  test('ignores an empty leaderKey parameter', () {
+    expect(DeepLinkService.parse(Uri.parse('dfl://open?leaderKey=')), isNull);
+  });
+
+  test(
+    'leaderKey takes precedence over a modules parameter on the same link',
+    () {
+      final action = DeepLinkService.parse(
+        Uri.parse('dfl://open?leaderKey=some-value&modules=session_1'),
+      );
+
+      expect(action, isA<LeaderKeyAction>());
     },
   );
 }

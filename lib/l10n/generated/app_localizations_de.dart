@@ -442,6 +442,29 @@ class AppLocalizationsDe extends AppLocalizations {
   String get exportTitle => 'Abschluss-Export';
 
   @override
+  String get leaderInfoButton => 'Leiter-Info';
+
+  @override
+  String get leaderInfoTitle => 'Leiter-Info';
+
+  @override
+  String get leaderModeUnlocked => 'Leiter-Modus aktiviert.';
+
+  @override
+  String get leaderModeWrongKey =>
+      'Dieser Link enthält keinen gültigen Leiter-Schlüssel.';
+
+  @override
+  String get leaderModeSectionTitle => 'Leiter-Modus';
+
+  @override
+  String get leaderModeSectionGuidance =>
+      'Auf diesem Gerät ist der Leiter-Modus aktiv - in den Modulen ist zusätzlich der Leiter-Info-Button mit den Sprechernotizen sichtbar. Deaktivieren, bevor du das Gerät an einen Teilnehmer weitergibst.';
+
+  @override
+  String get leaderModeLockButton => 'Leiter-Modus deaktivieren';
+
+  @override
   String get backupTitle => 'Sicherung';
 
   @override

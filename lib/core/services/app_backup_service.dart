@@ -41,6 +41,7 @@ class AppBackupService {
     'SynthesisBloc',
     'GroupPhotoBloc',
     'TimelineModuleFilterBloc',
+    'LeaderModeBloc',
   ];
 
   static String exportJson() {

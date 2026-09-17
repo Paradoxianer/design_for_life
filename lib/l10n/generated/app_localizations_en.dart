@@ -437,6 +437,29 @@ class AppLocalizationsEn extends AppLocalizations {
   String get exportTitle => 'Final Export';
 
   @override
+  String get leaderInfoButton => 'Leader info';
+
+  @override
+  String get leaderInfoTitle => 'Leader info';
+
+  @override
+  String get leaderModeUnlocked => 'Leader mode enabled.';
+
+  @override
+  String get leaderModeWrongKey =>
+      'This link doesn\'t contain a valid leader key.';
+
+  @override
+  String get leaderModeSectionTitle => 'Leader Mode';
+
+  @override
+  String get leaderModeSectionGuidance =>
+      'Leader mode is active on this device - modules show an extra leader-info button with the speaker notes. Turn it off before handing this device to a participant.';
+
+  @override
+  String get leaderModeLockButton => 'Turn off leader mode';
+
+  @override
   String get backupTitle => 'Backup';
 
   @override

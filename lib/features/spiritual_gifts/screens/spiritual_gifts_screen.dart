@@ -42,7 +42,10 @@ class _SpiritualGiftsScreenState extends State<SpiritualGiftsScreen> {
     });
   }
 
-  ShareableContent _getShareableContent(BuildContext context, SpiritualGiftsState state) {
+  ShareableContent _getShareableContent(
+    BuildContext context,
+    SpiritualGiftsState state,
+  ) {
     final l10n = AppLocalizations.of(context);
     final rankedGifts = state.getRankedGifts();
     final topThree = rankedGifts.take(3).toList();
@@ -62,47 +65,53 @@ class _SpiritualGiftsScreenState extends State<SpiritualGiftsScreen> {
           '${l10n.shareGiftItem(i + 1, topThree[i].name)} '
               '(${l10n.giftsScorePoints(scores[topThree[i].id] ?? 0)})',
       ];
-      items.add(ShareableItem(
-        id: 'gifts_card',
-        label: l10n.giftsShareCardLabel,
-        textValue: giftTitles.join('\n'),
-        data: {
-          'type': 'text_card',
-          'entries': [
-            for (int i = 0; i < topThree.length; i++)
-              {
-                'title': '${l10n.shareGiftItem(i + 1, topThree[i].name)} '
-                    '(${l10n.giftsScorePoints(scores[topThree[i].id] ?? 0)})',
-                'body': topThree[i].description,
-              },
-            if (dormant.isNotEmpty) ...[
-              {'title': l10n.giftsDormantHeading, 'body': l10n.giftsDormantGuidance},
-              for (final gift in dormant)
+      items.add(
+        ShareableItem(
+          id: 'gifts_card',
+          label: l10n.giftsShareCardLabel,
+          textValue: giftTitles.join('\n'),
+          data: {
+            'type': 'text_card',
+            'entries': [
+              for (int i = 0; i < topThree.length; i++)
                 {
-                  'title': '${gift.name} (${l10n.giftsScorePoints(scores[gift.id] ?? 0)})',
-                  'body': gift.description,
+                  'title':
+                      '${l10n.shareGiftItem(i + 1, topThree[i].name)} '
+                      '(${l10n.giftsScorePoints(scores[topThree[i].id] ?? 0)})',
+                  'body': topThree[i].description,
                 },
+              if (dormant.isNotEmpty) ...[
+                {
+                  'title': l10n.giftsDormantHeading,
+                  'body': l10n.giftsDormantGuidance,
+                },
+                for (final gift in dormant)
+                  {
+                    'title':
+                        '${gift.name} (${l10n.giftsScorePoints(scores[gift.id] ?? 0)})',
+                    'body': gift.description,
+                  },
+              ],
             ],
-          ],
-        },
-      ));
+          },
+        ),
+      );
     }
 
     // Key Takeaways (Highlights)
     for (int i = 0; i < takeaways.length; i++) {
       if (takeaways[i].trim().isNotEmpty) {
-        items.add(ShareableItem(
-          id: 'gift_takeaway_$i',
-          label: l10n.shareHighlightItem(i + 1),
-          textValue: takeaways[i],
-        ));
+        items.add(
+          ShareableItem(
+            id: 'gift_takeaway_$i',
+            label: l10n.shareHighlightItem(i + 1),
+            textValue: takeaways[i],
+          ),
+        );
       }
     }
 
-    return ShareableContent(
-      title: l10n.spiritualGiftsTitle,
-      items: items,
-    );
+    return ShareableContent(title: l10n.spiritualGiftsTitle, items: items);
   }
 
   @override
@@ -114,6 +123,7 @@ class _SpiritualGiftsScreenState extends State<SpiritualGiftsScreen> {
         return DflModuleScaffold(
           title: widget.title,
           initialEditMode: widget.initialEditMode,
+          leaderNoteSessionId: widget.sessionId,
           shareableContent: shareContent.items.isNotEmpty ? shareContent : null,
           onShare: (selectedItems) {
             ShareService.shareContent(
@@ -132,7 +142,10 @@ class _SpiritualGiftsScreenState extends State<SpiritualGiftsScreen> {
     );
   }
 
-  Future<bool> _validateCompletion(BuildContext context, SpiritualGiftsState state) async {
+  Future<bool> _validateCompletion(
+    BuildContext context,
+    SpiritualGiftsState state,
+  ) async {
     final l10n = AppLocalizations.of(context);
     final totalQuestions = state.questionOrder.length;
     final answeredQuestions = state.answers.length;
@@ -142,7 +155,9 @@ class _SpiritualGiftsScreenState extends State<SpiritualGiftsScreen> {
         context: context,
         builder: (context) => AlertDialog(
           title: Text(l10n.giftsIncompleteTitle),
-          content: Text(l10n.giftsIncompleteMessage(answeredQuestions, totalQuestions)),
+          content: Text(
+            l10n.giftsIncompleteMessage(answeredQuestions, totalQuestions),
+          ),
           actions: [
             TextButton(
               onPressed: () => Navigator.pop(context, false),

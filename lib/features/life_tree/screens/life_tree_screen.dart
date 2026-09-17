@@ -112,6 +112,7 @@ class _LifeTreeScreenState extends State<LifeTreeScreen> {
         return DflModuleScaffold(
           title: widget.title,
           initialEditMode: widget.initialEditMode,
+          leaderNoteSessionId: widget.sessionId,
           shareableContent: _getShareableContent(
             context,
             entries,

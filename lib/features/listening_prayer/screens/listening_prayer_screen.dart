@@ -33,11 +33,13 @@ class ListeningPrayerScreen extends StatelessWidget {
     // Add Highlights first
     for (int i = 0; i < highlights.length; i++) {
       if (highlights[i].trim().isNotEmpty) {
-        items.add(ShareableItem(
-          id: 'lp_highlight_$i',
-          label: l10n.shareHighlightItem(i + 1),
-          textValue: highlights[i],
-        ));
+        items.add(
+          ShareableItem(
+            id: 'lp_highlight_$i',
+            label: l10n.shareHighlightItem(i + 1),
+            textValue: highlights[i],
+          ),
+        );
       }
     }
 
@@ -48,19 +50,18 @@ class ListeningPrayerScreen extends StatelessWidget {
       final hasImage = entry.imagePath != null && entry.imagePath!.isNotEmpty;
 
       if (hasText || hasImage) {
-        items.add(ShareableItem(
-          id: 'lp_impression_${entry.id}',
-          label: l10n.shareImpressionItem(i + 1),
-          textValue: hasText ? entry.text : null,
-          imagePath: hasImage ? entry.imagePath : null,
-        ));
+        items.add(
+          ShareableItem(
+            id: 'lp_impression_${entry.id}',
+            label: l10n.shareImpressionItem(i + 1),
+            textValue: hasText ? entry.text : null,
+            imagePath: hasImage ? entry.imagePath : null,
+          ),
+        );
       }
     }
 
-    return ShareableContent(
-      title: l10n.listeningPrayerTitle,
-      items: items,
-    );
+    return ShareableContent(title: l10n.listeningPrayerTitle, items: items);
   }
 
   @override
@@ -74,11 +75,16 @@ class ListeningPrayerScreen extends StatelessWidget {
             ? [DflEntry(id: 'initial_$sessionId')]
             : impressions;
 
-        final shareContent = _getShareableContent(context, impressions, highlights);
+        final shareContent = _getShareableContent(
+          context,
+          impressions,
+          highlights,
+        );
 
         return DflModuleScaffold(
           title: title,
           initialEditMode: initialEditMode,
+          leaderNoteSessionId: sessionId,
           shareableContent: shareContent.items.isNotEmpty ? shareContent : null,
           onShare: (selectedItems) {
             ShareService.shareContent(
@@ -100,7 +106,7 @@ class ListeningPrayerScreen extends StatelessWidget {
             },
           ),
           result: ListeningPrayerResult(
-            impressions: { 'Eindrücke': impressions },
+            impressions: {'Eindrücke': impressions},
             takeaways: highlights,
             onUpdate: (index, value) {
               context.read<ListeningPrayerBloc>().add(

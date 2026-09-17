@@ -45,7 +45,22 @@ class GiftReferenceResultAction extends DeepLinkAction {
   final String answersPayload;
   final String? label;
 
-  const GiftReferenceResultAction(this.assessmentId, this.answersPayload, {this.label});
+  const GiftReferenceResultAction(
+    this.assessmentId,
+    this.answersPayload, {
+    this.label,
+  });
+}
+
+/// `?leaderKey=...` (#83) - unlocks leader-only content (Sprechernotizen)
+/// on this device. Whether [key] is actually correct is checked downstream
+/// by LeaderModeBloc, which owns the secret - this service just extracts
+/// the raw value, same as it does for e.g. GiftReferenceInviteAction's
+/// assessmentId.
+class LeaderKeyAction extends DeepLinkAction {
+  final String key;
+
+  const LeaderKeyAction(this.key);
 }
 
 /// Listens for incoming `dfl://` links and turns them into [DeepLinkAction]s.
@@ -101,10 +116,22 @@ class DeepLinkService {
     if (flow == 'gift-reference-result') {
       final assessmentId = params['assessmentId'];
       final answers = params['answers'];
-      if (assessmentId == null || assessmentId.isEmpty || answers == null || answers.isEmpty) {
+      if (assessmentId == null ||
+          assessmentId.isEmpty ||
+          answers == null ||
+          answers.isEmpty) {
         return null;
       }
-      return GiftReferenceResultAction(assessmentId, answers, label: params['label']);
+      return GiftReferenceResultAction(
+        assessmentId,
+        answers,
+        label: params['label'],
+      );
+    }
+
+    final leaderKey = params['leaderKey'];
+    if (leaderKey != null && leaderKey.isNotEmpty) {
+      return LeaderKeyAction(leaderKey);
     }
 
     final modulesParam = params['modules'];
@@ -130,7 +157,8 @@ class DeepLinkService {
   /// no OS-level install or Universal Link verification needed. Swap this
   /// for a `dfl://` (or a verified `https://`) base once native
   /// distribution exists.
-  static const String webLinkBase = 'https://paradoxianer.github.io/design_for_life/';
+  static const String webLinkBase =
+      'https://paradoxianer.github.io/design_for_life/';
 
   static Uri buildWebLink(Map<String, String> queryParameters) {
     return Uri.parse(webLinkBase).replace(queryParameters: queryParameters);

@@ -98,6 +98,11 @@ class _ValuesAssessmentScreenState extends State<ValuesAssessmentScreen> {
           key: _scaffoldKey,
           title: widget.title,
           initialEditMode: widget.initialEditMode,
+          // Values has no dynamic sessionId of its own (single global
+          // route) - it's always the Leiterheft's "Werte" content, which
+          // leader_notes_de.json keys as session_6 (timeline_config.json's
+          // id for module_values).
+          leaderNoteSessionId: 'session_6',
           onWillToggleMode: () async {
             return await _validateCompletion(context, state);
           },
