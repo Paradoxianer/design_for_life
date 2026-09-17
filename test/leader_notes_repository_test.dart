@@ -29,6 +29,35 @@ void main() {
     expect(firstQuote.text, isNotEmpty);
   });
 
+  test('covers every session id that has Leiterheft content today', () async {
+    final sessions = await LeaderNotesRepository().loadSessions('de');
+
+    // Matches assets/config/timeline_config.json's session ids - every
+    // "Einheit" from the Leiterheft plus the modules it interleaves with
+    // (Lebensbaum, Gaben, Werte). Sessions without printed leader notes
+    // (Gruppenfoto, Feedback, Persönlichkeitsprofil, Imagine, Verknüpfungen)
+    // are intentionally absent rather than present-but-empty.
+    expect(sessions.keys.toSet(), {
+      'session_1',
+      'session_2',
+      'session_3',
+      'session_4',
+      'session_5',
+      'session_6',
+      'session_7',
+      'session_9',
+      'session_10',
+    });
+
+    for (final entry in sessions.entries) {
+      expect(
+        entry.value.sections,
+        isNotEmpty,
+        reason: '${entry.key} has a title but no content',
+      );
+    }
+  });
+
   test(
     'falls back to German for a locale with no leader notes file yet',
     () async {
