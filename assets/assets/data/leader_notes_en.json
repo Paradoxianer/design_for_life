@@ -696,5 +696,48 @@
         ]
       }
     ]
+  },
+  "session_checklist": {
+    "sessionTitle": "Checklist",
+    "sections": [
+      {
+        "heading": "Preparation timeline",
+        "blocks": [
+          {
+            "type": "bulletList",
+            "items": [
+              "Set the date",
+              "Ask about venues",
+              "Recruit team members",
+              "Advertise",
+              "Train team members",
+              "Organize food",
+              "Registration deadline",
+              "Order participant booklets",
+              "Send participant letter",
+              "Buy materials",
+              "Follow up with participants"
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "Materials needed",
+        "blocks": [
+          {
+            "type": "bulletList",
+            "items": [
+              "Flipchart",
+              "Pens",
+              "Decoration/candles",
+              "Bibles",
+              "Music",
+              "Projector",
+              "Camera"
+            ]
+          }
+        ]
+      }
+    ]
   }
 }

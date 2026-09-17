@@ -676,5 +676,48 @@
         ]
       }
     ]
+  },
+  "session_checklist": {
+    "sessionTitle": "Checkliste",
+    "sections": [
+      {
+        "heading": "Vorbereitungs-Zeitplan",
+        "blocks": [
+          {
+            "type": "bulletList",
+            "items": [
+              "Termin festlegen",
+              "Häuser anfragen",
+              "Mitarbeiter ansprechen",
+              "Werbung",
+              "Mitarbeiter schulen",
+              "Essen organisieren",
+              "Anmeldeschluss",
+              "Teilnehmerhefte anfordern",
+              "Teilnehmerbrief rausschicken",
+              "Material einkaufen",
+              "Bei Teilnehmern nachhaken"
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "Benötigtes Material",
+        "blocks": [
+          {
+            "type": "bulletList",
+            "items": [
+              "Flipchart",
+              "Stifte",
+              "Deko/Kerzen",
+              "Bibeln",
+              "Musik",
+              "Beamer",
+              "Kamera"
+            ]
+          }
+        ]
+      }
+    ]
   }
 }
