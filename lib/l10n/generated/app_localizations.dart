@@ -1421,7 +1421,7 @@ abstract class AppLocalizations {
   /// No description provided for @timelineSynthesisDesc.
   ///
   /// In en, this message translates to:
-  /// **'Discover connections'**
+  /// **'Put your results from life tree, gifts, values, profile, prayer and goals side by side and capture your key takeaways.'**
   String get timelineSynthesisDesc;
 
   /// No description provided for @timelineImagineTitle.
@@ -1433,7 +1433,7 @@ abstract class AppLocalizations {
   /// No description provided for @timelineImagineDesc.
   ///
   /// In en, this message translates to:
-  /// **'Shape future images and capture your thoughts for the next life phase.'**
+  /// **'Choose images for your past and your future and capture your key takeaways.'**
   String get timelineImagineDesc;
 
   /// No description provided for @timelineUnavailable.

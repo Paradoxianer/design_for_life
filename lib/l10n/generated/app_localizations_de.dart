@@ -757,14 +757,15 @@ class AppLocalizationsDe extends AppLocalizations {
   String get timelineSynthesisTitle => 'Verknüpfungen';
 
   @override
-  String get timelineSynthesisDesc => 'Entdecke Zusammenhänge';
+  String get timelineSynthesisDesc =>
+      'Stelle die Ergebnisse aus Lebensbaum, Gaben, Werten, Profil, Gebet und Zielen nebeneinander und halte deine wichtigsten Erkenntnisse fest.';
 
   @override
   String get timelineImagineTitle => 'Imagine';
 
   @override
   String get timelineImagineDesc =>
-      'Gestalte Zukunftsbilder und halte deine Gedanken zur nächsten Lebensphase fest.';
+      'Wähle Bilder für deine Vergangenheit und deine Zukunft und halte deine wichtigsten Erkenntnisse fest.';
 
   @override
   String get timelineUnavailable =>

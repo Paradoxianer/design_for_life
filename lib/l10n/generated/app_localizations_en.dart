@@ -749,14 +749,15 @@ class AppLocalizationsEn extends AppLocalizations {
   String get timelineSynthesisTitle => 'Connections';
 
   @override
-  String get timelineSynthesisDesc => 'Discover connections';
+  String get timelineSynthesisDesc =>
+      'Put your results from life tree, gifts, values, profile, prayer and goals side by side and capture your key takeaways.';
 
   @override
   String get timelineImagineTitle => 'Imagine';
 
   @override
   String get timelineImagineDesc =>
-      'Shape future images and capture your thoughts for the next life phase.';
+      'Choose images for your past and your future and capture your key takeaways.';
 
   @override
   String get timelineUnavailable =>
