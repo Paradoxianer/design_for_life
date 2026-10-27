@@ -27,7 +27,6 @@ dependencies:
 
   # UI Components
   flutter_svg: ^2.0.9
-  google_fonts: ^6.1.0
   graphview: ^1.2.0
   
   # Media & Files
@@ -59,3 +58,20 @@ flutter:
     - assets/Logo.de.png
     - assets/Logo.en.png
     - assets/fonts/
+
+  # Schriften liegen lokal im Projekt (SIL Open Font License, siehe
+  # assets/fonts/OFL-*.txt). Es werden bewusst keine Schriften von Google-
+  # Servern nachgeladen (Datenschutz).
+  fonts:
+    - family: Inter
+      fonts:
+        - asset: assets/fonts/Inter-Light.ttf
+          weight: 300
+        - asset: assets/fonts/Inter-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/Inter-SemiBold.ttf
+          weight: 600
+    - family: PlayfairDisplay
+      fonts:
+        - asset: assets/fonts/PlayfairDisplay-Bold.ttf
+          weight: 700

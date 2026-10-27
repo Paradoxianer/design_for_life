@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class AppTheme {
   // Primary Colors (Growth & Life)
@@ -25,20 +24,24 @@ class AppTheme {
       
       // Typography
       textTheme: TextTheme(
-        displayLarge: GoogleFonts.playfairDisplay(
+        displayLarge: TextStyle(
+          fontFamily: 'PlayfairDisplay',
           fontSize: 24,
           fontWeight: FontWeight.bold,
           color: forestGreen,
         ),
-        titleMedium: GoogleFonts.inter(
+        titleMedium: TextStyle(
+          fontFamily: 'Inter',
           fontSize: 18,
           fontWeight: FontWeight.w600,
         ),
-        bodyLarge: GoogleFonts.inter(
+        bodyLarge: TextStyle(
+          fontFamily: 'Inter',
           fontSize: 16,
           fontWeight: FontWeight.normal,
         ),
-        labelSmall: GoogleFonts.inter(
+        labelSmall: TextStyle(
+          fontFamily: 'Inter',
           fontSize: 12,
           fontWeight: FontWeight.w300,
         ),
