@@ -713,7 +713,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get session6Title => 'Values';
 
   @override
-  String get session6Desc => 'Connections to spiritual gifts + life tree.';
+  String get session6Desc =>
+      'Find your eight most important values and describe what they mean to you.';
 
   @override
   String get session7Title => 'Session Four: Pray, Dream, Listen!';
