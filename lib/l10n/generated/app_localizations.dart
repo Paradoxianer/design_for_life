@@ -1355,7 +1355,7 @@ abstract class AppLocalizations {
   /// No description provided for @session6Desc.
   ///
   /// In en, this message translates to:
-  /// **'Connections to spiritual gifts + life tree.'**
+  /// **'Find your eight most important values and describe what they mean to you.'**
   String get session6Desc;
 
   /// No description provided for @session7Title.
