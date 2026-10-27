@@ -9,7 +9,9 @@ The app has no backend (see `docs/technical/architecture.md` for the aspirationa
 
 ## Base URL
 
-Links are built on **`https://paradoxianer.github.io/design_for_life/`** (`DeepLinkService.webLinkBase`), the GitHub Pages build auto-deployed on every push to `main` (`.github/workflows/deploy.yml`). This is a deliberate "for now" choice:
+On **Flutter Web**, links are built on the address the app is currently running at (`DeepLinkService.resolveWebLinkBase(Uri.base)`): scheme, host, port and the directory part of the path are kept; query, fragment and a file name like `index.html` are dropped. A copy hosted at `https://dfl.heilsarmee.de/` therefore creates links to itself, a copy in a sub-folder (`https://www.heilsarmee.de/dfl/`) keeps that folder, and local development (`http://localhost:8901/`) creates `localhost` links. No configuration is needed when the app is deployed somewhere new.
+
+Everywhere else (native apps, tests, or a page that isn't http/https) links fall back to **`https://paradoxianer.github.io/design_for_life/`** (`DeepLinkService.webLinkBase`), the GitHub Pages build auto-deployed on every push to `main` (`.github/workflows/deploy.yml`). This is a deliberate "for now" choice:
 
 - No app-store presence yet, so there's nothing for a native install link to open on most recipients' phones.
 - No real Android `applicationId` or release-keystore SHA256 fingerprint, and no real iOS bundle id / Apple Team ID yet (still Flutter template placeholders, see #37) - both are prerequisites for real, OS-verified Universal/App Links.
@@ -92,7 +94,7 @@ Then, in the address bar (full navigation - type/paste and press Enter):
 
 - Module filter: `http://localhost:8901/?modules=session_1&date=2026-08-01&location=Testort`
 - Gift-reference invite: `http://localhost:8901/?flow=gift-reference&assessmentId=test1`
-- Gift-reference result import: complete the mini-flow above, copy everything **after the `?`** from the generated link, and paste it after `http://localhost:8901/?` instead (the generated link itself uses the production `https://paradoxianer.github.io/...` host, which isn't your local build).
+- Gift-reference result import: complete the mini-flow above and open the generated link. When run on Web, it points to the host the app runs on (here `http://localhost:8901/`), so it can be pasted into the address bar as is. Only a native build still generates `https://paradoxianer.github.io/...` links; for those, copy everything **after the `?`** and paste it after `http://localhost:8901/?`.
 
 ## Known limitations / future work
 

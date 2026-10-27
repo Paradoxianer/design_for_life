@@ -39,7 +39,7 @@ void main() {
     expect(GiftReferenceLinkService.decodeAnswers('3:5x', questions), isNull);
   });
 
-  test('builds invite and result links on the GitHub Pages web base', () {
+  test('builds invite and result links on the fallback web base outside a browser', () {
     final invite = GiftReferenceLinkService.buildInviteLink('ref_123');
     final inviteUri = Uri.parse(invite);
     expect(inviteUri.scheme, 'https');
