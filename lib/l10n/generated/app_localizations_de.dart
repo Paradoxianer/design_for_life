@@ -721,7 +721,8 @@ class AppLocalizationsDe extends AppLocalizations {
   String get session6Title => 'Werte';
 
   @override
-  String get session6Desc => 'Zusammenhänge zu den Gaben + Lebensbaum.';
+  String get session6Desc =>
+      'Finde deine acht wichtigsten Werte heraus und beschreibe, was sie für dich bedeuten.';
 
   @override
   String get session7Title => 'Einheit Vier: Bete, Träume, Höre!';
