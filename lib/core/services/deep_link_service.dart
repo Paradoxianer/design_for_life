@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:app_links/app_links.dart';
+import 'package:flutter/foundation.dart' show kIsWeb;
 
 /// Parsed representation of a supported deep link (#49): either restricting
 /// the visible timeline modules, or one of the two "Gaben-Referenz"
@@ -151,16 +152,54 @@ class DeepLinkService {
     );
   }
 
-  /// Standard link base while there's no native app-store presence yet
+  /// Fallback link base while there's no native app-store presence yet
   /// (#37): the GitHub Pages web build (auto-deployed on every push to
   /// `main` via .github/workflows/deploy.yml) works everywhere - a browser,
   /// no OS-level install or Universal Link verification needed. Swap this
   /// for a `dfl://` (or a verified `https://`) base once native
   /// distribution exists.
+  ///
+  /// On Flutter Web this is only used if the running page's own address
+  /// can't serve as a base (see [resolveWebLinkBase]); native builds always
+  /// use it.
   static const String webLinkBase =
       'https://paradoxianer.github.io/design_for_life/';
 
-  static Uri buildWebLink(Map<String, String> queryParameters) {
-    return Uri.parse(webLinkBase).replace(queryParameters: queryParameters);
+  /// Works out the base URL that links should be built on.
+  ///
+  /// When the app runs in a browser ([runningAt] is the page's own address,
+  /// i.e. `Uri.base`), links point back to wherever the app is actually
+  /// hosted - so a copy on e.g. `https://dfl.heilsarmee.de/` creates links
+  /// to itself instead of to GitHub Pages. Only scheme, host, port and the
+  /// directory part of the path are kept; query, fragment (hash routing)
+  /// and a trailing file name such as `index.html` are dropped.
+  ///
+  /// Returns the [webLinkBase] fallback when [runningAt] is null or isn't an
+  /// http(s) address with a host (native apps, tests, `file://`).
+  static Uri resolveWebLinkBase(Uri? runningAt) {
+    if (runningAt == null ||
+        (runningAt.scheme != 'http' && runningAt.scheme != 'https') ||
+        runningAt.host.isEmpty) {
+      return Uri.parse(webLinkBase);
+    }
+    final path = runningAt.path;
+    final directory = path.substring(0, path.lastIndexOf('/') + 1);
+    return Uri(
+      scheme: runningAt.scheme,
+      host: runningAt.host,
+      port: runningAt.hasPort ? runningAt.port : null,
+      path: directory.isEmpty ? '/' : directory,
+    );
+  }
+
+  /// Builds a link with [queryParameters] on the current web base (see
+  /// [resolveWebLinkBase]). [runningAt] defaults to the page's own address on
+  /// Web and to null elsewhere; it only needs to be passed in tests.
+  static Uri buildWebLink(
+    Map<String, String> queryParameters, {
+    Uri? runningAt,
+  }) {
+    final base = resolveWebLinkBase(runningAt ?? (kIsWeb ? Uri.base : null));
+    return base.replace(queryParameters: queryParameters);
   }
 }

@@ -158,4 +158,60 @@ void main() {
       expect(action, isA<LeaderKeyAction>());
     },
   );
+
+  group('web link base', () {
+    test('falls back to GitHub Pages outside a browser', () {
+      expect(
+        DeepLinkService.resolveWebLinkBase(null).toString(),
+        DeepLinkService.webLinkBase,
+      );
+      expect(
+        DeepLinkService.resolveWebLinkBase(Uri.parse('file:///tmp/app/')),
+        Uri.parse(DeepLinkService.webLinkBase),
+      );
+    });
+
+    test('follows the host the web app runs on', () {
+      expect(
+        DeepLinkService.resolveWebLinkBase(
+          Uri.parse('https://dfl.heilsarmee.de/'),
+        ).toString(),
+        'https://dfl.heilsarmee.de/',
+      );
+    });
+
+    test('keeps the sub-folder but drops file name, query and hash', () {
+      expect(
+        DeepLinkService.resolveWebLinkBase(
+          Uri.parse(
+            'https://www.heilsarmee.de/dfl/index.html?modules=session_1#/notes',
+          ),
+        ).toString(),
+        'https://www.heilsarmee.de/dfl/',
+      );
+    });
+
+    test('keeps an explicit port, e.g. for local development', () {
+      expect(
+        DeepLinkService.resolveWebLinkBase(
+          Uri.parse('http://localhost:8901/'),
+        ).toString(),
+        'http://localhost:8901/',
+      );
+    });
+
+    test('buildWebLink attaches the query parameters to the resolved base', () {
+      final link = DeepLinkService.buildWebLink(
+        {'flow': 'gift-reference', 'assessmentId': 'ref_1'},
+        runningAt: Uri.parse('https://dfl.heilsarmee.de/?modules=session_1'),
+      );
+
+      expect(link.host, 'dfl.heilsarmee.de');
+      expect(link.path, '/');
+      expect(link.queryParameters, {
+        'flow': 'gift-reference',
+        'assessmentId': 'ref_1',
+      });
+    });
+  });
 }
