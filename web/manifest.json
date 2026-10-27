@@ -1,11 +1,11 @@
 {
-    "name": "design_for_life",
-    "short_name": "design_for_life",
+    "name": "Design for Life",
+    "short_name": "DFL",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
+    "description": "Design for Life - die App zum DFL-Wochenende der Heilsarmee",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [
