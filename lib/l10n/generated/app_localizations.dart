@@ -1412,6 +1412,12 @@ abstract class AppLocalizations {
   /// **'Group Photo'**
   String get session11Title;
 
+  /// No description provided for @session11Desc.
+  ///
+  /// In en, this message translates to:
+  /// **'Capture your shared moments from the weekend.'**
+  String get session11Desc;
+
   /// No description provided for @timelineSynthesisTitle.
   ///
   /// In en, this message translates to:
@@ -1447,6 +1453,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Feedback Form'**
   String get session12Title;
+
+  /// No description provided for @session12Desc.
+  ///
+  /// In en, this message translates to:
+  /// **'Give us your feedback on the seminar.'**
+  String get session12Desc;
 
   /// No description provided for @session13Title.
   ///

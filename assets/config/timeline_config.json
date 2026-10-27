@@ -134,6 +134,7 @@
       "moduleId": "module_group_photo",
       "order": 120,
       "titleKey": "session11Title",
+      "descriptionKey": "session11Desc",
       "type": "other",
       "enabled": true
     },
@@ -142,6 +143,7 @@
       "moduleId": "module_feedback",
       "order": 130,
       "titleKey": "session12Title",
+      "descriptionKey": "session12Desc",
       "type": "other",
       "enabled": true
     }

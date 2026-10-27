@@ -746,6 +746,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get session11Title => 'Group Photo';
 
   @override
+  String get session11Desc => 'Capture your shared moments from the weekend.';
+
+  @override
   String get timelineSynthesisTitle => 'Connections';
 
   @override
@@ -764,6 +767,9 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get session12Title => 'Feedback Form';
+
+  @override
+  String get session12Desc => 'Give us your feedback on the seminar.';
 
   @override
   String get session13Title => 'Personal Style Profile';

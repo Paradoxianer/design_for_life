@@ -725,7 +725,7 @@ class AppLocalizationsDe extends AppLocalizations {
       'Finde deine acht wichtigsten Werte heraus und beschreibe, was sie für dich bedeuten.';
 
   @override
-  String get session7Title => 'Einheit Vier: Bete, Träume, Höre!';
+  String get session7Title => 'Einheit Vier: Bete, träume, höre!';
 
   @override
   String get session7Desc =>
@@ -739,7 +739,7 @@ class AppLocalizationsDe extends AppLocalizations {
       'The Big Picture I (Collage) aus Lebensbaum, Gaben, Werten und hörendem Gebet.';
 
   @override
-  String get session9Title => 'Einheit Fünf: Weißt Du den Weg nach San Jose';
+  String get session9Title => 'Einheit Fünf: Weißt du den Weg nach San Jose';
 
   @override
   String get session9Desc => 'Ausblick und nächste Schritte.';
@@ -752,6 +752,9 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get session11Title => 'Gruppenfoto';
+
+  @override
+  String get session11Desc => 'Haltet die gemeinsamen Momente vom Wochenende fest.';
 
   @override
   String get timelineSynthesisTitle => 'Verknüpfungen';
@@ -772,6 +775,9 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get session12Title => 'Feedbackbogen';
+
+  @override
+  String get session12Desc => 'Gib uns deine Rückmeldung zum Seminar.';
 
   @override
   String get session13Title => 'Persönlichkeitsprofil';

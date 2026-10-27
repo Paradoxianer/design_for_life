@@ -103,12 +103,14 @@ class StaticTimelineData {
       DflSession(
         id: 'session_11',
         title: l10n.session11Title,
+        description: l10n.session11Desc,
         type: SessionType.other,
         moduleId: 'module_group_photo',
       ),
       DflSession(
         id: 'session_12',
         title: l10n.session12Title,
+        description: l10n.session12Desc,
         type: SessionType.other,
         moduleId: 'module_feedback',
       ),
