@@ -1030,17 +1030,71 @@ class AppLocalizationsEn extends AppLocalizations {
   String get leaderTemplateSchedulesTitle => 'Schedules: listening prayer & conversations';
 
   @override
-  String get leaderTemplateSchedulesDescription => 'Blank schedules to fill in (Word file).';
+  String get leaderTemplateSchedulesDescription => 'Blank schedules to print (PDF).';
 
   @override
   String get leaderTemplateCertificateTitle => 'Certificate';
 
   @override
-  String get leaderTemplateCertificateDescription => 'Certificate of participation to print (OpenDocument file, e.g. LibreOffice or Word).';
+  String get leaderTemplateCertificateDescription => 'Certificate of participation as a PDF – with names entered here or to fill in by hand.';
 
   @override
   String get leaderTemplateError => 'The template could not be opened.';
 
   @override
   String get leaderDownload => 'Download';
+
+  @override
+  String get certificateTitle => 'Certificate';
+
+  @override
+  String get certificateParticipated => 'has successfully taken part in the course';
+
+  @override
+  String get certificateCourse => 'Design for Life – Discover God\'s plan for your life';
+
+  @override
+  String get certificateDescription => 'Through reflection on life events, gifts and values, possible directions for the personal path of life with God were worked out in prayer.';
+
+  @override
+  String get certificateVerse => 'For we are God\'s masterpiece. He has created us anew in Christ Jesus, so we can do the good things he planned for us long ago.';
+
+  @override
+  String get certificateVerseRef => 'Ephesians 2:10';
+
+  @override
+  String get certificateSignature => 'Signature';
+
+  @override
+  String get certificatePlaceDate => 'Place, date';
+
+  @override
+  String get scheduleTime => 'Time';
+
+  @override
+  String get scheduleWho => 'Who';
+
+  @override
+  String get scheduleConversationLeader => 'Conversation leader';
+
+  @override
+  String get scheduleListeningPrayerTitle => 'Listening prayer';
+
+  @override
+  String get scheduleConversationTitle => 'Personal conversation';
+
+  @override
+  String get leaderCertificateNames => 'Names (one per line)';
+
+  @override
+  String get leaderCertificateNamesHint => 'Leave empty to write the name by hand.';
+
+  @override
+  String get leaderCertificatePlace => 'Place';
+
+  @override
+  String get leaderCertificateDate => 'Date';
+
+  @override
+  String get leaderCertificateCreate => 'Create certificates';
 }

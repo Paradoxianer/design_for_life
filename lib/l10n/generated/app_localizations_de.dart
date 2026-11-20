@@ -1040,17 +1040,71 @@ class AppLocalizationsDe extends AppLocalizations {
   String get leaderTemplateSchedulesTitle => 'Zeitpläne: Hörendes Gebet & Gespräche';
 
   @override
-  String get leaderTemplateSchedulesDescription => 'Leere Zeitpläne zum Ausfüllen (Word-Datei).';
+  String get leaderTemplateSchedulesDescription => 'Leere Zeitpläne zum Ausdrucken (PDF).';
 
   @override
   String get leaderTemplateCertificateTitle => 'Urkunde';
 
   @override
-  String get leaderTemplateCertificateDescription => 'Teilnahme-Urkunde zum Ausdrucken (OpenDocument-Datei, z. B. mit LibreOffice oder Word).';
+  String get leaderTemplateCertificateDescription => 'Teilnahme-Urkunde als PDF – mit Namen aus der App oder zum Handausfüllen.';
 
   @override
   String get leaderTemplateError => 'Die Vorlage konnte nicht geöffnet werden.';
 
   @override
   String get leaderDownload => 'Herunterladen';
+
+  @override
+  String get certificateTitle => 'Zertifikat';
+
+  @override
+  String get certificateParticipated => 'hat erfolgreich am Kurs';
+
+  @override
+  String get certificateCourse => 'Design for Life – Den Plan Gottes für dein Leben entdecken';
+
+  @override
+  String get certificateDescription => 'Durch Reflexion von Lebensereignissen, Gaben und Werten wurde im Gebet mögliche Richtungen für den persönlichen Lebensweg mit Gott herausgearbeitet.';
+
+  @override
+  String get certificateVerse => 'Denn was wir sind, ist Gottes Werk; er hat uns durch Jesus Christus dazu geschaffen, das zu tun, was gut und richtig ist. Gott hat alles, was wir tun sollen, vorbereitet; an uns ist es nun, das Vorbereitete auszuführen.';
+
+  @override
+  String get certificateVerseRef => 'Epheser 2,10';
+
+  @override
+  String get certificateSignature => 'Unterschrift';
+
+  @override
+  String get certificatePlaceDate => 'Ort, Datum';
+
+  @override
+  String get scheduleTime => 'Uhrzeit';
+
+  @override
+  String get scheduleWho => 'Wer';
+
+  @override
+  String get scheduleConversationLeader => 'Gesprächsleiter';
+
+  @override
+  String get scheduleListeningPrayerTitle => 'Hörendes Gebet';
+
+  @override
+  String get scheduleConversationTitle => 'Persönliches Gespräch';
+
+  @override
+  String get leaderCertificateNames => 'Namen (einer pro Zeile)';
+
+  @override
+  String get leaderCertificateNamesHint => 'Leer lassen, um den Namen von Hand einzutragen.';
+
+  @override
+  String get leaderCertificatePlace => 'Ort';
+
+  @override
+  String get leaderCertificateDate => 'Datum';
+
+  @override
+  String get leaderCertificateCreate => 'Urkunden erstellen';
 }
