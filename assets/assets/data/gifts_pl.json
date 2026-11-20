@@ -1,0 +1,1077 @@
+[
+  {
+    "id": "G01",
+    "name": "Słowo mądrości",
+    "originalWord": "λόγος σοφίας (lógos sophías, Gr.); חָכְמָה (chokhmáh, Hebr.)",
+    "meaning": "Nadprzyrodzone słowo, które objawia Boży plan lub rozwiązanie",
+    "bibleReferences": [
+      "1 Cor 12:8",
+      "Jas 1:5",
+      "1 Kgs 3:5-12",
+      "Ex 31:3",
+      "Prov 2:6"
+    ],
+    "description": "Dar słowa mądrości oznacza słowo lub wgląd dany przez Ducha Świętego, który objawia Boże spojrzenie, plan lub rozwiązanie w konkretnej sytuacji. Greckie „logos sophias” nie oznacza mądrości ogólnej, lecz szczególne, odnoszące się do sytuacji przemówienie Boga. W Biblii dar ten widać np. u Salomona (1 Krl 3), u apostołów przy trudnych decyzjach (Dz 6; Dz 15) oraz u samego Jezusa, który objawiał Bożą mądrość w sytuacjach konfliktu. Dar ten wnosi jasność, orientację i Bożą strategię w złożone sytuacje oraz służy prowadzeniu i budowaniu zboru.",
+    "questions": [
+      {
+        "id": "G01_Q1",
+        "type": "experience",
+        "text": "Doświadczyłem(-am), że Bóg pokazuje mi zaskakująco jasne rozwiązania."
+      },
+      {
+        "id": "G01_Q2",
+        "type": "experience",
+        "text": "Inni często proszą mnie o radę w trudnych sytuacjach."
+      },
+      {
+        "id": "G01_Q3",
+        "type": "experience",
+        "text": "Czuję wewnętrzną jasność przy złożonych decyzjach."
+      },
+      {
+        "id": "G01_Q4",
+        "type": "nature",
+        "text": "Sprawia mi radość pomagać ludziom podejmować dobre decyzje przed Bogiem."
+      },
+      {
+        "id": "G01_Q5",
+        "type": "nature",
+        "text": "Zależy mi na tym, by przy zakleszczonych problemach znajdować Boże strategie zamiast ludzkich kompromisów."
+      },
+      {
+        "id": "G01_Q6",
+        "type": "feedback",
+        "text": "Inni mówią, że moje rady pomogły im jasno zobaczyć Bożą wolę w kryzysie."
+      },
+      {
+        "id": "G01_Q7",
+        "type": "feedback",
+        "text": "Widzę, że moja rada trwale pomogła ludziom."
+      },
+      {
+        "id": "G01_Q8",
+        "type": "reference",
+        "text": "Zauważyłem(-am), że ta osoba w trudnych sytuacjach wnosi pomocne i dobrze przemyślane rozwiązania."
+      },
+      {
+        "id": "G01_Q9",
+        "type": "reference",
+        "text": "Wkład tej osoby często pomaga innym podejmować dobre decyzje."
+      }
+    ]
+  },
+  {
+    "id": "G02",
+    "name": "Słowo poznania",
+    "originalWord": "λόγος γνώσεως (lógos gnóseōs, Gr.)",
+    "meaning": "Nadprzyrodzona wiedza lub wgląd w tajemnice Boga",
+    "bibleReferences": [
+      "1 Cor 12:8",
+      "1 Cor 13:2"
+    ],
+    "description": "Słowo poznania oznacza wgląd lub informację o osobie, sytuacji albo rzeczywistości duchowej, podaną przez Ducha Świętego, której nie można było uzyskać drogą naturalnego poznania. Pojęcie „logos gnoseos” oznacza konkretne objawienie wiedzy. W Biblii dar ten widać np. u Piotra, który rozpoznaje oszustwo Ananiasza (Dz 5), albo u Jezusa, który zna myśli i sytuacje życiowe ludzi (J 4). Dar ten służy temu, by wydobyć prawdę na światło, pomagać ludziom i uczynić widocznym działanie Boga.",
+    "questions": [
+      {
+        "id": "G02_Q1",
+        "type": "experience",
+        "text": "Bóg dał mi w modlitwie konkretny obraz lub słowo dotyczące sytuacji innej osoby."
+      },
+      {
+        "id": "G02_Q2",
+        "type": "experience",
+        "text": "Czy były chwile, gdy poznałeś(-aś) rzeczy o jakiejś sytuacji, których wcześniej nie mogłeś(-aś) znać?"
+      },
+      {
+        "id": "G02_Q3",
+        "type": "experience",
+        "text": "Czy doświadczyłeś(-aś), że Bóg dał ci szczególny wgląd w ludzi lub sytuacje?"
+      },
+      {
+        "id": "G02_Q4",
+        "type": "nature",
+        "text": "Pragnę, aby Bóg objawiał mi „tajemnice”, bym mógł(-mogła) służyć ludziom bardziej celowo."
+      },
+      {
+        "id": "G02_Q5",
+        "type": "nature",
+        "text": "Chcę głębiej rozumieć Boże myśli i prawdy."
+      },
+      {
+        "id": "G02_Q6",
+        "type": "feedback",
+        "text": "Inni dzięki moim spostrzeżeniom zyskują nową jasność w sprawach duchowych."
+      },
+      {
+        "id": "G02_Q7",
+        "type": "feedback",
+        "text": "Czuję przynaglenie, by wydobywać ukryte rzeczy na światło."
+      },
+      {
+        "id": "G02_Q8",
+        "type": "reference",
+        "text": "Zauważyłem(-am), że ta osoba dostrzega związki, które inni na początku pomijają."
+      },
+      {
+        "id": "G02_Q9",
+        "type": "reference",
+        "text": "Spostrzeżenia tej osoby pomagają innym lepiej rozumieć sytuacje."
+      }
+    ]
+  },
+  {
+    "id": "G03",
+    "name": "Wiara",
+    "originalWord": "πίστις (pístis, Gr.)",
+    "meaning": "Szczególna, cudotwórcza wiara, która przenosi góry",
+    "bibleReferences": [
+      "1 Cor 12:9",
+      "1 Cor 13:2",
+      "Matt 17:20",
+      "Heb 11"
+    ],
+    "description": "Dar wiary to szczególna pewność, wzbudzona przez Ducha Świętego, że Bóg w danej sytuacji zadziała. Wykracza ona poza ogólną wiarę zbawczą i jest nadprzyrodzonym zaufaniem do Bożej mocy i obietnic. Greckie „pistis” oznacza tu silne, niezachwiane zaufanie do Bożego działania. W Biblii dar ten widać u takich osób jak Abraham (Rz 4) czy apostołowie, którzy odważnie oczekują Bożego działania. Dar ten umacnia innych w wierze i otwiera przestrzeń dla nadprzyrodzonej interwencji Boga.",
+    "questions": [
+      {
+        "id": "G03_Q1",
+        "type": "experience",
+        "text": "Czy doświadczyłeś(-aś), że szczególnie ufałeś(-aś) Bogu w pozornie niemożliwych sytuacjach?"
+      },
+      {
+        "id": "G03_Q2",
+        "type": "experience",
+        "text": "Czy były chwile, gdy twoje zaufanie do Boga dodało otuchy innym?"
+      },
+      {
+        "id": "G03_Q3",
+        "type": "experience",
+        "text": "Czy sytuacje zmieniły się na dobre dzięki twojej wierze?"
+      },
+      {
+        "id": "G03_Q4",
+        "type": "nature",
+        "text": "Ufam, że Bóg może czynić także wielkie i niemożliwe rzeczy."
+      },
+      {
+        "id": "G03_Q5",
+        "type": "nature",
+        "text": "Czuję motywację, by ufać Bogu także wtedy, gdy inni wątpią."
+      },
+      {
+        "id": "G03_Q6",
+        "type": "feedback",
+        "text": "Moje zaufanie do Boga często umacnia wiarę innych ludzi."
+      },
+      {
+        "id": "G03_Q7",
+        "type": "feedback",
+        "text": "Dzięki mojemu trwaniu przy Bożej obietnicy osiągnięto cele, z których zespół/zbór dawno zrezygnował."
+      },
+      {
+        "id": "G03_Q8",
+        "type": "reference",
+        "text": "Doświadczyłem(-am), że ta osoba także w trudnych sytuacjach mocno ufa, że Bóg może działać."
+      },
+      {
+        "id": "G03_Q9",
+        "type": "reference",
+        "text": "Zaufanie tej osoby widocznie dodaje otuchy i umacnia innych ludzi."
+      }
+    ]
+  },
+  {
+    "id": "G04",
+    "name": "Dary uzdrawiania",
+    "originalWord": "χαρίσματα ἰαμάτων (charísmata iamatōn, Gr.)",
+    "meaning": "Zdolność uzdrawiania chorych mocą Boga",
+    "bibleReferences": [
+      "1 Cor 12:9, 28, 30",
+      "Jas 5:14-15",
+      "Matt 10:8",
+      "Acts 3:1-10",
+      "Mark 16:18"
+    ],
+    "description": "„Dary uzdrawiania” opisują różne skutki Bożego uzdrowienia dokonywanego przez Ducha Świętego. Greckie „charismata iamaton” występuje w liczbie mnogiej i wskazuje, że Bóg daje różne rodzaje uzdrowień – fizyczne, psychiczne lub duchowe. W Biblii często opisuje się uzdrowienia dokonane przez Jezusa i apostołów (np. Dz 3; Mk 16). Dar ten ukazuje Boże współczucie dla cierpiących ludzi i służy jako znak jego Królestwa oraz zachęta do wiary.",
+    "questions": [
+      {
+        "id": "G04_Q1",
+        "type": "experience",
+        "text": "Czy zdarzyło ci się, że ktoś po twojej modlitwie doświadczył uzdrowienia fizycznego lub psychicznego?"
+      },
+      {
+        "id": "G04_Q2",
+        "type": "experience",
+        "text": "Czy często masz impuls, by modlić się za chorych ludzi?"
+      },
+      {
+        "id": "G04_Q3",
+        "type": "experience",
+        "text": "Czy doświadczyłeś(-aś), że Bóg daje uzdrowienie przez modlitwę?"
+      },
+      {
+        "id": "G04_Q4",
+        "type": "nature",
+        "text": "Czy masz skłonność, by modlić się za chorych i oczekiwać uzdrowienia?"
+      },
+      {
+        "id": "G04_Q5",
+        "type": "nature",
+        "text": "Mocno wierzę, że Jezus uzdrawia dziś tak samo jak w czasach apostołów."
+      },
+      {
+        "id": "G04_Q6",
+        "type": "feedback",
+        "text": "Ludzie opowiadają, że dzięki mojej modlitwie doświadczyli pocieszenia lub uzdrowienia."
+      },
+      {
+        "id": "G04_Q7",
+        "type": "feedback",
+        "text": "Inni proszą mnie wprost o modlitwę o ich zdrowie."
+      },
+      {
+        "id": "G04_Q8",
+        "type": "reference",
+        "text": "Doświadczyłem(-am), że ta osoba modli się za chorych lub obciążonych ludzi."
+      },
+      {
+        "id": "G04_Q9",
+        "type": "reference",
+        "text": "Ludzie opowiadają, że dzięki modlitwie tej osoby doświadczyli pomocy lub pocieszenia."
+      }
+    ]
+  },
+  {
+    "id": "G05",
+    "name": "Czynienie cudów",
+    "originalWord": "ἐνεργήματα δυνάμεων (energémata dynámeōn, Gr.)",
+    "meaning": "Dokonywanie nadprzyrodzonych czynów mocy dzięki Bożej sile",
+    "bibleReferences": [
+      "1 Cor 12:10, 28, 29",
+      "Acts 5:12",
+      "2 Cor 12:12",
+      "Mark 16:17-18"
+    ],
+    "description": "„Czynienie cudów” oznacza nadprzyrodzone czyny mocy Boga, które wykraczają poza możliwości naturalne. Wyrażenie „energemata dynameon” oznacza dosłownie „skuteczne czyny mocy”. W Biblii dar ten widać np. u Mojżesza, Eliasza, Jezusa i apostołów. Cuda mogą być wyzwoleniem, zaopatrzeniem, cudami w przyrodzie lub innymi nadzwyczajnymi interwencjami Boga i potwierdzają Bożą moc oraz Ewangelię.",
+    "questions": [
+      {
+        "id": "G05_Q1",
+        "type": "experience",
+        "text": "Czy doświadczyłeś(-aś) sytuacji, w których Bóg zadziałał w sposób nadprzyrodzony?"
+      },
+      {
+        "id": "G05_Q2",
+        "type": "experience",
+        "text": "Czy doświadczyłeś(-aś), że Bóg przez twoją modlitwę uczynił rzeczy nadzwyczajne?"
+      },
+      {
+        "id": "G05_Q3",
+        "type": "experience",
+        "text": "Oczekuję nadprzyrodzonych działań Boga w moim otoczeniu."
+      },
+      {
+        "id": "G05_Q4",
+        "type": "nature",
+        "text": "Mam głębokie zaufanie, że Bóg także dziś czyni widoczne znaki swojej mocy, aby potwierdzić swoje słowo."
+      },
+      {
+        "id": "G05_Q5",
+        "type": "nature",
+        "text": "Wierzę, że Bóg także dziś może czynić cuda."
+      },
+      {
+        "id": "G05_Q6",
+        "type": "feedback",
+        "text": "Ludzie w moim otoczeniu doszli do wiary dzięki widocznym czynom mocy Boga."
+      },
+      {
+        "id": "G05_Q7",
+        "type": "feedback",
+        "text": "Mojej służbie często towarzyszą niezwykłe wydarzenia, których po ludzku nie da się wyjaśnić."
+      },
+      {
+        "id": "G05_Q8",
+        "type": "reference",
+        "text": "Doświadczyłem(-am), że ta osoba modli się o sytuacje, które po ludzku trudno rozwiązać."
+      },
+      {
+        "id": "G05_Q9",
+        "type": "reference",
+        "text": "Wiara tej osoby zachęca innych, by liczyć się z nadzwyczajną interwencją Boga."
+      }
+    ]
+  },
+  {
+    "id": "G06",
+    "name": "Prorokowanie",
+    "originalWord": "προφητεία (propheteía, Gr.); נְבוּאָה (nevūʾáh, Hebr.)",
+    "meaning": "Mówienie z polecenia Boga ku zbudowaniu, napomnieniu i pocieszeniu",
+    "bibleReferences": [
+      "Rom 12:6",
+      "1 Cor 12:10",
+      "1 Cor 14:1-5",
+      "1 Thess 5:20",
+      "Acts 11:27-28"
+    ],
+    "description": "Prorokowanie to mówienie z polecenia Boga, natchnione przez Ducha Świętego, ku zbudowaniu, napomnieniu i zachęcie zboru (1 Kor 14,3). Pojęcie „propheteia” oznacza dosłownie „mówić za kogoś”. Prorokowanie może być zarówno objawieniem, jak i zastosowaniem Bożego słowa do konkretnej sytuacji. W Biblii widzimy prorocze mówienie u proroków Starego Testamentu, a w Nowym Testamencie np. u Agabusa (Dz 11). Dar ten umacnia wiarę, koryguje błędne kierunki rozwoju i kieruje wzrok zboru na wolę Boga.",
+    "questions": [
+      {
+        "id": "G06_Q1",
+        "type": "experience",
+        "text": "Doświadczyłem(-am), że moje wrażenie dotyczące jakiejś sytuacji później okazało się trafne."
+      },
+      {
+        "id": "G06_Q2",
+        "type": "experience",
+        "text": "Czy doświadczyłeś(-aś), że ktoś dzięki twoim słowom rozpoznał Boże przemawianie?"
+      },
+      {
+        "id": "G06_Q3",
+        "type": "experience",
+        "text": "Miałem(-am) wrażenia lub słowa, które później się potwierdziły."
+      },
+      {
+        "id": "G06_Q4",
+        "type": "nature",
+        "text": "Zwracam uwagę na to, co Bóg chce powiedzieć w danej sytuacji."
+      },
+      {
+        "id": "G06_Q5",
+        "type": "nature",
+        "text": "Pragnę, aby Bóg mógł przeze mnie przemawiać do innych ludzi."
+      },
+      {
+        "id": "G06_Q6",
+        "type": "feedback",
+        "text": "Ludzie czasem potwierdzają, że Bóg przemówił do nich przez moje słowa."
+      },
+      {
+        "id": "G06_Q7",
+        "type": "feedback",
+        "text": "Ludzie zostali dzięki moim wypowiedziom przygotowani na przyszłe wydarzenia w swoim życiu."
+      },
+      {
+        "id": "G06_Q8",
+        "type": "reference",
+        "text": "Doświadczyłem(-am), że ta osoba przekazuje słowa od Boga, które inni odbierają jako bardzo trafne lub umacniające."
+      },
+      {
+        "id": "G06_Q9",
+        "type": "reference",
+        "text": "Czuje się, że w pewnych sytuacjach Bóg posługuje się tą osobą, by przekazać przesłanie."
+      }
+    ]
+  },
+  {
+    "id": "G07",
+    "name": "Rozróżnianie duchów",
+    "originalWord": "διακρίσεις πνευμάτων (diakríseis pneumátōn, Gr.)",
+    "meaning": "Rozróżnianie między duchami Bożymi, demonicznymi i ludzkimi",
+    "bibleReferences": [
+      "1 Cor 12:10",
+      "1 John 4:1",
+      "Acts 5:3",
+      "Acts 16:16-18",
+      "Heb 5:14"
+    ],
+    "description": "Rozróżnianie duchów to zdolność rozpoznawania wpływów duchowych i odróżniania, czy pochodzą od Boga, od ludzkiego ducha, czy od mocy demonicznych. Pojęcie „diakrisis pneumaton” oznacza „rozróżnianie lub badanie duchów”. W Biblii dar ten widać np. u Piotra (Dz 5) czy Pawła (Dz 16). Chroni on zbór przed oszustwem i pomaga jasno rozpoznawać Boże działanie.",
+    "questions": [
+      {
+        "id": "G07_Q1",
+        "type": "experience",
+        "text": "Wyczuwam, czy coś pochodzi od Boga, od ludzi czy z innych źródeł."
+      },
+      {
+        "id": "G07_Q2",
+        "type": "experience",
+        "text": "Czy doświadczyłeś(-aś) sytuacji, w których rozpoznałeś(-aś) fałszywe wpływy duchowe?"
+      },
+      {
+        "id": "G07_Q3",
+        "type": "experience",
+        "text": "Szybko rozpoznaję niezdrowe wpływy duchowe."
+      },
+      {
+        "id": "G07_Q4",
+        "type": "nature",
+        "text": "Chcę zrozumieć, jakie siły duchowe działają w danej sytuacji."
+      },
+      {
+        "id": "G07_Q5",
+        "type": "nature",
+        "text": "Starannie badam wrażenia duchowe."
+      },
+      {
+        "id": "G07_Q6",
+        "type": "feedback",
+        "text": "Doświadczyłem(-am), jak Bóg odkrył przede mną oszustwo."
+      },
+      {
+        "id": "G07_Q7",
+        "type": "feedback",
+        "text": "Moja ocena czasem pomaga dostrzec błędne kierunki rozwoju duchowego."
+      },
+      {
+        "id": "G07_Q8",
+        "type": "reference",
+        "text": "Zauważyłem(-am), że ta osoba rozpoznaje, gdy coś w sferze duchowej się nie zgadza."
+      },
+      {
+        "id": "G07_Q9",
+        "type": "reference",
+        "text": "Ocena tej osoby pomaga innym lepiej rozumieć sytuacje duchowe."
+      }
+    ]
+  },
+  {
+    "id": "G08",
+    "name": "Mówienie językami",
+    "originalWord": "γένη γλωσσῶν (génē glōssōn, Gr.)",
+    "meaning": "Mówienie innymi językami lub językiem modlitwy Ducha",
+    "bibleReferences": [
+      "1 Cor 12:10, 28, 30",
+      "1 Cor 14",
+      "Acts 2:4-11",
+      "Acts 19:6",
+      "Mark 16:17"
+    ],
+    "description": "Dar mówienia językami oznacza natchnione przez Ducha Świętego mówienie w języku, którego mówiący się nie nauczył. Greckie „gene glosson” oznacza „różne rodzaje języków”. W Biblii dar ten pojawia się po raz pierwszy w Pięćdziesiątnicę (Dz 2) i jest szczegółowo omówiony w 1 Liście do Koryntian 12–14. Może służyć zarówno jako osobisty język modlitwy, jak i publiczny znak Bożego działania.",
+    "questions": [
+      {
+        "id": "G08_Q1",
+        "type": "experience",
+        "text": "Regularnie modlę się w języku, którego się nie nauczyłem(-am)."
+      },
+      {
+        "id": "G08_Q2",
+        "type": "experience",
+        "text": "Silnie odczuwam obecność Boga w modlitwie językami."
+      },
+      {
+        "id": "G08_Q3",
+        "type": "experience",
+        "text": "Czy doświadczyłeś(-aś), że modlitwa językami umacnia cię w wierze?"
+      },
+      {
+        "id": "G08_Q4",
+        "type": "nature",
+        "text": "Pragnę w modlitwie komunikować się z Bogiem ponad granice swojego rozumu."
+      },
+      {
+        "id": "G08_Q5",
+        "type": "nature",
+        "text": "Jestem otwarty(-a) na nadprzyrodzone formy wyrazu w modlitwie."
+      },
+      {
+        "id": "G08_Q6",
+        "type": "feedback",
+        "text": "Doświadczyłem(-am), że moja modlitwa czasem wyraża się inaczej, niż się spodziewałem(-am)."
+      },
+      {
+        "id": "G08_Q7",
+        "type": "feedback",
+        "text": "Gdy modlę się w nieznanych mi językach, inni odbierają to jako duchowo zachęcające."
+      },
+      {
+        "id": "G08_Q8",
+        "type": "reference",
+        "text": "Doświadczyłem(-am), że ta osoba modli się w nieznanych mi językach."
+      },
+      {
+        "id": "G08_Q9",
+        "type": "reference",
+        "text": "Nie zawsze rozumiem wszystko, o co ta osoba się modli, ale czuję Bożą obecność, gdy się modli."
+      }
+    ]
+  },
+  {
+    "id": "G09",
+    "name": "Tłumaczenie języków",
+    "originalWord": "ἑρμηνεία γλωσσῶν (hermēneía glōssōn, Gr.)",
+    "meaning": "Wyjaśnianie i tłumaczenie mówienia językami ku zbudowaniu zboru",
+    "bibleReferences": [
+      "1 Cor 12:10",
+      "1 Cor 14:13, 27-28"
+    ],
+    "description": "Tłumaczenie języków to zdolność rozumienia mowy w językach i uczynienia jej zrozumiałą dla innych. Greckie „hermeneia glosson” oznacza „tłumaczenie lub wyjaśnienie języków”. Dar ten sprawia, że mówienie językami w zborze służy zbudowaniu, ponieważ jego znaczenie staje się zrozumiałe (1 Kor 14).",
+    "questions": [
+      {
+        "id": "G09_Q1",
+        "type": "experience",
+        "text": "Gdy ktoś modli się językami, często rozumiem sens, choć nie nauczyłem(-am) się tego języka."
+      },
+      {
+        "id": "G09_Q2",
+        "type": "experience",
+        "text": "Zdarzyło mi się, że tłumaczenie modlitwy w obcym języku było dokładnie odpowiedzią na modlitwę kogoś innego."
+      },
+      {
+        "id": "G09_Q3",
+        "type": "experience",
+        "text": "Czy doświadczyłeś(-aś), że Bóg pomógł ci zrozumieć duchowe przesłania, które dla innych były niezrozumiałe?"
+      },
+      {
+        "id": "G09_Q4",
+        "type": "nature",
+        "text": "Czuję odpowiedzialność, by uczynić modlitwę językami zrozumiałą."
+      },
+      {
+        "id": "G09_Q5",
+        "type": "nature",
+        "text": "Czy czujesz pociąg do tłumaczenia lub wyjaśniania modlitw w innym języku?"
+      },
+      {
+        "id": "G09_Q6",
+        "type": "feedback",
+        "text": "Po moim tłumaczeniu mówienia językami w grupie często panuje głęboka jedność lub atmosfera uwielbienia."
+      },
+      {
+        "id": "G09_Q7",
+        "type": "feedback",
+        "text": "Moje tłumaczenie mówienia językami zachęciło, wskazało na Bożą prawdę i doprowadziło do pełnej miłości korekty."
+      },
+      {
+        "id": "G09_Q8",
+        "type": "reference",
+        "text": "Doświadczyłem(-am), że ta osoba potrafiła wyjaśnić modlitwę, której wcześniej nie rozumiałem(-am)."
+      },
+      {
+        "id": "G09_Q9",
+        "type": "reference",
+        "text": "Ta osoba potrafiła wyjaśnić mi modlitwy w językach, których nie rozumiałem(-am)."
+      }
+    ]
+  },
+  {
+    "id": "G10",
+    "name": "Posługiwanie / diakonia",
+    "originalWord": "διακονία (diakonía, Gr.)",
+    "meaning": "Praktyczna służba i pomoc w zborze",
+    "bibleReferences": [
+      "Rom 12:7",
+      "1 Cor 12:28",
+      "Acts 6:1-7",
+      "1 Pet 4:10-11"
+    ],
+    "description": "Dar posługiwania oznacza szczególne uzdolnienie do praktycznej pomocy innym i rozpoznawania potrzeb. Greckie „diakonia” oznacza „służbę” lub „praktyczną pomoc”. W Biblii dar ten widać szczególnie w służbie pierwszych diakonów (Dz 6). Ludzie z tym darem w istotnym stopniu przyczyniają się do tego, że zbór praktycznie funkcjonuje, a ludzie doświadczają konkretnej pomocy.",
+    "questions": [
+      {
+        "id": "G10_Q1",
+        "type": "experience",
+        "text": "Chętnie wspieram praktycznie, nie musząc być na pierwszym planie."
+      },
+      {
+        "id": "G10_Q2",
+        "type": "experience",
+        "text": "Spontanicznie dostrzegam, gdzie potrzebna jest pomoc."
+      },
+      {
+        "id": "G10_Q3",
+        "type": "experience",
+        "text": "Cieszy mnie, gdy mogę ludziom bardzo praktycznie ulżyć, bez wymieniania mojego imienia."
+      },
+      {
+        "id": "G10_Q4",
+        "type": "nature",
+        "text": "Wolę zaangażować się czynnie, niż prowadzić długie teoretyczne dyskusje."
+      },
+      {
+        "id": "G10_Q5",
+        "type": "nature",
+        "text": "Chcę, aby wszystko w zborze przebiegało bez zakłóceń, i dlatego chwytam się pracy wszędzie tam, gdzie jest potrzeba."
+      },
+      {
+        "id": "G10_Q6",
+        "type": "feedback",
+        "text": "Liderzy często mówią mi, że jestem dla nich niezastąpionym oparciem w codzienności zboru."
+      },
+      {
+        "id": "G10_Q7",
+        "type": "feedback",
+        "text": "Dzięki mojemu zaangażowaniu ludzie w zborze czują się docenieni i mile widziani."
+      },
+      {
+        "id": "G10_Q8",
+        "type": "reference",
+        "text": "Doświadczyłem(-am), że ta osoba pomaga praktycznie, gdy potrzebne jest wsparcie."
+      },
+      {
+        "id": "G10_Q9",
+        "type": "reference",
+        "text": "Zaangażowanie tej osoby pomaga w dobrym wykonywaniu zadań."
+      }
+    ]
+  },
+  {
+    "id": "G11",
+    "name": "Nauczanie",
+    "originalWord": "διδασκαλία (didaskalía, Gr.)",
+    "meaning": "Pouczanie w prawdzie Bożej",
+    "bibleReferences": [
+      "Rom 12:7",
+      "Eph 4:11",
+      "1 Tim 3:2",
+      "2 Tim 2:2"
+    ],
+    "description": "Dar nauczania to zdolność jasnego, zrozumiałego i wiernego wyjaśniania Bożego słowa. Pojęcie „didaskalia” oznacza zarówno treść, jak i czynność nauczania. W Biblii dar ten jest szczególnie łączony z zadaniami przywódczymi (Ef 4,11). Pomaga zborowi rozumieć Bożą prawdę i wzrastać w wierze.",
+    "questions": [
+      {
+        "id": "G11_Q1",
+        "type": "experience",
+        "text": "Gdy wyjaśniam Biblię, inni mówią, że nagle rozumieją złożone tematy."
+      },
+      {
+        "id": "G11_Q2",
+        "type": "experience",
+        "text": "Czy doświadczasz, że twoje nauczanie przynosi zrozumienie i duchowy wzrost?"
+      },
+      {
+        "id": "G11_Q3",
+        "type": "experience",
+        "text": "Czy doświadczyłeś(-aś), że ludzie wzrośli duchowo dzięki twojemu wyjaśnieniu?"
+      },
+      {
+        "id": "G11_Q4",
+        "type": "nature",
+        "text": "Płonę pragnieniem, by chrześcijanie wzrastali w swojej wierze dzięki solidnej wiedzy."
+      },
+      {
+        "id": "G11_Q5",
+        "type": "nature",
+        "text": "Chętnie wyjaśniam innym to, czego się nauczyłem(-am)."
+      },
+      {
+        "id": "G11_Q6",
+        "type": "feedback",
+        "text": "Ludzie opowiadają, że dzięki mojemu nauczaniu znaleźli stabilniejszy fundament dla swojego życia."
+      },
+      {
+        "id": "G11_Q7",
+        "type": "feedback",
+        "text": "Ludzie wzrastają w wierze dzięki moim wyjaśnieniom."
+      },
+      {
+        "id": "G11_Q8",
+        "type": "reference",
+        "text": "Doświadczyłem(-am), że ta osoba wyjaśnia treści tak, że inni dobrze je rozumieją."
+      },
+      {
+        "id": "G11_Q9",
+        "type": "reference",
+        "text": "Ludzie uczą się i rozwijają dzięki wyjaśnieniom tej osoby."
+      }
+    ]
+  },
+  {
+    "id": "G12",
+    "name": "Napominanie",
+    "originalWord": "παράκλησις (paráklēsis, Gr.)",
+    "meaning": "Zachęcanie, pocieszanie i napominanie",
+    "bibleReferences": [
+      "Rom 12:8",
+      "1 Cor 14:3"
+    ],
+    "description": "Dar zachęcania lub napominania („paraklesis”) oznacza zdolność umacniania ludzi słowami, pocieszania ich i zachęcania do wiary. Słowo to jest związane z pojęciem „Parakleta”, którym określa się Ducha Świętego jako Pocieszyciela. Dar ten pomaga ludziom przezwyciężyć trudne czasy i iść dalej w wierze.",
+    "questions": [
+      {
+        "id": "G12_Q1",
+        "type": "experience",
+        "text": "Pomogłem(-am) już ludziom wydostać się z głębokiego zniechęcenia."
+      },
+      {
+        "id": "G12_Q2",
+        "type": "experience",
+        "text": "Rozpoznaję, czego ktoś potrzebuje, aby iść dalej."
+      },
+      {
+        "id": "G12_Q3",
+        "type": "experience",
+        "text": "Z miłością, ale wprost wskazałem(-am) ludziom ich „ślepe plamy”, co doprowadziło do pozytywnej zmiany."
+      },
+      {
+        "id": "G12_Q4",
+        "type": "nature",
+        "text": "Czy masz skłonność, by dawać innym słowa zachęty, pocieszenia lub napomnienia?"
+      },
+      {
+        "id": "G12_Q5",
+        "type": "nature",
+        "text": "Chcę pomagać ludziom wykorzystać cały ich potencjał w Bogu."
+      },
+      {
+        "id": "G12_Q6",
+        "type": "feedback",
+        "text": "Po rozmowach ze mną ludzie czują się wzmocnieni, by podjąć swoje zadania z nową siłą."
+      },
+      {
+        "id": "G12_Q7",
+        "type": "feedback",
+        "text": "Czy twoje napominanie często prowadzi do pocieszenia, odnowienia i duchowego ożywienia?"
+      },
+      {
+        "id": "G12_Q8",
+        "type": "reference",
+        "text": "Doświadczyłem(-am), że ta osoba napominała innych, ale też ich zachęcała."
+      },
+      {
+        "id": "G12_Q9",
+        "type": "reference",
+        "text": "Po rozmowach z tą osobą ludzie wiedzą, co powinni zmienić w swoim życiu."
+      }
+    ]
+  },
+  {
+    "id": "G13",
+    "name": "Dawanie",
+    "originalWord": "μεταδιδόναι (metadidónai, Gr.)",
+    "meaning": "Hojne, radosne dawanie ze szczerością serca",
+    "bibleReferences": [
+      "Rom 12:8",
+      "Acts 4:32-37",
+      "2 Cor 8–9"
+    ],
+    "description": "Dar dawania oznacza szczególną gotowość i radość w hojnym dzieleniu się zasobami materialnymi lub finansowymi. Greckie „metadidonai” oznacza „dzielić się” lub „przekazywać dalej”. W Biblii widzimy tego przykłady we wczesnym zborze (Dz 4). Dar ten ukazuje Boże zaopatrzenie i wspiera dzieło Królestwa Bożego.",
+    "questions": [
+      {
+        "id": "G13_Q1",
+        "type": "experience",
+        "text": "Chętnie daję hojnie, niczego w zamian nie oczekując."
+      },
+      {
+        "id": "G13_Q2",
+        "type": "experience",
+        "text": "Czy doświadczyłeś(-aś) sytuacji, w których świadomie zrezygnowałeś(-aś) z własnych rzeczy, aby pomóc innym?"
+      },
+      {
+        "id": "G13_Q3",
+        "type": "experience",
+        "text": "Odczuwam radość, gdy mogę wesprzeć innych finansowo."
+      },
+      {
+        "id": "G13_Q4",
+        "type": "nature",
+        "text": "Moje pieniądze i majątek postrzegam przede wszystkim jako narzędzia dla Królestwa Bożego, a nie dla mojego luksusu."
+      },
+      {
+        "id": "G13_Q5",
+        "type": "nature",
+        "text": "Czuję odpowiedzialność, by finansowo umacniać dzieło Boże."
+      },
+      {
+        "id": "G13_Q6",
+        "type": "feedback",
+        "text": "Dzięki moim darom rozwiązano trudności finansowe w zborze, często dokładnie w odpowiednim czasie."
+      },
+      {
+        "id": "G13_Q7",
+        "type": "feedback",
+        "text": "Widzę, że moje dawanie przynosi widoczny owoc."
+      },
+      {
+        "id": "G13_Q8",
+        "type": "reference",
+        "text": "Doświadczyłem(-am), że ta osoba daje hojnie."
+      },
+      {
+        "id": "G13_Q9",
+        "type": "reference",
+        "text": "Ta osoba przykłada mniejszą wagę do własnego dobrobytu, a zamiast tego z serca wspiera innych."
+      }
+    ]
+  },
+  {
+    "id": "G14",
+    "name": "Przewodzenie",
+    "originalWord": "προϊστάμενος (proistámenos, Gr.)",
+    "meaning": "Prowadzenie i organizowanie zboru (jak sternik)",
+    "bibleReferences": [
+      "Rom 12:8",
+      "1 Cor 12:28",
+      "1 Thess 5:12",
+      "1 Tim 5:17"
+    ],
+    "description": "Dar przewodzenia oznacza zdolność prowadzenia ludzi, przekazywania wizji i organizowania struktur. Greckie słowo „proistamenos” oznacza „przewodzić” lub „kierować”. W Biblii dar ten jest łączony z odpowiedzialnością za zbór (1 Tes 5). Pomaga w tym, by służby były skoordynowane, a zbór wspólnie szedł naprzód.",
+    "questions": [
+      {
+        "id": "G14_Q1",
+        "type": "experience",
+        "text": "Koordynowałem(-am) już zespoły lub projekty tak, że wszyscy mogli optymalnie wykorzystać swoje dary."
+      },
+      {
+        "id": "G14_Q2",
+        "type": "experience",
+        "text": "Czy ludzie powierzyli ci odpowiedzialność?"
+      },
+      {
+        "id": "G14_Q3",
+        "type": "experience",
+        "text": "Inni dobrowolnie i z zaufaniem idą za moim przewodnictwem."
+      },
+      {
+        "id": "G14_Q4",
+        "type": "nature",
+        "text": "Czy masz skłonność, by brać odpowiedzialność i organizować?"
+      },
+      {
+        "id": "G14_Q5",
+        "type": "nature",
+        "text": "Chcę przejmować odpowiedzialność, aby zbór skutecznie osiągał swoje cele."
+      },
+      {
+        "id": "G14_Q6",
+        "type": "feedback",
+        "text": "Zachowuję przegląd sytuacji nawet w skomplikowanych okolicznościach."
+      },
+      {
+        "id": "G14_Q7",
+        "type": "feedback",
+        "text": "Pod moją odpowiedzialnością obszary zboru rozwijają się jakościowo i organizacyjnie."
+      },
+      {
+        "id": "G14_Q8",
+        "type": "reference",
+        "text": "Doświadczyłem(-am), że ta osoba przejmuje odpowiedzialność i organizuje zadania."
+      },
+      {
+        "id": "G14_Q9",
+        "type": "reference",
+        "text": "Pod przewodnictwem tej osoby cele są dobrze osiągane."
+      }
+    ]
+  },
+  {
+    "id": "G15",
+    "name": "Miłosierdzie",
+    "originalWord": "ἔλεος (éleos, Gr.)",
+    "meaning": "Współczucie i praktyczna pomoc cierpiącym",
+    "bibleReferences": [
+      "Rom 12:8",
+      "Matt 5:7",
+      "Gal 6:2"
+    ],
+    "description": "Dar miłosierdzia oznacza szczególne współczucie dla ludzi w potrzebie i gotowość praktycznego niesienia im pomocy. Greckie „eleos” oznacza „zmiłowanie” lub „współczucie”. W Biblii miłosierdzie jest opisane jako wyraz charakteru Boga (Mt 5,7). Ludzie z tym darem niosą Bożą miłość szczególnie cierpiącym.",
+    "questions": [
+      {
+        "id": "G15_Q1",
+        "type": "experience",
+        "text": "Zajmowałem(-am) się już intensywnie ludźmi, których wszyscy inni unikali."
+      },
+      {
+        "id": "G15_Q2",
+        "type": "experience",
+        "text": "Aktywnie podchodzę do cierpiących, aby im towarzyszyć."
+      },
+      {
+        "id": "G15_Q3",
+        "type": "experience",
+        "text": "Czy doświadczyłeś(-aś), że szczególnie troszczysz się o potrzebujących?"
+      },
+      {
+        "id": "G15_Q4",
+        "type": "nature",
+        "text": "Porusza mnie, gdy ludzie cierpią."
+      },
+      {
+        "id": "G15_Q5",
+        "type": "nature",
+        "text": "Chcę okazywać miłość Jezusa szczególnie tym, którzy stoją na marginesie społeczeństwa."
+      },
+      {
+        "id": "G15_Q6",
+        "type": "feedback",
+        "text": "Ludzie w kryzysie często mówią mi, że moja obecność dała im nową chęć do życia."
+      },
+      {
+        "id": "G15_Q7",
+        "type": "feedback",
+        "text": "Dzięki mojej służbie ludzie w zborze czują się bezwarunkowo przyjęci i kochani."
+      },
+      {
+        "id": "G15_Q8",
+        "type": "reference",
+        "text": "Doświadczyłem(-am), że ta osoba okazuje współczucie cierpiącym ludziom."
+      },
+      {
+        "id": "G15_Q9",
+        "type": "reference",
+        "text": "Ludzie pokrzywdzeni czują się dzięki tej osobie zrozumiani i wspierani."
+      }
+    ]
+  },
+  {
+    "id": "G16",
+    "name": "Apostolstwo",
+    "originalWord": "ἀπόστολος (apóstolos, Gr.)",
+    "meaning": "Posłanie z autorytetem do zakładania zborów",
+    "bibleReferences": [
+      "1 Cor 12:28",
+      "Eph 4:11",
+      "Acts 1:21-26",
+      "Acts 14:14"
+    ],
+    "description": "Dar apostoła oznacza szczególne powołanie do zakładania nowych dzieł lub zborów i inicjowania ruchów duchowych. Słowo „apostolos” oznacza „posłaniec”. W Biblii widzimy ten dar u apostołów, którzy rozszerzali Ewangelię i zakładali zbory. Dar ten łączy wizję, przywództwo i misyjną dynamikę.",
+    "questions": [
+      {
+        "id": "G16_Q1",
+        "type": "experience",
+        "text": "Czuję pęd, by zakładać nowe dzieła duchowe lub grupy."
+      },
+      {
+        "id": "G16_Q2",
+        "type": "experience",
+        "text": "Czy pomagałeś(-aś) już w zakładaniu nowych zborów lub grup?"
+      },
+      {
+        "id": "G16_Q3",
+        "type": "experience",
+        "text": "Czy doświadczyłeś(-aś), że rozpoczynałeś(-aś) nowe inicjatywy lub służby?"
+      },
+      {
+        "id": "G16_Q4",
+        "type": "nature",
+        "text": "Mam wizję, by rozpoczynać nowe rzeczy w Królestwie Bożym."
+      },
+      {
+        "id": "G16_Q5",
+        "type": "nature",
+        "text": "Lubię strategicznie myśleć o rozwoju zboru."
+      },
+      {
+        "id": "G16_Q6",
+        "type": "feedback",
+        "text": "Nowe służby często powstają z mojej inicjatywy."
+      },
+      {
+        "id": "G16_Q7",
+        "type": "feedback",
+        "text": "Ludzie przyłączają się do wizji, które rozpoczynam."
+      },
+      {
+        "id": "G16_Q8",
+        "type": "reference",
+        "text": "Doświadczyłem(-am), że ta osoba rozpoczyna nowe projekty lub inicjatywy."
+      },
+      {
+        "id": "G16_Q9",
+        "type": "reference",
+        "text": "Inni przyłączają się do pomysłów lub inicjatyw tej osoby."
+      }
+    ]
+  },
+  {
+    "id": "G17",
+    "name": "Ewangelista",
+    "originalWord": "εὐαγγελιστής (euangelistḗs, Gr.)",
+    "meaning": "Głoszenie dobrej nowiny (Ewangelii)",
+    "bibleReferences": [
+      "Eph 4:11",
+      "Acts 21:8",
+      "2 Tim 4:5"
+    ],
+    "description": "Dar ewangelisty to szczególna zdolność przekazywania ludziom dobrej nowiny o Jezusie w sposób zrozumiały i przekonujący. Słowo „euangelistes” oznacza „zwiastun dobrej nowiny”. W Biblii dar ten widzimy np. u Filipa (Dz 21). Ewangeliści pomagają ludziom dojść do wiary w Chrystusa.",
+    "questions": [
+      {
+        "id": "G17_Q1",
+        "type": "experience",
+        "text": "Chętnie rozmawiam z innymi o Jezusie."
+      },
+      {
+        "id": "G17_Q2",
+        "type": "experience",
+        "text": "Czy doświadczyłeś(-aś), że ludzie dzięki twojemu świadectwu zainteresowali się Jezusem?"
+      },
+      {
+        "id": "G17_Q3",
+        "type": "experience",
+        "text": "Czy doświadczyłeś(-aś), że ludzie przez ciebie doszli do wiary?"
+      },
+      {
+        "id": "G17_Q4",
+        "type": "nature",
+        "text": "Płonie we mnie pragnienie, by ludzie bez Jezusa nie zginęli."
+      },
+      {
+        "id": "G17_Q5",
+        "type": "nature",
+        "text": "Stale szukam nowych metod, by przekazywać Ewangelię w sposób współczesny i zrozumiały."
+      },
+      {
+        "id": "G17_Q6",
+        "type": "feedback",
+        "text": "Ludzie reagują otwarcie, gdy opowiadam o swojej wierze."
+      },
+      {
+        "id": "G17_Q7",
+        "type": "feedback",
+        "text": "Motywuję zbór, by na nowo mocniej skierował swoją uwagę na ludzi „na zewnątrz”."
+      },
+      {
+        "id": "G17_Q8",
+        "type": "reference",
+        "text": "Doświadczyłem(-am), że ta osoba rozmawia z innymi o swojej wierze."
+      },
+      {
+        "id": "G17_Q9",
+        "type": "reference",
+        "text": "Ta osoba prowadzi ludzi do Jezusa lub zaprasza ich na wydarzenia w zborze."
+      }
+    ]
+  },
+  {
+    "id": "G18",
+    "name": "Pasterz",
+    "originalWord": "ποιμήν (poimḗn, Gr.)",
+    "meaning": "Paść, strzec i opiekować się zborem jak stadem",
+    "bibleReferences": [
+      "Eph 4:11",
+      "John 10:1-18",
+      "1 Pet 5:1-4"
+    ],
+    "description": "Dar pasterza oznacza zdolność duchowego towarzyszenia ludziom, chronienia ich i wspierania. Greckie „poimen” oznacza „pasterz”. Sam Jezus jest opisany jako dobry pasterz (J 10). Ludzie z tym darem długofalowo troszczą się o duchowy wzrost i dobro zboru.",
+    "questions": [
+      {
+        "id": "G18_Q1",
+        "type": "experience",
+        "text": "Towarzyszę ludziom przez lata w ich duchowym wzroście i pomagam im przechodzić przez doliny."
+      },
+      {
+        "id": "G18_Q2",
+        "type": "experience",
+        "text": "Czuję odpowiedzialność za duchowe dobro innych."
+      },
+      {
+        "id": "G18_Q3",
+        "type": "experience",
+        "text": "Aktywnie chronię grupę, za którą odpowiadam, przed negatywnymi wpływami lub podziałem."
+      },
+      {
+        "id": "G18_Q4",
+        "type": "nature",
+        "text": "Mam głębokie zainteresowanie długofalowym rozwojem i pomyślnością poszczególnych osób."
+      },
+      {
+        "id": "G18_Q5",
+        "type": "nature",
+        "text": "Chcę stworzyć atmosferę, w której ludzie czują się duchowo bezpiecznie i „jak w domu”."
+      },
+      {
+        "id": "G18_Q6",
+        "type": "feedback",
+        "text": "Ludzie czują, że im towarzyszę i ich wspieram."
+      },
+      {
+        "id": "G18_Q7",
+        "type": "feedback",
+        "text": "Widzę, że moja troska pozwala ludziom stabilnie wzrastać."
+      },
+      {
+        "id": "G18_Q8",
+        "type": "reference",
+        "text": "Doświadczyłem(-am), że ta osoba towarzyszy ludziom przez dłuższy czas."
+      },
+      {
+        "id": "G18_Q9",
+        "type": "reference",
+        "text": "Ludzie rozwijają się dzięki wsparciu tej osoby."
+      }
+    ]
+  }
+]

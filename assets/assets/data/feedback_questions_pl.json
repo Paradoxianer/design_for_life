@@ -1,0 +1,147 @@
+{
+  "scaleLabels": [
+    "Bardzo dobrze",
+    "Dobrze",
+    "Zadowalająco",
+    "Wystarczająco",
+    "Słabo",
+    "Niedostatecznie"
+  ],
+  "categories": [
+    {
+      "id": "content",
+      "title": "Treść seminarium",
+      "questions": [
+        {
+          "id": "contentExpectations",
+          "type": "scale",
+          "label": "Treści odpowiadały moim oczekiwaniom"
+        },
+        {
+          "id": "contentPracticalUtility",
+          "type": "scale",
+          "label": "Zyskałem(-am) przydatne inspiracje do mojej codziennej praktyki"
+        },
+        {
+          "id": "contentStructure",
+          "type": "scale",
+          "label": "Struktura i zrozumiałość całego zakresu tematów"
+        }
+      ]
+    },
+    {
+      "id": "speaker",
+      "title": "Prowadzący i przebieg",
+      "questions": [
+        {
+          "id": "speakerGodWorking",
+          "type": "scale",
+          "label": "Miałem(-am) wrażenie, że Bóg mógł działać"
+        },
+        {
+          "id": "speakerFaithProgress",
+          "type": "scale",
+          "label": "Seminarium pomogło mi pójść dalej w życiu wiary"
+        },
+        {
+          "id": "speakerDidactics",
+          "type": "scale",
+          "label": "Umiejętności dydaktyczne"
+        },
+        {
+          "id": "speakerMethods",
+          "type": "scale",
+          "label": "Zastosowane metody były skuteczne"
+        },
+        {
+          "id": "speakerInvolvement",
+          "type": "scale",
+          "label": "Prowadzący aktywnie włączał uczestników"
+        },
+        {
+          "id": "speakerRespect",
+          "type": "scale",
+          "label": "Prowadzący zachowywał się uprzejmie i z szacunkiem"
+        },
+        {
+          "id": "atmosphere",
+          "type": "scale",
+          "label": "Ogólna atmosfera kursu i klimat w grupie"
+        }
+      ]
+    },
+    {
+      "id": "docs",
+      "title": "Materiały seminaryjne",
+      "questions": [
+        {
+          "id": "docsStructure",
+          "type": "scale",
+          "label": "Struktura i przejrzystość"
+        },
+        {
+          "id": "docsUnderstandability",
+          "type": "scale",
+          "label": "Zrozumiałość"
+        },
+        {
+          "id": "docsDifficulty",
+          "type": "scale",
+          "label": "Poziom trudności"
+        }
+      ]
+    },
+    {
+      "id": "org",
+      "title": "Organizacja i infrastruktura",
+      "questions": [
+        {
+          "id": "roomsAppropriateness",
+          "type": "scale",
+          "label": "Przydatność pomieszczeń"
+        },
+        {
+          "id": "prepQuality",
+          "type": "scale",
+          "label": "Przygotowanie seminarium przez organizatora"
+        },
+        {
+          "id": "duration",
+          "type": "scale",
+          "label": "Czas trwania wydarzenia"
+        },
+        {
+          "id": "tempo",
+          "type": "scale",
+          "label": "Tempo wydarzenia"
+        },
+        {
+          "id": "catering",
+          "type": "scale",
+          "label": "Wyżywienie"
+        }
+      ]
+    },
+    {
+      "id": "comments",
+      "title": "Komentarze",
+      "questions": [
+        {
+          "id": "commentsMissing",
+          "type": "text",
+          "label": "Czego było za mało?"
+        },
+        {
+          "id": "recommendation",
+          "type": "text",
+          "label": "Czy poleciłbyś(-abyś) to seminarium dalej?"
+        },
+        {
+          "id": "generalNotes",
+          "type": "text",
+          "label": "Uwagi"
+        }
+      ]
+    }
+  ]
+}
