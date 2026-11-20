@@ -698,8 +698,46 @@
     ]
   },
   "session_checklist": {
-    "sessionTitle": "Checklist",
+    "sessionTitle": "Checklist & team training",
+    "collapsible": true,
     "sections": [
+      {
+        "heading": "Teams",
+        "blocks": [
+          {
+            "type": "subheading",
+            "text": "Preparation team"
+          },
+          {
+            "type": "paragraph",
+            "text": "Settles the basic organisation: where and when the course takes place, where and how to advertise, whom to ask for each team. Keep it small; for a small DFL one person can do the preparation."
+          },
+          {
+            "type": "subheading",
+            "text": "Catering team"
+          },
+          {
+            "type": "paragraph",
+            "text": "Responsible for Friday dinner, Saturday breakfast, lunch and dinner, and Sunday breakfast and possibly lunch. Good food matters because it holds body, soul and spirit together. If participants don't stay overnight, only two dinners and two lunches are needed."
+          },
+          {
+            "type": "subheading",
+            "text": "Small group leaders"
+          },
+          {
+            "type": "paragraph",
+            "text": "Only mature, experienced Christians. Tasks: look after the group work and the participants personally, accompany DFL and the participants in prayer, collect impressions from God for the participants during listening prayer, and keep supporting them for a while after the weekend."
+          },
+          {
+            "type": "subheading",
+            "text": "Prayer team"
+          },
+          {
+            "type": "paragraph",
+            "text": "Prepares DFL in prayer and accompanies participants and leaders in prayer. Prayer meetings beforehand, bringing the event, those responsible and the participants before God, are helpful."
+          }
+        ]
+      },
       {
         "heading": "Preparation timeline",
         "blocks": [
@@ -708,15 +746,15 @@
             "items": [
               "Set the date",
               "Ask about venues",
-              "Recruit team members",
-              "Advertise",
-              "Train team members",
-              "Organize food",
-              "Registration deadline",
-              "Order participant booklets",
-              "Send participant letter",
-              "Buy materials",
-              "Follow up with participants"
+              "Advertise – 6 weeks before",
+              "Recruit team members (catering, decoration, small groups, worship …) – 8 weeks before",
+              "Send the leader booklet to all leaders – 7 weeks before",
+              "Train team members – 6 weeks before",
+              "Organise food – 4 weeks before",
+              "Registration deadline – 2 weeks before",
+              "Send participant letter (+ schedule) – 2 weeks before",
+              "Buy materials – 2 weeks before",
+              "Follow up with participants – 2 weeks after the course"
             ]
           }
         ]
@@ -727,13 +765,163 @@
           {
             "type": "bulletList",
             "items": [
-              "Flipchart",
+              "1 flipchart sheet per participant + 2 for certain sessions",
+              "1 participant material pack per participant",
               "Pens",
-              "Decoration/candles",
-              "Bibles",
-              "Music",
-              "Projector",
-              "Camera"
+              "Decoration + candles for listening prayer",
+              "Bibles for participants who have none (ideally New Living Translation)",
+              "Instrumental worship music and a way to play sound",
+              "TV or projector",
+              "Camera for the group photo",
+              "Masking tape (for names etc.)",
+              "Lyrics for worship songs and instruments",
+              "Book on spiritual gifts",
+              "Weekend schedules to put up",
+              "Schedule for listening prayer and for personal conversations",
+              "Questionnaires for participants",
+              "Photo permission / data protection for participants",
+              "Tissues (listening prayer, pastoral care)"
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "Team training: schedule",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "As team members you are travel companions: questioning and praying. We only have two days and can only create a good environment in which God can work."
+          },
+          {
+            "type": "subheading",
+            "text": "Sample schedule (approx. 2 pm – 7 pm)"
+          },
+          {
+            "type": "bulletList",
+            "items": [
+              "14:00 Arrival + coffee",
+              "14:30 Go through the leader booklet: schedule, teachings and group work",
+              "15:30 Try out a group exercise as an example",
+              "16:15 Break",
+              "16:30 Worship + listening prayer",
+              "17:30 Exchange + assign tasks",
+              "18:30 Close, possibly a shared dinner"
+            ]
+          },
+          {
+            "type": "subheading",
+            "text": "Assign tasks"
+          },
+          {
+            "type": "bulletList",
+            "items": [
+              "Worship",
+              "Decoration",
+              "Technology",
+              "Rearranging rooms",
+              "Inputs",
+              "Cleaning up"
+            ]
+          },
+          {
+            "type": "subheading",
+            "text": "Clarify beforehand"
+          },
+          {
+            "type": "bulletList",
+            "items": [
+              "Make a list of leaders",
+              "Get approval from headquarters",
+              "Ask team members personally",
+              "Send the leader booklet to all leaders and invite them",
+              "Bring materials (leader booklets, music, flipchart …)"
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "Team training: attitude",
+        "blocks": [
+          {
+            "type": "bulletList",
+            "items": [
+              "Be yourself",
+              "Don't try to “steer” things",
+              "Ask questions",
+              "Listen",
+              "Don't leave leader booklets lying around",
+              "Every leader gets a participant booklet to follow what their participant is working on"
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "Team training: leading small groups",
+        "blocks": [
+          {
+            "type": "bulletList",
+            "items": [
+              "5 to at most 9 people per group",
+              "Make sure everyone who wants to can speak",
+              "Explain at the start that you will interrupt so that everyone can take part",
+              "Encourage active participation; others may ask follow-up questions",
+              "Notice when participants don't want to go very personal",
+              "Ask questions not to get answers but to lead participants into deeper self-reflection"
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "Team training: listening prayer",
+        "blocks": [
+          {
+            "type": "quote",
+            "text": "Be still, and know that I am God!",
+            "reference": "Psalm 46:10"
+          },
+          {
+            "type": "quote",
+            "text": "My soul finds rest in God alone; my salvation comes from him.",
+            "reference": "Psalm 62:1"
+          },
+          {
+            "type": "subheading",
+            "text": "Steps"
+          },
+          {
+            "type": "numberedList",
+            "items": [
+              "Separation from God: confess sin and ask for forgiveness",
+              "Give the devil, the whisperer, no opening – we have won",
+              "Set aside and question personal thoughts and wishes",
+              "Bring concerns to God",
+              "Be still and let God work",
+              "God can speak through pictures, songs, Bible passages …",
+              "Test: against the Bible, by confirmation from a second person (in prayer or conversation), and whether peace rests on the impressions"
+            ]
+          },
+          {
+            "type": "subheading",
+            "text": "What to be prepared for"
+          },
+          {
+            "type": "paragraph",
+            "text": "God really works – don't be unprepared. Things from people's lives can break open (e.g. tears). Keep tissues ready."
+          }
+        ]
+      },
+      {
+        "heading": "Team training: the sessions at a glance",
+        "blocks": [
+          {
+            "type": "bulletList",
+            "items": [
+              "Session One – Stand in the gap: you matter and God has a plan for you! A nudge to question one's own attitude and calling. A shared Christian film builds community.",
+              "Session Two – Jesus, his calling: how calling and preparation for calling work – we, too, were prepared for service. Group work: draw and discuss the life tree.",
+              "Session Three – Here and now: dare to! Where do I stand with my gifts and values and how do I use them? Group work: summarise together what we learned from life tree, gifts and values.",
+              "Session Four – Pray, dream, listen: get participants ready for God to work (prayer list, prayer in pairs). Beforehand a short introduction to listening prayer (approx. 10 min).",
+              "Session Five – Do you know the way to San Jose: God expects a response to his call. The big goal, dreams, vision and next steps.",
+              "One-to-one conversations: no input, but an introduction to the conversations."
             ]
           }
         ]
