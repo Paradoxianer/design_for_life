@@ -2,6 +2,7 @@
   "_note": "Registry of app languages shown in the language picker. A language only appears if it is also supported by AppLocalizations (lib/l10n/app_<code>.arb). status: 'complete' = reviewed, 'draft' = machine-translated, not yet reviewed by a native speaker. Content files (gifts, questionnaires, leader notes) are optional per language: missing ones fall back to English, then German.",
   "languages": [
     { "code": "de", "name": "Deutsch", "status": "complete" },
-    { "code": "en", "name": "English", "status": "complete" }
+    { "code": "en", "name": "English", "status": "complete" },
+    { "code": "pl", "name": "Polski", "status": "draft" }
   ]
 }

@@ -1,0 +1,114 @@
+{
+  "questions": [
+    {
+      "id": "org_1",
+      "dimension": "organisation",
+      "leftLabel": "Lubię planować swój dzień z wyprzedzeniem według jasnego harmonogramu.",
+      "rightLabel": "Lubię zostawiać swój dzień otwarty i decydować spontanicznie."
+    },
+    {
+      "id": "org_2",
+      "dimension": "organisation",
+      "leftLabel": "Czuję się lepiej, gdy przebieg spraw jest jasno określony.",
+      "rightLabel": "Czuję się lepiej, gdy mogę elastycznie reagować na sytuacje."
+    },
+    {
+      "id": "org_3",
+      "dimension": "organisation",
+      "leftLabel": "Lubię jasne zasady i wytyczne.",
+      "rightLabel": "Lubię podchodzić do rzeczy na swój własny, niekonwencjonalny sposób."
+    },
+    {
+      "id": "org_4",
+      "dimension": "organisation",
+      "leftLabel": "Najchętniej pracuję według stałej struktury.",
+      "rightLabel": "Najchętniej pracuję tak, jak akurat się układa."
+    },
+    {
+      "id": "org_5",
+      "dimension": "organisation",
+      "leftLabel": "Zmiany w ostatniej chwili mnie stresują.",
+      "rightLabel": "Zmiany w ostatniej chwili uważam za ekscytujące."
+    },
+    {
+      "id": "org_6",
+      "dimension": "organisation",
+      "leftLabel": "Lubię wykonywać zadania krok po kroku z listy.",
+      "rightLabel": "Lubię przeskakiwać między różnymi zadaniami, jak się akurat układa."
+    },
+    {
+      "id": "energy_1",
+      "dimension": "energy",
+      "leftLabel": "Ważne jest dla mnie, jak się mają ludzie wokół mnie.",
+      "rightLabel": "Ważne jest dla mnie, aby zadanie zostało wykonane."
+    },
+    {
+      "id": "energy_2",
+      "dimension": "energy",
+      "leftLabel": "Czerpię energię z rozmów z innymi.",
+      "rightLabel": "Czerpię energię, gdy osiągnę jakiś rezultat."
+    },
+    {
+      "id": "energy_3",
+      "dimension": "energy",
+      "leftLabel": "Relacje są dla mnie ważniejsze niż wynik.",
+      "rightLabel": "Wynik jest dla mnie ważniejszy niż relacja z nim związana."
+    },
+    {
+      "id": "energy_4",
+      "dimension": "energy",
+      "leftLabel": "Chętnie pomagam, nawet jeśli zaburza to mój harmonogram.",
+      "rightLabel": "Chętnie pozostaję skupiony(-a) na tym, co sobie założyłem(-am)."
+    },
+    {
+      "id": "energy_5",
+      "dimension": "energy",
+      "leftLabel": "Lubię spędzać czas z ludźmi bez konkretnego celu.",
+      "rightLabel": "Najlepiej czuję się, gdy realizuję jasne cele."
+    },
+    {
+      "id": "energy_6",
+      "dimension": "energy",
+      "leftLabel": "Szybko zauważam, gdy komuś w grupie nie jest dobrze.",
+      "rightLabel": "Szybko zauważam, gdy zadanie utknęło w miejscu."
+    }
+  ],
+  "profiles": {
+    "people_structured": {
+      "title": "Człowiek / Uporządkowany",
+      "traits": [
+        "Ceni jasno określone relacje",
+        "Przywiązuje wagę do zażyłości i stabilności",
+        "Lubi zgrane zespoły i znane otoczenie",
+        "Tworzy ciepłą, niezawodną atmosferę"
+      ]
+    },
+    "people_unstructured": {
+      "title": "Człowiek / Nieuporządkowany",
+      "traits": [
+        "Lubi spontaniczne spotkania",
+        "Jest rozmowny i wyrazisty",
+        "Łatwo dostosowuje się do nowych sytuacji",
+        "Ceni elastyczność w relacjach"
+      ]
+    },
+    "task_structured": {
+      "title": "Zadanie / Uporządkowany",
+      "traits": [
+        "Skupiony na wynikach",
+        "Ceni jasny kierunek i planowanie",
+        "Chętnie pracuje na rzecz określonych celów",
+        "Woli zorganizowane przebiegi pracy"
+      ]
+    },
+    "task_unstructured": {
+      "title": "Zadanie / Nieuporządkowany",
+      "traits": [
+        "Ceni różnorodność i elastyczność",
+        "Chętnie pomaga tam, gdzie akurat jest potrzebny",
+        "Szybko dostosowuje się do nowych wyzwań",
+        "Skupia się na praktycznych wynikach, a nie na procesie"
+      ]
+    }
+  }
+}
