@@ -3,6 +3,7 @@
   "languages": [
     { "code": "de", "name": "Deutsch", "status": "complete" },
     { "code": "en", "name": "English", "status": "complete" },
-    { "code": "pl", "name": "Polski", "status": "draft" }
+    { "code": "pl", "name": "Polski", "status": "draft" },
+    { "code": "lt", "name": "Lietuvių", "status": "draft" }
   ]
 }
