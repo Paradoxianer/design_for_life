@@ -1,0 +1,147 @@
+{
+  "scaleLabels": [
+    "Labai gerai",
+    "Gerai",
+    "Patenkinamai",
+    "Pakankamai",
+    "Silpnai",
+    "Nepatenkinamai"
+  ],
+  "categories": [
+    {
+      "id": "content",
+      "title": "Seminaro turinys",
+      "questions": [
+        {
+          "id": "contentExpectations",
+          "type": "scale",
+          "label": "Turinys atitiko mano lūkesčius"
+        },
+        {
+          "id": "contentPracticalUtility",
+          "type": "scale",
+          "label": "Gavau naudingų impulsų savo kasdienei praktikai"
+        },
+        {
+          "id": "contentStructure",
+          "type": "scale",
+          "label": "Temos struktūra ir suprantamumas"
+        }
+      ]
+    },
+    {
+      "id": "speaker",
+      "title": "Pranešėjas ir vedimas",
+      "questions": [
+        {
+          "id": "speakerGodWorking",
+          "type": "scale",
+          "label": "Man susidarė įspūdis, kad Dievas galėjo veikti"
+        },
+        {
+          "id": "speakerFaithProgress",
+          "type": "scale",
+          "label": "Seminaras pastūmėjo mane pirmyn mano tikėjimo gyvenime"
+        },
+        {
+          "id": "speakerDidactics",
+          "type": "scale",
+          "label": "Didaktiniai gebėjimai"
+        },
+        {
+          "id": "speakerMethods",
+          "type": "scale",
+          "label": "Naudoti metodai buvo tikslingi"
+        },
+        {
+          "id": "speakerInvolvement",
+          "type": "scale",
+          "label": "Pranešėjas aktyviai įtraukė dalyvius"
+        },
+        {
+          "id": "speakerRespect",
+          "type": "scale",
+          "label": "Pranešėjas elgėsi mandagiai ir pagarbiai"
+        },
+        {
+          "id": "atmosphere",
+          "type": "scale",
+          "label": "Bendra kurso atmosfera ir grupės klimatas"
+        }
+      ]
+    },
+    {
+      "id": "docs",
+      "title": "Seminaro medžiaga",
+      "questions": [
+        {
+          "id": "docsStructure",
+          "type": "scale",
+          "label": "Struktūra ir aiškumas"
+        },
+        {
+          "id": "docsUnderstandability",
+          "type": "scale",
+          "label": "Suprantamumas"
+        },
+        {
+          "id": "docsDifficulty",
+          "type": "scale",
+          "label": "Sudėtingumo lygis"
+        }
+      ]
+    },
+    {
+      "id": "org",
+      "title": "Organizavimas ir infrastruktūra",
+      "questions": [
+        {
+          "id": "roomsAppropriateness",
+          "type": "scale",
+          "label": "Patalpų tinkamumas"
+        },
+        {
+          "id": "prepQuality",
+          "type": "scale",
+          "label": "Organizatoriaus pasirengimas seminarui"
+        },
+        {
+          "id": "duration",
+          "type": "scale",
+          "label": "Renginio trukmė"
+        },
+        {
+          "id": "tempo",
+          "type": "scale",
+          "label": "Renginio tempas"
+        },
+        {
+          "id": "catering",
+          "type": "scale",
+          "label": "Maitinimas"
+        }
+      ]
+    },
+    {
+      "id": "comments",
+      "title": "Komentarai",
+      "questions": [
+        {
+          "id": "commentsMissing",
+          "type": "text",
+          "label": "Kam pritrūko dėmesio?"
+        },
+        {
+          "id": "recommendation",
+          "type": "text",
+          "label": "Ar rekomenduotumėte šį seminarą kitiems?"
+        },
+        {
+          "id": "generalNotes",
+          "type": "text",
+          "label": "Pastabos"
+        }
+      ]
+    }
+  ]
+}

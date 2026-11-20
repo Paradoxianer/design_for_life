@@ -1,0 +1,114 @@
+{
+  "questions": [
+    {
+      "id": "org_1",
+      "dimension": "organisation",
+      "leftLabel": "Mėgstu iš anksto planuoti dieną pagal aiškų tvarkaraštį.",
+      "rightLabel": "Mėgstu palikti dieną atvirą ir spręsti spontaniškai."
+    },
+    {
+      "id": "org_2",
+      "dimension": "organisation",
+      "leftLabel": "Jaučiuosi patogiau, kai eiga aiškiai apibrėžta.",
+      "rightLabel": "Jaučiuosi patogiau, kai galiu lanksčiai reaguoti į situacijas."
+    },
+    {
+      "id": "org_3",
+      "dimension": "organisation",
+      "leftLabel": "Man patinka aiškios taisyklės ir nurodymai.",
+      "rightLabel": "Man patinka imtis dalykų savo, nekonvenciniu būdu."
+    },
+    {
+      "id": "org_4",
+      "dimension": "organisation",
+      "leftLabel": "Dirbu mieliausiai pagal tvirtą struktūrą.",
+      "rightLabel": "Dirbu mieliausiai taip, kaip susiklosto."
+    },
+    {
+      "id": "org_5",
+      "dimension": "organisation",
+      "leftLabel": "Paskutinės minutės pokyčiai mane stresina.",
+      "rightLabel": "Paskutinės minutės pokyčiai man atrodo įdomūs."
+    },
+    {
+      "id": "org_6",
+      "dimension": "organisation",
+      "leftLabel": "Mėgstu atlikti užduotis žingsnis po žingsnio pagal sąrašą.",
+      "rightLabel": "Mėgstu šokinėti tarp skirtingų užduočių, kaip susiklosto."
+    },
+    {
+      "id": "energy_1",
+      "dimension": "energy",
+      "leftLabel": "Man svarbu, kaip jaučiasi žmonės aplink mane.",
+      "rightLabel": "Man svarbu, kad užduotis būtų atlikta."
+    },
+    {
+      "id": "energy_2",
+      "dimension": "energy",
+      "leftLabel": "Semiuosi energijos kalbėdamasis (-usi) su kitais.",
+      "rightLabel": "Semiuosi energijos, kai pasiekiu rezultatą."
+    },
+    {
+      "id": "energy_3",
+      "dimension": "energy",
+      "leftLabel": "Santykiai man svarbesni už rezultatą.",
+      "rightLabel": "Rezultatas man svarbesnis už santykį su juo."
+    },
+    {
+      "id": "energy_4",
+      "dimension": "energy",
+      "leftLabel": "Mielai padedu, net jei tai sujaukia mano tvarkaraštį.",
+      "rightLabel": "Mėgstu likti susitelkęs (-usi) į tai, ką buvau numatęs (-iusi)."
+    },
+    {
+      "id": "energy_5",
+      "dimension": "energy",
+      "leftLabel": "Man malonu leisti laiką su žmonėmis be konkretaus tikslo.",
+      "rightLabel": "Jaučiuosi geriausiai, kai siekiu aiškių tikslų."
+    },
+    {
+      "id": "energy_6",
+      "dimension": "energy",
+      "leftLabel": "Greitai pastebiu, kai kam nors grupėje nesiseka.",
+      "rightLabel": "Greitai pastebiu, kai užduotis užstringa."
+    }
+  ],
+  "profiles": {
+    "people_structured": {
+      "title": "Žmogus / Struktūruotas",
+      "traits": [
+        "Vertina aiškiai apibrėžtus santykius",
+        "Teikia svarbą artumui ir stabilumui",
+        "Mėgsta susiderinusias komandas ir aplinkas",
+        "Kuria šiltą, patikimą atmosferą"
+      ]
+    },
+    "people_unstructured": {
+      "title": "Žmogus / Nestruktūruotas",
+      "traits": [
+        "Mėgsta spontaniškus susitikimus",
+        "Šnekus ir išraiškingas",
+        "Lengvai prisitaiko prie naujų situacijų",
+        "Vertina lankstumą santykiuose"
+      ]
+    },
+    "task_structured": {
+      "title": "Užduotis / Struktūruotas",
+      "traits": [
+        "Susitelkęs į rezultatus",
+        "Vertina aiškią kryptį ir planavimą",
+        "Mielai dirba siekdamas apibrėžtų tikslų",
+        "Teikia pirmenybę organizuotai darbo eigai"
+      ]
+    },
+    "task_unstructured": {
+      "title": "Užduotis / Nestruktūruotas",
+      "traits": [
+        "Vertina įvairovę ir lankstumą",
+        "Mielai padeda ten, kur šiuo metu reikia",
+        "Greitai prisitaiko prie naujų iššūkių",
+        "Susitelkęs į praktinius rezultatus, o ne į procesą"
+      ]
+    }
+  }
+}

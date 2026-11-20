@@ -1,0 +1,1077 @@
+[
+  {
+    "id": "G01",
+    "name": "Išminties žodis",
+    "originalWord": "λόγος σοφίας (lógos sophías, Gr.); חָכְמָה (chokhmáh, Hebr.)",
+    "meaning": "Antgamtinis žodis, atskleidžiantis Dievo planą ar sprendimą",
+    "bibleReferences": [
+      "1 Cor 12:8",
+      "Jas 1:5",
+      "1 Kgs 3:5-12",
+      "Ex 31:3",
+      "Prov 2:6"
+    ],
+    "description": "Išminties žodžio dovana apibūdina Šventosios Dvasios duotą žodį ar įžvalgą, kuri atskleidžia Dievo požiūrį, planą ar sprendimą konkrečioje situacijoje. Graikiškas „logos sophias“ reiškia ne bendrą išmintį, o konkrečią, situacijai skirtą Dievo kalbą. Biblijoje ši dovana matyti, pavyzdžiui, Saliamono gyvenime (1 Kar 3), apaštalų sprendimuose sudėtingose situacijose (Apd 6; Apd 15) ar paties Jėzaus, kuris konfliktuose apreikšdavo dieviškąją išmintį. Ši dovana suteikia aiškumo, orientyrų ir dieviškos strategijos sudėtingose situacijose ir tarnauja bendruomenės vadovavimui bei sustiprinimui.",
+    "questions": [
+      {
+        "id": "G01_Q1",
+        "type": "experience",
+        "text": "Esu patyręs (-usi), kad Dievas man netikėtai aiškiai parodo sprendimus."
+      },
+      {
+        "id": "G01_Q2",
+        "type": "experience",
+        "text": "Kiti dažnai prašo manęs patarimo sunkiose situacijose."
+      },
+      {
+        "id": "G01_Q3",
+        "type": "experience",
+        "text": "Priimdamas (-a) sudėtingus sprendimus jaučiu vidinį aiškumą."
+      },
+      {
+        "id": "G01_Q4",
+        "type": "nature",
+        "text": "Man malonu padėti žmonėms priimti gerus sprendimus prieš Dievą."
+      },
+      {
+        "id": "G01_Q5",
+        "type": "nature",
+        "text": "Man svarbu rasti dieviškas strategijas, o ne žmogiškus kompromisus įstrigusioms problemoms spręsti."
+      },
+      {
+        "id": "G01_Q6",
+        "type": "feedback",
+        "text": "Kiti sako, kad mano patarimai padėjo jiems krizėse aiškiai pamatyti Dievo valią."
+      },
+      {
+        "id": "G01_Q7",
+        "type": "feedback",
+        "text": "Matau, kad mano patarimas žmonėms padėjo ilgam."
+      },
+      {
+        "id": "G01_Q8",
+        "type": "reference",
+        "text": "Esu matęs (-iusi), kad šis žmogus sunkiose situacijose pasiūlo naudingus ir gerai apgalvotus sprendimus."
+      },
+      {
+        "id": "G01_Q9",
+        "type": "reference",
+        "text": "Šio žmogaus indėlis dažnai padeda kitiems priimti gerus sprendimus."
+      }
+    ]
+  },
+  {
+    "id": "G02",
+    "name": "Pažinimo žodis",
+    "originalWord": "λόγος γνώσεως (lógos gnóseōs, Gr.)",
+    "meaning": "Antgamtinis žinojimas ar įžvalga į Dievo paslaptis",
+    "bibleReferences": [
+      "1 Cor 12:8",
+      "1 Cor 13:2"
+    ],
+    "description": "Pažinimo žodis apibūdina Šventosios Dvasios dovanotą įžvalgą ar informaciją apie žmogų, situaciją ar dvasinę tikrovę, kurios negalima įgyti natūraliu keliu. Sąvoka „logos gnoseos“ reiškia konkretų žinojimo apreiškimą. Biblijoje ši dovana matyti, pavyzdžiui, kai Petras atpažįsta Ananijo apgaulę (Apd 5) arba kai Jėzus žino žmonių mintis ir gyvenimo aplinkybes (Jn 4). Ši dovana padeda atskleisti tiesą, padėti žmonėms ir parodyti Dievo veikimą.",
+    "questions": [
+      {
+        "id": "G02_Q1",
+        "type": "experience",
+        "text": "Melsdamasis (-asi) esu gavęs (-usi) iš Dievo konkretų paveikslą ar žodį apie kito žmogaus situaciją."
+      },
+      {
+        "id": "G02_Q2",
+        "type": "experience",
+        "text": "Ar yra buvę akimirkų, kai supratai dalykų apie situaciją, kurių anksčiau negalėjai žinoti?"
+      },
+      {
+        "id": "G02_Q3",
+        "type": "experience",
+        "text": "Ar patyrei, kad Dievas davė tau ypatingų įžvalgų apie žmones ar situacijas?"
+      },
+      {
+        "id": "G02_Q4",
+        "type": "nature",
+        "text": "Trokštu, kad Dievas man atskleistų „paslaptis“, kad galėčiau tikslingiau tarnauti žmonėms."
+      },
+      {
+        "id": "G02_Q5",
+        "type": "nature",
+        "text": "Noriu giliau suprasti Dievo mintis ir tiesas."
+      },
+      {
+        "id": "G02_Q6",
+        "type": "feedback",
+        "text": "Per mano įžvalgas kiti patiria naują aiškumą dvasiniais klausimais."
+      },
+      {
+        "id": "G02_Q7",
+        "type": "feedback",
+        "text": "Jaučiu spaudimą iškelti į dienos šviesą tai, kas paslėpta."
+      },
+      {
+        "id": "G02_Q8",
+        "type": "reference",
+        "text": "Pastebėjau, kad šis žmogus mato ryšius, kurių kiti iš pradžių nepastebi."
+      },
+      {
+        "id": "G02_Q9",
+        "type": "reference",
+        "text": "Šio žmogaus įžvalgos padeda kitiems geriau suprasti situacijas."
+      }
+    ]
+  },
+  {
+    "id": "G03",
+    "name": "Tikėjimas",
+    "originalWord": "πίστις (pístis, Gr.)",
+    "meaning": "Ypatingas, stebuklus darantis tikėjimas, kuris kilnoja kalnus",
+    "bibleReferences": [
+      "1 Cor 12:9",
+      "1 Cor 13:2",
+      "Matt 17:20",
+      "Heb 11"
+    ],
+    "description": "Tikėjimo dovana yra ypatingas Šventosios Dvasios sukeltas pasitikėjimas, kad Dievas konkrečioje situacijoje veiks. Ji peržengia bendrą išgelbstintį tikėjimą ir yra antgamtinis pasitikėjimas Dievo galia ir pažadais. Graikiškas „pistis“ čia nusako stiprų, tvirtą pasitikėjimą Dievo veikimu. Biblijoje ši dovana matyti tokių žmonių kaip Abraomas (Rom 4) ar apaštalų gyvenime, kurie drąsiai laukė Dievo veikimo. Ši dovana sustiprina kitus tikėjimu ir atveria erdvę antgamtiniam Dievo įsikišimui.",
+    "questions": [
+      {
+        "id": "G03_Q1",
+        "type": "experience",
+        "text": "Ar esi patyręs (-usi), kad ypač pasitikėjai Dievu iš pažiūros neįmanomose situacijose?"
+      },
+      {
+        "id": "G03_Q2",
+        "type": "experience",
+        "text": "Ar buvo akimirkų, kai tavo pasitikėjimas Dievu paskatino kitus?"
+      },
+      {
+        "id": "G03_Q3",
+        "type": "experience",
+        "text": "Ar situacijos pasikeitė į gera dėl tavo tikėjimo?"
+      },
+      {
+        "id": "G03_Q4",
+        "type": "nature",
+        "text": "Pasitikiu, kad Dievas gali padaryti ir didelių, ir neįmanomų dalykų."
+      },
+      {
+        "id": "G03_Q5",
+        "type": "nature",
+        "text": "Jaučiu motyvaciją pasitikėti Dievu net tada, kai kiti abejoja."
+      },
+      {
+        "id": "G03_Q6",
+        "type": "feedback",
+        "text": "Mano pasitikėjimas Dievu dažnai sustiprina kitų žmonių tikėjimą."
+      },
+      {
+        "id": "G03_Q7",
+        "type": "feedback",
+        "text": "Laikydamasis (-i) Dievo pažado pasiekėme tikslų, kurių komanda ar bendruomenė jau seniai buvo atsisakiusi."
+      },
+      {
+        "id": "G03_Q8",
+        "type": "reference",
+        "text": "Esu matęs (-iusi), kad šis žmogus ir sunkiose situacijose tvirtai pasitiki, jog Dievas gali veikti."
+      },
+      {
+        "id": "G03_Q9",
+        "type": "reference",
+        "text": "Šio žmogaus pasitikėjimas matomai padrąsina ir sustiprina kitus žmones."
+      }
+    ]
+  },
+  {
+    "id": "G04",
+    "name": "Gydymo dovanos",
+    "originalWord": "χαρίσματα ἰαμάτων (charísmata iamatōn, Gr.)",
+    "meaning": "Gebėjimas gydyti ligonius Dievo galia",
+    "bibleReferences": [
+      "1 Cor 12:9, 28, 30",
+      "Jas 5:14-15",
+      "Matt 10:8",
+      "Acts 3:1-10",
+      "Mark 16:18"
+    ],
+    "description": "„Gydymo dovanos“ apibūdina įvairius dieviškojo išgydymo poveikius per Šventąją Dvasią. Graikiškas „charismata iamaton“ yra daugiskaita ir rodo, kad Dievas dovanoja skirtingų rūšių išgydymus – kūno, sielos ar dvasios. Biblijoje dažnai aprašomi Jėzaus ir apaštalų išgydymai (pvz., Apd 3; Mk 16). Ši dovana rodo Dievo atjautą kenčiantiems žmonėms, yra jo karalystės ženklas ir ugdo tikėjimą.",
+    "questions": [
+      {
+        "id": "G04_Q1",
+        "type": "experience",
+        "text": "Ar esi patyręs (-usi), kad kam nors pasimeldus už jį ar ją buvo išgydytas kūnas ar siela?"
+      },
+      {
+        "id": "G04_Q2",
+        "type": "experience",
+        "text": "Ar dažnai jauti paskatą melstis už ligonius?"
+      },
+      {
+        "id": "G04_Q3",
+        "type": "experience",
+        "text": "Ar esi patyręs (-usi), kad Dievas per maldą dovanoja išgydymą?"
+      },
+      {
+        "id": "G04_Q4",
+        "type": "nature",
+        "text": "Ar linkęs (-usi) melstis už ligonius ir tikėtis išgydymo?"
+      },
+      {
+        "id": "G04_Q5",
+        "type": "nature",
+        "text": "Tvirtai tikiu, kad Jėzus ir šiandien gydo lygiai taip pat kaip apaštalų laikais."
+      },
+      {
+        "id": "G04_Q6",
+        "type": "feedback",
+        "text": "Žmonės pasakoja, kad per mano maldą patyrė paguodą ar išgydymą."
+      },
+      {
+        "id": "G04_Q7",
+        "type": "feedback",
+        "text": "Kiti tiesiogiai prašo manęs pasimelsti už jų sveikatą."
+      },
+      {
+        "id": "G04_Q8",
+        "type": "reference",
+        "text": "Esu matęs (-iusi), kad šis žmogus meldžiasi už ligonius ar prislėgtus žmones."
+      },
+      {
+        "id": "G04_Q9",
+        "type": "reference",
+        "text": "Žmonės pasakoja, kad per šio žmogaus maldą patyrė pagalbą ar paguodą."
+      }
+    ]
+  },
+  {
+    "id": "G05",
+    "name": "Stebuklų darymas",
+    "originalWord": "ἐνεργήματα δυνάμεων (energémata dynámeōn, Gr.)",
+    "meaning": "Antgamtinių galios darbų darymas Dievo jėga",
+    "bibleReferences": [
+      "1 Cor 12:10, 28, 29",
+      "Acts 5:12",
+      "2 Cor 12:12",
+      "Mark 16:17-18"
+    ],
+    "description": "„Stebuklų darymas“ apibūdina antgamtinius Dievo galios darbus, kurie peržengia natūralias galimybes. Posakis „energemata dynameon“ pažodžiui reiškia „veiksmingi galios darbai“. Biblijoje ši dovana matyti, pavyzdžiui, Mozės, Elijo, Jėzaus ir apaštalų gyvenime. Stebuklai gali būti išvadavimas, aprūpinimas, gamtos stebuklai ar kiti nepaprasti Dievo įsikišimai, kurie patvirtina Dievo galią ir evangeliją.",
+    "questions": [
+      {
+        "id": "G05_Q1",
+        "type": "experience",
+        "text": "Ar esi patyręs (-usi) situacijų, kuriose Dievas įsikišo antgamtiniu būdu?"
+      },
+      {
+        "id": "G05_Q2",
+        "type": "experience",
+        "text": "Ar esi patyręs (-usi), kad Dievas per tavo maldą padarė nepaprastų dalykų?"
+      },
+      {
+        "id": "G05_Q3",
+        "type": "experience",
+        "text": "Tikiuosi antgamtinių Dievo veiksmų savo aplinkoje."
+      },
+      {
+        "id": "G05_Q4",
+        "type": "nature",
+        "text": "Giliai pasitikiu, kad Dievas ir šiandien daro matomus savo galios ženklus, patvirtindamas savo žodį."
+      },
+      {
+        "id": "G05_Q5",
+        "type": "nature",
+        "text": "Tikiu, kad Dievas ir šiandien gali daryti stebuklus."
+      },
+      {
+        "id": "G05_Q6",
+        "type": "feedback",
+        "text": "Žmonės mano aplinkoje atėjo į tikėjimą per matomus Dievo galios darbus."
+      },
+      {
+        "id": "G05_Q7",
+        "type": "feedback",
+        "text": "Mano tarnystę dažnai lydi neįprasti įvykiai, kurių žmogiškai neįmanoma paaiškinti."
+      },
+      {
+        "id": "G05_Q8",
+        "type": "reference",
+        "text": "Esu matęs (-iusi), kad šis žmogus meldžiasi dėl situacijų, kurias žmogiškai sunku išspręsti."
+      },
+      {
+        "id": "G05_Q9",
+        "type": "reference",
+        "text": "Šio žmogaus tikėjimas padrąsina kitus tikėtis nepaprasto Dievo įsikišimo."
+      }
+    ]
+  },
+  {
+    "id": "G06",
+    "name": "Pranašystė",
+    "originalWord": "προφητεία (propheteía, Gr.); נְבוּאָה (nevūʾáh, Hebr.)",
+    "meaning": "Kalbėjimas Dievo vardu sustiprinimui, paraginimui ir paguodai",
+    "bibleReferences": [
+      "Rom 12:6",
+      "1 Cor 12:10",
+      "1 Cor 14:1-5",
+      "1 Thess 5:20",
+      "Acts 11:27-28"
+    ],
+    "description": "Pranašystė yra Šventosios Dvasios įkvėptas kalbėjimas Dievo vardu bendruomenės sustiprinimui, paraginimui ir padrąsinimui (1 Kor 14,3). Sąvoka „propheteia“ pažodžiui reiškia „kalbėti už ką nors“. Pranašystė gali būti ir apreiškimas, ir Dievo žodžio pritaikymas konkrečiai situacijai. Biblijoje pranašiškas kalbėjimas matomas Senojo Testamento pranašų, o Naujajame Testamente, pavyzdžiui, Agabo (Apd 11) gyvenime. Ši dovana stiprina tikėjimą, taiso klaidingą raidą ir nukreipia bendruomenės žvilgsnį į Dievo valią.",
+    "questions": [
+      {
+        "id": "G06_Q1",
+        "type": "experience",
+        "text": "Esu patyręs (-usi), kad mano įspūdis apie situaciją vėliau pasirodė esąs teisingas."
+      },
+      {
+        "id": "G06_Q2",
+        "type": "experience",
+        "text": "Ar esi patyręs (-usi), kad kas nors per tavo žodžius atpažino Dievo kalbėjimą?"
+      },
+      {
+        "id": "G06_Q3",
+        "type": "experience",
+        "text": "Esu turėjęs (-usi) įspūdžių ar žodžių, kurie vėliau pasitvirtino."
+      },
+      {
+        "id": "G06_Q4",
+        "type": "nature",
+        "text": "Stengiuosi suprasti, ką Dievas nori pasakyti konkrečioje situacijoje."
+      },
+      {
+        "id": "G06_Q5",
+        "type": "nature",
+        "text": "Noriu, kad Dievas per mane galėtų kalbėti kitiems žmonėms."
+      },
+      {
+        "id": "G06_Q6",
+        "type": "feedback",
+        "text": "Žmonės kartais patvirtina, kad Dievas jiems kalbėjo per mano žodžius."
+      },
+      {
+        "id": "G06_Q7",
+        "type": "feedback",
+        "text": "Mano žodžiai paruošė žmones būsimiems įvykiams jų gyvenime."
+      },
+      {
+        "id": "G06_Q8",
+        "type": "reference",
+        "text": "Esu matęs (-iusi), kad šis žmogus perduoda Dievo žodžius, kuriuos kiti laiko labai tinkamais ar stiprinančiais."
+      },
+      {
+        "id": "G06_Q9",
+        "type": "reference",
+        "text": "Jaučiama, kad tam tikrose situacijose Dievas naudoja šį žmogų žinioms perduoti."
+      }
+    ]
+  },
+  {
+    "id": "G07",
+    "name": "Dvasių skyrimas",
+    "originalWord": "διακρίσεις πνευμάτων (diakríseis pneumátōn, Gr.)",
+    "meaning": "Skirti dievišką, demonišką ir žmogišką dvasią",
+    "bibleReferences": [
+      "1 Cor 12:10",
+      "1 John 4:1",
+      "Acts 5:3",
+      "Acts 16:16-18",
+      "Heb 5:14"
+    ],
+    "description": "Dvasių skyrimas yra gebėjimas atpažinti dvasines įtakas ir atskirti, ar jos kyla iš Dievo, žmogaus dvasios ar demoniškų jėgų. Sąvoka „diakrisis pneumaton“ reiškia „dvasių skyrimą ar tikrinimą“. Biblijoje ši dovana matyti, pavyzdžiui, Petro (Apd 5) ar Pauliaus (Apd 16) gyvenime. Ji saugo bendruomenę nuo apgaulės ir padeda aiškiai atpažinti Dievo veikimą.",
+    "questions": [
+      {
+        "id": "G07_Q1",
+        "type": "experience",
+        "text": "Jaučiu, ar kažkas kyla iš Dievo, iš žmonių ar iš kitų šaltinių."
+      },
+      {
+        "id": "G07_Q2",
+        "type": "experience",
+        "text": "Ar esi patyręs (-usi) situacijų, kuriose atpažinai klaidingas dvasines įtakas?"
+      },
+      {
+        "id": "G07_Q3",
+        "type": "experience",
+        "text": "Greitai atpažįstu nesveikas dvasines įtakas."
+      },
+      {
+        "id": "G07_Q4",
+        "type": "nature",
+        "text": "Noriu suprasti, kokios dvasinės jėgos veikia konkrečioje situacijoje."
+      },
+      {
+        "id": "G07_Q5",
+        "type": "nature",
+        "text": "Atidžiai tikrinu dvasinius įspūdžius."
+      },
+      {
+        "id": "G07_Q6",
+        "type": "feedback",
+        "text": "Esu patyręs (-usi), kaip Dievas man atskleidė apgaulę."
+      },
+      {
+        "id": "G07_Q7",
+        "type": "feedback",
+        "text": "Mano vertinimas kartais padeda atpažinti klaidingą dvasinę raidą."
+      },
+      {
+        "id": "G07_Q8",
+        "type": "reference",
+        "text": "Pastebėjau, kad šis žmogus supranta, kai kas nors dvasiškai nesutampa."
+      },
+      {
+        "id": "G07_Q9",
+        "type": "reference",
+        "text": "Šio žmogaus vertinimas padeda kitiems geriau suprasti dvasines situacijas."
+      }
+    ]
+  },
+  {
+    "id": "G08",
+    "name": "Kalbėjimas kalbomis",
+    "originalWord": "γένη γλωσσῶν (génē glōssōn, Gr.)",
+    "meaning": "Kalbėjimas kitomis kalbomis ar Dvasios maldos kalba",
+    "bibleReferences": [
+      "1 Cor 12:10, 28, 30",
+      "1 Cor 14",
+      "Acts 2:4-11",
+      "Acts 19:6",
+      "Mark 16:17"
+    ],
+    "description": "Kalbėjimo kalbomis dovana apibūdina Šventosios Dvasios įkvėptą kalbėjimą kalba, kurios kalbantysis nėra išmokęs. Graikiškas „gene glosson“ reiškia „įvairių rūšių kalbas“. Biblijoje ši dovana pirmą kartą pasirodo Sekminių dieną (Apd 2) ir ypač aiškinama 1 Korintiečiams 12–14. Ji gali būti ir asmeninė maldos kalba, ir viešas Dievo veikimo ženklas.",
+    "questions": [
+      {
+        "id": "G08_Q1",
+        "type": "experience",
+        "text": "Reguliariai meldžiuosi kalba, kurios nesu išmokęs (-usi)."
+      },
+      {
+        "id": "G08_Q2",
+        "type": "experience",
+        "text": "Maldoje kalbomis stipriai jaučiu Dievo artumą."
+      },
+      {
+        "id": "G08_Q3",
+        "type": "experience",
+        "text": "Ar esi patyręs (-usi), kad malda kalbomis stiprina tave tikėjime?"
+      },
+      {
+        "id": "G08_Q4",
+        "type": "nature",
+        "text": "Trokštu maldoje bendrauti su Dievu aukščiau už savo protą."
+      },
+      {
+        "id": "G08_Q5",
+        "type": "nature",
+        "text": "Esu atviras (-a) antgamtinėms raiškos formoms maldoje."
+      },
+      {
+        "id": "G08_Q6",
+        "type": "feedback",
+        "text": "Esu patyręs (-usi), kad mano malda kartais išsireiškia kitaip, nei tikėjausi."
+      },
+      {
+        "id": "G08_Q7",
+        "type": "feedback",
+        "text": "Kai meldžiuosi man nežinoma kalba, kiti tai laiko dvasiškai padrąsinančiu."
+      },
+      {
+        "id": "G08_Q8",
+        "type": "reference",
+        "text": "Esu matęs (-iusi), kad šis žmogus meldžiasi man nežinomomis kalbomis."
+      },
+      {
+        "id": "G08_Q9",
+        "type": "reference",
+        "text": "Ne viską suprantu, ko šis žmogus meldžiasi, bet jaučiu Dievo artumą, kai jis ar ji meldžiasi."
+      }
+    ]
+  },
+  {
+    "id": "G09",
+    "name": "Kalbų aiškinimas",
+    "originalWord": "ἑρμηνεία γλωσσῶν (hermēneía glōssōn, Gr.)",
+    "meaning": "Kalbų išaiškinimas ir išvertimas bendruomenės sustiprinimui",
+    "bibleReferences": [
+      "1 Cor 12:10",
+      "1 Cor 14:13, 27-28"
+    ],
+    "description": "Kalbų aiškinimas yra gebėjimas suprasti kalbėjimą kalbomis ir padaryti jį suprantamą kitiems. Graikiškas „hermeneia glosson“ reiškia „kalbų vertimą ar aiškinimą“. Ši dovana padaro, kad kalbėjimas kalbomis bendruomenėje tarnautų sustiprinimui, nes paaiškėja jo prasmė (1 Kor 14).",
+    "questions": [
+      {
+        "id": "G09_Q1",
+        "type": "experience",
+        "text": "Kai kas nors meldžiasi kalbomis, dažnai suprantu prasmę, nors kalbos nesu išmokęs (-usi)."
+      },
+      {
+        "id": "G09_Q2",
+        "type": "experience",
+        "text": "Esu patyręs (-usi), kaip maldos nesuprantama kalba aiškinimas buvo tiksliai atsakymas į kito žmogaus maldą."
+      },
+      {
+        "id": "G09_Q3",
+        "type": "experience",
+        "text": "Ar esi patyręs (-usi), kad Dievas padėjo tau suprasti dvasines žinias, kurios kitiems buvo nesuprantamos?"
+      },
+      {
+        "id": "G09_Q4",
+        "type": "nature",
+        "text": "Jaučiu atsakomybę padaryti maldą kalbomis suprantamą."
+      },
+      {
+        "id": "G09_Q5",
+        "type": "nature",
+        "text": "Ar jautiesi traukiamas (-a) aiškinti ar versti maldas kita kalba?"
+      },
+      {
+        "id": "G09_Q6",
+        "type": "feedback",
+        "text": "Po mano kalbų išaiškinimo grupėje dažnai tvyro gili vienybė ar dvasia, nuteikianti garbinimui."
+      },
+      {
+        "id": "G09_Q7",
+        "type": "feedback",
+        "text": "Mano kalbų aiškinimas padrąsino, nurodė Dievo tiesą ir paskatino meilingą pataisymą."
+      },
+      {
+        "id": "G09_Q8",
+        "type": "reference",
+        "text": "Esu matęs (-iusi), kad šis žmogus sugebėjo išaiškinti maldą, kurios anksčiau nesupratau."
+      },
+      {
+        "id": "G09_Q9",
+        "type": "reference",
+        "text": "Šis žmogus sugebėjo man paaiškinti maldas kalbomis, kurių nesupratau."
+      }
+    ]
+  },
+  {
+    "id": "G10",
+    "name": "Tarnystė / diakonija",
+    "originalWord": "διακονία (diakonía, Gr.)",
+    "meaning": "Praktinis tarnavimas ir pagalba bendruomenėje",
+    "bibleReferences": [
+      "Rom 12:7",
+      "1 Cor 12:28",
+      "Acts 6:1-7",
+      "1 Pet 4:10-11"
+    ],
+    "description": "Tarnystės dovana apibūdina ypatingą gebėjimą praktiškai padėti kitiems ir atpažinti poreikius. Graikiškas „diakonia“ reiškia „tarnystę“ ar „praktinę pagalbą“. Biblijoje ši dovana ypač matyti pirmųjų diakonų tarnystėje (Apd 6). Žmonės su šia dovana labai prisideda prie to, kad bendruomenė praktiškai veiktų ir žmonės patirtų konkrečią pagalbą.",
+    "questions": [
+      {
+        "id": "G10_Q1",
+        "type": "experience",
+        "text": "Mielai praktiškai padedu, nebūdamas (-a) dėmesio centre."
+      },
+      {
+        "id": "G10_Q2",
+        "type": "experience",
+        "text": "Spontaniškai pastebiu, kur reikia pagalbos."
+      },
+      {
+        "id": "G10_Q3",
+        "type": "experience",
+        "text": "Man malonu praktiškai palengvinti žmonėms naštą, net jei niekas nepaminės mano vardo."
+      },
+      {
+        "id": "G10_Q4",
+        "type": "nature",
+        "text": "Verčiau energingai padedu, nei ilgai vedu teorines diskusijas."
+      },
+      {
+        "id": "G10_Q5",
+        "type": "nature",
+        "text": "Noriu, kad bendruomenėje viskas vyktų sklandžiai, todėl įsitraukiu visur, kur trūksta rankų."
+      },
+      {
+        "id": "G10_Q6",
+        "type": "feedback",
+        "text": "Vadovai man dažnai sako, kad esu jiems nepakeičiama atrama bendruomenės kasdienybėje."
+      },
+      {
+        "id": "G10_Q7",
+        "type": "feedback",
+        "text": "Dėl mano pagalbos žmonės bendruomenėje jaučiasi vertinami ir laukiami."
+      },
+      {
+        "id": "G10_Q8",
+        "type": "reference",
+        "text": "Esu matęs (-iusi), kad šis žmogus praktiškai padeda, kai reikia paramos."
+      },
+      {
+        "id": "G10_Q9",
+        "type": "reference",
+        "text": "Šio žmogaus indėlis padeda, kad darbai būtų gerai atlikti."
+      }
+    ]
+  },
+  {
+    "id": "G11",
+    "name": "Mokymas",
+    "originalWord": "διδασκαλία (didaskalía, Gr.)",
+    "meaning": "Mokyti Dievo tiesos",
+    "bibleReferences": [
+      "Rom 12:7",
+      "Eph 4:11",
+      "1 Tim 3:2",
+      "2 Tim 2:2"
+    ],
+    "description": "Mokymo dovana yra gebėjimas aiškiai, suprantamai ir ištikimai aiškinti Dievo žodį. Sąvoka „didaskalia“ reiškia ir mokymo turinį, ir pačią mokymo veiklą. Biblijoje ši dovana ypač siejama su vadovavimo užduotimis (Ef 4,11). Ji padeda bendruomenei suprasti Dievo tiesą ir augti tikėjime.",
+    "questions": [
+      {
+        "id": "G11_Q1",
+        "type": "experience",
+        "text": "Kai aiškinu Bibliją, kiti sako, kad staiga supranta sudėtingas temas."
+      },
+      {
+        "id": "G11_Q2",
+        "type": "experience",
+        "text": "Ar patiri, kad tavo mokymas atneša supratimą ir dvasinį augimą?"
+      },
+      {
+        "id": "G11_Q3",
+        "type": "experience",
+        "text": "Ar esi patyręs (-usi), kad žmonės dvasiškai augo dėl tavo paaiškinimų?"
+      },
+      {
+        "id": "G11_Q4",
+        "type": "nature",
+        "text": "Degu noru, kad krikščionys augtų tikėjime per tvirtas žinias."
+      },
+      {
+        "id": "G11_Q5",
+        "type": "nature",
+        "text": "Mielai paaiškinu kitiems tai, ką išmokau."
+      },
+      {
+        "id": "G11_Q6",
+        "type": "feedback",
+        "text": "Žmonės pasakoja, kad per mano mokymą rado tvirtesnį savo gyvenimo pagrindą."
+      },
+      {
+        "id": "G11_Q7",
+        "type": "feedback",
+        "text": "Žmonės auga tikėjime per mano paaiškinimus."
+      },
+      {
+        "id": "G11_Q8",
+        "type": "reference",
+        "text": "Esu matęs (-iusi), kad šis žmogus turinį paaiškina taip, kad kiti jį gerai supranta."
+      },
+      {
+        "id": "G11_Q9",
+        "type": "reference",
+        "text": "Žmonės mokosi ir tobulėja per šio žmogaus paaiškinimus."
+      }
+    ]
+  },
+  {
+    "id": "G12",
+    "name": "Padrąsinimas",
+    "originalWord": "παράκλησις (paráklēsis, Gr.)",
+    "meaning": "Padrąsinti, paguosti ir paraginti",
+    "bibleReferences": [
+      "Rom 12:8",
+      "1 Cor 14:3"
+    ],
+    "description": "Padrąsinimo ar paraginimo dovana („paraklesis“) apibūdina gebėjimą stiprinti, guosti ir drąsinti žmones tikėti žodžiais. Šis žodis susijęs su sąvoka „Paraklitas“, kuria vadinama Šventoji Dvasia kaip Guodėja. Ši dovana padeda žmonėms įveikti sunkius laikotarpius ir eiti tikėjimo keliu toliau.",
+    "questions": [
+      {
+        "id": "G12_Q1",
+        "type": "experience",
+        "text": "Esu padėjęs (-usi) žmonėms išbristi iš gilaus nusivylimo."
+      },
+      {
+        "id": "G12_Q2",
+        "type": "experience",
+        "text": "Suprantu, ko žmogui reikia, kad galėtų eiti toliau."
+      },
+      {
+        "id": "G12_Q3",
+        "type": "experience",
+        "text": "Meilingai, bet tiesiai nurodžiau žmonėms jų akląsias zonas, ir tai paskatino teigiamus pokyčius."
+      },
+      {
+        "id": "G12_Q4",
+        "type": "nature",
+        "text": "Ar linkęs (-usi) kitiems suteikti padrąsinimo, paguodos ar paraginimo?"
+      },
+      {
+        "id": "G12_Q5",
+        "type": "nature",
+        "text": "Noriu padėti žmonėms atskleisti visą savo potencialą Dieve."
+      },
+      {
+        "id": "G12_Q6",
+        "type": "feedback",
+        "text": "Po pokalbių su manimi žmonės jaučiasi įgalinti imtis savo užduočių nauja jėga."
+      },
+      {
+        "id": "G12_Q7",
+        "type": "feedback",
+        "text": "Ar tavo paraginimas dažnai atneša paguodą, atsinaujinimą ir dvasinį pakilimą?"
+      },
+      {
+        "id": "G12_Q8",
+        "type": "reference",
+        "text": "Esu matęs (-iusi), kad šis žmogus kitus ir paragino, ir padrąsino."
+      },
+      {
+        "id": "G12_Q9",
+        "type": "reference",
+        "text": "Po pokalbių su šiuo žmogumi žmonės žino, ką turėtų pakeisti savo gyvenime."
+      }
+    ]
+  },
+  {
+    "id": "G13",
+    "name": "Davimas",
+    "originalWord": "μεταδιδόναι (metadidónai, Gr.)",
+    "meaning": "Dosnus, džiaugsmingas davimas nuoširdžiu paprastumu",
+    "bibleReferences": [
+      "Rom 12:8",
+      "Acts 4:32-37",
+      "2 Cor 8–9"
+    ],
+    "description": "Davimo dovana apibūdina ypatingą pasirengimą ir džiaugsmą dosniai dalytis materialiais ar finansiniais ištekliais. Graikiškas „metadidonai“ reiškia „dalytis“ ar „perduoti toliau“. Biblijoje to pavyzdžių matome pirmojoje bendruomenėje (Apd 4). Ši dovana parodo Dievo aprūpinimą ir remia Dievo karalystės darbą.",
+    "questions": [
+      {
+        "id": "G13_Q1",
+        "type": "experience",
+        "text": "Mielai duodu dosniai, nieko nesitikėdamas (-a) mainais."
+      },
+      {
+        "id": "G13_Q2",
+        "type": "experience",
+        "text": "Ar esi patyręs (-usi) situacijų, kai sąmoningai atsisakei savo dalykų, kad padėtum kitiems?"
+      },
+      {
+        "id": "G13_Q3",
+        "type": "experience",
+        "text": "Jaučiu džiaugsmą, kai galiu finansiškai paremti kitus."
+      },
+      {
+        "id": "G13_Q4",
+        "type": "nature",
+        "text": "Savo pinigus ir turtą pirmiausia matau kaip įrankius Dievo karalystei, o ne savo prabangai."
+      },
+      {
+        "id": "G13_Q5",
+        "type": "nature",
+        "text": "Jaučiu atsakomybę finansiškai stiprinti Dievo darbą."
+      },
+      {
+        "id": "G13_Q6",
+        "type": "feedback",
+        "text": "Mano dovanomis buvo išspręsti finansiniai sunkumai bendruomenėje, dažnai kaip tik laiku."
+      },
+      {
+        "id": "G13_Q7",
+        "type": "feedback",
+        "text": "Matau, kad mano davimas neša matomą vaisių."
+      },
+      {
+        "id": "G13_Q8",
+        "type": "reference",
+        "text": "Esu matęs (-iusi), kad šis žmogus duoda dosniai."
+      },
+      {
+        "id": "G13_Q9",
+        "type": "reference",
+        "text": "Šiam žmogui savo gerovė mažiau svarbi, ir jis ar ji iš visos širdies remia kitus."
+      }
+    ]
+  },
+  {
+    "id": "G14",
+    "name": "Vadovavimas",
+    "originalWord": "προϊστάμενος (proistámenos, Gr.)",
+    "meaning": "Vesti ir organizuoti bendruomenę (kaip vairininkas)",
+    "bibleReferences": [
+      "Rom 12:8",
+      "1 Cor 12:28",
+      "1 Thess 5:12",
+      "1 Tim 5:17"
+    ],
+    "description": "Vadovavimo dovana apibūdina gebėjimą vesti žmones, perteikti viziją ir organizuoti struktūras. Graikiškas žodis „proistamenos“ reiškia „stovėti priešakyje“ ar „vadovauti“. Biblijoje ši dovana siejama su atsakomybe už bendruomenę (1 Tes 5). Ji padeda koordinuoti tarnystes ir kartu pasistūmėti į priekį bendruomenei.",
+    "questions": [
+      {
+        "id": "G14_Q1",
+        "type": "experience",
+        "text": "Esu koordinavęs komandas ar projektus taip, kad visi galėjo optimaliai panaudoti savo dovanas."
+      },
+      {
+        "id": "G14_Q2",
+        "type": "experience",
+        "text": "Ar žmonės yra patikėję tau atsakomybę?"
+      },
+      {
+        "id": "G14_Q3",
+        "type": "experience",
+        "text": "Kiti seka mano vadovavimu savanoriškai ir su pasitikėjimu."
+      },
+      {
+        "id": "G14_Q4",
+        "type": "nature",
+        "text": "Ar linkęs (-usi) imtis atsakomybės ir organizuoti?"
+      },
+      {
+        "id": "G14_Q5",
+        "type": "nature",
+        "text": "Noriu imtis atsakomybės, kad bendruomenė veiksmingai pasiektų savo tikslus."
+      },
+      {
+        "id": "G14_Q6",
+        "type": "feedback",
+        "text": "Išlaikau apžvalgą net sudėtingose situacijose."
+      },
+      {
+        "id": "G14_Q7",
+        "type": "feedback",
+        "text": "Man atsakingai vadovaujant bendruomenės sritys auga kokybiškai ir organizaciškai."
+      },
+      {
+        "id": "G14_Q8",
+        "type": "reference",
+        "text": "Esu matęs (-iusi), kad šis žmogus prisiima atsakomybę ir organizuoja užduotis."
+      },
+      {
+        "id": "G14_Q9",
+        "type": "reference",
+        "text": "Šiam žmogui vadovaujant tikslai pasiekiami gerai."
+      }
+    ]
+  },
+  {
+    "id": "G15",
+    "name": "Gailestingumas",
+    "originalWord": "ἔλεος (éleos, Gr.)",
+    "meaning": "Atjauta ir praktinė pagalba kenčiantiems",
+    "bibleReferences": [
+      "Rom 12:8",
+      "Matt 5:7",
+      "Gal 6:2"
+    ],
+    "description": "Gailestingumo dovana apibūdina ypatingą atjautą žmonėms bėdoje ir pasirengimą praktiškai jiems padėti. Graikiškas „eleos“ reiškia „gailestingumą“ ar „atjautą“. Biblijoje gailestingumas aprašomas kaip Dievo būdo išraiška (Mt 5,7). Žmonės su šia dovana neša Dievo meilę ypač kenčiantiems.",
+    "questions": [
+      {
+        "id": "G15_Q1",
+        "type": "experience",
+        "text": "Esu intensyviai rūpinęsis (-usi) žmonėmis, kurių visi kiti vengė."
+      },
+      {
+        "id": "G15_Q2",
+        "type": "experience",
+        "text": "Aktyviai einu pas kenčiančius, kad būčiau šalia."
+      },
+      {
+        "id": "G15_Q3",
+        "type": "experience",
+        "text": "Ar esi patyręs (-usi), kad ypač rūpiniesi vargstančiais?"
+      },
+      {
+        "id": "G15_Q4",
+        "type": "nature",
+        "text": "Mane sujaudina, kai žmonės kenčia."
+      },
+      {
+        "id": "G15_Q5",
+        "type": "nature",
+        "text": "Noriu parodyti Jėzaus meilę ypač tiems, kurie yra visuomenės paribyje."
+      },
+      {
+        "id": "G15_Q6",
+        "type": "feedback",
+        "text": "Krizėje atsidūrę žmonės man dažnai sako, kad mano buvimas šalia suteikė jiems naujos gyvenimo drąsos."
+      },
+      {
+        "id": "G15_Q7",
+        "type": "feedback",
+        "text": "Per mano tarnystę žmonės bendruomenėje jaučiasi besąlygiškai priimti ir mylimi."
+      },
+      {
+        "id": "G15_Q8",
+        "type": "reference",
+        "text": "Esu matęs (-iusi), kad šis žmogus rodo atjautą kenčiantiems žmonėms."
+      },
+      {
+        "id": "G15_Q9",
+        "type": "reference",
+        "text": "Nuskriaustieji jaučiasi šio žmogaus suprasti ir paremti."
+      }
+    ]
+  },
+  {
+    "id": "G16",
+    "name": "Apaštalystė",
+    "originalWord": "ἀπόστολος (apóstolos, Gr.)",
+    "meaning": "Pasiuntimas su įgaliojimu steigti bendruomenes",
+    "bibleReferences": [
+      "1 Cor 12:28",
+      "Eph 4:11",
+      "Acts 1:21-26",
+      "Acts 14:14"
+    ],
+    "description": "Apaštalo dovana apibūdina ypatingą pašaukimą steigti naujus darbus ar bendruomenes ir pradėti dvasinius judėjimus. Žodis „apostolos“ reiškia „pasiuntinys“. Biblijoje šią dovaną matome apaštaluose, kurie skleidė evangeliją ir steigė bendruomenes. Ši dovana jungia viziją, vadovavimą ir misijos dinamiką.",
+    "questions": [
+      {
+        "id": "G16_Q1",
+        "type": "experience",
+        "text": "Jaučiu potraukį steigti naujus dvasinius darbus ar grupes."
+      },
+      {
+        "id": "G16_Q2",
+        "type": "experience",
+        "text": "Ar esi jau padėjęs (-usi) kurti naujas bendruomenes ar grupes?"
+      },
+      {
+        "id": "G16_Q3",
+        "type": "experience",
+        "text": "Ar esi patyręs (-usi), kad pradėjai naujas iniciatyvas ar tarnystes?"
+      },
+      {
+        "id": "G16_Q4",
+        "type": "nature",
+        "text": "Turiu viziją pradėti naujų dalykų Dievo karalystėje."
+      },
+      {
+        "id": "G16_Q5",
+        "type": "nature",
+        "text": "Mėgstu strategiškai galvoti apie bendruomenės augimą."
+      },
+      {
+        "id": "G16_Q6",
+        "type": "feedback",
+        "text": "Naujos tarnystės dažnai atsiranda dėl mano iniciatyvos."
+      },
+      {
+        "id": "G16_Q7",
+        "type": "feedback",
+        "text": "Žmonės prisijungia prie vizijų, kurias pradedu."
+      },
+      {
+        "id": "G16_Q8",
+        "type": "reference",
+        "text": "Esu matęs (-iusi), kad šis žmogus pradeda naujus projektus ar iniciatyvas."
+      },
+      {
+        "id": "G16_Q9",
+        "type": "reference",
+        "text": "Kiti prisijungia prie šio žmogaus idėjų ar iniciatyvų."
+      }
+    ]
+  },
+  {
+    "id": "G17",
+    "name": "Evangelistas",
+    "originalWord": "εὐαγγελιστής (euangelistḗs, Gr.)",
+    "meaning": "Skelbti gerąją naujieną (evangeliją)",
+    "bibleReferences": [
+      "Eph 4:11",
+      "Acts 21:8",
+      "2 Tim 4:5"
+    ],
+    "description": "Evangelisto dovana yra ypatingas gebėjimas suprantamai ir įtikinamai perteikti žmonėms gerąją naujieną apie Jėzų. Žodis „euangelistes“ reiškia „gerosios naujienos skelbėją“. Biblijoje šią dovaną matome, pavyzdžiui, Pilype (Apd 21). Evangelistai padeda žmonėms ateiti į tikėjimą Kristumi.",
+    "questions": [
+      {
+        "id": "G17_Q1",
+        "type": "experience",
+        "text": "Mielai kalbuosi su kitais apie Jėzų."
+      },
+      {
+        "id": "G17_Q2",
+        "type": "experience",
+        "text": "Ar esi patyręs (-usi), kad žmonės per tavo liudijimą susidomėjo Jėzumi?"
+      },
+      {
+        "id": "G17_Q3",
+        "type": "experience",
+        "text": "Ar esi patyręs (-usi), kad žmonės per tave atėjo į tikėjimą?"
+      },
+      {
+        "id": "G17_Q4",
+        "type": "nature",
+        "text": "Man ant širdies degina tai, kad žmonės be Jėzaus pražūva."
+      },
+      {
+        "id": "G17_Q5",
+        "type": "nature",
+        "text": "Nuolat ieškau naujų būdų, kaip perteikti evangeliją šiuolaikiškai ir suprantamai."
+      },
+      {
+        "id": "G17_Q6",
+        "type": "feedback",
+        "text": "Žmonės reaguoja atvirai, kai pasakoju apie savo tikėjimą."
+      },
+      {
+        "id": "G17_Q7",
+        "type": "feedback",
+        "text": "Skatinu bendruomenę vėl labiau atsigręžti į žmones „anapus durų“."
+      },
+      {
+        "id": "G17_Q8",
+        "type": "reference",
+        "text": "Esu matęs (-iusi), kad šis žmogus kalbasi su kitais apie savo tikėjimą."
+      },
+      {
+        "id": "G17_Q9",
+        "type": "reference",
+        "text": "Šis žmogus veda žmones pas Jėzų arba kviečia juos į bendruomenės renginius."
+      }
+    ]
+  },
+  {
+    "id": "G18",
+    "name": "Ganytojas",
+    "originalWord": "ποιμήν (poimḗn, Gr.)",
+    "meaning": "Ganyti, saugoti ir rūpintis bendruomene kaip kaimene",
+    "bibleReferences": [
+      "Eph 4:11",
+      "John 10:1-18",
+      "1 Pet 5:1-4"
+    ],
+    "description": "Ganytojo dovana apibūdina gebėjimą dvasiškai lydėti, saugoti ir ugdyti žmones. Graikiškas „poimen“ reiškia „ganytojas“. Pats Jėzus aprašomas kaip geras ganytojas (Jn 10). Žmonės su šia dovana ilgam rūpinasi bendruomenės dvasiniu augimu ir gerove.",
+    "questions": [
+      {
+        "id": "G18_Q1",
+        "type": "experience",
+        "text": "Metų metus lydžiu žmones jų dvasiniame augime ir padedu jiems pereiti slėnius."
+      },
+      {
+        "id": "G18_Q2",
+        "type": "experience",
+        "text": "Jaučiu atsakomybę už kitų dvasinę gerovę."
+      },
+      {
+        "id": "G18_Q3",
+        "type": "experience",
+        "text": "Aktyviai saugau grupę, už kurią esu atsakingas (-a), nuo neigiamų įtakų ar skilimo."
+      },
+      {
+        "id": "G18_Q4",
+        "type": "nature",
+        "text": "Man labai rūpi atskirų žmonių ilgalaikis tobulėjimas ir gerovė."
+      },
+      {
+        "id": "G18_Q5",
+        "type": "nature",
+        "text": "Noriu sukurti atmosferą, kurioje žmonės jaustųsi dvasiškai saugūs ir „kaip namuose“."
+      },
+      {
+        "id": "G18_Q6",
+        "type": "feedback",
+        "text": "Žmonės jaučiasi mano lydimi ir palaikomi."
+      },
+      {
+        "id": "G18_Q7",
+        "type": "feedback",
+        "text": "Matau, kad mano rūpestis padeda žmonėms stabiliai augti."
+      },
+      {
+        "id": "G18_Q8",
+        "type": "reference",
+        "text": "Esu matęs (-iusi), kad šis žmogus ilgesnį laiką lydi žmones."
+      },
+      {
+        "id": "G18_Q9",
+        "type": "reference",
+        "text": "Žmonės toliau tobulėja dėl šio žmogaus paramos."
+      }
+    ]
+  }
+]
