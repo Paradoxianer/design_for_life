@@ -1097,4 +1097,13 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get leaderCertificateCreate => 'Create certificates';
+
+  @override
+  String get languageTitle => 'Language';
+
+  @override
+  String get languageAuto => 'Automatic (device language)';
+
+  @override
+  String get languageDraft => 'Draft – machine translated';
 }

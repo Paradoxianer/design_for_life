@@ -90,14 +90,14 @@ void main() {
   });
 
   test(
-    'falls back to German for a locale with no leader notes file at all',
+    'falls back to English (then German) for a locale with no leader notes file',
     () async {
       final sessions = await LeaderNotesRepository().loadSessions('fr');
 
-      // Same fallback rule as GiftsRepository: an unknown locale still
-      // returns usable (German) content rather than an empty map.
+      // Fallback chain (see LocalizedAssetLoader): requested -> en -> de. An
+      // unknown locale still returns usable content, not an empty map.
       expect(sessions, contains('session_1'));
-      expect(sessions['session_1']!.sessionTitle, contains('Einheit Eins'));
+      expect(sessions['session_1']!.sessionTitle, contains('Session One'));
     },
   );
 }

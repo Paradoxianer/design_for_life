@@ -82,15 +82,28 @@ class DeepLinkService {
   DeepLinkService({AppLinks? appLinks}) : _appLinks = appLinks ?? AppLinks();
 
   /// The link the app was cold-started with, if any.
-  Future<DeepLinkAction?> getInitialAction() async {
+  ///
+  /// [onLanguage] is called with the `lang` parameter (e.g. `?lang=pl`) if
+  /// the link has a valid one - independent of (and combinable with) any
+  /// other action in the same link.
+  Future<DeepLinkAction?> getInitialAction({
+    void Function(String code)? onLanguage,
+  }) async {
     final uri = await _appLinks.getInitialLink();
     if (uri == null) return null;
+    final lang = parseLanguage(uri);
+    if (lang != null) onLanguage?.call(lang);
     return parse(uri);
   }
 
   /// Links received while the app is already running.
-  void listen(void Function(DeepLinkAction action) onAction) {
+  void listen(
+    void Function(DeepLinkAction action) onAction, {
+    void Function(String code)? onLanguage,
+  }) {
     _subscription = _appLinks.uriLinkStream.listen((uri) {
+      final lang = parseLanguage(uri);
+      if (lang != null) onLanguage?.call(lang);
       final action = parse(uri);
       if (action != null) onAction(action);
     });
@@ -101,6 +114,16 @@ class DeepLinkService {
   }
 
   static const _supportedSchemes = {'dfl', 'http', 'https'};
+
+  /// `?lang=pl` - language code to switch the app to. Only the shape is
+  /// validated here (two or three lowercase letters); whether the app
+  /// actually supports it is decided by the caller.
+  static String? parseLanguage(Uri uri) {
+    if (!_supportedSchemes.contains(uri.scheme)) return null;
+    final lang = uri.queryParameters['lang']?.trim().toLowerCase();
+    if (lang == null || !RegExp(r'^[a-z]{2,3}$').hasMatch(lang)) return null;
+    return lang;
+  }
 
   static DeepLinkAction? parse(Uri uri) {
     if (!_supportedSchemes.contains(uri.scheme)) return null;

@@ -1,27 +1,21 @@
 import 'dart:convert';
-import 'package:flutter/services.dart';
+import '../../../core/i18n/localized_asset_loader.dart';
 import '../models/feedback_question.dart';
 
 class FeedbackQuestionsRepository {
   FeedbackQuestionnaire? _cached;
   String? _cachedLocale;
+  String? _requestedLocale;
 
   Future<FeedbackQuestionnaire> loadQuestionnaire(String locale, {bool forceReload = false}) async {
-    if (!forceReload && _cached != null && _cachedLocale == locale) return _cached!;
+    if (!forceReload && _cached != null && _requestedLocale == locale) return _cached!;
 
     try {
-      String response;
-      final assetPath = 'assets/data/feedback_questions_$locale.json';
-      try {
-        response = await rootBundle.loadString(assetPath);
-        _cachedLocale = locale;
-      } catch (e) {
-        // Fallback to German if locale is not found
-        response = await rootBundle.loadString('assets/data/feedback_questions_de.json');
-        _cachedLocale = 'de';
-      }
+      final asset = await LocalizedAssetLoader.load('feedback_questions', locale);
+      _cachedLocale = asset.locale;
+      _requestedLocale = locale;
 
-      _cached = FeedbackQuestionnaire.fromJson(json.decode(response) as Map<String, dynamic>);
+      _cached = FeedbackQuestionnaire.fromJson(json.decode(asset.content) as Map<String, dynamic>);
       return _cached!;
     } catch (e) {
       return FeedbackQuestionnaire.empty;

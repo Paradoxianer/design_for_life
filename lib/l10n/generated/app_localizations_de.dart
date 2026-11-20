@@ -1107,4 +1107,13 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get leaderCertificateCreate => 'Urkunden erstellen';
+
+  @override
+  String get languageTitle => 'Sprache';
+
+  @override
+  String get languageAuto => 'Automatisch (Gerätesprache)';
+
+  @override
+  String get languageDraft => 'Entwurf – maschinell übersetzt';
 }

@@ -1,4 +1,6 @@
 import 'package:design_for_life/features/spiritual_gifts/repositories/gifts_repository.dart';
+import 'package:design_for_life/core/blocs/language_cubit.dart';
+import 'package:design_for_life/features/leader_notes/bloc/leader_mode_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:design_for_life/main.dart';
@@ -45,6 +47,8 @@ void main() {
         BlocProvider(create: (context) => PersonalStyleBloc(repository: MockPersonalStyleRepository())),
         BlocProvider(create: (context) => LifeTreeBloc()),
         BlocProvider(create: (context) => ImagineBloc()),
+        BlocProvider(create: (context) => LeaderModeBloc()),
+        BlocProvider(create: (context) => LanguageCubit()),
       ],
       child: DflApp(forcedLocale: forcedLocale),
     );
