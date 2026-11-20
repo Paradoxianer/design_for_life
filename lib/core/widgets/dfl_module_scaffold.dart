@@ -55,6 +55,7 @@ class DflModuleScaffold extends StatefulWidget {
 class DflModuleScaffoldState extends State<DflModuleScaffold> {
   late bool _isEditMode;
   LeaderNoteSession? _leaderNoteSession;
+  bool _showLeaderInfo = false;
 
   @override
   void initState() {
@@ -78,55 +79,15 @@ class DflModuleScaffoldState extends State<DflModuleScaffold> {
     }
   }
 
-  void _showLeaderNotes() {
-    final l10n = AppLocalizations.of(context);
-    showModalBottomSheet(
-      context: context,
-      isScrollControlled: true,
-      builder: (sheetContext) => DraggableScrollableSheet(
-        expand: false,
-        initialChildSize: 0.85,
-        builder: (context, scrollController) => Column(
-          children: [
-            const SizedBox(height: 8),
-            Container(
-              width: 40,
-              height: 4,
-              decoration: BoxDecoration(
-                color: Theme.of(context).colorScheme.outlineVariant,
-                borderRadius: BorderRadius.circular(2),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.fromLTRB(16, 12, 8, 4),
-              child: Row(
-                children: [
-                  Expanded(
-                    child: Text(
-                      l10n.leaderInfoTitle,
-                      style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                  IconButton(
-                    icon: const Icon(Icons.close),
-                    onPressed: () => Navigator.of(sheetContext).pop(),
-                  ),
-                ],
-              ),
-            ),
-            const Divider(height: 1),
-            Expanded(
-              child: LeaderNoteView(
-                session: _leaderNoteSession!,
-                scrollController: scrollController,
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
+  /// Wechselt zwischen dem Modul und den Leiter-Infos (#83). Die Leiter-Info
+  /// ersetzt den Modulinhalt vollflächig (wie der Wechsel Ausfüllen/Ergebnis)
+  /// statt als Bottom-Sheet darüber zu liegen. Der Modulinhalt bleibt dabei im
+  /// Hintergrund erhalten (siehe [IndexedStack] in [build]), damit z.B. nicht
+  /// gespeicherte Eingaben beim Hin- und Herwechseln nicht verloren gehen.
+  void _toggleLeaderInfo() {
+    setState(() {
+      _showLeaderInfo = !_showLeaderInfo;
+    });
   }
 
   Future<void> toggleMode() async {
@@ -136,6 +97,7 @@ class DflModuleScaffoldState extends State<DflModuleScaffold> {
     }
     setState(() {
       _isEditMode = !_isEditMode;
+      _showLeaderInfo = false;
     });
   }
 
@@ -159,70 +121,99 @@ class DflModuleScaffoldState extends State<DflModuleScaffold> {
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context);
+    // Leiter-Info nur anzeigen, solange der Leitermodus freigeschaltet ist -
+    // wird er währenddessen gesperrt, fällt die Ansicht zurück aufs Modul.
+    final leaderUnlocked = context.watch<LeaderModeBloc>().state.isUnlocked;
+    final showLeaderInfo =
+        _showLeaderInfo && leaderUnlocked && _leaderNoteSession != null;
 
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title, overflow: TextOverflow.ellipsis, maxLines: 1),
-        actions: [
-          if (_leaderNoteSession != null)
-            BlocBuilder<LeaderModeBloc, LeaderModeState>(
-              builder: (context, leaderModeState) {
-                if (!leaderModeState.isUnlocked) return const SizedBox.shrink();
-                return IconButton(
-                  tooltip: l10n.leaderInfoButton,
-                  icon: const Icon(Icons.menu_book_outlined),
-                  onPressed: _showLeaderNotes,
-                );
-              },
-            ),
-          if (!_isEditMode &&
-              (widget.shareableContent != null ||
-                  (widget.onShare != null &&
-                      widget.showShareButtonWithoutContent)))
-            IconButton(
-              tooltip: l10n.share,
-              icon: const Icon(Icons.share_outlined),
-              onPressed: _showShareDialog,
-            ),
-          IconButton(
-            tooltip: _isEditMode ? l10n.resultMode : l10n.editMode,
-            icon: Icon(
-              _isEditMode ? Icons.remove_red_eye_outlined : Icons.edit_outlined,
-            ),
-            onPressed: toggleMode,
+    return PopScope(
+      // Der Zurück-Knopf (bzw. die Zurück-Geste) schließt zuerst die
+      // Leiter-Info und verlässt erst danach das Modul.
+      canPop: !showLeaderInfo,
+      onPopInvokedWithResult: (didPop, _) {
+        if (!didPop && showLeaderInfo) _toggleLeaderInfo();
+      },
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text(
+            showLeaderInfo
+                ? '${l10n.leaderInfoTitle}: ${widget.title}'
+                : widget.title,
+            overflow: TextOverflow.ellipsis,
+            maxLines: 1,
           ),
-        ],
-      ),
-      body: AnimatedSwitcher(
-        duration: const Duration(milliseconds: 300),
-        child: _isEditMode
-            ? Column(
-                children: [
-                  Expanded(child: widget.editor),
-                  Padding(
-                    padding: const EdgeInsets.all(16.0),
-                    child:
-                        widget.customFooter ??
-                        Center(
-                          child: ElevatedButton.icon(
-                            onPressed: toggleMode,
-                            icon: const Icon(Icons.check),
-                            label: Text(l10n.finish),
-                            style: ElevatedButton.styleFrom(
-                              padding: const EdgeInsets.symmetric(
-                                vertical: 12,
-                                horizontal: 24,
+          actions: [
+            if (_leaderNoteSession != null && leaderUnlocked)
+              IconButton(
+                tooltip: l10n.leaderInfoButton,
+                isSelected: showLeaderInfo,
+                icon: const Icon(Icons.menu_book_outlined),
+                selectedIcon: const Icon(Icons.menu_book),
+                onPressed: _toggleLeaderInfo,
+              ),
+            if (!showLeaderInfo &&
+                !_isEditMode &&
+                (widget.shareableContent != null ||
+                    (widget.onShare != null &&
+                        widget.showShareButtonWithoutContent)))
+              IconButton(
+                tooltip: l10n.share,
+                icon: const Icon(Icons.share_outlined),
+                onPressed: _showShareDialog,
+              ),
+            IconButton(
+              tooltip: _isEditMode ? l10n.resultMode : l10n.editMode,
+              icon: Icon(
+                _isEditMode
+                    ? Icons.remove_red_eye_outlined
+                    : Icons.edit_outlined,
+              ),
+              onPressed: toggleMode,
+            ),
+          ],
+        ),
+        body: IndexedStack(
+          sizing: StackFit.expand,
+          index: showLeaderInfo ? 1 : 0,
+          children: [
+            AnimatedSwitcher(
+              duration: const Duration(milliseconds: 300),
+              child: _isEditMode
+                  ? Column(
+                      children: [
+                        Expanded(child: widget.editor),
+                        Padding(
+                          padding: const EdgeInsets.all(16.0),
+                          child:
+                              widget.customFooter ??
+                              Center(
+                                child: ElevatedButton.icon(
+                                  onPressed: toggleMode,
+                                  icon: const Icon(Icons.check),
+                                  label: Text(l10n.finish),
+                                  style: ElevatedButton.styleFrom(
+                                    padding: const EdgeInsets.symmetric(
+                                      vertical: 12,
+                                      horizontal: 24,
+                                    ),
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(12),
+                                    ),
+                                  ),
+                                ),
                               ),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(12),
-                              ),
-                            ),
-                          ),
                         ),
-                  ),
-                ],
-              )
-            : widget.result,
+                      ],
+                    )
+                  : widget.result,
+            ),
+            if (_leaderNoteSession != null)
+              LeaderNoteView(session: _leaderNoteSession!)
+            else
+              const SizedBox.shrink(),
+          ],
+        ),
       ),
     );
   }
