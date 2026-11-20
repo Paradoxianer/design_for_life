@@ -13,22 +13,12 @@ import '../models/leader_note_session.dart';
 class LeaderNoteView extends StatelessWidget {
   final LeaderNoteSession session;
 
-  /// Lets a DraggableScrollableSheet drive this view's scrolling instead of
-  /// it owning its own - without this, dragging the sheet handle and
-  /// scrolling the content would fight each other.
-  final ScrollController? scrollController;
-
-  const LeaderNoteView({
-    super.key,
-    required this.session,
-    this.scrollController,
-  });
+  const LeaderNoteView({super.key, required this.session});
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     return ListView(
-      controller: scrollController,
       padding: const EdgeInsets.all(16),
       children: [
         for (final section in session.sections) ...[
