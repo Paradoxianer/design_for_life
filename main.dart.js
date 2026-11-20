@@ -65591,7 +65591,7 @@ return new A.iy(s===!0)},
 mQ(a){return A.a2(["isUnlocked",a.a],t.N,t.z)}}
 A.aBK.prototype={
 $2(a,b){var s,r
-if(a.a==="dfl-leiter-2026"){s=this.a
+if(a.a==="dfl-leader"){s=this.a
 r=s.aM$
 s=(r==null?A.ag.prototype.ga1.call(s,0):r).acw(!0)
 if(!b.d)b.a.$1(s)}},
