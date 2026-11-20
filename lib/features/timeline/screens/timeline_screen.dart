@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:design_for_life/l10n/generated/app_localizations.dart';
 
 import '../../../core/utils/localized_logo.dart';
+import '../../leader_notes/bloc/leader_mode_bloc.dart';
 import '../bloc/timeline_module_filter_bloc.dart';
 import '../models/dfl_session.dart';
 import '../services/timeline_config_repository.dart';
@@ -78,6 +79,20 @@ class TimelineScreen extends StatelessWidget {
                 backgroundColor: theme.scaffoldBackgroundColor,
                 surfaceTintColor: Colors.transparent,
                 actions: [
+                  // Leiter-Material (Leiterheft-PDF, Vorlagen) nur im
+                  // Leitermodus.
+                  BlocBuilder<LeaderModeBloc, LeaderModeState>(
+                    builder: (context, leaderState) {
+                      if (!leaderState.isUnlocked) {
+                        return const SizedBox.shrink();
+                      }
+                      return IconButton(
+                        tooltip: l10n.leaderMaterialsTitle,
+                        icon: const Icon(Icons.menu_book_outlined),
+                        onPressed: () => context.push('/leader-materials'),
+                      );
+                    },
+                  ),
                   IconButton(
                     tooltip: l10n.backupTitle,
                     icon: const Icon(Icons.settings_backup_restore_outlined),

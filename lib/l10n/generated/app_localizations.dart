@@ -1927,6 +1927,72 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Past + Future (one image)'**
   String get imagineLabelCombined;
+
+  /// No description provided for @leaderMaterialsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Leader materials'**
+  String get leaderMaterialsTitle;
+
+  /// No description provided for @leaderBookletTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Leader booklet as PDF'**
+  String get leaderBookletTitle;
+
+  /// No description provided for @leaderBookletDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'All leader info (checklist, team training and all sessions) as a PDF to save, print or share.'**
+  String get leaderBookletDescription;
+
+  /// No description provided for @leaderBookletError.
+  ///
+  /// In en, this message translates to:
+  /// **'The PDF could not be created.'**
+  String get leaderBookletError;
+
+  /// No description provided for @leaderTemplatesTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Templates'**
+  String get leaderTemplatesTitle;
+
+  /// No description provided for @leaderTemplateSchedulesTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Schedules: listening prayer & conversations'**
+  String get leaderTemplateSchedulesTitle;
+
+  /// No description provided for @leaderTemplateSchedulesDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Blank schedules to fill in (Word file).'**
+  String get leaderTemplateSchedulesDescription;
+
+  /// No description provided for @leaderTemplateCertificateTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Certificate'**
+  String get leaderTemplateCertificateTitle;
+
+  /// No description provided for @leaderTemplateCertificateDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Certificate of participation to print (OpenDocument file, e.g. LibreOffice or Word).'**
+  String get leaderTemplateCertificateDescription;
+
+  /// No description provided for @leaderTemplateError.
+  ///
+  /// In en, this message translates to:
+  /// **'The template could not be opened.'**
+  String get leaderTemplateError;
+
+  /// No description provided for @leaderDownload.
+  ///
+  /// In en, this message translates to:
+  /// **'Download'**
+  String get leaderDownload;
 }
 
 class _AppLocalizationsDelegate

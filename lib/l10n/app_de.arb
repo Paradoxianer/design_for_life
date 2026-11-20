@@ -431,5 +431,16 @@
   "imagineSubtitlePast": "Wähle ein Bild für deine Vergangenheit",
   "imagineSubtitleFuture": "Wähle ein Bild für deine Zukunft",
   "imagineNoImagesSelected": "Noch keine Bilder ausgewählt.",
-  "imagineLabelCombined": "Vergangenheit + Zukunft (ein Bild)"
+  "imagineLabelCombined": "Vergangenheit + Zukunft (ein Bild)",
+  "leaderMaterialsTitle": "Leiter-Material",
+  "leaderBookletTitle": "Leiterheft als PDF",
+  "leaderBookletDescription": "Alle Leiter-Infos (Checkliste, Mitarbeiterschulung und alle Einheiten) als PDF zum Speichern, Drucken oder Weitergeben.",
+  "leaderBookletError": "Das PDF konnte nicht erstellt werden.",
+  "leaderTemplatesTitle": "Vorlagen",
+  "leaderTemplateSchedulesTitle": "Zeitpläne: Hörendes Gebet & Gespräche",
+  "leaderTemplateSchedulesDescription": "Leere Zeitpläne zum Ausfüllen (Word-Datei).",
+  "leaderTemplateCertificateTitle": "Urkunde",
+  "leaderTemplateCertificateDescription": "Teilnahme-Urkunde zum Ausdrucken (OpenDocument-Datei, z. B. mit LibreOffice oder Word).",
+  "leaderTemplateError": "Die Vorlage konnte nicht geöffnet werden.",
+  "leaderDownload": "Herunterladen"
 }
