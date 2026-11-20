@@ -139,6 +139,28 @@ class LeaderBookletPdf {
             ),
           pw.SizedBox(height: 4),
         ];
+      case LeaderNoteChecklist(:final items):
+        return [
+          for (final item in items)
+            pw.Padding(
+              padding: const pw.EdgeInsets.only(left: 8, bottom: 2),
+              child: pw.Row(
+                crossAxisAlignment: pw.CrossAxisAlignment.start,
+                children: [
+                  pw.Container(
+                    width: 8,
+                    height: 8,
+                    margin: const pw.EdgeInsets.only(top: 2, right: 6),
+                    decoration: pw.BoxDecoration(
+                      border: pw.Border.all(color: PdfColors.grey700),
+                    ),
+                  ),
+                  pw.Expanded(child: pw.Text(item, style: body)),
+                ],
+              ),
+            ),
+          pw.SizedBox(height: 4),
+        ];
       case LeaderNoteNumberedList(:final items):
         return [
           for (final (index, item) in items.indexed)

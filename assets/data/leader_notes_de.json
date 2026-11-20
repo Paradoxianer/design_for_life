@@ -722,7 +722,7 @@
         "heading": "Vorbereitungs-Zeitplan",
         "blocks": [
           {
-            "type": "bulletList",
+            "type": "checkList",
             "items": [
               "Termin festlegen",
               "Häuser anfragen",
@@ -743,7 +743,7 @@
         "heading": "Benötigtes Material",
         "blocks": [
           {
-            "type": "bulletList",
+            "type": "checkList",
             "items": [
               "1 Flipchartblatt pro Teilnehmer + 2 für einzelne Einheiten",
               "1 Paket Teilnehmermaterial pro Teilnehmer",
@@ -793,7 +793,7 @@
             "text": "Aufgaben verteilen"
           },
           {
-            "type": "bulletList",
+            "type": "checkList",
             "items": [
               "Lobpreis",
               "Deko",
@@ -808,7 +808,7 @@
             "text": "Vorher klären"
           },
           {
-            "type": "bulletList",
+            "type": "checkList",
             "items": [
               "Liste der Leiter erstellen",
               "Genehmigung mit dem THQ abklären",

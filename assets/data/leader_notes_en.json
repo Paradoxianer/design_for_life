@@ -742,7 +742,7 @@
         "heading": "Preparation timeline",
         "blocks": [
           {
-            "type": "bulletList",
+            "type": "checkList",
             "items": [
               "Set the date",
               "Ask about venues",
@@ -763,7 +763,7 @@
         "heading": "Materials needed",
         "blocks": [
           {
-            "type": "bulletList",
+            "type": "checkList",
             "items": [
               "1 flipchart sheet per participant + 2 for certain sessions",
               "1 participant material pack per participant",
@@ -813,7 +813,7 @@
             "text": "Assign tasks"
           },
           {
-            "type": "bulletList",
+            "type": "checkList",
             "items": [
               "Worship",
               "Decoration",
@@ -828,7 +828,7 @@
             "text": "Clarify beforehand"
           },
           {
-            "type": "bulletList",
+            "type": "checkList",
             "items": [
               "Make a list of leaders",
               "Get approval from headquarters",
