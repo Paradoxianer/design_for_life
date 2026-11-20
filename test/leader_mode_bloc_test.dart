@@ -22,7 +22,7 @@ void main() {
 
   test('unlocks when the key matches the expected secret', () async {
     final bloc = LeaderModeBloc();
-    bloc.add(const UnlockLeaderMode('dfl-leiter-2026'));
+    bloc.add(const UnlockLeaderMode('dfl-leader'));
     await bloc.stream.first;
 
     expect(bloc.state.isUnlocked, isTrue);
@@ -40,7 +40,7 @@ void main() {
 
   test('LockLeaderMode turns an unlocked device back off', () async {
     final bloc = LeaderModeBloc();
-    bloc.add(const UnlockLeaderMode('dfl-leiter-2026'));
+    bloc.add(const UnlockLeaderMode('dfl-leader'));
     await bloc.stream.first;
     expect(bloc.state.isUnlocked, isTrue);
 
