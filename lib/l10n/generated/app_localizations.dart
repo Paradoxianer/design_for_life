@@ -1967,7 +1967,7 @@ abstract class AppLocalizations {
   /// No description provided for @leaderTemplateSchedulesDescription.
   ///
   /// In en, this message translates to:
-  /// **'Blank schedules to fill in (Word file).'**
+  /// **'Blank schedules to print (PDF).'**
   String get leaderTemplateSchedulesDescription;
 
   /// No description provided for @leaderTemplateCertificateTitle.
@@ -1979,7 +1979,7 @@ abstract class AppLocalizations {
   /// No description provided for @leaderTemplateCertificateDescription.
   ///
   /// In en, this message translates to:
-  /// **'Certificate of participation to print (OpenDocument file, e.g. LibreOffice or Word).'**
+  /// **'Certificate of participation as a PDF – with names entered here or to fill in by hand.'**
   String get leaderTemplateCertificateDescription;
 
   /// No description provided for @leaderTemplateError.
@@ -1993,6 +1993,114 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Download'**
   String get leaderDownload;
+
+  /// No description provided for @certificateTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Certificate'**
+  String get certificateTitle;
+
+  /// No description provided for @certificateParticipated.
+  ///
+  /// In en, this message translates to:
+  /// **'has successfully taken part in the course'**
+  String get certificateParticipated;
+
+  /// No description provided for @certificateCourse.
+  ///
+  /// In en, this message translates to:
+  /// **'Design for Life – Discover God\'s plan for your life'**
+  String get certificateCourse;
+
+  /// No description provided for @certificateDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Through reflection on life events, gifts and values, possible directions for the personal path of life with God were worked out in prayer.'**
+  String get certificateDescription;
+
+  /// No description provided for @certificateVerse.
+  ///
+  /// In en, this message translates to:
+  /// **'For we are God\'s masterpiece. He has created us anew in Christ Jesus, so we can do the good things he planned for us long ago.'**
+  String get certificateVerse;
+
+  /// No description provided for @certificateVerseRef.
+  ///
+  /// In en, this message translates to:
+  /// **'Ephesians 2:10'**
+  String get certificateVerseRef;
+
+  /// No description provided for @certificateSignature.
+  ///
+  /// In en, this message translates to:
+  /// **'Signature'**
+  String get certificateSignature;
+
+  /// No description provided for @certificatePlaceDate.
+  ///
+  /// In en, this message translates to:
+  /// **'Place, date'**
+  String get certificatePlaceDate;
+
+  /// No description provided for @scheduleTime.
+  ///
+  /// In en, this message translates to:
+  /// **'Time'**
+  String get scheduleTime;
+
+  /// No description provided for @scheduleWho.
+  ///
+  /// In en, this message translates to:
+  /// **'Who'**
+  String get scheduleWho;
+
+  /// No description provided for @scheduleConversationLeader.
+  ///
+  /// In en, this message translates to:
+  /// **'Conversation leader'**
+  String get scheduleConversationLeader;
+
+  /// No description provided for @scheduleListeningPrayerTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Listening prayer'**
+  String get scheduleListeningPrayerTitle;
+
+  /// No description provided for @scheduleConversationTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Personal conversation'**
+  String get scheduleConversationTitle;
+
+  /// No description provided for @leaderCertificateNames.
+  ///
+  /// In en, this message translates to:
+  /// **'Names (one per line)'**
+  String get leaderCertificateNames;
+
+  /// No description provided for @leaderCertificateNamesHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Leave empty to write the name by hand.'**
+  String get leaderCertificateNamesHint;
+
+  /// No description provided for @leaderCertificatePlace.
+  ///
+  /// In en, this message translates to:
+  /// **'Place'**
+  String get leaderCertificatePlace;
+
+  /// No description provided for @leaderCertificateDate.
+  ///
+  /// In en, this message translates to:
+  /// **'Date'**
+  String get leaderCertificateDate;
+
+  /// No description provided for @leaderCertificateCreate.
+  ///
+  /// In en, this message translates to:
+  /// **'Create certificates'**
+  String get leaderCertificateCreate;
 }
 
 class _AppLocalizationsDelegate
