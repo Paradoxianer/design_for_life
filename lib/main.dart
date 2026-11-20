@@ -43,6 +43,7 @@ import 'features/group_photo/screens/group_photo_screen.dart';
 import 'features/export/screens/export_screen.dart';
 import 'features/backup/screens/backup_screen.dart';
 import 'features/leader_notes/bloc/leader_mode_bloc.dart';
+import 'features/leader_notes/screens/leader_materials_screen.dart';
 import 'features/checklist/bloc/checklist_bloc.dart';
 import 'features/checklist/screens/checklist_screen.dart';
 
@@ -283,6 +284,10 @@ class _DflAppState extends State<DflApp> {
           GoRoute(
             path: '/export',
             builder: (context, state) => const ExportScreen(),
+          ),
+          GoRoute(
+            path: '/leader-materials',
+            builder: (context, state) => const LeaderMaterialsScreen(),
           ),
           GoRoute(
             path: '/backup',

@@ -431,5 +431,16 @@
   "imagineSubtitlePast": "Choose an image for your past",
   "imagineSubtitleFuture": "Choose an image for your future",
   "imagineNoImagesSelected": "No images selected yet.",
-  "imagineLabelCombined": "Past + Future (one image)"
+  "imagineLabelCombined": "Past + Future (one image)",
+  "leaderMaterialsTitle": "Leader materials",
+  "leaderBookletTitle": "Leader booklet as PDF",
+  "leaderBookletDescription": "All leader info (checklist, team training and all sessions) as a PDF to save, print or share.",
+  "leaderBookletError": "The PDF could not be created.",
+  "leaderTemplatesTitle": "Templates",
+  "leaderTemplateSchedulesTitle": "Schedules: listening prayer & conversations",
+  "leaderTemplateSchedulesDescription": "Blank schedules to fill in (Word file).",
+  "leaderTemplateCertificateTitle": "Certificate",
+  "leaderTemplateCertificateDescription": "Certificate of participation to print (OpenDocument file, e.g. LibreOffice or Word).",
+  "leaderTemplateError": "The template could not be opened.",
+  "leaderDownload": "Download"
 }

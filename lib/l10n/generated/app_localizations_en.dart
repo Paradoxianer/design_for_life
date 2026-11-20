@@ -1010,4 +1010,37 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get imagineLabelCombined => 'Past + Future (one image)';
+
+  @override
+  String get leaderMaterialsTitle => 'Leader materials';
+
+  @override
+  String get leaderBookletTitle => 'Leader booklet as PDF';
+
+  @override
+  String get leaderBookletDescription => 'All leader info (checklist, team training and all sessions) as a PDF to save, print or share.';
+
+  @override
+  String get leaderBookletError => 'The PDF could not be created.';
+
+  @override
+  String get leaderTemplatesTitle => 'Templates';
+
+  @override
+  String get leaderTemplateSchedulesTitle => 'Schedules: listening prayer & conversations';
+
+  @override
+  String get leaderTemplateSchedulesDescription => 'Blank schedules to fill in (Word file).';
+
+  @override
+  String get leaderTemplateCertificateTitle => 'Certificate';
+
+  @override
+  String get leaderTemplateCertificateDescription => 'Certificate of participation to print (OpenDocument file, e.g. LibreOffice or Word).';
+
+  @override
+  String get leaderTemplateError => 'The template could not be opened.';
+
+  @override
+  String get leaderDownload => 'Download';
 }

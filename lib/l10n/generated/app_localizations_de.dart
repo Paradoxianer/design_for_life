@@ -1020,4 +1020,37 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get imagineLabelCombined => 'Vergangenheit + Zukunft (ein Bild)';
+
+  @override
+  String get leaderMaterialsTitle => 'Leiter-Material';
+
+  @override
+  String get leaderBookletTitle => 'Leiterheft als PDF';
+
+  @override
+  String get leaderBookletDescription => 'Alle Leiter-Infos (Checkliste, Mitarbeiterschulung und alle Einheiten) als PDF zum Speichern, Drucken oder Weitergeben.';
+
+  @override
+  String get leaderBookletError => 'Das PDF konnte nicht erstellt werden.';
+
+  @override
+  String get leaderTemplatesTitle => 'Vorlagen';
+
+  @override
+  String get leaderTemplateSchedulesTitle => 'Zeitpläne: Hörendes Gebet & Gespräche';
+
+  @override
+  String get leaderTemplateSchedulesDescription => 'Leere Zeitpläne zum Ausfüllen (Word-Datei).';
+
+  @override
+  String get leaderTemplateCertificateTitle => 'Urkunde';
+
+  @override
+  String get leaderTemplateCertificateDescription => 'Teilnahme-Urkunde zum Ausdrucken (OpenDocument-Datei, z. B. mit LibreOffice oder Word).';
+
+  @override
+  String get leaderTemplateError => 'Die Vorlage konnte nicht geöffnet werden.';
+
+  @override
+  String get leaderDownload => 'Herunterladen';
 }

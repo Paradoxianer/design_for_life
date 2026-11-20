@@ -58,6 +58,7 @@ flutter:
     - assets/Logo.de.png
     - assets/Logo.en.png
     - assets/fonts/
+    - assets/templates/
 
   # Schriften liegen lokal im Projekt (SIL Open Font License, siehe
   # assets/fonts/OFL-*.txt). Es werden bewusst keine Schriften von Google-
