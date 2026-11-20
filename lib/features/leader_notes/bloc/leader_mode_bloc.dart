@@ -15,7 +15,7 @@ part 'leader_mode_state.dart';
 /// (the value ships inside the app bundle), so don't rely on it to protect
 /// anything actually sensitive.
 class LeaderModeBloc extends HydratedBloc<LeaderModeEvent, LeaderModeState> {
-  static const String _secret = 'dfl-leiter';
+  static const String _secret = 'dfl-leader';
 
   LeaderModeBloc() : super(const LeaderModeState()) {
     on<UnlockLeaderMode>((event, emit) {
