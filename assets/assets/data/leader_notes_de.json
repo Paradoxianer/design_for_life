@@ -678,8 +678,46 @@
     ]
   },
   "session_checklist": {
-    "sessionTitle": "Checkliste",
+    "sessionTitle": "Checkliste & Mitarbeiterschulung",
+    "collapsible": true,
     "sections": [
+      {
+        "heading": "Teams",
+        "blocks": [
+          {
+            "type": "subheading",
+            "text": "Vorbereitungsteam"
+          },
+          {
+            "type": "paragraph",
+            "text": "Klärt die grundlegenden organisatorischen Dinge: Wo und wann findet der Kurs statt, wo und wie wird geworben, wen sprechen wir für die einzelnen Teams an. Das Team sollte klein sein; bei kleineren DFL kann eine Person die Vorbereitung übernehmen."
+          },
+          {
+            "type": "subheading",
+            "text": "Essensteam"
+          },
+          {
+            "type": "paragraph",
+            "text": "Verantwortlich für Abendessen am Freitag, Frühstück, Mittag- und Abendessen am Samstag sowie Frühstück und evtl. Mittagessen am Sonntag. Gutes Essen ist wichtig, da es Leib, Seele und Geist zusammenhält. Übernachten die TN nicht vor Ort, sind nur zwei Abendessen und zwei Mittagessen nötig."
+          },
+          {
+            "type": "subheading",
+            "text": "Kleingruppenleiter"
+          },
+          {
+            "type": "paragraph",
+            "text": "Nur reife und erfahrene Christen. Aufgaben: Gruppenarbeiten und Teilnehmer persönlich betreuen, DFL und die TN im Gebet begleiten, im hörenden Gebet Eindrücke von Gott für die TN sammeln und die TN auch nach dem Wochenende eine Zeit lang weiter begleiten."
+          },
+          {
+            "type": "subheading",
+            "text": "Gebetsteam"
+          },
+          {
+            "type": "paragraph",
+            "text": "Bereitet DFL im Gebet vor und begleitet TN und Leiter im Gebet. Hilfreich sind Gebetstreffen im Vorfeld, in denen die Veranstaltung, die Verantwortlichen und die Teilnehmer vor Gott gebracht werden."
+          }
+        ]
+      },
       {
         "heading": "Vorbereitungs-Zeitplan",
         "blocks": [
@@ -688,15 +726,15 @@
             "items": [
               "Termin festlegen",
               "Häuser anfragen",
-              "Mitarbeiter ansprechen",
-              "Werbung",
-              "Mitarbeiter schulen",
-              "Essen organisieren",
-              "Anmeldeschluss",
-              "Teilnehmerhefte anfordern",
-              "Teilnehmerbrief rausschicken",
-              "Material einkaufen",
-              "Bei Teilnehmern nachhaken"
+              "Werbung – 6 Wochen vorher",
+              "Mitarbeiter ansprechen (Essensteam, Deko, Kleingruppen, Lobpreis …) – 8 Wochen vorher",
+              "Allen Leitern das Leiterheft zusenden – 7 Wochen vorher",
+              "Mitarbeiter schulen – 6 Wochen vorher",
+              "Essen organisieren – 4 Wochen vorher",
+              "Anmeldeschluss – 2 Wochen vorher",
+              "Teilnehmerbrief (+ Zeitplan) abschicken – 2 Wochen vorher",
+              "Material einkaufen – 2 Wochen vorher",
+              "Bei den Teilnehmern nachhaken – 2 Wochen nach dem Kurs"
             ]
           }
         ]
@@ -707,13 +745,168 @@
           {
             "type": "bulletList",
             "items": [
-              "Flipchart",
+              "1 Flipchartblatt pro Teilnehmer + 2 für einzelne Einheiten",
+              "1 Paket Teilnehmermaterial pro Teilnehmer",
               "Stifte",
-              "Deko/Kerzen",
-              "Bibeln",
-              "Musik",
-              "Beamer",
-              "Kamera"
+              "Deko + Kerzen für das Hörende Gebet",
+              "Evtl. Bibeln für Teilnehmer, die keine haben (am besten Neues Leben Übersetzung)",
+              "Geistliche Instrumentalmusik und Möglichkeit, Sound abzuspielen",
+              "Fernseher oder Beamer",
+              "Kamera fürs Gruppenfoto",
+              "Kreppband (für Namen usw.)",
+              "Texte für die Lobpreislieder und Instrumente",
+              "Buch über Geistesgaben",
+              "Ablaufpläne des Wochenendes zum Aushängen",
+              "Zeitplan für Hörendes Gebet und für persönliche Gespräche",
+              "Fragebögen für TN",
+              "Fotoerlaubnis / Datenschutz für TN",
+              "Taschentücher (Hörendes Gebet, Seelsorge)"
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "Mitarbeiterschulung: Ablauf",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "Ihr seid als Mitarbeiter Reisebegleiter: Hinterfragende und Betende. Wir haben nur zwei Tage und können nur eine gute Umgebung schaffen, in der Gott wirken kann."
+          },
+          {
+            "type": "subheading",
+            "text": "Beispielablauf (ca. 14:00–19:00 Uhr)"
+          },
+          {
+            "type": "bulletList",
+            "items": [
+              "14:00 Ankommen + Kaffee",
+              "14:30 Leiterheft durchgehen: Ablauf, Teachings und Gruppenarbeiten vorstellen",
+              "15:30 Gruppenarbeit als Beispiel durchspielen",
+              "16:15 Pause",
+              "16:30 Lobpreis + Hörendes Gebet",
+              "17:30 Austausch + Aufgaben einteilen",
+              "18:30 Schluss, evtl. gemeinsames Abendessen"
+            ]
+          },
+          {
+            "type": "subheading",
+            "text": "Aufgaben verteilen"
+          },
+          {
+            "type": "bulletList",
+            "items": [
+              "Lobpreis",
+              "Deko",
+              "Technik",
+              "Umräumen",
+              "Inputs",
+              "Aufräumen"
+            ]
+          },
+          {
+            "type": "subheading",
+            "text": "Vorher klären"
+          },
+          {
+            "type": "bulletList",
+            "items": [
+              "Liste der Leiter erstellen",
+              "Genehmigung mit dem THQ abklären",
+              "Mitarbeiter persönlich anfragen",
+              "Allen Leitern das Leiterheft zusenden und sie einladen",
+              "Material mitbringen (Leiterhefte, Musik, Flipchart …)"
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "Mitarbeiterschulung: Haltung",
+        "blocks": [
+          {
+            "type": "bulletList",
+            "items": [
+              "Sei du selbst",
+              "Versuche nichts zu „steuern“",
+              "Stelle Fragen",
+              "Hör zu",
+              "Lass keine Leiterhefte herumliegen",
+              "Jeder Leiter bekommt ein TN-Heft, um nachvollziehen zu können, woran sein Teilnehmer arbeitet"
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "Mitarbeiterschulung: Kleingruppen leiten",
+        "blocks": [
+          {
+            "type": "bulletList",
+            "items": [
+              "5 bis maximal 9 Personen pro Kleingruppe",
+              "Achte darauf, dass alle, die möchten, zu Wort kommen",
+              "Erkläre direkt am Anfang, dass du auch unterbrechen wirst, damit alle teilnehmen können",
+              "Fordere die TN zur aktiven Mitarbeit auf; die anderen dürfen auch Rückfragen stellen",
+              "Achte darauf, wenn TN nicht so persönlich tief gehen möchten",
+              "Stelle Fragen nicht, um Antworten zu bekommen, sondern um die TN in tiefere Selbstreflexion zu führen"
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "Mitarbeiterschulung: Hörendes Gebet",
+        "blocks": [
+          {
+            "type": "quote",
+            "text": "Seid stille und erkennet, dass ich Gott bin!",
+            "reference": "Psalm 46,11"
+          },
+          {
+            "type": "quote",
+            "text": "Meine Seele ist stille zu Gott, der mir hilft.",
+            "reference": "Psalm 62,2"
+          },
+          {
+            "type": "quote",
+            "text": "Und es wird geschehen in den letzten Tagen, spricht Gott, dass ich von meinem Geist ausgießen werde auf alles Fleisch, und eure Söhne und eure Töchter werden weissagen, und eure jungen Männer werden Gesichte sehen, und eure Ältesten werden in Träumen Visionen haben.",
+            "reference": "Apostelgeschichte 2,17"
+          },
+          {
+            "type": "subheading",
+            "text": "Ablauf"
+          },
+          {
+            "type": "numberedList",
+            "items": [
+              "Trennung von Gott: Sünde bekennen und um Vergebung beten",
+              "Dem Teufel als Einflüsterer keine Möglichkeit geben – wir haben gesiegt",
+              "Persönliche Gedanken und Wünsche zurückstellen und hinterfragen",
+              "Anliegen vor Gott bringen",
+              "Still sein und Gott wirken lassen",
+              "Gott kann sprechen durch Bilder, Lieder, Bibeltexte …",
+              "Prüfen: anhand der Bibel, durch Bestätigung einer zweiten Person (im Gebet oder im Gespräch) und ob Friede über den Eindrücken liegt"
+            ]
+          },
+          {
+            "type": "subheading",
+            "text": "Worauf ihr gefasst sein müsst"
+          },
+          {
+            "type": "paragraph",
+            "text": "Gott wirkt wirklich – seid nicht unvorbereitet. Dinge aus dem Leben können aufbrechen (z. B. Weinen). Haltet Taschentücher bereit."
+          }
+        ]
+      },
+      {
+        "heading": "Mitarbeiterschulung: Die Einheiten im Überblick",
+        "blocks": [
+          {
+            "type": "bulletList",
+            "items": [
+              "Einheit Eins – Trete in den Riss: Du bist wichtig und Gott hat einen Plan für dich! Anstoß, die eigene Einstellung und Berufung zu hinterfragen. Dazu ein gemeinsamer christlicher Film, um Gemeinschaft zu schaffen.",
+              "Einheit Zwei – Jesus, seine Berufung: Wie Berufung bzw. Vorbereitung auf Berufung funktioniert – auch wir wurden für den Dienst vorbereitet. Gruppenarbeit: Lebensbaum zeichnen und in der Gruppe besprechen.",
+              "Einheit Drei – Das Hier und Jetzt: Trau dich! Wo stehe ich mit meinen Gaben und Werten, wie setze ich sie ein? Gruppenarbeit: Was habe ich aus Lebensbaum, Gaben und Werten gelernt – gemeinsam zusammenfassen.",
+              "Einheit Vier – Bete, träume, höre: Die TN bereit machen, dass Gott wirken kann (Gebetsliste, Gebet zu zweit). Vorher eine kurze Einweisung ins hörende Gebet (ca. 10 Min.).",
+              "Einheit Fünf – Weißt du den Weg nach San Jose: Gott erwartet eine Antwort auf seinen Ruf. Das große Ziel, Träume, Vision und nächste Schritte.",
+              "Einzelgespräche (One to One): Kein Input, dafür eine Einführung in die Gespräche."
             ]
           }
         ]
