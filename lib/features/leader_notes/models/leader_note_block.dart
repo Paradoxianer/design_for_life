@@ -20,6 +20,8 @@ sealed class LeaderNoteBlock {
         return LeaderNoteBulletList((json['items'] as List).cast<String>());
       case 'numberedList':
         return LeaderNoteNumberedList((json['items'] as List).cast<String>());
+      case 'checkList':
+        return LeaderNoteChecklist((json['items'] as List).cast<String>());
       case 'quote':
         return LeaderNoteQuote(
           text: json['text'] as String,
@@ -63,6 +65,13 @@ class LeaderNoteBulletList extends LeaderNoteBlock {
 class LeaderNoteNumberedList extends LeaderNoteBlock {
   final List<String> items;
   const LeaderNoteNumberedList(this.items);
+}
+
+/// A list whose items the leader can tick off (Vorbereitungs-Zeitplan,
+/// Material, ...); the ticks are stored locally per device.
+class LeaderNoteChecklist extends LeaderNoteBlock {
+  final List<String> items;
+  const LeaderNoteChecklist(this.items);
 }
 
 /// A Bible passage to read aloud, with its reference shown separately (the

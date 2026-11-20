@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../bloc/leader_checklist_cubit.dart';
 import '../models/leader_note_block.dart';
 import '../models/leader_note_session.dart';
 
@@ -17,6 +19,12 @@ class LeaderNoteView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // SelectionArea: Texte lassen sich markieren und kopieren (v. a. im
+    // Browser gewünscht, z. B. um Passagen in eigene Unterlagen zu übernehmen).
+    return SelectionArea(child: _buildContent(context));
+  }
+
+  Widget _buildContent(BuildContext context) {
     final theme = Theme.of(context);
     if (session.collapsible) {
       return ListView(
@@ -42,7 +50,7 @@ class LeaderNoteView extends StatelessWidget {
                 expandedCrossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   for (final block in section.blocks) ...[
-                    _LeaderNoteBlockView(block: block),
+                    _LeaderNoteBlockView(block: block, sectionHeading: section.heading),
                     const SizedBox(height: 12),
                   ],
                 ],
@@ -64,7 +72,7 @@ class LeaderNoteView extends StatelessWidget {
           ),
           const SizedBox(height: 12),
           for (final block in section.blocks) ...[
-            _LeaderNoteBlockView(block: block),
+            _LeaderNoteBlockView(block: block, sectionHeading: section.heading),
             const SizedBox(height: 12),
           ],
           const SizedBox(height: 12),
@@ -76,8 +84,12 @@ class LeaderNoteView extends StatelessWidget {
 
 class _LeaderNoteBlockView extends StatelessWidget {
   final LeaderNoteBlock block;
+  final String sectionHeading;
 
-  const _LeaderNoteBlockView({required this.block});
+  const _LeaderNoteBlockView({
+    required this.block,
+    required this.sectionHeading,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -112,6 +124,36 @@ class _LeaderNoteBlockView extends StatelessWidget {
             ),
         ],
       ),
+      LeaderNoteChecklist(:final items) =>
+        BlocBuilder<LeaderChecklistCubit, Set<String>>(
+          builder: (context, checked) => Column(
+            children: [
+              for (final item in items)
+                CheckboxListTile(
+                  dense: true,
+                  contentPadding: EdgeInsets.zero,
+                  controlAffinity: ListTileControlAffinity.leading,
+                  value: checked.contains(
+                    LeaderChecklistCubit.keyFor(sectionHeading, item),
+                  ),
+                  onChanged: (_) => context.read<LeaderChecklistCubit>().toggle(
+                    LeaderChecklistCubit.keyFor(sectionHeading, item),
+                  ),
+                  title: Text(
+                    item,
+                    style: theme.textTheme.bodyMedium?.copyWith(
+                      decoration:
+                          checked.contains(
+                            LeaderChecklistCubit.keyFor(sectionHeading, item),
+                          )
+                          ? TextDecoration.lineThrough
+                          : null,
+                    ),
+                  ),
+                ),
+            ],
+          ),
+        ),
       LeaderNoteNumberedList(:final items) => Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

@@ -42,6 +42,7 @@ import 'features/group_photo/bloc/group_photo_bloc.dart';
 import 'features/group_photo/screens/group_photo_screen.dart';
 import 'features/export/screens/export_screen.dart';
 import 'features/backup/screens/backup_screen.dart';
+import 'features/leader_notes/bloc/leader_checklist_cubit.dart';
 import 'features/leader_notes/bloc/leader_mode_bloc.dart';
 import 'features/leader_notes/screens/leader_materials_screen.dart';
 import 'features/checklist/bloc/checklist_bloc.dart';
@@ -91,6 +92,7 @@ void main() async {
           BlocProvider(create: (context) => GroupPhotoBloc()),
           BlocProvider(create: (context) => TimelineModuleFilterBloc()),
           BlocProvider(create: (context) => LeaderModeBloc()),
+          BlocProvider(create: (context) => LeaderChecklistCubit()),
           BlocProvider(create: (context) => ChecklistBloc()),
         ],
         child: const DflApp(),
