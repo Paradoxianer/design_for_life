@@ -18,6 +18,39 @@ class LeaderNoteView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    if (session.collapsible) {
+      return ListView(
+        padding: const EdgeInsets.all(16),
+        children: [
+          for (final section in session.sections)
+            Card(
+              clipBehavior: Clip.antiAlias,
+              child: ExpansionTile(
+                // Eigener Key je Abschnitt, damit der Auf-/Zu-Zustand beim
+                // Neuaufbau der Liste erhalten bleibt.
+                key: PageStorageKey<String>('leader-note-${section.heading}'),
+                shape: const Border(),
+                collapsedShape: const Border(),
+                title: Text(
+                  section.heading,
+                  style: theme.textTheme.titleMedium?.copyWith(
+                    fontWeight: FontWeight.bold,
+                    color: theme.colorScheme.primary,
+                  ),
+                ),
+                childrenPadding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
+                expandedCrossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  for (final block in section.blocks) ...[
+                    _LeaderNoteBlockView(block: block),
+                    const SizedBox(height: 12),
+                  ],
+                ],
+              ),
+            ),
+        ],
+      );
+    }
     return ListView(
       padding: const EdgeInsets.all(16),
       children: [

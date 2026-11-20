@@ -50,6 +50,15 @@ void main() {
       'session_checklist',
     });
 
+    // Die Checkliste enthält zusätzlich die Mitarbeiterschulung als
+    // ausklappbare Bereiche; normale Einheiten bleiben durchgehender Text.
+    expect(sessions['session_checklist']!.collapsible, isTrue);
+    expect(
+      sessions['session_checklist']!.sections.map((s) => s.heading),
+      contains('Mitarbeiterschulung: Hörendes Gebet'),
+    );
+    expect(sessions['session_1']!.collapsible, isFalse);
+
     for (final entry in sessions.entries) {
       expect(
         entry.value.sections,

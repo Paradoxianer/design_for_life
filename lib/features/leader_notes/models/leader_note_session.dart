@@ -26,11 +26,21 @@ class LeaderNoteSession {
   final String sessionTitle;
   final List<LeaderNoteSection> sections;
 
-  const LeaderNoteSession({required this.sessionTitle, required this.sections});
+  /// Wenn true, werden die Abschnitte als ein-/ausklappbare Bereiche
+  /// angezeigt (für umfangreiche Nachschlage-Inhalte wie die
+  /// Mitarbeiterschulung), sonst untereinander als durchgehender Text.
+  final bool collapsible;
+
+  const LeaderNoteSession({
+    required this.sessionTitle,
+    required this.sections,
+    this.collapsible = false,
+  });
 
   factory LeaderNoteSession.fromJson(Map<String, dynamic> json) {
     return LeaderNoteSession(
       sessionTitle: json['sessionTitle'] as String,
+      collapsible: json['collapsible'] as bool? ?? false,
       sections: (json['sections'] as List)
           .map((s) => LeaderNoteSection.fromJson(s as Map<String, dynamic>))
           .toList(),
