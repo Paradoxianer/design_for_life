@@ -1,5 +1,5 @@
 import 'dart:convert';
-import 'package:flutter/services.dart';
+import '../../../core/i18n/localized_asset_loader.dart';
 
 import '../models/leader_note_session.dart';
 
@@ -14,30 +14,22 @@ import '../models/leader_note_session.dart';
 class LeaderNotesRepository {
   Map<String, LeaderNoteSession>? _cached;
   String? _cachedLocale;
+  String? _requestedLocale;
 
   Future<Map<String, LeaderNoteSession>> loadSessions(
     String locale, {
     bool forceReload = false,
   }) async {
-    if (!forceReload && _cached != null && _cachedLocale == locale) {
+    if (!forceReload && _cached != null && _requestedLocale == locale) {
       return _cached!;
     }
 
     try {
-      String response;
-      try {
-        response = await rootBundle.loadString(
-          'assets/data/leader_notes_$locale.json',
-        );
-        _cachedLocale = locale;
-      } catch (_) {
-        response = await rootBundle.loadString(
-          'assets/data/leader_notes_de.json',
-        );
-        _cachedLocale = 'de';
-      }
+      final asset = await LocalizedAssetLoader.load('leader_notes', locale);
+      _cachedLocale = asset.locale;
+      _requestedLocale = locale;
 
-      final Map<String, dynamic> data = json.decode(response);
+      final Map<String, dynamic> data = json.decode(asset.content);
       final sessions = <String, LeaderNoteSession>{};
       data.forEach((sessionId, value) {
         // Keys starting with "_" are file-level metadata (e.g. a translation

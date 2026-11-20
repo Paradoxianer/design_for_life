@@ -460,5 +460,8 @@
   "leaderCertificateNamesHint": "Leave empty to write the name by hand.",
   "leaderCertificatePlace": "Place",
   "leaderCertificateDate": "Date",
-  "leaderCertificateCreate": "Create certificates"
+  "leaderCertificateCreate": "Create certificates",
+  "languageTitle": "Language",
+  "languageAuto": "Automatic (device language)",
+  "languageDraft": "Draft – machine translated"
 }

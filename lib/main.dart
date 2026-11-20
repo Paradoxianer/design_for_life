@@ -43,6 +43,7 @@ import 'features/group_photo/screens/group_photo_screen.dart';
 import 'features/export/screens/export_screen.dart';
 import 'features/backup/screens/backup_screen.dart';
 import 'features/leader_notes/bloc/leader_checklist_cubit.dart';
+import 'core/blocs/language_cubit.dart';
 import 'features/leader_notes/bloc/leader_mode_bloc.dart';
 import 'features/leader_notes/screens/leader_materials_screen.dart';
 import 'features/checklist/bloc/checklist_bloc.dart';
@@ -92,6 +93,7 @@ void main() async {
           BlocProvider(create: (context) => GroupPhotoBloc()),
           BlocProvider(create: (context) => TimelineModuleFilterBloc()),
           BlocProvider(create: (context) => LeaderModeBloc()),
+          BlocProvider(create: (context) => LanguageCubit()),
           BlocProvider(create: (context) => LeaderChecklistCubit()),
           BlocProvider(create: (context) => ChecklistBloc()),
         ],
@@ -350,11 +352,22 @@ class _DflAppState extends State<DflApp> {
     final service = DeepLinkService();
     _deepLinkService = service;
 
-    final initialAction = await service.getInitialAction();
+    final initialAction = await service.getInitialAction(
+      onLanguage: _applyLanguageFromLink,
+    );
     if (!mounted) return;
     if (initialAction != null) _handleDeepLinkAction(initialAction);
 
-    service.listen(_handleDeepLinkAction);
+    service.listen(_handleDeepLinkAction, onLanguage: _applyLanguageFromLink);
+  }
+
+  /// `?lang=xx` in a link switches the app language - but only to a
+  /// language the app actually supports.
+  void _applyLanguageFromLink(String code) {
+    final supported = AppLocalizations.supportedLocales.any(
+      (l) => l.languageCode == code,
+    );
+    if (supported && mounted) context.read<LanguageCubit>().select(code);
   }
 
   void _handleDeepLinkAction(DeepLinkAction action) {
@@ -472,11 +485,14 @@ class _DflAppState extends State<DflApp> {
 
   @override
   Widget build(BuildContext context) {
+    // Sprache: erzwungen (Tests) > vom Nutzer / per Link gewählt > Gerät.
+    final chosen = context.watch<LanguageCubit>().state;
+    final languageCode = widget.forcedLocale ?? chosen;
     return MaterialApp.router(
       title: 'DFL App',
       theme: AppTheme.lightTheme,
       routerConfig: _router,
-      locale: widget.forcedLocale == null ? null : Locale(widget.forcedLocale!),
+      locale: languageCode == null ? null : Locale(languageCode),
       debugShowCheckedModeBanner: false,
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,

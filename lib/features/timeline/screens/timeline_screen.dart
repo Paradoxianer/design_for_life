@@ -5,6 +5,7 @@ import 'package:design_for_life/l10n/generated/app_localizations.dart';
 
 import '../../../core/utils/localized_logo.dart';
 import '../../leader_notes/bloc/leader_mode_bloc.dart';
+import '../../../core/widgets/language_picker.dart';
 import '../bloc/timeline_module_filter_bloc.dart';
 import '../models/dfl_session.dart';
 import '../services/timeline_config_repository.dart';
@@ -92,6 +93,11 @@ class TimelineScreen extends StatelessWidget {
                         onPressed: () => context.push('/leader-materials'),
                       );
                     },
+                  ),
+                  IconButton(
+                    tooltip: l10n.languageTitle,
+                    icon: const Icon(Icons.language),
+                    onPressed: () => showLanguagePicker(context),
                   ),
                   IconButton(
                     tooltip: l10n.backupTitle,

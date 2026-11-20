@@ -460,5 +460,8 @@
   "leaderCertificateNamesHint": "Leer lassen, um den Namen von Hand einzutragen.",
   "leaderCertificatePlace": "Ort",
   "leaderCertificateDate": "Datum",
-  "leaderCertificateCreate": "Urkunden erstellen"
+  "leaderCertificateCreate": "Urkunden erstellen",
+  "languageTitle": "Sprache",
+  "languageAuto": "Automatisch (Gerätesprache)",
+  "languageDraft": "Entwurf – maschinell übersetzt"
 }

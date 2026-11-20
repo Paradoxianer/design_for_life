@@ -2101,6 +2101,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Create certificates'**
   String get leaderCertificateCreate;
+
+  /// No description provided for @languageTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Language'**
+  String get languageTitle;
+
+  /// No description provided for @languageAuto.
+  ///
+  /// In en, this message translates to:
+  /// **'Automatic (device language)'**
+  String get languageAuto;
+
+  /// No description provided for @languageDraft.
+  ///
+  /// In en, this message translates to:
+  /// **'Draft – machine translated'**
+  String get languageDraft;
 }
 
 class _AppLocalizationsDelegate

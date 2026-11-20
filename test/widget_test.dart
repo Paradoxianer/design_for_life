@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:design_for_life/core/blocs/language_cubit.dart';
+import 'package:design_for_life/features/leader_notes/bloc/leader_mode_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
@@ -74,6 +76,8 @@ void main() {
           BlocProvider(create: (context) => GroupPhotoBloc()),
           BlocProvider(create: (context) => ChecklistBloc()),
           BlocProvider(create: (context) => TimelineModuleFilterBloc()),
+          BlocProvider(create: (context) => LeaderModeBloc()),
+          BlocProvider(create: (context) => LanguageCubit()),
         ],
         child: const DflApp(),
       ),
