@@ -1,0 +1,1077 @@
+[
+  {
+    "id": "G01",
+    "name": "Parole de sagesse",
+    "originalWord": "λόγος σοφίας (lógos sophías, Gr.); חָכְמָה (chokhmáh, Hebr.)",
+    "meaning": "Parole surnaturelle qui révèle le plan ou la solution de Dieu",
+    "bibleReferences": [
+      "1 Cor 12:8",
+      "Jas 1:5",
+      "1 Kgs 3:5-12",
+      "Ex 31:3",
+      "Prov 2:6"
+    ],
+    "description": "Le don de la parole de sagesse désigne une parole ou une intuition donnée par le Saint-Esprit, qui révèle le point de vue, le plan ou la solution de Dieu pour une situation concrète. Le grec « logos sophias » ne désigne pas la sagesse en général, mais une parole de Dieu précise, adaptée à la situation. Dans la Bible, ce don apparaît par exemple chez Salomon (1 R 3), chez les apôtres lors de décisions difficiles (Ac 6 ; Ac 15) ou chez Jésus lui-même, qui révélait la sagesse divine dans les situations de conflit. Ce don apporte clarté, orientation et stratégie divine dans des situations complexes et sert à conduire et à édifier la communauté.",
+    "questions": [
+      {
+        "id": "G01_Q1",
+        "type": "experience",
+        "text": "J'ai vécu que Dieu me montre de façon étonnamment claire des solutions."
+      },
+      {
+        "id": "G01_Q2",
+        "type": "experience",
+        "text": "D'autres me demandent souvent conseil dans des situations difficiles."
+      },
+      {
+        "id": "G01_Q3",
+        "type": "experience",
+        "text": "Je ressens une clarté intérieure lors de décisions complexes."
+      },
+      {
+        "id": "G01_Q4",
+        "type": "nature",
+        "text": "J'aime aider les gens à prendre de bonnes décisions devant Dieu."
+      },
+      {
+        "id": "G01_Q5",
+        "type": "nature",
+        "text": "Il m'importe de trouver des stratégies divines plutôt que des compromis humains pour les problèmes bloqués."
+      },
+      {
+        "id": "G01_Q6",
+        "type": "feedback",
+        "text": "D'autres disent que mes conseils les ont aidés à voir clairement la volonté de Dieu en temps de crise."
+      },
+      {
+        "id": "G01_Q7",
+        "type": "feedback",
+        "text": "Je vois que mon conseil a aidé des personnes durablement."
+      },
+      {
+        "id": "G01_Q8",
+        "type": "reference",
+        "text": "J'ai constaté que cette personne apporte des solutions utiles et bien réfléchies dans les situations difficiles."
+      },
+      {
+        "id": "G01_Q9",
+        "type": "reference",
+        "text": "Les contributions de cette personne aident souvent les autres à prendre de bonnes décisions."
+      }
+    ]
+  },
+  {
+    "id": "G02",
+    "name": "Parole de connaissance",
+    "originalWord": "λόγος γνώσεως (lógos gnóseōs, Gr.)",
+    "meaning": "Connaissance surnaturelle ou aperçu des secrets de Dieu",
+    "bibleReferences": [
+      "1 Cor 12:8",
+      "1 Cor 13:2"
+    ],
+    "description": "La parole de connaissance désigne une intuition ou une information donnée par le Saint-Esprit sur une personne, une situation ou une réalité spirituelle, qui n'a pas été acquise par la connaissance naturelle. Le terme « logos gnoseos » désigne une révélation concrète de savoir. Dans la Bible, ce don apparaît par exemple chez Pierre, qui discerne la tromperie d'Ananias (Ac 5), ou chez Jésus, qui connaît les pensées et les situations de vie des gens (Jn 4). Ce don sert à mettre la vérité en lumière, à aider les gens et à rendre visible l'action de Dieu.",
+    "questions": [
+      {
+        "id": "G02_Q1",
+        "type": "experience",
+        "text": "En priant, Dieu m'a donné une image ou une parole précise pour la situation de quelqu'un d'autre."
+      },
+      {
+        "id": "G02_Q2",
+        "type": "experience",
+        "text": "As-tu vécu des moments où tu as compris des choses sur une situation que tu ne pouvais pas connaître auparavant ?"
+      },
+      {
+        "id": "G02_Q3",
+        "type": "experience",
+        "text": "As-tu vécu que Dieu te donne des intuitions particulières sur des personnes ou des situations ?"
+      },
+      {
+        "id": "G02_Q4",
+        "type": "nature",
+        "text": "Je désire que Dieu me révèle des « secrets » afin de servir les gens de façon plus ciblée."
+      },
+      {
+        "id": "G02_Q5",
+        "type": "nature",
+        "text": "Je veux comprendre plus profondément les pensées et les vérités de Dieu."
+      },
+      {
+        "id": "G02_Q6",
+        "type": "feedback",
+        "text": "D'autres vivent, grâce à mes intuitions, une nouvelle clarté sur des sujets spirituels."
+      },
+      {
+        "id": "G02_Q7",
+        "type": "feedback",
+        "text": "Je me sens poussé(e) à mettre en lumière ce qui est caché."
+      },
+      {
+        "id": "G02_Q8",
+        "type": "reference",
+        "text": "J'ai observé que cette personne perçoit des liens que les autres ne remarquent pas d'abord."
+      },
+      {
+        "id": "G02_Q9",
+        "type": "reference",
+        "text": "Les intuitions de cette personne aident les autres à mieux comprendre les situations."
+      }
+    ]
+  },
+  {
+    "id": "G03",
+    "name": "Foi",
+    "originalWord": "πίστις (pístis, Gr.)",
+    "meaning": "Foi particulière, qui fait des miracles et déplace les montagnes",
+    "bibleReferences": [
+      "1 Cor 12:9",
+      "1 Cor 13:2",
+      "Matt 17:20",
+      "Heb 11"
+    ],
+    "description": "Le don de la foi est une confiance particulière, produite par le Saint-Esprit, que Dieu agira dans une situation précise. Il va au-delà de la foi salvatrice générale et est une confiance surnaturelle en la puissance et les promesses de Dieu. Le grec « pistis » désigne ici une confiance forte et ferme en l'action de Dieu. Dans la Bible, ce don apparaît chez des personnes comme Abraham (Rm 4) ou chez les apôtres, qui attendaient avec audace l'action de Dieu. Ce don fortifie les autres dans la foi et ouvre un espace à l'intervention surnaturelle de Dieu.",
+    "questions": [
+      {
+        "id": "G03_Q1",
+        "type": "experience",
+        "text": "As-tu vécu que tu faisais particulièrement confiance à Dieu dans des situations apparemment impossibles ?"
+      },
+      {
+        "id": "G03_Q2",
+        "type": "experience",
+        "text": "Y a-t-il eu des moments où ta confiance en Dieu a encouragé d'autres personnes ?"
+      },
+      {
+        "id": "G03_Q3",
+        "type": "experience",
+        "text": "Des situations ont-elles changé en bien grâce à ta foi ?"
+      },
+      {
+        "id": "G03_Q4",
+        "type": "nature",
+        "text": "Je fais confiance à Dieu pour accomplir aussi des choses grandes et impossibles."
+      },
+      {
+        "id": "G03_Q5",
+        "type": "nature",
+        "text": "Je me sens motivé(e) à faire confiance à Dieu même quand d'autres doutent."
+      },
+      {
+        "id": "G03_Q6",
+        "type": "feedback",
+        "text": "Ma confiance en Dieu fortifie souvent la foi des autres."
+      },
+      {
+        "id": "G03_Q7",
+        "type": "feedback",
+        "text": "En m'accrochant à la promesse de Dieu, des objectifs ont été atteints que l'équipe ou la communauté avait depuis longtemps abandonnés."
+      },
+      {
+        "id": "G03_Q8",
+        "type": "reference",
+        "text": "J'ai vécu que cette personne, même dans des situations difficiles, croit fermement que Dieu peut agir."
+      },
+      {
+        "id": "G03_Q9",
+        "type": "reference",
+        "text": "La confiance de cette personne encourage et fortifie visiblement les autres."
+      }
+    ]
+  },
+  {
+    "id": "G04",
+    "name": "Dons de guérison",
+    "originalWord": "χαρίσματα ἰαμάτων (charísmata iamatōn, Gr.)",
+    "meaning": "Capacité de guérir les malades par la puissance de Dieu",
+    "bibleReferences": [
+      "1 Cor 12:9, 28, 30",
+      "Jas 5:14-15",
+      "Matt 10:8",
+      "Acts 3:1-10",
+      "Mark 16:18"
+    ],
+    "description": "Les « dons de guérison » désignent différents effets de la guérison divine par le Saint-Esprit. Le grec « charismata iamaton » est au pluriel et indique que Dieu accorde différentes sortes de guérisons – physiques, psychiques ou spirituelles. Dans la Bible, les guérisons par Jésus et les apôtres sont souvent décrites (p. ex. Ac 3 ; Mc 16). Ce don montre la compassion de Dieu pour les personnes qui souffrent, sert de signe de son royaume et encourage la foi.",
+    "questions": [
+      {
+        "id": "G04_Q1",
+        "type": "experience",
+        "text": "As-tu déjà vécu que quelqu'un ait connu une guérison physique ou psychique après ta prière ?"
+      },
+      {
+        "id": "G04_Q2",
+        "type": "experience",
+        "text": "As-tu souvent l'élan de prier pour des personnes malades ?"
+      },
+      {
+        "id": "G04_Q3",
+        "type": "experience",
+        "text": "As-tu vécu que Dieu accorde la guérison par la prière ?"
+      },
+      {
+        "id": "G04_Q4",
+        "type": "nature",
+        "text": "As-tu tendance à prier pour les malades et à t'attendre à la guérison ?"
+      },
+      {
+        "id": "G04_Q5",
+        "type": "nature",
+        "text": "Je crois fermement que Jésus guérit aujourd'hui encore tout comme au temps des apôtres."
+      },
+      {
+        "id": "G04_Q6",
+        "type": "feedback",
+        "text": "Des personnes rapportent avoir connu réconfort ou guérison grâce à ma prière."
+      },
+      {
+        "id": "G04_Q7",
+        "type": "feedback",
+        "text": "D'autres me demandent expressément de prier pour leur santé."
+      },
+      {
+        "id": "G04_Q8",
+        "type": "reference",
+        "text": "J'ai vu que cette personne prie pour des personnes malades ou accablées."
+      },
+      {
+        "id": "G04_Q9",
+        "type": "reference",
+        "text": "Des personnes rapportent avoir reçu aide ou réconfort grâce à la prière de cette personne."
+      }
+    ]
+  },
+  {
+    "id": "G05",
+    "name": "Opérations miraculeuses",
+    "originalWord": "ἐνεργήματα δυνάμεων (energémata dynámeōn, Gr.)",
+    "meaning": "Accomplir des actes de puissance surnaturels par la force de Dieu",
+    "bibleReferences": [
+      "1 Cor 12:10, 28, 29",
+      "Acts 5:12",
+      "2 Cor 12:12",
+      "Mark 16:17-18"
+    ],
+    "description": "Les « opérations miraculeuses » désignent des actes de puissance surnaturels de Dieu qui dépassent les possibilités naturelles. L'expression « energemata dynameon » signifie littéralement « actions efficaces de puissance ». Dans la Bible, ce don apparaît par exemple chez Moïse, Élie, Jésus et les apôtres. Les miracles peuvent être une délivrance, un approvisionnement, des prodiges de la nature ou d'autres interventions extraordinaires de Dieu, et ils confirment la puissance de Dieu et l'Évangile.",
+    "questions": [
+      {
+        "id": "G05_Q1",
+        "type": "experience",
+        "text": "As-tu vécu des situations dans lesquelles Dieu est intervenu de façon surnaturelle ?"
+      },
+      {
+        "id": "G05_Q2",
+        "type": "experience",
+        "text": "As-tu vécu que Dieu ait fait des choses extraordinaires par ta prière ?"
+      },
+      {
+        "id": "G05_Q3",
+        "type": "experience",
+        "text": "Je m'attends à des actions surnaturelles de Dieu dans mon entourage."
+      },
+      {
+        "id": "G05_Q4",
+        "type": "nature",
+        "text": "J'ai la profonde confiance que Dieu accomplit aujourd'hui encore des signes visibles de sa puissance pour confirmer sa parole."
+      },
+      {
+        "id": "G05_Q5",
+        "type": "nature",
+        "text": "Je crois que Dieu peut aujourd'hui encore faire des miracles."
+      },
+      {
+        "id": "G05_Q6",
+        "type": "feedback",
+        "text": "Des personnes de mon entourage sont venues à la foi par des actes de puissance visibles de Dieu."
+      },
+      {
+        "id": "G05_Q7",
+        "type": "feedback",
+        "text": "Mon service est souvent accompagné d'événements extraordinaires qui ne s'expliquent pas humainement."
+      },
+      {
+        "id": "G05_Q8",
+        "type": "reference",
+        "text": "J'ai vu que cette personne prie pour des situations difficiles à résoudre humainement."
+      },
+      {
+        "id": "G05_Q9",
+        "type": "reference",
+        "text": "La foi de cette personne encourage les autres à compter sur une intervention extraordinaire de Dieu."
+      }
+    ]
+  },
+  {
+    "id": "G06",
+    "name": "Prophétie",
+    "originalWord": "προφητεία (propheteía, Gr.); נְבוּאָה (nevūʾáh, Hebr.)",
+    "meaning": "Parler de la part de Dieu pour édifier, exhorter et consoler",
+    "bibleReferences": [
+      "Rom 12:6",
+      "1 Cor 12:10",
+      "1 Cor 14:1-5",
+      "1 Thess 5:20",
+      "Acts 11:27-28"
+    ],
+    "description": "La prophétie est la parole inspirée par le Saint-Esprit, prononcée de la part de Dieu pour l'édification, l'exhortation et l'encouragement de la communauté (1 Co 14,3). Le terme « propheteia » signifie littéralement « parler pour quelqu'un ». La prophétie peut être aussi bien une révélation que l'application de la parole de Dieu à une situation concrète. Dans la Bible, on voit la parole prophétique chez les prophètes de l'Ancien Testament ainsi que, dans le Nouveau Testament, par exemple chez Agabus (Ac 11). Ce don fortifie la foi, corrige les dérives et tourne le regard de la communauté vers la volonté de Dieu.",
+    "questions": [
+      {
+        "id": "G06_Q1",
+        "type": "experience",
+        "text": "J'ai vécu que mon impression sur une situation s'est révélée juste par la suite."
+      },
+      {
+        "id": "G06_Q2",
+        "type": "experience",
+        "text": "As-tu vécu que quelqu'un ait reconnu la parole de Dieu à travers tes paroles ?"
+      },
+      {
+        "id": "G06_Q3",
+        "type": "experience",
+        "text": "J'ai eu des impressions ou des paroles qui se sont confirmées plus tard."
+      },
+      {
+        "id": "G06_Q4",
+        "type": "nature",
+        "text": "Je fais attention à ce que Dieu veut dire dans une situation."
+      },
+      {
+        "id": "G06_Q5",
+        "type": "nature",
+        "text": "Je souhaite que Dieu puisse parler à d'autres personnes par moi."
+      },
+      {
+        "id": "G06_Q6",
+        "type": "feedback",
+        "text": "Des personnes confirment parfois que Dieu leur a parlé par mes paroles."
+      },
+      {
+        "id": "G06_Q7",
+        "type": "feedback",
+        "text": "Des personnes ont été préparées par mes propos à des événements futurs dans leur vie."
+      },
+      {
+        "id": "G06_Q8",
+        "type": "reference",
+        "text": "J'ai vécu que cette personne transmet des paroles de Dieu que d'autres trouvent très justes ou fortifiantes."
+      },
+      {
+        "id": "G06_Q9",
+        "type": "reference",
+        "text": "On sent que, dans certaines situations, Dieu se sert de cette personne pour transmettre des messages."
+      }
+    ]
+  },
+  {
+    "id": "G07",
+    "name": "Discernement des esprits",
+    "originalWord": "διακρίσεις πνευμάτων (diakríseis pneumátōn, Gr.)",
+    "meaning": "Distinguer les esprits divins, démoniaques et humains",
+    "bibleReferences": [
+      "1 Cor 12:10",
+      "1 John 4:1",
+      "Acts 5:3",
+      "Acts 16:16-18",
+      "Heb 5:14"
+    ],
+    "description": "Le discernement des esprits est la capacité de reconnaître les influences spirituelles et de distinguer si elles viennent de Dieu, de l'esprit humain ou de puissances démoniaques. Le terme « diakrisis pneumaton » signifie « distinction ou examen des esprits ». Dans la Bible, ce don apparaît par exemple chez Pierre (Ac 5) ou Paul (Ac 16). Il protège la communauté de la tromperie et aide à reconnaître clairement l'action de Dieu.",
+    "questions": [
+      {
+        "id": "G07_Q1",
+        "type": "experience",
+        "text": "Je sens si quelque chose vient de Dieu, des humains ou d'autres sources."
+      },
+      {
+        "id": "G07_Q2",
+        "type": "experience",
+        "text": "As-tu vécu des situations dans lesquelles tu as reconnu de fausses influences spirituelles ?"
+      },
+      {
+        "id": "G07_Q3",
+        "type": "experience",
+        "text": "Je reconnais rapidement les influences spirituelles malsaines."
+      },
+      {
+        "id": "G07_Q4",
+        "type": "nature",
+        "text": "Je veux comprendre quelles forces spirituelles agissent dans une situation."
+      },
+      {
+        "id": "G07_Q5",
+        "type": "nature",
+        "text": "J'examine soigneusement les impressions spirituelles."
+      },
+      {
+        "id": "G07_Q6",
+        "type": "feedback",
+        "text": "J'ai vécu que Dieu me révèle une tromperie."
+      },
+      {
+        "id": "G07_Q7",
+        "type": "feedback",
+        "text": "Mon discernement aide parfois à reconnaître des dérives spirituelles."
+      },
+      {
+        "id": "G07_Q8",
+        "type": "reference",
+        "text": "J'ai observé que cette personne remarque quand quelque chose ne va pas spirituellement."
+      },
+      {
+        "id": "G07_Q9",
+        "type": "reference",
+        "text": "Le discernement de cette personne aide les autres à mieux situer les situations spirituelles."
+      }
+    ]
+  },
+  {
+    "id": "G08",
+    "name": "Parler en langues",
+    "originalWord": "γένη γλωσσῶν (génē glōssōn, Gr.)",
+    "meaning": "Parler dans d'autres langues ou dans la langue de prière de l'Esprit",
+    "bibleReferences": [
+      "1 Cor 12:10, 28, 30",
+      "1 Cor 14",
+      "Acts 2:4-11",
+      "Acts 19:6",
+      "Mark 16:17"
+    ],
+    "description": "Le don de parler en langues désigne le fait de parler, sous l'inspiration du Saint-Esprit, dans une langue que le locuteur n'a pas apprise. Le grec « gene glosson » signifie « diverses sortes de langues ». Dans la Bible, ce don apparaît pour la première fois à la Pentecôte (Ac 2) et est expliqué en particulier en 1 Corinthiens 12–14. Il peut servir aussi bien de langue de prière personnelle que de signe public de l'action de Dieu.",
+    "questions": [
+      {
+        "id": "G08_Q1",
+        "type": "experience",
+        "text": "Je prie régulièrement dans une langue que je n'ai pas apprise."
+      },
+      {
+        "id": "G08_Q2",
+        "type": "experience",
+        "text": "Je sens fortement la présence de Dieu dans la prière en langues."
+      },
+      {
+        "id": "G08_Q3",
+        "type": "experience",
+        "text": "As-tu fait l'expérience que la prière en langues te fortifie dans la foi ?"
+      },
+      {
+        "id": "G08_Q4",
+        "type": "nature",
+        "text": "Je désire communiquer avec Dieu dans la prière au-delà de ma raison."
+      },
+      {
+        "id": "G08_Q5",
+        "type": "nature",
+        "text": "Je suis ouvert(e) aux formes d'expression surnaturelles dans la prière."
+      },
+      {
+        "id": "G08_Q6",
+        "type": "feedback",
+        "text": "J'ai vécu que ma prière s'exprime parfois autrement que je ne m'y attendais."
+      },
+      {
+        "id": "G08_Q7",
+        "type": "feedback",
+        "text": "Quand je prie dans des langues qui me sont inconnues, d'autres trouvent cela spirituellement encourageant."
+      },
+      {
+        "id": "G08_Q8",
+        "type": "reference",
+        "text": "J'ai vécu que cette personne prie dans des langues qui me sont inconnues."
+      },
+      {
+        "id": "G08_Q9",
+        "type": "reference",
+        "text": "Je ne comprends pas toujours tout ce que cette personne prie, mais je sens la présence de Dieu quand elle prie."
+      }
+    ]
+  },
+  {
+    "id": "G09",
+    "name": "Interprétation des langues",
+    "originalWord": "ἑρμηνεία γλωσσῶν (hermēneía glōssōn, Gr.)",
+    "meaning": "Interpréter et traduire le parler en langues pour l'édification de la communauté",
+    "bibleReferences": [
+      "1 Cor 12:10",
+      "1 Cor 14:13, 27-28"
+    ],
+    "description": "L'interprétation des langues est la capacité de comprendre un parler en langues et de le rendre compréhensible pour les autres. Le grec « hermeneia glosson » signifie « traduction ou interprétation de langues ». Ce don fait que le parler en langues serve à l'édification dans la communauté, puisque son sens devient compréhensible (1 Co 14).",
+    "questions": [
+      {
+        "id": "G09_Q1",
+        "type": "experience",
+        "text": "Quand quelqu'un prie en langues, je comprends souvent le sens, sans avoir appris la langue."
+      },
+      {
+        "id": "G09_Q2",
+        "type": "experience",
+        "text": "J'ai déjà vécu que l'interprétation d'une prière en langue étrangère était exactement la réponse à la prière d'une autre personne."
+      },
+      {
+        "id": "G09_Q3",
+        "type": "experience",
+        "text": "As-tu vécu que Dieu t'ait aidé(e) à comprendre des messages spirituels incompréhensibles pour les autres ?"
+      },
+      {
+        "id": "G09_Q4",
+        "type": "nature",
+        "text": "Je ressens une responsabilité de rendre la prière en langues compréhensible."
+      },
+      {
+        "id": "G09_Q5",
+        "type": "nature",
+        "text": "Te sens-tu attiré(e) par l'interprétation ou la traduction de prières dans une autre langue ?"
+      },
+      {
+        "id": "G09_Q6",
+        "type": "feedback",
+        "text": "Après mon interprétation d'un parler en langues, règnent souvent dans le groupe une profonde unité ou une atmosphère d'adoration."
+      },
+      {
+        "id": "G09_Q7",
+        "type": "feedback",
+        "text": "Mon interprétation du parler en langues a encouragé, a rappelé la vérité de Dieu et a donné lieu à une correction pleine d'amour."
+      },
+      {
+        "id": "G09_Q8",
+        "type": "reference",
+        "text": "J'ai vécu que cette personne a pu interpréter une prière que je n'avais pas comprise auparavant."
+      },
+      {
+        "id": "G09_Q9",
+        "type": "reference",
+        "text": "Cette personne a été capable de m'expliquer des prières dans des langues que je ne comprenais pas."
+      }
+    ]
+  },
+  {
+    "id": "G10",
+    "name": "Service / diaconie",
+    "originalWord": "διακονία (diakonía, Gr.)",
+    "meaning": "Servir et aider concrètement dans la communauté",
+    "bibleReferences": [
+      "Rom 12:7",
+      "1 Cor 12:28",
+      "Acts 6:1-7",
+      "1 Pet 4:10-11"
+    ],
+    "description": "Le don du service désigne une capacité particulière d'aider les autres concrètement et de repérer les besoins. Le grec « diakonia » signifie « service » ou « aide pratique ». Dans la Bible, ce don apparaît en particulier dans le service des premiers diacres (Ac 6). Les personnes qui ont ce don contribuent de façon essentielle à ce que la communauté fonctionne concrètement et que les gens reçoivent une aide tangible.",
+    "questions": [
+      {
+        "id": "G10_Q1",
+        "type": "experience",
+        "text": "J'aime soutenir concrètement, sans avoir besoin d'être au premier plan."
+      },
+      {
+        "id": "G10_Q2",
+        "type": "experience",
+        "text": "Je repère spontanément où de l'aide est nécessaire."
+      },
+      {
+        "id": "G10_Q3",
+        "type": "experience",
+        "text": "Cela me réjouit de décharger concrètement les gens, sans que mon nom soit cité."
+      },
+      {
+        "id": "G10_Q4",
+        "type": "nature",
+        "text": "Je préfère mettre la main à la pâte plutôt que de mener de longues discussions théoriques."
+      },
+      {
+        "id": "G10_Q5",
+        "type": "nature",
+        "text": "Je veux que tout se passe sans accroc dans la communauté, et je m'y mets partout où il y a un besoin."
+      },
+      {
+        "id": "G10_Q6",
+        "type": "feedback",
+        "text": "Des responsables me disent souvent que je suis pour eux un soutien indispensable dans le quotidien de la communauté."
+      },
+      {
+        "id": "G10_Q7",
+        "type": "feedback",
+        "text": "Grâce à mon engagement, les gens se sentent valorisés et bienvenus dans la communauté."
+      },
+      {
+        "id": "G10_Q8",
+        "type": "reference",
+        "text": "J'ai vu que cette personne aide concrètement quand du soutien est nécessaire."
+      },
+      {
+        "id": "G10_Q9",
+        "type": "reference",
+        "text": "L'engagement de cette personne aide à ce que les tâches soient bien accomplies."
+      }
+    ]
+  },
+  {
+    "id": "G11",
+    "name": "Enseignement",
+    "originalWord": "διδασκαλία (didaskalía, Gr.)",
+    "meaning": "Instruire dans la vérité de Dieu",
+    "bibleReferences": [
+      "Rom 12:7",
+      "Eph 4:11",
+      "1 Tim 3:2",
+      "2 Tim 2:2"
+    ],
+    "description": "Le don d'enseignement est la capacité d'expliquer la parole de Dieu de façon claire, compréhensible et fidèle. Le terme « didaskalia » désigne à la fois le contenu et l'activité d'enseigner. Dans la Bible, ce don est surtout lié aux tâches de direction (Ép 4,11). Il aide la communauté à comprendre la vérité de Dieu et à grandir dans la foi.",
+    "questions": [
+      {
+        "id": "G11_Q1",
+        "type": "experience",
+        "text": "Quand j'explique la Bible, d'autres disent qu'ils comprennent soudain des sujets complexes."
+      },
+      {
+        "id": "G11_Q2",
+        "type": "experience",
+        "text": "Vis-tu que ton enseignement apporte compréhension et croissance spirituelle ?"
+      },
+      {
+        "id": "G11_Q3",
+        "type": "experience",
+        "text": "As-tu vécu que des personnes ont grandi spirituellement grâce à tes explications ?"
+      },
+      {
+        "id": "G11_Q4",
+        "type": "nature",
+        "text": "J'ai un désir ardent que les chrétiens grandissent dans leur foi grâce à des connaissances solides."
+      },
+      {
+        "id": "G11_Q5",
+        "type": "nature",
+        "text": "J'aime expliquer aux autres ce que j'ai appris."
+      },
+      {
+        "id": "G11_Q6",
+        "type": "feedback",
+        "text": "Des personnes rapportent avoir trouvé, grâce à mon enseignement, un fondement plus stable pour leur vie."
+      },
+      {
+        "id": "G11_Q7",
+        "type": "feedback",
+        "text": "Des personnes grandissent dans la foi grâce à mes explications."
+      },
+      {
+        "id": "G11_Q8",
+        "type": "reference",
+        "text": "J'ai vécu que cette personne explique les contenus de façon à ce que les autres les comprennent bien."
+      },
+      {
+        "id": "G11_Q9",
+        "type": "reference",
+        "text": "Des personnes apprennent et progressent grâce aux explications de cette personne."
+      }
+    ]
+  },
+  {
+    "id": "G12",
+    "name": "Exhortation",
+    "originalWord": "παράκλησις (paráklēsis, Gr.)",
+    "meaning": "Encourager, consoler et exhorter",
+    "bibleReferences": [
+      "Rom 12:8",
+      "1 Cor 14:3"
+    ],
+    "description": "Le don d'encouragement ou d'exhortation (« paraklesis ») désigne la capacité de fortifier, de consoler et d'encourager les gens à croire par des paroles. Le mot est lié au terme « Paraclet », employé pour le Saint-Esprit comme Consolateur. Ce don aide les gens à traverser les temps difficiles et à continuer dans la foi.",
+    "questions": [
+      {
+        "id": "G12_Q1",
+        "type": "experience",
+        "text": "J'ai déjà aidé des personnes à sortir d'un profond découragement."
+      },
+      {
+        "id": "G12_Q2",
+        "type": "experience",
+        "text": "Je perçois ce dont quelqu'un a besoin pour continuer."
+      },
+      {
+        "id": "G12_Q3",
+        "type": "experience",
+        "text": "J'ai signalé à des personnes, avec amour mais directement, des angles morts, ce qui a conduit à un changement positif."
+      },
+      {
+        "id": "G12_Q4",
+        "type": "nature",
+        "text": "As-tu tendance à donner aux autres encouragement, réconfort ou exhortation ?"
+      },
+      {
+        "id": "G12_Q5",
+        "type": "nature",
+        "text": "Je veux aider les gens à déployer tout leur potentiel en Dieu."
+      },
+      {
+        "id": "G12_Q6",
+        "type": "feedback",
+        "text": "Après des conversations avec moi, les gens se sentent capables d'aborder leurs tâches avec une force nouvelle."
+      },
+      {
+        "id": "G12_Q7",
+        "type": "feedback",
+        "text": "Ton exhortation conduit-elle souvent à la consolation, au renouveau et à un élan spirituel ?"
+      },
+      {
+        "id": "G12_Q8",
+        "type": "reference",
+        "text": "J'ai vécu que cette personne a exhorté mais aussi encouragé les autres."
+      },
+      {
+        "id": "G12_Q9",
+        "type": "reference",
+        "text": "Après des conversations avec cette personne, les gens savent ce qu'ils devraient changer dans leur vie."
+      }
+    ]
+  },
+  {
+    "id": "G13",
+    "name": "Don (partage)",
+    "originalWord": "μεταδιδόναι (metadidónai, Gr.)",
+    "meaning": "Donner généreusement et joyeusement, avec simplicité",
+    "bibleReferences": [
+      "Rom 12:8",
+      "Acts 4:32-37",
+      "2 Cor 8–9"
+    ],
+    "description": "Le don de donner désigne une disposition et une joie particulières à partager généreusement des ressources matérielles ou financières. Le grec « metadidonai » signifie « partager » ou « transmettre ». Dans la Bible, nous en voyons des exemples dans la première communauté (Ac 4). Ce don rend visible la pourvoyance de Dieu et soutient l'œuvre du royaume de Dieu.",
+    "questions": [
+      {
+        "id": "G13_Q1",
+        "type": "experience",
+        "text": "Je donne volontiers généreusement, sans rien attendre en retour."
+      },
+      {
+        "id": "G13_Q2",
+        "type": "experience",
+        "text": "As-tu vécu des situations dans lesquelles tu as volontairement renoncé à tes biens pour aider les autres ?"
+      },
+      {
+        "id": "G13_Q3",
+        "type": "experience",
+        "text": "Je ressens de la joie quand je peux soutenir les autres financièrement."
+      },
+      {
+        "id": "G13_Q4",
+        "type": "nature",
+        "text": "Je vois mon argent et mes biens avant tout comme des outils pour le royaume de Dieu, non pour mon luxe."
+      },
+      {
+        "id": "G13_Q5",
+        "type": "nature",
+        "text": "Je ressens une responsabilité de soutenir financièrement l'œuvre de Dieu."
+      },
+      {
+        "id": "G13_Q6",
+        "type": "feedback",
+        "text": "Par mes dons, des difficultés financières dans la communauté ont été résolues, souvent juste au bon moment."
+      },
+      {
+        "id": "G13_Q7",
+        "type": "feedback",
+        "text": "Je vois que mon don porte du fruit visible."
+      },
+      {
+        "id": "G13_Q8",
+        "type": "reference",
+        "text": "J'ai vécu que cette personne donne généreusement."
+      },
+      {
+        "id": "G13_Q9",
+        "type": "reference",
+        "text": "Cette personne accorde moins d'importance à sa propre prospérité et soutient plutôt les autres de tout cœur."
+      }
+    ]
+  },
+  {
+    "id": "G14",
+    "name": "Direction",
+    "originalWord": "προϊστάμενος (proistámenos, Gr.)",
+    "meaning": "Conduire et organiser la communauté (comme un timonier)",
+    "bibleReferences": [
+      "Rom 12:8",
+      "1 Cor 12:28",
+      "1 Thess 5:12",
+      "1 Tim 5:17"
+    ],
+    "description": "Le don de direction désigne la capacité de conduire les gens, de transmettre une vision et d'organiser des structures. Le mot grec « proistamenos » signifie « présider » ou « diriger ». Dans la Bible, ce don est lié à la responsabilité envers la communauté (1 Th 5). Il aide à coordonner les services et à faire avancer la communauté ensemble.",
+    "questions": [
+      {
+        "id": "G14_Q1",
+        "type": "experience",
+        "text": "J'ai déjà coordonné des équipes ou des projets de telle sorte que chacun pouvait mettre ses dons en œuvre de façon optimale."
+      },
+      {
+        "id": "G14_Q2",
+        "type": "experience",
+        "text": "Des personnes t'ont-elles confié des responsabilités ?"
+      },
+      {
+        "id": "G14_Q3",
+        "type": "experience",
+        "text": "D'autres suivent ma direction volontairement et avec confiance."
+      },
+      {
+        "id": "G14_Q4",
+        "type": "nature",
+        "text": "As-tu tendance à prendre des responsabilités et à organiser ?"
+      },
+      {
+        "id": "G14_Q5",
+        "type": "nature",
+        "text": "Je veux prendre des responsabilités pour que la communauté atteigne efficacement ses objectifs."
+      },
+      {
+        "id": "G14_Q6",
+        "type": "feedback",
+        "text": "Je garde une vue d'ensemble même dans des situations compliquées."
+      },
+      {
+        "id": "G14_Q7",
+        "type": "feedback",
+        "text": "Sous ma responsabilité, des domaines de la communauté se développent en qualité et sur le plan organisationnel."
+      },
+      {
+        "id": "G14_Q8",
+        "type": "reference",
+        "text": "J'ai vécu que cette personne prend des responsabilités et organise des tâches."
+      },
+      {
+        "id": "G14_Q9",
+        "type": "reference",
+        "text": "Sous la direction de cette personne, les objectifs sont bien atteints."
+      }
+    ]
+  },
+  {
+    "id": "G15",
+    "name": "Miséricorde",
+    "originalWord": "ἔλεος (éleos, Gr.)",
+    "meaning": "Compassion et aide concrète pour ceux qui souffrent",
+    "bibleReferences": [
+      "Rom 12:8",
+      "Matt 5:7",
+      "Gal 6:2"
+    ],
+    "description": "Le don de miséricorde désigne une compassion particulière pour les personnes dans le besoin et la disposition à leur venir concrètement en aide. Le grec « eleos » signifie « pitié » ou « compassion ». Dans la Bible, la miséricorde est décrite comme une expression du caractère de Dieu (Mt 5,7). Les personnes qui ont ce don apportent l'amour de Dieu en particulier à ceux qui souffrent.",
+    "questions": [
+      {
+        "id": "G15_Q1",
+        "type": "experience",
+        "text": "Je me suis déjà occupé(e) intensément de personnes que tous les autres évitaient."
+      },
+      {
+        "id": "G15_Q2",
+        "type": "experience",
+        "text": "Je vais activement vers ceux qui souffrent pour les soutenir."
+      },
+      {
+        "id": "G15_Q3",
+        "type": "experience",
+        "text": "As-tu vécu que tu t'occupes particulièrement des personnes dans le besoin ?"
+      },
+      {
+        "id": "G15_Q4",
+        "type": "nature",
+        "text": "Cela me touche quand des gens souffrent."
+      },
+      {
+        "id": "G15_Q5",
+        "type": "nature",
+        "text": "Je veux montrer l'amour de Jésus en particulier à ceux qui sont en marge de la société."
+      },
+      {
+        "id": "G15_Q6",
+        "type": "feedback",
+        "text": "Des personnes en crise me disent souvent que ma présence leur a redonné courage de vivre."
+      },
+      {
+        "id": "G15_Q7",
+        "type": "feedback",
+        "text": "Par mon service, les gens se sentent acceptés et aimés inconditionnellement dans la communauté."
+      },
+      {
+        "id": "G15_Q8",
+        "type": "reference",
+        "text": "J'ai vécu que cette personne montre de la compassion envers les personnes qui souffrent."
+      },
+      {
+        "id": "G15_Q9",
+        "type": "reference",
+        "text": "Les personnes défavorisées se sentent comprises et soutenues par cette personne."
+      }
+    ]
+  },
+  {
+    "id": "G16",
+    "name": "Apostolat",
+    "originalWord": "ἀπόστολος (apóstolos, Gr.)",
+    "meaning": "Être envoyé avec autorité pour fonder des communautés",
+    "bibleReferences": [
+      "1 Cor 12:28",
+      "Eph 4:11",
+      "Acts 1:21-26",
+      "Acts 14:14"
+    ],
+    "description": "Le don d'apôtre désigne un appel particulier à fonder de nouvelles œuvres ou communautés et à lancer des mouvements spirituels. Le mot « apostolos » signifie « envoyé ». Dans la Bible, nous voyons ce don chez les apôtres, qui ont répandu l'Évangile et fondé des communautés. Ce don allie vision, direction et dynamique missionnaire.",
+    "questions": [
+      {
+        "id": "G16_Q1",
+        "type": "experience",
+        "text": "J'ai l'élan de fonder de nouvelles œuvres ou de nouveaux groupes spirituels."
+      },
+      {
+        "id": "G16_Q2",
+        "type": "experience",
+        "text": "As-tu déjà aidé à mettre en place de nouvelles communautés ou de nouveaux groupes ?"
+      },
+      {
+        "id": "G16_Q3",
+        "type": "experience",
+        "text": "As-tu vécu que tu as lancé de nouvelles initiatives ou de nouveaux services ?"
+      },
+      {
+        "id": "G16_Q4",
+        "type": "nature",
+        "text": "J'ai une vision de commencer de nouvelles choses dans le royaume de Dieu."
+      },
+      {
+        "id": "G16_Q5",
+        "type": "nature",
+        "text": "J'aime réfléchir de façon stratégique à la croissance de la communauté."
+      },
+      {
+        "id": "G16_Q6",
+        "type": "feedback",
+        "text": "De nouveaux services naissent souvent de mon initiative."
+      },
+      {
+        "id": "G16_Q7",
+        "type": "feedback",
+        "text": "Des personnes se joignent aux visions que je lance."
+      },
+      {
+        "id": "G16_Q8",
+        "type": "reference",
+        "text": "J'ai vécu que cette personne lance de nouveaux projets ou de nouvelles initiatives."
+      },
+      {
+        "id": "G16_Q9",
+        "type": "reference",
+        "text": "D'autres se joignent aux idées ou aux initiatives de cette personne."
+      }
+    ]
+  },
+  {
+    "id": "G17",
+    "name": "Évangéliste",
+    "originalWord": "εὐαγγελιστής (euangelistḗs, Gr.)",
+    "meaning": "Annoncer la bonne nouvelle (l'Évangile)",
+    "bibleReferences": [
+      "Eph 4:11",
+      "Acts 21:8",
+      "2 Tim 4:5"
+    ],
+    "description": "Le don d'évangéliste est la capacité particulière de transmettre aux gens la bonne nouvelle de Jésus de façon compréhensible et convaincante. Le mot « euangelistes » signifie « annonciateur de la bonne nouvelle ». Dans la Bible, nous voyons ce don par exemple chez Philippe (Ac 21). Les évangélistes aident les gens à venir à la foi en Christ.",
+    "questions": [
+      {
+        "id": "G17_Q1",
+        "type": "experience",
+        "text": "J'aime parler de Jésus avec les autres."
+      },
+      {
+        "id": "G17_Q2",
+        "type": "experience",
+        "text": "As-tu vécu que des personnes se sont intéressées à Jésus grâce à ton témoignage ?"
+      },
+      {
+        "id": "G17_Q3",
+        "type": "experience",
+        "text": "As-tu vécu que des personnes sont venues à la foi par toi ?"
+      },
+      {
+        "id": "G17_Q4",
+        "type": "nature",
+        "text": "Cela me brûle le cœur que des personnes sans Jésus soient perdues."
+      },
+      {
+        "id": "G17_Q5",
+        "type": "nature",
+        "text": "Je cherche sans cesse de nouvelles méthodes pour communiquer l'Évangile de façon actuelle et compréhensible."
+      },
+      {
+        "id": "G17_Q6",
+        "type": "feedback",
+        "text": "Les gens réagissent avec ouverture quand je parle de ma foi."
+      },
+      {
+        "id": "G17_Q7",
+        "type": "feedback",
+        "text": "J'incite la communauté à tourner de nouveau davantage son attention vers les gens « du dehors »."
+      },
+      {
+        "id": "G17_Q8",
+        "type": "reference",
+        "text": "J'ai vécu que cette personne parle de sa foi avec les autres."
+      },
+      {
+        "id": "G17_Q9",
+        "type": "reference",
+        "text": "Cette personne conduit des gens à Jésus ou les invite à des événements de la communauté."
+      }
+    ]
+  },
+  {
+    "id": "G18",
+    "name": "Pasteur",
+    "originalWord": "ποιμήν (poimḗn, Gr.)",
+    "meaning": "Paître, garder et prendre soin de la communauté comme d'un troupeau",
+    "bibleReferences": [
+      "Eph 4:11",
+      "John 10:1-18",
+      "1 Pet 5:1-4"
+    ],
+    "description": "Le don de pasteur désigne la capacité d'accompagner, de protéger et de faire grandir les gens spirituellement. Le grec « poimen » signifie « berger ». Jésus lui-même est décrit comme le bon berger (Jn 10). Les personnes qui ont ce don se soucient à long terme de la croissance spirituelle et du bien de la communauté.",
+    "questions": [
+      {
+        "id": "G18_Q1",
+        "type": "experience",
+        "text": "J'accompagne des personnes pendant des années dans leur croissance spirituelle et je les aide à traverser les vallées."
+      },
+      {
+        "id": "G18_Q2",
+        "type": "experience",
+        "text": "Je ressens une responsabilité pour le bien spirituel des autres."
+      },
+      {
+        "id": "G18_Q3",
+        "type": "experience",
+        "text": "Je protège activement le groupe dont j'ai la responsabilité contre les influences négatives ou la division."
+      },
+      {
+        "id": "G18_Q4",
+        "type": "nature",
+        "text": "J'ai un profond intérêt pour le développement à long terme et le bien-être de chaque personne."
+      },
+      {
+        "id": "G18_Q5",
+        "type": "nature",
+        "text": "Je veux créer une atmosphère où les gens se sentent spirituellement en sécurité et « chez eux »."
+      },
+      {
+        "id": "G18_Q6",
+        "type": "feedback",
+        "text": "Les gens se sentent accompagnés et soutenus par moi."
+      },
+      {
+        "id": "G18_Q7",
+        "type": "feedback",
+        "text": "Je vois que ma sollicitude fait grandir les gens de façon stable."
+      },
+      {
+        "id": "G18_Q8",
+        "type": "reference",
+        "text": "J'ai vécu que cette personne accompagne des gens sur une longue période."
+      },
+      {
+        "id": "G18_Q9",
+        "type": "reference",
+        "text": "Les gens progressent grâce au soutien de cette personne."
+      }
+    ]
+  }
+]
