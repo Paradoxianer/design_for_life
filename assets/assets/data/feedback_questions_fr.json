@@ -1,0 +1,147 @@
+{
+  "scaleLabels": [
+    "Très bien",
+    "Bien",
+    "Assez bien",
+    "Passable",
+    "Insuffisant",
+    "Très insuffisant"
+  ],
+  "categories": [
+    {
+      "id": "content",
+      "title": "Contenu du séminaire",
+      "questions": [
+        {
+          "id": "contentExpectations",
+          "type": "scale",
+          "label": "Le contenu correspondait à mes attentes"
+        },
+        {
+          "id": "contentPracticalUtility",
+          "type": "scale",
+          "label": "J'ai reçu des idées utiles pour ma pratique quotidienne"
+        },
+        {
+          "id": "contentStructure",
+          "type": "scale",
+          "label": "Structure et clarté de l'ensemble du thème"
+        }
+      ]
+    },
+    {
+      "id": "speaker",
+      "title": "Intervenant et déroulement",
+      "questions": [
+        {
+          "id": "speakerGodWorking",
+          "type": "scale",
+          "label": "J'ai eu l'impression que Dieu pouvait agir"
+        },
+        {
+          "id": "speakerFaithProgress",
+          "type": "scale",
+          "label": "Le séminaire m'a fait avancer dans ma vie de foi"
+        },
+        {
+          "id": "speakerDidactics",
+          "type": "scale",
+          "label": "Compétences pédagogiques"
+        },
+        {
+          "id": "speakerMethods",
+          "type": "scale",
+          "label": "Les méthodes utilisées étaient efficaces"
+        },
+        {
+          "id": "speakerInvolvement",
+          "type": "scale",
+          "label": "L'intervenant a activement impliqué les participants"
+        },
+        {
+          "id": "speakerRespect",
+          "type": "scale",
+          "label": "L'intervenant s'est comporté de façon courtoise et respectueuse"
+        },
+        {
+          "id": "atmosphere",
+          "type": "scale",
+          "label": "Atmosphère générale du cours et climat du groupe"
+        }
+      ]
+    },
+    {
+      "id": "docs",
+      "title": "Documents du séminaire",
+      "questions": [
+        {
+          "id": "docsStructure",
+          "type": "scale",
+          "label": "Structure et lisibilité"
+        },
+        {
+          "id": "docsUnderstandability",
+          "type": "scale",
+          "label": "Compréhensibilité"
+        },
+        {
+          "id": "docsDifficulty",
+          "type": "scale",
+          "label": "Niveau de difficulté"
+        }
+      ]
+    },
+    {
+      "id": "org",
+      "title": "Organisation et infrastructure",
+      "questions": [
+        {
+          "id": "roomsAppropriateness",
+          "type": "scale",
+          "label": "Adéquation des locaux"
+        },
+        {
+          "id": "prepQuality",
+          "type": "scale",
+          "label": "Préparation du séminaire par l'organisateur"
+        },
+        {
+          "id": "duration",
+          "type": "scale",
+          "label": "Durée de l'événement"
+        },
+        {
+          "id": "tempo",
+          "type": "scale",
+          "label": "Rythme de l'événement"
+        },
+        {
+          "id": "catering",
+          "type": "scale",
+          "label": "Restauration"
+        }
+      ]
+    },
+    {
+      "id": "comments",
+      "title": "Commentaires",
+      "questions": [
+        {
+          "id": "commentsMissing",
+          "type": "text",
+          "label": "Qu'est-ce qui a manqué ?"
+        },
+        {
+          "id": "recommendation",
+          "type": "text",
+          "label": "Recommanderiez-vous ce séminaire ?"
+        },
+        {
+          "id": "generalNotes",
+          "type": "text",
+          "label": "Remarques"
+        }
+      ]
+    }
+  ]
+}
