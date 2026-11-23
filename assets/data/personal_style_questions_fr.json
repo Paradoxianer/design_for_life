@@ -1,0 +1,114 @@
+{
+  "questions": [
+    {
+      "id": "org_1",
+      "dimension": "organisation",
+      "leftLabel": "J'aime planifier ma journée à l'avance avec un emploi du temps clair.",
+      "rightLabel": "J'aime laisser ma journée ouverte et décider spontanément."
+    },
+    {
+      "id": "org_2",
+      "dimension": "organisation",
+      "leftLabel": "Je me sens plus à l'aise quand les déroulements sont clairement définis.",
+      "rightLabel": "Je me sens plus à l'aise quand je peux réagir avec souplesse aux situations."
+    },
+    {
+      "id": "org_3",
+      "dimension": "organisation",
+      "leftLabel": "J'aime les règles et les consignes claires.",
+      "rightLabel": "J'aime aborder les choses à ma manière, non conventionnelle."
+    },
+    {
+      "id": "org_4",
+      "dimension": "organisation",
+      "leftLabel": "Je travaille de préférence selon une structure fixe.",
+      "rightLabel": "Je travaille de préférence au gré des circonstances."
+    },
+    {
+      "id": "org_5",
+      "dimension": "organisation",
+      "leftLabel": "Les changements de dernière minute me stressent.",
+      "rightLabel": "Je trouve les changements de dernière minute passionnants."
+    },
+    {
+      "id": "org_6",
+      "dimension": "organisation",
+      "leftLabel": "J'aime traiter les tâches pas à pas à partir d'une liste.",
+      "rightLabel": "J'aime sauter d'une tâche à l'autre, selon ce qui se présente."
+    },
+    {
+      "id": "energy_1",
+      "dimension": "energy",
+      "leftLabel": "Il m'importe de savoir comment vont les gens autour de moi.",
+      "rightLabel": "Il m'importe que la tâche soit accomplie."
+    },
+    {
+      "id": "energy_2",
+      "dimension": "energy",
+      "leftLabel": "Je recharge mon énergie en parlant avec les autres.",
+      "rightLabel": "Je recharge mon énergie quand j'ai atteint un résultat."
+    },
+    {
+      "id": "energy_3",
+      "dimension": "energy",
+      "leftLabel": "Les relations sont plus importantes pour moi que le résultat.",
+      "rightLabel": "Le résultat est plus important pour moi que la relation."
+    },
+    {
+      "id": "energy_4",
+      "dimension": "energy",
+      "leftLabel": "J'aime aider, même si cela bouscule mon emploi du temps.",
+      "rightLabel": "J'aime rester concentré(e) sur ce que je me suis fixé."
+    },
+    {
+      "id": "energy_5",
+      "dimension": "energy",
+      "leftLabel": "J'aime passer du temps avec les gens sans but précis.",
+      "rightLabel": "Je me sens le mieux quand je poursuis des objectifs clairs."
+    },
+    {
+      "id": "energy_6",
+      "dimension": "energy",
+      "leftLabel": "Je remarque vite quand quelqu'un dans le groupe ne va pas bien.",
+      "rightLabel": "Je remarque vite quand une tâche s'enlise."
+    }
+  ],
+  "profiles": {
+    "people_structured": {
+      "title": "Personne / Structuré",
+      "traits": [
+        "Apprécie les relations clairement définies",
+        "Accorde de l'importance à la familiarité et à la stabilité",
+        "Aime les équipes et les environnements rodés",
+        "Crée une atmosphère chaleureuse et fiable"
+      ]
+    },
+    "people_unstructured": {
+      "title": "Personne / Non structuré",
+      "traits": [
+        "Aime les rencontres spontanées",
+        "Est bavard(e) et expressif(ve)",
+        "S'adapte facilement aux nouvelles situations",
+        "Apprécie la flexibilité dans les relations"
+      ]
+    },
+    "task_structured": {
+      "title": "Tâche / Structuré",
+      "traits": [
+        "Concentré(e) sur les résultats",
+        "Apprécie une direction et une planification claires",
+        "Aime travailler vers des objectifs définis",
+        "Préfère des processus de travail organisés"
+      ]
+    },
+    "task_unstructured": {
+      "title": "Tâche / Non structuré",
+      "traits": [
+        "Apprécie la variété et la flexibilité",
+        "Aime aider là où l'on a besoin de lui ou d'elle",
+        "S'adapte vite aux nouveaux défis",
+        "Concentré(e) sur les résultats pratiques plutôt que sur le processus"
+      ]
+    }
+  }
+}

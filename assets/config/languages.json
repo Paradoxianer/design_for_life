@@ -4,6 +4,7 @@
     { "code": "de", "name": "Deutsch", "status": "complete" },
     { "code": "en", "name": "English", "status": "complete" },
     { "code": "pl", "name": "Polski", "status": "draft" },
-    { "code": "lt", "name": "Lietuvių", "status": "draft" }
+    { "code": "lt", "name": "Lietuvių", "status": "draft" },
+    { "code": "fr", "name": "Français", "status": "draft" }
   ]
 }
