@@ -1,0 +1,147 @@
+{
+  "scaleLabels": [
+    "Foarte bine",
+    "Bine",
+    "Satisfăcător",
+    "Suficient",
+    "Slab",
+    "Insuficient"
+  ],
+  "categories": [
+    {
+      "id": "content",
+      "title": "Conținutul seminarului",
+      "questions": [
+        {
+          "id": "contentExpectations",
+          "type": "scale",
+          "label": "Conținutul a corespuns așteptărilor mele"
+        },
+        {
+          "id": "contentPracticalUtility",
+          "type": "scale",
+          "label": "Am primit idei utile pentru practica mea de zi cu zi"
+        },
+        {
+          "id": "contentStructure",
+          "type": "scale",
+          "label": "Structura și claritatea temei în ansamblu"
+        }
+      ]
+    },
+    {
+      "id": "speaker",
+      "title": "Prezentator și desfășurare",
+      "questions": [
+        {
+          "id": "speakerGodWorking",
+          "type": "scale",
+          "label": "Am avut impresia că Dumnezeu a putut lucra"
+        },
+        {
+          "id": "speakerFaithProgress",
+          "type": "scale",
+          "label": "Seminarul m-a ajutat să înaintez în viața mea de credință"
+        },
+        {
+          "id": "speakerDidactics",
+          "type": "scale",
+          "label": "Abilități didactice"
+        },
+        {
+          "id": "speakerMethods",
+          "type": "scale",
+          "label": "Metodele folosite au fost eficiente"
+        },
+        {
+          "id": "speakerInvolvement",
+          "type": "scale",
+          "label": "Prezentatorul i-a implicat activ pe participanți"
+        },
+        {
+          "id": "speakerRespect",
+          "type": "scale",
+          "label": "Prezentatorul s-a comportat politicos și respectuos"
+        },
+        {
+          "id": "atmosphere",
+          "type": "scale",
+          "label": "Atmosfera generală a cursului și climatul grupului"
+        }
+      ]
+    },
+    {
+      "id": "docs",
+      "title": "Materialele seminarului",
+      "questions": [
+        {
+          "id": "docsStructure",
+          "type": "scale",
+          "label": "Structură și claritate"
+        },
+        {
+          "id": "docsUnderstandability",
+          "type": "scale",
+          "label": "Inteligibilitate"
+        },
+        {
+          "id": "docsDifficulty",
+          "type": "scale",
+          "label": "Nivel de dificultate"
+        }
+      ]
+    },
+    {
+      "id": "org",
+      "title": "Organizare și infrastructură",
+      "questions": [
+        {
+          "id": "roomsAppropriateness",
+          "type": "scale",
+          "label": "Adecvarea spațiilor"
+        },
+        {
+          "id": "prepQuality",
+          "type": "scale",
+          "label": "Pregătirea seminarului de către organizator"
+        },
+        {
+          "id": "duration",
+          "type": "scale",
+          "label": "Durata evenimentului"
+        },
+        {
+          "id": "tempo",
+          "type": "scale",
+          "label": "Ritmul evenimentului"
+        },
+        {
+          "id": "catering",
+          "type": "scale",
+          "label": "Masa"
+        }
+      ]
+    },
+    {
+      "id": "comments",
+      "title": "Comentarii",
+      "questions": [
+        {
+          "id": "commentsMissing",
+          "type": "text",
+          "label": "Ce a fost tratat prea puțin?"
+        },
+        {
+          "id": "recommendation",
+          "type": "text",
+          "label": "Ați recomanda acest seminar?"
+        },
+        {
+          "id": "generalNotes",
+          "type": "text",
+          "label": "Observații"
+        }
+      ]
+    }
+  ]
+}

@@ -51,7 +51,7 @@ _flutter.buildConfig = {"engineRevision":"4d35714800b9266b6693a58e1225ecd7e9e45e
 //   Niederländisch, Schwedisch und Russisch ab.
 _flutter.loader.load({
   serviceWorkerSettings: {
-    serviceWorkerVersion: "293769611" /* Flutter's service worker is deprecated and will be removed in a future Flutter release. */,
+    serviceWorkerVersion: "3203800366" /* Flutter's service worker is deprecated and will be removed in a future Flutter release. */,
   },
   config: {
     fontFallbackBaseUrl: "fonts-fallback/",

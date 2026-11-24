@@ -1,0 +1,1316 @@
+{
+  "_note": "Draft machine translation of leader_notes_de.json by Claude, pending review by a native speaker. Bible quotes are renderings of the German text, not taken from a published translation - replace them with the preferred licensed translation before real-world use. Metadata only, ignored by LeaderNotesRepository.",
+  "session_1": {
+    "sessionTitle": "Sesiunea întâi: Salut, bună seara și bine ați venit!",
+    "sections": [
+      {
+        "heading": "Introducere în curs / informații de bază",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "Bine ați venit, ne bucurăm că sunteți aici. În acest weekend vom privi împreună cum s-a desfășurat viața voastră până acum, unde vă aflați astăzi și încotro vrea Dumnezeu să mergeți. Vom studia Biblia și vom afla multe despre cum vrea Dumnezeu să ne folosească pe noi și darurile noastre. Vom învăța și să ascultăm de Dumnezeu și de voia Lui, și ne vom lua timp pentru asta. Toate acestea pot duce la o nouă perspectivă asupra vieții voastre. În orice caz, vă vor ajuta să vă orientați viața mai mult după planul lui Dumnezeu."
+          },
+          {
+            "type": "paragraph",
+            "text": "Acum primiți caietele de participant și pixurile. În caietul de participant puteți face oricând notițe și îl puteți lua acasă. Vă rugăm să scrieți numele pe prima pagină, ca să nu încurcăm caietele. În caiete găsiți programul acestui weekend."
+          },
+          {
+            "type": "paragraph",
+            "text": "Pot exista totuși mici mutări/schimbări, dacă noi, conducătorii, observăm că, de exemplu, aveți nevoie de mai mult timp pentru testul darurilor."
+          }
+        ]
+      },
+      {
+        "heading": "Așteptări",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "Dorim să adunăm așteptările participanților."
+          },
+          {
+            "type": "paragraph",
+            "text": "Fiecare participant numește trei puncte care sunt importante pentru el în acest curs. Noțiunile sunt notate pe flipchart, pentru a le putea privi din nou la sfârșitul cursului."
+          },
+          {
+            "type": "bulletList",
+            "items": [
+              "Este important să aducem aceste așteptări înaintea lui Dumnezeu.",
+              "Apoi urmează un timp comun de laudă și rugăciune, în care putem face acest lucru."
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "Intră în spărtură",
+        "blocks": [
+          {
+            "type": "subheading",
+            "text": "Poți fi chemat(ă) să schimbi viața unui străin"
+          },
+          {
+            "type": "paragraph",
+            "text": "Ne uităm la cariera unuia dintre cei mai mari profeți ai lumii: Ilie era un om aspru, călit de vremuri, din Tisbe. A devenit instrumentul lui Dumnezeu pentru confruntare. Exact omul de care era nevoie când păcatul luase amploare. Când în țară nu exista conducere spirituală, ci o prăpastie mare între Dumnezeu și poporul Său. Când domnea o adâncă întunecime demonică."
+          },
+          {
+            "type": "question",
+            "text": "Poate cineva să citească 1 Regi 16,29-33?"
+          },
+          {
+            "type": "quote",
+            "text": "Ahab, fiul lui Omri, a început să domnească peste Israel în anul al treizeci și optulea al domniei lui Asa, regele lui Iuda. A domnit douăzeci și doi de ani în Samaria peste Israel. Dar Ahab a făcut ce displăcea Domnului, mai mult decât toți cei dinaintea lui. Și, ca și cum n-ar fi fost de ajuns să trăiască precum Ieroboam, fiul lui Nebat, și-a luat de soție pe Izabela, fiica lui Etbaal, regele sidonienilor, și a început să se închine lui Baal. Mai întâi a zidit lui Baal un templu în Samaria și în el un altar. Apoi a pus să se așeze un idol Astarteea. A făcut mai mult ce stârnea mânia Domnului, Dumnezeul lui Israel, decât toți regii lui Israel dinaintea lui.",
+            "reference": "1 Regi 16,29-33"
+          },
+          {
+            "type": "paragraph",
+            "text": "Ai auzit cum s-a frânt inima lui Dumnezeu? Simți durerea Lui adâncă?"
+          },
+          {
+            "type": "paragraph",
+            "text": "Trebuie să înțelegem foarte clar ce a făcut Ahab: s-a căsătorit cu o străină care se închina lui Baal. El însuși a devenit și el închinător la Baal. Și nu numai atât: a mai construit acestui idol și o casă, cu un altar pentru Baal și o statuie a Astarteei."
+          },
+          {
+            "type": "paragraph",
+            "text": "Să ne uităm la 1 Regi 17,1."
+          },
+          {
+            "type": "quote",
+            "text": "Ilie Tișbitul, din Tișbe în Galaad, a zis lui Ahab: „Viu este Domnul, Dumnezeul lui Israel, înaintea căruia stau eu: în anii aceștia nu va fi nici rouă, nici ploaie, decât după cuvântul meu!”",
+            "reference": "1 Regi 17,1"
+          },
+          {
+            "type": "paragraph",
+            "text": "Ilie intră pe scenă. Profetul lui Dumnezeu, trimis din cer."
+          },
+          {
+            "type": "paragraph",
+            "text": "Din acest verset aflăm trei lucruri despre Ilie:"
+          },
+          {
+            "type": "bulletList",
+            "items": [
+              "Numele lui",
+              "Țara lui",
+              "Caracterul și tactica lui"
+            ]
+          },
+          {
+            "type": "subheading",
+            "text": "Numele lui"
+          },
+          {
+            "type": "paragraph",
+            "text": "Cuvântul ebraic pentru Dumnezeu în Vechiul Testament este Elohim – pe scurt El. Iah este forma scurtă a numelui lui Dumnezeu, Iahve. Terminația ebraică indică pronumele personal „meu”. Toate la un loc înseamnă „Dumnezeul meu este Iahve” sau „Domnul este Dumnezeul meu”."
+          },
+          {
+            "type": "paragraph",
+            "text": "Ahab și Izabela dominau întreaga țară. Baal era idolul care era venerat. Și acum vine Ilie, iar numele lui spune deja: „Eu am un Dumnezeu! Numele Lui este Iahve. Numai Lui Îi slujesc.”"
+          },
+          {
+            "type": "subheading",
+            "text": "Țara lui"
+          },
+          {
+            "type": "paragraph",
+            "text": "„Ilie din Tisbe”, „Ilie Tișbitul”."
+          },
+          {
+            "type": "paragraph",
+            "text": "Nu știm prea multe despre Tisbe – nici măcar unde se afla exact. Dar știm: se afla în Galaad, deci la est de Iordan, între râul Iarmuc la nord, la granița cu Damascul, și râul Iaboc la sud, la granița cu Amon. Acolo nu era decât pustietate și o viață grea în natură. Oamenii de acolo erau, foarte probabil, aspri, căliți de vreme și musculoși. Un ținut aspru, nu tocmai locul diplomaților rafinați. Ilie era probabil aspru, călit de vreme și nu foarte diplomat."
+          },
+          {
+            "type": "subheading",
+            "text": "Caracterul lui – tactica lui"
+          },
+          {
+            "type": "paragraph",
+            "text": "Ilie a arătat cu adevărat caracterul unui profet: „Right in your face” – „Ți-o spun în față!” – confruntare. Fără ezitare și fără frică vizibilă. A stat în fața lui Ahab, regele, și a trecut direct la subiect: „Nici o picătură de apă pentru această țară, până nu spun eu!”"
+          },
+          {
+            "type": "paragraph",
+            "text": "Bine, să ne gândim o clipă: regatul Israel era cunoscut pentru faptul că acolo domnea de 60 de ani necredința, se făceau atentate, se practica idolatria, lipsa de Dumnezeu era obicei, iar la conducere erau tâlhari. Iar Ahab și Izabela erau cei mai răi dintre toți."
+          },
+          {
+            "type": "paragraph",
+            "text": "Un profet care apare de nicăieri, nu urmează protocolul curții, nu arată supunere în prezența regelui. Nu are un comportament rafinat, nu este corect politic și nu a învățat eticheta de la curte. Pur și simplu vine și aduce vestea proastă. Ilie este un om cu o misiune, un slujitor al Domnului, Dumnezeul lui Israel. Ca Ethan Hunt în Mission Impossible – nimic nu-l poate opri. Chiar dacă în jurul lui dovezile închinării la Baal sunt pretutindeni."
+          },
+          {
+            "type": "paragraph",
+            "text": "Fără să-și pregătească ascultătorii, Ilie își scutură pumnul chiar în fața diavolului. Face foarte clar: nicio ploaie, apoi nicio rouă, apoi vitele mor și apoi oamenii – și atunci e sfârșitul. Ilie își face treaba. El este solul care trebuie să sară în spărtură. Cu adevărat unic, uns și folosit de Dumnezeu. Călătorește singur, trage semnalul de alarmă și încearcă să trezească o națiune amorțită, chiar ostilă."
+          },
+          {
+            "type": "paragraph",
+            "text": "Încă există astfel de oameni, care intră în spărtură, care se străduiesc să ne trezească."
+          },
+          {
+            "type": "question",
+            "text": "Cunoașteți câteva exemple? Notați cinci până la zece exemple de astfel de Ilie moderni pe care Dumnezeu îi folosește pentru a transmite un mesaj care schimbă vieți. Despre bărbați și femei curajoși care și astăzi sunt gata să se ridice și să transmită mesajul. Adevărați eroi."
+          },
+          {
+            "type": "paragraph",
+            "text": "Un alt profet a scris:"
+          },
+          {
+            "type": "quote",
+            "text": "Am căutat printre ei un om care să zidească zidul și să stea în spărtură înaintea Mea pentru țară, ca s-o nimicesc, dar n-am găsit.",
+            "reference": "Ezechiel 22,30"
+          },
+          {
+            "type": "paragraph",
+            "text": "Creștinii îndrăznesc să nu fie doar mediocri. Au curajul să nu dispară în fundal și să nu se conformeze lumii noastre."
+          },
+          {
+            "type": "paragraph",
+            "text": "La DFL este vorba să ne privim cu adevărat atent și să ne întrebăm: sunt eu un astfel de om? Este vorba să ascultăm cu atenție glasul lui Dumnezeu și să întrebăm: ce vrea El să fac? Sunt gata să urmez, indiferent ce mi-ar cere Dumnezeu? Am curajul să stau singur(ă) pentru Dumnezeu?"
+          },
+          {
+            "type": "paragraph",
+            "text": "Viața lui Ilie ne învață de cine are nevoie Dumnezeu:"
+          },
+          {
+            "type": "paragraph",
+            "text": "De oameni speciali pentru vremuri grele. Dumnezeu avea nevoie de un om cu totul aparte, ca să strălucească drept lumină în întuneric. Nu un om de la palat. Nu un om cu diplomă de la o școală de elită. Ci un om care a sărit în spărtură. Unul care nu era politicos și lustruit, ci cioplit din lemn tare. Unul care avea spinarea să se ridice singur și să spună: „Asta este greșit!” Cineva care putea sta față în față cu un închinător la idoli și putea declara cu voce tare: „Dumnezeu este Dumnezeu!”"
+          },
+          {
+            "type": "paragraph",
+            "text": "În cultura noastră – în această Armată – avem nevoie de bărbați și femei ai lui Dumnezeu, de tineri ai lui Dumnezeu. Avem nevoie de profesioniști, sportivi, gospodine, profesori, personalități publice, oameni obișnuiți, care stau de partea cauzei lui Dumnezeu. Care apără Cuvântul lui Dumnezeu. Care rămân neclintiți chiar și singuri, care stau siguri și puternici."
+          },
+          {
+            "type": "question",
+            "text": "Ce exemplu dai? Cum stai cu integritatea ta? Ți-ai încălcat principiile doar ca să rămâi în afacere? Doar ca să nu fii exclus(ă)? Ca să arăți bine? ... Ai folosit limbaj/cuvinte nepotrivite? Sau ai făcut un compromis moral ca ceilalți să nu te considere pudic(ă)?"
+          },
+          {
+            "type": "subheading",
+            "text": "„Cine se simte bine la curtea lui Ahab nu va ajunge niciodată să sară în spărtură împreună cu Ilie.”"
+          },
+          {
+            "type": "numberedList",
+            "items": [
+              "Metodele lui Dumnezeu sunt adesea surprinzătoare. Dumnezeu n-a ridicat o armată ca să-i nimicească pe Ahab și Izabela. N-a trimis un prinț important ca să discute cazul sau să impresioneze familia regală. Dumnezeu a făcut ce nu ne-am fi închipuit – a ales pe cineva – ei bine, pe cineva ca tine. Crezi că alții sunt mai calificați decât tine? Crezi că alții sunt mai înzestrați decât tine? Atunci poate pierzi o ocazie de a-I sluji lui Dumnezeu, chiar sub nasul tău. Căile lui Dumnezeu sunt adesea surprinzătoare, uneori ni se par chiar total ilogice. Adesea, pentru mintea noastră limitată, nu au deloc sens. Frații lui David au râs când David s-a gândit doar să se măsoare cu uriașul Goliat. Iosua și trâmbițele, un măgar care vorbește, învierea din morți – toate sunt lucruri incredibile, nebunești.",
+              "Stăm înaintea lui Dumnezeu! Nu uita niciodată: când intrăm singuri în spărtură, stăm înaintea lui Dumnezeu. Ne va găsi Dumnezeu gata să luăm atitudine pentru El și să rezistăm, atunci când ne cere asta? Va găsi în noi inimi care Îi aparțin cu adevărat în întregime?"
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "Dacă a fi creștin nu a pus în oasele tale acest fel de oțel, atunci ceva este foarte grav în neregulă – fie cu mesajul/predica pe care o auzi, fie cu inima ta. Dumnezeu caută oameni care nu se topesc în masa generală."
+          },
+          {
+            "type": "paragraph",
+            "text": "Indiferent ce rol ai în viața ta, nu ești deloc nesemnificativ(ă) când este vorba să stai pentru adevăr. Ce loc ți-a dat Dumnezeu? Oricare ar fi, Dumnezeu îți spune: „Stai înaintea Mea și vreau să te folosesc. Vreau să te folosesc aici și acum și în viitor ca martorul Meu unic.” Privește în jur: nevoia este încă incredibil de mare, iar Dumnezeu încă mai caută."
+          },
+          {
+            "type": "video",
+            "label": "Video spiritual (de ex. Transformation, Fireproof sau similar)",
+            "url": null
+          }
+        ]
+      }
+    ]
+  },
+  "session_2": {
+    "sessionTitle": "Sesiunea a doua: Înapoi în viitor",
+    "sections": [
+      {
+        "heading": "Introducere",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "La DFL nu se întâmplă ca în acest weekend să primești un plic cu instrucțiunile lui Dumnezeu pentru viața ta. Vom încerca să recunoaștem chemarea lui Dumnezeu. Este important să fim atenți la chemarea lui Dumnezeu – altfel lucrurile din viața noastră o iau razna, ca la Minioni. Vrem să vedem împreună cum a fost folosit Ioan de către Dumnezeu pentru a confirma chemarea lui Isus."
+          },
+          {
+            "type": "paragraph",
+            "text": "Citim fiecare în sinea lui, în liniște, Matei 3,1-17."
+          },
+          {
+            "type": "subheading",
+            "text": "Indicatoare rutiere"
+          },
+          {
+            "type": "paragraph",
+            "text": "Căutați pe internet câteva exemple de indicatoare rutiere din toată lumea, pe care apoi să le arătați tuturor participanților pe ecran."
+          }
+        ]
+      },
+      {
+        "heading": "Ioan – pregătitorul lui Isus",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "Când vezi semne/imagini, trebuie să le interpretezi – și anume corect. Unele sunt ușor de recunoscut, altele sunt greu. Același lucru este valabil pentru chemarea ta."
+          },
+          {
+            "type": "paragraph",
+            "text": "Ne vom ocupa de tema chemării. Ați auzit deja expresia „a fi chemat” – poate chiar des. Poate vă sperie puțin, pentru că credeți că chemarea este doar un lucru mare, o singură dată. Dar ne vom gândi la următoarele:"
+          },
+          {
+            "type": "paragraph",
+            "text": "Pe ce drum mă cheamă Dumnezeu?\nCe/cum vrea El să fiu?"
+          },
+          {
+            "type": "paragraph",
+            "text": "Un șofer de autobuz și un pastor ajung în același timp la poarta cerului. Petru îl lasă înăuntru pe șoferul de autobuz, iar pe pastor îl lasă afară. Pastorul întreabă: de ce are voie șoferul să intre și eu nu? Petru explică: când predicai tu, oamenii adormeau, dar când șoferul era la volan, oamenii se rugau."
+          },
+          {
+            "type": "paragraph",
+            "text": "Dacă vă conștientizați chemarea, aceasta va avea efecte asupra altor oameni."
+          },
+          {
+            "type": "paragraph",
+            "text": "Acum ne vom uita la câteva principii generale. Există ceva mai profund decât chemarea noastră personală – o chemare fundamentală. Acestea sunt lucruri la care suntem chemați indiferent de rasa noastră, de țara de proveniență și de talentele noastre."
+          },
+          {
+            "type": "paragraph",
+            "text": "Trei lucruri se potriveau lui Isus și se potrivesc și nouă astăzi."
+          },
+          {
+            "type": "quote",
+            "text": "În zilele acelea a venit Ioan Botezătorul și propovăduia în pustia Iudeii: „Pocăiți-vă și întoarceți-vă la Dumnezeu, căci Împărăția cerurilor s-a apropiat.” Despre el vorbise deja proorocul Isaia: „Glasul celui ce strigă în pustie: Pregătiți calea Domnului, neteziți-I cărările!” Ioan purta o haină din păr de cămilă și o curea de piele împrejurul coapselor; hrana lui erau lăcuste și miere sălbatică. Atunci au ieșit la el Ierusalimul, toată Iudeea și toată împrejurimea Iordanului ca să-l asculte predicând. Și, mărturisindu-și păcatele, erau botezați de el în Iordan. Dar când a văzut că mulți dintre farisei și saduchei vin să fie botezați de el, le-a zis: „Pui de năpârci! Cine v-a învățat să fugiți de mânia viitoare? Faceți dar roade vrednice de pocăință. Și să nu vă luați după gândul: «Avem pe Avraam ca tată». Căci vă spun că Dumnezeu poate să ridice din pietrele acestea fii lui Avraam. Securea este pusă la rădăcina copacilor; orice pom care nu face rod bun se taie și se aruncă în foc. Eu vă botez cu apă, spre pocăință, dar Cel ce vine după mine este mai puternic decât mine; eu nu sunt vrednic să-I duc încălțămintea. El vă va boteza cu Duhul Sfânt și cu foc. Acela are lopata în mână, își va curăți aria și Își va strânge grâul în grânar, dar pleava o va arde într-un foc care nu se stinge.”",
+            "reference": "Matei 3,1-12"
+          },
+          {
+            "type": "paragraph",
+            "text": "Isus avea o chemare specială – să trăiască, să moară și să învie. Dar unele legături fundamentale au devenit clare abia mai târziu."
+          },
+          {
+            "type": "paragraph",
+            "text": "Ioan Botezătorul primise de la Dumnezeu o sarcină specială: trebuia să pregătească lumea pentru venirea lui Isus, astfel încât oamenii să fie gata să audă și să înțeleagă ce avea Isus de spus."
+          },
+          {
+            "type": "paragraph",
+            "text": "Ioan era un tip destul de interesant:"
+          },
+          {
+            "type": "bulletList",
+            "items": [
+              "Purta o haină din păr de cămilă,",
+              "se hrănea doar cu miere și lăcuste,",
+              "trăia în pustie, la temperaturi neplăcut de fierbinți,",
+              "iar pentru oamenii care veneau să-l asculte,",
+              "avea vestea neplăcută că sunt păcătoși.",
+              "Nu tocmai un mesaj îmbietor."
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "Cu siguranță nu este genul de om lângă care ai vrea să stai în tramvai!"
+          },
+          {
+            "type": "paragraph",
+            "text": "Incredibil, mii de oameni veneau să-l vadă și îl ascultau. Reacționau la cuvintele lui lăsându-se botezați și mărturisind că sunt păcătoși și că trebuie să-și pună viața în ordine."
+          },
+          {
+            "type": "paragraph",
+            "text": "Ioan boteza. Și Isus, Mielul lui Dumnezeu, Dumnezeu Însuși, a venit și a spus: „Ioane, botează-Mă.” „Pe Tine, de ce? Tu nu ai nevoie să te pocăiești.” El a făcut ce a spus Isus, pentru că Isus a vrut să Se pună pe același plan cu oamenii. A fost pregătirea lui Isus pentru slujba Lui. A vrut să arate: „Sunt de partea voastră.”"
+          },
+          {
+            "type": "quote",
+            "text": "„El, care este Cuvântul, S-a făcut om și a locuit printre noi.”",
+            "reference": "Ioan 1,14a"
+          },
+          {
+            "type": "subheading",
+            "text": "A devenit ca noi ... acest lucru este hotărâtor pentru credința noastră."
+          },
+          {
+            "type": "paragraph",
+            "text": "A devenit un evreu în Palestina din primul secol, a mâncat aceeași mâncare și a trăit sub aceeași ocupație romană ca toți ceilalți. Nu plutea la doi metri deasupra lor. Scriptura spune că era ca unul dintre ei, și când vorbea, oamenii Îl ascultau. Îl priveau ca pe unul de-ai lor când explica cum să te porți cu un soldat roman care îți cere să-i duci bagajul o milă. Toți știau că Isus înțelege cum se simt ei în asta. Vorbea despre situații cotidiene cu care se confrunta fiecare."
+          },
+          {
+            "type": "paragraph",
+            "text": "A fost perfect pregătit pentru oamenii de atunci și de astăzi prin circumstanțele în care a trăit."
+          },
+          {
+            "type": "subheading",
+            "text": "El ne cheamă să ne identificăm cu alții și să-i întâlnim personal."
+          },
+          {
+            "type": "paragraph",
+            "text": "Oricare ar fi misiunea pe care o are Dumnezeu pentru tine, va trebui să te identifici cu un grup de oameni. Chiar dacă în acest moment nu știi în ce parte a lumii te-ar putea duce. Trebuie să te identifici. „Bucurați-vă cu cei ce se bucură și plângeți cu cei ce plâng.”"
+          },
+          {
+            "type": "paragraph",
+            "text": "Ce îți spune Dumnezeu că ar trebui să faci acum?\nAi impresia că ești în stare?"
+          },
+          {
+            "type": "paragraph",
+            "text": "Charles Price era rectorul unei facultăți de teologie. Își făcuse obiceiul să se întâlnească individual cu fiecare student și să-i pună două întrebări înainte ca acesta să părăsească facultatea:"
+          },
+          {
+            "type": "numberedList",
+            "items": [
+              "Ce muncă intenționați să faceți?",
+              "Vă simțiți la înălțimea acestei sarcini?"
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "Răspunsurile erau mereu de două feluri:"
+          },
+          {
+            "type": "numberedList",
+            "items": [
+              "Cei mai mulți studenți spuneau că au un nou loc de muncă asigurat și că, datorită excelentei pregătiri de la această facultate și a tuturor cărților pe care li s-a dat posibilitatea să le citească, sunt bine echipați să facă pasul următor. Domnul Price le ura atunci tot binele pentru viitor.",
+              "Câțiva spuneau că, deși au fost bine pregătiți la această facultate și au citit cele mai bune cărți, totuși nu sunt siguri că au cunoștințele necesare. Charles Price zâmbea atunci și spunea: „Este minunat.” Explica faptul că există o prăpastie între ceea ce ne-a chemat Dumnezeu să facem și ceea ce putem face prin propriile puteri și că această prăpastie poate fi umplută doar de Duhul Sfânt."
+            ]
+          },
+          {
+            "type": "subheading",
+            "text": "Nu putem împlini planurile lui Dumnezeu fără puterea Lui."
+          },
+          {
+            "type": "paragraph",
+            "text": "Experiența și calificarea nu sunt suficiente. Isus le-a spus ucenicilor Săi: „Fără Mine nu puteți face nimic.” Când Isus a fost botezat, din cer s-a auzit o voce: „Acesta este Fiul Meu preaiubit, în care Îmi găsesc plăcerea.” De fapt, Isus nu făcuse prea multe până în acel moment. Știm că a plecat de la părinții Lui când erau la Ierusalim și că a devenit tâmplar. Dar aici Dumnezeu a spus că Își găsește plăcerea în El, chiar dacă poate făcuse până atunci doar câteva mese și scaune, Dumnezeu a spus: „Acesta este Fiul Meu preaiubit, în care Îmi găsesc bucuria și plăcerea.” Dumnezeu este mulțumit de El – nu de ceea ce a făcut. Noi vrem mereu să vedem ceva, ca să fim mulțumiți."
+          },
+          {
+            "type": "paragraph",
+            "text": "Confirmarea lui Dumnezeu duce la acțiune.\nSuntem în stare să facem lucruri pentru că El ne iubește. Nu putem da greș, pentru că El ne-a iubit primul. Aceasta ne poartă și ar trebui să ne încurajeze. Tatăl mă iubește. Acesta a fost rezervorul din care a tras Isus."
+          },
+          {
+            "type": "paragraph",
+            "text": "Pavel – naufragiat, bătut, respins – de ce a mers mai departe? Se temea cumva de Dumnezeul cel drept? Nu, el spune:"
+          },
+          {
+            "type": "quote",
+            "text": "„Orice facem, facem pentru că dragostea lui Hristos ne constrânge.”",
+            "reference": "2 Corinteni 5,14a"
+          },
+          {
+            "type": "paragraph",
+            "text": "Pavel și-a economisit epuizarea și descurajarea.\nTrebuie să învățăm că nu putem merita dragostea lui Dumnezeu. Nici printr-o anumită cantitate de activități. Dragostea Lui nu este proporțională cu cantitatea de realizări pe care le aducem."
+          },
+          {
+            "type": "subheading",
+            "text": "Suntem convinși de dragostea Lui, astfel încât să putem face ceea ce ne cheamă El să facem."
+          },
+          {
+            "type": "paragraph",
+            "text": "Isus a fost chemat să Se identifice cu alții, să primească autoritate prin Duhul Sfânt și să rămână într-o relație intimă cu Tatăl, astfel încât dragostea Tatălui să-L poată purta."
+          },
+          {
+            "type": "paragraph",
+            "text": "Dumnezeu ne-a chemat deja și ne-a pregătit pentru slujba Lui."
+          },
+          {
+            "type": "subheading",
+            "text": "Rugăciune"
+          },
+          {
+            "type": "video",
+            "label": "Clip video – Minionii: bicicleta",
+            "url": null
+          },
+          {
+            "type": "paragraph",
+            "text": "Așa cum Minionii pregătesc bicicleta lui Agnes ca ea să primească înghețata, Dumnezeu te-a pregătit deja pe tine și viața ta pentru scopul tău."
+          },
+          {
+            "type": "paragraph",
+            "text": "Acum vrem să privim înapoi la ceea ce a pregătit Dumnezeu până acum. Vă arăt pe un/pe al meu arbore al vieții cum poate arăta așa ceva (vezi anexa)."
+          },
+          {
+            "type": "subheading",
+            "text": "Arătați un exemplu de arbore al vieții"
+          },
+          {
+            "type": "paragraph",
+            "text": "La arborele vieții este vorba să privești tot ce te-a influențat și te-a format în trecut, încă de la naștere."
+          },
+          {
+            "type": "paragraph",
+            "text": "În exemplu, persoana a fost, de pildă, puternic influențată de mama ei. Prin mama sa, persoana a învățat să prețuiască alți oameni. Dar s-a transmis și nerăbdarea."
+          },
+          {
+            "type": "paragraph",
+            "text": "Sarcina voastră va fi să priviți de la naștere: cine sau ce m-a influențat și cum m-a format aceasta."
+          }
+        ]
+      }
+    ]
+  },
+  "session_3": {
+    "sessionTitle": "Arborele vieții – creează-ți arborele vieții personal",
+    "sections": [
+      {
+        "heading": "Lucru în grup – desenăm arborele vieții",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "Fiecare primește timp ca să-și deseneze arborele vieții. Apoi, în grup, există un timp pentru schimb comun, întrebări și reflecție asupra arborelui vieții."
+          },
+          {
+            "type": "paragraph",
+            "text": "Trebuie avut grijă ca participanții să-și împartă bine timpul."
+          },
+          {
+            "type": "paragraph",
+            "text": "Mergi la fiecare participant și vezi cine este „blocat” sau are un blocaj de gândire.\nSprijină individual sau țintit cu întrebări, de ex.:"
+          },
+          {
+            "type": "bulletList",
+            "items": [
+              "Ce persoană / ce oameni te-au impresionat / te-au influențat cel mai mult?",
+              "Ce ai învățat / ce ai luat cu tine din asta?",
+              "Ce întâmplări din viața ta au avut influență asupra ta?",
+              "Ce ai învățat / ce ai luat cu tine din asta?",
+              "Ce cărți / filme / cântece / reportaje te-au marcat profund?",
+              "Au existat boli sau alte experiențe care te-au influențat?"
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "Discutați în grup ce a observat fiecare; pentru aceasta, fiecare își poate prezenta pe scurt arborele vieții."
+          },
+          {
+            "type": "bulletList",
+            "items": [
+              "Aveți grijă ca toți să poată vedea arborele vieții.",
+              "Scurt rezumat",
+              "Se observă o temă centrală?",
+              "Ce ai învățat?",
+              "Ce a vrut Dumnezeu să-ți arate/să te învețe în trecut?"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "session_4": {
+    "sessionTitle": "Sesiunea a treia: Aici și acum",
+    "sections": [
+      {
+        "heading": "„Eu? În niciun caz!”",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "Dumnezeu vrea să formeze o echipă cu tine, să lucreze în echipă cu tine, ca să poți atinge scopul pe care ți l-a dat."
+          },
+          {
+            "type": "paragraph",
+            "text": "Dumnezeu formează mereu o echipă pentru a prelua o sarcină din însărcinarea Lui. Trei scene din Vechiul Testament oferă un reper despre cum își alege Dumnezeu echipa. În fiecare pasaj ne uităm la situație imediat după ce Dumnezeu a atins pe cineva pe umăr și l-a chemat la o anumită sarcină."
+          },
+          {
+            "type": "quote",
+            "text": "„Cine sunt eu ca să merg la faraon și să scot pe israeliți din Egipt?” a întrebat Moise. El a răspuns: „Eu voi fi cu tine. Și iată semnul că Eu te-am trimis: când vei fi scos pe israeliți din Egipt, veți sluji lui Dumnezeu pe muntele acesta.”",
+            "reference": "Exodul 3,11-12"
+          },
+          {
+            "type": "quote",
+            "text": "„Dar, Doamne,” a răspuns Ghedeon, „cu ce voi izbăvi eu pe Israel? Familia mea este cea mai săracă din Manase și eu sunt cel mai mic în casa tatălui meu!” Domnul i-a zis: „Eu voi fi cu tine. Vei bate pe Madian ca pe un singur om.”",
+            "reference": "Judecători 6,15-16"
+          },
+          {
+            "type": "quote",
+            "text": "„Ah, Doamne Dumnezeule,” am zis eu, „eu nu știu să vorbesc, căci sunt prea tânăr!” „Nu zice: «Sunt prea tânăr»,” mi-a răspuns Domnul. „Căci vei merge la tot ce te voi trimite și vei spune tot ce-ți voi porunci. Nu te teme de ei, căci Eu sunt cu tine ca să te izbăvesc. Aceasta o spune Domnul.”",
+            "reference": "Ieremia 1,6-8"
+          },
+          {
+            "type": "paragraph",
+            "text": "Puteți descoperi un fir roșu în aceste pasaje? Fiecare persoană i-a răspuns involuntar lui Dumnezeu: „Eu? Niciodată! Nu sunt în stare de asta.” Iar reacția lui Dumnezeu față de fiecare a fost: „Firește că tu și, apropo, Eu voi fi cu tine.”"
+          },
+          {
+            "type": "paragraph",
+            "text": "Fiecare dintre acești bărbați era deosebit de înzestrat pentru sarcina respectivă. De aceea Dumnezeu n-a lăsat niciodată insuficiența să valoreze ca scuză. Dumnezeu știa cum erau echipați acești oameni și știa că aveau ce era necesar."
+          },
+          {
+            "type": "paragraph",
+            "text": "Nu putem fi bucuroși că nu noi alegem un plan pentru Dumnezeu, ci Dumnezeu are un plan pentru noi? Faptele bune au fost pregătite dinainte pentru noi."
+          },
+          {
+            "type": "quote",
+            "text": "Căci noi suntem creația lui Dumnezeu. El ne-a creat din nou în Hristos Isus, pentru ca să fim în stare de fapte bune, așa cum le-a prevăzut El dintotdeauna pentru viața noastră.",
+            "reference": "Efeseni 2,10"
+          },
+          {
+            "type": "paragraph",
+            "text": "Cum putem recunoaște aceste „lucrări” pregătite? Folosește orice ocazie de a cerceta Cuvântul lui Dumnezeu. Învață cum poți duce o viață a ascultării sfinte, folosind fiecare ocazie de studiu biblic înviorător și de rugăciune puternică și căutându-ți un mentor personal."
+          },
+          {
+            "type": "paragraph",
+            "text": "Experimentează cu darurile tale. Descoperă-ți darurile asumându-ți sarcini de conducere și slujbe spirituale. Trăiește astfel cum lucrează mâna lui Dumnezeu asupra ta. Pune-te la dispoziție să faci lucrarea lui Dumnezeu în lume. Fii prezent când Evanghelia schimbă vieți și când oamenii ating lucruri care se pot realiza doar cu ajutorul lui Dumnezeu."
+          },
+          {
+            "type": "paragraph",
+            "text": "„Da, tu. Și Eu voi fi cu tine.” A accepta călăuzirea lui Dumnezeu poate fi greu, mai ales dacă în viața ta de până acum nu a fost nevoie să-ți pui credința în practică. Asta e ideea: să-ți descoperi talentele și să le și folosești. Dacă acționezi încrezându-te că Dumnezeu va fi cu tine. Nu e greu, dar te ajută să vezi care domeniu este important pentru tine: domeniul pentru care ești gata să sacrifici timp."
+          }
+        ]
+      },
+      {
+        "heading": "Lucru în grup (încheierea sesiunii a treia)",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "Notați ce am învățat din arborele vieții și din chestionare. Poți nota rezultatele tale de până acum pe pagina 10 din caietul de participant, în tabel.\nÎncurajează participanții să picteze impresiile într-o imagine sau să le prelucreze într-un colaj."
+          },
+          {
+            "type": "paragraph",
+            "text": "Întrebarea este:"
+          },
+          {
+            "type": "bulletList",
+            "items": [
+              "În care activități s-ar întâlni toate lucrurile (istorie, daruri, valori)."
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "Participanții își pot prezenta unii altora imaginile realizate; în acest sens sunt utile următoarele întrebări:"
+          },
+          {
+            "type": "bulletList",
+            "items": [
+              "Ce concluzii poți trage din chestionarele tale și din arborele vieții?",
+              "Ce „imagine de ansamblu” (ce mare plan) poți recunoaște în ele?",
+              "Există ceva care te-a surprins?"
+            ]
+          },
+          {
+            "type": "subheading",
+            "text": "Rugăciune în comun"
+          }
+        ]
+      }
+    ]
+  },
+  "session_5": {
+    "sessionTitle": "Darurile",
+    "sections": [
+      {
+        "heading": "Darurile",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "Dar ai primit și tu câteva daruri de la Duhul Sfânt."
+          },
+          {
+            "type": "paragraph",
+            "text": "Ce știm despre darurile spirituale? 1 Corinteni 12 ne spune multe despre ele."
+          },
+          {
+            "type": "bulletList",
+            "items": [
+              "Ne sunt date de Dumnezeu (versetul 4).",
+              "Sunt puterea Duhului Sfânt (versetul 4).",
+              "Fiecare are cel puțin unul (versetul 7).",
+              "Dumnezeu hotărăște prin harul Său cine primește ce dar (versetul 11).",
+              "Sunt necesare pentru întregul Trup al lui Hristos (versetul 18).",
+              "Niciunul nu este mai important decât altul (versetul 22)."
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "Dacă fiecare din biserică și-ar folosi darurile pe care i le-a dat Dumnezeu și dacă aceste daruri ar fi însuflețite de Duhul lui Dumnezeu, atunci biserica ar funcționa așa cum vrea Dumnezeu. Oamenii ar fi mântuiți și binecuvântați și ar cunoaște creștere."
+          }
+        ]
+      },
+      {
+        "heading": "Lucru în grup – daruri",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "Schimbați păreri în grup:"
+          },
+          {
+            "type": "bulletList",
+            "items": [
+              "care sunt cele trei daruri principale ale tale?",
+              "Au existat lucruri care te-au surprins?",
+              "Le-ai folosit deja?",
+              "Unde ți-ai putea folosi darurile?"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "session_6": {
+    "sessionTitle": "Valorile",
+    "sections": [
+      {
+        "heading": "Valorile",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "(Zece minute pentru a răspunde la întrebările despre valori)"
+          },
+          {
+            "type": "paragraph",
+            "text": "Enumeră cele mai importante opt valori ale tale și dă o explicație personală pentru ele."
+          },
+          {
+            "type": "paragraph",
+            "text": "Valorile tale se pot schimba.\nÎn următoarea mea etapă de viață vor fi importante următoarele valori: opt valori."
+          },
+          {
+            "type": "paragraph",
+            "text": "Exact aici vei contribui tu."
+          },
+          {
+            "type": "video",
+            "label": "Clip video – One Man Band",
+            "url": null
+          },
+          {
+            "type": "paragraph",
+            "text": "Așadar, când toate se întâlnesc ... valorile tale și darurile tale, atunci ești cel mai productiv."
+          }
+        ]
+      }
+    ]
+  },
+  "session_7": {
+    "sessionTitle": "Sesiunea a patra: Roagă-te, visează, ascultă!",
+    "sections": [
+      {
+        "heading": "Pregătire",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "Sala ar trebui să fie bine decorată și pregătită. Ar trebui să fie la îndemână hârtie și pixuri, pentru ca participanții să-și poată nota impresiile. Fiecare participant ar trebui să aibă o Biblie sau să primească una. Cine dorește poate pune la dispoziție și alte cărți spirituale și cărți de cântări. Trebuie creată o atmosferă de siguranță și liniște, în care nimic să nu distragă de la Dumnezeu. Eventual se face o listă cu cine vine și când la rugăciunea personală de ascultare."
+          }
+        ]
+      },
+      {
+        "heading": "Introducere",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "Dumnezeu vrea să vorbească cu tine. Prin tot ce auzi și prin tot ce ai trăit până acum în viață. Dar vrea/poate să vorbească și direct cu tine (Ioan 10,3)."
+          },
+          {
+            "type": "paragraph",
+            "text": "Vrem să încercăm să răspundem la ceea ce am aflat până acum, dar și să ascultăm. Să ascultăm ce vrea El să ne spună."
+          },
+          {
+            "type": "paragraph",
+            "text": "Vrem să facem acest lucru prin următorii pași:"
+          },
+          {
+            "type": "numberedList",
+            "items": [
+              "Să ne mărturisim păcatele, pentru a ajunge la o relație clară, curățată.",
+              "Nu vrem să ne lăsăm influențați de Satan (Matei 16,23).",
+              "Nu vrem să ascultăm de propriile gânduri (1 Petru 4,1-2).",
+              "Lasă-L pe Dumnezeu să vorbească prin versete biblice, imagini, cântece etc., orice îți vine în minte.",
+              "Verifică toate „răspunsurile” cu Biblia."
+            ]
+          },
+          {
+            "type": "subheading",
+            "text": "Câteva exemple de rugăciuni ascultate/de vorbire a lui Dumnezeu în viața ta"
+          },
+          {
+            "type": "paragraph",
+            "text": "Timp de laudă și rugăciune (aprox. 30 min.)"
+          }
+        ]
+      },
+      {
+        "heading": "Rugăciunea de ascultare – desfășurare",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "Rugăciunea de ascultare este o parte importantă a DFL. Aici noi, conducătorii, lăsăm frâiele și îi dăm pe participanți în mod cu totul conștient în mâna lui Dumnezeu."
+          },
+          {
+            "type": "paragraph",
+            "text": "Lasă în fundal muzică creștină liniștită (de preferință instrumentală). Îndeamnă participanții să pună în practică ce au auzit și să aibă grijă de ceilalți care se roagă.\nCând crezi că ai terminat, rămâi în liniște sau dă posibilitatea să pleci în liniște (final deschis).\nParticipanții trebuie să aibă posibilitatea să încerce ei înșiși rugăciunea de ascultare. Se poate oferi însă (în paralel) și o „ascultare” personală din partea grupului de conducători pentru fiecare în parte. Pentru aceasta, cel mai bine este să faci un program pentru participanți, planifică aproximativ 20 de minute pe persoană și 5 minute pentru „schimb”. Pregătește Biblie, pixuri și foi. Este util să scrii pe foaie numele și data."
+          },
+          {
+            "type": "paragraph",
+            "text": "Rugăciunea de ascultare este esențială. Trebuie creată o atmosferă relaxată și fără deranjuri (fără telefoane, fără zgomote deranjante). Participanții sunt îndemnați să nu aducă doar propriile cereri și mulțumiri lui Dumnezeu, ci să-I dea și timp să răspundă și să-și ia timp să asculte."
+          },
+          {
+            "type": "subheading",
+            "text": "Transmiteți impresiile primite!! FĂRĂ INTERPRETARE ȘI FĂRĂ COMENTARII."
+          },
+          {
+            "type": "paragraph",
+            "text": "În cerc: ori ești la dispoziție în grupul mare ca persoană de contact. În acest timp se pot petrece multe, dar nu e obligatoriu. Fii însă pregătit(ă) pentru lucrarea lui Dumnezeu! Fii pregătit(ă) ca lucruri din viață să iasă la suprafață (plânsul este normal și face parte din asta).\nÎncearcă să simți dacă persoana are nevoie acum de timp singură cu Dumnezeu sau de timp de rugăciune / consiliere spirituală."
+          },
+          {
+            "type": "subheading",
+            "text": "În grupul mic (ascultare pentru o persoană)"
+          },
+          {
+            "type": "paragraph",
+            "text": "Doi sau mai mulți colaboratori ascultă împreună pentru o persoană."
+          },
+          {
+            "type": "paragraph",
+            "text": "Explică încă o dată desfășurarea"
+          },
+          {
+            "type": "numberedList",
+            "items": [
+              "Mărturisirea păcatelor,",
+              "Satan nu are putere,",
+              "fără gânduri proprii,",
+              "Ascultare,",
+              "Schimb,",
+              "Verifică toate „răspunsurile” cu Biblia"
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "Explică faptul că se poate întâmpla și ca „nimic” să nu fie auzit."
+          },
+          {
+            "type": "paragraph",
+            "text": "Fiecare ascultător primește o foaie. Și aici este util să scrii pe foaie numele și data.\nConducătorul rostește la început o scurtă rugăciune."
+          }
+        ]
+      },
+      {
+        "heading": "Pasaje biblice importante despre rugăciunea de ascultare",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "O selecție de pasaje biblice, ordonate după felul în care ne poate vorbi Dumnezeu – utilă pentru a le arăta participanților diferite căi de acces la rugăciunea de ascultare."
+          },
+          {
+            "type": "subheading",
+            "text": "A vedea"
+          },
+          {
+            "type": "quote",
+            "text": "Priviți în jur! Peste tot câmpurile se coc și sunt gata de seceriș chiar acum.",
+            "reference": "Ioan 4,35b"
+          },
+          {
+            "type": "subheading",
+            "text": "Mirosuri"
+          },
+          {
+            "type": "quote",
+            "text": "Domnul a mirosit mireasma plăcută și a zis în inima Sa: „Nu voi mai blestema pământul din pricina omului și nu voi mai lovi tot ce are viață, cum am făcut, chiar dacă gândurile inimii omului sunt rele din tinerețea lui.”",
+            "reference": "Geneza 8,21"
+          },
+          {
+            "type": "subheading",
+            "text": "A auzi"
+          },
+          {
+            "type": "quote",
+            "text": "În fiecare dimineață El îmi deșteaptă urechea, ca să ascult cum ascultă ucenicii.",
+            "reference": "Isaia 50,4-5b"
+          },
+          {
+            "type": "subheading",
+            "text": "A gusta"
+          },
+          {
+            "type": "quote",
+            "text": "Gustați și vedeți că bun este Domnul! Fericit este omul care se încrede în El!",
+            "reference": "Psalm 34,9"
+          },
+          {
+            "type": "subheading",
+            "text": "A simți"
+          },
+          {
+            "type": "quote",
+            "text": "După cutremur a venit un foc, dar Domnul nu era în foc. Și după foc s-a auzit un susur blând și subțire.",
+            "reference": "1 Regi 19,12"
+          },
+          {
+            "type": "subheading",
+            "text": "A medita"
+          },
+          {
+            "type": "quote",
+            "text": "Fericit este omul care nu se duce la sfatul celor răi, nu se oprește pe calea păcătoșilor și nu se așază pe scaunul celor batjocoritori, ci își găsește plăcerea în Legea Domnului și zi și noapte cugetă la Legea Lui. El este ca un pom sădit lângă un izvor de apă, care își dă rodul la vremea lui și ale cărui frunze nu se ofilesc; tot ce face îi reușește.",
+            "reference": "Psalm 1,1-3"
+          },
+          {
+            "type": "subheading",
+            "text": "A rosti cu voce tare"
+          },
+          {
+            "type": "quote",
+            "text": "Doamne, Dumnezeul meu, pe veci Îți voi mulțumi!",
+            "reference": "Psalm 30,13b"
+          },
+          {
+            "type": "subheading",
+            "text": "A scrie"
+          },
+          {
+            "type": "quote",
+            "text": "Și Domnul a zis lui Moise: „Scrie lucrul acesta într-o carte, ca să fie un semn de aducere aminte ...”",
+            "reference": "Exodul 17,14a"
+          },
+          {
+            "type": "subheading",
+            "text": "A-și aminti"
+          },
+          {
+            "type": "quote",
+            "text": "Vorbește copiilor lui Israel și spune-le să-și facă ciucuri la marginile hainelor lor, din neam în neam, și să pună pe ciucurele fiecărei margini un fir vânăt. Acești ciucuri să fie pentru voi ca să vă uitați la ei și să vă aduceți aminte de toate poruncile Domnului și să le împliniți și să nu vă luați după gândurile inimii voastre și după ochii voștri, care vă duc la desfrânare.",
+            "reference": "Numeri 15,38-39"
+          },
+          {
+            "type": "subheading",
+            "text": "A făuri"
+          },
+          {
+            "type": "quote",
+            "text": "Să faci și o tăbliță din aur curat și să sapi pe ea, cu meșteșug de săpător de pecete, aceste cuvinte: „Sfințenie Domnului”.",
+            "reference": "Exodul 28,36"
+          },
+          {
+            "type": "subheading",
+            "text": "Dans"
+          },
+          {
+            "type": "quote",
+            "text": "Atunci profeteasa Maria, sora lui Aaron, a luat în mână un timpan și toate femeile au ieșit după ea cu timpane și în jocuri. Iar Maria le răspundea: „Cântați Domnului, căci S-a acoperit de slavă; cal și călăreț a aruncat în mare.”",
+            "reference": "Exodul 15,20-21"
+          },
+          {
+            "type": "subheading",
+            "text": "Cântări"
+          },
+          {
+            "type": "quote",
+            "text": "Mi-a pus în gură o cântare nouă, o laudă pentru Dumnezeul nostru. Mulți vor vedea aceasta și se vor teme și se vor încrede în Domnul.",
+            "reference": "Psalm 40,4"
+          },
+          {
+            "type": "subheading",
+            "text": "Vise, imagini (viziuni)"
+          },
+          {
+            "type": "quote",
+            "text": "Dumnezeu vorbește când într-un fel, când într-altul, dar omul nu ia seama. În vis, într-o vedenie de noapte, când un somn adânc cade peste oameni, când dorm în așternut, atunci le deschide urechea și îi sperie cu avertismentul Său, ca să-l abată pe om de la fapta lui și să-l ferească de mândrie. Vrea să-i scape sufletul de groapă și viața de săgeata morții.",
+            "reference": "Iov 33,14-18"
+          }
+        ]
+      }
+    ]
+  },
+  "session_9": {
+    "sessionTitle": "Sesiunea a cincea: Știi încotro duce drumul?",
+    "sections": [
+      {
+        "heading": "Chemarea ta – reacția ta",
+        "blocks": [
+          {
+            "type": "video",
+            "label": "Clip Minionii – Banana",
+            "url": null
+          },
+          {
+            "type": "paragraph",
+            "text": "Când Dumnezeu ne cheamă, ar trebui să fim ca Minionii. Minionii au un scop.\nDumnezeu ne-a dat fiecăruia dintre noi tot un scop.\nUnul general valabil, pe care îl găsim mereu în Biblie, de ex. Marcu 16,15 și urm.\nDar are și pentru fiecare în parte un scop concret."
+          },
+          {
+            "type": "quote",
+            "text": "Căci știu bine ce planuri am făcut pentru voi, zice DOMNUL. „Planul Meu este să vă dau pace și nu nenorocire. Vă dau un viitor și o nădejde.”",
+            "reference": "Ieremia 29,11"
+          },
+          {
+            "type": "paragraph",
+            "text": "Dumnezeu vrea să-ți dea un astfel de țel\nAzi dimineață vrem să vedem ce ne spune Dumnezeu că avem de făcut mai departe."
+          },
+          {
+            "type": "paragraph",
+            "text": "Ieri ne-am ocupat de fundamentul chemării pe care ne-o dă Dumnezeu. Am recunoscut că relația cu Tatăl și dependența de Duhul Sfânt sunt necesare pentru a primi puterea de care avem nevoie."
+          },
+          {
+            "type": "paragraph",
+            "text": "Pentru fiecare există o chemare, iar fiecare chemare cere un răspuns."
+          },
+          {
+            "type": "paragraph",
+            "text": "Se povestește că într-o comunitate a venit un pastor nou. S-a gândit că va cunoaște cel mai repede comunitatea dacă va vizita fiecare membru de pe lista lui. A ajuns la o casă și a bătut la ușă. În fața casei era parcată o mașină, așa că era sigur că va găsi pe cineva acasă, dar nimeni nu a venit la ușă. În cele din urmă a găsit în buzunar o foaie și a scris pe ea: „Iată, Eu stau la ușă și bat. Dacă aude cineva glasul Meu și deschide ușa, voi intra la el și voi cina cu el, și el cu Mine” (Apocalipsa 3,20). Duminica următoare, când și-a dus colecta în birou, a găsit aceeași foaie. Pe verso, cineva scrisese versetul biblic din Geneza 3,10: „Am auzit glasul Tău în grădină și m-am temut, căci sunt gol, și m-am ascuns”."
+          },
+          {
+            "type": "paragraph",
+            "text": "La fiecare chemare trebuie să urmeze un răspuns. — Ne vom uita acum la trei oameni din Biblie care au fost chemați la o anumită sarcină și au fost ascultători. Toți au auzit chemarea, dar au reacționat diferit."
+          }
+        ]
+      },
+      {
+        "heading": "Maria (Luca 1,26-38)",
+        "blocks": [
+          {
+            "type": "quote",
+            "text": "În luna a șasea a sarcinii Elisabetei, Dumnezeu l-a trimis pe îngerul Gabriel în Nazaret, o cetate din Galileea, la o fecioară. Se numea Maria și era logodită cu un bărbat pe nume Iosif, din neamul lui David. Gabriel a venit la ea și i-a zis: „Bucură-te, cea plină de har! Domnul este cu tine!”",
+            "reference": "Luca 1,26-28"
+          },
+          {
+            "type": "paragraph",
+            "text": "Maria a aflat că a fost aleasă să nască un Copil, pe Mesia, pe care Israel îl aștepta de ani de zile. Iar când i s-a spus, a reacționat cu ascultare: „Sunt gata să împlinesc voia lui Dumnezeu, să fiu slujitoarea Lui.” Ce ar fi trebuit să facă mai departe? Nimic. Tot ce ar fi putut face din proprie inițiativă ar fi distrus-o reputația."
+          },
+          {
+            "type": "paragraph",
+            "text": "Citim în Biblie o poveste asemănătoare despre Avraam și Sara. Și lor li s-a spus că vor avea un copil. Și, fără a fi lipsit de pudoare … știm cu toții că ei au trebuit să facă ceva pentru ca promisiunea să se împlinească."
+          },
+          {
+            "type": "paragraph",
+            "text": "Maria a trebuit doar să aștepte și, de fapt, să nu facă nimic pentru asta."
+          },
+          {
+            "type": "paragraph",
+            "text": "Este puțin probabil ca vreunul dintre noi să primească o chemare atât de specială ca Maria. (Isus va reveni, dar putem fi siguri că nu va fi la fel ca prima Lui venire!)"
+          },
+          {
+            "type": "paragraph",
+            "text": "Dar uneori Dumnezeu nu descoperă totul atât de repede. Și atunci trebuie să așteptăm."
+          }
+        ]
+      },
+      {
+        "heading": "Samuel (1 Samuel 16)",
+        "blocks": [
+          {
+            "type": "quote",
+            "text": "Așa i-a prezentat Isai lui Samuel pe cei șapte fii ai săi. Dar Samuel i-a zis lui Isai: „Domnul nu l-a ales pe niciunul dintre aceștia.” Apoi a întrebat: „Aceștia sunt toți fiii tăi?” „Mai este cel mai mic”, a răspuns Isai, „dar el paște oile.” „Trimite să-l aducă”, a zis Samuel, „căci nu ne vom așeza la masă până nu vine.” Isai a trimis să-l aducă. Era roșcat, cu ochi frumoși și chip plăcut. Și Domnul a zis: „Ridică-te și unge-l, căci el este!”",
+            "reference": "1 Samuel 16,10-12"
+          },
+          {
+            "type": "paragraph",
+            "text": "Israelul este condus de primul său rege. Saul fusese ales de Dumnezeu, dar după un timp a încetat să mai asculte de Dumnezeu. Și acum Dumnezeu îi spune lui Samuel că l-a respins pe Saul și că trebuie uns rege un alt om. Îi explică exact unde să-l găsească: în familia lui Isai. Samuel merge la fiul cel mai impunător și mai mare, crezând că el este cel ales. Nu. La al doilea. Nu. La al treilea. Nu. La al patrulea. Nu. La al cincilea. Nu. La al șaselea. Nu. Și la al șaptelea. Nu. Niciunul dintre fii nu este potrivit. Ce ai fi făcut tu? Cum ai fi încercat să ieși cât mai repede din situația asta?"
+          },
+          {
+            "type": "paragraph",
+            "text": "Dar Samuel era obișnuit să asculte de Dumnezeu. Țineți minte, când era tânăr și locuia împreună cu Eli în templu, Dumnezeu i-a vorbit lui Samuel, iar Eli l-a ajutat să înțeleagă ce înseamnă asta. Așa că, văzându-i pe toți cei șapte fii și părând că Isai i-a arătat toți fiii, a pus o întrebare aparent absurdă: nu mai există și alți fii?"
+          },
+          {
+            "type": "paragraph",
+            "text": "Și ei au spus că mai este unul, cel mai mic, care păștea oile pe câmp. Tânărul David a fost adus la Samuel, iar acesta l-a uns. Dar deși asta s-a întâmplat în 1 Samuel 16, a mai trecut mult timp până să devină rege — în 2 Samuel 5."
+          },
+          {
+            "type": "paragraph",
+            "text": "Unii dintre voi știți ce veți face mai târziu, dar Dumnezeu spune: „Încă nu. Citiți și priviți oamenii care trăiesc o viață plăcută Mie. Pregătiți-vă, chiar dacă timpul vostru nu a venit încă, pentru ca atunci să fiți gata.”"
+          }
+        ]
+      },
+      {
+        "heading": "Pavel (Faptele Apostolilor 9)",
+        "blocks": [
+          {
+            "type": "quote",
+            "text": "În timp ce era pe drum spre Damasc, deodată o lumină strălucitoare din cer l-a învăluit! A căzut la pământ și a auzit un glas care i-a spus: „Saul, Saul, de ce Mă prigonești?” „Cine ești Tu, Doamne?”, a întrebat el. Glasul a răspuns: „Eu sunt Isus, pe care tu Îl prigonești!”",
+            "reference": "Faptele Apostolilor 9,3-5"
+          },
+          {
+            "type": "paragraph",
+            "text": "Pavel, un învățat iudeu respectat, care se împotrivea înverșunat învățăturii creștine și îi lupta chiar pe creștini, a fost învăluit pe drumul spre Damasc de o lumină care l-a orbit. Un glas îl cheamă să-și schimbe radical viața. Trebuie să-și pună alte priorități, să găsească alte perspective, să dezvolte un alt comportament. Trebuie să se desprindă de tot trecutul său. Trebuie să îmbrățișeze și să primească în inima lui pe cei pe care i-a urât."
+          },
+          {
+            "type": "paragraph",
+            "text": "E ca și cum Osama bin Laden ar deveni pastorul unei comunități din America. Pavel, un terorist religios care îi persecuta pe creștini, devine un om al lui Dumnezeu, și totul se schimbă."
+          },
+          {
+            "type": "paragraph",
+            "text": "Și poate unii dintre voi știți că, după acest sfârșit de săptămână, nimic nu va mai fi la fel pentru ei. Schimbarea din viața voastră va fi uriașă. Când vă întoarceți acasă, va trebui să le povestiți celorlalți ce ați trăit, iar unii dintre voi își vor lăsa slujba, casa sau comunitatea."
+          },
+          {
+            "type": "paragraph",
+            "text": "Dumnezeu așteaptă un răspuns la chemarea Sa, iar voi trebuie să aflați de la El care este voia Lui."
+          }
+        ]
+      },
+      {
+        "heading": "Lucru în grup",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "Imaginile/textele primite aseară în rugăciune sunt explicate și discutate. Este de ajutor să se întrebe și să se evidențieze în special legăturile cu Biblia, cu darurile, valorile și pasiunile."
+          }
+        ]
+      }
+    ]
+  },
+  "session_10": {
+    "sessionTitle": "Sesiunea a șasea: Poimâine",
+    "sections": [
+      {
+        "heading": "Pregătire",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "După-amiază aveți timp să vă gândiți în liniște la toate. Veți avea posibilitatea să vorbiți între patru ochi cu liderul grupei, să planificați pași concreți și, poate, să vorbiți și să vă rugați împreună cu altcineva. Mai târziu ne adunăm pentru încheierea comună."
+          },
+          {
+            "type": "paragraph",
+            "text": "Ar trebui făcută o listă în care orele discuțiilor sunt clar indicate, astfel încât fiecare să știe când îi vine rândul. 15 minute este minimul. Dacă în grupa ta sunt mai puține persoane, planifică mai mult timp. Ține cont că schimbarea partenerilor durează puțin — prevede pentru asta cinci minute. Dacă se poate, cel mai bine este o plimbare într-un loc liniștit din apropiere. Nu degeaba Isus a purtat adesea discuții importante pe drum."
+          },
+          {
+            "type": "paragraph",
+            "text": "Dar ai grijă ca locurile să fie suficient de „publice”, astfel încât să nu rămâi niciodată singur(ă) cu un participant fără „supraveghere”."
+          }
+        ]
+      },
+      {
+        "heading": "Discuții individuale",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "Durată: 15 minute + 5 minute pentru schimbarea partenerilor"
+          },
+          {
+            "type": "paragraph",
+            "text": "Întrebări pentru discuțiile individuale:"
+          },
+          {
+            "type": "bulletList",
+            "items": [
+              "Ce obiective vrei să-ți propui?",
+              "Ce planuri ai?",
+              "Ce ar trebui să se schimbe în următoarele săptămâni?",
+              "Îmi dai datele tale de contact?",
+              "Pot să te întreb peste o săptămână despre obiective?",
+              "Pot să te întreb peste o lună despre punerea în practică?"
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "Rugăciune și laudă în comun",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "Încheierea comună a sfârșitului de săptămână în rugăciune și laudă."
+          }
+        ]
+      }
+    ]
+  },
+  "session_checklist": {
+    "sessionTitle": "Listă de verificare și instruirea colaboratorilor",
+    "collapsible": true,
+    "sections": [
+      {
+        "heading": "Echipe",
+        "blocks": [
+          {
+            "type": "subheading",
+            "text": "Echipa de pregătire"
+          },
+          {
+            "type": "paragraph",
+            "text": "Clarificați întrebările organizatorice de bază: unde și când are loc cursul, unde și cum se face publicitate, pe cine abordăm pentru fiecare echipă. Echipa ar trebui să fie mică; la DFL-uri mici, pregătirea o poate prelua o singură persoană."
+          },
+          {
+            "type": "subheading",
+            "text": "Echipa de masă"
+          },
+          {
+            "type": "paragraph",
+            "text": "Răspunde de cina de vineri, de micul dejun, prânzul și cina de sâmbătă, precum și de micul dejun și, eventual, prânzul de duminică. Mâncarea bună este importantă, deoarece unește trupul, sufletul și duhul. Dacă participanții nu înnoptează la fața locului, sunt necesare doar două cine și două prânzuri."
+          },
+          {
+            "type": "subheading",
+            "text": "Liderii grupelor mici"
+          },
+          {
+            "type": "paragraph",
+            "text": "Doar creștini maturi și cu experiență. Sarcini: lucrul în grup și însoțirea personală a participanților, însoțirea în rugăciune a DFL-ului și a participanților, adunarea în rugăciune de ascultare a impresiilor de la Dumnezeu pentru participanți și însoțirea participanților o vreme și după weekend."
+          },
+          {
+            "type": "subheading",
+            "text": "Echipa de rugăciune"
+          },
+          {
+            "type": "paragraph",
+            "text": "Pregătește DFL-ul în rugăciune și însoțește participanții și liderii în rugăciune. Sunt utile întâlniri de rugăciune în prealabil, în care evenimentul, responsabilii și participanții sunt aduși înaintea lui Dumnezeu."
+          }
+        ]
+      },
+      {
+        "heading": "Calendar de pregătire",
+        "blocks": [
+          {
+            "type": "checkList",
+            "items": [
+              "Stabilirea datei",
+              "Solicitarea spațiilor",
+              "Publicitate — cu 6 săptămâni înainte",
+              "Invitarea colaboratorilor (echipa de masă, decor, grupe mici, laudă …) — cu 8 săptămâni înainte",
+              "Trimiterea caietului liderului către toți liderii — cu 7 săptămâni înainte",
+              "Instruirea colaboratorilor — cu 6 săptămâni înainte",
+              "Organizarea mesei — cu 4 săptămâni înainte",
+              "Termenul limită de înscriere — cu 2 săptămâni înainte",
+              "Trimiterea scrisorii către participanți (+ program) — cu 2 săptămâni înainte",
+              "Procurarea materialelor — cu 2 săptămâni înainte",
+              "Luarea legăturii cu participanții — la 2 săptămâni după curs"
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "Materiale necesare",
+        "blocks": [
+          {
+            "type": "checkList",
+            "items": [
+              "1 foaie de flipchart pentru fiecare participant + 2 pentru sesiuni individuale",
+              "1 set de materiale pentru participant, pentru fiecare participant",
+              "Pixuri",
+              "Decor + lumânări pentru rugăciunea de ascultare",
+              "La nevoie, Biblii pentru participanții care nu au (cel mai bine traducerea „Viața Nouă”)",
+              "Muzică spirituală instrumentală și posibilitatea de a o reda",
+              "Televizor sau proiector",
+              "Aparat foto pentru fotografia de grup",
+              "Bandă adezivă de hârtie (pentru nume etc.)",
+              "Texte pentru cântările de laudă și instrumente",
+              "Carte despre darurile Duhului",
+              "Programele weekendului, pentru afișat",
+              "Plan pentru rugăciunea de ascultare și pentru discuțiile personale",
+              "Chestionare pentru participanți",
+              "Acord pentru fotografii / protecția datelor pentru participanți",
+              "Batiste (rugăciune de ascultare, consiliere pastorală)"
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "Instruirea colaboratorilor: desfășurare",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "Voi, ca și colaboratori, sunteți tovarăși de drum: cei care pun întrebări și se roagă. Avem doar două zile și putem crea doar un cadru bun în care Dumnezeu poate lucra."
+          },
+          {
+            "type": "subheading",
+            "text": "Desfășurare exemplificativă (aprox. 14:00–19:00)"
+          },
+          {
+            "type": "bulletList",
+            "items": [
+              "14:00 Sosire + cafea",
+              "14:30 Parcurgerea caietului liderului: prezentarea desfășurării, a învățăturilor și a lucrărilor în grup",
+              "15:30 Exersarea unei lucrări în grup ca exemplu",
+              "16:15 Pauză",
+              "16:30 Laudă + rugăciune de ascultare",
+              "17:30 Schimb de impresii + repartizarea sarcinilor",
+              "18:30 Încheiere, eventual cină în comun"
+            ]
+          },
+          {
+            "type": "subheading",
+            "text": "Repartizarea sarcinilor"
+          },
+          {
+            "type": "checkList",
+            "items": [
+              "Laudă",
+              "Decor",
+              "Tehnică",
+              "Aranjarea mobilierului",
+              "Cuvinte de deschidere",
+              "Curățenie"
+            ]
+          },
+          {
+            "type": "subheading",
+            "text": "De clarificat dinainte"
+          },
+          {
+            "type": "checkList",
+            "items": [
+              "Întocmirea listei liderilor",
+              "Stabilirea acordului cu THQ",
+              "Invitarea personală a colaboratorilor",
+              "Trimiterea caietului liderului către toți liderii și invitarea lor",
+              "Luarea materialelor (caietele liderului, muzică, flipchart …)"
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "Instruirea colaboratorilor: atitudine",
+        "blocks": [
+          {
+            "type": "bulletList",
+            "items": [
+              "Fii tu însuți (însăți)",
+              "Nu încerca să „conduci” ceva",
+              "Pune întrebări",
+              "Ascultă",
+              "Nu lăsa caietele liderului la întâmplare",
+              "Fiecare lider primește caietul participantului, pentru a înțelege la ce lucrează participantul său"
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "Instruirea colaboratorilor: conducerea grupelor mici",
+        "blocks": [
+          {
+            "type": "bulletList",
+            "items": [
+              "De la 5 până la cel mult 9 persoane într-o grupă mică",
+              "Ai grijă ca fiecare care dorește să poată vorbi",
+              "Explică chiar de la început că vei întrerupe, pentru ca toți să poată participa",
+              "Încurajează participanții să lucreze activ; și ceilalți pot pune contraîntrebări",
+              "Fii atent(ă) dacă participanții nu vor să intre prea adânc în personal",
+              "Pune întrebări nu pentru răspunsuri, ci pentru a-i conduce pe participanți la o autoreflecție mai profundă"
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "Instruirea colaboratorilor: rugăciunea de ascultare",
+        "blocks": [
+          {
+            "type": "quote",
+            "text": "Opriți-vă și cunoașteți că Eu sunt Dumnezeu!",
+            "reference": "Psalmul 46,11"
+          },
+          {
+            "type": "quote",
+            "text": "Numai în Dumnezeu își află odihna sufletul meu: de la El îmi vine ajutorul.",
+            "reference": "Psalmul 62,2"
+          },
+          {
+            "type": "quote",
+            "text": "În zilele din urmă, zice Dumnezeu, voi turna din Duhul Meu peste orice făptură, și fiii voștri și fiicele voastre vor proroci; tinerii voștri vor avea vedenii, și bătrânii voștri vor visa vise.",
+            "reference": "Faptele Apostolilor 2,17"
+          },
+          {
+            "type": "subheading",
+            "text": "Desfășurare"
+          },
+          {
+            "type": "numberedList",
+            "items": [
+              "Separarea de Dumnezeu: mărturisirea păcatului și rugăciunea pentru iertare",
+              "Să nu-i dăm diavolului, ca șoptitor, nicio șansă — am învins",
+              "Punerea deoparte și chestionarea gândurilor și dorințelor personale",
+              "Aducerea nevoilor înaintea lui Dumnezeu",
+              "A fi în liniște și a-L lăsa pe Dumnezeu să lucreze",
+              "Dumnezeu poate vorbi prin imagini, cântări, texte biblice …",
+              "Verificare: după Biblie, prin confirmarea unei a doua persoane (în rugăciune sau în discuție) și după cum este pacea peste impresii"
+            ]
+          },
+          {
+            "type": "subheading",
+            "text": "La ce trebuie să fiți pregătiți"
+          },
+          {
+            "type": "paragraph",
+            "text": "Dumnezeu chiar lucrează — nu fiți nepregătiți. Din viață pot izbucni lucruri (de exemplu lacrimi). Țineți batiste la îndemână."
+          }
+        ]
+      },
+      {
+        "heading": "Instruirea colaboratorilor: privire de ansamblu asupra sesiunilor",
+        "blocks": [
+          {
+            "type": "bulletList",
+            "items": [
+              "Sesiunea întâi — Stai în spărtură: ești important(ă) și Dumnezeu are un plan pentru tine! Un impuls de a-ți chestiona propria atitudine și chemare. Pe lângă aceasta, un film creștin comun, pentru a crea comuniune.",
+              "Sesiunea a doua — Isus, chemarea Lui: cum funcționează chemarea sau pregătirea pentru chemare — și noi am fost pregătiți pentru slujire. Lucru în grup: desenarea arborelui vieții și discutarea lui în grup.",
+              "Sesiunea a treia — Aici și acum: îndrăznește! Unde mă aflu cu darurile și valorile mele, cum le folosesc? Lucru în grup: ce am învățat din arborele vieții, daruri și valori — rezumat împreună.",
+              "Sesiunea a patra — Roagă-te, visează, ascultă: pregătirea participanților pentru ca Dumnezeu să poată lucra (listă de rugăciune, rugăciune în doi). Înainte, o scurtă instruire despre rugăciunea de ascultare (aprox. 10 min.).",
+              "Sesiunea a cincea — Știi drumul spre San José: Dumnezeu așteaptă un răspuns la chemarea Sa. Țelul mare, visele, viziunea și pașii următori.",
+              "Discuții individuale (One to One): fără impuls introductiv, dar cu o introducere în discuții."
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

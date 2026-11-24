@@ -1,0 +1,1077 @@
+[
+  {
+    "id": "G01",
+    "name": "Cuvântul înțelepciunii",
+    "originalWord": "λόγος σοφίας (lógos sophías, Gr.); חָכְמָה (chokhmáh, Hebr.)",
+    "meaning": "Cuvânt supranatural care descoperă planul sau soluția lui Dumnezeu",
+    "bibleReferences": [
+      "1 Cor 12:8",
+      "Jas 1:5",
+      "1 Kgs 3:5-12",
+      "Ex 31:3",
+      "Prov 2:6"
+    ],
+    "description": "Darul cuvântului înțelepciunii descrie un cuvânt sau o intuiție dată de Duhul Sfânt, care descoperă perspectiva, planul sau soluția lui Dumnezeu pentru o situație concretă. Grecescul „logos sophias” nu înseamnă înțelepciune în general, ci o vorbire a lui Dumnezeu specifică, potrivită situației. În Biblie, acest dar se vede, de exemplu, la Solomon (1 Regi 3), la apostoli în decizii dificile (Fapte 6; Fapte 15) sau la Isus însuși, care descoperea înțelepciunea divină în situații de conflict. Acest dar aduce claritate, orientare și strategie divină în situații complexe și slujește la conducerea și zidirea bisericii.",
+    "questions": [
+      {
+        "id": "G01_Q1",
+        "type": "experience",
+        "text": "Am trăit că Dumnezeu îmi arată, în mod surprinzător de clar, soluții."
+      },
+      {
+        "id": "G01_Q2",
+        "type": "experience",
+        "text": "Alții îmi cer adesea sfatul în situații dificile."
+      },
+      {
+        "id": "G01_Q3",
+        "type": "experience",
+        "text": "Simt o claritate interioară în deciziile complexe."
+      },
+      {
+        "id": "G01_Q4",
+        "type": "nature",
+        "text": "Îmi face plăcere să ajut oamenii să ia decizii bune înaintea lui Dumnezeu."
+      },
+      {
+        "id": "G01_Q5",
+        "type": "nature",
+        "text": "Este important pentru mine să găsesc strategii divine, nu compromisuri omenești, pentru problemele blocate."
+      },
+      {
+        "id": "G01_Q6",
+        "type": "feedback",
+        "text": "Alții spun că sfaturile mele i-au ajutat să vadă clar voia lui Dumnezeu în crize."
+      },
+      {
+        "id": "G01_Q7",
+        "type": "feedback",
+        "text": "Văd că sfatul meu i-a ajutat pe oameni pe termen lung."
+      },
+      {
+        "id": "G01_Q8",
+        "type": "reference",
+        "text": "Am observat că această persoană oferă, în situații dificile, soluții utile și bine gândite."
+      },
+      {
+        "id": "G01_Q9",
+        "type": "reference",
+        "text": "Contribuțiile acestei persoane îi ajută adesea pe alții să ia decizii bune."
+      }
+    ]
+  },
+  {
+    "id": "G02",
+    "name": "Cuvântul cunoștinței",
+    "originalWord": "λόγος γνώσεως (lógos gnóseōs, Gr.)",
+    "meaning": "Cunoaștere supranaturală sau privire în tainele lui Dumnezeu",
+    "bibleReferences": [
+      "1 Cor 12:8",
+      "1 Cor 13:2"
+    ],
+    "description": "Cuvântul cunoștinței descrie o intuiție sau o informație dăruită de Duhul Sfânt despre o persoană, o situație sau o realitate spirituală, care nu a fost dobândită prin cunoaștere naturală. Termenul „logos gnoseos” înseamnă o descoperire concretă de cunoștință. În Biblie, acest dar se vede, de exemplu, la Petru, care recunoaște înșelăciunea lui Anania (Fapte 5), sau la Isus, care cunoaște gândurile și situațiile de viață ale oamenilor (Ioan 4). Acest dar servește la scoaterea adevărului la lumină, la ajutorarea oamenilor și la arătarea lucrării lui Dumnezeu.",
+    "questions": [
+      {
+        "id": "G02_Q1",
+        "type": "experience",
+        "text": "În rugăciune, Dumnezeu mi-a dat o imagine sau un cuvânt specific pentru situația altcuiva."
+      },
+      {
+        "id": "G02_Q2",
+        "type": "experience",
+        "text": "Au existat momente în care ai înțeles lucruri despre o situație pe care nu le puteai ști înainte?"
+      },
+      {
+        "id": "G02_Q3",
+        "type": "experience",
+        "text": "Ai trăit că Dumnezeu ți-a dat intuiții deosebite despre oameni sau situații?"
+      },
+      {
+        "id": "G02_Q4",
+        "type": "nature",
+        "text": "Îmi doresc ca Dumnezeu să-mi descopere „taine”, ca să pot sluji oamenii mai țintit."
+      },
+      {
+        "id": "G02_Q5",
+        "type": "nature",
+        "text": "Vreau să înțeleg mai profund gândurile și adevărurile lui Dumnezeu."
+      },
+      {
+        "id": "G02_Q6",
+        "type": "feedback",
+        "text": "Alții trăiesc, prin intuițiile mele, o nouă claritate în teme spirituale."
+      },
+      {
+        "id": "G02_Q7",
+        "type": "feedback",
+        "text": "Mă simt îndemnat(ă) să scot la lumină lucrurile ascunse."
+      },
+      {
+        "id": "G02_Q8",
+        "type": "reference",
+        "text": "Am observat că această persoană vede legături pe care alții nu le remarcă la început."
+      },
+      {
+        "id": "G02_Q9",
+        "type": "reference",
+        "text": "Intuițiile acestei persoane îi ajută pe alții să înțeleagă mai bine situațiile."
+      }
+    ]
+  },
+  {
+    "id": "G03",
+    "name": "Credința",
+    "originalWord": "πίστις (pístis, Gr.)",
+    "meaning": "Credință deosebită, făcătoare de minuni, care mută munții",
+    "bibleReferences": [
+      "1 Cor 12:9",
+      "1 Cor 13:2",
+      "Matt 17:20",
+      "Heb 11"
+    ],
+    "description": "Darul credinței este o încredere deosebită, lucrată de Duhul Sfânt, că Dumnezeu va acționa într-o situație anume. El depășește credința mântuitoare generală și este o încredere supranaturală în puterea și promisiunile lui Dumnezeu. Grecescul „pistis” descrie aici o încredere puternică și fermă în lucrarea lui Dumnezeu. În Biblie, acest dar se vede la persoane precum Avraam (Romani 4) sau la apostoli, care așteptau cu curaj lucrarea lui Dumnezeu. Acest dar îi întărește pe alții în credință și deschide loc intervenției supranaturale a lui Dumnezeu.",
+    "questions": [
+      {
+        "id": "G03_Q1",
+        "type": "experience",
+        "text": "Ai trăit că ai avut o încredere deosebită în Dumnezeu în situații aparent imposibile?"
+      },
+      {
+        "id": "G03_Q2",
+        "type": "experience",
+        "text": "Au existat momente în care încrederea ta în Dumnezeu i-a încurajat pe alții?"
+      },
+      {
+        "id": "G03_Q3",
+        "type": "experience",
+        "text": "S-au schimbat situații în bine datorită credinței tale?"
+      },
+      {
+        "id": "G03_Q4",
+        "type": "nature",
+        "text": "Am încredere că Dumnezeu poate face și lucruri mari și imposibile."
+      },
+      {
+        "id": "G03_Q5",
+        "type": "nature",
+        "text": "Mă simt motivat(ă) să mă încred în Dumnezeu chiar și atunci când alții se îndoiesc."
+      },
+      {
+        "id": "G03_Q6",
+        "type": "feedback",
+        "text": "Încrederea mea în Dumnezeu întărește adesea credința altor oameni."
+      },
+      {
+        "id": "G03_Q7",
+        "type": "feedback",
+        "text": "Prin ținerea mea de promisiunea lui Dumnezeu au fost atinse obiective pe care echipa sau biserica le abandonase de mult."
+      },
+      {
+        "id": "G03_Q8",
+        "type": "reference",
+        "text": "Am văzut că această persoană, chiar și în situații dificile, se încrede ferm că Dumnezeu poate acționa."
+      },
+      {
+        "id": "G03_Q9",
+        "type": "reference",
+        "text": "Încrederea acestei persoane îi încurajează și îi întărește vizibil pe alți oameni."
+      }
+    ]
+  },
+  {
+    "id": "G04",
+    "name": "Darurile vindecărilor",
+    "originalWord": "χαρίσματα ἰαμάτων (charísmata iamatōn, Gr.)",
+    "meaning": "Capacitatea de a vindeca bolnavii prin puterea lui Dumnezeu",
+    "bibleReferences": [
+      "1 Cor 12:9, 28, 30",
+      "Jas 5:14-15",
+      "Matt 10:8",
+      "Acts 3:1-10",
+      "Mark 16:18"
+    ],
+    "description": "„Darurile vindecărilor” descriu diferite efecte ale vindecării divine prin Duhul Sfânt. Grecescul „charismata iamaton” este la plural și arată că Dumnezeu dăruiește feluri diferite de vindecări – trupești, sufletești sau spirituale. În Biblie sunt adesea descrise vindecări prin Isus și apostoli (de ex. Fapte 3; Marcu 16). Acest dar arată compasiunea lui Dumnezeu pentru oamenii care suferă, slujește ca semn al împărăției Sale și încurajează credința.",
+    "questions": [
+      {
+        "id": "G04_Q1",
+        "type": "experience",
+        "text": "Ai trăit deja că cineva a primit vindecare trupească sau sufletească după rugăciunea ta?"
+      },
+      {
+        "id": "G04_Q2",
+        "type": "experience",
+        "text": "Ai adesea imboldul de a te ruga pentru oamenii bolnavi?"
+      },
+      {
+        "id": "G04_Q3",
+        "type": "experience",
+        "text": "Ai trăit că Dumnezeu dăruiește vindecare prin rugăciune?"
+      },
+      {
+        "id": "G04_Q4",
+        "type": "nature",
+        "text": "Ai tendința de a te ruga pentru bolnavi și de a aștepta vindecarea?"
+      },
+      {
+        "id": "G04_Q5",
+        "type": "nature",
+        "text": "Cred cu tărie că Isus vindecă și astăzi la fel ca pe vremea apostolilor."
+      },
+      {
+        "id": "G04_Q6",
+        "type": "feedback",
+        "text": "Oamenii povestesc că au primit mângâiere sau vindecare prin rugăciunea mea."
+      },
+      {
+        "id": "G04_Q7",
+        "type": "feedback",
+        "text": "Alții mă roagă în mod special să mă rog pentru sănătatea lor."
+      },
+      {
+        "id": "G04_Q8",
+        "type": "reference",
+        "text": "Am văzut că această persoană se roagă pentru oameni bolnavi sau împovărați."
+      },
+      {
+        "id": "G04_Q9",
+        "type": "reference",
+        "text": "Oamenii povestesc că au primit ajutor sau mângâiere prin rugăciunea acestei persoane."
+      }
+    ]
+  },
+  {
+    "id": "G05",
+    "name": "Facerea de minuni",
+    "originalWord": "ἐνεργήματα δυνάμεων (energémata dynámeōn, Gr.)",
+    "meaning": "Săvârșirea de fapte supranaturale de putere prin tăria lui Dumnezeu",
+    "bibleReferences": [
+      "1 Cor 12:10, 28, 29",
+      "Acts 5:12",
+      "2 Cor 12:12",
+      "Mark 16:17-18"
+    ],
+    "description": "„Facerea de minuni” descrie fapte supranaturale de putere ale lui Dumnezeu, care depășesc posibilitățile naturale. Expresia „energemata dynameon” înseamnă literal „fapte lucrătoare de putere”. În Biblie, acest dar se vede, de exemplu, la Moise, Ilie, Isus și apostoli. Minunile pot fi eliberare, purtare de grijă, minuni ale naturii sau alte intervenții extraordinare ale lui Dumnezeu și confirmă puterea lui Dumnezeu și Evanghelia.",
+    "questions": [
+      {
+        "id": "G05_Q1",
+        "type": "experience",
+        "text": "Ai trăit situații în care Dumnezeu a intervenit în mod supranatural?"
+      },
+      {
+        "id": "G05_Q2",
+        "type": "experience",
+        "text": "Ai trăit că Dumnezeu a făcut lucruri extraordinare prin rugăciunea ta?"
+      },
+      {
+        "id": "G05_Q3",
+        "type": "experience",
+        "text": "Aștept acțiuni supranaturale ale lui Dumnezeu în jurul meu."
+      },
+      {
+        "id": "G05_Q4",
+        "type": "nature",
+        "text": "Am încrederea profundă că Dumnezeu face și astăzi semne vizibile ale puterii Sale, pentru a-Și confirma Cuvântul."
+      },
+      {
+        "id": "G05_Q5",
+        "type": "nature",
+        "text": "Cred că Dumnezeu poate face și astăzi minuni."
+      },
+      {
+        "id": "G05_Q6",
+        "type": "feedback",
+        "text": "Oameni din jurul meu au ajuns la credință prin fapte vizibile de putere ale lui Dumnezeu."
+      },
+      {
+        "id": "G05_Q7",
+        "type": "feedback",
+        "text": "Slujba mea este adesea însoțită de întâmplări extraordinare, inexplicabile omenește."
+      },
+      {
+        "id": "G05_Q8",
+        "type": "reference",
+        "text": "Am văzut că această persoană se roagă pentru situații greu de rezolvat omenește."
+      },
+      {
+        "id": "G05_Q9",
+        "type": "reference",
+        "text": "Credința acestei persoane îi încurajează pe alții să se aștepte la o intervenție extraordinară a lui Dumnezeu."
+      }
+    ]
+  },
+  {
+    "id": "G06",
+    "name": "Profeția",
+    "originalWord": "προφητεία (propheteía, Gr.); נְבוּאָה (nevūʾáh, Hebr.)",
+    "meaning": "A vorbi din partea lui Dumnezeu pentru zidire, îndemn și mângâiere",
+    "bibleReferences": [
+      "Rom 12:6",
+      "1 Cor 12:10",
+      "1 Cor 14:1-5",
+      "1 Thess 5:20",
+      "Acts 11:27-28"
+    ],
+    "description": "Profeția este vorbirea inspirată de Duhul Sfânt, rostită din partea lui Dumnezeu pentru zidirea, îndemnul și încurajarea bisericii (1 Corinteni 14,3). Termenul „propheteia” înseamnă literal „a vorbi pentru cineva”. Profeția poate fi atât descoperire, cât și aplicare a Cuvântului lui Dumnezeu la o situație concretă. În Biblie vedem vorbirea profetică la profeții Vechiului Testament, iar în Noul Testament, de exemplu, la Agab (Fapte 11). Acest dar întărește credința, corectează abaterile și îndreaptă privirea bisericii spre voia lui Dumnezeu.",
+    "questions": [
+      {
+        "id": "G06_Q1",
+        "type": "experience",
+        "text": "Am trăit că impresia mea despre o situație s-a dovedit ulterior corectă."
+      },
+      {
+        "id": "G06_Q2",
+        "type": "experience",
+        "text": "Ai trăit că cineva a recunoscut prin cuvintele tale vorbirea lui Dumnezeu?"
+      },
+      {
+        "id": "G06_Q3",
+        "type": "experience",
+        "text": "Am avut impresii sau cuvinte care s-au confirmat mai târziu."
+      },
+      {
+        "id": "G06_Q4",
+        "type": "nature",
+        "text": "Sunt atent(ă) la ce vrea Dumnezeu să spună într-o situație."
+      },
+      {
+        "id": "G06_Q5",
+        "type": "nature",
+        "text": "Îmi doresc ca Dumnezeu să poată vorbi prin mine altor oameni."
+      },
+      {
+        "id": "G06_Q6",
+        "type": "feedback",
+        "text": "Uneori oamenii confirmă că Dumnezeu le-a vorbit prin cuvintele mele."
+      },
+      {
+        "id": "G06_Q7",
+        "type": "feedback",
+        "text": "Oameni au fost pregătiți prin spusele mele pentru evenimente viitoare din viața lor."
+      },
+      {
+        "id": "G06_Q8",
+        "type": "reference",
+        "text": "Am trăit că această persoană transmite cuvinte de la Dumnezeu pe care alții le găsesc foarte potrivite sau întăritoare."
+      },
+      {
+        "id": "G06_Q9",
+        "type": "reference",
+        "text": "Se simte că, în anumite situații, Dumnezeu se folosește de această persoană pentru a transmite mesaje."
+      }
+    ]
+  },
+  {
+    "id": "G07",
+    "name": "Deosebirea duhurilor",
+    "originalWord": "διακρίσεις πνευμάτων (diakríseis pneumátōn, Gr.)",
+    "meaning": "A deosebi duhurile divine, demonice și omenești",
+    "bibleReferences": [
+      "1 Cor 12:10",
+      "1 John 4:1",
+      "Acts 5:3",
+      "Acts 16:16-18",
+      "Heb 5:14"
+    ],
+    "description": "Deosebirea duhurilor este capacitatea de a recunoaște influențele spirituale și de a distinge dacă provin de la Dumnezeu, din duhul omului sau din puteri demonice. Termenul „diakrisis pneumaton” înseamnă „deosebirea sau verificarea duhurilor”. În Biblie, acest dar se vede, de exemplu, la Petru (Fapte 5) sau la Pavel (Fapte 16). El protejează biserica de înșelăciune și ajută să recunoaștem clar lucrarea lui Dumnezeu.",
+    "questions": [
+      {
+        "id": "G07_Q1",
+        "type": "experience",
+        "text": "Simt dacă ceva vine de la Dumnezeu, de la oameni sau din alte surse."
+      },
+      {
+        "id": "G07_Q2",
+        "type": "experience",
+        "text": "Ai trăit situații în care ai recunoscut influențe spirituale false?"
+      },
+      {
+        "id": "G07_Q3",
+        "type": "experience",
+        "text": "Recunosc repede influențele spirituale nesănătoase."
+      },
+      {
+        "id": "G07_Q4",
+        "type": "nature",
+        "text": "Vreau să înțeleg ce forțe spirituale lucrează într-o situație."
+      },
+      {
+        "id": "G07_Q5",
+        "type": "nature",
+        "text": "Verific cu atenție impresiile spirituale."
+      },
+      {
+        "id": "G07_Q6",
+        "type": "feedback",
+        "text": "Am trăit cum Dumnezeu mi-a descoperit o înșelăciune."
+      },
+      {
+        "id": "G07_Q7",
+        "type": "feedback",
+        "text": "Evaluarea mea ajută uneori la recunoașterea unor evoluții spirituale greșite."
+      },
+      {
+        "id": "G07_Q8",
+        "type": "reference",
+        "text": "Am observat că această persoană își dă seama când ceva nu este în regulă spiritual."
+      },
+      {
+        "id": "G07_Q9",
+        "type": "reference",
+        "text": "Evaluarea acestei persoane îi ajută pe alții să încadreze mai bine situațiile spirituale."
+      }
+    ]
+  },
+  {
+    "id": "G08",
+    "name": "Vorbirea în limbi",
+    "originalWord": "γένη γλωσσῶν (génē glōssōn, Gr.)",
+    "meaning": "A vorbi în alte limbi sau în limba de rugăciune a Duhului",
+    "bibleReferences": [
+      "1 Cor 12:10, 28, 30",
+      "1 Cor 14",
+      "Acts 2:4-11",
+      "Acts 19:6",
+      "Mark 16:17"
+    ],
+    "description": "Darul vorbirii în limbi descrie vorbirea, inspirată de Duhul Sfânt, într-o limbă pe care vorbitorul nu a învățat-o. Grecescul „gene glosson” înseamnă „feluri de limbi”. În Biblie, acest dar apare pentru prima dată la Rusalii (Fapte 2) și este explicat mai ales în 1 Corinteni 12–14. El poate sluji atât ca limbă personală de rugăciune, cât și ca semn public al lucrării lui Dumnezeu.",
+    "questions": [
+      {
+        "id": "G08_Q1",
+        "type": "experience",
+        "text": "Mă rog regulat într-o limbă pe care nu am învățat-o."
+      },
+      {
+        "id": "G08_Q2",
+        "type": "experience",
+        "text": "Simt puternic prezența lui Dumnezeu în rugăciunea în limbi."
+      },
+      {
+        "id": "G08_Q3",
+        "type": "experience",
+        "text": "Ai experimentat că rugăciunea în limbi te întărește în credință?"
+      },
+      {
+        "id": "G08_Q4",
+        "type": "nature",
+        "text": "Îmi doresc să comunic cu Dumnezeu în rugăciune dincolo de mintea mea."
+      },
+      {
+        "id": "G08_Q5",
+        "type": "nature",
+        "text": "Sunt deschis(ă) față de forme supranaturale de exprimare în rugăciune."
+      },
+      {
+        "id": "G08_Q6",
+        "type": "feedback",
+        "text": "Am trăit că rugăciunea mea se exprimă uneori altfel decât mă așteptam."
+      },
+      {
+        "id": "G08_Q7",
+        "type": "feedback",
+        "text": "Când mă rog în limbi necunoscute mie, alții găsesc acest lucru încurajator din punct de vedere spiritual."
+      },
+      {
+        "id": "G08_Q8",
+        "type": "reference",
+        "text": "Am trăit că această persoană se roagă în limbi necunoscute mie."
+      },
+      {
+        "id": "G08_Q9",
+        "type": "reference",
+        "text": "Nu înțeleg mereu tot ce se roagă această persoană, dar simt prezența lui Dumnezeu când se roagă."
+      }
+    ]
+  },
+  {
+    "id": "G09",
+    "name": "Tălmăcirea limbilor",
+    "originalWord": "ἑρμηνεία γλωσσῶν (hermēneía glōssōn, Gr.)",
+    "meaning": "A tâlcui și a traduce vorbirea în limbi pentru zidirea bisericii",
+    "bibleReferences": [
+      "1 Cor 12:10",
+      "1 Cor 14:13, 27-28"
+    ],
+    "description": "Tălmăcirea limbilor este capacitatea de a înțelege o vorbire în limbi și de a o face înțeleasă pentru alții. Grecescul „hermeneia glosson” înseamnă „traducerea sau tâlcuirea limbilor”. Acest dar face ca vorbirea în limbi să slujească zidirii în biserică, pentru că sensul ei devine înțeles (1 Corinteni 14).",
+    "questions": [
+      {
+        "id": "G09_Q1",
+        "type": "experience",
+        "text": "Când cineva se roagă în limbi, înțeleg adesea sensul, fără să fi învățat limba."
+      },
+      {
+        "id": "G09_Q2",
+        "type": "experience",
+        "text": "Am trăit deja cum tălmăcirea unei rugăciuni într-o limbă străină a fost exact răspunsul la rugăciunea altcuiva."
+      },
+      {
+        "id": "G09_Q3",
+        "type": "experience",
+        "text": "Ai trăit că Dumnezeu te-a ajutat să înțelegi mesaje spirituale pe care alții nu le puteau înțelege?"
+      },
+      {
+        "id": "G09_Q4",
+        "type": "nature",
+        "text": "Simt o responsabilitate de a face rugăciunea în limbi înțeleasă."
+      },
+      {
+        "id": "G09_Q5",
+        "type": "nature",
+        "text": "Te simți atras(ă) să tâlcuiești sau să traduci rugăciuni în altă limbă?"
+      },
+      {
+        "id": "G09_Q6",
+        "type": "feedback",
+        "text": "După tălmăcirea mea a vorbirii în limbi, în grup domnește adesea o unitate profundă sau o atmosferă de închinare."
+      },
+      {
+        "id": "G09_Q7",
+        "type": "feedback",
+        "text": "Tălmăcirea mea a vorbirii în limbi a încurajat, a arătat adevărul lui Dumnezeu și a adus o corectare plină de dragoste."
+      },
+      {
+        "id": "G09_Q8",
+        "type": "reference",
+        "text": "Am trăit că această persoană a putut tălmăci o rugăciune pe care înainte nu o înțelesesem."
+      },
+      {
+        "id": "G09_Q9",
+        "type": "reference",
+        "text": "Această persoană a fost în stare să-mi explice rugăciuni în limbi pe care nu le înțelegeam."
+      }
+    ]
+  },
+  {
+    "id": "G10",
+    "name": "Slujire / diaconie",
+    "originalWord": "διακονία (diakonía, Gr.)",
+    "meaning": "Slujire și ajutor practic în biserică",
+    "bibleReferences": [
+      "Rom 12:7",
+      "1 Cor 12:28",
+      "Acts 6:1-7",
+      "1 Pet 4:10-11"
+    ],
+    "description": "Darul slujirii descrie o capacitate deosebită de a ajuta practic pe alții și de a recunoaște nevoile. Grecescul „diakonia” înseamnă „slujire” sau „ajutor practic”. În Biblie, acest dar se vede mai ales în slujba primilor diaconi (Fapte 6). Oamenii cu acest dar contribuie esențial la buna funcționare practică a bisericii și la ajutorul concret primit de oameni.",
+    "questions": [
+      {
+        "id": "G10_Q1",
+        "type": "experience",
+        "text": "Sprijin cu plăcere în mod practic, fără să trebuiască să fiu în prim-plan."
+      },
+      {
+        "id": "G10_Q2",
+        "type": "experience",
+        "text": "Văd spontan unde este nevoie de ajutor."
+      },
+      {
+        "id": "G10_Q3",
+        "type": "experience",
+        "text": "Mă bucur să-i ușurez practic pe oameni, fără ca numele meu să fie pomenit."
+      },
+      {
+        "id": "G10_Q4",
+        "type": "nature",
+        "text": "Prefer să ajut energic, decât să port discuții teoretice lungi."
+      },
+      {
+        "id": "G10_Q5",
+        "type": "nature",
+        "text": "Vreau ca totul în biserică să meargă fără probleme și pun mâna la treabă oriunde este nevoie."
+      },
+      {
+        "id": "G10_Q6",
+        "type": "feedback",
+        "text": "Conducătorii îmi spun adesea că sunt pentru ei un sprijin de neînlocuit în viața de zi cu zi a bisericii."
+      },
+      {
+        "id": "G10_Q7",
+        "type": "feedback",
+        "text": "Prin implicarea mea, oamenii din biserică se simt apreciați și bineveniți."
+      },
+      {
+        "id": "G10_Q8",
+        "type": "reference",
+        "text": "Am văzut că această persoană ajută practic când este nevoie de sprijin."
+      },
+      {
+        "id": "G10_Q9",
+        "type": "reference",
+        "text": "Implicarea acestei persoane ajută la îndeplinirea bună a sarcinilor."
+      }
+    ]
+  },
+  {
+    "id": "G11",
+    "name": "Învățătura",
+    "originalWord": "διδασκαλία (didaskalía, Gr.)",
+    "meaning": "A instrui în adevărul lui Dumnezeu",
+    "bibleReferences": [
+      "Rom 12:7",
+      "Eph 4:11",
+      "1 Tim 3:2",
+      "2 Tim 2:2"
+    ],
+    "description": "Darul învățăturii este capacitatea de a explica Cuvântul lui Dumnezeu clar, pe înțeles și cu fidelitate. Termenul „didaskalia” desemnează atât conținutul, cât și activitatea de a învăța. În Biblie, acest dar este legat mai ales de sarcini de conducere (Efeseni 4,11). El ajută biserica să înțeleagă adevărul lui Dumnezeu și să crească în credință.",
+    "questions": [
+      {
+        "id": "G11_Q1",
+        "type": "experience",
+        "text": "Când explic Biblia, alții spun că înțeleg brusc teme complexe."
+      },
+      {
+        "id": "G11_Q2",
+        "type": "experience",
+        "text": "Trăiești că învățătura ta aduce înțelegere și creștere spirituală?"
+      },
+      {
+        "id": "G11_Q3",
+        "type": "experience",
+        "text": "Ai trăit că oameni au crescut spiritual prin explicațiile tale?"
+      },
+      {
+        "id": "G11_Q4",
+        "type": "nature",
+        "text": "Am o dorință arzătoare ca creștinii să crească în credință prin cunoștințe solide."
+      },
+      {
+        "id": "G11_Q5",
+        "type": "nature",
+        "text": "Le explic cu plăcere altora ce am învățat."
+      },
+      {
+        "id": "G11_Q6",
+        "type": "feedback",
+        "text": "Oamenii povestesc că, prin predarea mea, au găsit o bază mai stabilă pentru viața lor."
+      },
+      {
+        "id": "G11_Q7",
+        "type": "feedback",
+        "text": "Oamenii cresc în credință prin explicațiile mele."
+      },
+      {
+        "id": "G11_Q8",
+        "type": "reference",
+        "text": "Am trăit că această persoană explică conținuturile astfel încât alții le înțeleg bine."
+      },
+      {
+        "id": "G11_Q9",
+        "type": "reference",
+        "text": "Oamenii învață și se dezvoltă prin explicațiile acestei persoane."
+      }
+    ]
+  },
+  {
+    "id": "G12",
+    "name": "Îndemnul",
+    "originalWord": "παράκλησις (paráklēsis, Gr.)",
+    "meaning": "A încuraja, a mângâia și a îndemna",
+    "bibleReferences": [
+      "Rom 12:8",
+      "1 Cor 14:3"
+    ],
+    "description": "Darul încurajării sau al îndemnului („paraklesis”) descrie capacitatea de a întări, de a mângâia și de a încuraja oamenii la credință prin cuvinte. Cuvântul este legat de termenul „Paraclet”, folosit pentru Duhul Sfânt ca Mângâietor. Acest dar îi ajută pe oameni să depășească vremurile grele și să meargă mai departe în credință.",
+    "questions": [
+      {
+        "id": "G12_Q1",
+        "type": "experience",
+        "text": "I-am ajutat deja pe oameni să iasă din descurajări adânci."
+      },
+      {
+        "id": "G12_Q2",
+        "type": "experience",
+        "text": "Văd de ce are nevoie cineva ca să meargă mai departe."
+      },
+      {
+        "id": "G12_Q3",
+        "type": "experience",
+        "text": "Le-am arătat oamenilor cu dragoste, dar direct, punctele lor oarbe, ceea ce a dus la o schimbare pozitivă."
+      },
+      {
+        "id": "G12_Q4",
+        "type": "nature",
+        "text": "Ai tendința de a le da altora încurajare, mângâiere sau îndemn?"
+      },
+      {
+        "id": "G12_Q5",
+        "type": "nature",
+        "text": "Vreau să-i ajut pe oameni să-și valorifice întregul potențial în Dumnezeu."
+      },
+      {
+        "id": "G12_Q6",
+        "type": "feedback",
+        "text": "După discuțiile cu mine, oamenii se simt împuterniciți să-și abordeze sarcinile cu putere nouă."
+      },
+      {
+        "id": "G12_Q7",
+        "type": "feedback",
+        "text": "Îndemnul tău duce adesea la mângâiere, înnoire și avânt spiritual?"
+      },
+      {
+        "id": "G12_Q8",
+        "type": "reference",
+        "text": "Am trăit că această persoană i-a îndemnat, dar i-a și încurajat pe alții."
+      },
+      {
+        "id": "G12_Q9",
+        "type": "reference",
+        "text": "După discuțiile cu această persoană, oamenii știu ce ar trebui să schimbe în viața lor."
+      }
+    ]
+  },
+  {
+    "id": "G13",
+    "name": "Darul dăruirii",
+    "originalWord": "μεταδιδόναι (metadidónai, Gr.)",
+    "meaning": "Dăruire generoasă și bucuroasă, cu simplitate",
+    "bibleReferences": [
+      "Rom 12:8",
+      "Acts 4:32-37",
+      "2 Cor 8–9"
+    ],
+    "description": "Darul dăruirii descrie o disponibilitate și o bucurie deosebite de a împărți generos resurse materiale sau financiare. Grecescul „metadidonai” înseamnă „a împărți” sau „a da mai departe”. În Biblie vedem exemple în biserica primară (Fapte 4). Acest dar face vizibilă purtarea de grijă a lui Dumnezeu și susține lucrarea împărăției lui Dumnezeu.",
+    "questions": [
+      {
+        "id": "G13_Q1",
+        "type": "experience",
+        "text": "Dau cu plăcere generos, fără să aștept ceva în schimb."
+      },
+      {
+        "id": "G13_Q2",
+        "type": "experience",
+        "text": "Ai trăit situații în care ai renunțat conștient la lucruri ale tale pentru a-i ajuta pe alții?"
+      },
+      {
+        "id": "G13_Q3",
+        "type": "experience",
+        "text": "Simt bucurie când îi pot sprijini financiar pe alții."
+      },
+      {
+        "id": "G13_Q4",
+        "type": "nature",
+        "text": "Îmi văd banii și averea în primul rând ca instrumente pentru împărăția lui Dumnezeu, nu pentru luxul meu."
+      },
+      {
+        "id": "G13_Q5",
+        "type": "nature",
+        "text": "Simt responsabilitatea de a susține financiar lucrarea lui Dumnezeu."
+      },
+      {
+        "id": "G13_Q6",
+        "type": "feedback",
+        "text": "Prin darurile mele s-au rezolvat strâmtorări financiare în biserică, adesea exact la momentul potrivit."
+      },
+      {
+        "id": "G13_Q7",
+        "type": "feedback",
+        "text": "Văd că dăruirea mea aduce roade vizibile."
+      },
+      {
+        "id": "G13_Q8",
+        "type": "reference",
+        "text": "Am trăit că această persoană dă generos."
+      },
+      {
+        "id": "G13_Q9",
+        "type": "reference",
+        "text": "Această persoană dă mai puțină importanță propriei prosperități și îi sprijină în schimb pe alții din toată inima."
+      }
+    ]
+  },
+  {
+    "id": "G14",
+    "name": "Conducerea",
+    "originalWord": "προϊστάμενος (proistámenos, Gr.)",
+    "meaning": "A conduce și a organiza biserica (ca un cârmaci)",
+    "bibleReferences": [
+      "Rom 12:8",
+      "1 Cor 12:28",
+      "1 Thess 5:12",
+      "1 Tim 5:17"
+    ],
+    "description": "Darul conducerii descrie capacitatea de a conduce oameni, de a transmite viziune și de a organiza structuri. Cuvântul grecesc „proistamenos” înseamnă „a sta în frunte” sau „a conduce”. În Biblie, acest dar este legat de responsabilitatea pentru biserică (1 Tesaloniceni 5). El ajută la coordonarea slujirilor și la înaintarea împreună a bisericii.",
+    "questions": [
+      {
+        "id": "G14_Q1",
+        "type": "experience",
+        "text": "Am coordonat deja echipe sau proiecte astfel încât toți și-au putut folosi darurile în mod optim."
+      },
+      {
+        "id": "G14_Q2",
+        "type": "experience",
+        "text": "Ți-au încredințat oamenii responsabilitate?"
+      },
+      {
+        "id": "G14_Q3",
+        "type": "experience",
+        "text": "Alții îmi urmează conducerea de bunăvoie și cu încredere."
+      },
+      {
+        "id": "G14_Q4",
+        "type": "nature",
+        "text": "Ai tendința de a-ți asuma responsabilitate și de a organiza?"
+      },
+      {
+        "id": "G14_Q5",
+        "type": "nature",
+        "text": "Vreau să-mi asum responsabilitate pentru ca biserica să-și atingă eficient obiectivele."
+      },
+      {
+        "id": "G14_Q6",
+        "type": "feedback",
+        "text": "Păstrez privirea de ansamblu chiar și în situații complicate."
+      },
+      {
+        "id": "G14_Q7",
+        "type": "feedback",
+        "text": "Sub responsabilitatea mea, domenii ale bisericii cresc calitativ și organizatoric."
+      },
+      {
+        "id": "G14_Q8",
+        "type": "reference",
+        "text": "Am trăit că această persoană își asumă responsabilitate și organizează sarcini."
+      },
+      {
+        "id": "G14_Q9",
+        "type": "reference",
+        "text": "Sub conducerea acestei persoane, obiectivele sunt atinse bine."
+      }
+    ]
+  },
+  {
+    "id": "G15",
+    "name": "Mila",
+    "originalWord": "ἔλεος (éleos, Gr.)",
+    "meaning": "Compasiune și ajutor practic pentru cei care suferă",
+    "bibleReferences": [
+      "Rom 12:8",
+      "Matt 5:7",
+      "Gal 6:2"
+    ],
+    "description": "Darul milei descrie o compasiune deosebită pentru oamenii aflați în nevoie și disponibilitatea de a-i ajuta practic. Grecescul „eleos” înseamnă „îndurare” sau „compasiune”. În Biblie, mila este descrisă ca expresie a caracterului lui Dumnezeu (Matei 5,7). Oamenii cu acest dar aduc dragostea lui Dumnezeu mai ales celor care suferă.",
+    "questions": [
+      {
+        "id": "G15_Q1",
+        "type": "experience",
+        "text": "M-am îngrijit deja intens de oameni pe care toți ceilalți îi evitau."
+      },
+      {
+        "id": "G15_Q2",
+        "type": "experience",
+        "text": "Merg activ la cei care suferă, ca să le fiu alături."
+      },
+      {
+        "id": "G15_Q3",
+        "type": "experience",
+        "text": "Ai trăit că te îngrijești în mod special de cei nevoiași?"
+      },
+      {
+        "id": "G15_Q4",
+        "type": "nature",
+        "text": "Mă mișcă atunci când oamenii suferă."
+      },
+      {
+        "id": "G15_Q5",
+        "type": "nature",
+        "text": "Vreau să arăt dragostea lui Isus mai ales celor de la marginea societății."
+      },
+      {
+        "id": "G15_Q6",
+        "type": "feedback",
+        "text": "Oamenii aflați în criză îmi spun adesea că prezența mea le-a dat un nou curaj de viață."
+      },
+      {
+        "id": "G15_Q7",
+        "type": "feedback",
+        "text": "Prin slujba mea, oamenii din biserică se simt acceptați și iubiți necondiționat."
+      },
+      {
+        "id": "G15_Q8",
+        "type": "reference",
+        "text": "Am trăit că această persoană arată compasiune față de oamenii care suferă."
+      },
+      {
+        "id": "G15_Q9",
+        "type": "reference",
+        "text": "Oamenii defavorizați se simt înțeleși și sprijiniți de această persoană."
+      }
+    ]
+  },
+  {
+    "id": "G16",
+    "name": "Apostolia",
+    "originalWord": "ἀπόστολος (apóstolos, Gr.)",
+    "meaning": "A fi trimis cu autoritate pentru întemeierea de biserici",
+    "bibleReferences": [
+      "1 Cor 12:28",
+      "Eph 4:11",
+      "Acts 1:21-26",
+      "Acts 14:14"
+    ],
+    "description": "Darul apostolului descrie o chemare deosebită de a întemeia lucrări sau biserici noi și de a porni mișcări spirituale. Cuvântul „apostolos” înseamnă „trimis”. În Biblie vedem acest dar la apostoli, care au răspândit Evanghelia și au întemeiat biserici. Acest dar îmbină viziunea, conducerea și dinamica misionară.",
+    "questions": [
+      {
+        "id": "G16_Q1",
+        "type": "experience",
+        "text": "Simt imboldul de a întemeia lucrări sau grupuri spirituale noi."
+      },
+      {
+        "id": "G16_Q2",
+        "type": "experience",
+        "text": "Ai ajutat deja la înființarea unor biserici sau grupuri noi?"
+      },
+      {
+        "id": "G16_Q3",
+        "type": "experience",
+        "text": "Ai trăit că ai pornit inițiative sau slujiri noi?"
+      },
+      {
+        "id": "G16_Q4",
+        "type": "nature",
+        "text": "Am o viziune de a începe lucruri noi în împărăția lui Dumnezeu."
+      },
+      {
+        "id": "G16_Q5",
+        "type": "nature",
+        "text": "Îmi place să mă gândesc strategic la creșterea bisericii."
+      },
+      {
+        "id": "G16_Q6",
+        "type": "feedback",
+        "text": "Slujiri noi apar adesea din inițiativa mea."
+      },
+      {
+        "id": "G16_Q7",
+        "type": "feedback",
+        "text": "Oamenii se alătură viziunilor pe care le pornesc."
+      },
+      {
+        "id": "G16_Q8",
+        "type": "reference",
+        "text": "Am trăit că această persoană pornește proiecte sau inițiative noi."
+      },
+      {
+        "id": "G16_Q9",
+        "type": "reference",
+        "text": "Alții se alătură ideilor sau inițiativelor acestei persoane."
+      }
+    ]
+  },
+  {
+    "id": "G17",
+    "name": "Evanghelistul",
+    "originalWord": "εὐαγγελιστής (euangelistḗs, Gr.)",
+    "meaning": "A vesti vestea bună (Evanghelia)",
+    "bibleReferences": [
+      "Eph 4:11",
+      "Acts 21:8",
+      "2 Tim 4:5"
+    ],
+    "description": "Darul evanghelistului este capacitatea deosebită de a transmite oamenilor vestea bună despre Isus în mod înțeles și convingător. Cuvântul „euangelistes” înseamnă „vestitor al veștii bune”. În Biblie vedem acest dar, de exemplu, la Filip (Fapte 21). Evangheliștii îi ajută pe oameni să vină la credința în Hristos.",
+    "questions": [
+      {
+        "id": "G17_Q1",
+        "type": "experience",
+        "text": "Vorbesc cu plăcere cu alții despre Isus."
+      },
+      {
+        "id": "G17_Q2",
+        "type": "experience",
+        "text": "Ai trăit că oameni s-au interesat de Isus prin mărturia ta?"
+      },
+      {
+        "id": "G17_Q3",
+        "type": "experience",
+        "text": "Ai trăit că oameni au ajuns la credință prin tine?"
+      },
+      {
+        "id": "G17_Q4",
+        "type": "nature",
+        "text": "Mă arde pe suflet faptul că oamenii fără Isus se pierd."
+      },
+      {
+        "id": "G17_Q5",
+        "type": "nature",
+        "text": "Caut mereu metode noi de a comunica Evanghelia într-un mod actual și înțeles."
+      },
+      {
+        "id": "G17_Q6",
+        "type": "feedback",
+        "text": "Oamenii reacționează deschis când le povestesc despre credința mea."
+      },
+      {
+        "id": "G17_Q7",
+        "type": "feedback",
+        "text": "Îmi motivez biserica să-și îndrepte din nou mai mult atenția spre oamenii „de afară”."
+      },
+      {
+        "id": "G17_Q8",
+        "type": "reference",
+        "text": "Am trăit că această persoană vorbește cu alții despre credința ei."
+      },
+      {
+        "id": "G17_Q9",
+        "type": "reference",
+        "text": "Această persoană îi conduce pe oameni la Isus sau îi invită la evenimente ale bisericii."
+      }
+    ]
+  },
+  {
+    "id": "G18",
+    "name": "Păstorul",
+    "originalWord": "ποιμήν (poimḗn, Gr.)",
+    "meaning": "A paște, a păzi și a purta de grijă bisericii ca unei turme",
+    "bibleReferences": [
+      "Eph 4:11",
+      "John 10:1-18",
+      "1 Pet 5:1-4"
+    ],
+    "description": "Darul păstorului descrie capacitatea de a însoți, de a proteja și de a promova oamenii din punct de vedere spiritual. Grecescul „poimen” înseamnă „păstor”. Isus însuși este descris ca Bunul Păstor (Ioan 10). Oamenii cu acest dar se îngrijesc pe termen lung de creșterea spirituală și de binele bisericii.",
+    "questions": [
+      {
+        "id": "G18_Q1",
+        "type": "experience",
+        "text": "Îi însoțesc pe oameni ani de zile în creșterea lor spirituală și îi ajut să treacă prin văi."
+      },
+      {
+        "id": "G18_Q2",
+        "type": "experience",
+        "text": "Simt responsabilitate pentru binele spiritual al altora."
+      },
+      {
+        "id": "G18_Q3",
+        "type": "experience",
+        "text": "Protejez activ grupul pentru care sunt responsabil(ă) de influențe negative sau de dezbinare."
+      },
+      {
+        "id": "G18_Q4",
+        "type": "nature",
+        "text": "Am un interes profund pentru dezvoltarea pe termen lung și bunăstarea fiecărei persoane."
+      },
+      {
+        "id": "G18_Q5",
+        "type": "nature",
+        "text": "Vreau să creez o atmosferă în care oamenii să se simtă în siguranță spirituală și „acasă”."
+      },
+      {
+        "id": "G18_Q6",
+        "type": "feedback",
+        "text": "Oamenii se simt însoțiți și sprijiniți de mine."
+      },
+      {
+        "id": "G18_Q7",
+        "type": "feedback",
+        "text": "Văd că grija mea îi face pe oameni să crească stabil."
+      },
+      {
+        "id": "G18_Q8",
+        "type": "reference",
+        "text": "Am trăit că această persoană îi însoțește pe oameni o perioadă mai lungă."
+      },
+      {
+        "id": "G18_Q9",
+        "type": "reference",
+        "text": "Oamenii se dezvoltă prin sprijinul acestei persoane."
+      }
+    ]
+  }
+]
