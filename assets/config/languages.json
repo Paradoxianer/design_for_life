@@ -5,6 +5,8 @@
     { "code": "en", "name": "English", "status": "complete" },
     { "code": "pl", "name": "Polski", "status": "draft" },
     { "code": "lt", "name": "Lietuvių", "status": "draft" },
-    { "code": "fr", "name": "Français", "status": "draft" }
+    { "code": "fr", "name": "Français", "status": "draft" },
+    { "code": "ru", "name": "Русский", "status": "draft" },
+    { "code": "ro", "name": "Română (Moldova)", "status": "draft" }
   ]
 }
