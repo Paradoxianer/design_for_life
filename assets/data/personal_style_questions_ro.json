@@ -1,0 +1,114 @@
+{
+  "questions": [
+    {
+      "id": "org_1",
+      "dimension": "organisation",
+      "leftLabel": "Îmi place să-mi planific ziua în avans, cu un program clar.",
+      "rightLabel": "Îmi place să las ziua deschisă și să decid spontan."
+    },
+    {
+      "id": "org_2",
+      "dimension": "organisation",
+      "leftLabel": "Mă simt mai bine când procesele sunt clar definite.",
+      "rightLabel": "Mă simt mai bine când pot reacționa flexibil la situații."
+    },
+    {
+      "id": "org_3",
+      "dimension": "organisation",
+      "leftLabel": "Îmi plac regulile și indicațiile clare.",
+      "rightLabel": "Îmi place să abordez lucrurile în felul meu, neconvențional."
+    },
+    {
+      "id": "org_4",
+      "dimension": "organisation",
+      "leftLabel": "Prefer să lucrez după o structură fixă.",
+      "rightLabel": "Prefer să lucrez așa cum se nimerește."
+    },
+    {
+      "id": "org_5",
+      "dimension": "organisation",
+      "leftLabel": "Schimbările în ultimul moment mă stresează.",
+      "rightLabel": "Schimbările în ultimul moment mi se par captivante."
+    },
+    {
+      "id": "org_6",
+      "dimension": "organisation",
+      "leftLabel": "Îmi place să rezolv sarcinile pas cu pas, de pe o listă.",
+      "rightLabel": "Îmi place să sar de la o sarcină la alta, după cum vine."
+    },
+    {
+      "id": "energy_1",
+      "dimension": "energy",
+      "leftLabel": "Este important pentru mine cum se simt oamenii din jurul meu.",
+      "rightLabel": "Este important pentru mine ca sarcina să fie îndeplinită."
+    },
+    {
+      "id": "energy_2",
+      "dimension": "energy",
+      "leftLabel": "Mă încarc cu energie în discuțiile cu alții.",
+      "rightLabel": "Mă încarc cu energie când am atins un rezultat."
+    },
+    {
+      "id": "energy_3",
+      "dimension": "energy",
+      "leftLabel": "Relațiile sunt mai importante pentru mine decât rezultatul.",
+      "rightLabel": "Rezultatul este mai important pentru mine decât relația."
+    },
+    {
+      "id": "energy_4",
+      "dimension": "energy",
+      "leftLabel": "Ajut cu plăcere, chiar dacă îmi dă programul peste cap.",
+      "rightLabel": "Îmi place să rămân concentrat(ă) pe ceea ce mi-am propus."
+    },
+    {
+      "id": "energy_5",
+      "dimension": "energy",
+      "leftLabel": "Îmi place să petrec timp cu oamenii fără un scop concret.",
+      "rightLabel": "Mă simt cel mai bine când urmăresc obiective clare."
+    },
+    {
+      "id": "energy_6",
+      "dimension": "energy",
+      "leftLabel": "Observ repede când cuiva din grup nu-i este bine.",
+      "rightLabel": "Observ repede când o sarcină se blochează."
+    }
+  ],
+  "profiles": {
+    "people_structured": {
+      "title": "Om / Structurat",
+      "traits": [
+        "Apreciază relațiile clar definite",
+        "Dă importanță familiarității și stabilității",
+        "Îi plac echipele și mediile bine rodate",
+        "Creează o atmosferă caldă și de încredere"
+      ]
+    },
+    "people_unstructured": {
+      "title": "Om / Nestructurat",
+      "traits": [
+        "Îi plac întâlnirile spontane",
+        "Este vorbăreț și expresiv",
+        "Se adaptează ușor la situații noi",
+        "Apreciază flexibilitatea în relații"
+      ]
+    },
+    "task_structured": {
+      "title": "Sarcină / Structurat",
+      "traits": [
+        "Concentrat pe rezultate",
+        "Apreciază direcția clară și planificarea",
+        "Lucrează cu plăcere spre obiective definite",
+        "Preferă fluxuri de lucru organizate"
+      ]
+    },
+    "task_unstructured": {
+      "title": "Sarcină / Nestructurat",
+      "traits": [
+        "Apreciază varietatea și flexibilitatea",
+        "Ajută cu plăcere acolo unde este nevoie",
+        "Se adaptează repede la noi provocări",
+        "Concentrat pe rezultate practice, nu pe proces"
+      ]
+    }
+  }
+}

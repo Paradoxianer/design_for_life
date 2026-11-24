@@ -1,0 +1,147 @@
+{
+  "scaleLabels": [
+    "Очень хорошо",
+    "Хорошо",
+    "Удовлетворительно",
+    "Достаточно",
+    "Плохо",
+    "Неудовлетворительно"
+  ],
+  "categories": [
+    {
+      "id": "content",
+      "title": "Содержание семинара",
+      "questions": [
+        {
+          "id": "contentExpectations",
+          "type": "scale",
+          "label": "Содержание соответствовало моим ожиданиям"
+        },
+        {
+          "id": "contentPracticalUtility",
+          "type": "scale",
+          "label": "Я получил(а) полезные идеи для своей повседневной практики"
+        },
+        {
+          "id": "contentStructure",
+          "type": "scale",
+          "label": "Структура и понятность всей темы"
+        }
+      ]
+    },
+    {
+      "id": "speaker",
+      "title": "Докладчик и проведение",
+      "questions": [
+        {
+          "id": "speakerGodWorking",
+          "type": "scale",
+          "label": "У меня было впечатление, что Бог мог действовать"
+        },
+        {
+          "id": "speakerFaithProgress",
+          "type": "scale",
+          "label": "Семинар продвинул меня в моей жизни веры"
+        },
+        {
+          "id": "speakerDidactics",
+          "type": "scale",
+          "label": "Дидактические способности"
+        },
+        {
+          "id": "speakerMethods",
+          "type": "scale",
+          "label": "Применявшиеся методы были целесообразны"
+        },
+        {
+          "id": "speakerInvolvement",
+          "type": "scale",
+          "label": "Докладчик активно вовлекал участников"
+        },
+        {
+          "id": "speakerRespect",
+          "type": "scale",
+          "label": "Докладчик вёл себя вежливо и уважительно"
+        },
+        {
+          "id": "atmosphere",
+          "type": "scale",
+          "label": "Общая атмосфера курса и климат в группе"
+        }
+      ]
+    },
+    {
+      "id": "docs",
+      "title": "Материалы семинара",
+      "questions": [
+        {
+          "id": "docsStructure",
+          "type": "scale",
+          "label": "Структура и наглядность"
+        },
+        {
+          "id": "docsUnderstandability",
+          "type": "scale",
+          "label": "Понятность"
+        },
+        {
+          "id": "docsDifficulty",
+          "type": "scale",
+          "label": "Уровень сложности"
+        }
+      ]
+    },
+    {
+      "id": "org",
+      "title": "Организация и инфраструктура",
+      "questions": [
+        {
+          "id": "roomsAppropriateness",
+          "type": "scale",
+          "label": "Пригодность помещений"
+        },
+        {
+          "id": "prepQuality",
+          "type": "scale",
+          "label": "Подготовка семинара организатором"
+        },
+        {
+          "id": "duration",
+          "type": "scale",
+          "label": "Продолжительность мероприятия"
+        },
+        {
+          "id": "tempo",
+          "type": "scale",
+          "label": "Темп мероприятия"
+        },
+        {
+          "id": "catering",
+          "type": "scale",
+          "label": "Питание"
+        }
+      ]
+    },
+    {
+      "id": "comments",
+      "title": "Комментарии",
+      "questions": [
+        {
+          "id": "commentsMissing",
+          "type": "text",
+          "label": "Чего не хватило?"
+        },
+        {
+          "id": "recommendation",
+          "type": "text",
+          "label": "Порекомендовали бы вы этот семинар?"
+        },
+        {
+          "id": "generalNotes",
+          "type": "text",
+          "label": "Замечания"
+        }
+      ]
+    }
+  ]
+}
