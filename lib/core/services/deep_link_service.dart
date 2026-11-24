@@ -120,15 +120,36 @@ class DeepLinkService {
   /// actually supports it is decided by the caller.
   static String? parseLanguage(Uri uri) {
     if (!_supportedSchemes.contains(uri.scheme)) return null;
-    final lang = uri.queryParameters['lang']?.trim().toLowerCase();
+    final lang = paramsOf(uri)['lang']?.trim().toLowerCase();
     if (lang == null || !RegExp(r'^[a-z]{2,3}$').hasMatch(lang)) return null;
     return lang;
+  }
+
+  /// All link parameters of [uri]: the normal query (`?a=b`) plus any
+  /// query carried inside the fragment (`#/?a=b`).
+  ///
+  /// Gift-reference links keep their data (the reviewer's name and answers)
+  /// behind the `#`, because browsers never send the fragment to the web
+  /// server - so it can't end up in access logs or link-preview requests
+  /// (privacy review, Nov 2026). Old-style `?...` links keep working.
+  static Map<String, String> paramsOf(Uri uri) {
+    final params = <String, String>{...uri.queryParameters};
+    final fragment = uri.fragment;
+    final q = fragment.indexOf('?');
+    if (q != -1 && q < fragment.length - 1) {
+      try {
+        params.addAll(Uri.splitQueryString(fragment.substring(q + 1)));
+      } on FormatException {
+        // Malformed fragment - ignore it, the query part still counts.
+      }
+    }
+    return params;
   }
 
   static DeepLinkAction? parse(Uri uri) {
     if (!_supportedSchemes.contains(uri.scheme)) return null;
 
-    final params = uri.queryParameters;
+    final params = paramsOf(uri);
     final flow = params['flow'];
 
     if (flow == 'gift-reference') {
@@ -218,11 +239,23 @@ class DeepLinkService {
   /// Builds a link with [queryParameters] on the current web base (see
   /// [resolveWebLinkBase]). [runningAt] defaults to the page's own address on
   /// Web and to null elsewhere; it only needs to be passed in tests.
+  ///
+  /// With [inFragment] the parameters go behind the `#` (`base/#/?a=b`)
+  /// instead of into the query, so a web server never receives them (see
+  /// [paramsOf]). The `#/` keeps the app's hash router on its start page.
   static Uri buildWebLink(
     Map<String, String> queryParameters, {
     Uri? runningAt,
+    bool inFragment = false,
   }) {
     final base = resolveWebLinkBase(runningAt ?? (kIsWeb ? Uri.base : null));
-    return base.replace(queryParameters: queryParameters);
+    if (!inFragment) return base.replace(queryParameters: queryParameters);
+    final query = queryParameters.entries
+        .map(
+          (e) =>
+              '${Uri.encodeQueryComponent(e.key)}=${Uri.encodeQueryComponent(e.value)}',
+        )
+        .join('&');
+    return base.replace(fragment: '/?$query');
   }
 }

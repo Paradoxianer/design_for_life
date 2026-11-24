@@ -4,9 +4,13 @@ import '../models/gift_question.dart';
 /// Builds and parses the two deep links that make up the external
 /// "Referenz" (R) assessment flow (#42):
 ///
-/// - Invite: `?flow=gift-reference&assessmentId=...`
-/// - Result: `?flow=gift-reference-result&assessmentId=...
+/// - Invite: `#/?flow=gift-reference&assessmentId=...`
+/// - Result: `#/?flow=gift-reference-result&assessmentId=...
 ///   &answers=count:digits&label=...`
+///
+/// The parameters sit behind the `#` on purpose: the reviewer's name and
+/// answers are religious data, and browsers never send the fragment to the
+/// web server (no access-log entry, no leak via link previews).
 ///
 /// Both are currently built on DeepLinkService.webLinkBase (the GitHub
 /// Pages web build) rather than a `dfl://` link, since there's no native
@@ -27,7 +31,7 @@ class GiftReferenceLinkService {
     return DeepLinkService.buildWebLink({
       'flow': 'gift-reference',
       'assessmentId': assessmentId,
-    }).toString();
+    }, inFragment: true).toString();
   }
 
   static String buildResultLink({
@@ -41,7 +45,7 @@ class GiftReferenceLinkService {
       'assessmentId': assessmentId,
       'answers': encodeAnswers(questionOrder, answers),
       if (label != null && label.isNotEmpty) 'label': label,
-    }).toString();
+    }, inFragment: true).toString();
   }
 
   static String encodeAnswers(

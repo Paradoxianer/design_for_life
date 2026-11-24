@@ -213,5 +213,36 @@ void main() {
         'assessmentId': 'ref_1',
       });
     });
+
+    test('buildWebLink with inFragment keeps parameters out of the query', () {
+      final link = DeepLinkService.buildWebLink(
+        {'flow': 'gift-reference-result', 'label': 'Anna Müller & Co'},
+        runningAt: Uri.parse('https://dfl.heilsarmee.de/'),
+        inFragment: true,
+      );
+
+      expect(link.query, isEmpty);
+      expect(link.toString(), startsWith('https://dfl.heilsarmee.de/#/?'));
+      expect(DeepLinkService.paramsOf(link), {
+        'flow': 'gift-reference-result',
+        'label': 'Anna Müller & Co',
+      });
+    });
+
+    test('parse reads parameters from the fragment as well as the query', () {
+      final action = DeepLinkService.parse(
+        Uri.parse(
+          'https://dfl.heilsarmee.de/#/?flow=gift-reference-result&assessmentId=ref_1&answers=3:503&label=Anna',
+        ),
+      );
+      expect(action, isA<GiftReferenceResultAction>());
+      expect((action as GiftReferenceResultAction).label, 'Anna');
+      expect(
+        DeepLinkService.parseLanguage(
+          Uri.parse('https://x.de/#/?lang=pl'),
+        ),
+        'pl',
+      );
+    });
   });
 }

@@ -11,6 +11,9 @@ import 'package:share_plus/share_plus.dart';
 import 'package:design_for_life/core/services/app_backup_service.dart';
 import 'package:design_for_life/core/utils/app_logger.dart';
 import 'package:design_for_life/core/widgets/restart_widget.dart';
+import 'package:design_for_life/features/privacy/privacy_screen.dart';
+import 'package:design_for_life/features/privacy/privacy_texts.dart';
+import 'package:go_router/go_router.dart';
 import 'package:design_for_life/features/leader_notes/bloc/leader_mode_bloc.dart';
 import 'package:design_for_life/l10n/generated/app_localizations.dart';
 
@@ -137,6 +140,15 @@ class _BackupScreenState extends State<BackupScreen> {
         padding: const EdgeInsets.all(16),
         children: [
           Text(l10n.backupGuidance, style: theme.textTheme.bodyMedium),
+          const SizedBox(height: 8),
+          Text(
+            PrivacyTexts.forLanguage(
+              Localizations.localeOf(context).languageCode,
+            ).unencryptedNote,
+            style: theme.textTheme.bodySmall?.copyWith(
+              color: theme.colorScheme.error,
+            ),
+          ),
           const SizedBox(height: 24),
           Card(
             child: Padding(
@@ -197,6 +209,29 @@ class _BackupScreenState extends State<BackupScreen> {
                   ),
                 ],
               ),
+            ),
+          ),
+          const SizedBox(height: 16),
+          OutlinedButton.icon(
+            onPressed: () => context.push('/privacy'),
+            icon: const Icon(Icons.privacy_tip_outlined),
+            label: Text(
+              PrivacyTexts.forLanguage(
+                Localizations.localeOf(context).languageCode,
+              ).title,
+            ),
+          ),
+          const SizedBox(height: 8),
+          TextButton.icon(
+            style: TextButton.styleFrom(
+              foregroundColor: theme.colorScheme.error,
+            ),
+            onPressed: () => confirmAndDeleteAllData(context),
+            icon: const Icon(Icons.delete_forever_outlined),
+            label: Text(
+              PrivacyTexts.forLanguage(
+                Localizations.localeOf(context).languageCode,
+              ).deleteButton,
             ),
           ),
           BlocBuilder<LeaderModeBloc, LeaderModeState>(

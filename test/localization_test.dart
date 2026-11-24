@@ -3,6 +3,7 @@ import 'package:design_for_life/core/blocs/language_cubit.dart';
 import 'package:design_for_life/features/leader_notes/bloc/leader_mode_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:design_for_life/features/privacy/privacy_notice_cubit.dart';
 import 'package:design_for_life/main.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:design_for_life/features/imagine/bloc/imagine_bloc.dart';
@@ -49,6 +50,9 @@ void main() {
         BlocProvider(create: (context) => ImagineBloc()),
         BlocProvider(create: (context) => LeaderModeBloc()),
         BlocProvider(create: (context) => LanguageCubit()),
+          BlocProvider(
+            create: (context) => PrivacyNoticeCubit(acknowledged: true),
+          ),
       ],
       child: DflApp(forcedLocale: forcedLocale),
     );

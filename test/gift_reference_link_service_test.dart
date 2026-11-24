@@ -1,4 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
+import 'package:design_for_life/core/services/deep_link_service.dart';
 import 'package:design_for_life/features/spiritual_gifts/models/gift_question.dart';
 import 'package:design_for_life/features/spiritual_gifts/services/gift_reference_link_service.dart';
 
@@ -42,10 +43,11 @@ void main() {
   test('builds invite and result links on the fallback web base outside a browser', () {
     final invite = GiftReferenceLinkService.buildInviteLink('ref_123');
     final inviteUri = Uri.parse(invite);
+    final inviteParams = DeepLinkService.paramsOf(inviteUri);
     expect(inviteUri.scheme, 'https');
     expect(inviteUri.host, 'paradoxianer.github.io');
-    expect(inviteUri.queryParameters['flow'], 'gift-reference');
-    expect(inviteUri.queryParameters['assessmentId'], 'ref_123');
+    expect(inviteParams['flow'], 'gift-reference');
+    expect(inviteParams['assessmentId'], 'ref_123');
 
     final result = GiftReferenceLinkService.buildResultLink(
       assessmentId: 'ref_123',
@@ -54,12 +56,17 @@ void main() {
       label: 'Anna',
     );
     final resultUri = Uri.parse(result);
-    expect(resultUri.queryParameters['flow'], 'gift-reference-result');
-    expect(resultUri.queryParameters['answers'], '3:503');
-    expect(resultUri.queryParameters['label'], 'Anna');
+    // Privacy: nothing of the reviewer's data may be in the query that a
+    // web server would receive.
+    expect(resultUri.query, isEmpty);
+    expect(result, isNot(contains('?flow')));
+    final resultParams = DeepLinkService.paramsOf(resultUri);
+    expect(resultParams['flow'], 'gift-reference-result');
+    expect(resultParams['answers'], '3:503');
+    expect(resultParams['label'], 'Anna');
 
     final decoded = GiftReferenceLinkService.decodeAnswers(
-      resultUri.queryParameters['answers']!,
+      resultParams['answers']!,
       questions,
     );
     expect(decoded, const {'G01_r1': 5, 'G01_r2': 0, 'G02_r1': 3});
