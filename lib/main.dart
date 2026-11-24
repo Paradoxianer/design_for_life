@@ -42,6 +42,8 @@ import 'features/group_photo/bloc/group_photo_bloc.dart';
 import 'features/group_photo/screens/group_photo_screen.dart';
 import 'features/export/screens/export_screen.dart';
 import 'features/backup/screens/backup_screen.dart';
+import 'features/privacy/privacy_notice_cubit.dart';
+import 'features/privacy/privacy_notice_gate.dart';
 import 'features/privacy/privacy_screen.dart';
 import 'features/leader_notes/bloc/leader_checklist_cubit.dart';
 import 'core/blocs/language_cubit.dart';
@@ -95,6 +97,7 @@ void main() async {
           BlocProvider(create: (context) => TimelineModuleFilterBloc()),
           BlocProvider(create: (context) => LeaderModeBloc()),
           BlocProvider(create: (context) => LanguageCubit()),
+          BlocProvider(create: (context) => PrivacyNoticeCubit()),
           BlocProvider(create: (context) => LeaderChecklistCubit()),
           BlocProvider(create: (context) => ChecklistBloc()),
         ],
@@ -299,6 +302,16 @@ class _DflAppState extends State<DflApp> {
             builder: (context, state) => const PrivacyScreen(),
           ),
           GoRoute(
+            path: '/imprint',
+            builder: (context, state) =>
+                const LegalDocumentScreen(imprint: true),
+          ),
+          GoRoute(
+            path: '/privacy-policy',
+            builder: (context, state) =>
+                const LegalDocumentScreen(imprint: false),
+          ),
+          GoRoute(
             path: '/backup',
             builder: (context, state) => const BackupScreen(),
           ),
@@ -501,6 +514,9 @@ class _DflAppState extends State<DflApp> {
       debugShowCheckedModeBanner: false,
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
+      // Beim ersten Start der Datenschutz-Hinweis (nur Kenntnisnahme).
+      builder: (context, child) =>
+          PrivacyNoticeGate(child: child ?? const SizedBox.shrink()),
     );
   }
 }

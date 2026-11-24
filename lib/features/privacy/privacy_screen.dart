@@ -1,15 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:go_router/go_router.dart';
 
 import 'package:design_for_life/core/utils/app_logger.dart';
 import 'package:design_for_life/core/widgets/restart_widget.dart';
+import 'package:design_for_life/features/privacy/legal_texts.dart';
+import 'package:design_for_life/features/privacy/privacy_notice_gate.dart';
 import 'package:design_for_life/features/privacy/privacy_texts.dart';
-
-/// Links der Heilsarmee (Impressum, Datenschutzerklärung). Vor dem
-/// Produktivbetrieb mit der Zentrale abstimmen und ggf. anpassen.
-const String kImprintUrl = 'https://www.heilsarmee.de/impressum';
-const String kPrivacyPolicyUrl = 'https://www.heilsarmee.de/datenschutz';
 
 /// Löscht alle lokal gespeicherten Einträge und startet die App neu.
 Future<void> confirmAndDeleteAllData(BuildContext context) async {
@@ -45,13 +42,6 @@ Future<void> confirmAndDeleteAllData(BuildContext context) async {
 class PrivacyScreen extends StatelessWidget {
   const PrivacyScreen({super.key});
 
-  Future<void> _open(String url) async {
-    final uri = Uri.tryParse(url);
-    if (uri != null) {
-      await launchUrl(uri, mode: LaunchMode.externalApplication);
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -75,14 +65,14 @@ class PrivacyScreen extends StatelessWidget {
           ],
           const SizedBox(height: 24),
           OutlinedButton.icon(
-            onPressed: () => _open(kImprintUrl),
-            icon: const Icon(Icons.open_in_new),
+            onPressed: () => context.push('/imprint'),
+            icon: const Icon(Icons.gavel_outlined),
             label: Text(t.imprintLink),
           ),
           const SizedBox(height: 8),
           OutlinedButton.icon(
-            onPressed: () => _open(kPrivacyPolicyUrl),
-            icon: const Icon(Icons.open_in_new),
+            onPressed: () => context.push('/privacy-policy'),
+            icon: const Icon(Icons.policy_outlined),
             label: Text(t.privacyLink),
           ),
           const SizedBox(height: 24),
@@ -116,6 +106,24 @@ class PrivacyScreen extends StatelessWidget {
           ),
         ],
       ),
+    );
+  }
+}
+
+/// Impressum bzw. Datenschutzerklärung als eigene Seite.
+class LegalDocumentScreen extends StatelessWidget {
+  final bool imprint;
+  const LegalDocumentScreen({super.key, required this.imprint});
+
+  @override
+  Widget build(BuildContext context) {
+    final t = LegalTexts.forLanguage(
+      Localizations.localeOf(context).languageCode,
+    );
+    final doc = imprint ? t.imprint : t.privacyPolicy;
+    return Scaffold(
+      appBar: AppBar(title: Text(doc.title)),
+      body: LegalDocumentView(document: doc),
     );
   }
 }

@@ -78,8 +78,8 @@ class PrivacyTexts {
             'Bewahre sie sicher auf und gib sie nicht unbedacht weiter.',
       ),
     ],
-    imprintLink: 'Impressum der Heilsarmee',
-    privacyLink: 'Datenschutzerklärung der Heilsarmee',
+    imprintLink: 'Impressum',
+    privacyLink: 'Datenschutzerklärung',
     deleteTitle: 'Alle Daten löschen',
     deleteGuidance:
         'Löscht alle Einträge aus allen Modulen von diesem Gerät. Erstelle vorher '
@@ -134,8 +134,8 @@ class PrivacyTexts {
             'and do not pass it on carelessly.',
       ),
     ],
-    imprintLink: 'Salvation Army imprint (German)',
-    privacyLink: 'Salvation Army privacy policy (German)',
+    imprintLink: 'Imprint',
+    privacyLink: 'Privacy policy',
     deleteTitle: 'Delete all data',
     deleteGuidance:
         'Removes all entries of all modules from this device. Create a backup '
