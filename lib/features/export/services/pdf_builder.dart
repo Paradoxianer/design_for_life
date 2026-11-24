@@ -3,7 +3,6 @@ import 'dart:typed_data';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
-import 'package:printing/printing.dart';
 
 import 'package:design_for_life/core/models/export_document.dart';
 import 'package:design_for_life/core/utils/app_logger.dart';
@@ -20,10 +19,10 @@ class PdfBuilder {
     ExportDocument document, {
     String languageCode = 'de',
   }) async {
-    // Die Standard-PDF-Schrift (Helvetica) kann keine Umlaute/ß darstellen.
-    // Zuerst die gebündelte Noto-Sans-Datei versuchen (funktioniert
-    // garantiert offline), erst danach PdfGoogleFonts als Online-Fallback,
-    // falls die Datei aus irgendeinem Grund fehlt.
+    // Die Standard-PDF-Schrift (Helvetica) kann keine Umlaute/ß darstellen,
+    // daher die gebündelte Noto-Sans-Datei. Bewusst KEIN Online-Fallback
+    // (z. B. Google Fonts): die App soll keine Verbindung zu Dritten
+    // aufbauen, damit keine IP-Adressen an Google gehen.
     pw.Font? regularFont;
     pw.Font? boldFont;
     try {
@@ -35,16 +34,8 @@ class PdfBuilder {
       boldFont = pw.Font.ttf(boldBytes);
     } catch (e) {
       logError(
-        'Bundled Unicode PDF font not found, trying online fallback: $e',
+        'Could not load bundled Unicode PDF font, falling back to default: $e',
       );
-      try {
-        regularFont = await PdfGoogleFonts.notoSansRegular();
-        boldFont = await PdfGoogleFonts.notoSansBold();
-      } catch (e) {
-        logError(
-          'Could not load Unicode PDF font, falling back to default: $e',
-        );
-      }
     }
 
     final pdf = pw.Document(

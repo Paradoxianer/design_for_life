@@ -42,6 +42,7 @@ import 'features/group_photo/bloc/group_photo_bloc.dart';
 import 'features/group_photo/screens/group_photo_screen.dart';
 import 'features/export/screens/export_screen.dart';
 import 'features/backup/screens/backup_screen.dart';
+import 'features/privacy/privacy_screen.dart';
 import 'features/leader_notes/bloc/leader_checklist_cubit.dart';
 import 'core/blocs/language_cubit.dart';
 import 'features/leader_notes/bloc/leader_mode_bloc.dart';
@@ -292,6 +293,10 @@ class _DflAppState extends State<DflApp> {
           GoRoute(
             path: '/leader-materials',
             builder: (context, state) => const LeaderMaterialsScreen(),
+          ),
+          GoRoute(
+            path: '/privacy',
+            builder: (context, state) => const PrivacyScreen(),
           ),
           GoRoute(
             path: '/backup',
