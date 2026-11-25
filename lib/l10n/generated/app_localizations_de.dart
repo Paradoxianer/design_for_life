@@ -1116,4 +1116,13 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get languageDraft => 'Entwurf – maschinell übersetzt';
+
+  @override
+  String get leaderChecklistAddItem => 'Eigenen Punkt hinzufügen';
+
+  @override
+  String get leaderChecklistNewItemHint => 'Eigener Punkt …';
+
+  @override
+  String get leaderChecklistRemoveItem => 'Punkt entfernen';
 }

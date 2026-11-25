@@ -335,5 +335,8 @@
   "leaderCertificateCreate": "Sukurti pažymėjimus",
   "languageTitle": "Kalba",
   "languageAuto": "Automatiškai (įrenginio kalba)",
-  "languageDraft": "Juodraštis – išversta kompiuteriu"
+  "languageDraft": "Juodraštis – išversta kompiuteriu",
+  "leaderChecklistAddItem": "Pridėti savo punktą",
+  "leaderChecklistNewItemHint": "Jūsų punktas …",
+  "leaderChecklistRemoveItem": "Pašalinti punktą"
 }

@@ -335,5 +335,8 @@
   "leaderCertificateCreate": "Créer les attestations",
   "languageTitle": "Langue",
   "languageAuto": "Automatique (langue de l'appareil)",
-  "languageDraft": "Brouillon – traduit automatiquement"
+  "languageDraft": "Brouillon – traduit automatiquement",
+  "leaderChecklistAddItem": "Ajouter un point personnel",
+  "leaderChecklistNewItemHint": "Votre point …",
+  "leaderChecklistRemoveItem": "Supprimer le point"
 }

@@ -335,5 +335,8 @@
   "leaderCertificateCreate": "Creează adeverințele",
   "languageTitle": "Limba",
   "languageAuto": "Automat (limba dispozitivului)",
-  "languageDraft": "Ciornă – tradus automat"
+  "languageDraft": "Ciornă – tradus automat",
+  "leaderChecklistAddItem": "Adaugă un punct propriu",
+  "leaderChecklistNewItemHint": "Punctul tău …",
+  "leaderChecklistRemoveItem": "Elimină punctul"
 }

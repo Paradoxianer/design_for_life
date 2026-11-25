@@ -1106,4 +1106,13 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get languageDraft => 'Draft – machine translated';
+
+  @override
+  String get leaderChecklistAddItem => 'Add your own item';
+
+  @override
+  String get leaderChecklistNewItemHint => 'Your own item …';
+
+  @override
+  String get leaderChecklistRemoveItem => 'Remove item';
 }

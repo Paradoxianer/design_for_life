@@ -2125,6 +2125,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Draft – machine translated'**
   String get languageDraft;
+
+  /// No description provided for @leaderChecklistAddItem.
+  ///
+  /// In en, this message translates to:
+  /// **Add your own item**
+  String get leaderChecklistAddItem;
+
+  /// No description provided for @leaderChecklistNewItemHint.
+  ///
+  /// In en, this message translates to:
+  /// **Your own item …**
+  String get leaderChecklistNewItemHint;
+
+  /// No description provided for @leaderChecklistRemoveItem.
+  ///
+  /// In en, this message translates to:
+  /// **Remove item**
+  String get leaderChecklistRemoveItem;
 }
 
 class _AppLocalizationsDelegate

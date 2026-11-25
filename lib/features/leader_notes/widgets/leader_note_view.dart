@@ -1,3 +1,4 @@
+import 'package:design_for_life/l10n/generated/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -71,8 +72,12 @@ class LeaderNoteView extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 12),
-          for (final block in section.blocks) ...[
-            _LeaderNoteBlockView(block: block, sectionHeading: section.heading),
+          for (final (index, block) in section.blocks.indexed) ...[
+            _LeaderNoteBlockView(
+              block: block,
+              sectionHeading: section.heading,
+              blockIndex: index,
+            ),
             const SizedBox(height: 12),
           ],
           const SizedBox(height: 12),
@@ -85,10 +90,12 @@ class LeaderNoteView extends StatelessWidget {
 class _LeaderNoteBlockView extends StatelessWidget {
   final LeaderNoteBlock block;
   final String sectionHeading;
+  final int blockIndex;
 
   const _LeaderNoteBlockView({
     required this.block,
     required this.sectionHeading,
+    required this.blockIndex,
   });
 
   @override
@@ -124,36 +131,11 @@ class _LeaderNoteBlockView extends StatelessWidget {
             ),
         ],
       ),
-      LeaderNoteChecklist(:final items) =>
-        BlocBuilder<LeaderChecklistCubit, Set<String>>(
-          builder: (context, checked) => Column(
-            children: [
-              for (final item in items)
-                CheckboxListTile(
-                  dense: true,
-                  contentPadding: EdgeInsets.zero,
-                  controlAffinity: ListTileControlAffinity.leading,
-                  value: checked.contains(
-                    LeaderChecklistCubit.keyFor(sectionHeading, item),
-                  ),
-                  onChanged: (_) => context.read<LeaderChecklistCubit>().toggle(
-                    LeaderChecklistCubit.keyFor(sectionHeading, item),
-                  ),
-                  title: Text(
-                    item,
-                    style: theme.textTheme.bodyMedium?.copyWith(
-                      decoration:
-                          checked.contains(
-                            LeaderChecklistCubit.keyFor(sectionHeading, item),
-                          )
-                          ? TextDecoration.lineThrough
-                          : null,
-                    ),
-                  ),
-                ),
-            ],
-          ),
-        ),
+      LeaderNoteChecklist(:final items) => _LeaderChecklistView(
+        items: items,
+        listKey: LeaderChecklistCubit.listKey(sectionHeading, blockIndex),
+        legacyHeading: sectionHeading,
+      ),
       LeaderNoteNumberedList(:final items) => Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -253,5 +235,110 @@ class _LeaderNoteBlockView extends StatelessWidget {
         ),
       ),
     };
+  }
+}
+
+/// Abhakbare Liste mit den vorgegebenen Punkten plus eigenen Punkten, die
+/// sich unten über ein Eingabefeld ergänzen und wieder entfernen lassen.
+class _LeaderChecklistView extends StatefulWidget {
+  final List<String> items;
+  final String listKey;
+
+  /// Abschnittsüberschrift: Haken der vorgegebenen Punkte werden weiter unter
+  /// diesem Schlüssel gespeichert (Kompatibilität mit älteren Ständen).
+  final String legacyHeading;
+
+  const _LeaderChecklistView({
+    required this.items,
+    required this.listKey,
+    required this.legacyHeading,
+  });
+
+  @override
+  State<_LeaderChecklistView> createState() => _LeaderChecklistViewState();
+}
+
+class _LeaderChecklistViewState extends State<_LeaderChecklistView> {
+  final _controller = TextEditingController();
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  void _submit() {
+    context.read<LeaderChecklistCubit>().addItem(
+      widget.listKey,
+      _controller.text,
+    );
+    _controller.clear();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final l10n = AppLocalizations.of(context);
+    return BlocBuilder<LeaderChecklistCubit, LeaderChecklistState>(
+      builder: (context, state) {
+        final cubit = context.read<LeaderChecklistCubit>();
+        Widget tile(String item, String key, {VoidCallback? onRemove}) {
+          final done = state.checked.contains(key);
+          return CheckboxListTile(
+            dense: true,
+            contentPadding: EdgeInsets.zero,
+            controlAffinity: ListTileControlAffinity.leading,
+            value: done,
+            onChanged: (_) => cubit.toggle(key),
+            title: Text(
+              item,
+              style: theme.textTheme.bodyMedium?.copyWith(
+                decoration: done ? TextDecoration.lineThrough : null,
+              ),
+            ),
+            secondary: onRemove == null
+                ? null
+                : IconButton(
+                    icon: const Icon(Icons.delete_outline),
+                    tooltip: l10n.leaderChecklistRemoveItem,
+                    onPressed: onRemove,
+                  ),
+          );
+        }
+
+        return Column(
+          children: [
+            for (final item in widget.items)
+              tile(item, LeaderChecklistCubit.keyFor(widget.legacyHeading, item)),
+            for (final item in state.custom[widget.listKey] ?? const <String>[])
+              tile(
+                item,
+                LeaderChecklistCubit.keyFor(widget.listKey, item),
+                onRemove: () => cubit.removeItem(widget.listKey, item),
+              ),
+            Row(
+              children: [
+                Expanded(
+                  child: TextField(
+                    controller: _controller,
+                    decoration: InputDecoration(
+                      isDense: true,
+                      hintText: l10n.leaderChecklistNewItemHint,
+                    ),
+                    textInputAction: TextInputAction.done,
+                    onSubmitted: (_) => _submit(),
+                  ),
+                ),
+                IconButton(
+                  icon: const Icon(Icons.add_circle_outline),
+                  tooltip: l10n.leaderChecklistAddItem,
+                  onPressed: _submit,
+                ),
+              ],
+            ),
+          ],
+        );
+      },
+    );
   }
 }

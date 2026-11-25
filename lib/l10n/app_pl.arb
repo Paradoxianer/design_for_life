@@ -333,7 +333,10 @@
   "leaderCertificatePlace": "Miejscowość",
   "leaderCertificateDate": "Data",
   "leaderCertificateCreate": "Utwórz dyplomy",
-  "languageTitle": "Sprache",
-  "languageAuto": "Automatisch (Gerätesprache)",
-  "languageDraft": "Entwurf – maschinell übersetzt"
+  "languageTitle": "Język",
+  "languageAuto": "Automatycznie (język urządzenia)",
+  "languageDraft": "Wersja robocza – tłumaczenie maszynowe",
+  "leaderChecklistAddItem": "Dodaj własny punkt",
+  "leaderChecklistNewItemHint": "Własny punkt …",
+  "leaderChecklistRemoveItem": "Usuń punkt"
 }
