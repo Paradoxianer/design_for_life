@@ -335,5 +335,8 @@
   "leaderCertificateCreate": "Создать свидетельства",
   "languageTitle": "Язык",
   "languageAuto": "Автоматически (язык устройства)",
-  "languageDraft": "Черновик — машинный перевод"
+  "languageDraft": "Черновик — машинный перевод",
+  "leaderChecklistAddItem": "Добавить свой пункт",
+  "leaderChecklistNewItemHint": "Свой пункт …",
+  "leaderChecklistRemoveItem": "Удалить пункт"
 }

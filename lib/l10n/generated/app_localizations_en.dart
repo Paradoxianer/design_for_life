@@ -1018,7 +1018,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get leaderBookletTitle => 'Leader booklet as PDF';
 
   @override
-  String get leaderBookletDescription => 'All leader info (checklist, team training and all sessions) as a PDF to save, print or share.';
+  String get leaderBookletDescription =>
+      'All leader info (checklist, team training and all sessions) as a PDF to save, print or share.';
 
   @override
   String get leaderBookletError => 'The PDF could not be created.';
@@ -1027,16 +1028,19 @@ class AppLocalizationsEn extends AppLocalizations {
   String get leaderTemplatesTitle => 'Templates';
 
   @override
-  String get leaderTemplateSchedulesTitle => 'Schedules: listening prayer & conversations';
+  String get leaderTemplateSchedulesTitle =>
+      'Schedules: listening prayer & conversations';
 
   @override
-  String get leaderTemplateSchedulesDescription => 'Blank schedules to print (PDF).';
+  String get leaderTemplateSchedulesDescription =>
+      'Blank schedules to print (PDF).';
 
   @override
   String get leaderTemplateCertificateTitle => 'Certificate';
 
   @override
-  String get leaderTemplateCertificateDescription => 'Certificate of participation as a PDF – with names entered here or to fill in by hand.';
+  String get leaderTemplateCertificateDescription =>
+      'Certificate of participation as a PDF – with names entered here or to fill in by hand.';
 
   @override
   String get leaderTemplateError => 'The template could not be opened.';
@@ -1048,16 +1052,20 @@ class AppLocalizationsEn extends AppLocalizations {
   String get certificateTitle => 'Certificate';
 
   @override
-  String get certificateParticipated => 'has successfully taken part in the course';
+  String get certificateParticipated =>
+      'has successfully taken part in the course';
 
   @override
-  String get certificateCourse => 'Design for Life – Discover God\'s plan for your life';
+  String get certificateCourse =>
+      'Design for Life – Discover God\'s plan for your life';
 
   @override
-  String get certificateDescription => 'Through reflection on life events, gifts and values, possible directions for the personal path of life with God were worked out in prayer.';
+  String get certificateDescription =>
+      'Through reflection on life events, gifts and values, possible directions for the personal path of life with God were worked out in prayer.';
 
   @override
-  String get certificateVerse => 'For we are God\'s masterpiece. He has created us anew in Christ Jesus, so we can do the good things he planned for us long ago.';
+  String get certificateVerse =>
+      'For we are God\'s masterpiece. He has created us anew in Christ Jesus, so we can do the good things he planned for us long ago.';
 
   @override
   String get certificateVerseRef => 'Ephesians 2:10';
@@ -1087,7 +1095,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get leaderCertificateNames => 'Names (one per line)';
 
   @override
-  String get leaderCertificateNamesHint => 'Leave empty to write the name by hand.';
+  String get leaderCertificateNamesHint =>
+      'Leave empty to write the name by hand.';
 
   @override
   String get leaderCertificatePlace => 'Place';
@@ -1106,4 +1115,13 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get languageDraft => 'Draft – machine translated';
+
+  @override
+  String get leaderChecklistAddItem => 'Add your own item';
+
+  @override
+  String get leaderChecklistNewItemHint => 'Your own item …';
+
+  @override
+  String get leaderChecklistRemoveItem => 'Remove item';
 }

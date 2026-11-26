@@ -463,5 +463,8 @@
   "leaderCertificateCreate": "Urkunden erstellen",
   "languageTitle": "Sprache",
   "languageAuto": "Automatisch (Gerätesprache)",
-  "languageDraft": "Entwurf – maschinell übersetzt"
+  "languageDraft": "Entwurf – maschinell übersetzt",
+  "leaderChecklistAddItem": "Eigenen Punkt hinzufügen",
+  "leaderChecklistNewItemHint": "Eigener Punkt …",
+  "leaderChecklistRemoveItem": "Punkt entfernen"
 }

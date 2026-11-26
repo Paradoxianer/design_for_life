@@ -17,24 +17,59 @@ void main() {
     HydratedBloc.storage = storage;
   });
 
-  test('toggle ticks and unticks, reset clears all', () {
+  test('toggle ticks and unticks, reset clears all ticks', () {
     final cubit = LeaderChecklistCubit();
     final key = LeaderChecklistCubit.keyFor('Material', 'Stifte');
 
     cubit.toggle(key);
-    expect(cubit.state, {key});
+    expect(cubit.state.checked, {key});
     cubit.toggle(key);
-    expect(cubit.state, isEmpty);
+    expect(cubit.state.checked, isEmpty);
 
     cubit.toggle(key);
     cubit.reset();
-    expect(cubit.state, isEmpty);
+    expect(cubit.state.checked, isEmpty);
+  });
+
+  test('custom items can be added, ticked, removed; reset keeps them', () {
+    final cubit = LeaderChecklistCubit();
+    final list = LeaderChecklistCubit.listKey('Material', 2);
+
+    cubit.addItem(list, '  Beamer  ');
+    cubit.addItem(list, 'Beamer'); // duplicate
+    cubit.addItem(list, '   '); // empty
+    expect(cubit.state.custom[list], ['Beamer']);
+
+    final key = LeaderChecklistCubit.keyFor(list, 'Beamer');
+    cubit.toggle(key);
+    cubit.reset();
+    expect(cubit.state.checked, isEmpty);
+    expect(cubit.state.custom[list], ['Beamer']);
+
+    cubit.toggle(key);
+    cubit.removeItem(list, 'Beamer');
+    expect(cubit.state.custom, isEmpty);
+    expect(cubit.state.checked, isEmpty);
   });
 
   test('survives a JSON round trip', () {
     final cubit = LeaderChecklistCubit();
-    final json = cubit.toJson({'a|b', 'c|d'})!;
-    expect(cubit.fromJson(json), {'a|b', 'c|d'});
+    const state = LeaderChecklistState(
+      checked: {'a|b', 'c|d'},
+      custom: {
+        'x#1': ['eins', 'zwei'],
+      },
+    );
+    expect(cubit.fromJson(cubit.toJson(state)!), state);
+  });
+
+  test('reads the old format without custom items', () {
+    final cubit = LeaderChecklistCubit();
+    final restored = cubit.fromJson({
+      'checked': ['a|b'],
+    });
+    expect(restored?.checked, {'a|b'});
+    expect(restored?.custom, isEmpty);
   });
 
   test('the leader checklist session uses tickable lists', () async {

@@ -463,5 +463,8 @@
   "leaderCertificateCreate": "Create certificates",
   "languageTitle": "Language",
   "languageAuto": "Automatic (device language)",
-  "languageDraft": "Draft – machine translated"
+  "languageDraft": "Draft – machine translated",
+  "leaderChecklistAddItem": "Add your own item",
+  "leaderChecklistNewItemHint": "Your own item …",
+  "leaderChecklistRemoveItem": "Remove item"
 }

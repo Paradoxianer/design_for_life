@@ -43,6 +43,8 @@ class AppBackupService {
     'TimelineModuleFilterBloc',
     'LeaderModeBloc',
     'ChecklistBloc',
+    // Haken und eigene Punkte der Leiter-Checklisten (#103).
+    'LeaderChecklistCubit',
   ];
 
   static String exportJson() {
