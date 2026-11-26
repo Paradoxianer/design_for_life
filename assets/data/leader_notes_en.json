@@ -145,7 +145,7 @@
             "type": "paragraph",
             "text": "Whatever role you play in your life, you are never unimportant when it comes to standing up for the truth. What place has God given you? Whatever it is, God says to you: \"You stand before me, and I want to use you. I want to use you here and now, and in the future too, as my unique witness.\" Look around: the need is still enormous, and God is still looking."
           },
-          { "type": "video", "label": "A faith-based film (e.g. Transformation, Fireproof, or similar)", "url": null }
+          { "type": "video", "label": "Optional: a film or clip with a spiritual theme (e.g. about courage and calling) – your choice", "url": null }
         ]
       }
     ]
@@ -158,7 +158,7 @@
         "blocks": [
           {
             "type": "paragraph",
-            "text": "At DFL, you won't get handed an envelope this weekend with God's instructions for your life. We'll try instead to recognize God's calling. It matters to pay attention to God's calling - otherwise things go sideways in our lives, like with the Minions. We want to look together at how Jesus used John to confirm his calling."
+            "text": "At DFL, you won't get handed an envelope this weekend with God's instructions for your life. We'll try instead to recognize God's calling. It matters to pay attention to God's calling - otherwise things go sideways in our lives. We want to look together at how Jesus used John to confirm his calling."
           },
           { "type": "paragraph", "text": "Everyone reads Matthew 3:1-17 quietly, on their own." },
           { "type": "subheading", "text": "Street Signs" },
@@ -278,10 +278,10 @@
           },
           { "type": "paragraph", "text": "God has already called you, and He has already prepared you for His work." },
           { "type": "subheading", "text": "Prayer" },
-          { "type": "video", "label": "Video clip - Minions: The Bicycle", "url": null },
+          { "type": "video", "label": "Optional: short clip on the theme \"well prepared\" – your choice", "url": null },
           {
             "type": "paragraph",
-            "text": "Just like the Minions get Agnes's bike ready so she can win the toy, God has already prepared you and your life for the goal He has for you."
+            "text": "Just as someone gets everything ready in advance so that another person can reach their goal, God has already prepared you and your life for the goal He has for you."
           },
           {
             "type": "paragraph",
@@ -480,7 +480,7 @@
           { "type": "paragraph", "text": "List your eight most important values and give a personal explanation for each." },
           { "type": "paragraph", "text": "Your values can change over time.\nIn my next season of life, the following eight values will matter to me." },
           { "type": "paragraph", "text": "That's exactly where you'll be able to contribute." },
-          { "type": "video", "label": "Video clip - One Man Band", "url": null },
+          { "type": "video", "label": "Optional: short clip on the theme \"when everything comes together\" – your choice", "url": null },
           { "type": "paragraph", "text": "So when it all comes together - your values and your gifts - that's when you're at your most productive." }
         ]
       }
@@ -586,10 +586,10 @@
       {
         "heading": "Your Calling - Your Response",
         "blocks": [
-          { "type": "video", "label": "Clip - Minions: Banana", "url": null },
+          { "type": "video", "label": "Optional: short clip on the theme \"a goal in sight\" – your choice", "url": null },
           {
             "type": "paragraph",
-            "text": "When God calls us, we should respond the way the Minions do - they have a goal.\nGod has given every one of us a goal too.\nThere's one that applies to everyone, which we find again and again in the Bible - for example, Mark 16:15ff.\nBut He also has a specific goal for each individual."
+            "text": "When God calls us, we should have a clear goal in sight.\nGod has given every one of us a goal.\nThere's one that applies to everyone, which we find again and again in the Bible - for example, Mark 16:15ff.\nBut He also has a specific goal for each individual."
           },
           {
             "type": "quote",
