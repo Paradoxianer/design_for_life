@@ -41,6 +41,21 @@ void main() {
       expect(json, isNot(contains('"GoalsBloc"')));
     });
 
+    test('includes the leader checklist with its custom items (#103)', () {
+      when(() => storage.read(any())).thenReturn(null);
+      when(() => storage.read('LeaderChecklistCubit')).thenReturn({
+        'checked': <String>[],
+        'custom': {
+          'Material#2': ['Beamer'],
+        },
+      });
+
+      final json = AppBackupService.exportJson();
+
+      expect(json, contains('"LeaderChecklistCubit"'));
+      expect(json, contains('"Beamer"'));
+    });
+
     test(
       'produces a valid, empty-but-well-formed backup when nothing was ever hydrated',
       () {

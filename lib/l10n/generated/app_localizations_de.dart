@@ -1028,7 +1028,8 @@ class AppLocalizationsDe extends AppLocalizations {
   String get leaderBookletTitle => 'Leiterheft als PDF';
 
   @override
-  String get leaderBookletDescription => 'Alle Leiter-Infos (Checkliste, Mitarbeiterschulung und alle Einheiten) als PDF zum Speichern, Drucken oder Weitergeben.';
+  String get leaderBookletDescription =>
+      'Alle Leiter-Infos (Checkliste, Mitarbeiterschulung und alle Einheiten) als PDF zum Speichern, Drucken oder Weitergeben.';
 
   @override
   String get leaderBookletError => 'Das PDF konnte nicht erstellt werden.';
@@ -1037,16 +1038,19 @@ class AppLocalizationsDe extends AppLocalizations {
   String get leaderTemplatesTitle => 'Vorlagen';
 
   @override
-  String get leaderTemplateSchedulesTitle => 'Zeitpläne: Hörendes Gebet & Gespräche';
+  String get leaderTemplateSchedulesTitle =>
+      'Zeitpläne: Hörendes Gebet & Gespräche';
 
   @override
-  String get leaderTemplateSchedulesDescription => 'Leere Zeitpläne zum Ausdrucken (PDF).';
+  String get leaderTemplateSchedulesDescription =>
+      'Leere Zeitpläne zum Ausdrucken (PDF).';
 
   @override
   String get leaderTemplateCertificateTitle => 'Urkunde';
 
   @override
-  String get leaderTemplateCertificateDescription => 'Teilnahme-Urkunde als PDF – mit Namen aus der App oder zum Handausfüllen.';
+  String get leaderTemplateCertificateDescription =>
+      'Teilnahme-Urkunde als PDF – mit Namen aus der App oder zum Handausfüllen.';
 
   @override
   String get leaderTemplateError => 'Die Vorlage konnte nicht geöffnet werden.';
@@ -1061,13 +1065,16 @@ class AppLocalizationsDe extends AppLocalizations {
   String get certificateParticipated => 'hat erfolgreich am Kurs';
 
   @override
-  String get certificateCourse => 'Design for Life – Den Plan Gottes für dein Leben entdecken';
+  String get certificateCourse =>
+      'Design for Life – Den Plan Gottes für dein Leben entdecken';
 
   @override
-  String get certificateDescription => 'Durch Reflexion von Lebensereignissen, Gaben und Werten wurde im Gebet mögliche Richtungen für den persönlichen Lebensweg mit Gott herausgearbeitet.';
+  String get certificateDescription =>
+      'Durch Reflexion von Lebensereignissen, Gaben und Werten wurde im Gebet mögliche Richtungen für den persönlichen Lebensweg mit Gott herausgearbeitet.';
 
   @override
-  String get certificateVerse => 'Denn was wir sind, ist Gottes Werk; er hat uns durch Jesus Christus dazu geschaffen, das zu tun, was gut und richtig ist. Gott hat alles, was wir tun sollen, vorbereitet; an uns ist es nun, das Vorbereitete auszuführen.';
+  String get certificateVerse =>
+      'Denn was wir sind, ist Gottes Werk; er hat uns durch Jesus Christus dazu geschaffen, das zu tun, was gut und richtig ist. Gott hat alles, was wir tun sollen, vorbereitet; an uns ist es nun, das Vorbereitete auszuführen.';
 
   @override
   String get certificateVerseRef => 'Epheser 2,10';
@@ -1097,7 +1104,8 @@ class AppLocalizationsDe extends AppLocalizations {
   String get leaderCertificateNames => 'Namen (einer pro Zeile)';
 
   @override
-  String get leaderCertificateNamesHint => 'Leer lassen, um den Namen von Hand einzutragen.';
+  String get leaderCertificateNamesHint =>
+      'Leer lassen, um den Namen von Hand einzutragen.';
 
   @override
   String get leaderCertificatePlace => 'Ort';

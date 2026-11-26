@@ -50,8 +50,12 @@ class LeaderNoteView extends StatelessWidget {
                 childrenPadding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
                 expandedCrossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  for (final block in section.blocks) ...[
-                    _LeaderNoteBlockView(block: block, sectionHeading: section.heading),
+                  for (final (index, block) in section.blocks.indexed) ...[
+                    _LeaderNoteBlockView(
+                      block: block,
+                      sectionHeading: section.heading,
+                      blockIndex: index,
+                    ),
                     const SizedBox(height: 12),
                   ],
                 ],
