@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:design_for_life/l10n/generated/app_localizations.dart';
 import '../../../core/models/dfl_entry.dart';
 
 class PrayerImpressionCard extends StatelessWidget {
@@ -33,7 +34,10 @@ class PrayerImpressionCard extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.only(bottom: 8.0),
                 child: Chip(
-                  label: Text(impression.metadata!, style: const TextStyle(fontSize: 12)),
+                  label: Text(
+                    impression.metadata!,
+                    style: const TextStyle(fontSize: 12),
+                  ),
                   backgroundColor: theme.colorScheme.secondaryContainer,
                 ),
               ),
@@ -46,8 +50,8 @@ class PrayerImpressionCard extends StatelessWidget {
                     TextPosition(offset: impression.text.length),
                   ),
                 maxLines: null,
-                decoration: const InputDecoration(
-                  hintText: 'Schreibe deinen Eindruck hier...',
+                decoration: InputDecoration(
+                  hintText: AppLocalizations.of(context).impressionHint,
                   border: InputBorder.none,
                 ),
                 onChanged: onChanged,

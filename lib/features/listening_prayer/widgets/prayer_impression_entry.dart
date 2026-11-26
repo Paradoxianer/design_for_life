@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:design_for_life/l10n/generated/app_localizations.dart';
 import 'package:image_picker/image_picker.dart';
 import '../../../core/models/dfl_entry.dart';
 
@@ -34,7 +35,8 @@ class _PrayerImpressionEntryState extends State<PrayerImpressionEntry> {
   @override
   void didUpdateWidget(PrayerImpressionEntry oldWidget) {
     super.didUpdateWidget(oldWidget);
-    if (oldWidget.impression.text != widget.impression.text && _controller.text != widget.impression.text) {
+    if (oldWidget.impression.text != widget.impression.text &&
+        _controller.text != widget.impression.text) {
       _controller.text = widget.impression.text;
     }
   }
@@ -80,8 +82,8 @@ class _PrayerImpressionEntryState extends State<PrayerImpressionEntry> {
                     maxLines: null,
                     minLines: 2,
                     style: theme.textTheme.bodyLarge,
-                    decoration: const InputDecoration(
-                      hintText: 'Schreibe deinen Eindruck...',
+                    decoration: InputDecoration(
+                      hintText: AppLocalizations.of(context).impressionHint,
                       border: InputBorder.none,
                       isDense: true,
                       contentPadding: EdgeInsets.symmetric(vertical: 8),
@@ -95,7 +97,11 @@ class _PrayerImpressionEntryState extends State<PrayerImpressionEntry> {
                   children: [
                     if (widget.onDelete != null)
                       IconButton(
-                        icon: const Icon(Icons.close, size: 20, color: Colors.black54),
+                        icon: const Icon(
+                          Icons.close,
+                          size: 20,
+                          color: Colors.black54,
+                        ),
                         onPressed: widget.onDelete,
                         padding: EdgeInsets.zero,
                         constraints: const BoxConstraints(),
@@ -105,7 +111,9 @@ class _PrayerImpressionEntryState extends State<PrayerImpressionEntry> {
                       icon: const Icon(Icons.add_a_photo_outlined, size: 22),
                       onPressed: () async {
                         final picker = ImagePicker();
-                        final image = await picker.pickImage(source: ImageSource.gallery);
+                        final image = await picker.pickImage(
+                          source: ImageSource.gallery,
+                        );
                         if (image != null) {
                           widget.onImageChanged(image.path);
                         }
@@ -139,7 +147,11 @@ class _PrayerImpressionEntryState extends State<PrayerImpressionEntry> {
                           color: Colors.black54,
                           shape: BoxShape.circle,
                         ),
-                        child: const Icon(Icons.close, color: Colors.white, size: 16),
+                        child: const Icon(
+                          Icons.close,
+                          color: Colors.white,
+                          size: 16,
+                        ),
                       ),
                     ),
                   ),
@@ -154,9 +166,19 @@ class _PrayerImpressionEntryState extends State<PrayerImpressionEntry> {
 
   Widget _buildImage(String path) {
     if (kIsWeb) {
-      return Image.network(path, width: double.infinity, height: 200, fit: BoxFit.cover);
+      return Image.network(
+        path,
+        width: double.infinity,
+        height: 200,
+        fit: BoxFit.cover,
+      );
     } else {
-      return Image.file(File(path), width: double.infinity, height: 200, fit: BoxFit.cover);
+      return Image.file(
+        File(path),
+        width: double.infinity,
+        height: 200,
+        fit: BoxFit.cover,
+      );
     }
   }
 }
