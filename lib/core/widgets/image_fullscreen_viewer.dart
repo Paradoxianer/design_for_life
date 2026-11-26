@@ -29,7 +29,9 @@ void showImageFullscreen(BuildContext context, String imagePath) {
               child: SafeArea(
                 child: IconButton(
                   icon: const Icon(Icons.close, color: Colors.white, size: 28),
-                  tooltip: 'Schließen',
+                  tooltip: MaterialLocalizations.of(
+                    dialogContext,
+                  ).closeButtonTooltip,
                   onPressed: () => Navigator.of(dialogContext).pop(),
                 ),
               ),

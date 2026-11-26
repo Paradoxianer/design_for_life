@@ -59,7 +59,8 @@ void main() {
     // Privacy: nothing of the reviewer's data may be in the query that a
     // web server would receive.
     expect(resultUri.query, isEmpty);
-    expect(result, isNot(contains('?flow')));
+    // The data sits behind the '#' (`#/?flow=...`), never before it.
+    expect(result.split('#').first, isNot(contains('?')));
     final resultParams = DeepLinkService.paramsOf(resultUri);
     expect(resultParams['flow'], 'gift-reference-result');
     expect(resultParams['answers'], '3:503');
