@@ -199,7 +199,7 @@
           },
           {
             "type": "video",
-            "label": "Video spiritual (de ex. Transformation, Fireproof sau similar)",
+            "label": "Opțional: film sau clip cu temă spirituală (de ex. despre curaj și chemare) – la alegere",
             "url": null
           }
         ]
@@ -214,7 +214,7 @@
         "blocks": [
           {
             "type": "paragraph",
-            "text": "La DFL nu se întâmplă ca în acest weekend să primești un plic cu instrucțiunile lui Dumnezeu pentru viața ta. Vom încerca să recunoaștem chemarea lui Dumnezeu. Este important să fim atenți la chemarea lui Dumnezeu – altfel lucrurile din viața noastră o iau razna, ca la Minioni. Vrem să vedem împreună cum a fost folosit Ioan de către Dumnezeu pentru a confirma chemarea lui Isus."
+            "text": "La DFL nu se întâmplă ca în acest weekend să primești un plic cu instrucțiunile lui Dumnezeu pentru viața ta. Vom încerca să recunoaștem chemarea lui Dumnezeu. Este important să fim atenți la chemarea lui Dumnezeu – altfel lucrurile din viața noastră o iau razna. Vrem să vedem împreună cum a fost folosit Ioan de către Dumnezeu pentru a confirma chemarea lui Isus."
           },
           {
             "type": "paragraph",
@@ -395,12 +395,12 @@
           },
           {
             "type": "video",
-            "label": "Clip video – Minionii: bicicleta",
+            "label": "Opțional: clip scurt pe tema „Bine pregătit” – la alegere",
             "url": null
           },
           {
             "type": "paragraph",
-            "text": "Așa cum Minionii pregătesc bicicleta lui Agnes ca ea să primească înghețata, Dumnezeu te-a pregătit deja pe tine și viața ta pentru scopul tău."
+            "text": "Așa cum cineva pregătește totul dinainte pentru ca altcineva să-și atingă scopul, Dumnezeu te-a pregătit deja pe tine și viața ta pentru scopul tău."
           },
           {
             "type": "paragraph",
@@ -645,7 +645,7 @@
           },
           {
             "type": "video",
-            "label": "Clip video – One Man Band",
+            "label": "Opțional: clip scurt pe tema „Când totul se potrivește” – la alegere",
             "url": null
           },
           {
@@ -895,12 +895,12 @@
         "blocks": [
           {
             "type": "video",
-            "label": "Clip Minionii – Banana",
+            "label": "Opțional: clip scurt pe tema „Un scop înaintea ochilor” – la alegere",
             "url": null
           },
           {
             "type": "paragraph",
-            "text": "Când Dumnezeu ne cheamă, ar trebui să fim ca Minionii. Minionii au un scop.\nDumnezeu ne-a dat fiecăruia dintre noi tot un scop.\nUnul general valabil, pe care îl găsim mereu în Biblie, de ex. Marcu 16,15 și urm.\nDar are și pentru fiecare în parte un scop concret."
+            "text": "Când Dumnezeu ne cheamă, ar trebui să avem un scop clar înaintea ochilor.\nDumnezeu ne-a dat fiecăruia dintre noi un scop.\nUnul general valabil, pe care îl găsim mereu în Biblie, de ex. Marcu 16,15 și urm.\nDar are și pentru fiecare în parte un scop concret."
           },
           {
             "type": "quote",

@@ -144,7 +144,7 @@
             "type": "paragraph",
             "text": "Egal, welche Rolle du in deinem Leben einnimmst, du bist keinesfalls unwichtig, wenn es darum geht, für die Wahrheit einzustehen. Welchen Platz hat Gott dir gegeben? Egal, welcher es ist, Gott sagt dir: „Du stehst vor mir und ich möchte dich gebrauchen. Ich möchte dich hier und jetzt und auch in Zukunft als meinen einzigartigen Zeugen gebrauchen.“ Schau dich um: Die Not ist immer noch unglaublich groß und Gott sucht immer noch."
           },
-          { "type": "video", "label": "Geistliches Video (z.B. Transformation, Fireproof o.Ä.)", "url": null }
+          { "type": "video", "label": "Optional: Film oder Clip mit geistlichem Thema (z. B. über Mut und Berufung) – frei wählbar", "url": null }
         ]
       }
     ]
@@ -157,7 +157,7 @@
         "blocks": [
           {
             "type": "paragraph",
-            "text": "Bei DFL ist es nicht so, dass du an diesem Wochenende einen Umschlag bekommst mit Gottes Anleitung für dein Leben. Wir werden versuchen, Gottes Berufung zu erkennen. Es ist wichtig, auf Gottes Berufung zu achten – sonst laufen Dinge in unserem Leben schief, wie bei den Minions. Wir wollen uns gemeinsam anschauen wie Johannes von Gott gebraucht wurde um Berufung von Jesu zu bestätigen."
+            "text": "Bei DFL ist es nicht so, dass du an diesem Wochenende einen Umschlag bekommst mit Gottes Anleitung für dein Leben. Wir werden versuchen, Gottes Berufung zu erkennen. Es ist wichtig, auf Gottes Berufung zu achten – sonst laufen Dinge in unserem Leben schief. Wir wollen uns gemeinsam anschauen wie Johannes von Gott gebraucht wurde um Berufung von Jesu zu bestätigen."
           },
           { "type": "paragraph", "text": "Wir lesen, jeder für sich, leise Matthäus 3,1-17." },
           { "type": "subheading", "text": "Straßenschilder" },
@@ -277,10 +277,10 @@
           },
           { "type": "paragraph", "text": "Gott hat uns schon berufen und für seinen Dienst vorbereitet." },
           { "type": "subheading", "text": "Gebet" },
-          { "type": "video", "label": "Filmclip – Minions: Fahrrad", "url": null },
+          { "type": "video", "label": "Optional: kurzer Clip zum Thema „Gut vorbereitet“ – frei wählbar", "url": null },
           {
             "type": "paragraph",
-            "text": "So, wie die Minions das Fahrrad von Agnes präparieren, damit sie das Eis bekommt, hat Gott dich und dein Leben bereits für dein Ziel vorbereitet."
+            "text": "So wie jemand im Voraus alles vorbereitet, damit ein anderer sein Ziel erreicht, hat Gott dich und dein Leben bereits für dein Ziel vorbereitet."
           },
           {
             "type": "paragraph",
@@ -467,7 +467,7 @@
           { "type": "paragraph", "text": "Zähle deine acht wichtigsten Werte auf und gib eine persönliche Erklärung dazu." },
           { "type": "paragraph", "text": "Deine Werte können sich verändern.\nIn meinem nächsten Lebensabschnitt werden folgende Werte wichtig sein: acht Werte." },
           { "type": "paragraph", "text": "Genau das ist es, wo du dich einbringen wirst." },
-          { "type": "video", "label": "Filmclip – One Man Band", "url": null },
+          { "type": "video", "label": "Optional: kurzer Clip zum Thema „Wenn alles zusammenpasst“ – frei wählbar", "url": null },
           { "type": "paragraph", "text": "Also, wenn alles zusammenkommt ... deine Werte und deine Gaben, dann bist du am produktivsten." }
         ]
       }
@@ -573,8 +573,8 @@
       {
         "heading": "Deine Berufung – deine Reaktion",
         "blocks": [
-          { "type": "video", "label": "Clip Minions Banana", "url": null },
-          { "type": "paragraph", "text": "Wenn Gott uns ruft sollen wir so seinn, wie die Minions. Die Minions haben ein Ziel\nGott hat jedem von uns auch ein Ziel gegeben.\nEinmal ein allgemeingültiges welches wir immer wieder in der Bibel finden z.B. Mk 16,15ff.\nAber er hat auch für jeden einzelnen ein Konkretes Ziel" },
+          { "type": "video", "label": "Optional: kurzer Clip zum Thema „Ein Ziel vor Augen“ – frei wählbar", "url": null },
+          { "type": "paragraph", "text": "Wenn Gott uns ruft, sollen wir ein klares Ziel vor Augen haben.\nGott hat jedem von uns ein Ziel gegeben.\nEinmal ein allgemeingültiges welches wir immer wieder in der Bibel finden z.B. Mk 16,15ff.\nAber er hat auch für jeden einzelnen ein Konkretes Ziel" },
           { "type": "quote", "text": "Denn ich weiß genau, welche Pläne ich für euch gefasst habe, spricht der HERR. ›Mein Plan ist, euch Heil zu geben und kein Leid. Ich gebe euch Zukunft und Hoffnung.", "reference": "Jeremia 29,11" },
           { "type": "paragraph", "text": "Gott will dir also so ein Ziel geben\nHeute Morgen wollen wir schauen, was Gott uns sagt, dass wir als Nächstes tun sollen." },
           {
